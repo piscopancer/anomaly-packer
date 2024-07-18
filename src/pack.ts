@@ -9,8 +9,8 @@ type Translation<L extends string[], Id extends string> = {
   [_L in L[number]]: Partial<Record<Id, string>>
 }
 
-type PackParams<L extends string[], Id extends string> = {
-  translations: Translation<L, Id>
+type PackTranslationParams<L extends string[], Id extends string> = {
+  translation: Translation<L, Id>
   fileName: string
   defaultId: (prop: string) => string
   idOverrides?: Partial<Record<Id, (id: string) => string>>
@@ -23,26 +23,37 @@ export type PackOptions<L extends string[] = ['eng']> = {
   extends?: {}
   config?: {
     languages: L
-    translations(textOptions: { pack<Id extends string>(params: PackParams<L, Id>): PackParams<L, Id> }): PackParams<L, string>[]
+    translations(textOptions: {
+      pack<Id extends string>(params: PackTranslationParams<L, Id>): PackTranslationParams<L, Id>
+    }): PackTranslationParams<L, string>[]
   }
   scripts?: { fileName: string; outFileName: string }[]
+  /**
+   * Relative path to the raw gamedata folder that will be appended to the build. During the build this folder will be treated as is and will be simply copied dispite its contents. This folder is recommended to stay at the root level of your project.
+   * @example './gamedata'
+   */
+  gamedata?: string
 }
 
 export async function pack<L extends string[]>(options: PackOptions<L>) {
   const outDirName = options.build?.outName ?? 'build'
+  if (options.gamedata) {
+    await fs.cp(options.gamedata, process.cwd() + `/${outDirName}/gamedata`, { recursive: true })
+    console.log(c.cyan.bold('Raw gamedata ') + c.cyan('was copied'))
+  }
   if (options.config) {
-    const allTranslations = options.config.translations({
+    const translations = options.config.translations({
       pack(params) {
         return params
       },
     })
-    for (const { translations, fileName, defaultId, idOverrides } of allTranslations) {
+    for (const { translation, fileName, defaultId, idOverrides } of translations) {
       type JsonTextStructure = { string_table: { string: { text: string }; attrs: { id: string } }[] }
 
       for (const lang of options.config.languages) {
         const json: JsonTextStructure = {
           string_table: [
-            ...objectEntries(translations[lang as keyof typeof translations]).map(([id, text]) => {
+            ...objectEntries(translation[lang as keyof typeof translation]).map(([id, text]) => {
               const overrideId = idOverrides && idOverrides[id as string]
               const formattedId = overrideId ? overrideId(id as string) : defaultId(id as string)
               return { string: { text: text ?? '' }, attrs: { id: formattedId } }
@@ -58,8 +69,8 @@ export async function pack<L extends string[]>(options: PackOptions<L>) {
         await fs.writeFile(filePath, iconv.encode(xml, 'win1251'))
       }
     }
-    console.log(c.cyan.bold(allTranslations.length + ' translations ') + c.cyan('were created'))
-    for (const tr of allTranslations) {
+    console.log(c.cyan.bold(translations.length + ' translations ') + c.cyan('were created'))
+    for (const tr of translations) {
       console.log('  ' + c.gray.italic(tr.fileName + '.xml'))
     }
   }

@@ -42,7 +42,7 @@ await pack({
     languages: ['eng', 'rus'] as const,
     translations: (t) => [
       t.pack<keyof typeof someTextFile>({
-        translations: {
+        translation: {
           eng: {
             prop1: 'propsdsds',
           },
@@ -59,7 +59,7 @@ await pack({
         },
       }),
       t.pack<'hello' | 'goodbye'>({
-        translations: {
+        translation: {
           eng: {
             hello: 'Hello!',
             goodbye: 'Goodbye!',
@@ -82,4 +82,5 @@ await pack({
     { fileName: 'ass_script', outFileName: addonId + '_ass' },
     { fileName: 'lol_kek', outFileName: addonId + '_ya_zaebalisya' },
   ],
+  gamedata: './gamedata',
 })

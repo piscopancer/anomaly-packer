@@ -7,9 +7,7 @@ export async function transpile(scripts: NonNullable<PackOptions<any>['scripts']
   if (!(await fs.exists(scriptsDir))) {
     await fs.mkdir(scriptsDir)
   }
-
   let transpiledFiles: string[] = []
-
   tstl.transpileProject(
     'tsconfig.json',
     {
@@ -24,7 +22,6 @@ export async function transpile(scripts: NonNullable<PackOptions<any>['scripts']
       }
     }
   )
-
   return transpiledFiles
 }
 
