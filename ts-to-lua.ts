@@ -1,11 +1,15 @@
 import fs from 'fs/promises'
 import * as tstl from 'typescript-to-lua'
-import { addonId } from './src/util'
+import { PackOptions } from './src/pack'
 
-export async function transpile() {
-  if (!(await fs.exists(process.cwd() + `/build/gamedata/scripts/`))) {
-    await fs.mkdir(process.cwd() + `/build/gamedata/scripts/`)
+export async function transpile(scripts: NonNullable<PackOptions<any>['scripts']>, outDir: string): Promise<string[]> {
+  const scriptsDir = process.cwd() + `/${outDir}/gamedata/scripts`
+  if (!(await fs.exists(scriptsDir))) {
+    await fs.mkdir(scriptsDir)
   }
+
+  let transpiledFiles: string[] = []
+
   tstl.transpileProject(
     'tsconfig.json',
     {
@@ -13,15 +17,15 @@ export async function transpile() {
       extension: '.script',
     },
     async (name, text) => {
-      if (name.endsWith('main.script')) {
-        await fs.writeFile(process.cwd() + `/build/gamedata/scripts/${addonId}.script`, correctLua(text), {})
-        // await fs.writeFile(activeAddonScriptsPath + `/${addonId}.script`, correctLua(text))
-      } else if (name.endsWith('mcm.script')) {
-        await fs.writeFile(process.cwd() + `/build/gamedata/scripts/${addonId}_mcm.script`, correctLua(text))
-        // await fs.writeFile(activeAddonScriptsPath + `/${addonId}_mcm.script`, correctLua(text))
+      const match = scripts.find((sc) => name.replace('.script', '').endsWith(sc.fileName))
+      if (match) {
+        transpiledFiles.push(match.outFileName + '.script')
+        await fs.writeFile(scriptsDir + `/${match.outFileName}.script`, correctLua(text))
       }
     }
   )
+
+  return transpiledFiles
 }
 
 function correctLua(lua: string) {

@@ -195,7 +195,7 @@ type Binder = {
 
 declare var DIK_keys: Record<`DIK_${string}`, number>
 declare var game: {
-  translate_string(this: void, id: `${AddonId}_${keyof AddonTexts['eng']}`): string
+  // translate_string(this: void, id: `${AddonId}_${keyof AddonTexts['eng']}`): string
 }
 declare var level: {
   add_pp_effector(name: string, _0: number, _1: boolean): void
