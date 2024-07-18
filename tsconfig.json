@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/TypeScriptToLua/TypeScriptToLua/master/tsconfig-schema.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "skipLibCheck": false,
+    "strictNullChecks": true,
+    "strict": true,
+    "moduleDetection": "force"
+  },
+  "tstl": {
+    "luaTarget": "5.4"
+  },
+  "exclude": ["node_modules"]
+}
