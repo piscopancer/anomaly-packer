@@ -41,18 +41,39 @@
 
 function on_key_press(this: void, key: number) {
   if (key === DIK_keys.DIK_I) {
-    printf(`I pressed ${DIK_keys.DIK_I}`)
+    // printf(`I pressed ${DIK_keys.DIK_I}`)
     // db.actor.give_game_news('igor kryl', game.translate_string('pcprs_healing_campfires_chat_message'), 'ui_inGame2_Storonnik_ravnovesiya', 0, 5000)
-    const ammo_box_size = ini_sys.r_u32('ammo_magnum_300', 'box_size')
-    if (!ammo_box_size) return
-    const ammo_to_give = math.random(ammo_box_size / 2, ammo_box_size)
-    alife_create_item('ammo_magnum_300', db.actor, {
-      ammo: ammo_to_give,
-    })
-    printf('ammo was given to [%s] in the amount of [%s]', db.actor.character_name(), ammo_to_give)
+    // const ammo_box_size = ini_sys.r_u32('ammo_magnum_300', 'box_size')
+    // if (!ammo_box_size) return
+    // const ammo_to_give = math.random(ammo_box_size / 2, ammo_box_size)
+    // alife_create_item('ammo_magnum_300', db.actor, {
+    //   ammo: ammo_to_give,
+    // })
+    // printf('ammo was given to [%s] in the amount of [%s]', db.actor.character_name(), ammo_to_give)
+    // alife().create('ammo_magnum_300', db.actor.position(), db.actor.level_vertex_id(), db.actor.game_vertex_id())
+
+    //     if mt and mt.__index then
+    //     local index = mt.__index
+    //     if type(index) == "table" then
+    //         for key, value in pairs(index) do
+    //             print("Method from __index:", key, value)
+    //         end
+    //     end
+    // end
+
+    db.actor.health = 0.1
   }
 }
 
+function actor_on_update(this: void, binder: Binder, delta_sec: number) {
+  db.actor.change_health(0.1 * delta_sec * 0.001)
+}
+
+add_console_command('fuck', () => {
+  printf('- fuck lol')
+})
+
 function on_game_start(this: void) {
   RegisterScriptCallback('on_key_press', on_key_press)
+  RegisterScriptCallback('actor_on_update', actor_on_update)
 }

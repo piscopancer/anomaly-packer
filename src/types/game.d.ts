@@ -40,8 +40,10 @@ declare function SendScriptCallback<E extends keyof GameEvents>(this: void, even
  * ```
  * */
 declare function CreateTimeEvent<F extends (...args: any) => any>(event_id: number, action_id: string, delay_s: number, action: F, ...args: Parameters<F>): void
+/** Adds a console command to the game console. This function should be called in `on_game_start` */
+declare function add_console_command(this: void, name: string, func: () => any): void
 /**
- * Print formatted text to the console.
+ * Print formatted text to the game console.
  *
  * Prefix with a special symbol to change appearance.
  *
@@ -87,7 +89,7 @@ declare class vector {
   distance_to(to: vector): number
   distance_to_sqr(pos: vector): number
 }
-declare function alife(): {
+declare function alife(this: void): {
   switch_distance(): number
   switch_distance(distance: number): void
   level_name(level_id: number): string
@@ -399,7 +401,11 @@ declare var actor_proxy: TODO
 declare var actor_status: TODO
 declare var actor_status_sleep: TODO
 declare var actor_status_thirst: TODO
-declare var alife_storage_manager: TODO
+declare var alife_storage_manager: {
+  get_state(this: void): {
+    enable_campfire_mode: boolean
+  }
+}
 declare var arszi_psy: TODO
 declare var axr_beh: TODO
 declare var axr_companions: TODO

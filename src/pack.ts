@@ -18,7 +18,7 @@ type PackTranslationParams<L extends string[], Id extends string> = {
 
 export type PackOptions<L extends string[] = ['eng']> = {
   build?: {
-    outName?: string
+    outDirName?: string
   }
   extends?: {}
   config?: {
@@ -32,13 +32,24 @@ export type PackOptions<L extends string[] = ['eng']> = {
    * Relative path to the raw gamedata folder that will be appended to the build. During the build this folder will be treated as is and will be simply copied dispite its contents. This folder is recommended to stay at the root level of your project.
    * @example './gamedata'
    */
-  gamedata?: string
+  rawGamedata?: string
+  /**
+   * ## ⚠ Use with care! If misused, this function can damage personal and valueable data!
+   *
+   * Additional paths to gamedata directory that will get refreshed with the gamedata of the fresh build. Useful when this the addon was installed via Mod Organizer 2 once and simply requires to get its files refreshed as the development continues.
+   *
+   * @example
+   * ```ts
+   * [`C:/Users/Jack Daniels/AppData/Local/ModOrganizer/STALKER Anomaly/mods/${addonId}_build/gamedata`]
+   * ```
+   */
+  refresh?: string[]
 }
 
 export async function pack<L extends string[]>(options: PackOptions<L>) {
-  const outDirName = options.build?.outName ?? 'build'
-  if (options.gamedata) {
-    await fs.cp(options.gamedata, process.cwd() + `/${outDirName}/gamedata`, { recursive: true })
+  const outDirName = options.build?.outDirName ?? 'build'
+  if (options.rawGamedata) {
+    await fs.cp(options.rawGamedata, process.cwd() + `/${outDirName}/gamedata`, { recursive: true })
     console.log(c.cyan.bold('Raw gamedata ') + c.cyan('was copied'))
   }
   if (options.config) {
@@ -79,6 +90,15 @@ export async function pack<L extends string[]>(options: PackOptions<L>) {
     console.log(c.cyan.bold(transpiledFiles.length + ' scripts ') + c.cyan('were created'))
     for (const tf of transpiledFiles) {
       console.log('  ' + c.gray.italic(tf))
+    }
+  }
+  if (options.refresh && options.refresh.length) {
+    for (const refresh of options.refresh) {
+      await fs.cp(process.cwd() + `/${outDirName}/gamedata`, refresh, { recursive: true })
+    }
+    console.log(c.cyan('Build was copied to ') + c.cyan.bold(options.refresh.length + ' outer gamedata directories'))
+    for (const refresh of options.refresh) {
+      console.log('  ' + c.gray.italic(refresh))
     }
   }
 }
