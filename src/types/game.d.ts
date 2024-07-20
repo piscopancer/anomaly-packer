@@ -4,6 +4,18 @@ type Suggest<S extends string> = S | (string & {})
 
 //#region classes
 
+declare class vector {
+  constructor(x: number, y: number, z: number)
+  x: number
+  y: number
+  z: number
+  set(x: number, y: number, z: number): vector
+  add(x: number, y: number, z: number): vector
+  sub(x: number, y: number, z: number): vector
+  distance_to(to: vector): number
+  distance_to_sqr(pos: vector): number
+}
+
 //#endregion
 
 //#region functions
@@ -78,17 +90,6 @@ declare function random_number(min: number, max: number): number
 declare function random_float(min: number, max: number): number
 declare function trim(str: string): string
 declare function str_explode(str: string, separator: string): string
-declare class vector {
-  constructor(x: number, y: number, z: number)
-  x: number
-  y: number
-  z: number
-  set(x: number, y: number, z: number): vector
-  add(x: number, y: number, z: number): vector
-  sub(x: number, y: number, z: number): vector
-  distance_to(to: vector): number
-  distance_to_sqr(pos: vector): number
-}
 declare function alife(this: void): {
   switch_distance(): number
   switch_distance(distance: number): void
@@ -201,43 +202,101 @@ declare type GameEvents = {
   map_spot_menu_add_property(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
   map_spot_menu_property_clicked(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
 }
-type CseAbstract = TODO
-type ServerObjectBase = {
-  id: number
-  object: TODO
-  section_name(): string
-  direction: vector
+
+//#region server object
+
+// <==================== alife (server) objects ====================>
+
+/**
+ * Inheritance
+ *
+ * ipure_alife_load_save_object
+ * ipure_server_object
+ * cpure_server_object
+ * cse_abstract
+ * cse_alife_object
+ * cse_alife_dynamic_object
+ */
+
+type cse_abstract = {
+  readonly id: number
+  readonly parent_id: number
+  readonly script_version: number
   position: vector
-  m_level_vertex_id: number
-  m_game_vertex_id: number
+  angle: vector
+  section_name(): string
+  name(): string
+  clsid(): number
+  spawn_ini(): TODO
+  STATE_Read(): TODO
+  STATE_Write(): TODO
+  UPDATE_Read(): TODO
+  UPDATE_Write(): TODO
 }
-type NpcServerObject = ServerObjectBase & {
+
+type cse_alife_object = cse_abstract & {
+  readonly online: boolean
+  move_offline(): boolean
+  move_offline(value: boolean): void
+  visible_for_map(): boolean
+  visible_for_map(value: boolean): void
+  can_switch_online(value: boolean): void
+  can_switch_offline(value: boolean): void
+  use_ai_locations(value: boolean): void
+  readonly m_level_vertex_id: number
+  readonly m_level_game_id: number
+  readonly m_story_id: number
+}
+
+type cse_alife_dynamic_object = cse_alife_object & {}
+
+type cse_visual = {}
+
+type cse_alife_dynamic_object_visual = cse_alife_dynamic_object & cse_visual & {}
+
+type cse_ph_skeleton = {}
+
+type cse_alife_creature_abstract = {
+  health(): number
   alive(): boolean
-  character_community(): string
+  team: string
+  squad: string
+  group: string
+  o_torso(): TODO
 }
-type SquadServerObject = {
-  group_id: number
-  smart_id: number | null
-  current_spot_id: number | null
-  spot_section: number | null
-  remove_squad(): void
-  remove_npc(id: number, force: boolean): void
-  npc_count(): number
-  squad_members: ServerObjectBase[]
-  commander_id(): number | null
-  refresh(): void
-  hide(): void
-  show(): void
+
+type cse_alife_trader_abstract = {
+  community(): string
+  profile_name(): string
+  set_profile_name(name: string): void
+  character_name(): string
+  rank(): number
+  set_rank(rank: number): void
+  reputation(): number
+  character_icon(): string
 }
-type SquadMemberServerObject = {
-  smart_terrain_id(): number | null
-}
-type SmartServerObject = {
-  unregister_npc(_0: TODO): void
-}
+
+type cse_alife_creature_actor = cse_alife_creature_abstract & cse_alife_trader_abstract & cse_ph_skeleton & {}
+
+type cse_alife_schedulable = {}
+
+type cse_alife_online_offline_group = cse_alife_dynamic_object &
+  cse_alife_schedulable & {
+    register_member(id: number): void
+    unregister_member(id: number): void
+    commander_id(): number
+    squad_members(): TODO
+    npc_count(): number
+    add_location_type(mask: string): void
+    clear_location_types(): void
+    force_change_position(pos: vector): void
+  }
+
+//#endregion
+
+//#region gameobject
+
 type GameObjectBase = {
-  // https://www.amk-team.ru/forum/topic/7450-spravochnik-po-funkciyam-i-klassam/
-  /** 0 ... 65535 */
   id(): number
   clsid(): number
   level_vertex_id(): number
@@ -344,6 +403,9 @@ type FoodGameObject = GameObjectBase & {
   get_remaining_uses(): number
   get_max_uses(): number
 }
+
+//#endregion
+
 type Binder = {
   object: GameObjectBase
 }
