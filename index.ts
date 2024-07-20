@@ -79,8 +79,8 @@ await pack({
     ],
   },
   scripts: [
-    { fileName: 'ass_script', outFileName: addonId + '_ass' },
-    { fileName: 'lol_kek', outFileName: addonId + '_ya_zaebalisya' },
+    { fileName: 'main', outFileName: addonId + '_main' },
+    // { fileName: 'lol_kek', outFileName: addonId + '_ya_zaebalisya' },
   ],
   gamedata: './gamedata',
 })

@@ -13,7 +13,7 @@
 //     if (!binder || !binder.campfire) {
 //       return false
 //     }
-//     if (!config.must_be_lit || (config.must_be_lit && binder.campfire.is_on())) {
+//     if (binder.campfire.is_on()) {
 //       if (pos.distance_to_sqr(binder.object.position()) <= distance) {
 //         return true
 //       }
@@ -39,15 +39,20 @@
 //   }
 // }
 
-// // function on_key_press(this: void, key: number) {
-// //   if (key === DIK_keys.DIK_I) {
-// //     printf(`I pressed ${DIK_keys.DIK_I}`)
-// //     db.actor.give_game_news('igor kryl', game.translate_string('pcprs_healing_campfires_chat_message'), 'ui_inGame2_Storonnik_ravnovesiya', 0, 5000)
-// //   }
-// // }
+function on_key_press(this: void, key: number) {
+  if (key === DIK_keys.DIK_I) {
+    printf(`I pressed ${DIK_keys.DIK_I}`)
+    // db.actor.give_game_news('igor kryl', game.translate_string('pcprs_healing_campfires_chat_message'), 'ui_inGame2_Storonnik_ravnovesiya', 0, 5000)
+    const ammo_box_size = ini_sys.r_u32('ammo_magnum_300', 'box_size')
+    if (!ammo_box_size) return
+    const ammo_to_give = math.random(ammo_box_size / 2, ammo_box_size)
+    alife_create_item('ammo_magnum_300', db.actor, {
+      ammo: ammo_to_give,
+    })
+    printf('ammo was given to [%s] in the amount of [%s]', db.actor.character_name(), ammo_to_give)
+  }
+}
 
-// function on_game_start(this: void) {
-//   RegisterScriptCallback('actor_on_update', actor_on_update)
-//   RegisterScriptCallback('on_option_change', on_option_change)
-//   // RegisterScriptCallback('on_key_press', on_key_press)
-// }
+function on_game_start(this: void) {
+  RegisterScriptCallback('on_key_press', on_key_press)
+}

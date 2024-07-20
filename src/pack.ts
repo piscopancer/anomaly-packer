@@ -27,7 +27,7 @@ export type PackOptions<L extends string[] = ['eng']> = {
       pack<Id extends string>(params: PackTranslationParams<L, Id>): PackTranslationParams<L, Id>
     }): PackTranslationParams<L, string>[]
   }
-  scripts?: { fileName: string; outFileName: string }[]
+  scripts?: { fileName: string; outFileName?: string }[]
   /**
    * Relative path to the raw gamedata folder that will be appended to the build. During the build this folder will be treated as is and will be simply copied dispite its contents. This folder is recommended to stay at the root level of your project.
    * @example './gamedata'

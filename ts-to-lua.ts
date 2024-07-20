@@ -17,8 +17,9 @@ export async function transpile(scripts: NonNullable<PackOptions<any>['scripts']
     async (name, text) => {
       const match = scripts.find((sc) => name.replace('.script', '').endsWith(sc.fileName))
       if (match) {
-        transpiledFiles.push(match.outFileName + '.script')
-        await fs.writeFile(scriptsDir + `/${match.outFileName}.script`, correctLua(text))
+        const outFileName = match.outFileName ?? match.fileName
+        transpiledFiles.push(outFileName + '.script')
+        await fs.writeFile(scriptsDir + `/${outFileName}.script`, correctLua(text))
       }
     }
   )

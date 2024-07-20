@@ -21,7 +21,8 @@
   },
   "scripts": {
     "build": "bun .",
-    "dev": "bun --hot ."
+    "dev": "bun --hot .",
+    "test": "bun './test/test.tsx'"
   },
   "devDependencies": {
     "@types/bun": "latest",
