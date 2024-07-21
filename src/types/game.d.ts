@@ -4,6 +4,35 @@ type Suggest<S extends string> = S | (string & {})
 
 //#region classes
 
+//#region classes / from xray-monolith
+
+declare class ray_pick {
+  constructor()
+  set_position(pos: vector): void
+  set_direction(dir: vector): void
+  set_range(range: number): void
+  set_flags(collide: rq_target[keyof rq_target]): void
+  set_ignore_object(obj: GameObjectBase): void
+  query(): boolean
+  get_result(): rq_result
+  get_object(): GameObjectBase
+  get_distance(): number
+  get_element(): number
+}
+declare class rq_result {
+  readonly object: GameObjectBase
+  readonly range: number
+  readonly element: number
+}
+declare class rq_target {
+  rqtNone: 0
+  rqtObject: 1
+  rqtStatic: 2
+  rqtShape: 4
+  rqtObstacle: 8
+  rqtBoth: 3
+  rqtDyn: 13
+}
 declare class vector {
   constructor(x: number, y: number, z: number)
   x: number
@@ -15,6 +44,27 @@ declare class vector {
   distance_to(to: vector): number
   distance_to_sqr(pos: vector): number
 }
+declare class CTime {
+  constructor()
+  DateToDay: 0
+  DateToMonth: 1
+  DateToYear: 2
+  TimeToHours: 0
+  TimeToMinutes: 1
+  TimeToSeconds: 2
+  TimeToMilisecs: 3
+  diffSec(other: CTime): number
+  add(other: CTime): void
+  sub(other: CTime): void
+  setHMS(h: number, m: number, s: number): void
+  setHMSms(h: number, m: number, s: number, ms: number): void
+  set(year: number, month: number, day: number, h: number, m: number, s: number, ms: number): void
+  get(year: number, month: number, day: number, h: number, m: number, s: number, ms: number): void
+  dateToString(mode: typeof this.DateToDay | typeof this.DateToMonth | typeof this.DateToYear): string
+  timeToString(mode: typeof this.TimeToHours | typeof this.TimeToMinutes | typeof this.TimeToSeconds | typeof this.TimeToMilisecs): string
+}
+
+//#endregion
 
 //#endregion
 
@@ -95,13 +145,13 @@ declare function alife(this: void): {
   switch_distance(distance: number): void
   level_name(level_id: number): string
   level_id(): number
-  teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, server_object: ServerObjectBase): void
-  object(id: number): ServerObjectBase
-  create(section: string, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): CseAbstract
-  create_ammo(section: string): CseAbstract
-  register(server_object: ServerObjectBase): void
-  release(server_object: ServerObjectBase): void
-  actor(): ServerObjectBase
+  teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, server_object: cse_abstract): void
+  object(id: number): cse_abstract
+  create(section: string, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): cse_abstract
+  create_ammo(section: string): cse_abstract
+  register(server_object: cse_abstract): void
+  release(server_object: cse_abstract): void
+  actor(): cse_alife_creature_actor
 }
 // declare function Frect(this: void): {
 //   set(x: number, y: number, w: number, h: number): any
@@ -122,7 +172,7 @@ declare function alife_create_item(
 
 //#region enums
 
-declare enum TaskState {
+declare enum task_state {
   Fail = 0,
   InProgress = 1,
   Completed = 2,
@@ -280,7 +330,7 @@ type cse_alife_creature_actor = cse_alife_creature_abstract & cse_alife_trader_a
 
 type cse_alife_schedulable = {}
 
-type cse_alife_online_offline_group = cse_alife_dynamic_object &
+declare type cse_alife_online_offline_group = cse_alife_dynamic_object &
   cse_alife_schedulable & {
     register_member(id: number): void
     unregister_member(id: number): void
@@ -294,7 +344,7 @@ type cse_alife_online_offline_group = cse_alife_dynamic_object &
 
 //#endregion
 
-//#region gameobject
+//#region game object
 
 type GameObjectBase = {
   id(): number
@@ -334,8 +384,8 @@ type ActorGameObject = StalkerGameObject & {
   reload_weapon(): void
   hide_weapong(): void
   disable_hit_marks(_0: boolean): void
-  get_task_state(task_id: string): TaskState
-  set_task_state(state: TaskState, task_id: string): void
+  get_task_state(task_id: string): task_state
+  set_task_state(state: task_state, task_id: string): void
   // give_task():void
 }
 /** Stalker or mutant */
@@ -420,8 +470,73 @@ type Texture = {
 
 //#endregion
 
-//#region vars
+//#region vars (modules)
 
+//#region vars / from xray-monolith
+
+declare var actor_stats: {
+  add_points(this: void, section: string, detail_key: string, count: number, points: number): void
+  add_points_str(this: void, section: string, detail_key: string, value: string): void
+  get_points(this: void, section: string): number
+}
+declare var weather: {
+  get_value_numric(this: void, name: string): number
+  get_value_vector(this: void, name: string): vector
+  get_value_string(this: void, name: string): string
+  pause(this: void, pause: boolean): void
+  is_paused(this: void): boolean
+  set_value_numric(this: void, name: string, value: number): void
+  set_value_vector(this: void, name: string, x: number, y: number, z: number, w?: number): void
+  set_value_string(this: void, name: string, value: string): void
+  reload(this: void): void
+  boost_value(this: void, name: string, value: number): void
+  boost_reset(this: void): void
+  sun_time(this: void, h: number, m: number): void
+}
+declare var hud_adjust: {
+  enabled(this: void, state: boolean): void
+  set_vector(this: void, off: number, idx: number, x: number, y: number, z: number): void
+  set_value(this: void, name: string, value: number): void
+  remove_hud_model(this: void, section: string): void
+}
+declare var relation_registry: {
+  community_goodwill(this: void, community: Faction, entity_id: number): number
+  set_community_goodwill(this: void, community: Faction, entity_id: number, goodwill: number): void
+  change_community_goodwill(this: void, community: Faction, entity_id: number, goodwill: number): void
+  community_relation(this: void, community_1: Faction, community_2: Faction): number
+  set_community_relation(this: void, community_1: Faction, community_2: Faction, relation: number): void
+  get_general_goodwill_between(this: void, from: number, to: number): number
+}
+declare var game: {
+  CTime: CTime
+  time(this: void): number
+  get_game_time(this: void): CTime
+  start_tutorial(this: void, name: string): void
+  stop_tutorial(this: void): void
+  has_active_tutorial(this: void): boolean
+  translate_string<Id extends string>(this: void, id: Id): string
+  reload_language(this: void): void
+  get_resolutions(this: void): string
+  play_hud_motion(this: void, hand: string, item_name: string, anim_name: string, mixin?: boolean, speed?: number): number
+  stop_hud_motion(this: void): void
+  get_motion_length(this: void, section: string, name: string, speed: number): number
+  hud_motion_allowed(this: void): boolean
+  play_hud_anm(this: void, name: string, part: string, speed: number, power: number, loop: boolean, no_restart: boolean): void
+  stop_hud_anm(this: void, name: string, force: boolean): void
+  stop_all_hud_anms(this: void, force: boolean): void
+  set_hud_anm_time(this: void, name: string, time: number): number
+  only_allow_movekeys(this: void, value: boolean): void
+  only_movekeys_allowed(this: void): boolean
+  set_actor_allow_ladder(this: void, value: boolean): void
+  set_nv_lumfactor(this: void, factor: boolean): void
+  reload_ui_xml(this: void): void
+  actor_weapon_lowered(this: void): boolean
+  actor_lower_weapon(this: void, lower: boolean): void
+  prefetch_texture(this: void, name: string): void
+  prefetch_model(this: void, name: string): void
+  get_visual_userdata(this: void, visual: string): TODO // @returns CScriptIniFile
+  world2ui(this: void, pos: vector, hud?: boolean): TODO // @returns Fvector2
+}
 declare var ini_file: {
   r_bool_ex: TODO
   r_float_ex: TODO
@@ -442,17 +557,157 @@ declare var ini_sys: {
   section_for_each(cb: (section: string) => void): void
   line_count(section: string): number | null
 }
-declare var DIK_keys: Record<`DIK_${string}`, number>
+declare var DIK_keys: Record<
+  | 'DIK_ESCAPE'
+  | 'DIK_2'
+  | 'DIK_4'
+  | 'DIK_6'
+  | 'DIK_8'
+  | 'DIK_0'
+  | 'DIK_EQUALS'
+  | 'DIK_TAB'
+  | 'DIK_W'
+  | 'DIK_R'
+  | 'DIK_Y'
+  | 'DIK_I'
+  | 'DIK_P'
+  | 'DIK_RBRACKET'
+  | 'DIK_LCONTROL'
+  | 'DIK_S'
+  | 'DIK_F'
+  | 'DIK_H'
+  | 'DIK_K'
+  | 'DIK_SEMICOLON'
+  | 'DIK_GRAVE'
+  | 'DIK_BACKSLASH'
+  | 'DIK_X'
+  | 'DIK_V'
+  | 'DIK_N'
+  | 'DIK_COMMA'
+  | 'DIK_SLASH'
+  | 'DIK_MULTIPLY'
+  | 'DIK_SPACE'
+  | 'DIK_F1'
+  | 'DIK_F3'
+  | 'DIK_F5'
+  | 'DIK_F7'
+  | 'DIK_F9'
+  | 'DIK_NUMLOCK'
+  | 'DIK_NUMPAD7'
+  | 'DIK_NUMPAD9'
+  | 'DIK_NUMPAD4'
+  | 'DIK_NUMPAD6'
+  | 'DIK_NUMPAD1'
+  | 'DIK_NUMPAD3'
+  | 'DIK_DECIMAL'
+  | 'DIK_F12'
+  | 'DIK_F14'
+  | 'DIK_KANA'
+  | 'DIK_NOCONVERT'
+  | 'DIK_NUMPADEQUALS'
+  | 'DIK_AT'
+  | 'DIK_UNDERLINE'
+  | 'DIK_STOP'
+  | 'DIK_UNLABELED'
+  | 'DIK_RCONTROL'
+  | 'DIK_DIVIDE'
+  | 'DIK_RMENU'
+  | 'DIK_UP'
+  | 'DIK_LEFT'
+  | 'DIK_END'
+  | 'DIK_NEXT'
+  | 'DIK_DELETE'
+  | 'DIK_RWIN'
+  | 'DIK_PAUSE'
+  | 'MOUSE_2'
+  | 'DIK_1'
+  | 'DIK_3'
+  | 'DIK_5'
+  | 'DIK_7'
+  | 'DIK_9'
+  | 'DIK_MINUS'
+  | 'DIK_BACK'
+  | 'DIK_Q'
+  | 'DIK_E'
+  | 'DIK_T'
+  | 'DIK_U'
+  | 'DIK_O'
+  | 'DIK_LBRACKET'
+  | 'DIK_RETURN'
+  | 'DIK_A'
+  | 'DIK_D'
+  | 'DIK_G'
+  | 'DIK_J'
+  | 'DIK_L'
+  | 'DIK_APOSTROPHE'
+  | 'DIK_LSHIFT'
+  | 'DIK_Z'
+  | 'DIK_C'
+  | 'DIK_B'
+  | 'DIK_M'
+  | 'DIK_PERIOD'
+  | 'DIK_RSHIFT'
+  | 'DIK_LMENU'
+  | 'DIK_CAPITAL'
+  | 'DIK_F2'
+  | 'DIK_F4'
+  | 'DIK_F6'
+  | 'DIK_F8'
+  | 'DIK_F10'
+  | 'DIK_SCROLL'
+  | 'DIK_NUMPAD8'
+  | 'DIK_SUBTRACT'
+  | 'DIK_NUMPAD5'
+  | 'DIK_ADD'
+  | 'DIK_NUMPAD2'
+  | 'DIK_NUMPAD0'
+  | 'DIK_F11'
+  | 'DIK_F13'
+  | 'DIK_F15'
+  | 'DIK_CONVERT'
+  | 'DIK_YEN'
+  | 'DIK_CIRCUMFLEX'
+  | 'DIK_COLON'
+  | 'DIK_KANJI'
+  | 'DIK_AX'
+  | 'DIK_NUMPADENTER'
+  | 'DIK_NUMPADCOMMA'
+  | 'DIK_SYSRQ'
+  | 'DIK_HOME'
+  | 'DIK_PRIOR'
+  | 'DIK_RIGHT'
+  | 'DIK_DOWN'
+  | 'DIK_INSERT'
+  | 'DIK_LWIN'
+  | 'DIK_APPS'
+  | 'MOUSE_1'
+  | 'MOUSE_3'
+  | 'MOUSE_4'
+  | 'MOUSE_5'
+  | 'MOUSE_6'
+  | 'MOUSE_7'
+  | 'MOUSE_8'
+  | 'DIK_RETURN'
+  | 'DIK_NUMPADENTER',
+  number
+>
+
+//#endregion
+
+//#region vars / other
+
 declare var SIMBOARD: {
-  create_squad(smart: ServerObjectBase, squad_id: number): SquadServerObject
-  create_squad_at_named_location(location: string, squad_id: string): SquadServerObject | null
-  assign_squad_to_smart(squad: SquadServerObject, _0: TODO): void
-  get_smart_population(smart: ServerObjectBase): number
-  get_smart_by_name(name: string): ServerObjectBase | null
-  squads: Record<number, SquadServerObject>
+  create_squad(smart: cse_abstract, squad_id: number): cse_alife_online_offline_group
+  create_squad_at_named_location(location: string, squad_id: string): cse_alife_online_offline_group | null
+  assign_squad_to_smart(squad: cse_alife_online_offline_group, _0: TODO): void
+  get_smart_population(smart: cse_abstract): number
+  get_smart_by_name(name: string): cse_abstract | null
+  squads: Record<number, cse_alife_online_offline_group>
 }
 
-// modules
+//#endregion
+
+//#region vars / from _unpacked
 
 declare var actor_effects: TODO
 declare var actor_menu: {
@@ -569,9 +824,6 @@ declare var dialog_manager: TODO
 declare var dynamic_news_helper: TODO
 declare var dynamic_news_manager: TODO
 declare var faction_expansions: TODO
-declare var game: {
-  translate_string<Id extends string>(this: void, id: Id): string
-}
 declare var gamemode_agony: TODO
 declare var gamemode_azazel: TODO
 declare var gamemode_ironman: TODO
@@ -626,23 +878,93 @@ declare var ka_dialog: TODO
 declare var ka_travel: TODO
 declare var ka_travel_dialog: TODO
 declare var level: {
-  name(this: void): string
+  send(this: void, net_packet: TODO, reliable?: boolean, sequential?: boolean, high_priority?: boolean, send_immediately?: boolean): void
+  /** Target object at the crosshair */
+  get_target_obj(this: void): GameObjectBase
+  /** Distance to an object at the crosshair */
+  get_target_dist(this: void): number
+  get_target_element(this: void): number
+  spawn_item(this: void, section: string, pos: vector, level_vertex_id: number, parent_id: number, return_item?: boolean): void
+  get_active_cam(this: void): string
+  set_active_cam(this: void, mode: 0 | 1 | 2 | 3 | 4): void
+  get_start_time(this: void): CTime
+  get_view_entity(this: void): GameObjectBase
+  set_view_entity(this: void, obj: GameObjectBase): void
+  get_weather(this: void): string
+  set_weather(this: void, weather: string, force: boolean): void
+  set_weather_fx(this: void, weather: string): boolean
+  start_weather_fx_from_time(this: void, weather: string, time: number): boolean
+  is_wfx_playing(this: void): boolean
+  get_wfx_time(this: void): number
+  stop_weather_fx(this: void): void
+  environment(this: void): TODO
+  set_time_factor(this: void, factor: number): void
+  get_time_factor(this: void): number
+  set_game_difficulty(this: void, diff: 0 | 1 | 2 | 3): void
+  get_game_difficulty(this: void): number
+  get_time_days(this: void): number
   get_time_hours(this: void): number
-  environment(): TODO
-  rain_factor(): number | null
-  change_game_time(this: void, minutes: number, hours: number, days: number): void
-  object_by_id(this: void, id: number): GameObjectBase
-  add_pp_effector(name: string, _0: number, _1: boolean): void
-  add_cam_effector(this: void, path: string, _0: number, _1: boolean, _2: string, _3: number, _4: string): void
-  map_remove_object_spot(this: void, id: string, ...args: string[]): void
-  map_add_object_spot(this: void, id: string, ...args: string[]): void
-  send(this: void, net_packet: TODO, _0: boolean): void
-  enable_input(this: void): void
+  get_time_minutes(this: void): number
+  change_game_time(this: void, d: number, h: number, m: number): void
+  high_cover_in_direction(this: void, level_vertex_id: number, dir: vector): number
+  low_cover_in_direction(this: void, level_vertex_id: number, dir: vector): number
+  vertex_in_direction(this: void, level_vertex_id: number, dir: vector, distance: number): number
+  rain_factor(this: void): number
+  patrol_path_exists(this: void, path: string): boolean
+  vertex_position(this: void, level_vertex_id: number): vector
+  name(this: void): string
+  prefetch_sound(this: void, name: string): void
+  client_spawn_manager(this: void): TODO
+  map_add_object_spot_ser(this: void, id: number, spot_type: string, text: string): void
+  map_add_object_spot(this: void, id: number, spot_type: string, text: string): void
+  map_remove_object_spot(this: void, id: number, spot_type: string): void
+  map_has_object_spot(this: void, id: number, spot_type: string): number
+  map_change_spot_hint(this: void, id: number, spot_type: string, text: string): void
+  add_dialog_to_render(this: void, dialog_window: TODO /** CUIDialogWnd */): void
+  remove_dialog_to_render(this: void, dialog_window: TODO /** CUIDialogWnd */): void
+  hide_indicators(this: void): void
+  hide_indicators_safe(this: void): void
+  show_indicators(this: void): void
+  show_weapon(this: void, show: boolean): void
+  add_call(this: void, lua_obj: TODO, condition: TODO, action: TODO): void
+  // add_call(this: void): TODO
+  // add_call(this: void): TODO
+  remove_call(this: void, lua_obj: TODO, condition: TODO, action: TODO): void
+  // remove_call(this: void): TODO
+  // remove_call(this: void): TODO
+  remove_calls_for_object(this: void, lua_obj: TODO): void
+  present(this: void): boolean
   disable_input(this: void): void
-  vertex_id(this: void, position: vector): number
-  vertex_in_direction(this: void, level_vertex_id: number, direction: vector, distance: number): number
-  vertex_position(this: void, vertex_id: number): vector
-  // vertex_id_by_pos(pos: vector): number
+  enable_input(this: void): void
+  spawn_phantom(this: void, pos: vector): void
+  get_bounding_volume(this: void): TODO // Fbox
+  iterate_sounds(this: void, prefix: string, max_count: number, functor: () => void): void
+  // iterate_sounds(this: void): TODO
+  physics_world(this: void): TODO //cphysics_world_scripted
+  get_snd_volume(this: void): number
+  get_rain_volume(this: void): number
+  set_snd_volume(this: void, volume: number): void
+  add_cam_effector(this: void, path: string, id: number, cyclic: boolean, callback: string, fov?: number, hud?: boolean, power?: number): void
+  remove_cam_effector(this: void, id: number): void
+  set_cam_effector_factor(this: void, id: number, factor: number): void
+  get_cam_effector_factor(this: void, id: number): number
+  get_cam_effector_length(this: void, id: number): number
+  check_cam_effector(this: void, id: number): boolean
+  add_pp_effector(this: void, path: string, id: number, cyclic: boolean): void
+  set_pp_effector_factor(this: void, id: number, factor: number, factor_sp?: number): void
+  remove_pp_effector(this: void, id: number): void
+  add_complex_effector(this: void, section: string, id: number): void
+  remove_complex_effector(this: void, id: number): void
+  vertex_id(this: void, pos: vector): number
+  game_id(this: void): number
+  ray_pick(this: void, start: vector, dir: vector, range: number, target: rq_target, result: rq_result, ignore_obj: GameObjectBase): boolean
+  press_action(this: void, cmd: number): void
+  release_action(this: void, cmd: number): void
+  hold_action(this: void, cmd: number): void
+  actor_moving_state(this: void): number
+  get_env_rads(this: void): number
+  iterate_nearest(this: void, pos: vector, radius: number, functor: () => void): void
+  pick_material(this: void, start_pos: vector, dir: vector, distance: number, ignore_obj: GameObjectBase): string
 }
 declare var level_environment: TODO
 declare var level_input: TODO
@@ -950,6 +1272,8 @@ declare var xr_zones: TODO
 declare var xr_zones_sound: TODO
 
 //#endregion
+
+//#endregion vars
 
 //#region ui
 
