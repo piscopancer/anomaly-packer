@@ -1,4 +1,4 @@
-import { pack } from './src/pack'
+import { pack } from './pack'
 import { addonId } from './src/util'
 
 const someTextFile = {

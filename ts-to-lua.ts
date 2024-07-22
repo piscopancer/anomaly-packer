@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 import * as tstl from 'typescript-to-lua'
-import { PackOptions } from './src/pack'
+import { PackOptions } from './pack'
 
 export async function transpile(scripts: NonNullable<PackOptions<any>['scripts']>, outDir: string): Promise<string[]> {
   const scriptsDir = process.cwd() + `/${outDir}/gamedata/scripts`

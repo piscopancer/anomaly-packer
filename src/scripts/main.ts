@@ -69,11 +69,14 @@ function actor_on_update(this: void, binder: Binder, delta_sec: number) {
   db.actor.change_health(0.1 * delta_sec * 0.001)
 }
 
-add_console_command('fuck', () => {
-  printf('- fuck lol')
-})
-
 function on_game_start(this: void) {
+  add_console_command('fuck', () => {
+    printf('')
+  })
   RegisterScriptCallback('on_key_press', on_key_press)
   RegisterScriptCallback('actor_on_update', actor_on_update)
+  RegisterScriptCallback('actor_on_weapon_zoom_in', (wpn_go) => {
+    const wpn = wpn_go.cast_Weapon()
+    actor_menu.set_msg(1, `cost: ${wpn.Cost()}, weight: ${wpn.Weight()}, rpm: ${wpn.RPM()}`)
+  })
 }

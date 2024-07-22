@@ -9,8 +9,15 @@ declare function type(this: void, obj: any): string
 
 //#region vars
 
-declare var math: {
-  random(this: void, min: number, max: number): number
+declare namespace math {
+  export function random(this: void, min: number, max: number): number
 }
+declare var table: {
+  concat(this: void, table: AnyTable, separator: string): string
+}
+
+//#endregion
+
+//#region types
 
 //#endregion

@@ -2,8 +2,8 @@ import c from 'chalk'
 import fs from 'fs/promises'
 import iconv from 'iconv-lite'
 import json2xml from 'json2xml'
-import { transpile } from '../ts-to-lua'
-import { objectEntries } from './util'
+import { objectEntries } from './src/util'
+import { transpile } from './ts-to-lua'
 
 type Translation<L extends string[], Id extends string> = {
   [_L in L[number]]: Partial<Record<Id, string>>

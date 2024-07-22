@@ -6,6 +6,235 @@ type Suggest<S extends string> = S | (string & {})
 
 //#region classes / from xray-monolith
 
+declare class CGameObject {
+  constructor()
+  // cast
+  cast_Actor(): CActor
+  // cast_Car()
+  // cast_Heli()
+  cast_InventoryOwner(): CInventoryOwner
+  cast_InventoryBox(): CInventoryBox
+  // cast_CustomZone()
+  // cast_TorridZone()
+  // cast_MosquitoBald()
+  // cast_ZoneCampfire()
+  cast_InventoryItem(): CInventoryItem
+  cast_CustomOutfit(): CCustomOutfit
+  cast_Helmet(): CHelmet
+  cast_Artefact(): CArtefact
+  cast_Ammo(): CWeaponAmmo
+  cast_Weapon(): CWeapon
+  cast_WeaponMagazined(): CWeaponMagazined
+  cast_WeaponMagazinedWGrenade(): CWeaponMagazinedWGrenade
+  cast_EatableItem(): CEatableItem
+  cast_Medkit(): CMedkit
+  cast_Antirad(): CAntirad
+  cast_FoodItem(): CFoodItem
+  cast_BottleItem(): CBottleItem
+  // shared
+  id(): number
+  section(): string
+}
+declare class CEntityCondition {
+  constructor()
+  // ActorCondition_script.cpp
+}
+declare class CActorCondition {
+  constructor()
+  // ActorCondition_script.cpp
+}
+declare class CActor extends CGameObject {
+  constructor()
+  conditions: CActorCondition
+  inventory_disabled(): boolean
+  set_inventory_disabled(disabled: boolean): void
+}
+declare class CInventoryOwner extends CGameObject {
+  constructor()
+}
+declare class CInventoryBox extends CGameObject {
+  constructor()
+  can_take(): boolean
+  set_can_take(can: boolean): void
+  set_closed(closed: boolean, reason: string): void
+}
+declare class CInventoryItem extends CGameObject {
+  constructor()
+}
+declare class CCustomOutfit extends CGameObject {
+  constructor()
+  m_fPowerLoss: number
+  m_fHealthRestoreSpeed: number
+  m_fRadiationRestoreSpeed: number
+  m_fSatietyRestoreSpeed: number
+  m_fPowerRestoreSpeed: number
+  m_fBleedingRestoreSpeed: number
+  readonly bIsHelmetAvaliable: boolean
+  readonly bIsBackpackAvaliable: boolean
+  BonePassBullet(bone_id: number): boolean
+  get_HitFracActor(): number
+  get_artefact_count(): number
+  GetDefHitTypeProtection(outfit: CCustomOutfit, hit_type: number): number
+  GetHitTypeProtection(outfit: CCustomOutfit, hit_type: number, element: string): number
+  GetBoneArmor(element: number): number
+}
+declare class CHelmet extends CGameObject {
+  constructor()
+  m_fPowerLoss: number
+  m_fHealthRestoreSpeed: number
+  m_fRadiationRestoreSpeed: number
+  m_fSatietyRestoreSpeed: number
+  m_fPowerRestoreSpeed: number
+  m_fBleedingRestoreSpeed: number
+  get_HitFracActor(): number
+  GetDefHitTypeProtection(helmet: CHelmet, hit_type: number): number
+  GetHitTypeProtection(helmet: CHelmet, hit_type: number, element: string): number
+  GetBoneArmor(element: number): number
+}
+declare class CArtefact extends CGameObject {
+  constructor()
+  m_bCanSpawnZone: boolean
+  m_fHealthRestoreSpeed: number
+  m_fRadiationRestoreSpeed: number
+  m_fSatietyRestoreSpeed: number
+  m_fPowerRestoreSpeed: number
+  m_fBleedingRestoreSpeed: number
+  ActivateArtefact(): void
+  CanBeActivated(): boolean
+  AdditionalInventoryWeight(): number
+  FollowByPath(path: string, start_index: number, magic_force: vector): void
+  SwitchVisibility(visible: boolean): void
+  GetAfRank(): number
+}
+declare class CWeaponAmmo extends CGameObject {
+  constructor()
+  m_boxSize: number
+  m_boxCurr: number
+  m_tracer: boolean
+  m_4to1_tracer: boolean
+  Weight(): number
+  Cost(): number
+}
+declare class CWeapon extends CGameObject {
+  constructor()
+  // EWeaponStates
+  readonly eFire: 5
+  readonly eFire2: 6
+  readonly eReload: 7
+  readonly eMisfire: 8
+  readonly eSwitch: 9
+  readonly eSwitchMode: 10
+  // EWeaponSubStates
+  readonly eSubstateReloadBegin: 0
+  readonly eSubstateReloadInProcess: 1
+  readonly eSubstateReloadEnd: 2
+  can_kill(): boolean
+  IsGrenadeLauncherAttached(): boolean
+  GrenadeLauncherAttachable(): boolean
+  GetGrenadeLauncherName(): string
+  IsScopeAttached(): boolean
+  ScopeAttachable(): boolean
+  GetScopeName(): string
+  IsSilencerAttached(): boolean
+  SilencerAttachable(): boolean
+  GetSilencerName(): string
+  IsZoomEnabled(): boolean
+  IsZoomed(): boolean
+  GetZoomFactor(): number
+  SetZoomFactor(factor: number): void
+  IsSingleHanded(): boolean
+  GetBaseDispersion(cartridge_k: number): number
+  GetFireDispersion(): number
+  GetMisfireStartCondition(): number
+  GetMisfireEndCondition(): number
+  GetAmmoElapsed(): number
+  GetAmmoMagSize(): number
+  GetSuitableAmmoTotal(use_item_to_spawn?: boolean): number
+  SetAmmoElapsed(count: number): void
+  SwitchAmmoType(flags: number): boolean
+  GetMagazineWeight(): number
+  GetAmmoCount_forType(type: string): number
+  set_ef_main_weapon_type(type: number): void
+  set_ef_weapon_type(type: number): void
+  SetAmmoType(type: number): void
+  GetAmmoType(): number
+  AmmoTypeForEach(functor: () => void): void
+  RPM(): number
+  ModeRPM(): number
+  GetZoomType(): number
+  Get_PDM_Base(): number
+  Get_Silencer_PDM_Base(): number
+  Get_Scope_PDM_Base(): number
+  Get_Launcher_PDM_Base(): number
+  Get_PDM_BuckShot(): number
+  Get_PDM_Vel_F(): number
+  Get_Silencer_PDM_Vel(): number
+  Get_Scope_PDM_Vel(): number
+  Get_Launcher_PDM_Vel(): number
+  Get_PDM_Accel_F(): number
+  Get_Silencer_PDM_Accel(): number
+  Get_Scope_PDM_Accel(): number
+  Get_Launcher_PDM_Accel(): number
+  Get_PDM_Crouch(): number
+  Get_PDM_Crouch_NA(): number
+  GetCrosshairInertion(): number
+  Get_Silencer_CrosshairInertion(): number
+  Get_Scope_CrosshairInertion(): number
+  Get_Launcher_CrosshairInertion(): number
+  GetFirstBulletDisp(): number
+  GetHitPower(): number
+  GetHitPowerCritical(): number
+  GetHitImpulse(): number
+  GetFireDistance(): number
+  GetFireMode(): number
+  GetInertionAimFactor(): number
+  Cost(): number
+  Weight(): number
+  IsMisfire(): boolean
+  SetMisfire(value: boolean): void
+  IsPending(): boolean
+  SetPending(): boolean
+}
+declare class CWeaponMagazined extends CWeapon {
+  constructor()
+  SetFireMode(mode: number): void
+}
+declare class CWeaponMagazinedWGrenade extends CWeaponMagazined {
+  constructor()
+  GetGrenadeLauncherMode(): boolean
+  SetGrenadeLauncherMode(mode: boolean): void
+  SetAmmoElapsed2(count: number): void
+  GetAmmoElapsed2(): number
+  GetAmmoMagSize2(): number
+  SetAmmoType2(type: number): void
+  GetAmmoType2(): number
+  AmmoTypeForEach2(functor: () => void): void
+}
+declare class CEatableItem extends CGameObject {
+  constructor()
+  Empty(): boolean
+  CanDelete(): boolean
+  GetMaxUses(): number
+  GetRemainingUses(): number
+  SetRemainingUses(uses: number): void
+  m_bRemoveAfterUse: boolean
+  m_fWeightFull: number
+  m_fWeightEmpty: number
+  Weight(): number
+  Cost(): number
+}
+declare class CMedkit extends CGameObject {
+  constructor()
+}
+declare class CAntirad extends CGameObject {
+  constructor()
+}
+declare class CFoodItem extends CGameObject {
+  constructor()
+}
+declare class CBottleItem extends CGameObject {
+  constructor()
+}
 declare class ray_pick {
   constructor()
   set_position(pos: vector): void
@@ -25,13 +254,13 @@ declare class rq_result {
   readonly element: number
 }
 declare class rq_target {
-  rqtNone: 0
-  rqtObject: 1
-  rqtStatic: 2
-  rqtShape: 4
-  rqtObstacle: 8
-  rqtBoth: 3
-  rqtDyn: 13
+  readonly rqtNone: 0
+  readonly rqtObject: 1
+  readonly rqtStatic: 2
+  readonly rqtShape: 4
+  readonly rqtObstacle: 8
+  readonly rqtBoth: 3
+  readonly rqtDyn: 13
 }
 declare class vector {
   constructor(x: number, y: number, z: number)
@@ -46,13 +275,13 @@ declare class vector {
 }
 declare class CTime {
   constructor()
-  DateToDay: 0
-  DateToMonth: 1
-  DateToYear: 2
-  TimeToHours: 0
-  TimeToMinutes: 1
-  TimeToSeconds: 2
-  TimeToMilisecs: 3
+  readonly DateToDay: 0
+  readonly DateToMonth: 1
+  readonly DateToYear: 2
+  readonly TimeToHours: 0
+  readonly TimeToMinutes: 1
+  readonly TimeToSeconds: 2
+  readonly TimeToMilisecs: 3
   diffSec(other: CTime): number
   add(other: CTime): void
   sub(other: CTime): void
@@ -102,8 +331,12 @@ declare function SendScriptCallback<E extends keyof GameEvents>(this: void, even
  * ```
  * */
 declare function CreateTimeEvent<F extends (...args: any) => any>(event_id: number, action_id: string, delay_s: number, action: F, ...args: Parameters<F>): void
-/** Adds a console command to the game console. This function should be called in `on_game_start` */
-declare function add_console_command(this: void, name: string, func: () => any): void
+/**
+ * Adds a console command to the game console. Game must have debug mode enabled
+ *
+ * @returns registration success
+ */
+declare function add_console_command(this: void, name: string, func: () => any): boolean
 /**
  * Print formatted text to the game console.
  *
@@ -201,6 +434,8 @@ declare type GameEvents = {
   load_state(this: void, m_data: TODO_TABLE): void
   save_state(this: void, m_data: TODO_TABLE): void
   on_before_save_input(this: void): void
+  // death(this: void): void
+  actor_before_death(this: void): void
   actor_on_before_hit(
     this: void,
     shit: {
@@ -217,7 +452,6 @@ declare type GameEvents = {
   actor_on_land(this: void, landing_speed: number): void
   actor_on_first_update(this: void): void
   actor_on_movement_changed(this: void, cmd: TODO): void
-  actor_on_weapon_before_fire(this: void, flags: TODO_TABLE): void
   actor_on_feeling_anomaly(this: void, anomaly: TODO, flags: TODO_TABLE): void
   actor_on_item_before_use(this: void, item: ItemGameObject, flags: TODO_TABLE): void
   actor_on_before_hit_belt(this: void, hit_table: TODO_TABLE, power: number, type: TODO): void
@@ -234,6 +468,17 @@ declare type GameEvents = {
     },
     obj: GameObjectBase | null
   ): void
+  actor_on_weapon_before_fire(this: void, flags: TODO_TABLE): void
+  actor_on_foot_step(this: void): void
+  actor_on_weapon_fired(this: void): void
+  actor_on_weapon_jammed(this: void): void
+  actor_on_weapon_zoom_in(this: void, weapon: CGameObject): void
+  actor_on_weapon_zoom_out(this: void): void
+  actor_on_weapon_magazine_empty(this: void): void
+  actor_on_weapon_lowered(this: void): void
+  actor_on_weapon_raised(this: void): void
+  npc_on_update(this: void): void
+  npc_on_death_callback(this: void): void
   ActorMenu_on_mode_changed(this: void, mode: TODO, last_mode: TODO): void
   on_option_change(this: void): void
   GUI_on_show(this: void, name: string, path: string): void
@@ -251,6 +496,15 @@ declare type GameEvents = {
   drop_item_in_box(this: void, item: ItemGameObject): void
   map_spot_menu_add_property(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
   map_spot_menu_property_clicked(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
+  mouse_move(this: void): void
+  mouse_wheel(this: void): void
+  inventory_info(this: void): void
+  on_item_take(this: void): void
+  on_item_drop(this: void): void
+  task_state(this: void): void
+  trade_sell_buy_item(this: void): void
+  take_item_from_box(this: void): void
+  use_object(this: void): void
 }
 
 //#region server object
@@ -711,7 +965,7 @@ declare var SIMBOARD: {
 
 declare var actor_effects: TODO
 declare var actor_menu: {
-  set_msg(type: 1 | 2 | 3, message: string, seconds?: number, color?: string): void
+  set_msg(this: void, type: 1 | 2 | 3, message: string, seconds?: number, color?: string): void
 }
 declare var actor_menu_inventory: TODO
 declare var actor_proxy: TODO
