@@ -54,8 +54,29 @@ type SpecificCharacter = {
 }
 
 export function specificCharacter(character: SpecificCharacter): string {
+  // type JsonCharacterStructure = {
+  //   attrs: { id: string }
+  //   dialog: {
+  //     phrase_list: {
+  //       phrase: ({ next: number } | SlashedObject<StrictOmit<Dialog<number>['phrases'][number], 'id' | 'next'>>)[]
+  //     }[]
+  //   }
+  // }
+
+  // function characterToJson(ch: SpecificCharacter): JsonCharacterStructure {
+  //   return {
+  //     attrs: {
+  //       id: ch.id,
+  //     },
+  //   }
+  // }
+
+  // const dialogAsJson = characterToJson(character)
+  // const xml = json2xml(dialogAsJson, { attributes_key: 'attrs' })
+  // return xml
   return '...'
 }
+
 type Dialog<PhraseId extends number> = {
   id: string
   phrases: {
