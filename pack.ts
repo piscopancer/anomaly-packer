@@ -1,6 +1,9 @@
+import * as texts from '@/texts'
+import c from 'chalk'
 import fs from 'fs/promises'
 import iconv from 'iconv-lite'
 import path from 'path'
+import { Texts } from './src'
 import { transpile, TranspiledScript } from './transpilation'
 
 export type PackOptions = {
@@ -41,6 +44,7 @@ export type PackOptions = {
 }
 
 export async function pack(options: PackOptions) {
+  console.log('')
   const outDirName = options.build?.outDirName ?? 'build'
   const cwd = process.cwd()
   if (!(await fs.exists(path.join(cwd, 'gamedata')))) {
@@ -49,22 +53,29 @@ export async function pack(options: PackOptions) {
   } else {
     await fs.rm(path.join(cwd, outDirName), { force: true, recursive: true })
     await fs.mkdir(path.join(cwd, outDirName))
+    console.log('Reading ' + c.bold.white('gamedata ') + c.reset('directory...'))
     const withScripts = await fs.exists(path.join(cwd, 'gamedata/scripts'))
+    console.log(c.bold.white('scripts') + c.reset(` directory detected. Transpiling scripts...`))
     const transpiled = withScripts && options.scripts ? await transpile(options.scripts) : null
     await thisRecursiveShit(path.join(cwd, 'gamedata'), path.join(cwd, outDirName), transpiled)
+    console.log(c.cyan.bold('Scripts ') + c.cyan('were transpiled'))
   }
-  // if (options.refresh && options.refresh.length) {
-  //   for (const refresh of options.refresh) {
-  //     await fs.cp(process.cwd() + `/${outDirName}/gamedata`, refresh, { recursive: true })
-  //   }
-  //   console.log(c.cyan('Build was copied to ') + c.cyan.bold(options.refresh.length + ' outer gamedata directories'))
-  //   for (const refresh of options.refresh) {
-  //     console.log('  ' + c.gray.italic(refresh))
-  //   }
-  // }
+  if (options.refresh && options.refresh.length) {
+    for (const refresh of options.refresh) {
+      try {
+        await fs.cp(path.join(process.cwd(), outDirName), refresh, { recursive: true })
+      } catch (error) {
+        console.error('Refresh path "%s" is incorrect', refresh)
+      }
+    }
+    console.log(c.cyan('Build was copied to ') + c.cyan.bold(options.refresh.length + ' outer gamedata directories'))
+    for (const refresh of options.refresh) {
+      console.log('  ' + c.gray.italic(refresh))
+    }
+  }
 }
 
-async function thisRecursiveShit(sourcePath: string, buildPath: string, scripts: TranspiledScript[] | null) {
+async function thisRecursiveShit(sourcePath: string, buildPath: string, allTranspiled: TranspiledScript[] | null) {
   const dirItems = await fs.readdir(sourcePath)
   for (const item of dirItems) {
     const nextSourcePath = path.join(sourcePath, item)
@@ -75,25 +86,29 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, scripts:
         return
       }
       await fs.mkdir(nextBuildPath)
-      await thisRecursiveShit(nextSourcePath, nextBuildPath, scripts)
+      await thisRecursiveShit(nextSourcePath, nextBuildPath, allTranspiled)
     } else if (itemStat.isFile()) {
       const ext = path.extname(item)
       if (['.ts', '.tsx'].includes(ext)) {
-        if (scripts && sourcePath.includes(path.join('gamedata', 'scripts'))) {
-          for (const script of scripts) {
-            const fileName = item.substring(0, item.length - ext.length)
-            if (fileName === script.sourceFileName) {
+        const fileName = item.substring(0, item.length - ext.length)
+        if (allTranspiled && sourcePath.includes(path.join('gamedata', 'scripts'))) {
+          for (const transpiled of allTranspiled) {
+            if (fileName === transpiled.sourceFileName) {
               await fs.writeFile(
                 //
-                path.join(buildPath, script.buildFileName + '.script'),
-                iconv.encode(script.buildFileText, 'win1251')
+                path.join(buildPath, transpiled.buildFileName + '.script'),
+                iconv.encode(transpiled.buildFileText, 'win1251')
               )
             }
           }
         } else {
-          const textScript = (await import(nextSourcePath)) as { default: () => string | Promise<string> }
-          const text = await textScript.default()
-          await fs.writeFile(path.join(buildPath, item + '.xml'), iconv.encode(text, 'win1251'))
+          const textScript = (await import(nextSourcePath)) as { default: (texts: Texts) => any | Promise<any> }
+          try {
+            const text = await textScript.default(texts)
+            await fs.writeFile(path.join(buildPath, fileName + '.xml'), iconv.encode(text, 'win1251'))
+          } catch {
+            console.error('Script at %s does not have a default export. This file will not appear in the build', nextSourcePath)
+          }
         }
       } else {
         const content = await fs.readFile(path.join(nextSourcePath))
@@ -102,11 +117,3 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, scripts:
     }
   }
 }
-
-// if (options.scripts) {
-//   const transpiledFiles = await transpile(options.scripts, outDirName)
-//   console.log(c.cyan.bold(transpiledFiles.length + ' scripts ') + c.cyan('were created'))
-//   for (const tf of transpiledFiles) {
-//     console.log('  ' + c.gray.italic(tf))
-//   }
-// }
