@@ -6,8 +6,245 @@ type Suggest<S extends string> = S | (string & {})
 
 //#region classes / from xray-monolith
 
+declare class clsid {
+  static readonly art_bast_artefact = 0
+  static readonly art_black_drops = 1
+  static readonly art_gravi_black = 2
+  static readonly art_cta = 3
+  static readonly art_dummy = 4
+  static readonly art_electric_ball = 5
+  static readonly art_faded_ball = 6
+  static readonly art_galantine = 7
+  static readonly art_gravi = 8
+  static readonly art_mercury_ball = 9
+  static readonly art_needles = 10
+  static readonly art_rusty_hair = 11
+  static readonly art_thorn = 12
+  static readonly art_zuda = 13
+  static readonly bloodsucker = 14
+  static readonly boar = 15
+  static readonly burer = 16
+  static readonly cat = 17
+  static readonly controller = 18
+  static readonly crow = 19
+  static readonly dog_black = 20
+  static readonly psy_dog_phantom = 21
+  static readonly psy_dog = 22
+  static readonly dog_red = 23
+  static readonly flesh = 24
+  static readonly flesh_group = 25
+  static readonly fracture = 26
+  static readonly pseudo_gigant = 27
+  static readonly graph_point = 28
+  static readonly chimera = 29
+  static readonly phantom = 30
+  static readonly poltergeist = 31
+  static readonly rat = 32
+  static readonly snork = 33
+  static readonly stalker = 34
+  static readonly script_stalker = 35
+  static readonly trader = 36
+  static readonly script_trader = 37
+  static readonly tushkano = 38
+  static readonly zombie = 39
+  static readonly wpn_ammo = 40
+  static readonly wpn_ammo_s = 41
+  static readonly artefact = 42
+  static readonly wpn_ammo_m209 = 43
+  static readonly wpn_ammo_og7b = 44
+  static readonly wpn_ammo_vog25 = 45
+  static readonly game_cl_artefact_hunt = 46
+  static readonly game_cl_capture_the_artefact = 47
+  static readonly game_cl_deathmatch = 48
+  static readonly game_cl_single = 49
+  static readonly game_cl_team_deathmatch = 50
+  static readonly helicopter = 51
+  static readonly script_heli = 52
+  static readonly car = 53
+  static readonly detector_advanced_s = 54
+  static readonly detector_elite_s = 55
+  static readonly detector_scientific_s = 56
+  static readonly detector_simple_s = 57
+  static readonly device_detector_advanced = 58
+  static readonly device_custom = 59
+  static readonly device_dosimeter = 60
+  static readonly device_detector_elite = 61
+  static readonly device_flashlight = 62
+  static readonly device_flare = 63
+  static readonly device_pda = 64
+  static readonly device_detector_scientific = 65
+  static readonly device_detector_simple = 66
+  static readonly device_torch = 67
+  static readonly equ_exo = 68
+  static readonly equ_military = 69
+  static readonly equ_scientific = 70
+  static readonly equ_stalker = 71
+  static readonly equ_backpack = 72
+  static readonly helmet = 73
+  static readonly equ_helmet_s = 74
+  static readonly equ_stalker_s = 75
+  static readonly wpn_grenade_f1 = 76
+  static readonly wpn_grenade_f1_s = 77
+  static readonly wpn_grenade_fake = 78
+  static readonly level = 79
+  static readonly game = 80
+  static readonly wpn_grenade_rgd5 = 81
+  static readonly wpn_grenade_rgd5_s = 82
+  static readonly wpn_grenade_rpg7 = 83
+  static readonly hud_manager = 84
+  static readonly obj_antirad = 85
+  static readonly obj_attachable = 86
+  static readonly obj_bandage = 87
+  static readonly obj_bolt = 88
+  static readonly obj_bottle = 89
+  static readonly obj_document = 90
+  static readonly obj_explosive = 91
+  static readonly obj_food = 92
+  static readonly obj_medkit = 93
+  static readonly level_changer = 94
+  static readonly level_changer_s = 95
+  static readonly main_menu = 96
+  static readonly mp_players_bag = 97
+  static readonly online_offline_group = 98
+  static readonly online_offline_group_s = 99
+  static readonly actor = 100
+  static readonly obj_breakable = 101
+  static readonly obj_climable = 102
+  static readonly destrphys_s = 103
+  static readonly hanging_lamp = 104
+  static readonly obj_holder_ent = 105
+  static readonly inventory_box = 106
+  static readonly obj_physic = 107
+  static readonly script_phys = 108
+  static readonly projector = 109
+  static readonly obj_phys_destroyable = 110
+  static readonly obj_phskeleton = 111
+  static readonly script_zone = 112
+  static readonly artefact_s = 113
+  static readonly car_s = 114
+  static readonly script_object = 115
+  static readonly smart_cover = 116
+  static readonly smart_terrain = 117
+  static readonly smart_zone = 118
+  static readonly smartcover_s = 119
+  static readonly bloodsucker_s = 120
+  static readonly boar_s = 121
+  static readonly burer_s = 122
+  static readonly cat_s = 123
+  static readonly chimera_s = 124
+  static readonly controller_s = 125
+  static readonly psy_dog_phantom_s = 126
+  static readonly psy_dog_s = 127
+  static readonly dog_s = 128
+  static readonly flesh_s = 129
+  static readonly gigant_s = 130
+  static readonly fracture_s = 131
+  static readonly poltergeist_s = 132
+  static readonly pseudodog_s = 133
+  static readonly rat_s = 134
+  static readonly snork_s = 135
+  static readonly tushkano_s = 136
+  static readonly zombie_s = 137
+  static readonly hlamp_s = 138
+  static readonly space_restrictor = 139
+  static readonly script_restr = 140
+  static readonly spectator = 141
+  static readonly game_sv_artefact_hunt = 142
+  static readonly game_sv_capture_the_artefact = 143
+  static readonly game_sv_deathmatch = 144
+  static readonly game_sv_single = 145
+  static readonly game_sv_team_deathmatch = 146
+  static readonly script_actor = 147
+  static readonly obj_explosive_s = 148
+  static readonly obj_food_s = 149
+  static readonly inventory_box_s = 150
+  static readonly wpn_ammo_m209_s = 151
+  static readonly wpn_ammo_og7b_s = 152
+  static readonly obj_pda_s = 153
+  static readonly wpn_ammo_vog25_s = 154
+  static readonly device_torch_s = 155
+  static readonly game_ui_artefact_hunt = 156
+  static readonly game_ui_capture_the_artefact = 157
+  static readonly game_ui_deathmatch = 158
+  static readonly game_ui_single = 159
+  static readonly game_ui_team_deathmatch = 160
+  static readonly wpn_ak74_s = 161
+  static readonly wpn_auto_shotgun_s = 162
+  static readonly wpn_binocular_s = 163
+  static readonly wpn_bm16_s = 164
+  static readonly wpn_grenade_launcher_s = 165
+  static readonly wpn_groza_s = 166
+  static readonly wpn_hpsa_s = 167
+  static readonly wpn_knife_s = 168
+  static readonly wpn_lr300_s = 169
+  static readonly wpn_pm_s = 170
+  static readonly wpn_rg6_s = 171
+  static readonly wpn_rpg7_s = 172
+  static readonly wpn_scope_s = 173
+  static readonly wpn_shotgun_s = 174
+  static readonly wpn_silencer_s = 175
+  static readonly wpn_svd_s = 176
+  static readonly wpn_svu_s = 177
+  static readonly wpn_usp45_s = 178
+  static readonly wpn_val_s = 179
+  static readonly wpn_vintorez_s = 180
+  static readonly wpn_walther_s = 181
+  static readonly wpn_ak74 = 182
+  static readonly wpn_binocular = 183
+  static readonly wpn_bm16 = 184
+  static readonly wpn_fn2000 = 185
+  static readonly wpn_fort = 186
+  static readonly wpn_grenade_launcher = 187
+  static readonly wpn_groza = 188
+  static readonly wpn_hpsa = 189
+  static readonly wpn_knife = 190
+  static readonly wpn_lr300 = 191
+  static readonly wpn_pm = 192
+  static readonly wpn_rg6 = 193
+  static readonly wpn_rpg7 = 194
+  static readonly wpn_scope = 195
+  static readonly wpn_shotgun = 196
+  static readonly wpn_silencer = 197
+  static readonly wpn_stat_mgun = 198
+  static readonly wpn_svd = 199
+  static readonly wpn_svu = 200
+  static readonly wpn_usp45 = 201
+  static readonly wpn_val = 202
+  static readonly wpn_vintorez = 203
+  static readonly wpn_walther = 204
+  static readonly wpn_wmagaz = 205
+  static readonly wpn_wmaggl = 206
+  static readonly zone_ameba_s = 207
+  static readonly zone_bfuzz_s = 208
+  static readonly zone_galant_s = 209
+  static readonly zone_mbald_s = 210
+  static readonly zone_mincer_s = 211
+  static readonly zone_nograv_s = 212
+  static readonly zone_radio_s = 213
+  static readonly zone_torrid_s = 214
+  static readonly zone_acid_fog = 215
+  static readonly ameba_zone = 216
+  static readonly zone_bfuzz = 217
+  static readonly zone_campfire = 218
+  static readonly zone_dead = 219
+  static readonly zone_galantine = 220
+  static readonly zone_mosquito_bald = 221
+  static readonly zone_mincer = 222
+  static readonly nogravity_zone = 223
+  static readonly zone_radioactive = 224
+  static readonly zone_rusty_hair = 225
+  static readonly team_base_zone = 226
+  static readonly torrid_zone = 227
+  static readonly zone = 228
+}
 declare class CGameObject {
   constructor()
+  health: number
+  psy_health: number
+  power: number
+  satiety: number
+  radiation: number
+  morale: number
   // cast
   cast_Actor(): CActor
   // cast_Car()
@@ -18,7 +255,6 @@ declare class CGameObject {
   // cast_TorridZone()
   // cast_MosquitoBald()
   // cast_ZoneCampfire()
-  cast_InventoryItem(): CInventoryItem
   cast_CustomOutfit(): CCustomOutfit
   cast_Helmet(): CHelmet
   cast_Artefact(): CArtefact
@@ -27,21 +263,339 @@ declare class CGameObject {
   cast_WeaponMagazined(): CWeaponMagazined
   cast_WeaponMagazinedWGrenade(): CWeaponMagazinedWGrenade
   cast_EatableItem(): CEatableItem
-  cast_Medkit(): CMedkit
-  cast_Antirad(): CAntirad
-  cast_FoodItem(): CFoodItem
   cast_BottleItem(): CBottleItem
+  //
   // shared
+  //
   id(): number
+  clsid(): number
+  level_vertex_id(): number
+  game_vertex_id(): number
+  has_info(portion: string): boolean
+  give_info_portion(portion: string): boolean
+  disable_info_portion(portion: string): void
+  /** Unique story id, @returns -1 (if not unique) */
+  story_id(): number
+  position(): vector
+  direction(): vector
   section(): string
+  /** XML name */
+  profile_name(): string | null
+  name(): string
+  /** Id of object to which this object belongs. Used for items in inventories and boxes. @returns -1 (if no parent) */
+  parent(): number | null
+  mass(): number
+  /** Center of physical shell */
+  center(): vector
+  bind_object(obj: CGameObject): void
+  binded_object(): CGameObject | null
+  //
+  // Item
+  //
+  condition(): number | null
+  set_condition(condition: number): void
+  weight(): number | null
+  set_weight(weight: number): void
+  //
+  // actor
+  //
+  change_health(health: number): void
+  change_psy_health(psy: number): void
+  change_power(power: number): void
+  change_satiety(satiety: number): void
+  change_radiation(rad: number): void
+  change_morale(value: number): void
+  set_actor_position(pos: vector): void
+  set_actor_direction(dir: number): void
+  give_game_news(title: string, message: string, icon_ath: string, delay_ms: number, duration: number): void
+  switch_to_trade(): void
+  switch_to_talk(): void
+  switch_to_upgrade(): void
+  reload_weapon(): void
+  hide_weapong(): void
+  disable_hit_marks(_0: boolean): void
+  get_task_state(task_id: string): TODO // number
+  set_task_state(state: TODO /** number */, task_id: string): void
+  use(user: CGameObject): boolean
+  start_trade(actor: CGameObject): void
+  start_upgrade(actor: CGameObject): void
+  //
+  // npc (stalker or monster)
+  //
+  alive(): boolean
+  play_sound(internal_type: number, max_start_type?: number, min_start_time?: number, max_stop_time?: number, min_stop_time?: number, id?: number): void
+  get_enemy(): CGameObject | null
+  get_corpse(): CGameObject | null
+  get_enemy_strength(): number
+  get_sound_info(): TODO
+  get_monster_hit_info(): TODO
+  best_danger(): TODO
+  best_enemy(): CGameObject
+  best_item(): CGameObject
+  motivation_action_manager(): TODO // CScriptActionPlanner
+  action_count(): number
+  action_by_index(index: number): TODO
+  memory_time(): number
+  memory_position(obj: CGameObject): vector
+  best_weapon(): CGameObject | null
+  patrol(): string | null
+  command(action: TODO, high_priority: boolean): void
+  action(): TODO
+  accuracy(): number
+  kill(by: CGameObject): void
+  death_time(): number
+  get_bleeding(): number
+  fov(): number
+  set_fov(fov: number): void
+  range(): number
+  set_range(range: number): void
+  iterate_inventory(iterator: (npc: CGameObject, item: CGameObject) => void, npc: CGameObject): void
+  max_health(): number
+  set_sight(target: CGameObject): void
+  who_hit_name(): string | null
+  who_hit_section_name(): string | null
+  active_slot(): number
+  make_item_active(item: CGameObject): void
+  item_in_slot(slot: number): CGameObject | null
+  activate_slot(slot: number): void
+  active_item(): CGameObject
+  object_count(): number
+  object(section_or_index: string | number): CGameObject | null
+  object_by_id(id: number): CGameObject | null
+  inventory_for_each(iterator: (item: CGameObject, npc: CGameObject) => void): void
+  team(): number
+  squad(): number
+  group(): number
+  rank(): number
+  character_rank(): number
+  set_character_rank(rank: number): void
+  character_name(): string | null
+  character_icon(): string
+  character_community(): string
+  set_character_community(comm: string, _0: 0, _1: 0): void
+  money(): number
+  transfer_money(sum: number, to: CGameObject): void
+  give_money(sum: number): void
+  drop_item(item: CGameObject): void
+  drop_item_and_teleport(item: CGameObject, pos: vector): void
+  eat(food: CGameObject): void
+  enable_talk(): void
+  disable_talk(): void
+  is_talking(): boolean
+  is_talk_enabled(): boolean
+  enable_trade(): void
+  disable_trade(): void
+  is_trade_enabled(): boolean
+  get_inv_weight(): number
+  get_inv_max_weight(): number
+  get_current_outfit(): TODO
+  //
+  // weapon
+  //
+  get_ammo_total(): void
+  get_ammo_in_magazine(): number
+  set_ammo_elapsed(count: number): void
+  unload_magazine(keep_ammo: boolean): void
+  force_unload_magazine(keep_ammo: boolean): void
+  set_ammo_type(type: number): void
+  get_ammo_type(): number
+  get_ammo_count_for_type(type: number): number
+  get_main_weapon_type(): number
+  get_weapon_type(): number
+  set_main_weapon_type(type: number): void
+  set_weapon_type(type: number): void
+  has_ammo_type(type: number): boolean
+  get_weapon_substate(): number
+  set_weight(weight: number): void
+  //
+  // weapon maganized
+  //
+  set_queue_size(size: number): void
+  //
+  // food
+  //
+  set_remaining_uses(uses: number): void
+  get_remaining_uses(): number
+  get_max_uses(): number
+  //
+  // explosives
+  //
+  explode(level_time: number): void
+}
+
+declare class NetPacket {}
+declare class IReader {}
+declare class CScriptSoundInfo {}
+declare class object_binder {
+  constructor(obj: CGameObject)
+  readonly object: CGameObject
+  reinit(): void
+  reload(section: string): void
+  net_spawn(se_obj: cse_alife_object): boolean
+  net_destroy(): void
+  net_import(net_packet: NetPacket): void
+  net_export(net_packet: NetPacket): void
+  update(delta_time: number): void
+  save(output_packet: NetPacket): void
+  load(input_packet: IReader): void
+  net_save_relevant(): boolean
+  net_Relcase(obj: CGameObject): void
+}
+/** @customConstructor sound_object */
+declare class sound_object {
+  constructor(sound: string, sound_type?: TODO)
+  readonly looped: 0
+  readonly s2d: 1
+  readonly s3d: 2
+  frequency: number
+  min_distance: number
+  max_distance: number
+  volume: number
+  position: vector
+  get_position(): vector
+  set_position(pos: vector): void
+  play(source: CGameObject, delay?: number, flags?: number): void
+  /** @param pos only mono channel sounds like `device` can be played at a position */
+  play_at_pos(source: CGameObject, pos: vector, delay?: number, flags?: number): void
+  play_no_feedback(source: CGameObject, flags: number, delay: number, pos: vector, vol: number, freq: number): void
+  stop(): void
+  stop_deffered(): void
+  playing(): boolean
+  length(): number
+  attach_tail(sound: string): void
+}
+declare class CWound {
+  TypeSize(hit_type: number): number
+  BloodSize(): number
+  AddHit(power: number, type: number): void
+  Incarnation(percent: number, min_wound_size: number): void
+  TotalSize(): number
+  SetBoneNum(num: number): void
+  GetBoneNum(): number
+  GetParticleBoneNum(): number
+  SetParticleBoneNum(num: number): void
+  SetDestroy(destroy: boolean): void
+  GetDestroy(): boolean
 }
 declare class CEntityCondition {
+  readonly eBoostHpRestore: 0
+  readonly eBoostPowerRestore: 1
+  readonly eBoostRadiationRestore: 2
+  readonly eBoostBleedingRestore: 3
+  readonly eBoostMaxWeight: 4
+  readonly eBoostRadiationProtection: 5
+  readonly eBoostTelepaticProtection: 6
+  readonly eBoostChemicalBurnProtection: 7
+  readonly eBoostBurnImmunity: 8
+  readonly eBoostShockImmunity: 9
+  readonly eBoostRadiationImmunity: 10
+  readonly eBoostTelepaticImmunity: 11
+  readonly eBoostChemicalBurnImmunity: 12
+  readonly eBoostExplImmunity: 13
+  readonly eBoostStrikeImmunity: 14
+  readonly eBoostFireWoundImmunity: 15
+  readonly eBoostWoundImmunity: 16
+  AddWound(hit_power: number, hit_type: number, element: number): CWound
+  ClearWounds(): void
+  GetWhoHitLastTimeID(): number
+  GetPower(): number
+  SetPower(power: number): void
+  GetRadiation(): number
+  GetPsyHealth(): number
+  GetSatiety(): number
+  GetEntityMorale(): number
+  GetHealthLost(): number
+  IsLimping(): boolean
+  ChangeSatiety(satiety: number): void
+  ChangeHealth(health: number): void
+  ChangePower(power: number): void
+  ChangeRadiation(rad: number): void
+  ChangePsyHealth(psy: number): void
+  ChangeAlcohol(alcohol: number): void
+  SetMaxPower(power: number): void
+  GetMaxPower(): number
+  ChangeEntityMorale(morale: number): void
+  ChangeBleeding(bleeding: number): void
+  BleedingSpeed(): number
+}
+declare class Flags {
   constructor()
-  // ActorCondition_script.cpp
+  get(...args: TODO): TODO
+  zero(...args: TODO): TODO
+  one(...args: TODO): TODO
+  invert(...args: TODO): TODO
+  invert(...args: TODO): TODO
+  invert(...args: TODO): TODO
+  assign(...args: TODO): TODO
+  assign(...args: TODO): TODO
+  or(...args: TODO): TODO
+  or(...args: TODO): TODO
+  and(...args: TODO): TODO
+  and(...args: TODO): TODO
+  set(...args: TODO): TODO
+  is(...args: TODO): TODO
+  is_any(...args: TODO): TODO
+  test(...args: TODO): TODO
+  equal(...args: TODO): TODO
+  equal(...args: TODO): TODO
+}
+declare class SBooster {
+  constructor()
+  fBoostTime: number
+  fBoostValue: number
+  m_type: number
 }
 declare class CActorCondition {
-  constructor()
-  // ActorCondition_script.cpp
+  readonly eCriticalPowerReached: 1
+  readonly eCriticalBleedingSpeed: 4
+  readonly eCriticalSatietyReached: 8
+  readonly eCriticalRadiationReached: 16
+  readonly eWeaponJammedReached: 32
+  readonly ePhyHealthMinReached: 64
+  readonly eCantWalkWeight: 128
+  readonly eCantWalkWeightReached: 256
+  m_MaxWalkWeight: number
+  m_fJumpPower: number
+  m_fStandPower: number
+  m_fJumpWeightPower: number
+  m_fWalkWeightPower: number
+  m_fOverweightWalkK: number
+  m_fOverweightJumpK: number
+  m_fAccelK: number
+  m_fSprintK: number
+  m_condition_flags: Flags
+  ClearAllBoosters(condition: CActorCondition): void
+  ApplyBooster(condition: CActorCondition, booster: SBooster, section: string): boolean
+  BoosterForEach(condition: CActorCondition, functor: () => void): void
+  WoundForEach(condition: CActorCondition, functor: () => void): void
+  V_Satiety(): number
+  V_SatietyPower(): number
+  V_SatietyHealth(): number
+  SatietyCritical(): number
+  GetSatiety(): number
+  SetPsyBar(psybar: number): void
+  GetPsyBar(): number
+  BoostMaxWeight(weight: number): void
+  BoostHpRestore(restore: number): void
+  BoostPowerRestore(restore: number): void
+  BoostRadiationRestore(restore: number): void
+  BoostBleedingRestore(restore: number): void
+  BoostBurnImmunity(restore: number): void
+  BoostShockImmunity(restore: number): void
+  BoostRadiationImmunity(restore: number): void
+  BoostTelepaticImmunity(restore: number): void
+  BoostChemicalBurnImmunity(restore: number): void
+  BoostExplImmunity(restore: number): void
+  BoostStrikeImmunity(restore: number): void
+  BoostFireWoundImmunity(restore: number): void
+  BoostWoundImmunity(restore: number): void
+  BoostRadiationProtection(restore: number): void
+  BoostTelepaticProtection(restore: number): void
+  BoostChemicalBurnProtection(restore: number): void
+  IsLimping(): boolean
+  IsCantWalk(): boolean
+  IsCantWalkWeight(): boolean
+  IsCantSprint(): boolean
 }
 declare class CActor extends CGameObject {
   constructor()
@@ -51,15 +605,33 @@ declare class CActor extends CGameObject {
 }
 declare class CInventoryOwner extends CGameObject {
   constructor()
+  IconName(): string
+  get_money(): number
+  EnableTalk(): void
+  DisableTalk(): void
+  IsTalkEnabled(): boolean
+  EnableTrade(): void
+  DisableTrade(): void
+  IsTradeEnabled(): boolean
+  EnableInvUpgrade(): void
+  DisableInvUpgrade(): void
+  IsInvUpgradeEnabled(): boolean
+  GetTalkPartner(): CInventoryOwner
+  /** @returns talk was offered */
+  OfferTalk(talk_partner: CInventoryOwner): boolean
+  StartTalk(talk_partner: CInventoryOwner, start_trade?: boolean): void
+  StopTalk(): void
+  IsTalking(): boolean
+  deadbody_can_take(can: boolean): void
+  deadbody_can_take_status(): boolean
+  deadbody_closed(closed: boolean): void
+  deadbody_closed_status(): boolean
 }
 declare class CInventoryBox extends CGameObject {
   constructor()
   can_take(): boolean
   set_can_take(can: boolean): void
   set_closed(closed: boolean, reason: string): void
-}
-declare class CInventoryItem extends CGameObject {
-  constructor()
 }
 declare class CCustomOutfit extends CGameObject {
   constructor()
@@ -223,17 +795,9 @@ declare class CEatableItem extends CGameObject {
   Weight(): number
   Cost(): number
 }
-declare class CMedkit extends CGameObject {
-  constructor()
-}
-declare class CAntirad extends CGameObject {
-  constructor()
-}
-declare class CFoodItem extends CGameObject {
-  constructor()
-}
 declare class CBottleItem extends CGameObject {
   constructor()
+  BreakToPieces(): void
 }
 declare class ray_pick {
   constructor()
@@ -241,15 +805,15 @@ declare class ray_pick {
   set_direction(dir: vector): void
   set_range(range: number): void
   set_flags(collide: rq_target[keyof rq_target]): void
-  set_ignore_object(obj: GameObjectBase): void
+  set_ignore_object(obj: CGameObject): void
   query(): boolean
   get_result(): rq_result
-  get_object(): GameObjectBase
+  get_object(): CGameObject
   get_distance(): number
   get_element(): number
 }
 declare class rq_result {
-  readonly object: GameObjectBase
+  readonly object: CGameObject
   readonly range: number
   readonly element: number
 }
@@ -262,16 +826,45 @@ declare class rq_target {
   readonly rqtBoth: 3
   readonly rqtDyn: 13
 }
+/** @customConstructor vector */
 declare class vector {
-  constructor(x: number, y: number, z: number)
+  constructor()
   x: number
   y: number
   z: number
   set(x: number, y: number, z: number): vector
-  add(x: number, y: number, z: number): vector
-  sub(x: number, y: number, z: number): vector
+  set(v: vector): vector
+  // add(value: number): vector
+  add(v: vector): vector
+  // sub(value: number): vector
+  sub(v: vector): vector
+  div(value: number): vector
+  div(v: vector): vector
+  mul(value: number): vector
+  mul(v: vector): vector
   distance_to(to: vector): number
   distance_to_sqr(pos: vector): number
+}
+declare class hit {
+  constructor()
+  constructor(hit: hit)
+  static readonly burn: 0
+  static readonly shock: 1
+  static readonly chemical_burn: 2
+  static readonly radiation: 3
+  static readonly telepatic: 4
+  static readonly wound: 5
+  static readonly strike: 7
+  static readonly fire_wound: 6
+  static readonly explosion: 8
+  static readonly light_burn: 10
+  power: number
+  direction: vector
+  draftsman: CGameObject
+  impulse: number
+  type: number
+  weapon_id: number
+  bone(name: string): void
 }
 declare class CTime {
   constructor()
@@ -366,13 +959,15 @@ declare function get_hud(): {
   AddCustomStatic(static: string, _0: boolean): TODO
 } | null
 /** @returns Current time in ms */
-declare function time_global(): number
-declare function clamp(value: number, min: number, max: number): number
-declare function random_choice<A>(...args: A[]): A | null
-declare function random_number(min: number, max: number): number
-declare function random_float(min: number, max: number): number
-declare function trim(str: string): string
-declare function str_explode(str: string, separator: string): string
+declare function time_global(this: void): number
+declare function clamp(this: void, value: number, min: number, max: number): number
+declare function random_choice<A>(this: void, ...args: A[]): A | null
+declare function random_number(this: void, min: number, max: number): number
+declare function random_float(this: void, min: number, max: number): number
+declare function trim(this: void, str: string): string
+declare function str_explode(this: void, str: string, separator: string): string
+declare function vector_rotate_y(this: void, v: vector, deg: number): vector
+declare function vec_to_str(this: void, v: vector): vector
 declare function alife(this: void): {
   switch_distance(): number
   switch_distance(distance: number): void
@@ -393,7 +988,7 @@ declare function ChangeLevel(position: vector, level_vertex_id: number, game_ver
 declare function alife_create_item(
   this: void,
   section: string,
-  npc: NpcGameObject,
+  npc: CGameObject,
   table?: Partial<{
     ammo: number
     cond: number
@@ -403,109 +998,7 @@ declare function alife_create_item(
 
 //#endregion
 
-//#region enums
-
-declare enum task_state {
-  Fail = 0,
-  InProgress = 1,
-  Completed = 2,
-  Dummy = -1,
-}
-
-//#endregion
-
 //#region types
-
-declare type Faction = 'stalker' | 'bandit' | 'killer' | 'dolg' | 'freedom' | 'army' | 'csky' | 'monolith'
-declare type Rank = 'novice' | 'trainee' | 'experienced' | 'professional' | 'veteran' | 'expert' | 'master' | 'legend'
-declare type Reputation = 'excellent' | 'really_good' | 'very_good' | 'good' | 'neutral' | 'bad' | 'very_bad' | 'really_bad' | 'terrible'
-declare type Color =
-  | 'default'
-  | 'white'
-  | 'green'
-  | 'yellow'
-  | 'red'
-  | 'orange'
-  | `d_${'orange' | 'red' | 'cyan' | 'red' | 'purple' | 'green' | 'blue'}`
-  | 'ui_gray_1'
-  | 'ui_gray_2'
-  | `pda_${'green' | 'blue' | 'yellow' | 'white'}`
-declare type GameEvents = {
-  load_state(this: void, m_data: TODO_TABLE): void
-  save_state(this: void, m_data: TODO_TABLE): void
-  on_before_save_input(this: void): void
-  // death(this: void): void
-  actor_before_death(this: void): void
-  actor_on_before_hit(
-    this: void,
-    shit: {
-      draftsman: TODO
-      power: TODO
-      type: TODO
-    },
-    bone_id: number,
-    flags: TODO_TABLE
-  ): void
-  actor_on_footstep(this: void, material: string, power: number, hud_view: boolean, flags: TODO_TABLE): void
-  actor_on_update(this: void, binder: Binder, delta_time: number): void
-  actor_on_jump(this: void): void
-  actor_on_land(this: void, landing_speed: number): void
-  actor_on_first_update(this: void): void
-  actor_on_movement_changed(this: void, cmd: TODO): void
-  actor_on_feeling_anomaly(this: void, anomaly: TODO, flags: TODO_TABLE): void
-  actor_on_item_before_use(this: void, item: ItemGameObject, flags: TODO_TABLE): void
-  actor_on_before_hit_belt(this: void, hit_table: TODO_TABLE, power: number, type: TODO): void
-  actor_on_hud_animation_mark(this: void, state: number, mark: string): void
-  actor_on_hud_animation_play(
-    this: void,
-    animation: {
-      anm_name: string
-      anm_mixin: boolean
-      anm_mixin2: boolean
-      anm_state: number
-      anm_speed: number
-      anm_end: number
-    },
-    obj: GameObjectBase | null
-  ): void
-  actor_on_weapon_before_fire(this: void, flags: TODO_TABLE): void
-  actor_on_foot_step(this: void): void
-  actor_on_weapon_fired(this: void): void
-  actor_on_weapon_jammed(this: void): void
-  actor_on_weapon_zoom_in(this: void, weapon: CGameObject): void
-  actor_on_weapon_zoom_out(this: void): void
-  actor_on_weapon_magazine_empty(this: void): void
-  actor_on_weapon_lowered(this: void): void
-  actor_on_weapon_raised(this: void): void
-  npc_on_update(this: void): void
-  npc_on_death_callback(this: void): void
-  ActorMenu_on_mode_changed(this: void, mode: TODO, last_mode: TODO): void
-  on_option_change(this: void): void
-  GUI_on_show(this: void, name: string, path: string): void
-  on_screen_resolution_changed(this: void): void
-  on_key_press(this: void, key: number): void
-  on_key_release(this: void, key: number): void
-  on_key_hold(this: void, key: number): void
-  on_mouse_wheel(this: void, vol: number): void
-  on_mouse_move(this: void, x: number, y: number): void
-  on_item_belt(this: void, item: ItemGameObject): void
-  on_item_ruck(this: void, item: ItemGameObject): void
-  on_item_slot(this: void, item: ItemGameObject): void
-  select_inventory_item(this: void, item: ItemGameObject): void
-  switch_torch(this: void, on: 0 | 1): void
-  drop_item_in_box(this: void, item: ItemGameObject): void
-  map_spot_menu_add_property(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
-  map_spot_menu_property_clicked(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
-  mouse_move(this: void): void
-  mouse_wheel(this: void): void
-  inventory_info(this: void): void
-  on_item_take(this: void): void
-  on_item_drop(this: void): void
-  task_state(this: void): void
-  trade_sell_buy_item(this: void): void
-  take_item_from_box(this: void): void
-  use_object(this: void): void
-}
 
 //#region server object
 
@@ -551,15 +1044,10 @@ type cse_alife_object = cse_abstract & {
   readonly m_level_game_id: number
   readonly m_story_id: number
 }
-
 type cse_alife_dynamic_object = cse_alife_object & {}
-
 type cse_visual = {}
-
 type cse_alife_dynamic_object_visual = cse_alife_dynamic_object & cse_visual & {}
-
 type cse_ph_skeleton = {}
-
 type cse_alife_creature_abstract = {
   health(): number
   alive(): boolean
@@ -568,7 +1056,6 @@ type cse_alife_creature_abstract = {
   group: string
   o_torso(): TODO
 }
-
 type cse_alife_trader_abstract = {
   community(): string
   profile_name(): string
@@ -579,11 +1066,8 @@ type cse_alife_trader_abstract = {
   reputation(): number
   character_icon(): string
 }
-
 type cse_alife_creature_actor = cse_alife_creature_abstract & cse_alife_trader_abstract & cse_ph_skeleton & {}
-
 type cse_alife_schedulable = {}
-
 declare type cse_alife_online_offline_group = cse_alife_dynamic_object &
   cse_alife_schedulable & {
     register_member(id: number): void
@@ -598,121 +1082,104 @@ declare type cse_alife_online_offline_group = cse_alife_dynamic_object &
 
 //#endregion
 
-//#region game object
-
-type GameObjectBase = {
-  id(): number
-  clsid(): number
-  level_vertex_id(): number
-  game_vertex_id(): number
-  has_info(portion: string): boolean
-  give_info_portion(portion: string): boolean
-  disable_info_portion(portion: string): void
-  /** Unique story id, @returns -1 (if not unique) */
-  story_id(): number
-  position(): vector
-  direction(): vector
-  section(): string
-  /** XML name */
-  profile_name(): string
-  name(): string
-  /** Id of object to which this object belongs. Used for items in inventories and boxes. @returns -1 (if no parent) */
-  parent(): number
-  mass(): number
-  /** Center of physical shell */
-  center(): vector
-}
-type ItemGameObject = {
-  condition(): number
-  set_condition(condition: number): void
-  weight(): number
-  set_weight(weight: number): void
-}
-type ActorGameObject = StalkerGameObject & {
-  set_actor_position(pos: vector): void
-  set_actor_direction(dir: number): void
-  give_game_news(title: string, message: string, icon_ath: string, delay_ms: number, duration: number): void
-  switch_to_trade(): void
-  switch_to_talk(): void
-  switch_to_upgrade(): void
-  reload_weapon(): void
-  hide_weapong(): void
-  disable_hit_marks(_0: boolean): void
-  get_task_state(task_id: string): task_state
-  set_task_state(state: task_state, task_id: string): void
-  // give_task():void
-}
-/** Stalker or mutant */
-type NpcGameObject = GameObjectBase & {
-  accuracy(): number
-  kill(by: NpcGameObject): void
-  death_time(): number
-  get_bleeding(): number
-  fov(): number
-  set_fov(fov: number): void
-  /** Distance of sight */
-  range(): number
-  set_range(range: number): void
-  iterate_inventory(iterator: (npc: NpcGameObject, item: ItemGameObject) => void, npc: NpcGameObject): void
-  max_health(): number
-  set_sight(target: GameObjectBase): void
-}
-/** Stalker only, including actor */
-type StalkerGameObject = NpcGameObject & {
-  active_slot(): number
-  make_item_active(item: ItemGameObject): void
-  item_in_slot(slot: number): ItemGameObject
-  activate_slot(slot: number): void
-  active_item(): ItemGameObject
-  object_count(): number
-  object(section_or_index: string | number): ItemGameObject
-  inventory_for_each(iterator: (item: ItemGameObject, npc: NpcGameObject) => void): void
-  team(): number
-  squad(): number
-  group(): number
-  rank(): number
-  character_rank(): number
-  set_character_rank(rank: number): void
-  character_name(): string
-  character_icon(): string
-  character_community(): string
-  set_character_community(comm: string, _0: 0, _1: 0): void
-  money(): number
-  transfer_money(sum: number, to: StalkerGameObject): void
-  give_money(sum: number): void
-  drop_item(item: GameObjectBase): void
-  drop_item_and_teleport(item: GameObjectBase, pos: vector): void
-  eat(food: ItemGameObject): void
-  enable_talk(): void
-  disable_talk(): void
-  is_talking(): boolean
-  is_talk_enabled(): boolean
-  enable_trade(): void
-  disable_trade(): void
-  is_trade_enabled(): boolean
-  get_inv_weight(): number
-  get_inv_max_weight(): number
-  get_current_outfit(): TODO
-}
-type WeaponGameObject = GameObjectBase & {
-  /** Completely remove loaded ammo from the magazine. Does not return ammo to the inventory */
-  get_ammo_total(): void
-  get_ammo_in_magazine(): number
-  set_ammo_elapsed(count: number): void
-  unload_magazine(keep_ammo: boolean): void
-  force_unload_magazine(keep_ammo: boolean): void
-}
-type FoodGameObject = GameObjectBase & {
-  set_remaining_uses(uses: number): void
-  get_remaining_uses(): number
-  get_max_uses(): number
-}
-
 //#endregion
 
-type Binder = {
-  object: GameObjectBase
+declare type Faction = 'stalker' | 'bandit' | 'killer' | 'dolg' | 'freedom' | 'army' | 'csky' | 'monolith'
+declare type Rank = 'novice' | 'trainee' | 'experienced' | 'professional' | 'veteran' | 'expert' | 'master' | 'legend'
+declare type Reputation = 'excellent' | 'really_good' | 'very_good' | 'good' | 'neutral' | 'bad' | 'very_bad' | 'really_bad' | 'terrible'
+declare type Color =
+  | 'default'
+  | 'white'
+  | 'green'
+  | 'yellow'
+  | 'red'
+  | 'orange'
+  | `d_${'orange' | 'red' | 'cyan' | 'red' | 'purple' | 'green' | 'blue'}`
+  | 'ui_gray_1'
+  | 'ui_gray_2'
+  | `pda_${'green' | 'blue' | 'yellow' | 'white'}`
+declare type GameEvents = {
+  load_state(this: void, m_data: TODO_TABLE): void
+  save_state(this: void, m_data: TODO_TABLE): void
+  on_before_save_input(this: void): void
+  // death(this: void): void
+  actor_before_death(this: void): void
+  actor_on_before_hit(this: void, shit: hit, bone_id: number, flags: TODO_TABLE): void
+  actor_on_footstep(this: void, material: string, power: number, hud_view: boolean, flags: TODO_TABLE): void
+  actor_on_update(this: void, binder: object_binder, delta_time: number): void
+  actor_on_jump(this: void): void
+  actor_on_land(this: void, landing_speed: number): void
+  actor_on_first_update(this: void): void
+  actor_on_movement_changed(this: void, cmd: TODO): void
+  actor_on_feeling_anomaly(this: void, anomaly: TODO, flags: TODO_TABLE): void
+  actor_on_item_before_use(this: void, item: CGameObject, flags: TODO_TABLE): void
+  actor_on_before_hit_belt(this: void, hit_table: TODO_TABLE, power: number, type: TODO): void
+  actor_on_hud_animation_mark(this: void, state: number, mark: string): void
+  actor_on_hud_animation_play(
+    this: void,
+    animation: {
+      anm_name: string
+      anm_mixin: boolean
+      anm_mixin2: boolean
+      anm_state: number
+      anm_speed: number
+      anm_end: number
+    },
+    obj: CGameObject | null
+  ): void
+  actor_on_weapon_before_fire(this: void, flags: TODO_TABLE): void
+  actor_on_foot_step(this: void): void
+  actor_on_weapon_fired(this: void): void
+  actor_on_weapon_jammed(this: void): void
+  actor_on_weapon_zoom_in(this: void, weapon: CGameObject): void
+  actor_on_weapon_zoom_out(this: void): void
+  actor_on_weapon_magazine_empty(this: void): void
+  actor_on_weapon_lowered(this: void): void
+  actor_on_weapon_raised(this: void): void
+  npc_on_update(this: void): void
+  npc_on_death_callback(this: void): void
+  ActorMenu_on_mode_changed(this: void, mode: TODO, last_mode: TODO): void
+  on_option_change(this: void): void
+  GUI_on_show(this: void, name: string, path: string): void
+  on_screen_resolution_changed(this: void): void
+  on_key_press(this: void, key: number): void
+  on_key_release(this: void, key: number): void
+  on_key_hold(this: void, key: number): void
+  on_mouse_wheel(this: void, vol: number): void
+  on_mouse_move(this: void, x: number, y: number): void
+  on_item_belt(this: void, item: CGameObject): void
+  on_item_ruck(this: void, item: CGameObject): void
+  on_item_slot(this: void, item: CGameObject): void
+  select_inventory_item(this: void, item: CGameObject): void
+  switch_torch(this: void, on: 0 | 1): void
+  drop_item_in_box(this: void, item: CGameObject): void
+  map_spot_menu_add_property(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
+  map_spot_menu_property_clicked(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
+  mouse_move(this: void): void
+  mouse_wheel(this: void): void
+  inventory_info(this: void): void
+  on_item_take(this: void): void
+  on_item_drop(this: void): void
+  task_state(this: void): void
+  trade_sell_buy_item(this: void): void
+  take_item_from_box(this: void): void
+  use_object(this: void): void
 }
+type Weather =
+  | 'w_clear1'
+  | 'w_clear2'
+  | 'w_partly1'
+  | 'w_partly2'
+  | 'w_cloudy1'
+  | 'w_cloudy2_dark'
+  | 'w_rain1'
+  | 'w_rain2'
+  | 'w_rain3'
+  | 'w_storm1'
+  | 'w_storm2'
+  | 'w_foggy1'
+  | 'w_foggy2'
+  | 'w_foggy2'
 type Align = 't' | 'r' | 'b' | 'l' | 'c'
 type Texture = {
   x?: number
@@ -721,8 +1188,7 @@ type Texture = {
   height?: number
   stretch?: 0 | 1
 }
-
-//#endregion
+type SectionProperty = Suggest<'inv_name' | 'inv_name_short'>
 
 //#region vars (modules)
 
@@ -762,7 +1228,7 @@ declare var relation_registry: {
   get_general_goodwill_between(this: void, from: number, to: number): number
 }
 declare var game: {
-  CTime: CTime
+  CTime: ((this: void, ...ctr: ConstructorParameters<typeof CTime>) => CTime) & CTime
   time(this: void): number
   get_game_time(this: void): CTime
   start_tutorial(this: void, name: string): void
@@ -802,11 +1268,11 @@ declare var ini_file: {
   r_string_to_condlist: TODO
 }
 declare var ini_sys: {
-  r_string_ex(section: string, param: string): string | null
-  r_bool_ex(section: string, param: string): boolean | null
-  r_float_ex(section: string, param: string): number | null
-  r_u32(section: string, param: string): number | null
-  r_s32(section: string, param: string): TODO
+  r_string_ex(section: string, prop: SectionProperty): string | null
+  r_bool_ex(section: string, prop: SectionProperty): boolean | null
+  r_float_ex(section: string, prop: SectionProperty): number | null
+  r_u32(section: string, prop: SectionProperty): number | null
+  r_s32(section: string, prop: SectionProperty): TODO
   section_exist(section: string): boolean | null
   section_for_each(cb: (section: string) => void): void
   line_count(section: string): number | null
@@ -1003,7 +1469,7 @@ declare var bind_campfire: {
       campfire?: {
         is_on(): boolean
       }
-      object: GameObjectBase
+      object: CGameObject
     }
   >
 }
@@ -1032,26 +1498,26 @@ declare var closecaption: TODO
 declare var combat_restrictor: TODO
 declare var cover_manager: TODO
 declare var db: {
-  actor: ActorGameObject & {
-    // object(id: string): GameObject
-    game_vertex_id(): number
-    level_vertex_id(): number
-    health: number
-    change_health(by: number): void
-    radiation: number
-    bleeding: number
-    psy_health: number
-    active_item(): any
-    active_detector(): any
-    active_slot(): number
-    item_in_slot(slot: number): any
-    give_game_news(caption: string, text: string, texture: string, delay_ms: number, duration: number, type?: 0 | 1): void
-    give_talk_message2(caption: string, text: string, texture: string, template: Suggest<'iconed_answer_item'>): void
-    transfer_item(item: ItemGameObject, to: GameObjectBase): void
-    money(): number
-    give_money(sum: number): void
-    give_info_portion(portion: string): void
-  }
+  actor: CGameObject
+  // & {
+  //   game_vertex_id(): number
+  //   level_vertex_id(): number
+  //   health: number
+  //   change_health(by: number): void
+  //   radiation: number
+  //   bleeding: number
+  //   psy_health: number
+  //   active_item(): any
+  //   active_detector(): any
+  //   active_slot(): number
+  //   item_in_slot(slot: number): any
+  //   give_game_news(caption: string, text: string, texture: string, delay_ms: number, duration: number, type?: 0 | 1): void
+  //   give_talk_message2(caption: string, text: string, texture: string, template: Suggest<'iconed_answer_item'>): void
+  //   transfer_item(item: CGameObject, to: CGameObject): void
+  //   money(): number
+  //   give_money(sum: number): void
+  //   give_info_portion(portion: string): void
+  // }
   storage: TODO
 }
 declare var death_manager: TODO
@@ -1134,7 +1600,7 @@ declare var ka_travel_dialog: TODO
 declare var level: {
   send(this: void, net_packet: TODO, reliable?: boolean, sequential?: boolean, high_priority?: boolean, send_immediately?: boolean): void
   /** Target object at the crosshair */
-  get_target_obj(this: void): GameObjectBase
+  get_target_obj(this: void): CGameObject | null
   /** Distance to an object at the crosshair */
   get_target_dist(this: void): number
   get_target_element(this: void): number
@@ -1142,10 +1608,10 @@ declare var level: {
   get_active_cam(this: void): string
   set_active_cam(this: void, mode: 0 | 1 | 2 | 3 | 4): void
   get_start_time(this: void): CTime
-  get_view_entity(this: void): GameObjectBase
-  set_view_entity(this: void, obj: GameObjectBase): void
-  get_weather(this: void): string
-  set_weather(this: void, weather: string, force: boolean): void
+  get_view_entity(this: void): CGameObject
+  set_view_entity(this: void, obj: CGameObject): void
+  get_weather(this: void): Weather
+  set_weather(this: void, weather: Weather, force: boolean): void
   set_weather_fx(this: void, weather: string): boolean
   start_weather_fx_from_time(this: void, weather: string, time: number): boolean
   is_wfx_playing(this: void): boolean
@@ -1211,14 +1677,14 @@ declare var level: {
   remove_complex_effector(this: void, id: number): void
   vertex_id(this: void, pos: vector): number
   game_id(this: void): number
-  ray_pick(this: void, start: vector, dir: vector, range: number, target: rq_target, result: rq_result, ignore_obj: GameObjectBase): boolean
+  ray_pick(this: void, start: vector, dir: vector, range: number, target: rq_target, result: rq_result, ignore_obj: CGameObject): boolean
   press_action(this: void, cmd: number): void
   release_action(this: void, cmd: number): void
   hold_action(this: void, cmd: number): void
   actor_moving_state(this: void): number
   get_env_rads(this: void): number
   iterate_nearest(this: void, pos: vector, radius: number, functor: () => void): void
-  pick_material(this: void, start_pos: vector, dir: vector, distance: number, ignore_obj: GameObjectBase): string
+  pick_material(this: void, start_pos: vector, dir: vector, distance: number, ignore_obj: CGameObject): string
 }
 declare var level_environment: TODO
 declare var level_input: TODO

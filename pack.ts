@@ -1,38 +1,32 @@
-import c from 'chalk'
 import fs from 'fs/promises'
 import iconv from 'iconv-lite'
-import json2xml from 'json2xml'
-import { objectEntries } from './src/util'
-import { transpile } from './ts-to-lua'
+import path from 'path'
+import { transpile, TranspiledScript } from './transpilation'
 
-type Translation<L extends string[], Id extends string> = {
-  [_L in L[number]]: Partial<Record<Id, string>>
-}
-
-type PackTranslationParams<L extends string[], Id extends string> = {
-  translation: Translation<L, Id>
-  fileName: string
-  defaultId: (prop: string) => string
-  idOverrides?: Partial<Record<Id, (id: string) => string>>
-}
-
-export type PackOptions<L extends string[] = ['eng']> = {
+export type PackOptions = {
   build?: {
     outDirName?: string
   }
-  extends?: {}
-  config?: {
-    languages: L
-    translations(textOptions: {
-      pack<Id extends string>(params: PackTranslationParams<L, Id>): PackTranslationParams<L, Id>
-    }): PackTranslationParams<L, string>[]
-  }
-  scripts?: { fileName: string; outFileName?: string }[]
   /**
-   * Relative path to the raw gamedata folder that will be appended to the build. During the build this folder will be treated as is and will be simply copied dispite its contents. This folder is recommended to stay at the root level of your project.
-   * @example './gamedata'
+   * TypeScript scripts under /gamedata/scripts directory will be transpiled but not included in the build by default. This is due to [typescript-to-lua](https://www.npmjs.com/package/typescript-to-lua) package transpiling the entirety of project and creating a Lua script for every TypeScript module it is able to find. Because this is totally unnecessary, an array of so-called "registered" or "desired" scripts must be provided for scripts to be recognised and appear in the build. Transforming the name of the output script is optional.
+   *
+   * @example
+   *
+   * With the below configuration the *main.ts* file will be searched for under gamedata/scripts directory
+   *
+   * ```ts
+   * [{ sourceFileName: 'main.ts', bildFileName: addonId + '_main' }]
+   * ```
    */
-  rawGamedata?: string
+  scripts?: { sourceFileName: string; buildFileName?: string }[]
+  /**
+   * Path to the original Anomaly gamedata directory. This path is the base for the relative paths that are used in certain functions of Anomaly Packer.
+   *
+   * @example
+   *
+   * 'C:/Games/Anomaly 1.5.2/gamedata'
+   */
+  sourceGamedata?: string
   /**
    * ## ⚠ Use with care! If misused, this function can damage personal and valueable data!
    *
@@ -46,59 +40,73 @@ export type PackOptions<L extends string[] = ['eng']> = {
   refresh?: string[]
 }
 
-export async function pack<L extends string[]>(options: PackOptions<L>) {
+export async function pack(options: PackOptions) {
   const outDirName = options.build?.outDirName ?? 'build'
-  if (options.rawGamedata) {
-    await fs.cp(options.rawGamedata, process.cwd() + `/${outDirName}/gamedata`, { recursive: true })
-    console.log(c.cyan.bold('Raw gamedata ') + c.cyan('was copied'))
+  const cwd = process.cwd()
+  if (!(await fs.exists(path.join(cwd, 'gamedata')))) {
+    console.error('gamedata directory must reside in the root of the project, otherwise there is nothing to pack')
+    return
+  } else {
+    await fs.rm(path.join(cwd, outDirName), { force: true, recursive: true })
+    await fs.mkdir(path.join(cwd, outDirName))
+    const withScripts = await fs.exists(path.join(cwd, 'gamedata/scripts'))
+    const transpiled = withScripts && options.scripts ? await transpile(options.scripts) : null
+    await thisRecursiveShit(path.join(cwd, 'gamedata'), path.join(cwd, outDirName), transpiled)
   }
-  if (options.config) {
-    const translations = options.config.translations({
-      pack(params) {
-        return params
-      },
-    })
-    for (const { translation, fileName, defaultId, idOverrides } of translations) {
-      type JsonTextStructure = { string_table: { string: { text: string }; attrs: { id: string } }[] }
+  // if (options.refresh && options.refresh.length) {
+  //   for (const refresh of options.refresh) {
+  //     await fs.cp(process.cwd() + `/${outDirName}/gamedata`, refresh, { recursive: true })
+  //   }
+  //   console.log(c.cyan('Build was copied to ') + c.cyan.bold(options.refresh.length + ' outer gamedata directories'))
+  //   for (const refresh of options.refresh) {
+  //     console.log('  ' + c.gray.italic(refresh))
+  //   }
+  // }
+}
 
-      for (const lang of options.config.languages) {
-        const json: JsonTextStructure = {
-          string_table: [
-            ...objectEntries(translation[lang as keyof typeof translation]).map(([id, text]) => {
-              const overrideId = idOverrides && idOverrides[id as string]
-              const formattedId = overrideId ? overrideId(id as string) : defaultId(id as string)
-              return { string: { text: text ?? '' }, attrs: { id: formattedId } }
-            }),
-          ],
-        } satisfies JsonTextStructure
-        const trDir = process.cwd() + `/${outDirName}/gamedata/configs/text/${lang}`
-        if (!(await fs.exists(trDir))) {
-          await fs.mkdir(trDir, { recursive: true })
-        }
-        const filePath = trDir + '/' + fileName + '.xml'
-        const xml: string | Buffer = json2xml(json, { attributes_key: 'attrs' })
-        await fs.writeFile(filePath, iconv.encode(xml, 'win1251'))
+async function thisRecursiveShit(sourcePath: string, buildPath: string, scripts: TranspiledScript[] | null) {
+  const dirItems = await fs.readdir(sourcePath)
+  for (const item of dirItems) {
+    const nextSourcePath = path.join(sourcePath, item)
+    const nextBuildPath = path.join(buildPath, item)
+    const itemStat = await fs.stat(nextSourcePath)
+    if (itemStat.isDirectory()) {
+      if (sourcePath.includes(path.join('gamedata', 'scripts'))) {
+        return
       }
-    }
-    console.log(c.cyan.bold(translations.length + ' translations ') + c.cyan('were created'))
-    for (const tr of translations) {
-      console.log('  ' + c.gray.italic(tr.fileName + '.xml'))
-    }
-  }
-  if (options.scripts) {
-    const transpiledFiles = await transpile(options.scripts, outDirName)
-    console.log(c.cyan.bold(transpiledFiles.length + ' scripts ') + c.cyan('were created'))
-    for (const tf of transpiledFiles) {
-      console.log('  ' + c.gray.italic(tf))
-    }
-  }
-  if (options.refresh && options.refresh.length) {
-    for (const refresh of options.refresh) {
-      await fs.cp(process.cwd() + `/${outDirName}/gamedata`, refresh, { recursive: true })
-    }
-    console.log(c.cyan('Build was copied to ') + c.cyan.bold(options.refresh.length + ' outer gamedata directories'))
-    for (const refresh of options.refresh) {
-      console.log('  ' + c.gray.italic(refresh))
+      await fs.mkdir(nextBuildPath)
+      await thisRecursiveShit(nextSourcePath, nextBuildPath, scripts)
+    } else if (itemStat.isFile()) {
+      const ext = path.extname(item)
+      if (['.ts', '.tsx'].includes(ext)) {
+        if (scripts && sourcePath.includes(path.join('gamedata', 'scripts'))) {
+          for (const script of scripts) {
+            const fileName = item.substring(0, item.length - ext.length)
+            if (fileName === script.sourceFileName) {
+              await fs.writeFile(
+                //
+                path.join(buildPath, script.buildFileName + '.script'),
+                iconv.encode(script.buildFileText, 'win1251')
+              )
+            }
+          }
+        } else {
+          const textScript = (await import(nextSourcePath)) as { default: () => string | Promise<string> }
+          const text = await textScript.default()
+          await fs.writeFile(path.join(buildPath, item + '.xml'), iconv.encode(text, 'win1251'))
+        }
+      } else {
+        const content = await fs.readFile(path.join(nextSourcePath))
+        await fs.writeFile(path.join(nextBuildPath), iconv.encode(content.toString('utf8'), 'win1251'))
+      }
     }
   }
 }
+
+// if (options.scripts) {
+//   const transpiledFiles = await transpile(options.scripts, outDirName)
+//   console.log(c.cyan.bold(transpiledFiles.length + ' scripts ') + c.cyan('were created'))
+//   for (const tf of transpiledFiles) {
+//     console.log('  ' + c.gray.italic(tf))
+//   }
+// }

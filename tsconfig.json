@@ -4,11 +4,16 @@
     "jsx": "react-jsx",
     "target": "ESNext",
     "module": "ESNext",
+    "lib": ["ESNext"],
     "moduleResolution": "Bundler",
     "skipLibCheck": false,
     "strictNullChecks": true,
     "strict": true,
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+    "paths": {
+      "@/*": ["./src/*"],
+      "#/*": ["./*"]
+    }
   },
   "tstl": {
     "luaTarget": "5.4"
