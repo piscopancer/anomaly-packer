@@ -1,13 +1,13 @@
 import json2xml from 'json2xml'
 import { objectEntries, SlashedObject, StrictOmit } from './util'
 
-type Ltx = {}
+export type Ltx = {}
 
 export function ltx(ltx: Ltx): string {
   return '...'
 }
 
-type SpecificCharacter = {
+export type SpecificCharacter = {
   /** @example 'cit_killers_merc_trader_stalker' */
   id: string
   team_default: boolean
@@ -77,7 +77,7 @@ export function specificCharacter(character: SpecificCharacter): string {
   return '...'
 }
 
-type Dialog<PhraseId extends number> = {
+export type Dialog<PhraseId extends number> = {
   id: string
   phrases: {
     id: PhraseId

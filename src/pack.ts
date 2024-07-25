@@ -1,9 +1,8 @@
-import * as texts from '@/texts'
 import c from 'chalk'
 import fs from 'fs/promises'
 import iconv from 'iconv-lite'
 import path from 'path'
-import { Texts } from './src'
+import * as texts from './texts'
 import { transpile, TranspiledScript } from './transpilation'
 
 export type PackOptions = {
@@ -102,7 +101,7 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, allTrans
             }
           }
         } else {
-          const textScript = (await import(nextSourcePath)) as { default: (texts: Texts) => any | Promise<any> }
+          const textScript = (await import(nextSourcePath)) as { default: (t: typeof texts) => any | Promise<any> }
           try {
             const text = await textScript.default(texts)
             await fs.writeFile(path.join(buildPath, fileName + '.xml'), iconv.encode(text, 'win1251'))

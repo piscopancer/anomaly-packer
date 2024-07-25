@@ -20,7 +20,7 @@ declare namespace string {
   export function format(template: string, ...args: any[]): string
 }
 declare var table: {
-  concat(table: AnyTable, separator: string): string
+  concat(table: Record<string, any>, separator: string): string
 }
 
 //#endregion
