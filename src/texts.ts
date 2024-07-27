@@ -22,7 +22,8 @@ export type SpecificCharacter = {
   bio?: string
   /** @example 'cit_killers_merc_trader_stalker' */
   class: string
-  community: Faction | 'trader'
+  // community: Faction | 'trader'
+  community: string
   /** @example 'characters_voice\\human\\killer_3\\' */
   snd_config: string
   /** @example 15000 */

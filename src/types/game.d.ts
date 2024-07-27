@@ -1,3 +1,7 @@
+// WIP
+
+// This gigantic declaration file includes types from the _unpacked lua modules and xray-monolith repo luabind definitions.
+
 type TODO = any
 type TODO_TABLE = Record<string, any>
 type Suggest<S extends string> = S | (string & {})

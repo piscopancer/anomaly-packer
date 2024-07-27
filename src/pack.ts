@@ -110,6 +110,9 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, allTrans
           }
         }
       } else {
+        if (!nextSourcePath.endsWith('ts')) {
+          return
+        }
         const content = await fs.readFile(path.join(nextSourcePath))
         await fs.writeFile(path.join(nextBuildPath), iconv.encode(content.toString('utf8'), 'win1251'))
       }

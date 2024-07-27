@@ -1,5 +1,9 @@
 /** @noSelfInFile */
 
+// WIP
+
+// Type declarations for Lua.
+
 //#region functions
 
 declare function tonumber(item: any): number
@@ -22,9 +26,5 @@ declare namespace string {
 declare var table: {
   concat(table: Record<string, any>, separator: string): string
 }
-
-//#endregion
-
-//#region types
 
 //#endregion

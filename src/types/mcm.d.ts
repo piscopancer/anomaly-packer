@@ -1,13 +1,13 @@
-declare type McmConfig = {
-  hp_restore_mlt: number
-  must_be_lit: boolean
-  distance_to_campfire: number
-}
-// declare type McmTexts = Texts<[keyof McmConfig, `${keyof McmConfig}_desc`, 'slide']>
-// declare type ConfigTextId = `ui_mcm_${AddonId}_${keyof McmTexts[keyof McmTexts]}`
-// declare type ConfigProperty = keyof McmTexts[keyof McmTexts]
+// WIP
 
-// modules
+// Mcm config path includes your addon id and the key of the config itself, the path is slash-separated. Populate the McmConfig type with desired values.
+// Declare your AddonId type for MCM in whatever place you like, type declarations are global anyways, the below is just an example.
+
+declare type McmConfig = {
+  // example_slider_value: number
+  // example_text_value: string
+  // example_check_value: boolean
+}
 
 declare var ui_mcm:
   | {

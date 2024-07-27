@@ -1,5 +1,3 @@
-export const addonId: AddonId = 'test_addon'
-
 export function objectEntries<O extends object>(obj?: O) {
   return Object.entries(obj ?? {}) as [keyof O, O[keyof O]][]
 }
