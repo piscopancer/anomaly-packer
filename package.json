@@ -28,7 +28,9 @@
     "jsxSingleQuote": true
   },
   "scripts": {
-    "build": "bun tsup"
+    "build": "bun tsup",
+    "test": "bun test/i.ts",
+    "anomaly-packer": "bun src/cli/anomaly-packer.ts"
   },
   "bin": {
     "anomaly-packer": "dist/cli/anomaly-packer.js"

@@ -2,6 +2,7 @@ import c from 'chalk'
 import fs from 'fs/promises'
 import iconv from 'iconv-lite'
 import path from 'path'
+import { FileExtension } from '.'
 import * as texts from './texts'
 import { transpile, TranspiledScript } from './transpilation'
 
@@ -72,6 +73,7 @@ export async function pack(options: PackOptions) {
       console.log('  ' + c.gray.italic(refresh))
     }
   }
+  console.log('')
 }
 
 async function thisRecursiveShit(sourcePath: string, buildPath: string, allTranspiled: TranspiledScript[] | null) {
@@ -101,10 +103,11 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, allTrans
             }
           }
         } else {
-          const textScript = (await import(nextSourcePath)) as { default: (t: typeof texts) => any | Promise<any> }
+          const textScript = (await import(nextSourcePath)) as { default: (t: typeof texts) => any | Promise<any>; extension?: FileExtension }
           try {
             const text = await textScript.default(texts)
-            await fs.writeFile(path.join(buildPath, fileName + '.xml'), iconv.encode(text, 'win1251'))
+            const extension = textScript.extension ?? 'xml'
+            await fs.writeFile(path.join(buildPath, fileName + `.${extension}`), iconv.encode(text, 'win1251'))
           } catch {
             console.error('Script at %s does not have a default export. This file will not appear in the build', nextSourcePath)
           }
