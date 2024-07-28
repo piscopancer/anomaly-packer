@@ -117,5 +117,5 @@ export default function (t: Texts) {
     },
   })
 
-  return [bootsLtx, innaLtx].join('\n\n')
+  return [bootsLtx, innaLtx, t.include('presets\\environment_underground_more.ltx')].join('\n')
 }
