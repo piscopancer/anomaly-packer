@@ -10,7 +10,7 @@ declare namespace level {
   export function spawn_item(section: string, pos: vector, level_vertex_id: number, parent_id: number, return_item?: boolean): void
   export function get_active_cam(): 0 | 1 | 2 | 3 | 4
   export function set_active_cam(mode: 0 | 1 | 2 | 3 | 4): void
-  export function get_start_time(): CTime
+  export function get_start_time(): Time
   export function get_view_entity(): CGameObject
   export function set_view_entity(obj: CGameObject): void
   export function get_weather(): Weather

@@ -866,7 +866,7 @@ declare class hit {
   weapon_id: number
   bone(name: string): void
 }
-declare class CTime {
+declare class Time {
   constructor()
   readonly DateToDay: 0
   readonly DateToMonth: 1
@@ -875,9 +875,9 @@ declare class CTime {
   readonly TimeToMinutes: 1
   readonly TimeToSeconds: 2
   readonly TimeToMilisecs: 3
-  diffSec(other: CTime): number
-  add(other: CTime): void
-  sub(other: CTime): void
+  diffSec(other: Time): number
+  add(other: Time): void
+  sub(other: Time): void
   setHMS(h: number, m: number, s: number): void
   setHMSms(h: number, m: number, s: number, ms: number): void
   set(year: number, month: number, day: number, h: number, m: number, s: number, ms: number): void
@@ -954,7 +954,21 @@ declare type cse_alife_online_offline_group = cse_alife_dynamic_object &
     clear_location_types(): void
     force_change_position(pos: vector): void
   }
-declare type Faction = 'stalker' | 'bandit' | 'killer' | 'dolg' | 'freedom' | 'army' | 'csky' | 'monolith'
+declare type Faction =
+  | 'stalker'
+  | 'bandit'
+  | 'csky'
+  | 'army'
+  | 'freedom'
+  | 'dolg'
+  | 'ecolog'
+  | 'killer'
+  | 'monolith'
+  | 'greh'
+  | 'renegade'
+  | 'isg'
+  | 'monster'
+  | 'zombied'
 declare type Rank = 'novice' | 'trainee' | 'experienced' | 'professional' | 'veteran' | 'expert' | 'master' | 'legend'
 declare type Reputation = 'excellent' | 'really_good' | 'very_good' | 'good' | 'neutral' | 'bad' | 'very_bad' | 'really_bad' | 'terrible'
 declare type Color =
@@ -968,89 +982,6 @@ declare type Color =
   | 'ui_gray_1'
   | 'ui_gray_2'
   | `pda_${'green' | 'blue' | 'yellow' | 'white'}`
-declare var actor_stats: {
-  add_points(this: void, section: string, detail_key: string, count: number, points: number): void
-  add_points_str(this: void, section: string, detail_key: string, value: string): void
-  get_points(this: void, section: string): number
-}
-declare var weather: {
-  get_value_numric(this: void, name: string): number
-  get_value_vector(this: void, name: string): vector
-  get_value_string(this: void, name: string): string
-  pause(this: void, pause: boolean): void
-  is_paused(this: void): boolean
-  set_value_numric(this: void, name: string, value: number): void
-  set_value_vector(this: void, name: string, x: number, y: number, z: number, w?: number): void
-  set_value_string(this: void, name: string, value: string): void
-  reload(this: void): void
-  boost_value(this: void, name: string, value: number): void
-  boost_reset(this: void): void
-  sun_time(this: void, h: number, m: number): void
-}
-declare var hud_adjust: {
-  enabled(this: void, state: boolean): void
-  set_vector(this: void, off: number, idx: number, x: number, y: number, z: number): void
-  set_value(this: void, name: string, value: number): void
-  remove_hud_model(this: void, section: string): void
-}
-declare var relation_registry: {
-  community_goodwill(this: void, community: Faction, entity_id: number): number
-  set_community_goodwill(this: void, community: Faction, entity_id: number, goodwill: number): void
-  change_community_goodwill(this: void, community: Faction, entity_id: number, goodwill: number): void
-  community_relation(this: void, community_1: Faction, community_2: Faction): number
-  set_community_relation(this: void, community_1: Faction, community_2: Faction, relation: number): void
-  get_general_goodwill_between(this: void, from: number, to: number): number
-}
-declare var game: {
-  CTime: ((this: void, ...ctr: ConstructorParameters<typeof CTime>) => CTime) & CTime
-  time(this: void): number
-  get_game_time(this: void): CTime
-  start_tutorial(this: void, name: string): void
-  stop_tutorial(this: void): void
-  has_active_tutorial(this: void): boolean
-  translate_string<Id extends string>(this: void, id: Id): string
-  reload_language(this: void): void
-  get_resolutions(this: void): string
-  play_hud_motion(this: void, hand: string, item_name: string, anim_name: string, mixin?: boolean, speed?: number): number
-  stop_hud_motion(this: void): void
-  get_motion_length(this: void, section: string, name: string, speed: number): number
-  hud_motion_allowed(this: void): boolean
-  play_hud_anm(this: void, name: string, part: string, speed: number, power: number, loop: boolean, no_restart: boolean): void
-  stop_hud_anm(this: void, name: string, force: boolean): void
-  stop_all_hud_anms(this: void, force: boolean): void
-  set_hud_anm_time(this: void, name: string, time: number): number
-  only_allow_movekeys(this: void, value: boolean): void
-  only_movekeys_allowed(this: void): boolean
-  set_actor_allow_ladder(this: void, value: boolean): void
-  set_nv_lumfactor(this: void, factor: boolean): void
-  reload_ui_xml(this: void): void
-  actor_weapon_lowered(this: void): boolean
-  actor_lower_weapon(this: void, lower: boolean): void
-  prefetch_texture(this: void, name: string): void
-  prefetch_model(this: void, name: string): void
-  get_visual_userdata(this: void, visual: string): TODO // @returns CScriptIniFile
-  world2ui(this: void, pos: vector, hud?: boolean): TODO // @returns Fvector2
-}
-declare var ini_file: {
-  r_bool_ex: TODO
-  r_float_ex: TODO
-  r_line_ex: TODO
-  r_list: TODO
-  r_mult: TODO
-  r_sec_ex: TODO
-  r_string_ex: TODO
-  r_string_to_condlist: TODO
-}
-declare var ini_sys: {
-  r_string_ex(section: string, prop: SectionProperty): string | null
-  r_bool_ex(section: string, prop: SectionProperty): boolean | null
-  r_float_ex(section: string, prop: SectionProperty): number | null
-  r_u32(section: string, prop: SectionProperty): number | null
-  r_s32(section: string, prop: SectionProperty): TODO
-  section_exist(section: string): boolean | null
-  section_for_each(cb: (section: string) => void): void
-  line_count(section: string): number | null
-}
 declare var DIK_keys: Record<
   | 'DIK_ESCAPE'
   | 'DIK_2'

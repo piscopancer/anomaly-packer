@@ -1,5 +1,6 @@
 export * from './character'
 export * from './dialog'
+export * from './dltx'
 export * from './include'
 export * from './ltx'
 export * from './translation'

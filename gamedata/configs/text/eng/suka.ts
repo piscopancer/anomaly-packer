@@ -105,17 +105,22 @@ export default function (t: Texts) {
     },
   })
 
-  const innaLtx = t.ltx({
-    section: 'pretty_woman',
-    extends: ['brown_eyed_woman', 'woman'],
+  const innaDltx = t.dltx.remove({
+    sectionName: 'sosi',
+  })
+
+  type ThatOneNpcLtx = {
+    health: number
+    items: string[]
+  }
+
+  const testDxml = t.dltx.override<ThatOneNpcLtx>({
+    sectionName: 'zaur_dolg_12',
+    _with: ['!dolg_npc_level_1'],
     entries: {
-      height: 160,
-      face: 'pretty',
-      body: 'sexy',
-      soothing_voice: true,
-      hatred: null,
+      '>items': 'kirieshka',
     },
   })
 
-  return [bootsLtx, innaLtx, t.include('presets\\environment_underground_more.ltx')].join('\n')
+  return [testDxml, bootsLtx, innaDltx, t.include('presets\\environment_underground_more.ltx')].join('\n')
 }

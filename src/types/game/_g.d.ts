@@ -1,21 +1,21 @@
-declare type GameEvents = {
-  load_state(this: void, m_data: TODO_TABLE): void
-  save_state(this: void, m_data: TODO_TABLE): void
-  on_before_save_input(this: void): void
-  actor_before_death(this: void): void
-  actor_on_before_hit(this: void, shit: hit, bone_id: number, flags: TODO_TABLE): void
-  actor_on_footstep(this: void, material: string, power: number, hud_view: boolean, flags: TODO_TABLE): void
-  actor_on_update(this: void, binder: object_binder, delta_time: number): void
-  actor_on_jump(this: void): void
-  actor_on_land(this: void, landing_speed: number): void
-  actor_on_first_update(this: void): void
-  actor_on_movement_changed(this: void, cmd: TODO): void
-  actor_on_feeling_anomaly(this: void, anomaly: TODO, flags: TODO_TABLE): void
-  actor_on_item_before_use(this: void, item: CGameObject, flags: TODO_TABLE): void
-  actor_on_before_hit_belt(this: void, hit_table: TODO_TABLE, power: number, type: TODO): void
-  actor_on_hud_animation_mark(this: void, state: number, mark: string): void
+/** @noSelf */
+declare interface GameEvents {
+  load_state(m_data: TODO): void
+  save_state(m_data: TODO): void
+  on_before_save_input(): void
+  actor_before_death(): void
+  actor_on_before_hit(shit: hit, bone_id: number, flags: TODO): void
+  actor_on_footstep(material: string, power: number, hud_view: boolean, flags: TODO): void
+  actor_on_update(binder: object_binder, delta_time: number): void
+  actor_on_jump(): void
+  actor_on_land(landing_speed: number): void
+  actor_on_first_update(): void
+  actor_on_movement_changed(cmd: TODO): void
+  actor_on_feeling_anomaly(anomaly: TODO, flags: TODO): void
+  actor_on_item_before_use(item: CGameObject, flags: TODO): void
+  actor_on_before_hit_belt(hit_table: TODO, power: number, type: TODO): void
+  actor_on_hud_animation_mark(state: number, mark: string): void
   actor_on_hud_animation_play(
-    this: void,
     animation: {
       anm_name: string
       anm_mixin: boolean
@@ -26,43 +26,43 @@ declare type GameEvents = {
     },
     obj: CGameObject | null
   ): void
-  actor_on_weapon_before_fire(this: void, flags: TODO_TABLE): void
-  actor_on_foot_step(this: void): void
-  actor_on_weapon_fired(this: void): void
-  actor_on_weapon_jammed(this: void): void
-  actor_on_weapon_zoom_in(this: void, weapon: CGameObject): void
-  actor_on_weapon_zoom_out(this: void): void
-  actor_on_weapon_magazine_empty(this: void): void
-  actor_on_weapon_lowered(this: void): void
-  actor_on_weapon_raised(this: void): void
-  npc_on_update(this: void): void
-  npc_on_death_callback(this: void): void
-  ActorMenu_on_mode_changed(this: void, mode: TODO, last_mode: TODO): void
-  on_option_change(this: void): void
-  GUI_on_show(this: void, name: string, path: string): void
-  on_screen_resolution_changed(this: void): void
-  on_key_press(this: void, key: number): void
-  on_key_release(this: void, key: number): void
-  on_key_hold(this: void, key: number): void
-  on_mouse_wheel(this: void, vol: number): void
-  on_mouse_move(this: void, x: number, y: number): void
-  on_item_belt(this: void, item: CGameObject): void
-  on_item_ruck(this: void, item: CGameObject): void
-  on_item_slot(this: void, item: CGameObject): void
-  select_inventory_item(this: void, item: CGameObject): void
-  switch_torch(this: void, on: 0 | 1): void
-  drop_item_in_box(this: void, item: CGameObject): void
-  map_spot_menu_add_property(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
-  map_spot_menu_property_clicked(this: void, ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
-  mouse_move(this: void): void
-  mouse_wheel(this: void): void
-  inventory_info(this: void): void
-  on_item_take(this: void): void
-  on_item_drop(this: void): void
-  task_state(this: void): void
-  trade_sell_buy_item(this: void): void
-  take_item_from_box(this: void): void
-  use_object(this: void): void
+  actor_on_weapon_before_fire(flags: TODO): void
+  actor_on_foot_step(): void
+  actor_on_weapon_fired(): void
+  actor_on_weapon_jammed(): void
+  actor_on_weapon_zoom_in(weapon: CGameObject): void
+  actor_on_weapon_zoom_out(): void
+  actor_on_weapon_magazine_empty(): void
+  actor_on_weapon_lowered(): void
+  actor_on_weapon_raised(): void
+  npc_on_update(): void
+  npc_on_death_callback(): void
+  ActorMenu_on_mode_changed(mode: TODO, last_mode: TODO): void
+  on_option_change(): void
+  GUI_on_show(name: string, path: string): void
+  on_screen_resolution_changed(): void
+  on_key_press(key: number): void
+  on_key_release(key: number): void
+  on_key_hold(key: number): void
+  on_mouse_wheel(vol: number): void
+  on_mouse_move(x: number, y: number): void
+  on_item_belt(item: CGameObject): void
+  on_item_ruck(item: CGameObject): void
+  on_item_slot(item: CGameObject): void
+  select_inventory_item(item: CGameObject): void
+  switch_torch(on: 0 | 1): void
+  drop_item_in_box(item: CGameObject): void
+  map_spot_menu_add_property(ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
+  map_spot_menu_property_clicked(ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
+  mouse_move(): void
+  mouse_wheel(): void
+  inventory_info(): void
+  on_item_take(): void
+  on_item_drop(): void
+  task_state(): void
+  trade_sell_buy_item(): void
+  take_item_from_box(): void
+  use_object(): void
 }
 /**
  * Functions can be provided to game events as callbacks. With most game events some params are also returned (see the example below). Full list of game events names can be found in *axr_main.script*. To find game events implementations in _unpacked, search for `SendScriptCallback`
@@ -95,7 +95,14 @@ declare function SendScriptCallback<E extends keyof GameEvents>(this: void, even
  * CreateTimeEvent(0, 'kill_random_npcs', 5, kill_random_npcs, 100)
  * ```
  * */
-declare function CreateTimeEvent<F extends (...args: any) => any>(event_id: number, action_id: string, delay_s: number, action: F, ...args: Parameters<F>): void
+declare function CreateTimeEvent<F extends (...args: any) => any>(
+  this: void,
+  event_id: number,
+  action_id: string,
+  delay_s: number,
+  action: F,
+  ...args: Parameters<F>
+): void
 /**
  * Adds a console command to the game console. Game must have debug mode enabled
  *
@@ -114,8 +121,8 @@ declare function add_console_command(this: void, name: string, func: () => any):
  * - `#` cyan
  */
 declare function printf(this: void, ...items: any[]): void
-declare function strformat(str: string, ...items: any[]): string
-declare function exec_console_cmd(cmd: string): void
+declare function strformat(this: void, str: string, ...items: any[]): string
+declare function exec_console_cmd(this: void, cmd: string): void
 declare function get_hud(): {
   show_messages(): void
   hide_messages(): void
@@ -133,7 +140,7 @@ declare function get_hud(): {
 /** @returns Current time in ms */
 declare function time_global(this: void): number
 declare function clamp(this: void, value: number, min: number, max: number): number
-declare function random_choice<A>(this: void, ...args: A[]): A | null
+declare function random_choice<A>(this: void, ...args: A[]): A
 declare function random_number(this: void, min: number, max: number): number
 declare function random_float(this: void, min: number, max: number): number
 declare function trim(this: void, str: string): string
@@ -156,7 +163,7 @@ declare function alife(this: void): {
 // declare function Frect(this: void): {
 //   set(x: number, y: number, w: number, h: number): any
 // }
-declare function ChangeLevel(position: vector, level_vertex_id: number, game_vertex_id: number, angle: vector): void
+declare function ChangeLevel(this: void, position: vector, level_vertex_id: number, game_vertex_id: number, angle: vector): void
 declare function alife_create_item(
   this: void,
   section: string,

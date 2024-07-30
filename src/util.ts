@@ -1,4 +1,4 @@
-export function objectEntries<O extends object>(obj?: O) {
+export function objectEntries<O extends object>(obj: O) {
   return Object.entries(obj ?? {}) as [keyof O, O[keyof O]][]
 }
 
