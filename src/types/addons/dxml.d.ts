@@ -16,7 +16,7 @@ declare class XmlObj {
    * const text = xml_obj.query('string[id=ui_st_game_version] > text')[1]
    * ```
    */
-  query(query: string): XmlElement[]
+  query(query: string): (XmlElement | null)[]
   setText(el: XmlElement, el_text: string): void
   getText(el: XmlElement): string
   /**
@@ -58,7 +58,10 @@ type CharacterData = {
 }
 
 declare class DialogList {
-  add(dialog_id: string): TODO
+  /**
+   * @returns index of added dialog option
+   */
+  add(dialog_id: string): number
   find(regex: RegExp): TODO
   has(dialog_id: string): number
   add_first(dialog_id: string): TODO
@@ -69,7 +72,7 @@ declare class DialogList {
 
 /** @noSelf */
 declare interface GameEvents {
-  on_xml_load(callback: (this: void, xml_file_name: string, xml_obj: XmlObj) => void): void
+  on_xml_read(xml_file_name: string, xml_obj: XmlObj): void
   on_specific_character_init(character_id: string, data: CharacterData): void
   on_specific_character_dialog_list(character_id: string, dialog_list: DialogList): void
 }

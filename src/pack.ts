@@ -2,6 +2,7 @@ import c from 'chalk'
 import fs from 'fs/promises'
 import iconv from 'iconv-lite'
 import path from 'path'
+import trash from 'trash'
 import { FileExtension } from '.'
 import * as texts from './texts'
 import { transpile, TranspiledScript } from './transpilation'
@@ -47,25 +48,28 @@ export async function pack(options: PackOptions) {
   console.log('')
   const outDirName = options.build?.outDirName ?? 'build'
   const cwd = process.cwd()
+  const buildGamedataPath = path.join(cwd, outDirName, 'gamedata')
   if (!(await fs.exists(path.join(cwd, 'gamedata')))) {
     console.error('gamedata directory must reside in the root of the project, otherwise there is nothing to pack')
     return
   } else {
-    await fs.rm(path.join(cwd, outDirName), { force: true, recursive: true })
-    await fs.mkdir(path.join(cwd, outDirName))
+    await fs.rm(buildGamedataPath, { force: true, recursive: true })
+    await fs.mkdir(buildGamedataPath, { recursive: true })
     console.log('Reading ' + c.bold.white('gamedata ') + c.reset('directory...'))
-    const withScripts = await fs.exists(path.join(cwd, 'gamedata/scripts'))
+    const scriptsDirPresent = await fs.exists(path.join(cwd, 'gamedata/scripts'))
     console.log(c.bold.white('scripts') + c.reset(` directory detected. Transpiling scripts...`))
-    const transpiled = withScripts && options.scripts ? await transpile(options.scripts) : null
-    await thisRecursiveShit(path.join(cwd, 'gamedata'), path.join(cwd, outDirName), transpiled)
+    const transpiled = scriptsDirPresent && options.scripts ? await transpile(options.scripts) : null
+    await thisRecursiveShit(path.join(cwd, 'gamedata'), buildGamedataPath, transpiled)
     console.log(c.cyan.bold('Scripts ') + c.cyan('were transpiled'))
   }
   if (options.refresh && options.refresh.length) {
     for (const refresh of options.refresh) {
       try {
-        await fs.cp(path.join(process.cwd(), outDirName), refresh, { recursive: true })
+        await trash(refresh)
+        await fs.cp(buildGamedataPath, refresh, { recursive: true })
       } catch (error) {
         console.error('Refresh path "%s" is incorrect', refresh)
+        console.log(c.gray('Full log: ' + (error as Error).message))
       }
     }
     console.log(c.cyan('Build was copied to ') + c.cyan.bold(options.refresh.length + ' outer gamedata directories'))

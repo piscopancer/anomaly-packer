@@ -14,7 +14,7 @@ export type SpecificCharacter = {
   /** @example 'cit_killers_merc_trader_stalker' */
   class: string
   // community: Faction | 'trader'
-  community: string
+  community: Faction | 'trader'
   /** @example 'characters_voice\\human\\killer_3\\' */
   snd_config: string
   /** @example 15000 */
@@ -29,14 +29,15 @@ export type SpecificCharacter = {
   /** @example 'actors\\stalker_merc\\stalker_ki_head_2' */
   visual: string
   /** Character's inventory */
-  supplies: {
-    items: Record<string, string | number | boolean>
+  supplies?: {
+    spawn?: Record<string, string | number | boolean>
     /** Paths to other XML files */
     include?: string[]
   }
-  dialogs: string[]
+  dialogs: string[] // -> actor_dialog
   crouch_type?: number
   panic_treshold?: number
+  mechanic_mode?: 1 | 0
   /**
    * Paths to other XML files
    *
@@ -45,6 +46,7 @@ export type SpecificCharacter = {
   include?: string[]
 }
 
+/** @deprecated NOT IMPLEMENTED */
 export function specificCharacter(character: SpecificCharacter): string {
   // type JsonCharacterStructure = {
   //   attrs: { id: string }

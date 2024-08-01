@@ -307,7 +307,8 @@ declare class CGameObject {
   change_morale(value: number): void
   set_actor_position(pos: vector): void
   set_actor_direction(dir: number): void
-  give_game_news(title: string, message: string, icon_ath: string, delay_ms: number, duration: number): void
+  give_game_news(caption: string, text: string, icon_path: string, delay_ms: number, duration_ms: number): void
+  give_talk_message2(caption: string, text: string, icon_path: string, template?: string): void
   switch_to_trade(): void
   switch_to_talk(): void
   switch_to_upgrade(): void
@@ -1131,60 +1132,3 @@ type Weather =
   | 'w_foggy1'
   | 'w_foggy2'
   | 'w_foggy2'
-type Align = 't' | 'r' | 'b' | 'l' | 'c'
-type Texture = {
-  x?: number
-  y?: number
-  width?: number
-  height?: number
-  stretch?: 0 | 1
-}
-type SectionProperty = Suggest<'inv_name' | 'inv_name_short'>
-declare namespace JSX {
-  interface IntrinsicElements {
-    auto_frameline: Texture & { vertical: 0 | 1 }
-    article_list: Texture
-    category_list: Texture
-    description: Texture
-    texture: { children: string } & Texture
-    text: Texture & {
-      r: number
-      g: number
-      b: number
-      align: Align
-      vert_align: Align
-      font: string
-      color: string
-      complex_mode: 0 | 1
-    }
-    caption: Texture
-    text_order: Texture
-    frame1: Texture
-    frame2: Texture
-    auto_check: Texture
-    image_checkbox: Texture
-    information: Texture
-    information2: Texture
-    listbox: Texture & {
-      can_select: 0 | 1
-      always_show_scroll: 0 | 1
-      stretch: 0 | 1
-    }
-    show_all: Texture
-    background: Texture
-    w: { children: Element }
-    progress: {
-      children: Element
-      sector_count: number
-      clockwise: number
-    } & Texture
-    main_wnd: Texture
-    message_checkbox: Texture
-    scrollbar: Texture & {
-      right_ident: number
-      left_ident: number
-      top_indent: number
-      bottom_indent: number
-    }
-  }
-}

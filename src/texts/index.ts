@@ -4,6 +4,7 @@ export * from './dltx'
 export * from './include'
 export * from './ltx'
 export * from './translation'
+export * from './ui'
 /**
  * Extension of the generated text file
  *
