@@ -6,8 +6,8 @@ type Texture = Partial<{
   height: number
   stretch: 0 | 1
 }>
-type SectionProperty = Suggest<'inv_name' | 'inv_name_short'>
-declare namespace JSX {
+
+declare namespace React.JSX {
   interface IntrinsicElements {
     auto_frameline: Texture & { vertical: 0 | 1 }
     article_list: Texture
@@ -40,7 +40,7 @@ declare namespace JSX {
     }
     show_all: Texture
     background: Texture
-    w: { children: Element | Element[] }
+    w: {}
     progress: {
       children: Element
       sector_count: number

@@ -32,7 +32,7 @@ declare class XmlObj {
   removeElementAttr(el: XmlElement, attrs: string[]): void
 }
 
-type CharacterData = {
+type DxmlCharacterData = {
   name: TODO
   bio: TODO
   community: TODO
@@ -73,6 +73,6 @@ declare class DialogList {
 /** @noSelf */
 declare interface GameEvents {
   on_xml_read(xml_file_name: string, xml_obj: XmlObj): void
-  on_specific_character_init(character_id: string, data: CharacterData): void
+  on_specific_character_init(character_id: string, data: DxmlCharacterData): void
   on_specific_character_dialog_list(character_id: string, dialog_list: DialogList): void
 }

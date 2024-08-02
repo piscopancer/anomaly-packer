@@ -14,5 +14,3 @@ declare var ui_mcm:
       get: <Key extends keyof McmConfig>(this: void, path: `${AddonId}/${Key}`) => McmConfig[Key]
     }
   | undefined
-
-declare var m_data: {}

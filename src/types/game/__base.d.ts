@@ -427,7 +427,7 @@ declare class CGameObject {
 declare class NetPacket {}
 declare class IReader {}
 declare class CScriptSoundInfo {}
-declare class object_binder {
+declare class ObjectBinder {
   constructor(obj: CGameObject)
   readonly object: CGameObject
   reinit(): void

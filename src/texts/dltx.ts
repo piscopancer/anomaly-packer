@@ -3,20 +3,20 @@ import { LtxEntries } from './ltx'
 
 type DltxEntries<O extends LtxEntries> = Partial<
   {
-    [K in keyof O]:
-      | (O[K] extends readonly any[]
-          ? {
-              [_ in K | `${'<' | '>'}${K & string}`]: any
-            }
-          : never)
-      | {
-          [_ in K | `!${K & string}`]: any
+    [K in keyof O]: (O[K] extends any[]
+      ? {
+          [_ in K | `${'<' | '>'}${K & string}`]: any
         }
+      : {}) & {
+      [_ in K | `!${K & string}`]: undefined
+    } & {
+      [_ in K]: any
+    }
   }[keyof O]
 >
 
-/** Remove a section with the use of `!!` prefix */
-function remove({ sectionName }: { sectionName: string }) {
+/** Delete a section with the use of `!!` prefix */
+function deleteSection({ sectionName }: { sectionName: string }) {
   let output = ''
   output += '!![' + sectionName + ']' + '\n'
   return output
@@ -24,7 +24,13 @@ function remove({ sectionName }: { sectionName: string }) {
 
 type OverrideLtx<LE extends LtxEntries> = { sectionName: string; _with?: string[]; entries?: DltxEntries<LE> }
 
-/** Override a section with the use of `!` prefix */
+/**
+ * Override a section with the use of `!` prefix.
+ * - add or override an entry - no prefix,
+ * - delete an entry with `!`,
+ * - add to array with `>`,
+ * - delete from array with `<`,
+ */
 function override<LE extends LtxEntries>(ltx: OverrideLtx<LE>, sort = true, align = true) {
   let output = ''
   output += '![' + ltx.sectionName + ']'
@@ -39,13 +45,19 @@ function override<LE extends LtxEntries>(ltx: OverrideLtx<LE>, sort = true, alig
   }
   const [longestKey] = entries.toSorted(([k1], [k2]) => (k2 as string).length - (k1 as string).length)[0]
   for (const [k, v] of entries) {
-    output += (align ? (k as string).padEnd((longestKey as string).length) : (k as string)) + ' = '
-    if (Array.isArray(v)) {
-      output += v.join(', ')
-    } else if (v === null) {
-      output += 'nil'
+    if ((k as string).startsWith('!')) {
+      output += k as string
     } else {
-      output += v
+      output += (align ? (k as string).padEnd((longestKey as string).length) : (k as string)) + ' = '
+      if (Array.isArray(v)) {
+        output += v.join(', ')
+      } else if (v === null) {
+        output += 'nil'
+      } else if (v === undefined) {
+        output += ''
+      } else {
+        output += v
+      }
     }
     output += '\n'
   }
@@ -82,4 +94,4 @@ function createOrOverride<LE extends LtxEntries>(ltx: CreateOrOverrideLtx<LE>, s
   return output
 }
 
-export const dltx = { createOrOverride, override, remove }
+export const dltx = { createOrOverride, override, deleteSection }

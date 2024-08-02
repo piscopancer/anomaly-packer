@@ -1,12 +1,12 @@
 /** @noSelf */
 declare interface GameEvents {
-  load_state(m_data: TODO): void
-  save_state(m_data: TODO): void
+  load_state(m_data: MData): void
+  save_state(m_data: MData): void
   on_before_save_input(): void
   actor_before_death(): void
   actor_on_before_hit(shit: hit, bone_id: number, flags: TODO): void
   actor_on_footstep(material: string, power: number, hud_view: boolean, flags: TODO): void
-  actor_on_update(binder: object_binder, delta_time: number): void
+  actor_on_update(binder: ObjectBinder, delta_time: number): void
   actor_on_jump(): void
   actor_on_land(landing_speed: number): void
   actor_on_first_update(): void
@@ -188,3 +188,24 @@ declare var SIMBOARD: {
     }
   >
 }
+type MData = Record<string, any>
+/**
+ * Marshal library. Save serializable Lua data to the save file. See the encoded save data in the .scoc file. Register for `load_state` and `save_state` game events to interact with Marshall library, load and save data you need
+ * @example
+ * ```ts
+ * let last_time_ate_beans: string | null = null
+ *
+ * type MyMData = MData & {
+ *   last_time_ate_beans: string | null
+ * }
+ *
+ * function load_state(this: void, m_data: MyMData) {
+ *   last_time_ate_beans = m_data.last_time_ate_beans
+ * }
+ *
+ * function on_game_start(this: void) {
+ *   RegisterScriptCallback('load_state', load_state)
+ * }
+ * ```
+ */
+declare var m_data: MData
