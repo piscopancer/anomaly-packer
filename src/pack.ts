@@ -1,5 +1,4 @@
 import c from 'chalk'
-import { existsSync } from 'fs'
 import fs from 'fs/promises'
 import iconv from 'iconv-lite'
 import path from 'path'
@@ -50,14 +49,14 @@ export async function pack(options: PackOptions) {
   const outDirName = options.build?.outDirName ?? 'build'
   const cwd = process.cwd()
   const buildGamedataPath = path.join(cwd, outDirName, 'gamedata')
-  if (!existsSync(path.join(cwd, 'gamedata'))) {
+  if (!(await fs.exists(path.join(cwd, 'gamedata')))) {
     console.error('gamedata directory must reside in the root of the project, otherwise there is nothing to pack')
     return
   } else {
     await fs.rm(buildGamedataPath, { force: true, recursive: true })
     await fs.mkdir(buildGamedataPath, { recursive: true })
     console.log('Reading ' + c.bold.white('gamedata ') + c.reset('directory...'))
-    const scriptsDirPresent = existsSync(path.join(cwd, 'gamedata/scripts'))
+    const scriptsDirPresent = await fs.exists(path.join(cwd, 'gamedata/scripts'))
     console.log(c.bold.white('scripts') + c.reset(` directory detected. Transpiling scripts...`))
     const transpiled = scriptsDirPresent && options.scripts ? await transpile(options.scripts) : null
     await thisRecursiveShit(path.join(cwd, 'gamedata'), buildGamedataPath, transpiled)
