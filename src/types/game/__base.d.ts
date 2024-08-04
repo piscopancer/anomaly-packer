@@ -317,9 +317,14 @@ declare class CGameObject {
   disable_hit_marks(_0: boolean): void
   get_task_state(task_id: string): TODO // number
   set_task_state(state: TODO /** number */, task_id: string): void
+  give_task(task: CGameTask, dt: number, check_existing: boolean, timer: number): void
+  set_active_task(task: CGameTask): void
+  is_active_task(task: CGameTask): boolean
+  get_task(id: string, only_in_process: boolean): CGameTask | null
   use(user: CGameObject): boolean
   start_trade(actor: CGameObject): void
   start_upgrade(actor: CGameObject): void
+
   //
   // npc (stalker or monster)
   //
@@ -432,7 +437,7 @@ declare class ObjectBinder {
   readonly object: CGameObject
   reinit(): void
   reload(section: string): void
-  net_spawn(se_obj: cse_alife_object): boolean
+  net_spawn(se_obj: CseAlifeObject): boolean
   net_destroy(): void
   net_import(net_packet: NetPacket): void
   net_export(net_packet: NetPacket): void
@@ -886,12 +891,44 @@ declare class Time {
   dateToString(mode: typeof this.DateToDay | typeof this.DateToMonth | typeof this.DateToYear): string
   timeToString(mode: typeof this.TimeToHours | typeof this.TimeToMinutes | typeof this.TimeToSeconds | typeof this.TimeToMilisecs): string
 }
+declare class CGameTask {
+  constructor()
+  // state
+  readonly fail: 0
+  readonly in_progress: 1
+  readonly completed: 2
+  // type
+  readonly storyline: 0
+  readonly additional: 1
+  get_id(): string
+  set_id(id: string): void
+  get_priority(): number
+  set_priority(priority: number): void
+  get_title(): string
+  set_title(title: string): void
+  set_map_hint(hint: string): void
+  add_on_fail_info(info: string): void
+  add_complete_func(name: string): void
+  add_fail_func(name: string): void
+  add_fail_info(info: string): void
+  add_complete_info(info: string): void
+  set_type(type: number): void
+  set_map_object_id(id: number): void
+  set_description(desc: string): void
+  add_on_fail_func(name: string): void
+  add_on_complete_func(name: string): void
+  set_icon_name(icon: string): void
+  set_map_location(map_loc: string): void
+  add_on_complete_info(info: string): void
+  change_map_location(map_loc: string, map_obj_id: number): void
+  remove_map_locations(notify: boolean): void
+}
 
 //
 // ALIFE
 //
 
-type cse_abstract = {
+type CseAbstract = {
   readonly id: number
   readonly parent_id: number
   readonly script_version: number
@@ -907,7 +944,7 @@ type cse_abstract = {
   UPDATE_Write(): TODO
 }
 
-type cse_alife_object = cse_abstract & {
+type CseAlifeObject = CseAbstract & {
   readonly online: boolean
   move_offline(): boolean
   move_offline(value: boolean): void
@@ -920,11 +957,11 @@ type cse_alife_object = cse_abstract & {
   readonly m_level_game_id: number
   readonly m_story_id: number
 }
-type cse_alife_dynamic_object = cse_alife_object & {}
-type cse_visual = {}
-type cse_alife_dynamic_object_visual = cse_alife_dynamic_object & cse_visual & {}
-type cse_ph_skeleton = {}
-type cse_alife_creature_abstract = {
+type CseAlifeDynamicObject = CseAlifeObject & {}
+type CseVisual = {}
+type CseAlifeDynamicObjectVisual = CseAlifeDynamicObject & CseVisual
+type CsePhSkeleton = {}
+type CseAlifeCreatureAbstract = CseAlifeDynamicObjectVisual & {
   health(): number
   alive(): boolean
   team: string
@@ -932,7 +969,7 @@ type cse_alife_creature_abstract = {
   group: string
   o_torso(): TODO
 }
-type cse_alife_trader_abstract = {
+type CseAlifeTraderAbstract = {
   community(): string
   profile_name(): string
   set_profile_name(name: string): void
@@ -942,10 +979,10 @@ type cse_alife_trader_abstract = {
   reputation(): number
   character_icon(): string
 }
-type cse_alife_creature_actor = cse_alife_creature_abstract & cse_alife_trader_abstract & cse_ph_skeleton & {}
-type cse_alife_schedulable = {}
-declare type cse_alife_online_offline_group = cse_alife_dynamic_object &
-  cse_alife_schedulable & {
+type CseAlifeCreatureActor = CseAlifeCreatureAbstract & CseAlifeTraderAbstract & CsePhSkeleton & {}
+type CseAlifeSchedulable = {}
+declare type CseAlifeOnlineOfflineGroup = CseAlifeDynamicObject &
+  CseAlifeSchedulable & {
     register_member(id: number): void
     unregister_member(id: number): void
     commander_id(): number

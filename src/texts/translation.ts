@@ -12,7 +12,7 @@ export function translations<Id extends string>(translation: Partial<Record<Id, 
         attrs: { id },
       }
     }),
-  } satisfies JsonTranslationStructure
+  }
 
   const xml = json2xml(json, { attributes_key: 'attrs' })
   return xml

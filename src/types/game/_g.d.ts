@@ -35,6 +35,8 @@ declare interface GameEvents {
   actor_on_weapon_magazine_empty(): void
   actor_on_weapon_lowered(): void
   actor_on_weapon_raised(): void
+  squad_on_npc_death(squad: CseAlifeOnlineOfflineGroup, npc: CseAlifeTraderAbstract): void
+  server_entity_on_unregister(squad: CseAlifeOnlineOfflineGroup, type: Suggest<'sim_squad_scripted'>): void
   npc_on_update(): void
   npc_on_death_callback(): void
   ActorMenu_on_mode_changed(mode: TODO, last_mode: TODO): void
@@ -84,18 +86,20 @@ declare function RegisterScriptCallback<E extends keyof GameEvents>(this: void, 
 declare function UnregisterScriptCallback<E extends keyof GameEvents>(this: void, event: E, cb: GameEvents[E]): void
 declare function SendScriptCallback<E extends keyof GameEvents>(this: void, event: E, ...args: Parameters<GameEvents[E]>): void
 /**
- * Delayed action. If provided with a callback that takes params, such must be provided after too.
- *
+ * Delayed action. If provided with a callback that takes params, such must be provided too.
+ * @param event_id a unique identifier of your choice (could be your name, or something related to what is happening)
+ * @param action_id a second unique identifier of your choice (what matters is that two time events should not have the same `event_id` & `action_id` pair)
+ * @param action action that will be executed after delay. If action returns `true`, the time event gets destroyed, if `false`, the time event fill be fired again with the fresh timer
+ * @tutorial read on [Modding Book](https://igigog.github.io/anomaly-modding-book/scripting/time_events.html)
  * @example kill 100 random NPCs after 5 seconds
  * ```ts
  * function kill_random_npcs(this: void, count: number) {
  *   // ...
  * }
- *
  * CreateTimeEvent(0, 'kill_random_npcs', 5, kill_random_npcs, 100)
  * ```
  * */
-declare function CreateTimeEvent<F extends (...args: any) => any>(
+declare function CreateTimeEvent<F extends (...args: any) => boolean>(
   this: void,
   event_id: number,
   action_id: string,
@@ -103,6 +107,10 @@ declare function CreateTimeEvent<F extends (...args: any) => any>(
   action: F,
   ...args: Parameters<F>
 ): void
+/** @see {@link CreateTimeEvent} */
+declare function ResetTimeEvent(this: void, event_id: number, action_id: string, new_delay_s: number): void
+/** @see {@link CreateTimeEvent} */
+declare function RemoveTimeEvent(this: void, event_id: number, action_id: string): void
 /**
  * Adds a console command to the game console. Game must have debug mode enabled
  *
@@ -152,13 +160,13 @@ declare function alife(this: void): {
   switch_distance(distance: number): void
   level_name(level_id: number): string
   level_id(): number
-  teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, server_object: cse_abstract): void
-  object(id: number): cse_abstract
-  create(section: string, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): cse_abstract
-  create_ammo(section: string): cse_abstract
-  register(server_object: cse_abstract): void
-  release(server_object: cse_abstract): void
-  actor(): cse_alife_creature_actor
+  teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, server_object: CseAbstract): void
+  object(id: number): CseAbstract
+  create(section: string, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): CseAbstract
+  create_ammo(section: string): CseAbstract
+  register(server_object: CseAbstract): void
+  release(server_object: CseAbstract): void
+  actor(): CseAlifeCreatureActor
 }
 // declare function Frect(this: void): {
 //   set(x: number, y: number, w: number, h: number): any
@@ -175,12 +183,12 @@ declare function alife_create_item(
   }>
 ): void
 declare var SIMBOARD: {
-  create_squad(smart: cse_abstract, squad_id: number): cse_alife_online_offline_group
-  create_squad_at_named_location(location: string, squad_id: string): cse_alife_online_offline_group | null
-  assign_squad_to_smart(squad: cse_alife_online_offline_group, _0: TODO): void
-  get_smart_population(smart: cse_abstract): number
-  get_smart_by_name(name: string): cse_abstract | null
-  squads: Record<number, cse_alife_online_offline_group>
+  create_squad(smart: CseAbstract, squad_id: number): CseAlifeOnlineOfflineGroup
+  create_squad_at_named_location(location: string, squad_id: string): CseAlifeOnlineOfflineGroup | null
+  assign_squad_to_smart(squad: CseAlifeOnlineOfflineGroup, _0: TODO): void
+  get_smart_population(smart: CseAbstract): number
+  get_smart_by_name(name: string): CseAbstract | null
+  squads: Record<number, CseAlifeOnlineOfflineGroup>
   smarts: Record<
     number,
     {

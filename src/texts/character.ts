@@ -9,8 +9,13 @@ export type SpecificCharacter = {
   map_icon: { x: number; y: number }
   /** @example 'stalker_terrain' */
   terrain_sect?: string
-  /** @example 'esc_wolf_bio' */
+  /**
+   * @deprecated unused
+   * @example 'esc_wolf_bio'
+   */
   bio?: string
+  /** Name of the team of the syncronized zoneguards. Not tested */
+  team?: string
   /** @example 'cit_killers_merc_trader_stalker' */
   class: string
   // community: Faction | 'trader'
@@ -36,6 +41,7 @@ export type SpecificCharacter = {
   }
   dialogs: string[] // -> actor_dialog
   crouch_type?: number
+  /** @example 0 - panic is disabled */
   panic_treshold?: number
   mechanic_mode?: 1 | 0
   /**

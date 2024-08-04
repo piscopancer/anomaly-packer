@@ -9,4 +9,5 @@ declare namespace db {
   const cc_vrb: boolean
   const gameover_credits_started: boolean
   const trader: TODO
+  const zone_by_name: Record<string, TODO>
 }
