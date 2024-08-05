@@ -14,7 +14,9 @@ async function run() {
         declarationsDirs.map(async (dir) => {
           return {
             dir,
-            dts: await fs.readdir(path.join(__dirname, '..', 'types', dir)).then((tds) => tds.map((td) => td.replace('.d.ts', ''))),
+            dts: await fs
+              .readdir(path.join(__dirname, '..', 'types', dir))
+              .then((tds) => tds.filter((tds) => tds.endsWith('d.ts')).map((td) => td.replace('.d.ts', ''))),
           }
         })
       )

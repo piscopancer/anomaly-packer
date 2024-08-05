@@ -40,3 +40,12 @@ export function ltx<LE extends LtxEntries = LtxEntries>(ltx: Ltx<LE>, sort = tru
   }
   return output
 }
+
+type SkipFirstSecond<Arr> = Arr extends [infer _1, infer _2, ...infer Rest] ? Rest : never
+
+ltx.f = function <N extends keyof typeof xr_conditions | keyof typeof xr_effects>(
+  name: N,
+  ...args: SkipFirstSecond<Parameters<(typeof xr_conditions & typeof xr_effects)[N]>>
+) {
+  return name + '(' + args.join(':') + ')'
+}

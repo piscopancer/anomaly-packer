@@ -1,0 +1,18 @@
+{
+  "↑": { "prefix": "t", "body": "↑" },
+  "↗": { "prefix": "tr", "body": "↗" },
+  "→": { "prefix": "r", "body": "→" },
+  "↓": { "prefix": "b", "body": "↓" },
+  "↘": { "prefix": "br", "body": "↘" },
+  "↙": { "prefix": "bl", "body": "↙" },
+  "←": { "prefix": "l", "body": "←" },
+  "↖": { "prefix": "tl", "body": "↖" },
+  "↑↑": { "prefix": "tt", "body": "↑↑" },
+  "↗↗": { "prefix": "trtr", "body": "↗↗" },
+  "→→": { "prefix": "rr", "body": "→→" },
+  "↓↓": { "prefix": "bb", "body": "↓↓" },
+  "↘↘": { "prefix": "brbr", "body": "↘↘" },
+  "↙↙": { "prefix": "blbl", "body": "↙↙" },
+  "←←": { "prefix": "ll", "body": "←←" },
+  "↖↖": { "prefix": "tltl", "body": "↖↖" }
+}

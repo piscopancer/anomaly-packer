@@ -217,3 +217,7 @@ type MData = Record<string, any>
  * ```
  */
 declare var m_data: MData
+
+declare var TEST: {
+  smart: Smarts
+}
