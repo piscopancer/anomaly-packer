@@ -1,4 +1,7 @@
-/** @noSelf */
+/** @noSelfInFile */
+
+declare const ini_sys: system_ini
+declare function start_game_callback(): void
 declare interface GameEvents {
   load_state(m_data: MData): void
   save_state(m_data: MData): void
@@ -71,20 +74,32 @@ declare interface GameEvents {
  *
  * @example
  * ```ts
- * function my_on_key_press(this: void, key: number) {
+ * function my_on_key_press( key: number) {
  *   if (key === DIK_keys.DIK_I) {
  *     printf('"I" was just pressed | key: %s', key)
  *   }
  * }
  *
- * function on_game_start(this: void) {
+ * function on_game_start() {
  *   RegisterScriptCallback('on_key_press', my_on_key_press)
  *}
  * ```
  */
-declare function RegisterScriptCallback<E extends keyof GameEvents>(this: void, event: E, cb: GameEvents[E]): void
-declare function UnregisterScriptCallback<E extends keyof GameEvents>(this: void, event: E, cb: GameEvents[E]): void
-declare function SendScriptCallback<E extends keyof GameEvents>(this: void, event: E, ...args: Parameters<GameEvents[E]>): void
+declare function RegisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E]): void
+declare function UnregisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E]): void
+declare function SendScriptCallback<E extends keyof GameEvents>(event: E, ...args: Parameters<GameEvents[E]>): void
+declare function Unregister_UI(name: string): void
+declare function DestroyAll_UI(name: string): void
+declare function Check_UI(name: string): boolean
+declare function Overlapped_UI(name: string): boolean
+declare function CloseAll_UI(): void
+declare function GetActorMenu(): TODO
+declare function hide_hud_all(): void
+declare function hide_hud_inventory(): void
+declare function hide_hud_pda(): void
+declare function show_all_ui(show: boolean): void
+declare function show_indicators(show: boolean): void
+declare function main_hud_shown(): boolean
 /**
  * Delayed action. If provided with a callback that takes params, such must be provided too.
  * @param event_id a unique identifier of your choice (could be your name, or something related to what is happening)
@@ -93,14 +108,13 @@ declare function SendScriptCallback<E extends keyof GameEvents>(this: void, even
  * @tutorial read on [Modding Book](https://igigog.github.io/anomaly-modding-book/scripting/time_events.html)
  * @example kill 100 random NPCs after 5 seconds
  * ```ts
- * function kill_random_npcs(this: void, count: number) {
+ * function kill_random_npcs( count: number) {
  *   // ...
  * }
  * CreateTimeEvent(0, 'kill_random_npcs', 5, kill_random_npcs, 100)
  * ```
  * */
 declare function CreateTimeEvent<F extends (...args: any) => boolean>(
-  this: void,
   event_id: number,
   action_id: string,
   delay_s: number,
@@ -108,15 +122,21 @@ declare function CreateTimeEvent<F extends (...args: any) => boolean>(
   ...args: Parameters<F>
 ): void
 /** @see {@link CreateTimeEvent} */
-declare function ResetTimeEvent(this: void, event_id: number, action_id: string, new_delay_s: number): void
+declare function ResetTimeEvent(event_id: number, action_id: string, new_delay_s: number): void
 /** @see {@link CreateTimeEvent} */
-declare function RemoveTimeEvent(this: void, event_id: number, action_id: string): void
-/**
- * Adds a console command to the game console. Game must have debug mode enabled
- *
- * @returns registration success
- */
-declare function add_console_command(this: void, name: string, func: () => any): boolean
+declare function RemoveTimeEvent(event_id: number, action_id: string): void
+declare function ProcessEventQueue(force: boolean): boolean
+declare function ProcessEventQueueState(m_data: MData, save: boolean): void
+declare function ChangeLevel(pos: vector, level_vertex_id: number, game_vertex_id: number, angle: vector, anim?: boolean): void
+declare function change_level_now(pos: vector, level_vertex_id: number, game_vertex_id: number, angle: vector): void
+declare function AddUniqueCall(functor: TODO): void
+declare function RemoveUniqueCall(functor: TODO): void
+declare function JumpToLevel(level: string): boolean
+declare function TeleportObject(id: number, pos: vector, level_vertex_id: number, game_vertex_id: number): void
+declare function TeleportSquad(squad: CseAlifeOnlineOfflineGroup, pos: vector, level_vertex_id: number, game_vertex_id: number): void
+declare function in_time_interval(time_stamp_1: number, time_stamp_2: number): boolean
+declare function level_changing(): boolean
+declare function LoadScheme(filename: string, scheme: string, ...args: any[]): void
 /**
  * Print formatted text to the game console.
  *
@@ -128,9 +148,93 @@ declare function add_console_command(this: void, name: string, func: () => any):
  * - `*` gray
  * - `#` cyan
  */
-declare function printf(this: void, ...items: any[]): void
-declare function strformat(this: void, str: string, ...items: any[]): string
-declare function exec_console_cmd(this: void, cmd: string): void
+declare function printf(...args: any[]): void
+declare function printe(...args: any[]): void
+declare function printdbg(...args: any[]): void
+declare function abort(msg: TODO, ...args: any[]): void
+declare function callstack(c1: boolean, to_str: boolean): string | null
+declare function get_console_cmd(_type: string, name: string): TODO
+declare function exec_console_cmd(cmd: string): void
+declare const time_infinite: number
+/** @returns Current time in ms */
+declare function time_global(): number
+declare function time_continual(): number
+declare function round(num: number): number
+declare function round_idp(num: number, idp: number): number
+declare function round_100(num: number): number
+declare function odd(num: number): boolean
+declare function clamp(num: number, min: number, max: number): number
+declare function normalize(num: number, min: number, max: number): number
+declare function normalize_100(num: number, min: number, max: number): number
+declare function random_choice<A>(...args: A[]): A
+declare function random_number(min: number, max: number): number
+declare function random_float(min: number, max: number): number
+declare function yaw(vec_1: vector, vec_2: vector): number
+declare function yaw_degree(vec_1: vector, vec_2: vector): number
+declare function yaw_degree3d(vec_1: vector, vec_2: vector): number
+declare function vector_cross(vec_1: vector, vec_2: vector): number
+declare function vec_to_str(vec: vector): vector
+declare function vector_rotate_y(v: vector, deg: number): vector
+declare function distance_2d(vec_1: vector, vec_2: vector): number
+declare function distance_2d_sqr(vec_1: vector, vec_2: vector): number
+declare function trim(str: string): string
+declare function strformat(str: string, ...items: any[]): string
+declare function str_explode(str: string, separator: string, plain: any): string[]
+declare function parse_list(ini: TODO, key: string, val: string, convert: boolean): Record<TODO, TODO>
+declare function parse_names(str: string): string[]
+declare function parse_key_value(str: string): Record<string, any>
+declare function parse_nums(str: string): number[]
+declare function parse_func(sec: string, param: string, ...args: any[]): TODO | null
+declare function starts_with(str: string, with_text: string): boolean
+declare function has_translation(str: string): boolean
+declare function get_param_string(src_str: string, obj: CGameObject): LuaMultiReturn<[string, boolean]>
+declare function execute_func(file: any, func: any, ...args: any[]): any
+declare function reset_action(npc: CGameObject, script_name: string): void
+declare function stop_playing_sound(obj: CGameObject): void
+declare function action(obj: CGameObject, ...args: any[]): any
+declare function action_first(obj: CGameObject, ...args: any[]): any
+declare function interrupt_action(npc: CGameObject, script_name: string): void
+declare function get_clsid(obj: CGameObject): number
+declare function set_save_marker(netp: TODO, mode: 'save' | 'load', check: boolean, prefix: string): void
+declare const enum ActorMoveStates {
+  'mcFwd' = 1 << 0,
+  'mcBack' = 1 << 1,
+  'mcLStrafe' = 1 << 2,
+  'mcRStrafe' = 1 << 3,
+  'mcCrouch' = 1 << 4,
+  'mcAccel' = 1 << 5,
+  'mcTurn' = 1 << 6,
+  'mcJump' = 1 << 7,
+  'mcFall' = 1 << 8,
+  'mcLanding' = 1 << 9,
+  'mcLanding2' = 1 << 10,
+  'mcClimb' = 1 << 11,
+  'mcSprint' = 1 << 12,
+  'mcLLookout' = 1 << 13,
+  'mcRLookout' = 1 << 14,
+  //
+  'mcAnyMove' = 15,
+  'mcAnyAction' = 1935,
+  'mcAnyState' = 6192,
+  'mcLookout' = 24576,
+}
+type StringToNumber<T extends string> = T extends `${infer N extends number}` ? N : never
+type ActorMoveState = StringToNumber<`${ActorMoveStates}`>
+declare function IsMoveState(state: ActorMoveState, compare_state: number): boolean
+declare function reload_ini_sys(): void
+/** @customConstructor ini_file */
+declare class ini_file {
+  constructor(filename: string, advanced_mode?: boolean)
+  save(): void
+  r_value(section: string, key: string, _type: number, def_val: any): string | null
+  w_value(section: string, key: string, val: any, comment?: string): void
+}
+/**
+ * Adds a console command to the game console. Game must have debug mode enabled
+ *
+ * @returns registration success
+ */
+declare function add_console_command(name: string, func: () => any): boolean
 declare function get_hud(): {
   show_messages(): void
   hide_messages(): void
@@ -145,35 +249,7 @@ declare function get_hud(): {
   }
   AddCustomStatic(static: string, _0: boolean): TODO
 } | null
-/** @returns Current time in ms */
-declare function time_global(this: void): number
-declare function clamp(this: void, value: number, min: number, max: number): number
-declare function random_choice<A>(this: void, ...args: A[]): A
-declare function random_number(this: void, min: number, max: number): number
-declare function random_float(this: void, min: number, max: number): number
-declare function trim(this: void, str: string): string
-declare function str_explode(this: void, str: string, separator: string): string
-declare function vector_rotate_y(this: void, v: vector, deg: number): vector
-declare function vec_to_str(this: void, v: vector): vector
-declare function alife(this: void): {
-  switch_distance(): number
-  switch_distance(distance: number): void
-  level_name(level_id: number): string
-  level_id(): number
-  teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, server_object: CseAbstract): void
-  object(id: number): CseAbstract
-  create(section: string, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): CseAbstract
-  create_ammo(section: string): CseAbstract
-  register(server_object: CseAbstract): void
-  release(server_object: CseAbstract): void
-  actor(): CseAlifeCreatureActor
-}
-// declare function Frect(this: void): {
-//   set(x: number, y: number, w: number, h: number): any
-// }
-declare function ChangeLevel(this: void, position: vector, level_vertex_id: number, game_vertex_id: number, angle: vector): void
 declare function alife_create_item(
-  this: void,
   section: string,
   npc: CGameObject,
   table?: Partial<{
@@ -182,6 +258,26 @@ declare function alife_create_item(
     uses: number
   }>
 ): void
+/**
+ * Storage for gameobjects using `db.storage`
+ * @param val Lua-supported value, `gamedata` is not allowed
+ */
+declare function save_var(obj: CGameObject | null, var_name: string, val: boolean | string | number): void
+/** @returns value of a variable for a gameobject from `db.storage` */
+declare function load_var(obj: CGameObject | null, var_name: string, def_val: boolean | string | number): any
+declare function get_story_se_object(story_id: string): CseAbstract | null
+declare function get_story_se_item(story_id: string): CseAbstract | null
+/** @returns gameobject with this story ID on the current level */
+declare function get_story_object(story_id: string): CGameObject | null
+/** @returns story ID of a gameobject */
+declare function get_object_story_id(id: string): string | null
+declare function get_story_object_id(story_id: string): number | null
+/** @deprecated duplicate of {@link get_story_se_object} */
+declare function get_story_squad(story_id: string): CseAbstract | null
+declare function unregister_story_object_by_id(obj_id: string): void
+/**  @deprecated duplicate of {@link get_story_object} */
+declare function level_object_by_sid(story_id: string): CGameObject | null
+declare function id_by_sid(story_id: string): number | null
 declare var SIMBOARD: {
   create_squad(smart: CseAbstract, squad_id: number): CseAlifeOnlineOfflineGroup
   create_squad_at_named_location(location: string, squad_id: string): CseAlifeOnlineOfflineGroup | null
@@ -207,17 +303,13 @@ type MData = Record<string, any>
  *   last_time_ate_beans: string | null
  * }
  *
- * function load_state(this: void, m_data: MyMData) {
+ * function load_state( m_data: MyMData) {
  *   last_time_ate_beans = m_data.last_time_ate_beans
  * }
  *
- * function on_game_start(this: void) {
+ * function on_game_start() {
  *   RegisterScriptCallback('load_state', load_state)
  * }
  * ```
  */
 declare var m_data: MData
-
-declare var TEST: {
-  smart: Smarts
-}

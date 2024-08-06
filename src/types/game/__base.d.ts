@@ -4,6 +4,7 @@
 /// <reference path="__base/items.d.ts" />
 /// <reference path="__base/keys.d.ts" />
 /// <reference path="__base/smarts.d.ts" />
+/// <reference path="__base/system_ini.d.ts" />
 /// <reference path="__base/weather.d.ts" />
 
 // This is the base type declaration file that includes types from the _unpacked and luabind definitions from XRay Monolith.
@@ -339,3 +340,31 @@ declare type Color =
   | 'ui_gray_1'
   | 'ui_gray_2'
   | `pda_${'green' | 'blue' | 'yellow' | 'white'}`
+/** @customConstructor alife */
+declare class alife {
+  constructor()
+  switch_distance(): number
+  switch_distance(distance: number): void
+  level_name(level_id: number): string
+  level_id(): number
+  teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, pos: vector): void
+  object(id: number): CseAbstract | null
+  story_object(sid: string): CseAbstract | null
+  create(section: string, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): CseAbstract
+  create_ammo(section: string): CseAbstract
+  register(server_object: CseAbstract): void
+  release(server_object: CseAbstract): void
+  actor(): CseAlifeCreatureActor
+}
+/** @customConstructor vertex */
+declare class vertex {
+  level_id(): string
+  level_point(): vector
+  level_vertex_id(): number
+}
+/** @customConstructor game_graph */
+declare class game_graph {
+  constructor()
+  vertex(game_vertex_id: number): vertex | null
+  valid_vertex_id(game_vertex_id: number): boolean
+}

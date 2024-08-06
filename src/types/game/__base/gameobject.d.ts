@@ -85,7 +85,6 @@ declare class CGameObject {
   use(user: CGameObject): boolean
   start_trade(actor: CGameObject): void
   start_upgrade(actor: CGameObject): void
-
   //
   // npc (stalker or monster)
   //
@@ -125,7 +124,7 @@ declare class CGameObject {
   make_item_active(item: CGameObject): void
   item_in_slot(slot: number): CGameObject | null
   activate_slot(slot: number): void
-  active_item(): CGameObject
+  active_item(): CGameObject | null
   object_count(): number
   object(section_or_index: string | number): CGameObject | null
   object_by_id(id: number): CGameObject | null
@@ -189,9 +188,9 @@ declare class CGameObject {
   //
   explode(level_time: number): void
 }
-
+//
 // casts
-
+//
 declare class CInventoryOwner extends CGameObject {
   constructor()
   IconName(): string

@@ -13,6 +13,10 @@ declare namespace level {
   export function get_start_time(): Time
   export function get_view_entity(): CGameObject
   export function set_view_entity(obj: CGameObject): void
+  export function object_by_id(id: number): CGameObject | null
+  export function debug_object(object_name: string): CGameObject | null
+  export function debug_actor(): CGameObject | null
+  export function check_object(obj: CGameObject): void
   export function get_weather(): Weather
   export function set_weather(weather: Weather, force: boolean): void
   export function set_weather_fx(weather: string): boolean
@@ -38,11 +42,13 @@ declare namespace level {
   export function name(): string
   export function prefetch_sound(name: string): void
   export function client_spawn_manager(): TODO
-  export function map_add_object_spot_ser(id: number, spot_type: string, text: string): void
-  export function map_add_object_spot(id: number, spot_type: string, text: string): void
-  export function map_remove_object_spot(id: number, spot_type: string): void
-  export function map_has_object_spot(id: number, spot_type: string): number
-  export function map_change_spot_hint(id: number, spot_type: string, text: string): void
+  type MapSpot = Suggest<'red_location' | 'blue_location' | 'green_location'>
+  export function map_add_object_spot_ser(id: number, spot_type: MapSpot, text: string): void
+  export function map_add_object_spot(id: number, spot_type: MapSpot, text: string): void
+  export function map_remove_object_spot(id: number, spot_type: MapSpot): void
+  /** @returns 0 - not found */
+  export function map_has_object_spot(id: number, spot_type: MapSpot): number
+  export function map_change_spot_hint(id: number, spot_type: MapSpot, text: string): void
   export function add_dialog_to_render(dialog_window: TODO /** CUIDialogWnd */): void
   export function remove_dialog_to_render(dialog_window: TODO /** CUIDialogWnd */): void
   export function hide_indicators(): void

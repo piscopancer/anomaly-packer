@@ -13,7 +13,6 @@ declare type CseAbstract = {
   UPDATE_Read(): TODO
   UPDATE_Write(): TODO
 }
-
 declare type CseAlifeObject = CseAbstract & {
   readonly online: boolean
   move_offline(): boolean

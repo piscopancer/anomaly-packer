@@ -113,8 +113,9 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, allTrans
             const text = await textScript.default(texts)
             const extension = textScript.extension ?? 'xml'
             await fs.writeFile(path.join(buildPath, fileName + `.${extension}`), iconv.encode(text, 'win1251'))
-          } catch {
-            console.error('Script at %s does not have a default export. This file will not appear in the build', nextSourcePath)
+          } catch (e) {
+            console.error('Script at %s does not have a default export or contains an error. This file will not appear in the build', nextSourcePath)
+            console.log(c.italic.gray((e as Error).message))
           }
         }
       } else {
