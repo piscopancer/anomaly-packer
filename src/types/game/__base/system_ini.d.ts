@@ -1,4 +1,7 @@
-/** @customConstructor system_ini */
+/**
+ * Read `system.ltx`
+ * @customConstructor system_ini
+ */
 declare class system_ini {
   constructor()
   r_string_ex(section: string, prop: string): string | null

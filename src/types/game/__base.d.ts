@@ -368,3 +368,17 @@ declare class game_graph {
   vertex(game_vertex_id: number): vertex | null
   valid_vertex_id(game_vertex_id: number): boolean
 }
+declare function get_hud(): {
+  show_messages(): void
+  hide_messages(): void
+  HideActorMenu(): void
+  HidePdaMenu(): void
+  GetCustomStatic(static: Suggest<'gameplay_notification' | 'notify_icon' | 'showcase_notification'>): {
+    wnd(): {
+      TextControl(): {
+        SetTextColor(color: string): void
+      }
+    }
+  }
+  AddCustomStatic(static: string, _0: boolean): TODO
+} | null

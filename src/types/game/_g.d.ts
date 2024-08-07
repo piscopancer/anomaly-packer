@@ -3,21 +3,39 @@
 declare const ini_sys: system_ini
 declare function start_game_callback(): void
 declare interface GameEvents {
-  load_state(m_data: MData): void
-  save_state(m_data: MData): void
-  on_before_save_input(): void
-  actor_before_death(): void
-  actor_on_before_hit(shit: hit, bone_id: number, flags: TODO): void
-  actor_on_footstep(material: string, power: number, hud_view: boolean, flags: TODO): void
+  // Actor
+  on_before_level_changing(): void
+  on_level_changing(): void
+  actor_on_before_death(_0: number, _1: LuaTable): void
+  actor_on_net_destroy(binder: ObjectBinder): void
+  actor_on_first_update(binder: ObjectBinder, delta_time: number): void
   actor_on_update(binder: ObjectBinder, delta_time: number): void
-  actor_on_jump(): void
-  actor_on_land(landing_speed: number): void
-  actor_on_first_update(): void
-  actor_on_movement_changed(cmd: TODO): void
-  actor_on_feeling_anomaly(anomaly: TODO, flags: TODO): void
-  actor_on_item_before_use(item: CGameObject, flags: TODO): void
-  actor_on_before_hit_belt(hit_table: TODO, power: number, type: TODO): void
-  actor_on_hud_animation_mark(state: number, mark: string): void
+  actor_on_weapon_fired(obj: CGameObject, weapon: CGameObject, ammo_elapsed: number, grenade_elapsed: number, ammo_type: number, grenade_type: number): void
+  actor_on_weapon_jammed(weapon: CGameObject): void
+  actor_on_weapon_no_ammo(weapon: CGameObject, ammo_total: number): void
+  actor_on_weapon_lower(weapon: CGameObject): void
+  actor_on_weapon_raise(weapon: CGameObject): void
+  actor_on_weapon_reload(weapon: CGameObject, ammo_total: number): void
+  actor_on_weapon_zoom_in(weapon: CGameObject): void
+  actor_on_weapon_zoom_out(weapon: CGameObject): void
+  actor_on_item_take(item: CGameObject): void
+  actor_on_item_take_from_box(box: CGameObject, item: CGameObject): void
+  actor_on_item_put_in_box(box: CGameObject, item: CGameObject): void
+  actor_on_item_drop(item: CGameObject): void
+  actor_on_item_use(item: CGameObject, section: string): void
+  actor_on_item_before_use(item: CGameObject, flags: LuaTable): void
+  actor_on_item_before_pickup(item: CGameObject, flags: LuaTable): void
+  actor_item_to_belt(item: CGameObject): void
+  actor_item_to_ruck(item: CGameObject): void
+  actor_item_to_slot(item: CGameObject): void
+  actor_on_trade(item: CGameObject, sell_buy: TODO, money: number): void
+  actor_on_init(binder: ObjectBinder): void
+  actor_on_reinit(binder: ObjectBinder): void
+  actor_on_info_callback(obj: CGameObject, info_id: number): void
+  actor_on_hit_callback(obj: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
+  actor_on_attach_vehicle(vehicle: CGameObject): void
+  actor_on_detach_vehicle(vehicle: CGameObject): void
+  actor_on_use_vehicle(vehicle: CGameObject): void
   actor_on_hud_animation_play(
     animation: {
       anm_name: string
@@ -29,45 +47,64 @@ declare interface GameEvents {
     },
     obj: CGameObject | null
   ): void
+  actor_on_hud_animation_end(item: CGameObject, section: string, motion: TODO, state: TODO, slot: number): void
+  actor_on_hud_animation_mark(state: number, mark: string): void
+  actor_on_sleep(hours: number): void
+  actor_on_foot_step(ground: CGameObject, power: number, play: boolean, on_ground: boolean, hud_view: boolean): void
+  actor_on_interaction(_type: string, obj: CGameObject | null, name: string): void
+  actor_on_before_hit(_hit: hit, bone_id: number, flags: TODO): void
+  actor_on_before_hit_belt(hit_table: TODO, power: number, _type: TODO): void
   actor_on_weapon_before_fire(flags: TODO): void
-  actor_on_foot_step(): void
-  actor_on_weapon_fired(): void
-  actor_on_weapon_jammed(): void
-  actor_on_weapon_zoom_in(weapon: CGameObject): void
-  actor_on_weapon_zoom_out(): void
-  actor_on_weapon_magazine_empty(): void
-  actor_on_weapon_lowered(): void
-  actor_on_weapon_raised(): void
-  squad_on_npc_death(squad: CseAlifeOnlineOfflineGroup, npc: CseAlifeTraderAbstract): void
-  server_entity_on_unregister(squad: CseAlifeOnlineOfflineGroup, type: Suggest<'sim_squad_scripted'>): void
+  actor_on_feeling_anomaly(zone: CGameObject, flags: TODO): void
+  actor_on_leave_dialog(npc_id: number): void
+  actor_on_stash_create(stash: { id: number; name: string; section: string }): void
+  actor_on_stash_remove(stash: { id: number; cancel: boolean }): void
+  actor_on_frequency_change(old_freq: number, new_freq: number): void
+  actor_on_achievement_earned(ach_id: string, message: string): void
+  actor_on_movement_changed(cmd: TODO): void
+  actor_on_footstep(material: string, power: number, hud_view: boolean, flags: TODO): void
+  actor_on_jump(): void
+  actor_on_land(landing_speed: number): void
+  // NPCs
   npc_on_update(): void
   npc_on_death_callback(): void
+  // Mutants
+  // Physical objects
+  // Vehicles
+  // Squads
+  squad_on_npc_death(squad: CseAlifeOnlineOfflineGroup, npc: CseAlifeTraderAbstract): void
+  // Smart terrains
+  // Server objects
+  server_entity_on_unregister(squad: CseAlifeOnlineOfflineGroup, type: Suggest<'sim_squad_scripted'>): void
+  // GUI
   ActorMenu_on_mode_changed(mode: TODO, last_mode: TODO): void
-  on_option_change(): void
   GUI_on_show(name: string, path: string): void
+  map_spot_menu_add_property(ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
+  map_spot_menu_property_clicked(ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
   on_screen_resolution_changed(): void
+  // Technical
   on_key_press(key: number): void
   on_key_release(key: number): void
   on_key_hold(key: number): void
-  on_mouse_wheel(vol: number): void
+  on_option_change(): void
+  on_before_save_input(): void
+  // Files
+  save_state(m_data: MData): void
+  load_state(m_data: MData): void
+  // Other
+  // set_callback / callback class
+  inventory_info(): void
+  task_state(): void
+  take_item_from_box(): void
+  trade_sell_buy_item(): void
   on_mouse_move(x: number, y: number): void
-  on_item_belt(item: CGameObject): void
-  on_item_ruck(item: CGameObject): void
-  on_item_slot(item: CGameObject): void
-  select_inventory_item(item: CGameObject): void
-  switch_torch(on: 0 | 1): void
-  drop_item_in_box(item: CGameObject): void
-  map_spot_menu_add_property(ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
-  map_spot_menu_property_clicked(ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
+  on_mouse_wheel(vol: number): void
   mouse_move(): void
   mouse_wheel(): void
-  inventory_info(): void
-  on_item_take(): void
-  on_item_drop(): void
-  task_state(): void
-  trade_sell_buy_item(): void
-  take_item_from_box(): void
   use_object(): void
+  select_inventory_item(item: CGameObject): void
+  actor_before_death(): void
+  // switch_torch(on: 0 | 1): void
 }
 /**
  * Functions can be provided to game events as callbacks. With most game events some params are also returned (see the example below). Full list of game events names can be found in *axr_main.script*. To find game events implementations in _unpacked, search for `SendScriptCallback`
@@ -196,59 +233,154 @@ declare function action_first(obj: CGameObject, ...args: any[]): any
 declare function interrupt_action(npc: CGameObject, script_name: string): void
 declare function get_clsid(obj: CGameObject): number
 declare function set_save_marker(netp: TODO, mode: 'save' | 'load', check: boolean, prefix: string): void
-declare const enum ActorMoveStates {
-  'mcFwd' = 1 << 0,
-  'mcBack' = 1 << 1,
-  'mcLStrafe' = 1 << 2,
-  'mcRStrafe' = 1 << 3,
-  'mcCrouch' = 1 << 4,
-  'mcAccel' = 1 << 5,
-  'mcTurn' = 1 << 6,
-  'mcJump' = 1 << 7,
-  'mcFall' = 1 << 8,
-  'mcLanding' = 1 << 9,
-  'mcLanding2' = 1 << 10,
-  'mcClimb' = 1 << 11,
-  'mcSprint' = 1 << 12,
-  'mcLLookout' = 1 << 13,
-  'mcRLookout' = 1 << 14,
+declare const ActorMoveStates: {
+  mcFwd: 1
+  mcBack: 2
+  mcLStrafe: 4
+  mcRStrafe: 8
+  mcCrouch: 16
+  mcAccel: 32
+  mcTurn: 64
+  mcJump: 128
+  mcFall: 256
+  mcLanding: 512
+  mcLanding2: 1024
+  mcClimb: 2048
+  mcSprint: 4096
+  mcLLookout: 8192
+  mcRLookout: 16384
   //
-  'mcAnyMove' = 15,
-  'mcAnyAction' = 1935,
-  'mcAnyState' = 6192,
-  'mcLookout' = 24576,
+  mcAnyMove: 15
+  mcAnyAction: 1935
+  mcAnyState: 6192
+  mcLookout: 24576
 }
 type StringToNumber<T extends string> = T extends `${infer N extends number}` ? N : never
-type ActorMoveState = StringToNumber<`${ActorMoveStates}`>
-declare function IsMoveState(state: ActorMoveState, compare_state: number): boolean
+type ActorMoveState = (typeof ActorMoveStates)[keyof typeof ActorMoveStates]
+declare function IsMoveState(state: keyof typeof ActorMoveStates, compare_state: number): boolean
 declare function reload_ini_sys(): void
-/** @customConstructor ini_file */
-declare class ini_file {
+/**
+ * May be an extended version of ini_file. Read any ltx file
+ * @customConstructor ini_file_ex
+ */
+declare class ini_file_ex {
   constructor(filename: string, advanced_mode?: boolean)
-  save(): void
+  cache: Record<TODO, TODO>
+  collect_section(section: string): Record<string, any>
+  fname: string
+  get_sections<KT extends boolean>(keytable?: boolean): KT extends true ? Record<string, true> : string[]
+  ini: system_ini
+  line_exist(section: string, key: string): boolean
+  r_bool_ex(section: string, key: string, def_val: boolean): boolean
+  r_float_ex(section: string, key: string): string | null
+  r_list(section: string, key: string, def_val: boolean): string[]
+  r_mult(section: string, key: string, ...args: any[]): TODO
+  r_string_ex(section: string, key: string): string | null
+  r_string_to_condlist(section: string, key: string, def_val?: any): Record<TODO, TODO> | null
   r_value(section: string, key: string, _type: number, def_val: any): string | null
+  remove_line(section: string, key: string): void
+  save(): void
+  section_exist(section: string): boolean
   w_value(section: string, key: string, val: any, comment?: string): void
 }
-/**
- * Adds a console command to the game console. Game must have debug mode enabled
- *
- * @returns registration success
- */
-declare function add_console_command(name: string, func: () => any): boolean
-declare function get_hud(): {
-  show_messages(): void
-  hide_messages(): void
-  HideActorMenu(): void
-  HidePdaMenu(): void
-  GetCustomStatic(static: Suggest<'gameplay_notification' | 'notify_icon' | 'showcase_notification'>): {
-    wnd(): {
-      TextControl(): {
-        SetTextColor(color: string): void
-      }
-    }
-  }
-  AddCustomStatic(static: string, _0: boolean): TODO
-} | null
+declare const INISYS_CACHE: LuaTable
+declare function SYS_GetParam(_type: number, section: string, param: string, def_val: any): any
+declare function is_empty(table: LuaTable): boolean
+declare function is_not_empty(table: LuaTable): boolean
+declare function iempty_table(table: LuaTable): LuaTable
+declare function empty_table(table: LuaTable): Record<string, null>
+declare function size_table(table: LuaTable): number
+declare function random_key_table(table: LuaTable): any | null
+declare function copy_table(to: LuaTable, from: LuaTable): void
+declare function dup_table<T extends LuaTable>(from: T): T
+declare function swap(arr: LuaTable, index_1: number, index_2: number): void
+declare function shuffle_table(table: LuaTable): void
+declare function invert_table(table: LuaTable): void
+declare function t2k_table(table: LuaTable): void
+declare function k2t_table(table: LuaTable): void
+/** @deprecated unused */
+declare function print_table(table: LuaTable): void
+declare function store_table(table: LuaTable, subs?: string): void
+declare function spairs(table: AnyTable, order?: (table: AnyTable, a: any, b: any) => any): () => any
+declare const VEC_ZERO: vector
+declare const VEC_X: vector
+declare const VEC_Y: vector
+declare const VEC_Z: vector
+/** Subtract vectors without mutating them */
+declare function vec_sub(vec_1: vector, vec_2: vector): vector
+/** Add vectors without mutating them */
+declare function vec_add(vec_1: vector, vec_2: vector): vector
+/** Set vector without mutating the original */
+declare function vet_set(vec: vector): vector
+declare const BoneID: {
+  bip01_pelvis: 2
+  bip01_l_thigh: 3
+  bip01_l_calf: 4
+  bip01_l_foot: 5
+  bip01_r_thigh: 7
+  bip01_r_calf: 8
+  bip01_r_foot: 9
+  bip01_spine: 11
+  bip01_spine1: 12
+  bip01_spine2: 13
+  bip01_neck: 14
+  bip01_head: 15
+  eye_left: 16
+  eye_right: 17
+  eyelid_1: 18
+  jaw_1: 19
+  bip01_l_clavicle: 20
+  bip01_l_upperarm: 21
+  bip01_l_forearm: 22
+  bip01_l_hand: 23
+}
+declare const HitTypeID: {
+  Burn: 0
+  Shock: 1
+  ChemicalBurn: 2
+  Radiation: 3
+  Telepatic: 4
+  Wound: 5
+  FireWound: 6
+  Strike: 7
+  Explosion: 8
+  Wound_2: 9
+  LightBurn: 10
+}
+declare const BoosterID: {
+  HpRestore: 0
+  PowerRestore: 1
+  RadiationRestore: 2
+  BleedingRestore: 3
+  MaxWeight: 4
+  RadiationProtection: 5
+  TelepaticProtection: 6
+  ChemicalBurnProtection: 7
+  BurnImmunity: 8
+  ShockImmunity: 9
+  RadiationImmunity: 10
+  TelepaticImmunity: 11
+  ChemicalBurnImmunity: 12
+  ExplImmunity: 13
+  StrikeImmunity: 14
+  FireWoundImmunity: 15
+  WoundImmunity: 16
+  MaxCount: 17
+}
+declare const _ALIFE_CNT: number
+declare const _ALIFE_WARNING: number
+declare const _ALIFE_CACHE: LuaTable
+declare const _ALIFE_CACHE_RECORD: boolean
+declare const _ALIFE_UNREGISTER: LuaTable
+declare function alife_object(id: number): CseAbstract | void
+declare function alife_create(
+  section: string,
+  pos: vector,
+  level_vertex_id: number,
+  game_vertex_id: number,
+  parent_id?: number,
+  state?: TODO
+): CseAbstract | null
 declare function alife_create_item(
   section: string,
   npc: CGameObject,
@@ -258,6 +390,45 @@ declare function alife_create_item(
     uses: number
   }>
 ): void
+declare function alife_process_item(
+  section: string,
+  id: number,
+  table: Partial<{
+    ammo: number
+    cond: number
+    uses: number
+  }>
+): void
+declare function alife_release(se_obj: CseAbstract, msg?: string): void
+declare function alife_release_id(id: number, msg?: string): void
+declare function alife_clone_weapon(se_obj: CseAbstract, section: string, parent_id: number): CseAbstract | void
+declare function alife_character_community(se_obj: CseAbstract): Faction | void
+declare function alife_on_limit(): boolean
+declare function alife_record(se_obj: CseAbstract, state?: boolean): void
+declare function alife_first_update(): void
+declare function create_ammo(
+  section: string,
+  pos: vector,
+  level_vertex_id: number,
+  game_vertex_id: number,
+  parent_id?: number,
+  num_of_bullets?: number
+): LuaTable<number, CseAbstract>
+declare function SetSwitchDistance(dist: number): void
+declare function get_object_community(obj: CGameObject | CseAbstract): ReturnType<typeof alife_character_community>
+declare function character_community(obj: CGameObject): Faction
+declare function get_actor_true_community(): Faction
+declare function set_actor_true_community(comm: Faction, now: boolean): void
+declare function get_object_squad(obj: CGameObject): CseAlifeOnlineOfflineGroup | null
+declare function set_inactivate_input_time(delta_time: number): void
+declare function npc_in_actor_frustrum(npc: CGameObject): boolean
+declare function change_team_squad_group(se_obj: CseAbstract, team: TODO, squad: TODO, group: TODO): void
+declare function get_speaker(safe: boolean, all: boolean): CGameObject
+declare function distance_between(obj_1: CGameObject, obj_2: CGameObject): number
+declare function has_alife_info(info_portion: string): boolean
+declare function give_info(info_portion: string): void
+declare function disable_info(info_portion: string): void
+declare function pstor_is_registered_type(value_type: any): boolean
 /**
  * Storage for gameobjects using `db.storage`
  * @param val Lua-supported value, `gamedata` is not allowed
@@ -265,6 +436,13 @@ declare function alife_create_item(
 declare function save_var(obj: CGameObject | null, var_name: string, val: boolean | string | number): void
 /** @returns value of a variable for a gameobject from `db.storage` */
 declare function load_var(obj: CGameObject | null, var_name: string, def_val: boolean | string | number): any
+declare function save_ctime(obj: CGameObject | null, var_name: string, val: boolean | string | number): void
+declare function load_ctime(obj: CGameObject | null, var_name: string): any
+declare function se_save_var(id: string, name: string, varname: string, val: any): void
+declare function se_load_var(id: string, name: string, varname: string): any
+//
+// story id handlers
+//
 declare function get_story_se_object(story_id: string): CseAbstract | null
 declare function get_story_se_item(story_id: string): CseAbstract | null
 /** @returns gameobject with this story ID on the current level */
@@ -278,6 +456,92 @@ declare function unregister_story_object_by_id(obj_id: string): void
 /**  @deprecated duplicate of {@link get_story_object} */
 declare function level_object_by_sid(story_id: string): CGameObject | null
 declare function id_by_sid(story_id: string): number | null
+//
+// event storage
+//
+declare const _EVENTS: LuaTable
+declare function GetEvent(key: string, value: string): any
+declare function SetEvent(key: string, val_1: string, val_2?: any): void
+declare function IsAzazelMode(): boolean
+declare function IsHardcoreMode(): boolean
+declare function IsStoryMode(): boolean
+declare function IsSurvivalMode(): boolean
+declare function IsAgonyMode(): boolean
+declare function IsTimerMode(): boolean
+declare function IsCampfireMode(): boolean
+declare function IsWarfare(): boolean
+declare function IsTestMode(): boolean
+declare function IsStoryPlayer(): boolean
+//
+// class testing
+//
+declare function IsStalker(obj: CGameObject): boolean
+declare function IsStalker(obj: null, clsid: number): boolean
+declare function IsMonster(obj: CGameObject): boolean
+declare function IsMonster(obj: null, clsid: number): boolean
+declare function IsAnomaly(obj: CGameObject): boolean
+declare function IsAnomaly(obj: null, clsid: number): boolean
+declare function IsTrader(obj: CGameObject): boolean
+declare function IsTrader(obj: null, clsid: number): boolean
+declare function IsCar(obj: CGameObject): boolean
+declare function IsCar(obj: null, clsid: number): boolean
+declare function IsHelicopter(obj: CGameObject): boolean
+declare function IsHelicopter(obj: null, clsid: number): boolean
+declare function IsInvbox(obj: CGameObject): boolean
+declare function IsInvbox(obj: null, clsid: number): boolean
+/** @returns object is level changer */
+declare function isLc(obj: CGameObject): boolean
+declare function IsWounded(obj: CGameObject): boolean
+declare function IsOutfit(obj: CGameObject): boolean
+declare function IsOutfit(obj: null, clsid: number): boolean
+declare function IsHeadgear(obj: CGameObject): boolean
+declare function IsHeadgear(obj: null, clsid: number): boolean
+declare function IsExplosive(obj: CGameObject): boolean
+declare function IsExplosive(obj: null, clsid: number): boolean
+declare function IsPistol(obj: CGameObject): boolean
+declare function IsPistol(obj: null, clsid: number): boolean
+declare function IsMelee(obj: CGameObject): boolean
+declare function IsMelee(obj: null, clsid: number): boolean
+declare function IsSniper(obj: CGameObject): boolean
+declare function IsSniper(obj: null, clsid: number): boolean
+declare function IsLauncher(obj: CGameObject): boolean
+declare function IsLauncher(obj: null, clsid: number): boolean
+declare function IsShotgun(obj: CGameObject): boolean
+declare function IsShotgun(obj: null, clsid: number): boolean
+declare function IsRifle(obj: CGameObject): boolean
+declare function IsRifle(obj: null, clsid: number): boolean
+declare function IsWeapon(obj: CGameObject): boolean
+declare function IsWeapon(obj: null, clsid: number): boolean
+declare function IsAmmo(obj: CGameObject): boolean
+declare function IsAmmo(obj: null, clsid: number): boolean
+declare function IsGrenade(obj: CGameObject): boolean
+declare function IsGrenade(obj: null, clsid: number): boolean
+declare function IsBolt(obj: CGameObject): boolean
+declare function IsBolt(obj: null, clsid: number): boolean
+declare function IsArtefact(obj: CGameObject): boolean
+declare function IsArtefact(obj: null, clsid: number): boolean
+//
+// items lookup table
+//
+declare const ITM: LuaTable
+declare function IsItem(_type: string, section: string, obj: CGameObject): boolean
+declare function GetItemList(_type: string): LuaTable
+declare function Parse_ITM(): void
+/**
+ * Adds a console command to the game console. Game must have debug mode enabled
+ *
+ * @returns registration success
+ */
+declare function add_console_command(name: string, func: () => any): boolean
+declare function get_player_level_id(): number | void
+/** @returns updated best weapon */
+declare function update_best_weapon(
+  npc: CGameObject,
+  wpn: CGameObject,
+  flags: {
+    gun_id: number | null
+  }
+): CGameObject | void
 declare var SIMBOARD: {
   create_squad(smart: CseAbstract, squad_id: number): CseAlifeOnlineOfflineGroup
   create_squad_at_named_location(location: string, squad_id: string): CseAlifeOnlineOfflineGroup | null
