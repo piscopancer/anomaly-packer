@@ -343,18 +343,21 @@ declare type Color =
 /** @customConstructor alife */
 declare class alife {
   constructor()
+  actor(): CseAlifeCreatureActor
   switch_distance(): number
   switch_distance(distance: number): void
   level_name(level_id: number): string
   level_id(): number
+  has_info(obj_id: number, info_portion: string): boolean
   teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, pos: vector): void
   object(id: number): CseAbstract | null
   story_object(sid: string): CseAbstract | null
+  set_switch_online(obj_id: number, state: boolean): void
+  set_switch_offline(obj_id: number, state: boolean): void
   create(section: string, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): CseAbstract
   create_ammo(section: string): CseAbstract
   register(server_object: CseAbstract): void
   release(server_object: CseAbstract): void
-  actor(): CseAlifeCreatureActor
 }
 /** @customConstructor vertex */
 declare class vertex {
@@ -362,11 +365,47 @@ declare class vertex {
   level_point(): vector
   level_vertex_id(): number
 }
+type LevelId =
+  | 'fake_start'
+  | 'k00_marsh'
+  | 'l01_escape'
+  | 'k01_darkscape'
+  | 'l02_garbage'
+  | 'k02_trucks_cemetery'
+  | 'l03_agroprom'
+  | 'l03u_agr_underground'
+  | 'l04_darkvalley'
+  | 'y04_pole'
+  | 'l04u_labx18'
+  | 'l05_bar'
+  | 'l06_rostok'
+  | 'l07_military'
+  | 'l08_yantar'
+  | 'l08u_brainlab'
+  | 'l09_deadcity'
+  | 'l10_limansk'
+  | 'l10_radar'
+  | 'l10_red_forest'
+  | 'l10u_bunker'
+  | 'l11_hospital'
+  | 'l11_pripyat'
+  | 'l12_stancia'
+  | 'l12_stancia_2'
+  | 'l12u_control_monolith'
+  | 'l12u_sarcofag'
+  | 'l13_generators'
+  | 'l13u_warlab'
+  | 'jupiter'
+  | 'jupiter_underground'
+  | 'labx8'
+  | 'pripyat'
+  | 'zaton'
 /** @customConstructor game_graph */
 declare class game_graph {
   constructor()
   vertex(game_vertex_id: number): vertex | null
   valid_vertex_id(game_vertex_id: number): boolean
+  levels(): { id: LevelId }[]
 }
 declare function get_hud(): {
   show_messages(): void

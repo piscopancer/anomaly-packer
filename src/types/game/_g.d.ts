@@ -66,44 +66,125 @@ declare interface GameEvents {
   actor_on_jump(): void
   actor_on_land(landing_speed: number): void
   // NPCs
-  npc_on_update(): void
-  npc_on_death_callback(): void
+  npc_on_update(obj: CGameObject, who: CGameObject): void
+  npc_on_death_callback(npc: CGameObject, weapon: CGameObject, flags: { gun_id: number }): void
+  npc_on_item_take(npc: CGameObject, item: CGameObject): void
+  npc_on_item_take_from_box(npc: CGameObject, box: CGameObject, item: CGameObject): void
+  npc_on_item_drop(npc: CGameObject, item: CGameObject): void
+  npc_on_net_spawn(npc: CGameObject, se_obj: CseAbstract): void
+  npc_on_net_destroy(npc: CGameObject): void
+  npc_on_update(npc: CGameObject, table: AnyTable): void
+  npc_on_before_hit(npc: CGameObject, _hit: hit, bone_id: number, flags: { ret_value: boolean }): void
+  npc_on_hit_callback(npc: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
+  npc_on_death_callback(npc: CGameObject, killer: CGameObject): void
+  npc_on_fighting_actor(npc: CGameObject): void
+  npc_on_weapon_strapped(npc: CGameObject, weapon: CGameObject): void
+  npc_on_weapon_unstrapped(npc: CGameObject, weapon: CGameObject): void
+  npc_on_weapon_drop(npc: CGameObject, weapon: CGameObject): void
+  npc_on_hear_callback(npc: CGameObject, sound_emitter_id: number, sound_type: string, dist: number, sound_power: number, sound_pos: vector): void
+  npc_on_get_all_from_corpse(npc: CGameObject, corpse: CGameObject, item: CGameObject, lootable_table: AnyTable): void
+  npc_on_eval_danger(npc: CGameObject, flags: { ret_value: boolean }): void
+  anomaly_on_before_activate(anomaly: CGameObject, activator: CGameObject, flags: { ret_value: boolean }): void
   // Mutants
+  monster_on_update(monster: CGameObject, table: AnyTable): void
+  monster_on_before_hit(monster: CGameObject, _hit: hit, bone_id: number, flags: { ret_value: boolean }): void
+  monster_on_hit_callback(monster: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
+  monster_on_net_spawn(monster: CGameObject, se_obj: CseAbstract): void
+  monster_on_net_destroy(monster: CGameObject): void
+  monster_on_death_callback(monster: CGameObject, killer: CGameObject): void
+  monster_on_actor_use_callback(monster: CGameObject, user: CGameObject): void
+  monster_on_loot_init(monster: CGameObject, loot: AnyTable): void
+  burer_on_before_weapon_drop(burer: CGameObject, weapon: CGameObject, flags: { ret_value: boolean }): void
   // Physical objects
+  physic_object_on_hit_callback(ph_obj: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
+  physic_object_on_use_callback(ph_obj: CGameObject, user: CGameObject): void
   // Vehicles
+  heli_on_hit_callback(heli: CGameObject, amount: number, local_dir: null, dealer: CGameObject, bone_id: null): void
+  vehicle_on_death_callback(veh: CGameObject): void
   // Squads
-  squad_on_npc_death(squad: CseAlifeOnlineOfflineGroup, npc: CseAlifeTraderAbstract): void
+  squad_on_npc_creation(se_squad: CseAlifeOnlineOfflineGroup, se_npc: CseAlifeTraderAbstract, spawn_smart?: CseAbstract): void
+  squad_on_enter_smart(se_squad: CseAlifeOnlineOfflineGroup, smart: CseAbstract): void
+  squad_on_leave_smart(se_squad: CseAlifeOnlineOfflineGroup, smart: CseAbstract): void
+  squad_on_npc_death(squad: CseAlifeOnlineOfflineGroup, npc: CseAlifeTraderAbstract, killer?: CseAlifeTraderAbstract): void
+  squad_on_update(squad: CseAlifeOnlineOfflineGroup): void
+  squad_on_first_update(squad: CseAlifeOnlineOfflineGroup): void
+  squad_on_add_npc(
+    squad: CseAlifeOnlineOfflineGroup,
+    npc: CseAlifeTraderAbstract,
+    spawn_section: string,
+    spawn_pos: vector,
+    level_vertex_id: number,
+    game_vertex_id: number
+  ): void
+  squad_on_after_game_vertex_change(squad: CseAlifeOnlineOfflineGroup, last_game_vertex_id: number, last_level_vertex_id: number, _0: boolean): void
+  squad_on_after_level_change(squad: CseAlifeOnlineOfflineGroup, old_level: string, new_level: string): void
   // Smart terrains
+  smart_terrain_on_update(smart: CseAbstract): void
+  on_try_respawn(smart: CseAbstract, flags: { disabled: boolean }): void
   // Server objects
-  server_entity_on_unregister(squad: CseAlifeOnlineOfflineGroup, type: Suggest<'sim_squad_scripted'>): void
+  server_entity_on_register(se_obj: CseAbstract, _type: string): void
+  server_entity_on_unregister(se_obj: CseAbstract, _type: string): void
+  fill_start_position(): void
+  se_stalker_on_spawn(se_npc: CseAlifeTraderAbstract): void
+  se_actor_on_STATE_Write(se_actor: CseAlifeCreatureActor): void
+  se_actor_on_STATE_Read(se_actor: CseAlifeCreatureActor): void
   // GUI
-  ActorMenu_on_mode_changed(mode: TODO, last_mode: TODO): void
-  GUI_on_show(name: string, path: string): void
+  ActorMenu_on_before_init_mode(type: string, flags: { ret: boolean }, obj?: CGameObject): void
+  ActorMenu_on_mode_changed(new_mode: number, prev_mode: number): void
+  ActorMenu_on_item_drag_drop(item_from: CGameObject, item_to: CGameObject, slot_from: number, slot_to: number): void
+  ActorMenu_on_item_focus_receive(item: CGameObject): void
+  ActorMenu_on_item_focus_lost(item: CGameObject): void
+  ActorMenu_on_item_before_move(flags: { ret_value: boolean }, npc_id: number, obj: CGameObject, mode: Suggest<'loot'>, inv_id_from: number): void
+  ActorMenu_on_item_after_move(npc_id: number, obj: CGameObject, mode: Suggest<'loot'>, inv_id_from: number): void
+  ActorMenu_on_trade_started(): void
+  ActorMenu_on_trade_closed(): void
+  GUI_on_show(name: string, path?: string): void
+  GUI_on_hide(name: string, path?: string): void
   map_spot_menu_add_property(ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
   map_spot_menu_property_clicked(ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
+  main_menu_on_keyboard(dik: number, keyboard_action: number, wnd: /** CUIScriptWnd */ TODO, level_present: boolean): void
+  main_menu_on_init(wnd: /** CUIScriptWnd */ TODO): void
+  main_menu_on_quit(wnd: /** CUIScriptWnd */ TODO): void
   on_screen_resolution_changed(): void
   // Technical
+  on_game_load(binder: ObjectBinder): void
   on_key_press(key: number): void
   on_key_release(key: number): void
   on_key_hold(key: number): void
+  on_before_key_press(dik: number, bind: number, dis: boolean, flags: { ret: boolean; ret_value: boolean }): void
   on_option_change(): void
-  on_before_save_input(): void
+  on_localization_change(): void
+  on_console_execute(...args: string[]): void
+  on_before_save_input(flags: { ret: boolean }, _0: number, _1: string): void
+  on_before_load_input(dik: number, bind: number, flags: { ret: boolean; ret_value: boolean }): void
   // Files
   save_state(m_data: MData): void
   load_state(m_data: MData): void
+  on_pstor_save_all(obj: CGameObject, netp: TODO): void
+  on_pstor_load_all(obj: CGameObject, netp: TODO): void
   // Other
+  on_enemy_eval(obj: CGameObject, enemy: CGameObject, flags: { result: boolean; override: boolean }): void
+  on_before_surge(flags: { allow: boolean }): void
+  on_before_psi_storm(flags: { allow: boolean }): void
+  on_get_item_cost(
+    _type: 'multiuse' | 'ammo' | 'condition_based',
+    obj: CGameObject,
+    profile: { cfg: string; mode: 1 | 2; cond_exponent: TODO; discount: number; list: Suggest<'trade_generic_buy' | 'trade_generic_sell'> },
+    cost: number,
+    ret: { new_cost?: number }
+  ): void
   // set_callback / callback class
-  inventory_info(): void
-  task_state(): void
-  take_item_from_box(): void
-  trade_sell_buy_item(): void
-  on_mouse_move(x: number, y: number): void
-  on_mouse_wheel(vol: number): void
-  mouse_move(): void
-  mouse_wheel(): void
-  use_object(): void
-  select_inventory_item(item: CGameObject): void
-  actor_before_death(): void
+  // inventory_info(): void
+  // task_state(): void
+  // take_item_from_box(): void
+  // trade_sell_buy_item(): void
+  // on_mouse_move(x: number, y: number): void
+  // on_mouse_wheel(vol: number): void
+  // mouse_move(): void
+  // mouse_wheel(): void
+  // use_object(): void
+  // select_inventory_item(item: CGameObject): void
+  // actor_before_death(): void
   // switch_torch(on: 0 | 1): void
 }
 /**
@@ -543,11 +624,17 @@ declare function update_best_weapon(
   }
 ): CGameObject | void
 declare var SIMBOARD: {
+  assign_squad_to_smart(squad: CseAlifeOnlineOfflineGroup, _0: TODO): void
   create_squad(smart: CseAbstract, squad_id: number): CseAlifeOnlineOfflineGroup
   create_squad_at_named_location(location: string, squad_id: string): CseAlifeOnlineOfflineGroup | null
-  assign_squad_to_smart(squad: CseAlifeOnlineOfflineGroup, _0: TODO): void
+  fill_start_position(): void
   get_smart_population(smart: CseAbstract): number
   get_smart_by_name(name: string): CseAbstract | null
+  remove_squad(squad: CseAlifeOnlineOfflineGroup): void
+  set_actor_community(comm: Faction): void
+  start_sim(): void
+  stop_sim(): void
+  setup_squad_and_group(squad: CseAlifeOnlineOfflineGroup): void
   squads: Record<number, CseAlifeOnlineOfflineGroup>
   smarts: Record<
     number,
@@ -555,6 +642,7 @@ declare var SIMBOARD: {
       squads: Record<number, CGameObject>
     }
   >
+  unregister_smart(smart: TODO): void
 }
 type MData = Record<string, any>
 /**
