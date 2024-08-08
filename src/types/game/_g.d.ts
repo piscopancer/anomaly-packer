@@ -6,7 +6,7 @@ declare interface GameEvents {
   // Actor
   on_before_level_changing(): void
   on_level_changing(): void
-  actor_on_before_death(_0: number, _1: LuaTable): void
+  actor_on_before_death(_0: number, _1: AnyTable): void
   actor_on_net_destroy(binder: ObjectBinder): void
   actor_on_first_update(binder: ObjectBinder, delta_time: number): void
   actor_on_update(binder: ObjectBinder, delta_time: number): void
@@ -23,8 +23,8 @@ declare interface GameEvents {
   actor_on_item_put_in_box(box: CGameObject, item: CGameObject): void
   actor_on_item_drop(item: CGameObject): void
   actor_on_item_use(item: CGameObject, section: string): void
-  actor_on_item_before_use(item: CGameObject, flags: LuaTable): void
-  actor_on_item_before_pickup(item: CGameObject, flags: LuaTable): void
+  actor_on_item_before_use(item: CGameObject, flags: AnyTable): void
+  actor_on_item_before_pickup(item: CGameObject, flags: AnyTable): void
   actor_item_to_belt(item: CGameObject): void
   actor_item_to_ruck(item: CGameObject): void
   actor_item_to_slot(item: CGameObject): void
@@ -364,24 +364,24 @@ declare class ini_file_ex {
   section_exist(section: string): boolean
   w_value(section: string, key: string, val: any, comment?: string): void
 }
-declare const INISYS_CACHE: LuaTable
+declare const INISYS_CACHE: AnyTable
 declare function SYS_GetParam(_type: number, section: string, param: string, def_val: any): any
-declare function is_empty(table: LuaTable): boolean
-declare function is_not_empty(table: LuaTable): boolean
-declare function iempty_table(table: LuaTable): LuaTable
-declare function empty_table(table: LuaTable): Record<string, null>
-declare function size_table(table: LuaTable): number
-declare function random_key_table(table: LuaTable): any | null
-declare function copy_table(to: LuaTable, from: LuaTable): void
-declare function dup_table<T extends LuaTable>(from: T): T
-declare function swap(arr: LuaTable, index_1: number, index_2: number): void
-declare function shuffle_table(table: LuaTable): void
-declare function invert_table(table: LuaTable): void
-declare function t2k_table(table: LuaTable): void
-declare function k2t_table(table: LuaTable): void
+declare function is_empty(table: AnyTable): boolean
+declare function is_not_empty(table: AnyTable): boolean
+declare function iempty_table(table: AnyTable): AnyTable
+declare function empty_table(table: AnyTable): Record<string, null>
+declare function size_table(table: AnyTable): number
+declare function random_key_table(table: AnyTable): any | null
+declare function copy_table(to: AnyTable, from: AnyTable): void
+declare function dup_table<T extends AnyTable>(from: T): T
+declare function swap(arr: AnyTable, index_1: number, index_2: number): void
+declare function shuffle_table(table: AnyTable): void
+declare function invert_table(table: AnyTable): void
+declare function t2k_table(table: AnyTable): void
+declare function k2t_table(table: AnyTable): void
 /** @deprecated unused */
-declare function print_table(table: LuaTable): void
-declare function store_table(table: LuaTable, subs?: string): void
+declare function print_table(table: AnyTable): void
+declare function store_table(table: AnyTable, subs?: string): void
 declare function spairs(table: AnyTable, order?: (table: AnyTable, a: any, b: any) => any): () => any
 declare const VEC_ZERO: vector
 declare const VEC_X: vector
@@ -450,9 +450,9 @@ declare const BoosterID: {
 }
 declare const _ALIFE_CNT: number
 declare const _ALIFE_WARNING: number
-declare const _ALIFE_CACHE: LuaTable
+declare const _ALIFE_CACHE: AnyTable
 declare const _ALIFE_CACHE_RECORD: boolean
-declare const _ALIFE_UNREGISTER: LuaTable
+declare const _ALIFE_UNREGISTER: AnyTable
 declare function alife_object(id: number): CseAbstract | void
 declare function alife_create(
   section: string,
@@ -494,7 +494,7 @@ declare function create_ammo(
   game_vertex_id: number,
   parent_id?: number,
   num_of_bullets?: number
-): LuaTable<number, CseAbstract>
+): Record<number, CseAbstract>
 declare function SetSwitchDistance(dist: number): void
 declare function get_object_community(obj: CGameObject | CseAbstract): ReturnType<typeof alife_character_community>
 declare function character_community(obj: CGameObject): Faction
@@ -540,7 +540,7 @@ declare function id_by_sid(story_id: string): number | null
 //
 // event storage
 //
-declare const _EVENTS: LuaTable
+declare const _EVENTS: AnyTable
 declare function GetEvent(key: string, value: string): any
 declare function SetEvent(key: string, val_1: string, val_2?: any): void
 declare function IsAzazelMode(): boolean
@@ -604,9 +604,9 @@ declare function IsArtefact(obj: null, clsid: number): boolean
 //
 // items lookup table
 //
-declare const ITM: LuaTable
+declare const ITM: AnyTable
 declare function IsItem(_type: string, section: string, obj: CGameObject): boolean
-declare function GetItemList(_type: string): LuaTable
+declare function GetItemList(_type: string): AnyTable
 declare function Parse_ITM(): void
 /**
  * Adds a console command to the game console. Game must have debug mode enabled
@@ -644,7 +644,7 @@ declare var SIMBOARD: {
   >
   unregister_smart(smart: TODO): void
 }
-type MData = Record<string, any>
+declare interface MData {}
 /**
  * Marshal library. Save serializable Lua data to the save file. See the encoded save data in the .scoc file. Register for `load_state` and `save_state` game events to interact with Marshall library, load and save data you need
  * @example

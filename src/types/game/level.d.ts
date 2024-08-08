@@ -39,7 +39,7 @@ declare namespace level {
   export function rain_factor(): number
   export function patrol_path_exists(path: string): boolean
   export function vertex_position(level_vertex_id: number): vector
-  export function name(): string
+  export function name(): LevelName
   export function prefetch_sound(name: string): void
   export function client_spawn_manager(): TODO
   type MapSpot = Suggest<'red_location' | 'blue_location' | 'green_location'>

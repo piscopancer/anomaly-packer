@@ -1,11 +1,11 @@
 import { objectEntries } from '@/util'
 
-export type LtxEntries = Record<string, string | number | boolean | null | (string | number | boolean | null)[]>
+export type LtxValue = string | number | boolean | null | undefined | readonly (string | number | boolean | null | undefined)[]
 
-type Ltx<E extends LtxEntries = LtxEntries> = {
+type Ltx<L> = {
   section: string
   with?: string[]
-  entries?: E
+  entries?: Partial<L>
 }
 
 /**
@@ -14,7 +14,7 @@ type Ltx<E extends LtxEntries = LtxEntries> = {
  * @param align aligns table vertically, resuling in "=" signs appear under each other (`true` by default)
  * @returns ltx table as string
  */
-export function ltx<LE extends LtxEntries = LtxEntries>(ltx: Ltx<LE>, sort = true, align = true): string {
+export function ltx<L extends Partial<Record<keyof L, LtxValue>>>(ltx: Ltx<L>, sort = true, align = true): string {
   let output = ''
   output += '[' + ltx.section + ']'
   if (ltx.with && ltx.with.length) {
@@ -47,5 +47,5 @@ ltx.f = function <N extends keyof typeof xr_conditions | keyof typeof xr_effects
   name: N,
   ...args: SkipFirstSecond<Parameters<(typeof xr_conditions & typeof xr_effects)[N]>>
 ) {
-  return name + '(' + args.join(':') + ')'
+  return name + (args.length ? '(' + args.join(':') + ')' : '')
 }

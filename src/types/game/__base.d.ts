@@ -1,5 +1,6 @@
 /// <reference path="__base/alife.d.ts" />
 /// <reference path="__base/clsid.d.ts" />
+/// <reference path="__base/fs.d.ts" />
 /// <reference path="__base/gameobject.d.ts" />
 /// <reference path="__base/items.d.ts" />
 /// <reference path="__base/keys.d.ts" />
@@ -346,7 +347,7 @@ declare class alife {
   actor(): CseAlifeCreatureActor
   switch_distance(): number
   switch_distance(distance: number): void
-  level_name(level_id: number): string
+  level_name(level_id: number): LevelName
   level_id(): number
   has_info(obj_id: number, info_portion: string): boolean
   teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, pos: vector): void
@@ -365,7 +366,7 @@ declare class vertex {
   level_point(): vector
   level_vertex_id(): number
 }
-type LevelId =
+type LevelName =
   | 'fake_start'
   | 'k00_marsh'
   | 'l01_escape'
@@ -405,7 +406,7 @@ declare class game_graph {
   constructor()
   vertex(game_vertex_id: number): vertex | null
   valid_vertex_id(game_vertex_id: number): boolean
-  levels(): { id: LevelId }[]
+  levels(): { id: LevelName }[]
 }
 declare function get_hud(): {
   show_messages(): void

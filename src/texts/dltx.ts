@@ -1,12 +1,14 @@
 import { objectEntries } from '@/util'
-import { LtxEntries } from './ltx'
+import { LtxValue } from './ltx'
 
-type DltxEntries<O extends LtxEntries> = Partial<
+type DltxEntries<O extends object> = Partial<
   {
-    [K in keyof O]: (O[K] extends any[]
-      ? {
-          [_ in K | `${'<' | '>'}${K & string}`]: any
-        }
+    [K in keyof O]: (O[K] extends infer U
+      ? U extends any[]
+        ? {
+            [_ in K | `${'<' | '>'}${K & string}`]: any
+          }
+        : {}
       : {}) & {
       [_ in K | `!${K & string}`]: undefined
     } & {
@@ -22,7 +24,7 @@ function deleteSection({ sectionName }: { sectionName: string }) {
   return output
 }
 
-type OverrideLtx<LE extends LtxEntries> = { sectionName: string; _with?: string[]; entries?: DltxEntries<LE> }
+type OverrideLtx<L extends Record<keyof L, LtxValue>> = { sectionName: string; _with?: string[]; entries?: DltxEntries<L> }
 
 /**
  * Override a section with the use of `!` prefix.
@@ -31,7 +33,7 @@ type OverrideLtx<LE extends LtxEntries> = { sectionName: string; _with?: string[
  * - add to array with `>`,
  * - delete from array with `<`,
  */
-function override<LE extends LtxEntries>(ltx: OverrideLtx<LE>, sort = true, align = true) {
+function override<L extends Partial<Record<keyof L, LtxValue>>>(ltx: OverrideLtx<L>, sort = true, align = true) {
   let output = ''
   output += '![' + ltx.sectionName + ']'
   if (ltx._with && ltx._with.length) {
@@ -64,10 +66,8 @@ function override<LE extends LtxEntries>(ltx: OverrideLtx<LE>, sort = true, alig
   return output
 }
 
-type CreateOrOverrideLtx<LE extends LtxEntries> = { sectionName: string; _with?: string[]; entries?: DltxEntries<LE> }
-
 /** Create a section if it does not exist or override if it does with the use of `@` prefix */
-function createOrOverride<LE extends LtxEntries>(ltx: CreateOrOverrideLtx<LE>, sort = true, align = true) {
+function createOrOverride<L extends Partial<Record<keyof L, LtxValue>>>(ltx: OverrideLtx<L>, sort = true, align = true) {
   let output = ''
   output += '@[' + ltx.sectionName + ']'
   if (ltx._with && ltx._with.length) {

@@ -74,7 +74,7 @@ declare class CGameObject {
   switch_to_talk(): void
   switch_to_upgrade(): void
   reload_weapon(): void
-  hide_weapong(): void
+  hide_weapon(): void
   disable_hit_marks(_0: boolean): void
   get_task_state(task_id: string): TODO // number
   set_task_state(state: TODO /** number */, task_id: string): void
@@ -126,8 +126,7 @@ declare class CGameObject {
   activate_slot(slot: number): void
   active_item(): CGameObject | null
   object_count(): number
-  object(section_or_index: string | number): CGameObject | null
-  object_by_id(id: number): CGameObject | null
+  object(section: string): CGameObject | null
   inventory_for_each(iterator: (item: CGameObject, npc: CGameObject) => void): void
   team(): number
   squad(): number
