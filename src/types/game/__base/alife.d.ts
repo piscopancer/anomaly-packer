@@ -52,6 +52,9 @@ declare type CseAlifeCreatureActor = CseAlifeCreatureAbstract & CseAlifeTraderAb
 declare type CseAlifeSchedulable = {}
 declare type CseAlifeOnlineOfflineGroup = CseAlifeDynamicObject &
   CseAlifeSchedulable & {
+    current_action: number
+    stay_time: number
+    group_id: number
     register_member(id: number): void
     unregister_member(id: number): void
     commander_id(): number
@@ -60,4 +63,9 @@ declare type CseAlifeOnlineOfflineGroup = CseAlifeDynamicObject &
     add_location_type(mask: string): void
     clear_location_types(): void
     force_change_position(pos: vector): void
+    create_npc(smart: CseAbstract): void
+    create_npc(_0: TODO, pos: vector, _1: TODO, _2: TODO): void
+    remove_squad(): void
+    assign_smart(smart: CseAbstract, old_smart_id: number): void
+    get_script_target(): TODO | null
   }

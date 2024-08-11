@@ -2,6 +2,8 @@
 
 declare const ini_sys: system_ini
 declare function start_game_callback(): void
+
+/** @noSelf */
 declare interface GameEvents {
   // Actor
   on_before_level_changing(): void
@@ -67,7 +69,7 @@ declare interface GameEvents {
   actor_on_land(landing_speed: number): void
   // NPCs
   npc_on_update(obj: CGameObject, who: CGameObject): void
-  npc_on_death_callback(npc: CGameObject, weapon: CGameObject, flags: { gun_id: number }): void
+  // npc_on_death_callback(npc: CGameObject, weapon: CGameObject, flags: { gun_id: number }): void
   npc_on_item_take(npc: CGameObject, item: CGameObject): void
   npc_on_item_take_from_box(npc: CGameObject, box: CGameObject, item: CGameObject): void
   npc_on_item_drop(npc: CGameObject, item: CGameObject): void
@@ -76,7 +78,7 @@ declare interface GameEvents {
   npc_on_update(npc: CGameObject, table: AnyTable): void
   npc_on_before_hit(npc: CGameObject, _hit: hit, bone_id: number, flags: { ret_value: boolean }): void
   npc_on_hit_callback(npc: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
-  npc_on_death_callback(npc: CGameObject, killer: CGameObject): void
+  npc_on_death_callback(npc: CGameObject, killer?: CGameObject): void
   npc_on_fighting_actor(npc: CGameObject): void
   npc_on_weapon_strapped(npc: CGameObject, weapon: CGameObject): void
   npc_on_weapon_unstrapped(npc: CGameObject, weapon: CGameObject): void
@@ -91,7 +93,7 @@ declare interface GameEvents {
   monster_on_hit_callback(monster: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
   monster_on_net_spawn(monster: CGameObject, se_obj: CseAbstract): void
   monster_on_net_destroy(monster: CGameObject): void
-  monster_on_death_callback(monster: CGameObject, killer: CGameObject): void
+  monster_on_death_callback(monster: CGameObject, killer?: CGameObject): void
   monster_on_actor_use_callback(monster: CGameObject, user: CGameObject): void
   monster_on_loot_init(monster: CGameObject, loot: AnyTable): void
   burer_on_before_weapon_drop(burer: CGameObject, weapon: CGameObject, flags: { ret_value: boolean }): void
@@ -453,22 +455,28 @@ declare const _ALIFE_WARNING: number
 declare const _ALIFE_CACHE: AnyTable
 declare const _ALIFE_CACHE_RECORD: boolean
 declare const _ALIFE_UNREGISTER: AnyTable
-declare function alife_object(id: number): CseAbstract | void
+declare function alife_object(id: number): CseAbstract | null
+/**
+ * @param state if register (spawn) created item, defaults to `true`. Item can be modified and spawned later using `new alife().register(se_obj)`
+ */
 declare function alife_create(
   section: string,
   pos: vector,
   level_vertex_id: number,
   game_vertex_id: number,
   parent_id?: number,
-  state?: TODO
+  state?: boolean
 ): CseAbstract | null
 declare function alife_create_item(
   section: string,
-  npc: CGameObject,
+  obj: CGameObject | CseAbstract,
   table?: Partial<{
     ammo: number
-    cond: number
     uses: number
+    cond: number
+    cond_r: [min: number, max: number] | number[]
+    cond_ct: string
+    cond_cr: [min: number, max: number] | number[]
   }>
 ): void
 declare function alife_process_item(

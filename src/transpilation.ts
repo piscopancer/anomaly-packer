@@ -13,8 +13,11 @@ export async function transpile(scripts: NonNullable<PackOptions['scripts']>): P
   tstl.transpileProject(
     process.cwd() + '/gamedata/scripts/tsconfig.json',
     {
+      luaTarget: tstl.LuaTarget.Lua54,
       luaLibImport: tstl.LuaLibImportKind.Inline,
       extension: '.script',
+      noHeader: true,
+      luaPlugins: [{ name: './p.ts' }],
     },
     async (buildFileName, text) => {
       buildFileName = path.basename(buildFileName).replace('.script', '')
@@ -24,7 +27,7 @@ export async function transpile(scripts: NonNullable<PackOptions['scripts']>): P
         transpiledFiles.push({
           sourceFileName: regScript.sourceFileName,
           buildFileName,
-          buildFileText: correctLua(text),
+          buildFileText: modifyLua(text),
         })
       }
     }
@@ -32,10 +35,15 @@ export async function transpile(scripts: NonNullable<PackOptions['scripts']>): P
   return transpiledFiles
 }
 
-function correctLua(lua: string) {
+function modifyLua(lua: string) {
   lua = globalizeFuncsVars(lua)
   lua = removeExports(lua)
+  lua = beautifyLibFunctions(lua)
   return lua
+}
+
+function beautifyLibFunctions(lua: string) {
+  return lua.replaceAll(/__TS__(.+?)\(/g, '$1(')
 }
 
 function globalizeFuncsVars(lua: string) {

@@ -1,6 +1,5 @@
 import { objectEntries } from '@/util'
 import { LtxValue } from './ltx'
-
 type DltxEntries<O extends object> = Partial<
   {
     [K in keyof O]: (O[K] extends infer U

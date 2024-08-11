@@ -6,7 +6,10 @@ export default defineConfig({
   entry: ['src/index.ts', 'src/cli/anomaly-packer.ts'],
   dts: true,
   format: ['esm'],
-  onSuccess() {
-    return fs.cp(path.join(__dirname, 'src/types'), path.join(__dirname, 'dist/types'), { recursive: true })
+  async onSuccess() {
+    await Promise.all([
+      fs.cp(path.join(__dirname, 'src/types'), path.join(__dirname, 'dist/types'), { recursive: true }),
+      // fs.copyFile(path.join(__dirname, 'tsconfig.json'), path.join(__dirname, 'dist/tstl-tsconfig.json')),
+    ])
   },
 })
