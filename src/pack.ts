@@ -56,11 +56,16 @@ export async function pack(options: PackOptions) {
   } else {
     await fs.rm(buildGamedataPath, { force: true, recursive: true })
     await fs.mkdir(buildGamedataPath, { recursive: true })
+
     console.log('Reading ' + c.bold.white('gamedata ') + c.reset('directory...'))
+
     const scriptsDirPresent = existsSync(path.join(cwd, 'gamedata/scripts'))
+
     console.log(c.bold.white('scripts') + c.reset(` directory detected. Transpiling scripts...`))
+
     const transpiled = scriptsDirPresent && options.scripts ? await transpile(options.scripts) : null
     await thisRecursiveShit(path.join(cwd, 'gamedata'), buildGamedataPath, transpiled)
+
     console.log(c.cyan.bold('Scripts ') + c.cyan('were transpiled'))
   }
   if (options.refresh && options.refresh.length) {
@@ -84,20 +89,22 @@ export async function pack(options: PackOptions) {
 async function thisRecursiveShit(sourcePath: string, buildPath: string, allTranspiled: TranspiledScript[] | null) {
   const dirItems = await fs.readdir(sourcePath)
   for (const item of dirItems) {
-    const nextSourcePath = path.join(sourcePath, item)
-    const nextBuildPath = path.join(buildPath, item)
-    const itemStat = await fs.stat(nextSourcePath)
+    const curSourcePath = path.join(sourcePath, item)
+    const curBuildPath = path.join(buildPath, item)
+    const itemStat = await fs.stat(curSourcePath)
     if (itemStat.isDirectory()) {
-      if (sourcePath.includes(path.join('gamedata', 'scripts'))) {
-        return
+      // Prevent directories in gamedata/scripts from appearing in the build
+      if (curBuildPath.includes(path.join('gamedata', 'scripts')) && !curBuildPath.endsWith(path.join('gamedata', 'scripts'))) {
+        continue
       }
-      await fs.mkdir(nextBuildPath)
-      await thisRecursiveShit(nextSourcePath, nextBuildPath, allTranspiled)
+      await fs.mkdir(curBuildPath)
+      await thisRecursiveShit(curSourcePath, curBuildPath, allTranspiled)
     } else if (itemStat.isFile()) {
       const ext = path.extname(item)
-      if (['.ts', '.tsx'].includes(ext)) {
+      if (ext === '.ts' || ext === '.tsx') {
         const fileName = item.substring(0, item.length - ext.length)
         if (allTranspiled && sourcePath.includes(path.join('gamedata', 'scripts'))) {
+          // Write transpiled file in gamedata/scripts if it's registered
           for (const transpiled of allTranspiled) {
             if (fileName === transpiled.sourceFileName) {
               await fs.writeFile(
@@ -108,22 +115,23 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, allTrans
             }
           }
         } else {
-          const textScript = (await import(nextSourcePath)) as { default: (t: typeof texts) => any | Promise<any>; extension?: FileExtension }
+          const textScript = (await import(curSourcePath)) as { default: (t: typeof texts) => any | Promise<any>; extension?: FileExtension }
           try {
             const text = await textScript.default(texts)
             const extension = textScript.extension ?? 'xml'
             await fs.writeFile(path.join(buildPath, fileName + `.${extension}`), iconv.encode(text, 'win1251'))
           } catch (e) {
-            console.error('Script at %s does not have a default export or contains an error. This file will not appear in the build', nextSourcePath)
+            console.error('Script at %s does not have a default export or contains an error. This file will not appear in the build', curSourcePath)
             console.log(c.italic.gray((e as Error).message))
           }
         }
       } else {
-        if (!nextSourcePath.endsWith('ts')) {
-          return
+        // If not a TypeScript file
+        if (curBuildPath.includes(path.join('gamedata', 'scripts')) && ext !== '.script') {
+          continue
         }
-        const content = await fs.readFile(path.join(nextSourcePath))
-        await fs.writeFile(path.join(nextBuildPath), iconv.encode(content.toString('utf8'), 'win1251'))
+        const content = await fs.readFile(path.join(curSourcePath))
+        await fs.writeFile(path.join(curBuildPath), iconv.encode(content.toString('utf8'), 'win1251'))
       }
     }
   }

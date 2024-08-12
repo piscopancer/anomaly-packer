@@ -13,11 +13,10 @@ export async function transpile(scripts: NonNullable<PackOptions['scripts']>): P
   tstl.transpileProject(
     process.cwd() + '/gamedata/scripts/tsconfig.json',
     {
-      luaTarget: tstl.LuaTarget.Lua54,
+      luaTarget: tstl.LuaTarget.Lua51,
       luaLibImport: tstl.LuaLibImportKind.Inline,
       extension: '.script',
       noHeader: true,
-      luaPlugins: [{ name: './p.ts' }],
     },
     async (buildFileName, text) => {
       buildFileName = path.basename(buildFileName).replace('.script', '')
