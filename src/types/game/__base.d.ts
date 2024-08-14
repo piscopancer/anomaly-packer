@@ -440,3 +440,13 @@ interface Hud {
   AddCustomStatic(static: string, _0: boolean): TODO
 }
 declare function get_hud(): Hud | null
+declare class PropertyUI {
+  AddItem(title: string): void
+  GetSelectedItem(): SOMETHING_UI_IDK
+}
+declare class SOMETHING_UI_IDK {
+  GetTextItem(): string
+}
+declare class SOMETHING_UI_IDK_2 {
+  GetText(): string
+}
