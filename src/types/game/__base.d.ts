@@ -195,8 +195,11 @@ declare class CActor extends CGameObject {
   inventory_disabled(): boolean
   set_inventory_disabled(disabled: boolean): void
 }
-declare class ray_pick {
-  constructor()
+declare const RayPick: RayPickCtor
+interface RayPickCtor {
+  new (): RayPick
+}
+interface RayPick {
   set_position(pos: vector): void
   set_direction(dir: vector): void
   set_range(range: number): void
@@ -240,6 +243,14 @@ declare class vector {
   mul(v: vector): vector
   distance_to(to: vector): number
   distance_to_sqr(pos: vector): number
+}
+/** @customConstructor vector2 */
+declare class vector2 {
+  constructor()
+  x: number
+  y: number
+  set(x: number, y: number): vector2
+  set(v: vector): vector2
 }
 declare class hit {
   constructor()
@@ -313,7 +324,7 @@ declare class CGameTask {
   change_map_location(map_loc: string, map_obj_id: number): void
   remove_map_locations(notify: boolean): void
 }
-declare type Faction =
+type Community =
   | 'stalker'
   | 'bandit'
   | 'csky'
@@ -328,9 +339,9 @@ declare type Faction =
   | 'isg'
   | 'monster'
   | 'zombied'
-declare type Rank = 'novice' | 'trainee' | 'experienced' | 'professional' | 'veteran' | 'expert' | 'master' | 'legend'
-declare type Reputation = 'excellent' | 'really_good' | 'very_good' | 'good' | 'neutral' | 'bad' | 'very_bad' | 'really_bad' | 'terrible'
-declare type Color =
+type Rank = 'novice' | 'trainee' | 'experienced' | 'professional' | 'veteran' | 'expert' | 'master' | 'legend'
+type Reputation = 'excellent' | 'really_good' | 'very_good' | 'good' | 'neutral' | 'bad' | 'very_bad' | 'really_bad' | 'terrible'
+type Color =
   | 'default'
   | 'white'
   | 'green'
@@ -359,12 +370,6 @@ declare class alife {
   create_ammo(section: string): CseAbstract
   register(server_object: CseAbstract): void
   release(server_object: CseAbstract): void
-}
-/** @customConstructor vertex */
-declare class vertex {
-  level_id(): string
-  level_point(): vector
-  level_vertex_id(): number
 }
 type LevelName =
   | 'fake_start'
@@ -401,14 +406,26 @@ type LevelName =
   | 'labx8'
   | 'pripyat'
   | 'zaton'
+declare class vertex {
+  level_id(): number
+  level_point(): vector
+  level_vertex_id(): number
+  game_point(): vector
+}
 /** @customConstructor game_graph */
 declare class game_graph {
   constructor()
+  accessible(vertex_id: number): boolean
+  accessible(vertex_id: number, val: boolean): void
+  vertex_id(vertex: vertex): number
   vertex(game_vertex_id: number): vertex | null
   valid_vertex_id(game_vertex_id: number): boolean
-  levels(): { id: LevelName }[]
+  levels(): {
+    id: number
+    name: LevelName
+  }[]
 }
-declare function get_hud(): {
+interface Hud {
   show_messages(): void
   hide_messages(): void
   HideActorMenu(): void
@@ -421,4 +438,5 @@ declare function get_hud(): {
     }
   }
   AddCustomStatic(static: string, _0: boolean): TODO
-} | null
+}
+declare function get_hud(): Hud | null

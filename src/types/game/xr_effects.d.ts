@@ -4,10 +4,10 @@ declare namespace xr_effects {
   export function clear_smart_terrain(actor: CGameObject, npc: CGameObject, smart_name: string): void
   export function create_squad(actor: CGameObject, npc: CGameObject, squad_id: number, smart_name: string): void
   export function create_squad_member(actor: CGameObject, npc: CGameObject, member_section: string, squad_story_id: string, spawn_point?: string): void
-  export function complete_task_inc_goodwill(actor: CGameObject, npc: CGameObject, by: number, faction: Faction): void
+  export function complete_task_inc_goodwill(actor: CGameObject, npc: CGameObject, by: number, faction: Community): void
   export function disable_anomaly(actor: CGameObject, npc: CGameObject, anomaly_story_id: string | string): void
   export function enable_anomaly(actor: CGameObject, npc: CGameObject, anomaly_story_id: string | string): void
-  export function fail_task_dec_goodwill(actor: CGameObject, npc: CGameObject, by: number, faction: Faction): void
+  export function fail_task_dec_goodwill(actor: CGameObject, npc: CGameObject, by: number, faction: Community): void
   export function give_actor(actor: CGameObject, npc: CGameObject, ...sections: string[]): void
   export function give_task(actor: CGameObject, npc: CGameObject, task_id: string): void
   export function heal_squad(actor: CGameObject, npc: CGameObject, squad_story_id: string): void

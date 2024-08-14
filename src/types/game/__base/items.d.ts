@@ -1,4 +1,4 @@
-declare type Item = `${Items}`
+type Item = `${Items}`
 declare const enum Items {
   _1p29 = '1p29',
   ac10632 = 'ac10632',

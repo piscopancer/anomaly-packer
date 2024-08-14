@@ -43,8 +43,8 @@ declare class CGameObject {
   /** XML name */
   profile_name(): string | null
   name(): string
-  /** Id of object to which this object belongs. Used for items in inventories and boxes. @returns -1 (if no parent) */
-  parent(): number | null
+  /** Object to which this object belongs. Used for items in inventories and boxes */
+  parent(): CGameObject | null
   mass(): number
   /** Center of physical shell */
   center(): vector

@@ -4,7 +4,7 @@ declare const ini_sys: system_ini
 declare function start_game_callback(): void
 
 /** @noSelf */
-declare interface GameEvents {
+interface GameEvents {
   // Actor
   on_before_level_changing(): void
   on_level_changing(): void
@@ -136,8 +136,14 @@ declare interface GameEvents {
   ActorMenu_on_item_drag_drop(item_from: CGameObject, item_to: CGameObject, slot_from: number, slot_to: number): void
   ActorMenu_on_item_focus_receive(item: CGameObject): void
   ActorMenu_on_item_focus_lost(item: CGameObject): void
-  ActorMenu_on_item_before_move(flags: { ret_value: boolean }, npc_id: number, obj: CGameObject, mode: Suggest<'loot'>, inv_id_from: number): void
-  ActorMenu_on_item_after_move(npc_id: number, obj: CGameObject, mode: Suggest<'loot'>, inv_id_from: number): void
+  ActorMenu_on_item_before_move(
+    flags: { ret_value: boolean },
+    inv_id: number,
+    item: CGameObject,
+    mode: 'inventory' | 'loot' | 'trade' | 'repair',
+    inv_id_from: number
+  ): void
+  ActorMenu_on_item_after_move(inv_id: number, item: CGameObject, mode: 'inventory' | 'loot' | 'trade' | 'repair', inv_id_from: number): void
   ActorMenu_on_trade_started(): void
   ActorMenu_on_trade_closed(): void
   GUI_on_show(name: string, path?: string): void
@@ -478,7 +484,7 @@ declare function alife_create_item(
     cond_ct: string
     cond_cr: [min: number, max: number] | number[]
   }>
-): void
+): CseAbstract
 declare function alife_process_item(
   section: string,
   id: number,
@@ -491,7 +497,7 @@ declare function alife_process_item(
 declare function alife_release(se_obj: CseAbstract, msg?: string): void
 declare function alife_release_id(id: number, msg?: string): void
 declare function alife_clone_weapon(se_obj: CseAbstract, section: string, parent_id: number): CseAbstract | void
-declare function alife_character_community(se_obj: CseAbstract): Faction | void
+declare function alife_character_community(se_obj: CseAbstract): Community | void
 declare function alife_on_limit(): boolean
 declare function alife_record(se_obj: CseAbstract, state?: boolean): void
 declare function alife_first_update(): void
@@ -505,9 +511,9 @@ declare function create_ammo(
 ): Record<number, CseAbstract>
 declare function SetSwitchDistance(dist: number): void
 declare function get_object_community(obj: CGameObject | CseAbstract): ReturnType<typeof alife_character_community>
-declare function character_community(obj: CGameObject): Faction
-declare function get_actor_true_community(): Faction
-declare function set_actor_true_community(comm: Faction, now: boolean): void
+declare function character_community(obj: CGameObject): Community
+declare function get_actor_true_community(): Community
+declare function set_actor_true_community(comm: Community, now: boolean): void
 declare function get_object_squad(obj: CGameObject): CseAlifeOnlineOfflineGroup | null
 declare function set_inactivate_input_time(delta_time: number): void
 declare function npc_in_actor_frustrum(npc: CGameObject): boolean
@@ -522,9 +528,9 @@ declare function pstor_is_registered_type(value_type: any): boolean
  * Storage for gameobjects using `db.storage`
  * @param val Lua-supported value, `gamedata` is not allowed
  */
-declare function save_var(obj: CGameObject | null, var_name: string, val: boolean | string | number): void
+declare function save_var(obj: CGameObject | null, var_name: string, val?: boolean | string | number | null): void
 /** @returns value of a variable for a gameobject from `db.storage` */
-declare function load_var(obj: CGameObject | null, var_name: string, def_val: boolean | string | number): any
+declare function load_var(obj: CGameObject | null, var_name: string, def_val?: boolean | string | number | null): any
 declare function save_ctime(obj: CGameObject | null, var_name: string, val: boolean | string | number): void
 declare function load_ctime(obj: CGameObject | null, var_name: string): any
 declare function se_save_var(id: string, name: string, varname: string, val: any): void
@@ -631,7 +637,8 @@ declare function update_best_weapon(
     gun_id: number | null
   }
 ): CGameObject | void
-declare var SIMBOARD: {
+declare const SIMBOARD: SIMBOARD
+declare interface SIMBOARD {
   assign_squad_to_smart(squad: CseAlifeOnlineOfflineGroup, _0: TODO): void
   create_squad(smart: CseAbstract, squad_id: number): CseAlifeOnlineOfflineGroup
   create_squad_at_named_location(location: string, squad_id: string): CseAlifeOnlineOfflineGroup | null
@@ -639,7 +646,7 @@ declare var SIMBOARD: {
   get_smart_population(smart: CseAbstract): number
   get_smart_by_name(name: string): CseAbstract | null
   remove_squad(squad: CseAlifeOnlineOfflineGroup): void
-  set_actor_community(comm: Faction): void
+  set_actor_community(comm: Community): void
   start_sim(): void
   stop_sim(): void
   setup_squad_and_group(squad: CseAlifeOnlineOfflineGroup): void
@@ -652,7 +659,7 @@ declare var SIMBOARD: {
   >
   unregister_smart(smart: TODO): void
 }
-declare interface MData {}
+interface MData {}
 /**
  * Marshal library. Save serializable Lua data to the save file. See the encoded save data in the .scoc file. Register for `load_state` and `save_state` game events to interact with Marshall library, load and save data you need
  * @example

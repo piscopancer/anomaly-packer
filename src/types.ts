@@ -319,7 +319,7 @@ export namespace Ltx {
       {
         icon: string
         prior: number
-        sim_communities: Faction | Faction[]
+        sim_communities: Community | Community[]
         storyline: boolean
         title: string
         title_functor: CondList
