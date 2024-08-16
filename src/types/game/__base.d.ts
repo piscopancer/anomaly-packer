@@ -6,6 +6,7 @@
 /// <reference path="__base/keys.d.ts" />
 /// <reference path="__base/smarts.d.ts" />
 /// <reference path="__base/system_ini.d.ts" />
+/// <reference path="__base/ui.d.ts" />
 /// <reference path="__base/weather.d.ts" />
 
 // This is the base type declaration file that includes types from the _unpacked and luabind definitions from XRay Monolith.
@@ -425,28 +426,59 @@ declare class game_graph {
     name: LevelName
   }[]
 }
-interface Hud {
-  show_messages(): void
-  hide_messages(): void
-  HideActorMenu(): void
-  HidePdaMenu(): void
-  GetCustomStatic(static: Suggest<'gameplay_notification' | 'notify_icon' | 'showcase_notification'>): {
-    wnd(): {
-      TextControl(): {
-        SetTextColor(color: string): void
-      }
-    }
-  }
-  AddCustomStatic(static: string, _0: boolean): TODO
+/** @customConstructor CScriptXmlInit */
+declare class CScriptXmlInit {
+  constructor()
+  ParseFile(file: string): void
+  ParseDirFile(dir: string, file: string): void
+  NodeExist(path: string, index: number): boolean
+  GetNodesNum(path: string, index: number, tag: string): number
+  NavigateToNode(path: string, index: number): boolean
+  NavigateToNode_ByAttribute(tag: string, attr_name: string, attr_value: string): boolean
+  NavigateToNode_ByPath(path: string, index: number, tag: string, attr: string, attr_value_pattern: string): boolean
+  NavigateToRoot(): void
+  ReadValue(path: string, index: number): string | null
+  ReadAttribute(path: string, index: number, attr: string): string | null
+  InitWindow(path: string, index: number, window: CUIWindow): void
+  InitHint(path: string, parent: CUIWindow): UIHint | null
+  InitFrame(path: string, parent: CUIWindow): CUIFrameWindow | null
+  InitFrameLine(path: string, parent: CUIWindow): CUIFrameLineWnd | null
+  InitEditBox(path: string, parent: CUIWindow): CUIEditBox | null
+  InitStatic(path: string, parent: CUIWindow): CUIStatic | null
+  InitTextWnd(path: string, parent: CUIWindow): CUITextWnd | null
+  InitAnimStatic(path: string, parent: CUIWindow): CUIStatic | null
+  InitSleepStatic(path: string, parent: CUIWindow): CUIStatic | null
+  Init3tButton(path: string, parent: CUIWindow): CUI3tButton | null
+  InitCheck(path: string, parent: CUIWindow): CUICheckButton | null
+  InitSpinNum(path: string, parent: CUIWindow): CUISpinNum | null
+  InitSpinFlt(path: string, parent: CUIWindow): CUISpinFlt | null
+  InitSpinText(path: string, parent: CUIWindow): CUISpinText | null
+  InitComboBox(path: string, parent: CUIWindow): CUIComboBox | null
+  InitTab(path: string, parent: CUIWindow): CUITabControl | null
+  InitServerList(path: string, parent: CUIWindow): CServerList | null
+  InitMapList(path: string, parent: CUIWindow): CUIMapList | null
+  InitMapInfo(path: string, parent: CUIWindow): CUIMapInfo | null
+  InitTrackBar(path: string, parent: CUIWindow): CUITrackBar | null
+  InitCDkey(path: string, parent: CUIWindow): CUIEditBox | null
+  InitMPPlayerName(path: string, parent: CUIWindow): CUIEditBox | null
+  InitKeyBinding(path: string, parent: CUIWindow): CUIWindow | null
+  InitMMShniaga(path: string, parent: CUIWindow): CUIMMShniaga | null
+  InitScrollView(path: string, parent: CUIWindow): CUIScrollView | null
+  InitListBox(path: string, parent: CUIWindow): CUIListBox | null
+  InitProgressBar(path: string, parent: CUIWindow): CUIProgressBar | null
 }
-declare function get_hud(): Hud | null
-declare class PropertyUI {
-  AddItem(title: string): void
-  GetSelectedItem(): SOMETHING_UI_IDK
-}
-declare class SOMETHING_UI_IDK {
-  GetTextItem(): string
-}
-declare class SOMETHING_UI_IDK_2 {
-  GetText(): string
+declare const enum EquipmentSlotId {
+  Knife = 1,
+  Weapon1 = 2,
+  Weapon2 = 3,
+  Grenade = 4,
+  Binocular = 5,
+  Bolt = 6,
+  Outfit = 7,
+  PDA = 8,
+  Detector = 9,
+  Torch = 10,
+  Artefact = 11,
+  Helmet = 12,
+  Backpack = 13,
 }

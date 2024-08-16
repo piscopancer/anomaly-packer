@@ -56,14 +56,7 @@ interface GameEvents {
   bullet_on_remove(bullet: Bullet): void
   game_object_on_net_spawn(obj: CGameObject): void
   game_object_on_net_destroy(obj: CGameObject): void
-  on_news_received(
-    window: TODO /** UIWindow*/,
-    time: TODO /** UITimeText*/,
-    caption: TODO /** UICaptionText*/,
-    message: TODO /** UIMsgText*/,
-    icon: TODO /** UIIconStatic*/,
-    tags: {}
-  ): void
+  on_news_received(window: CUIWindow, time: CUITextWnd, caption: CUITextWnd, message: CUITextWnd, icon: CUIStatic, tags: {}): void
   on_before_hit_after_calcs(_hit: hit, target: CGameObject, bone_id: number): void
   on_mouse_wheel(
     /** 1 - up, 0 - down */
@@ -90,8 +83,8 @@ interface CGameObject {
   // Actor
   get_scope_ui(): {
     name: string
-    uiWindow: TODO /** CUIWindow */
-    statics: TODO /** CUIStatic[] */
+    uiWindow: CUIWindow
+    statics: CUIStatic[]
   }
   set_scope_ui(
     /** @example 'wpn_crosshair_mosin' */
@@ -151,10 +144,28 @@ interface RayPickCtor {
 }
 
 declare namespace game {
-  export function change_game_news_show_time(window: TODO /** CUIWindow */, time: number): void
+  export function change_game_news_show_time(window: CUIWindow, time: number): void
   export function ui2world(pos: vector2): LuaMultiReturn<[result: vector, obj_id: number]>
-  export function on_map_right_click(...args: TODO): void
-  export function update_pda_news_from_uiwindow(window: TODO /** CUIWindow */): void
+  export function on_map_right_click(
+    property_ui: CUIPropertiesBox,
+    map: {
+      /** Name of hovered map */
+      level_name: LevelName
+      /** Position in the real world under the cursor on the hovered map */
+      pos: vector2
+      /** Position under the cursor on the global map canvas, not the real world position */
+      global_map_pos: vector2
+      /** ID of object under cursor, `65535` if no object */
+      object_id: number
+      /** Tooltip for the object under cursor, `null` if no object */
+      hint: string | null
+      /** Level vertex id by position on the hovered map */
+      lvid: number
+      /** Game vertex id by position on the hovered map */
+      gvid: number
+    }
+  ): void
+  export function update_pda_news_from_uiwindow(window: CUIWindow): void
   export function world2ui(
     pos: vector,
     /** @default false */
@@ -220,7 +231,8 @@ declare namespace level {
     draw_hud?: boolean,
     affect_hud?: boolean
   ): void
-  export function iterate_nearest(...args: TODO): TODO
+  /** @returns `true` meaning the desired object was found, stopping the iteration */
+  export function iterate_nearest(pos: vector, distance: number, functor: (obj: CGameObject) => boolean | void): void
 }
 
 declare namespace callbacks_gameobject {
@@ -230,8 +242,10 @@ declare namespace callbacks_gameobject {
 
 //#region DXML
 
-/** Open file, apply DXML edits and return {@link XmlObj} outside of callback */
-declare function openXMLFile(path: string): XmlObj | null
+declare namespace dxml_core {
+  /** Open file, apply DXML edits and return {@link XmlObj} outside of callback */
+  export function openXMLFile(path: string): XmlObj | null
+}
 
 interface XmlElement {
   el: {

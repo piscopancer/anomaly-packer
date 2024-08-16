@@ -268,11 +268,14 @@ declare function LoadScheme(filename: string, scheme: string, ...args: any[]): v
  *
  * Prefix with a special symbol to change appearance.
  *
+ * - `$` pink
  * - `-` green
  * - `!` red
  * - `~` yellow
  * - `*` gray
  * - `#` cyan
+ * - `@` blue
+ * - `/` light blue
  */
 declare function printf(...args: any[]): void
 declare function printe(...args: any[]): void
