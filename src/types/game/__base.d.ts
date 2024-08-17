@@ -213,18 +213,33 @@ interface RayPick {
   get_element(): number
 }
 declare class rq_result {
-  readonly object: CGameObject
+  readonly object: CGameObject | null
   readonly range: number
   readonly element: number
+  readonly material_name: string | null
+  readonly material_flags: number
+  readonly material_phfriction: number
+  readonly material_phdamping: number
+  readonly material_phspring: number
+  readonly material_phbounce_start_velocity: number
+  readonly material_phbouncing: number
+  readonly material_flotation_factor: number
+  readonly material_shoot_factor: number
+  readonly material_shoot_factor_mp: number
+  readonly material_bounce_damage_factor: number
+  readonly material_injurious_speed: number
+  readonly material_vis_transparency_factor: number
+  readonly material_snd_occlusion_factor: number
+  readonly material_density_factor: number
 }
-declare class rq_target {
-  readonly rqtNone: 0
-  readonly rqtObject: 1
-  readonly rqtStatic: 2
-  readonly rqtShape: 4
-  readonly rqtObstacle: 8
-  readonly rqtBoth: 3
-  readonly rqtDyn: 13
+declare const enum rq_target {
+  None = 0,
+  Object = 1 << 0,
+  Static = 1 << 1,
+  Shape = 1 << 2,
+  Obstacle = 1 << 3,
+  Both = rq_target.Object | rq_target.Static,
+  Dyn = rq_target.Object | rq_target.Shape | rq_target.Obstacle,
 }
 /** @customConstructor vector */
 declare class vector {
@@ -344,15 +359,22 @@ type Rank = 'novice' | 'trainee' | 'experienced' | 'professional' | 'veteran' | 
 type Reputation = 'excellent' | 'really_good' | 'very_good' | 'good' | 'neutral' | 'bad' | 'very_bad' | 'really_bad' | 'terrible'
 type Color =
   | 'default'
-  | 'white'
-  | 'green'
-  | 'yellow'
   | 'red'
   | 'orange'
-  | `d_${'orange' | 'red' | 'cyan' | 'red' | 'purple' | 'green' | 'blue'}`
-  | 'ui_gray_1'
-  | 'ui_gray_2'
-  | `pda_${'green' | 'blue' | 'yellow' | 'white'}`
+  | 'yellow'
+  | 'green'
+  | 'blue'
+  | 'white'
+  | 'black'
+  | 'gray'
+  | 'light_gray'
+  | 'tut_gray'
+  | 'dark_gray'
+  | 'edit'
+  | `d_${'orange' | 'red' | 'cyan' | 'red_1' | 'purple' | 'green' | 'blue'}`
+  | `ui_${'red' | 'green' | 'blue' | 'white' | 'black' | 'gray' | 'yellow' | 'gray_1' | 'gray_2' | 'gray_3' | 'lime'}`
+  | `ui_${1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10}`
+  | `pda_${'green' | 'blue' | 'yellow' | 'white' | 'red'}`
 /** @customConstructor alife */
 declare class alife {
   constructor()

@@ -11,7 +11,16 @@ declare function GetFontGraffiti50Russian(): CGameFont | null
 declare function GetFontLetterica25(): CGameFont | null
 declare function GetCursorPosition(): vector2
 declare function SetCursorPosition(pos: vector2): void
-declare function FitInRect(window: CUIWindow, rect: FRect, border?: number, dx16pos?: number): boolean
+declare function FitInRect(window: CUIWindow, rect: Frect, border?: number, dx16pos?: number): boolean
+declare class Fbox {
+  constructor()
+  min: number
+  max: number
+}
+declare class Frect {
+  constructor()
+  set(left: number, top: number, right: number, bottom: number): Frect
+}
 declare class StaticDrawableWrapper {
   m_endTime: number
   wnd(): CUIWindow | null
@@ -178,7 +187,6 @@ declare const enum VerticalTextAlignment {
   Bottom = 2,
 }
 declare class CGameFont {}
-declare class FRect {}
 declare class CUILines {
   SetFont(font: CGameFont): void
   SetText(text: string): void
@@ -187,7 +195,7 @@ declare class CUILines {
   SetElipsis(ellipsis: boolean): void
   SetTextColor(color: number): void
 }
-declare class CUIStatic {
+declare class CUIStatic extends CUIWindow {
   constructor()
   SetTextureColor(color: number): void
   GetTextureColor(): number
@@ -197,9 +205,9 @@ declare class CUIStatic {
   TextControl(): CUILines | null
   InitTexture(texture: string): void
   InitTextureEx(texture: string, sh: string): void
-  SetTextureRect(rect: FRect): void
+  SetTextureRect(rect: Frect): void
   SetStretchTexture(stretch: boolean): void
-  GetTextureRect(): FRect | null
+  GetTextureRect(): Frect | null
   EnableHeading(enable: boolean): void
   GetHeading(): number
   SetHeading(heading: number): void
@@ -248,8 +256,8 @@ declare class CUIWindow {
   IsAutoDelete(): boolean
   IsCursorOverWindow(): boolean
   FocusReceiveTime(): number
-  GetAbsoluteRect(rect: FRect): void
-  SetWndRect(rect: FRect): void
+  GetAbsoluteRect(rect: Frect): void
+  SetWndRect(rect: Frect): void
   SetWndPos(pos: vector2): void
   SetWndSize(size: vector2): void
   GetWndPos(window: CUIWindow): vector2 | null
@@ -356,7 +364,7 @@ declare class CUIComboBox {
 declare class CUIPropertiesBox {
   RemoveItem(tag: number): void
   RemoveAll(): void
-  Show(parent_rect: FRect, point: vector2): void
+  Show(parent_rect: Frect, point: vector2): void
   Hide(): void
   GetSelectedItem(): CUIListBoxItem | null
   AutoUpdateSize(): void
