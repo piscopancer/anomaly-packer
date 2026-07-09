@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import c from 'chalk'
 import Table from 'cli-table3'
 import fs from 'fs/promises'
@@ -9,13 +10,13 @@ async function run() {
   switch (cmd) {
     case 'types':
       const [, , , cmd] = argv as [never, never, never, 'list' | 'tsconfig']
-      const declarationsDirs = await fs.readdir(path.join(__dirname, '..', 'types'))
+      const declarationsDirs = await fs.readdir(path.join(import.meta.dirname, '..', 'types'))
       let declarationGroups = await Promise.all(
         declarationsDirs.map(async (dir) => {
           return {
             dir,
             dts: await fs
-              .readdir(path.join(__dirname, '..', 'types', dir))
+              .readdir(path.join(import.meta.dirname, '..', 'types', dir))
               .then((tds) => tds.filter((tds) => tds.endsWith('d.ts')).map((td) => td.replace('.d.ts', ''))),
           }
         })

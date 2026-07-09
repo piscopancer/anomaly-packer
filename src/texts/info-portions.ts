@@ -1,14 +1,6 @@
 import { objectEntries } from '@/util'
-import json2xml from 'json2xml'
-import { toXmlStructure } from './_util'
+import { buildXml, element, field } from './_xml'
 import { Task } from './task'
-
-type JsonInfoPortions = {
-  game_information_portions: {
-    attrs: { id: string }
-    info_portion: Record<string, any>[]
-  }[]
-}
 
 type Location = {
   level: number
@@ -40,25 +32,22 @@ type InfoPortions<Id extends string = string> = Record<
 type PortionEntry = keyof NonNullable<InfoPortions[keyof InfoPortions]>
 
 export function infoPortions<Id extends string>(portions: InfoPortions<Id>): string {
-  const json: JsonInfoPortions = {
-    game_information_portions: objectEntries(portions).map(([id, pe]) => ({
-      attrs: {
-        id,
-      },
-      info_portion: pe
-        ? [
-            ...toXmlStructure('action' satisfies PortionEntry, pe.action),
-            ...toXmlStructure('actor_dialog' satisfies PortionEntry, pe.actor_dialog),
-            ...toXmlStructure('article' satisfies PortionEntry, pe.article),
-            ...toXmlStructure('dialog' satisfies PortionEntry, pe.dialog),
-            ...toXmlStructure('disable' satisfies PortionEntry, pe.disable),
-            // TODO
-            // location
-            // task
-          ]
-        : [],
-    })),
-  }
-  const xml = json2xml(json, { attributes_key: 'attrs' })
-  return xml
+  return buildXml([
+    element(
+      'game_information_portions',
+      undefined,
+      objectEntries(portions).map(([id, pe]) =>
+        element('info_portion', { id: id as string }, pe
+          ? [
+              ...field('action' satisfies PortionEntry, pe.action),
+              ...field('actor_dialog' satisfies PortionEntry, pe.actor_dialog),
+              ...field('article' satisfies PortionEntry, pe.article),
+              ...field('dialog' satisfies PortionEntry, pe.dialog),
+              ...field('disable' satisfies PortionEntry, pe.disable),
+              // TODO: location, task
+            ]
+          : [])
+      )
+    ),
+  ])
 }

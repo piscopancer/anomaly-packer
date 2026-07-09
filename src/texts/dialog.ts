@@ -1,6 +1,4 @@
-import { ArrayToValue, SplitObject, StrictOmit } from '@/util'
-import json2xml from 'json2xml'
-import { toXmlStructure } from './_util'
+import { buildXml, element, field, XmlNode } from './_xml'
 
 type DialogPhraseShared = {
   /**
@@ -81,59 +79,36 @@ export type Dialog<PhraseId extends number = number> = DialogPhraseShared & {
 }
 
 export function dialog<PhraseId extends number>(dialog: Dialog<PhraseId>): string {
-  type JsonPhrase = SplitObject<Partial<{ [K in keyof StrictOmit<Phrase, 'id'>]: ArrayToValue<Phrase[K]> }>>[]
-  type JsonDialogPhraseShared = SplitObject<{ [K in keyof DialogPhraseShared]: ArrayToValue<DialogPhraseShared[K]> }>
-  type JsonDialogStructure = {
-    attrs: { id: string }
-    dialog: (JsonDialogPhraseShared & {
-      init_func?: string
-      phrase_list?: {
-        phrase: JsonPhrase
-      }[]
-    })[]
+  const children: XmlNode[] = [
+    ...field('precondition' satisfies keyof Dialog, dialog.precondition),
+    ...field('has_info' satisfies keyof Dialog, dialog.has_info),
+    ...field('dont_has_info' satisfies keyof Dialog, dialog.dont_has_info),
+    ...field('give_info' satisfies keyof Dialog, dialog.give_info),
+    ...field('disable_info' satisfies keyof Dialog, dialog.disable_info),
+    ...field('init_func' satisfies keyof Dialog, dialog.init_func),
+    ...field('action' satisfies keyof Dialog, dialog.action),
+  ]
+  if (dialog.phrases) {
+    children.push(
+      element(
+        'phrase_list',
+        undefined,
+        dialog.phrases.map((phr) =>
+          element('phrase', { id: phr.id }, [
+            ...field('precondition' satisfies keyof Phrase, phr.precondition),
+            ...field('has_info' satisfies keyof Phrase, phr.has_info),
+            ...field('dont_has_info' satisfies keyof Phrase, phr.dont_has_info),
+            ...field('text' satisfies keyof Phrase, phr.text),
+            ...field('script_text' satisfies keyof Phrase, phr.script_text),
+            ...field('give_info' satisfies keyof Phrase, phr.give_info),
+            ...field('disable_info' satisfies keyof Phrase, phr.disable_info),
+            ...field('action' satisfies keyof Phrase, phr.action),
+            ...field('is_final' satisfies keyof Phrase, phr.is_final),
+            ...field('next' satisfies keyof Phrase, phr.next),
+          ])
+        )
+      )
+    )
   }
-
-  function dialogToJson(dialog: Dialog<number>): JsonDialogStructure {
-    return {
-      attrs: {
-        id: dialog.id,
-      },
-      dialog: [
-        ...toXmlStructure('precondition' satisfies keyof Dialog, dialog.precondition),
-        ...toXmlStructure('has_info' satisfies keyof Dialog, dialog.has_info),
-        ...toXmlStructure('dont_has_info' satisfies keyof Dialog, dialog.dont_has_info),
-        ...toXmlStructure('give_info' satisfies keyof Dialog, dialog.give_info),
-        ...toXmlStructure('disable_info' satisfies keyof Dialog, dialog.disable_info),
-        ...toXmlStructure('init_func' satisfies keyof Dialog, dialog.init_func),
-        ...toXmlStructure('action' satisfies keyof Dialog, dialog.action),
-        dialog.phrases
-          ? {
-              phrase_list: dialog.phrases.map((phr) => {
-                return {
-                  attrs: {
-                    id: phr.id,
-                  },
-                  phrase: [
-                    ...toXmlStructure('precondition' satisfies keyof Phrase, phr.precondition),
-                    ...toXmlStructure('has_info' satisfies keyof Phrase, phr.has_info),
-                    ...toXmlStructure('dont_has_info' satisfies keyof Phrase, phr.dont_has_info),
-                    ...toXmlStructure('text' satisfies keyof Phrase, phr.text),
-                    ...toXmlStructure('script_text' satisfies keyof Phrase, phr.script_text),
-                    ...toXmlStructure('give_info' satisfies keyof Phrase, phr.give_info),
-                    ...toXmlStructure('disable_info' satisfies keyof Phrase, phr.disable_info),
-                    ...toXmlStructure('action' satisfies keyof Phrase, phr.action),
-                    ...toXmlStructure('is_final' satisfies keyof Phrase, phr.is_final),
-                    ...toXmlStructure('next' satisfies keyof Phrase, phr.next),
-                  ] satisfies JsonPhrase,
-                }
-              }),
-            }
-          : {},
-      ],
-    }
-  }
-
-  const dialogAsJson = dialogToJson(dialog)
-  const xml = json2xml(dialogAsJson, { attributes_key: 'attrs' })
-  return xml
+  return buildXml([element('dialog', { id: dialog.id }, children)])
 }

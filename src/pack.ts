@@ -4,6 +4,7 @@ import fs from 'fs/promises'
 import iconv from 'iconv-lite'
 import path from 'path'
 import trash from 'trash'
+import { pathToFileURL } from 'url'
 import { FileExtension } from '.'
 import * as texts from './texts'
 import { transpile, TranspiledScript } from './transpilation'
@@ -115,7 +116,9 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, allTrans
             }
           }
         } else {
-          const textScript = (await import(curSourcePath)) as { default: (t: typeof texts) => any | Promise<any>; extension?: FileExtension }
+          // A Windows absolute path must become a file:// URL for ESM import; the query busts the module cache so repeated packs re-read edited scripts
+          const moduleUrl = pathToFileURL(curSourcePath).href + '?t=' + Date.now()
+          const textScript = (await import(moduleUrl)) as { default: (t: typeof texts) => any | Promise<any>; extension?: FileExtension }
           try {
             const text = await textScript.default(texts)
             const extension = textScript.extension ?? 'xml'

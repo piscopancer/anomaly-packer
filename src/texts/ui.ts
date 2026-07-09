@@ -1,6 +1,7 @@
-import json2xml from 'json2xml'
+import type { JSX } from 'react'
 import { renderToString } from 'react-dom/server'
 import jsxToJson, { JsxCreateElementNode } from 'simplified-jsx-to-ast'
+import { buildXml, element, textNode, XmlNode } from './_xml'
 
 /**
  * Convert HEX color code to RGBA object
@@ -33,25 +34,24 @@ function hexToRgba(hex: string): {
 }
 
 function jsxToXml(tree: JSX.Element) {
-  const ast = jsxToJson(renderToString(tree))
-  const fAst = formatAst(ast)
-  const xml = json2xml(fAst, { attributes_key: 'props' })
-  return xml
+  return buildXml(astToNodes(jsxToJson(renderToString(tree))))
 }
 
-function formatAst(ast: JsxCreateElementNode): any {
+function astToNodes(ast: JsxCreateElementNode): XmlNode[] {
   if (typeof ast === 'string') {
-    return ast
-  } else if (typeof ast === 'object') {
-    if (ast.type === 'Fragment') {
-      return ast.children
-    }
-    return {
-      [ast.type]: [...ast.children].map(formatAst),
-      props: ast.props,
-    }
+    return ast === '' ? [] : [textNode(ast)]
   }
-  return ast
+  const children = normalizeChildren(ast.children)
+  // A Fragment carries no tag of its own — it collapses into its children
+  return ast.type === 'Fragment' ? children : [element(ast.type, ast.props, children)]
+}
+
+/** simplified-jsx-to-ast types children as an array, but a text-only Fragment hands back the raw string, so both shapes are normalized here. */
+function normalizeChildren(children: JsxCreateElementNode[] | string): XmlNode[] {
+  if (typeof children === 'string') {
+    return children === '' ? [] : [textNode(children)]
+  }
+  return children.flatMap(astToNodes)
 }
 
 export const ui = { jsxToXml, hexToRgba }

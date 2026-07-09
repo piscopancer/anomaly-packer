@@ -1,11 +1,11 @@
 {
   "name": "anomaly-packer",
-  "description": "Anomaly Packer is a tool that helps in making of an addon for STALKER Anomaly with type-safe code using TypeScript",
+  "description": "Anomaly Packer is a utility package for STALKER Anomaly creators to help them develop addons at speed with TypeScript's type-safety and game-oriented build tools.",
   "keywords": [
     "stalker",
     "anomaly"
   ],
-  "version": "0.0.34",
+  "version": "0.1.0",
   "author": {
     "url": "https://github.com/piscopancer",
     "name": "piscopancer"
@@ -13,49 +13,53 @@
   "repository": {
     "url": "https://github.com/piscopancer/anomaly-packer"
   },
-  "module": "index.ts",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
   "files": [
     "dist"
   ],
-  "prettier": {
-    "printWidth": 160,
-    "singleQuote": true,
-    "useTabs": false,
-    "semi": false,
-    "jsxSingleQuote": true
-  },
   "scripts": {
-    "build": "bun tsup",
-    "test": "bun test/i.ts",
-    "anomaly-packer": "bun src/cli/anomaly-packer.ts"
+    "build": "tsdown",
+    "anomaly-packer": "tsx src/cli/anomaly-packer.ts",
+    "format": "prettier --write .",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "tsdown && changeset publish"
   },
   "bin": {
-    "anomaly-packer": "dist/cli/anomaly-packer.js"
+    "anomaly-packer": "dist/cli/anomaly-packer.mjs"
   },
+  "packageManager": "pnpm@10.19.0",
   "devDependencies": {
-    "@types/bun": "latest",
+    "@changesets/cli": "^2.31.0",
+    "@types/node": "^24.2.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "cli-table3": "^0.6.5",
-    "tsup": "^8.2.3",
-    "typescript": "^5.5.3"
+    "prettier": "^3.9.5",
+    "tsdown": "^0.22.4",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.2"
   },
   "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^6.0.0"
   },
   "dependencies": {
-    "@types/json2xml": "^0.1.4",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "chalk": "^5.3.0",
-    "iconv-lite": "^0.6.3",
-    "json2xml": "^0.1.3",
-    "lua-types": "^2.13.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "chalk": "^5.6.2",
+    "fast-xml-parser": "^5.9.3",
+    "iconv-lite": "^0.7.3",
+    "lua-types": "^2.14.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "simplified-jsx-to-ast": "^0.4.0",
-    "trash": "^9.0.0",
-    "typescript-to-lua": "^1.26.2"
+    "trash": "^10.1.1",
+    "typescript-to-lua": "^1.37.0"
   }
 }
