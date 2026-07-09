@@ -1,5 +1,11 @@
 # anomaly-packer
 
+## 0.1.1
+
+### Patch Changes
+
+- Открыт подпуть `anomaly-packer/types/*` в exports-мапе, чтобы игровые типы можно было подключать через `/// <reference types="anomaly-packer/types/game/db" />` (и через массив `types` в tsconfig). Раньше exports-мапа открывала только корень `.`, из-за чего глубокие ссылки на типы не резолвились. Команда CLI `types tsconfig` теперь печатает пути в новом формате `anomaly-packer/types/...`.
+
 ## 0.1.0
 
 ### Minor Changes

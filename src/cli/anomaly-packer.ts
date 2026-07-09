@@ -33,7 +33,7 @@ async function run() {
           const types: string[] = []
           for (const d of declarationGroups) {
             for (const dts of d.dts) {
-              types.push(`anomaly-packer/dist/types/${d.dir}/${dts}`)
+              types.push(`anomaly-packer/types/${d.dir}/${dts}`)
             }
           }
           console.log(JSON.stringify({ types }, null, 2))
