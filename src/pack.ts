@@ -3,28 +3,35 @@ import { existsSync } from 'fs'
 import fs from 'fs/promises'
 import iconv from 'iconv-lite'
 import path from 'path'
-import trash from 'trash'
 import { pathToFileURL } from 'url'
 import { FileExtension } from '.'
 import * as texts from './texts'
 import { transpile, TranspiledScript } from './transpilation'
 
 export type PackOptions = {
+  /**
+   * Flat identifier of the addon. Every registered script is prefixed with it (the `index` entry becomes the bare id), and the runtime scripts Anomaly Packer copies into the build are namespaced with it too, so nothing collides with other addons: e.g. importing 'anomaly-packer/mcm' emits `<addonId>__ap_mcm.script`.
+   *
+   * @example
+   *
+   * 'pcprs_healing_campfires'
+   */
+  addonId: string
   build?: {
     outDirName?: string
   }
   /**
-   * TypeScript scripts under /gamedata/scripts directory will be transpiled but not included in the build by default. This is due to [typescript-to-lua](https://www.npmjs.com/package/typescript-to-lua) package transpiling the entirety of project and creating a Lua script for every TypeScript module it is able to find. Because this is totally unnecessary, an array of so-called "registered" or "desired" scripts must be provided for scripts to be recognised and appear in the build. Transforming the name of the output script is optional.
+   * Short names of the TypeScript files under /gamedata/scripts to include in the build. [typescript-to-lua](https://www.npmjs.com/package/typescript-to-lua) transpiles the entire project, so only the files listed here are picked up; every other transpiled module is discarded. Each name is written to the build prefixed with {@link addonId} — `index` becomes the bare addon id (the addon's main script), everything else becomes `<addonId>_<name>`.
    *
    * @example
    *
-   * With the below configuration the *main.ts* file will be searched for under gamedata/scripts directory
+   * With the below configuration /gamedata/scripts/index.ts and /gamedata/scripts/mcm.ts are built to `<addonId>.script` and `<addonId>_mcm.script`
    *
    * ```ts
-   * [{ sourceFileName: 'main.ts', bildFileName: addonId + '_main' }]
+   * ['index', 'mcm']
    * ```
    */
-  scripts?: { sourceFileName: string; buildFileName?: string }[]
+  scripts?: string[]
   /**
    * Path to the original Anomaly gamedata directory. This path is the base for the relative paths that are used in certain functions of Anomaly Packer.
    *
@@ -33,17 +40,6 @@ export type PackOptions = {
    * 'C:/Games/Anomaly 1.5.2/gamedata'
    */
   sourceGamedata?: string
-  /**
-   * ## ⚠ Use with care! If misused, this function can damage personal and valueable data!
-   *
-   * Additional paths to gamedata directory that will get refreshed with the gamedata of the fresh build. Useful when this the addon was installed via Mod Organizer 2 once and simply requires to get its files refreshed as the development continues.
-   *
-   * @example
-   * ```ts
-   * [`C:/Users/Jack Daniels/AppData/Local/ModOrganizer/STALKER Anomaly/mods/${addonId}_build/gamedata`]
-   * ```
-   */
-  refresh?: string[]
 }
 
 export async function pack(options: PackOptions) {
@@ -64,24 +60,20 @@ export async function pack(options: PackOptions) {
 
     console.log(c.bold.white('scripts') + c.reset(` directory detected. Transpiling scripts...`))
 
-    const transpiled = scriptsDirPresent && options.scripts ? await transpile(options.scripts) : null
-    await thisRecursiveShit(path.join(cwd, 'gamedata'), buildGamedataPath, transpiled)
+    const transpiled = scriptsDirPresent && options.scripts ? await transpile(options.scripts, options.addonId) : null
+    await thisRecursiveShit(path.join(cwd, 'gamedata'), buildGamedataPath, transpiled?.scripts ?? null)
 
     console.log(c.cyan.bold('Scripts ') + c.cyan('were transpiled'))
-  }
-  if (options.refresh && options.refresh.length) {
-    for (const refresh of options.refresh) {
-      try {
-        await trash(refresh)
-        await fs.cp(buildGamedataPath, refresh, { recursive: true })
-      } catch (error) {
-        console.error('Refresh path "%s" is incorrect', refresh)
-        console.log(c.gray('Full log: ' + (error as Error).message))
+
+    // Copy the runtime scripts that transpiled code linked against (e.g. the MCM builder). Driven purely by imports, so nothing to opt into.
+    if (transpiled && transpiled.runtimes.size) {
+      const scriptsBuildPath = path.join(buildGamedataPath, 'scripts')
+      await fs.mkdir(scriptsBuildPath, { recursive: true })
+      for (const [template, global] of transpiled.runtimes) {
+        const runtimeLua = await fs.readFile(path.join(import.meta.dirname, 'runtime', `${template}.script`), 'utf8')
+        await fs.writeFile(path.join(scriptsBuildPath, `${global}.script`), iconv.encode(runtimeLua, 'win1251'))
       }
-    }
-    console.log(c.cyan('Build was copied to ') + c.cyan.bold(options.refresh.length + ' outer gamedata directories'))
-    for (const refresh of options.refresh) {
-      console.log('  ' + c.gray.italic(refresh))
+      console.log(c.cyan.bold('Runtime ') + c.cyan(`scripts linked (${[...transpiled.runtimes.values()].join(', ')})`))
     }
   }
   console.log('')

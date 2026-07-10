@@ -62,7 +62,6 @@
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "simplified-jsx-to-ast": "^0.4.0",
-    "trash": "^10.1.1",
     "typescript-to-lua": "^1.37.0"
   }
 }

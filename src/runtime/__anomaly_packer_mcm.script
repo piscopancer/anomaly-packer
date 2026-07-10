@@ -1,0 +1,29 @@
+-- Anomaly Packer - MCM option builder runtime.
+-- Copied into the build automatically when a script imports 'anomaly-packer/mcm',
+-- under the per-addon name <addonId>__ap_mcm.script. Anomaly Packer rewrites that
+-- import to reach these functions as <addonId>__ap_mcm.track(...), .check(...), etc.
+-- Each builder just stamps the fields the engine expects onto the passed table.
+
+function track(props)
+    props.type = "track"
+    props.val = 2
+    return props
+end
+
+function check(props)
+    props.type = "check"
+    props.val = 1
+    return props
+end
+
+function title(props)
+    props.type = "title"
+    return props
+end
+
+function slide(props)
+    props.type = "slide"
+    return props
+end
+
+line = { type = "line" }
