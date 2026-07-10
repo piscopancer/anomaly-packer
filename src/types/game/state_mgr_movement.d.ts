@@ -1,0 +1,105 @@
+// @generated skeleton — auto-produced from Lua scripts, refine by hand
+
+/** @noSelfInFile */
+
+/** @customConstructor act_state_mgr_movement_run */
+declare class act_state_mgr_movement_run extends action_base {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor act_state_mgr_movement_run_search */
+declare class act_state_mgr_movement_run_search extends action_base {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor act_state_mgr_movement_run_turn */
+declare class act_state_mgr_movement_run_turn extends action_base {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor act_state_mgr_movement_stand */
+declare class act_state_mgr_movement_stand extends action_base {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor act_state_mgr_movement_stand_search */
+declare class act_state_mgr_movement_stand_search extends action_base {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor act_state_mgr_movement_stand_turn */
+declare class act_state_mgr_movement_stand_turn extends action_base {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor act_state_mgr_movement_walk */
+declare class act_state_mgr_movement_walk extends action_base {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor act_state_mgr_movement_walk_search */
+declare class act_state_mgr_movement_walk_search extends action_base {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor act_state_mgr_movement_walk_turn */
+declare class act_state_mgr_movement_walk_turn extends action_base {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor eva_state_mgr_movement */
+declare class eva_state_mgr_movement extends property_evaluator {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  evaluate(): TODO
+}
+
+/** @customConstructor eva_state_mgr_movement_run */
+declare class eva_state_mgr_movement_run extends property_evaluator {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  evaluate(): TODO
+}
+
+/** @customConstructor eva_state_mgr_movement_stand */
+declare class eva_state_mgr_movement_stand extends property_evaluator {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  evaluate(): TODO
+}
+
+/** @customConstructor eva_state_mgr_movement_stand_now */
+declare class eva_state_mgr_movement_stand_now extends property_evaluator {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  evaluate(): TODO
+}
+
+/** @customConstructor eva_state_mgr_movement_walk */
+declare class eva_state_mgr_movement_walk extends property_evaluator {
+  constructor(name: TODO, st: TODO, name_: TODO)
+  evaluate(): TODO
+}

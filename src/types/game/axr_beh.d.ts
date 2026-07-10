@@ -1,0 +1,42 @@
+// @generated skeleton — auto-produced from Lua scripts, refine by hand
+
+/** @noSelfInFile */
+
+declare namespace axr_beh {
+  export const beh_actid: TODO
+  export const beh_evid: TODO
+  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): TODO
+  export function am_i_reached(npc: TODO, index: TODO): TODO
+  export function reset_scheme(loading: TODO, npc: TODO): TODO
+  export function set_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): TODO
+}
+
+/** @customConstructor action_beh */
+declare class action_beh extends action_base {
+  constructor(npc_name: TODO, action_name: TODO, storage: TODO, action_name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  set_desired_target(): TODO
+  beh_cover(): TODO
+  beh_wait(): TODO
+  set_state(): TODO
+  beh_move(): TODO
+  beh_path(): TODO
+  get_current_waypoint(use_var: TODO): TODO
+  next_waypoint_index(): TODO
+  increment_waypoint_index(): TODO
+  fill_approved_actions(state: TODO): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor evaluator_beh */
+declare class evaluator_beh extends property_evaluator {
+  constructor(storage: TODO, name: TODO, name_: TODO)
+  evaluate(): TODO
+}
+
+/** @customConstructor position_node */
+declare class position_node {
+  constructor(amt: TODO)
+  select_best_vertex_id(object: TODO, dir: TODO, lvid: TODO, min_dist: TODO, max_dist: TODO, find_furthest: TODO): TODO
+}

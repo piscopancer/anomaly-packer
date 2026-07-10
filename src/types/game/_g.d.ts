@@ -351,6 +351,8 @@ type StringToNumber<T extends string> = T extends `${infer N extends number}` ? 
 type ActorMoveState = (typeof ActorMoveStates)[keyof typeof ActorMoveStates]
 declare function IsMoveState(state: keyof typeof ActorMoveStates, compare_state: number): boolean
 declare function reload_ini_sys(): void
+/** Open an .ltx file and return an ini object exposing the r_* readers. */
+declare function ini_file(filename: string): system_ini
 /**
  * May be an extended version of ini_file. Read any ltx file
  * @customConstructor ini_file_ex

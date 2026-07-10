@@ -9,7 +9,7 @@ async function run() {
   const [, , cmd] = argv as [never, never, 'types']
   switch (cmd) {
     case 'types':
-      const [, , , cmd] = argv as [never, never, never, 'list' | 'tsconfig']
+      const [, , , cmd] = argv as [never, never, never, 'list']
       const declarationsDirs = await fs.readdir(path.join(import.meta.dirname, '..', 'types'))
       let declarationGroups = await Promise.all(
         declarationsDirs.map(async (dir) => {
@@ -28,15 +28,6 @@ async function run() {
             t.push({ [d.dir + ' ' + c.gray('(' + d.dts.length + ')')]: c.yellow(d.dts.join('\n')) })
           }
           console.log(t.toString())
-          break
-        case 'tsconfig':
-          const types: string[] = []
-          for (const d of declarationGroups) {
-            for (const dts of d.dts) {
-              types.push(`anomaly-packer/types/${d.dir}/${dts}`)
-            }
-          }
-          console.log(JSON.stringify({ types }, null, 2))
           break
         default:
           console.error('[Anomaly Packer CLI] Unknown command')

@@ -7,5 +7,7 @@ export default defineConfig({
   copy: [
     { from: 'src/types', to: 'dist' },
     { from: 'src/runtime', to: 'dist' },
+    { from: 'src/lua-lib.d.ts', to: 'dist' },
+    { from: 'src/tsconfig.scripts.json', to: 'dist' },
   ],
 })

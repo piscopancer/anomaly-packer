@@ -23,18 +23,20 @@
     },
     "./types/*": {
       "types": "./dist/types/*.d.ts"
-    }
+    },
+    "./tsconfig.scripts.json": "./dist/tsconfig.scripts.json"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown && tsx src/scripts/gen-type-barrels.ts",
     "anomaly-packer": "tsx src/cli/anomaly-packer.ts",
+    "gen-script-skeletons": "tsx src/scripts/gen-script-skeletons.ts",
     "format": "prettier --write .",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "tsdown && changeset publish"
+    "changeset:publish": "pnpm build && changeset publish"
   },
   "bin": {
     "anomaly-packer": "dist/cli/anomaly-packer.mjs"

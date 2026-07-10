@@ -356,6 +356,8 @@ type Community =
   | 'monster'
   | 'zombied'
 type Rank = 'novice' | 'trainee' | 'experienced' | 'professional' | 'veteran' | 'expert' | 'master' | 'legend'
+/** Ранги монстров (creatures\game_relations.ltx → monster_rating) */
+type MonsterRank = 'weak' | 'normal' | 'strong'
 type Reputation = 'excellent' | 'really_good' | 'very_good' | 'good' | 'neutral' | 'bad' | 'very_bad' | 'really_bad' | 'terrible'
 type Color =
   | 'default'

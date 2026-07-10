@@ -1,0 +1,21 @@
+// @generated skeleton — auto-produced from Lua scripts, refine by hand
+
+/** @noSelfInFile */
+
+declare namespace post_combat_idle {
+  export function add_post_combat_idle(npc: TODO): TODO
+}
+
+/** @customConstructor action_post_combat_wait */
+declare class action_post_combat_wait extends action_base {
+  constructor(npc: TODO, storage: TODO, action_name: TODO, action_name_: TODO)
+  initialize(): TODO
+  execute(): TODO
+  finalize(): TODO
+}
+
+/** @customConstructor evaluator_combat_enemy */
+declare class evaluator_combat_enemy extends property_evaluator {
+  constructor(storage: TODO, name: TODO, name_: TODO)
+  evaluate(): TODO
+}
