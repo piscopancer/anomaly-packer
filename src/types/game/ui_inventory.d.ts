@@ -10,7 +10,7 @@ declare namespace ui_inventory {
   export function keybind_pass(): boolean
   export function on_game_start(): void
   export function overrides(): TODO
-  export function start(mode: TODO, obj: TODO): void
+  export function start(mode: string, obj: TODO): void
 }
 
 /** @customConstructor UIInventory */
@@ -30,37 +30,37 @@ declare class UIInventory extends CUIScriptWnd {
   IsInvOwner(npc: TODO): TODO
   InitProperties(obj: TODO, bag: TODO): void
   Discard(): void
-  Name_Equip(obj: TODO, bag: TODO): TODO
-  Name_UnEquip(obj: TODO, bag: TODO): TODO
-  Name_Attach(obj: TODO, bag: TODO, temp: TODO, slot: TODO): TODO
-  Name_Move(obj: TODO, bag: TODO): TODO
+  Name_Equip(obj: TODO, bag: TODO): string
+  Name_UnEquip(obj: TODO, bag: TODO): string
+  Name_Attach(obj: TODO, bag: TODO, temp: TODO, slot: TODO): string
+  Name_Move(obj: TODO, bag: string): string
   Name_Custom(obj: TODO, bag: TODO, temp: TODO, i: TODO): boolean
   Mode_Custom(obj: TODO, bag: TODO, temp: TODO, i: TODO): boolean
-  Cont_Custom(obj: TODO, bag: TODO, temp: TODO, i: TODO): boolean
-  DB_Custom(obj: TODO, bag: TODO, temp: TODO, i: TODO): TODO
+  Cont_Custom(obj: TODO, bag: string, temp: TODO, i: TODO): boolean
+  DB_Custom(obj: TODO, bag: TODO, temp: TODO, i: TODO): string
   Cond_Childs(obj: TODO, bag: TODO): TODO
   Cond_Use(obj: TODO, bag: TODO): TODO
-  Cond_Move(obj: TODO, bag: TODO, temp: TODO, bag_to: TODO): boolean
+  Cond_Move(obj: TODO, bag: string, temp: TODO, bag_to: string): boolean
   Cond_Quest(obj: TODO, bag: TODO): TODO
   Cond_NotQuest(obj: TODO, bag: TODO): TODO
   Cond_Attach(obj: TODO, bag: TODO, temp: TODO, slot: TODO, wpn: TODO): boolean
-  Cond_Equip(obj: TODO, bag: TODO): boolean
+  Cond_Equip(obj: TODO, bag: string): boolean
   Cond_Unload(obj: TODO, bag: TODO): boolean
   Cond_Detach_Silencer(obj: TODO, bag: TODO): TODO
   Cond_Detach_Scope(obj: TODO, bag: TODO): TODO
   Cond_Detach_GL(obj: TODO, bag: TODO): TODO
   Action_Use(obj: TODO, bag: TODO): void
   Action_Donate(obj: TODO, bag: TODO): void
-  Action_Move(obj: TODO, bag: TODO): TODO
+  Action_Move(obj: TODO, bag: string): TODO
   Action_Move_All(obj: TODO, bag: TODO): void
   Action_UnEquip(obj: TODO, bag: TODO): void
   Action_Equip(obj: TODO, bag: TODO): void
-  Action_Attach(obj: TODO, bag: TODO, temp: TODO, slot: TODO, wpn: TODO): void
+  Action_Attach(obj: TODO, bag: string, temp: TODO, slot: TODO, wpn: TODO): void
   Action_Custom(obj: TODO, bag: TODO, temp: TODO, i: TODO): void
   Action_Detach_Silencer(obj: TODO, bag: TODO): void
   Action_Detach_Scope(obj: TODO, bag: TODO): void
   Action_Detach_GL(obj: TODO, bag: TODO): void
-  Action_Unload(obj: TODO, bag: TODO): void
+  Action_Unload(obj: TODO, bag: string): void
   Action_Drop(obj: TODO, bag: TODO): void
   Action_Drop_All(obj: TODO, bag: TODO): void
   UpdateInfo(go: TODO): void
@@ -77,8 +77,8 @@ declare class UIInventory extends CUIScriptWnd {
   UnHighlight_All(): void
   highlight_section_in_slot(sec: TODO, bag_id: TODO): void
   Picker_Refresh(): void
-  Picker_Toggle(bag: TODO, idx: TODO, update_mode: TODO, force_hide: TODO): void
-  Picker_Ownership(bag: TODO, idx: TODO, obj: TODO): TODO
+  Picker_Toggle(bag: string, idx: TODO, update_mode: TODO, force_hide: TODO): void
+  Picker_Ownership(bag: string, idx: TODO, obj: TODO): TODO
   Picker_OwnerCell(cc: TODO): TODO
   Picker_IsFocused(): boolean
   Picker_Update(force_hide: TODO): boolean
@@ -121,10 +121,10 @@ declare class UIInventory extends CUIScriptWnd {
   npc_on_use(obj: TODO, who: TODO): void
   physic_object_on_use_callback(obj: TODO, who: TODO): void
   actor_on_net_destroy(): void
-  On_CC_DragDrop(bag_from: TODO, idx_from: TODO): void
-  On_CC_Hover(bag: TODO, idx: TODO): void
+  On_CC_DragDrop(bag_from: string, idx_from: TODO): void
+  On_CC_Hover(bag: string, idx: TODO): void
   On_CC_Mouse1(bag: TODO, idx: TODO): void
-  On_CC_Mouse1_DB(bag: TODO, idx: TODO): boolean
+  On_CC_Mouse1_DB(bag: string, idx: TODO): boolean
   On_CC_Mouse2(bag: TODO, idx: TODO): void
   On_CC_Add(bag: TODO, idx: TODO, on_area: TODO): void
   On_CC_Remove(bag: TODO, idx: TODO, on_area: TODO): void

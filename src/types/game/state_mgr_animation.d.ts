@@ -21,13 +21,13 @@ declare class animation {
   constructor(npc: TODO, mgr: TODO, anim_path: TODO)
   set_control(): void
   update_anim(): void
-  set_state(new_state: TODO, fast_set: TODO): void
+  set_state(new_state: TODO, fast_set: boolean): void
   select_anim(): TODO
   weapon_slot(): TODO
   anim_for_slot(slot: TODO, t: TODO): TODO
   select_rnd(anim_state: TODO, wpn_slot: TODO, must_play: TODO): TODO
   add_anim(anm: TODO, state: TODO): void
-  animation_callback(skip_multianim_check: TODO): boolean
+  animation_callback(skip_multianim_check: boolean): boolean
   process_special_action(action_table: TODO): void
 }
 

@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace sim_squad_warfare {
-  export const dbg_map_hud: TODO
+  export const dbg_map_hud: boolean
   export const printd: TODO
   export const squad_icons: TODO
   export function add_companion_squad(squad: TODO): void

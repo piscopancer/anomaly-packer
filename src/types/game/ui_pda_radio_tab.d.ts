@@ -21,8 +21,8 @@ declare namespace ui_pda_radio_tab {
   export function get_ui(): TODO
   export function is_snd_playing(): boolean
   export function on_game_start(): void
-  export function plyr_pick(num_of_tracks: TODO, plyr_now: TODO, previous: TODO, shuffle: TODO, loop: TODO, counter: TODO, index: TODO): TODO
-  export function radio_pick(radio_index_i: TODO, number_of_tracks: TODO): TODO
+  export function plyr_pick(num_of_tracks: number, plyr_now: number, previous: TODO, shuffle: TODO, loop: number, counter: number, index: number): TODO
+  export function radio_pick(radio_index_i: number, number_of_tracks: number): TODO
   export function radio_setVolume(radio_vol: TODO): void
   export function update_settings(): void
 }

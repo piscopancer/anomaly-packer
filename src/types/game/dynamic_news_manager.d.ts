@@ -1,12 +1,12 @@
 /** @noSelfInFile */
 
 declare namespace dynamic_news_manager {
-  export const enable_news: TODO
+  export const enable_news: boolean
   export function actor_on_first_update(): void
   export function actor_on_update(): void
   export function destroy_dynamic_news(): void
   export function get_dynamic_news(): DynamicNewsManager
-  export function get_story_npc_info(section: TODO): TODO
+  export function get_story_npc_info(section: string): TODO
   export function on_game_start(): void
   export function update_settings(): void
 }
@@ -27,11 +27,11 @@ declare class DynamicNewsManager {
   npc_on_hear_callback(npc: TODO, who_id: TODO, s_type: TODO, sound_dist: TODO, sound_power: TODO, sound_position: TODO): void
   npc_on_get_all_from_corpse(npc: TODO, corpse_npc: TODO, item: TODO, lootable_table: TODO): void
   PushToChannel(name: TODO, t: TODO, fifo: TODO): boolean
-  FindSpeakerNoVictim(who: TODO, same_as_who: TODO, not_in_combat: TODO): CGameObject | null
-  FindSpeaker(victim: TODO, who: TODO, same_as_victim: TODO, same_as_who: TODO, not_in_combat: TODO, can_see: TODO): CGameObject | null
-  FindSpeakerWithEnemy(victim: TODO, who: TODO, same_as_victim: TODO, same_as_who: TODO, can_see: TODO): CGameObject | null
-  FindSpeakerRandom(not_in_combat: TODO, speaker_community: TODO): CGameObject | null
-  FindSpeakerAndTarget(not_in_combat: TODO, distance: TODO, speaker_community: TODO): CGameObject | null
+  FindSpeakerNoVictim(who: TODO, same_as_who: boolean, not_in_combat: boolean): CGameObject | null
+  FindSpeaker(victim: TODO, who: TODO, same_as_victim: boolean, same_as_who: boolean, not_in_combat: boolean, can_see: boolean): CGameObject | null
+  FindSpeakerWithEnemy(victim: TODO, who: TODO, same_as_victim: boolean, same_as_who: boolean, can_see: boolean): CGameObject | null
+  FindSpeakerRandom(not_in_combat: boolean, speaker_community: string): CGameObject | null
+  FindSpeakerAndTarget(not_in_combat: boolean, distance: TODO, speaker_community: TODO): CGameObject | null
   FindSpeakerAnywhere(natural_only: TODO, faction: TODO): CGameObject | null
   IsCommunitySame(npc_1: CGameObject, npc_2: CGameObject): boolean
   PickCompanion(): void
@@ -74,7 +74,7 @@ declare class DynamicNewsManager {
   monster_on_respawn(npc: TODO, near: TODO): void
   GossipBounty(): boolean
   GossipAlphaSquad(): boolean
-  GossipTaskRepeatTimeout(task_id: TODO): boolean
+  GossipTaskRepeatTimeout(task_id: string): boolean
   GossipTaskLL(): boolean
   GossipTaskMS(): boolean
   GossipTaskOA(): void
@@ -82,7 +82,7 @@ declare class DynamicNewsManager {
   CompanionAboutLife(sender: CGameObject): boolean
   CompanionAboutLevel(sender: CGameObject): boolean
   CompanionAboutActor(sender: CGameObject): boolean
-  GossipEmissionEnd(what: TODO): boolean
+  GossipEmissionEnd(what: string): boolean
   ResponseOnFoundArtefact(who: TODO): boolean
   ResponseOnFoundStash(): boolean
   ResponseOnBoughtItems(who: TODO): boolean

@@ -17,7 +17,7 @@ declare class UIItemSheet extends CUIScriptWnd {
   Update(): void
   AddIcon(xml: TODO, path: TODO, offset: TODO, obj: TODO): TODO
   AddText(xml: TODO, path: TODO, offset: TODO, txt: TODO): TODO
-  AddSpec(xml: TODO, path: TODO, offset: TODO, name: TODO, value: TODO, clr_1: TODO, clr_2: TODO, sign: TODO, unit: TODO): TODO
+  AddSpec(xml: TODO, path: TODO, offset: TODO, name: string, value: TODO, clr_1: TODO, clr_2: TODO, sign: TODO, unit: TODO): TODO
   AddContainer(xml: TODO, path: TODO, offset: TODO, tbl: TODO, info: TODO): TODO
   AddStat(xml: TODO, path: TODO, offset: TODO, obj: TODO, stat: TODO, gr: TODO): TODO
   AddLine(xml: TODO, offset: TODO): TODO

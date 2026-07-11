@@ -13,7 +13,7 @@ declare namespace gameplay_silent_kills {
   export function headshot_only(): TODO
   export function load_state(md: TODO): void
   export function melee_enabled(): TODO
-  export function npc_on_before_hit(npc: CGameObject, shit: TODO, bone_id: TODO, flags: TODO): TODO
+  export function npc_on_before_hit(npc: CGameObject, shit: TODO, bone_id: number, flags: TODO): TODO
   export function npc_on_update(npc: TODO): TODO
   export function on_game_start(): void
   export function pr(...args: TODO[]): boolean

@@ -2,7 +2,7 @@
 
 declare namespace rx_ff {
   export const actid: TODO
-  export const evaid: TODO
+  export const evaid: number
   export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, st: TODO, temp: TODO): void
   export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void
   export function disable_generic_scheme(npc: TODO, scheme: TODO, stype: TODO): void

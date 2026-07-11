@@ -11,7 +11,7 @@ declare namespace xr_wounded {
   export function is_heavy_wounded_by_id(npc_id: TODO): boolean
   export function is_psy_wounded_by_id(npc_id: TODO): boolean
   export function is_wounded(npc: TODO): boolean
-  export function reset_generic_scheme(npc: TODO, scheme: TODO, section: TODO, stype: TODO, st: TODO): void
+  export function reset_generic_scheme(npc: TODO, scheme: string, section: TODO, stype: TODO, st: TODO): void
   export function setup_generic_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void
   export function unlock_medkit(npc: TODO): void
 }

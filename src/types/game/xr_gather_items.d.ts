@@ -1,8 +1,8 @@
 /** @noSelfInFile */
 
 declare namespace xr_gather_items {
-  export const actid: TODO
-  export const evaid: TODO
+  export const actid: number
+  export const evaid: number
   export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, st: TODO, temp: TODO): TODO
   export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): TODO
   export function gather_item(npc: TODO): void

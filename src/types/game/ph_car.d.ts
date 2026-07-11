@@ -19,7 +19,7 @@ declare class action_car {
   go_to_walkpoint(pt: TODO): void
   start_car(): void
   stop_car(): void
-  walk_arrival_callback(index: TODO): TODO
+  walk_arrival_callback(index: number): TODO
   change_fire_pts(): TODO
   get_next_firepoint(): TODO
   rot_to_firepoint(pt: TODO): void
@@ -37,6 +37,6 @@ declare class action_car {
 /** @customConstructor static_pp */
 declare class static_pp {
   constructor(x: TODO, y: TODO, z: TODO)
-  count(): TODO
+  count(): number
   point(): TODO
 }

@@ -11,7 +11,7 @@ declare class mob_walker {
   reset_scheme(): void
   update(delta: TODO): void
   arrived_to_first_waypoint(): TODO
-  waypoint_callback(obj: TODO, action_type: TODO, index: TODO): void
+  waypoint_callback(obj: TODO, action_type: TODO, index: number): void
   update_movement_state(): void
   update_standing_state(): void
   deactivate(): void

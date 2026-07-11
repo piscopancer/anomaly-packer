@@ -16,5 +16,5 @@ declare class CCampManager {
   get_camp_action(npc_id: TODO): LuaMultiReturn<[TODO, boolean]>
   register_npc(npc_id: TODO): void
   unregister_npc(npc_id: TODO): void
-  get_npc_role(npc_id: TODO, state: TODO): TODO
+  get_npc_role(npc_id: TODO, state: string): TODO
 }

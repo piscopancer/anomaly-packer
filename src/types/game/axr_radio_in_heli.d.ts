@@ -1,8 +1,8 @@
 /** @noSelfInFile */
 
 declare namespace axr_radio_in_heli {
-  export const actid: TODO
-  export const evaid: TODO
+  export const actid: number
+  export const evaid: number
   export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO, temp: TODO): TODO
   export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): TODO
   export function disable_generic_scheme(npc: TODO, scheme: TODO, stype: TODO): void

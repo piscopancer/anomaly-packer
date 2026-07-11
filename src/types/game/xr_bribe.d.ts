@@ -1,8 +1,8 @@
 /** @noSelfInFile */
 
 declare namespace xr_bribe {
-  export const WARNING_DISTANCE: TODO
-  export const WARNING_TIME: TODO
+  export const WARNING_DISTANCE: number
+  export const WARNING_TIME: number
   export const cmd: TODO
   export function actor_on_first_update(): void
   export function announce_break(npc_comm: TODO, is_expired: TODO): void
@@ -44,7 +44,7 @@ declare namespace xr_bribe {
   export function on_game_start(): void
   export function save_state(m_data: TODO): void
   export function set_bribe(faction: TODO, distance: TODO, seconds: TODO): void
-  export function split(txt: TODO): TODO
+  export function split(txt: string): TODO
   export function take_money_10000(first_speaker: TODO, second_speaker: TODO): void
   export function take_money_12000(first_speaker: TODO, second_speaker: TODO): void
   export function take_money_4000(first_speaker: TODO, second_speaker: TODO): void

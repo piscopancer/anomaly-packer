@@ -19,6 +19,6 @@ declare class scenes_item_dialog extends CUIScriptWnd {
   InitCallBacks(): void
   OnButton_create_clicked(): void
   OnButton_close_clicked(): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): boolean
+  OnKeyboard(dik: number, keyboard_action: TODO): boolean
   AddItemToList(item_name: TODO): void
 }

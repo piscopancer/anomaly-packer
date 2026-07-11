@@ -7,7 +7,7 @@ declare namespace tasks_pump_station_defense {
   export function cleanup(): void
   export function dist_from_trigger(): TODO
   export function escape_message(): void
-  export function get_news_data(id: TODO): TODO
+  export function get_news_data(id: TODO): string
   export function give_before_attack_talk(): void
   export function intro_message(): void
   export function is_commader_replaced(): TODO

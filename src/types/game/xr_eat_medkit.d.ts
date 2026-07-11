@@ -2,7 +2,7 @@
 
 declare namespace xr_eat_medkit {
   export function broadcast(npc: CGameObject): TODO
-  export function consume_medkit(npc: TODO, medkit: TODO, kind: TODO): void
+  export function consume_medkit(npc: TODO, medkit: TODO, kind: string): void
   export function get_max_strings(): TODO
   export function heal_bleed(id: TODO, left: TODO): boolean
   export function heal_hp(id: TODO, left: TODO): boolean

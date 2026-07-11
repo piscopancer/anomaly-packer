@@ -9,7 +9,7 @@ declare namespace stalker_generic {
   export function reset_group(npc: TODO, ini: TODO, section: TODO): void
   export function reset_invulnerability(npc: TODO, ini: TODO, section: TODO): void
   export function reset_show_spot(npc: TODO, scheme: TODO, st: TODO, section: TODO): void
-  export function reset_threshold(npc: TODO, scheme: TODO, st: TODO, section: TODO): void
+  export function reset_threshold(npc: TODO, scheme: string, st: TODO, section: TODO): void
   export function set_npc_info(npc: CGameObject, ini: TODO, scheme: TODO, section: TODO): void
   export function take_items_enabled(npc: TODO, scheme: TODO, st: TODO, section: TODO): void
   export function update_invulnerability(npc: TODO): void

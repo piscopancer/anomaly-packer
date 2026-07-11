@@ -15,7 +15,7 @@ declare namespace heli_alife_warfare {
   export function refresh_strings(): void
   export function set_target(se_obj: TODO, target: TODO): void
   export function show(se_obj: TODO): void
-  export function translate_smart_name(name: TODO): TODO
+  export function translate_smart_name(name: TODO): string
   export function update(heli: TODO, se_obj: TODO, heli_object: TODO): void
   export function update_movement(heli: TODO, se_obj: TODO, heli_object: TODO, se_target: TODO): void
 }

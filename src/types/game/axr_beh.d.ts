@@ -1,8 +1,8 @@
 /** @noSelfInFile */
 
 declare namespace axr_beh {
-  export const beh_actid: TODO
-  export const beh_evid: TODO
+  export const beh_actid: number
+  export const beh_evid: number
   export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): TODO
   export function am_i_reached(npc: TODO, index: TODO): TODO
   export function reset_scheme(loading: TODO, npc: TODO): TODO
@@ -21,9 +21,9 @@ declare class action_beh extends action_base {
   beh_move(): TODO
   beh_path(): TODO
   get_current_waypoint(use_var: TODO): TODO
-  next_waypoint_index(): TODO
+  next_waypoint_index(): string
   increment_waypoint_index(): TODO
-  fill_approved_actions(state: TODO): TODO
+  fill_approved_actions(state: string): TODO
   finalize(): TODO
 }
 
@@ -35,7 +35,7 @@ declare class evaluator_beh extends property_evaluator {
 
 /** @customConstructor position_node */
 declare class position_node {
-  constructor(amt: TODO)
+  constructor(amt: number)
   // shared global name: 4-arg form defined in axr_beh, 6-arg form in xr_danger
   select_best_vertex_id(object: TODO, dir: TODO, lvid: TODO, distance: TODO): TODO
   select_best_vertex_id(object: TODO, dir: TODO, lvid: TODO, distance: TODO): TODO

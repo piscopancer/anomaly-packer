@@ -1,9 +1,9 @@
 /** @noSelfInFile */
 
 declare namespace ui_debug_main {
-  export const UI_ICON_EQUIPMENT_HEIGHT: TODO
-  export const UI_ICON_EQUIPMENT_WIDTH: TODO
-  export const UI_ICON_WIDTH_SCALE: TODO
+  export const UI_ICON_EQUIPMENT_HEIGHT: number
+  export const UI_ICON_EQUIPMENT_WIDTH: number
+  export const UI_ICON_WIDTH_SCALE: number
   export const id_to_spawn_table: TODO
   export function get_spawn_table(name: TODO): boolean
 }
@@ -37,8 +37,8 @@ declare class debug_ui extends CUIScriptWnd {
   OnBtnTeleport(): void
   OnBtnSpawn(): void
   OnBtnSpawnSquad(): void
-  SendOutput(txt: TODO, ...args: TODO[]): TODO
-  SendOutputList(list: TODO, start: TODO, finish: TODO): void
+  SendOutput(txt: string, ...args: TODO[]): string
+  SendOutputList(list: TODO, start: TODO, finish: number): void
   OnBtnFocus(): void
   OnBtnExecuteString(): void
   OnBtnSwitchDistance(): void
@@ -50,8 +50,8 @@ declare class debug_ui extends CUIScriptWnd {
   OnTabChange(): void
   OnKeyboard(dik: TODO, keyboard_action: TODO): boolean
   spawn_section(text: TODO): boolean
-  spawn_squad(section: TODO, smart_name: TODO): boolean
-  FindNearest(txt: TODO): void
+  spawn_squad(section: TODO, smart_name: string): boolean
+  FindNearest(txt: string): void
   FillList(name: TODO): void
   FillEditorList(name: TODO): void
   FillLevelList(): void

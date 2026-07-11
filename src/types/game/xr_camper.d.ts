@@ -19,7 +19,7 @@ declare class action_patrol extends action_base {
   process_point(mode: TODO, number: TODO): TODO
   finalize(): TODO
   on_place(): TODO
-  hit_callback(obj: TODO, amount: TODO, local_direction: TODO, who: TODO, bone_index: TODO): TODO
+  hit_callback(obj: TODO, amount: TODO, local_direction: TODO, who: TODO, bone_index: string): TODO
   formation_callback(mode: TODO, number: TODO, index: TODO): TODO
   death_callback(npc: TODO): TODO
   deactivate(npc: TODO): TODO

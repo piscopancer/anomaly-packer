@@ -1,14 +1,14 @@
 /** @noSelfInFile */
 
 declare namespace dialog_manager {
-  export const RandomVal: TODO
+  export const RandomVal: number
   export const disabled_phrases: TODO
   export const phrase_table: TODO
   export const priority_table: TODO
   export function action(PT_subtable: TODO, PRT_subtable: TODO, cur_phrase_id: TODO, npc: TODO): void
   export function action_anomalies_dialogs(npc: TODO, actor: TODO, dialog_name: TODO, id: TODO): void
-  export function action_disable_phrase(fs: TODO, ss: TODO, dn: TODO, pi: TODO): void
-  export function action_disable_quest_phrase(fs: TODO, ss: TODO, dn: TODO, pi: TODO): void
+  export function action_disable_phrase(fs: TODO, ss: TODO, dn: TODO, pi: string): void
+  export function action_disable_quest_phrase(fs: TODO, ss: TODO, dn: TODO, pi: string): void
   export function action_hello_dialogs(npc: TODO, actor: TODO, dialog_name: TODO, id: TODO): void
   export function action_information_dialogs(npc: TODO, actor: TODO, dialog_name: TODO, id: TODO): void
   export function action_job_dialogs(npc: TODO, actor: TODO, dialog_name: TODO, id: TODO): void
@@ -16,7 +16,7 @@ declare namespace dialog_manager {
   export function add_dialog(p_id: TODO, id: TODO, phrase_id: TODO, cond: TODO, act: TODO): TODO
   export function add_script_dialog(p_id: TODO, id: TODO, phrase_id: TODO, cond: TODO, act: TODO): void
   export function calculate_priority(PRT_subtable: TODO, PTID_subtable: TODO, npc: TODO, phrase_id: TODO): TODO
-  export function create_bye_phrase(): TODO
+  export function create_bye_phrase(): string
   export function dm_agr_u_bandit_boss_arrived(dialog: TODO): void
   export function dm_agr_u_bandit_boss_ask(dialog: TODO): void
   export function dm_agr_u_bandit_boss_give_docs(dialog: TODO, init_pid: TODO, base_pid: TODO): TODO
@@ -60,7 +60,7 @@ declare namespace dialog_manager {
   export function precondition_information_dialogs(npc: TODO, actor: TODO, dialog_name: TODO, parent_id: TODO, id: TODO): TODO
   export function precondition_information_dialogs_do_not_know(npc: TODO, actor: TODO, dialog_name: TODO, parent_id: TODO, id: TODO): TODO
   export function precondition_information_dialogs_no_more(npc: TODO, actor: TODO, dialog_name: TODO, parent_id: TODO, id: TODO): boolean
-  export function precondition_is_phrase_disabled(fs: TODO, ss: TODO, dn: TODO, ppi: TODO, pi: TODO): boolean
+  export function precondition_is_phrase_disabled(fs: TODO, ss: TODO, dn: TODO, ppi: TODO, pi: string): boolean
   export function precondition_job_dialogs(npc: TODO, actor: TODO, dialog_name: TODO, parent_id: TODO, id: TODO): TODO
   export function precondition_job_dialogs_do_not_know(npc: TODO, actor: TODO, dialog_name: TODO, parent_id: TODO, id: TODO): TODO
   export function precondition_job_dialogs_no_more(npc: TODO, actor: TODO, dialog_name: TODO, parent_id: TODO, id: TODO): boolean

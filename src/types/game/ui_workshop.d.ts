@@ -34,7 +34,7 @@ declare class UIWorkshopCraft extends CUIScriptWnd {
   LoadRecipes(): void
   ListRecipes(): void
   ListItems(): TODO
-  On_CC_Mouse1(cont: TODO, idx: TODO): void
+  On_CC_Mouse1(cont: string, idx: TODO): void
   UpdateItem(n: TODO, sec: TODO, amount: TODO, result: TODO, toolkit_idx: TODO, toolkit_sec: TODO): void
   ShowComponents(sh: TODO): void
   Close(): void
@@ -54,8 +54,8 @@ declare class UIWorkshopRepair extends CUIScriptWnd {
   ListPartScheme(): void
   ListSpareParts(): void
   ReplacePart(): void
-  UpdateToolkits(num: TODO): TODO
-  On_CC_Mouse1(cont: TODO, idx: TODO): void
+  UpdateToolkits(num: number): TODO
+  On_CC_Mouse1(cont: string, idx: TODO): void
   Close(): void
   Repair(): void
   OnKeyboard(dik: TODO, keyboard_action: TODO): TODO

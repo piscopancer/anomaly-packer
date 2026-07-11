@@ -16,5 +16,5 @@ declare class heli_move {
   update_path_by_logic(): void
   update_movement_state(): void
   update_look_state(): void
-  waypoint_callback(obj: TODO, action_type: TODO, index: TODO): void
+  waypoint_callback(obj: TODO, action_type: TODO, index: number): void
 }

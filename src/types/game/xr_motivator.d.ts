@@ -14,7 +14,7 @@ declare class motivator_binder extends object_binder {
   take_item_from_box(box: TODO, item: TODO): void
   on_item_drop(item: TODO): void
   net_destroy(): void
-  hit_callback(obj: CGameObject, amount: TODO, local_direction: TODO, who: TODO, bone_index: TODO): void
+  hit_callback(obj: CGameObject, amount: TODO, local_direction: TODO, who: TODO, bone_index: number): void
   death_callback(victim: CGameObject, who: TODO): void
   use_callback(obj: TODO, who: TODO): void
   update(delta: TODO): void

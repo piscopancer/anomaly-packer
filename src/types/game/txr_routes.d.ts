@@ -84,7 +84,7 @@ declare namespace txr_routes {
   export function on_game_start(): void
   export function on_localization_change(): void
   export function on_screen_resolution_changed(): void
-  export function open_route(map_1: TODO, map_2: TODO, no_msg: TODO): void
+  export function open_route(map_1: TODO, map_2: TODO, no_msg: boolean): void
   export function open_route_aes2_aes1(first_speaker: TODO, second_speaker: TODO): void
   export function open_route_and_money_aes1_sar(first_speaker: TODO, second_speaker: TODO): void
   export function open_route_and_money_aes2_aes1(first_speaker: TODO, second_speaker: TODO): void

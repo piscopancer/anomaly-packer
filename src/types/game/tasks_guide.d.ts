@@ -5,7 +5,7 @@ declare namespace tasks_guide {
   export function activate(): void
   export function actor_on_first_update(): void
   export function actor_on_update(): void
-  export function change_money(num: TODO, type: TODO): void
+  export function change_money(num: TODO, type: string): void
   export function check_ignore_tbl(curr_level: TODO, tbl: TODO): boolean
   export function check_storage(): void
   export function check_tbl(check: TODO, tbl: TODO): boolean
@@ -17,15 +17,15 @@ declare namespace tasks_guide {
   export function d_v(name: TODO): void
   export function fail(): TODO
   export function fail_time(): void
-  export function fCall(file: TODO, func: TODO, ...args: TODO[]): void
+  export function fCall(file: string, func: TODO, ...args: TODO[]): void
   export function g_start_timer(name: TODO, delay_d: TODO, delay_h: TODO, delay_m: TODO, name_script: TODO, name_func: TODO, param: TODO): boolean
   export function get_back_level(tbl: TODO): TODO
   export function get_comm_id(squad_id: TODO): TODO
   export function get_phrase_1(actor: TODO, npc: TODO): TODO
-  export function get_phrase_start_1(): TODO
-  export function get_phrase_start_2(): TODO
+  export function get_phrase_start_1(): string
+  export function get_phrase_start_2(): string
   export function get_phrase2(actor: TODO, npc: TODO): TODO
-  export function get_phrase3(actor: TODO, npc: TODO): TODO
+  export function get_phrase3(actor: TODO, npc: TODO): string
   export function get_rnd_level(start_point: TODO): TODO
   export function go_poisk(): TODO
   export function has_g_timer(name: TODO): boolean
@@ -49,7 +49,7 @@ declare namespace tasks_guide {
   export function s_v(name: TODO, val: TODO): void
   export function save_state(): void
   export function squad_on_npc_death(squad: TODO, se_npc: TODO): void
-  export function squad_on_unregister(squad: TODO, type_name: TODO): void
+  export function squad_on_unregister(squad: TODO, type_name: string): void
   export function squad_switcher(npc_id: TODO, func: TODO, param2: TODO, param3: TODO): boolean
   export function start_timer(name: TODO, delay: TODO, name_script: TODO, name_func: TODO, param: TODO): boolean
   export function stop_g_timer(name: TODO): void

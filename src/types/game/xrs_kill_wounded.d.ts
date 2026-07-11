@@ -1,8 +1,8 @@
 /** @noSelfInFile */
 
 declare namespace xrs_kill_wounded {
-  export const actid: TODO
-  export const evaid: TODO
+  export const actid: number
+  export const evaid: number
   export const hostage_list: TODO
   export const ini: TODO
   export function add_common_precondition(action: TODO): TODO

@@ -1,12 +1,12 @@
 /** @noSelfInFile */
 
 declare namespace xr_companion {
-  export const beh_wait_ignore: TODO
-  export const beh_wait_near: TODO
-  export const beh_wait_simple: TODO
-  export const beh_walk_ignore: TODO
-  export const beh_walk_near: TODO
-  export const beh_walk_simple: TODO
+  export const beh_wait_ignore: number
+  export const beh_wait_near: number
+  export const beh_wait_simple: number
+  export const beh_walk_ignore: number
+  export const beh_walk_near: number
+  export const beh_walk_simple: number
   export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): TODO
   export function select_position(npc: TODO, st: TODO): TODO
   export function set_scheme(object: TODO, ini: TODO, scheme: TODO, section: TODO): void

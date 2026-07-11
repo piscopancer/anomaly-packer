@@ -5,14 +5,14 @@ declare namespace xr_meet {
   export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): TODO
   export function disable_generic_scheme(npc: TODO, scheme: TODO, stype: TODO): void
   export function has_dialog_override(npc_id: TODO): TODO
-  export function init_meet(npc: TODO, ini: TODO, section: TODO, st: TODO, scheme: TODO): void
+  export function init_meet(npc: TODO, ini: TODO, section: string, st: TODO, scheme: TODO): void
   export function is_meet(npc: TODO): boolean
   export function load_state(m: TODO): void
   export function notify_on_use(victim: TODO, who: TODO): void
   export function on_game_start(): void
   export function override_dialog(npc_id: TODO, dialog_name: TODO): boolean
   export function process_npc_usability(npc: CGameObject): void
-  export function reset_generic_scheme(npc: TODO, scheme: TODO, section: TODO, stype: TODO, st: TODO): void
+  export function reset_generic_scheme(npc: TODO, scheme: string, section: TODO, stype: TODO, st: TODO): void
   export function restore_dialog(npc_id: TODO): void
   export function save_state(m: TODO): void
   export function setup_generic_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void

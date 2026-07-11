@@ -2,16 +2,16 @@
 
 declare namespace xr_patrol {
   export function add_to_binder(object: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): TODO
-  export function set_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): void
+  export function set_scheme(npc: number, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): void
 }
 
 /** @customConstructor PatrolManager */
 declare class PatrolManager {
   constructor(path_name: TODO)
-  add_npc(npc: TODO, leader: TODO): void
+  add_npc(npc: TODO, leader: boolean): void
   remove_npc(npc: TODO): TODO
   reset_positions(): void
-  set_formation(formation: TODO): void
+  set_formation(formation: string): void
   get_commander(npc: TODO): TODO
   get_npc_command(npc: TODO): TODO
   set_command(npc: TODO, command: TODO, formation: TODO): TODO
@@ -30,7 +30,7 @@ declare class action_commander extends action_base {
   deactivate(npc: TODO): void
   death_callback(npc: TODO): void
   net_destroy(npc: TODO): void
-  formation_callback(mode: TODO, number: TODO, index: TODO): void
+  formation_callback(mode: TODO, number: number, index: TODO): void
 }
 
 /** @customConstructor evaluator_patrol_comm */

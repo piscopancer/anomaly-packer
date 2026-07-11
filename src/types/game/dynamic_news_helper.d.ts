@@ -10,15 +10,15 @@ declare namespace dynamic_news_helper {
   export function GetPointDescription(obj: TODO): string
   export function GetTimePharseAsString(): string
   export function GetTimeScope(EventDate: TODO, scope: TODO): number
-  export function GetTimeString(TimeDiffHrs: TODO, AccuracyTier: TODO): string | false
+  export function GetTimeString(TimeDiffHrs: TODO, AccuracyTier: number): string | false
   export function GetWeaponClass(obj: CGameObject): number
   export function GetWeaponDescription(obj: TODO, index: TODO): string
   export function IsDateCloseBy(EventDate: TODO, scope: TODO, count: TODO): boolean
   export function IsInvalidMap(map: TODO): boolean
   export function list_actor_squad_by_id(): TODO
   export function PickDirection(): string
-  export function PickFaction(only_natural: TODO): string
+  export function PickFaction(only_natural: boolean): string
   export function PickMap(excluded_map: TODO): string
   export function PickMutant(tier: TODO): string
-  export function send_tip(msg: TODO, header: TODO, timeout: TODO, showtime: TODO, sender: TODO, sound: TODO, icon_by: TODO): boolean
+  export function send_tip(msg: TODO, header: TODO, timeout: number, showtime: TODO, sender: TODO, sound: TODO, icon_by: string): boolean
 }

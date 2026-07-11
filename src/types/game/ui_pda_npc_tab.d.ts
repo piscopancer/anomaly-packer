@@ -5,16 +5,16 @@ declare namespace ui_pda_npc_tab {
   export function can_own_pda(npc: CGameObject): TODO
   export function gather_parts(str: TODO): TODO
   export function generate_date(last_msg_date: TODO): TODO
-  export function generate_fname(comm: TODO, key: TODO): TODO
-  export function generate_msg(contact: TODO, older_date: TODO, special: TODO, special_functor: TODO): TODO
+  export function generate_fname(comm: string, key: TODO): TODO
+  export function generate_msg(contact: TODO, older_date: TODO, special: string, special_functor: TODO): TODO
   export function get_encrypted_pdas(): TODO
-  export function get_enemy(faction: TODO, map: TODO): TODO
+  export function get_enemy(faction: TODO, map: TODO): string
   export function get_pointer(map: TODO): TODO
   export function get_ui(info: TODO): TODO
   export function have_encrypted_pda(first_speaker: TODO, second_speaker: TODO): boolean
   export function have_encrypted_pda_money(first_speaker: TODO, second_speaker: TODO): TODO
   export function menu_view(obj: TODO): TODO
-  export function register_pda(npc: CGameObject, pda_sec: TODO, pda_id: TODO): void
+  export function register_pda(npc: CGameObject, pda_sec: string, pda_id: TODO): void
   export function take_encrypted_pda_money(first_speaker: TODO, second_speaker: TODO): void
   export function unlock_encrypted_pda(first_speaker: TODO, second_speaker: TODO): void
   export function use_view(obj: TODO): boolean

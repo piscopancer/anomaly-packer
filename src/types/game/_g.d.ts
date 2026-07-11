@@ -371,7 +371,7 @@ declare class ini_file_ex {
   r_mult(s: TODO, k: TODO, ...args: TODO[]): TODO
   r_string_ex(s: TODO, k: TODO): string | null
   r_string_to_condlist(s: TODO, k: TODO, def: TODO): Record<TODO, TODO> | null
-  r_value(s: TODO, k: TODO, typ: TODO, def: TODO): string | null
+  r_value(s: TODO, k: TODO, typ: number, def: TODO): string | null
   remove_line(section: TODO, key: TODO): void
   save(): void
   section_exist(section: TODO): boolean

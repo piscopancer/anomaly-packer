@@ -2,7 +2,7 @@
 
 declare namespace item_weapon {
   export const GUI: TODO
-  export const can_overheat: TODO
+  export const can_overheat: boolean
   export function ammo_aggregation(obj: TODO, npc: CGameObject): boolean
   export function ammo_aggregation_full(npc_id: TODO): boolean
   export function ammo_injection(obj_1: TODO, obj_2: TODO, sec_1: TODO, sec_2: TODO): void

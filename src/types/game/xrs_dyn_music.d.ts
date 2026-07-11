@@ -1,21 +1,21 @@
 /** @noSelfInFile */
 
 declare namespace xrs_dyn_music {
-  export const AMBIENT_FADE_UPDATE_DELTA: TODO
-  export const FadeTo_ambient: TODO
-  export const FadeTo_theme: TODO
-  export const MAX_DIST: TODO
-  export const MIN_DIST: TODO
-  export const THEME_FADE_UPDATE_DELTA: TODO
-  export const TRACK_SWITCH_DELTA: TODO
-  export const VOLUME_DELTA: TODO
+  export const AMBIENT_FADE_UPDATE_DELTA: number
+  export const FadeTo_ambient: number
+  export const FadeTo_theme: number
+  export const MAX_DIST: number
+  export const MIN_DIST: number
+  export const THEME_FADE_UPDATE_DELTA: number
+  export const TRACK_SWITCH_DELTA: number
+  export const VOLUME_DELTA: number
   export const ambient_vol: TODO
-  export const cur_theme_number: TODO
-  export const cur_track_number: TODO
+  export const cur_theme_number: number
+  export const cur_track_number: number
   export const feature_is_active: TODO
-  export const m_ambient_vol: TODO
-  export const m_theme_volume: TODO
-  export const next_track_start_time: TODO
+  export const m_ambient_vol: number
+  export const m_theme_volume: number
+  export const next_track_start_time: number
   export const npc_table: TODO
   export const theme: TODO
   export function activate_feature(): void

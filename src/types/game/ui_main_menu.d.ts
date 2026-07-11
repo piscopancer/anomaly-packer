@@ -27,8 +27,8 @@ declare class main_menu extends CUIScriptWnd {
   ShowFactionUI(): void
   LoadLastSave(): void
   on_localization_change(): void
-  Dispatch(cmd: TODO, param: TODO): boolean
+  Dispatch(cmd: number, param: TODO): boolean
   OnKeyboard(dik: TODO, keyboard_action: TODO): boolean
   OnMenuReloaded(): void
-  SetMsg(text: TODO, tmr: TODO, align: TODO): void
+  SetMsg(text: string, tmr: TODO, align: number): void
 }

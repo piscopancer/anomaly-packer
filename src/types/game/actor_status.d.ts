@@ -12,7 +12,7 @@ declare namespace actor_status {
   export function get_overweight(visual: TODO): TODO
   export function get_radiation(visual: TODO): TODO
   export function get_satienty(visual: TODO): TODO
-  export function on_console_execute(name: TODO): void
+  export function on_console_execute(name: string): void
   export function on_game_start(): void
   export function prepare_boosters_effect(): void
   export function prepare_indictors_list(): TODO

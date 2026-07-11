@@ -9,10 +9,10 @@ declare namespace item_device {
   export const device_geiger: TODO
   export const device_npc_pda: TODO
   export const devices: TODO
-  export const dosimeter_env_rads_mode: TODO
+  export const dosimeter_env_rads_mode: boolean
   export function bind(obj: TODO): void
   export function can_toggle_torch(): boolean
-  export function drain_device(obj: TODO, sec: TODO, loss: TODO, loss_add: TODO): boolean
+  export function drain_device(obj: TODO, sec: TODO, loss: number, loss_add: TODO): boolean
   export function drain_device_on_event(obj: TODO, sec: TODO, idx: TODO, custom_loss: TODO): boolean
   export function func_battery(obj: TODO): void
   export function get_power_consumption(sec: TODO): number
@@ -28,7 +28,7 @@ declare namespace item_device {
   export function pda_warning(): boolean
   export function print_dbg(txt: TODO, ...args: TODO[]): void
   export function set_nightvision(section: TODO, state: TODO): void
-  export function set_nightvision_HUD(bShow: TODO): void
+  export function set_nightvision_HUD(bShow: boolean): void
   export function set_pda_glitch(obj: TODO, val: TODO): void
   export function toggle_torch(): void
 }

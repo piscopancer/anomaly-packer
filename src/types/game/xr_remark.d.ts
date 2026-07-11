@@ -2,7 +2,7 @@
 
 declare namespace xr_remark {
   export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): TODO
-  export function init_target(obj: TODO, target_str: TODO): TODO
+  export function init_target(obj: TODO, target_str: string): TODO
   export function set_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): void
 }
 

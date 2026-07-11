@@ -1,9 +1,9 @@
 /** @noSelfInFile */
 
 declare namespace axr_turn_on_campfire {
-  export const actid: TODO
+  export const actid: number
   export const already_selected: TODO
-  export const evaid: TODO
+  export const evaid: number
   export function add_to_binder(npc: TODO, char_ini: TODO, scheme: TODO, section: TODO, st: TODO, temp: TODO): TODO
   export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): TODO
   export function is_under_turn_on_campfire(npc: TODO): boolean

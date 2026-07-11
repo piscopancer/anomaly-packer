@@ -21,17 +21,17 @@ declare class UIItemEditor extends CUIScriptWnd {
   InitControls(): TODO
   InitCallbacks(): TODO
   ResetList(item_type: TODO, item_kinds: TODO): TODO
-  ResetParameters(force_def: TODO): TODO
+  ResetParameters(force_def: boolean): TODO
   ResetComparison(p: TODO): TODO
   Update(): TODO
   Update_Pending(cnt: TODO): TODO
-  GetStringByType(index: TODO, typ: TODO): TODO
+  GetStringByType(index: TODO, typ: number): TODO
   GetParameterValue(cnt: TODO): TODO
   SetParameterValue(cnt: TODO, value: TODO): TODO
-  IsInvalidValue(cnt: TODO, typ: TODO, value: TODO): TODO
+  IsInvalidValue(cnt: TODO, typ: number, value: string): TODO
   Send_MSG(text: TODO, ...args: TODO[]): TODO
-  SetHint(text: TODO, pos: TODO, _w: TODO): TODO
-  SetHelp(text: TODO, stop: TODO): TODO
+  SetHint(text: string, pos: TODO, _w: TODO): TODO
+  SetHelp(text: string, stop: TODO): TODO
   SwitchParam(state: TODO, vert: TODO): TODO
   SwitchValue(state: TODO, selected: TODO): TODO
   SwitchValueGroup(state: TODO, selected_group: TODO): TODO

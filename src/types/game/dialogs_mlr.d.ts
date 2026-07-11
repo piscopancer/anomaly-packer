@@ -305,7 +305,7 @@ declare namespace dialogs_mlr {
   export function marsh_post_guid(first_speaker: TODO, second_speaker: TODO): void
   export function marsh_pump_water_guid(first_speaker: TODO, second_speaker: TODO): void
   export function marsh_tech_yard_guid(first_speaker: TODO, second_speaker: TODO): void
-  export function merc_pri_grifon_mlr_task_target(task_id: TODO, field: TODO, p: TODO, tsk: TODO): TODO
+  export function merc_pri_grifon_mlr_task_target(task_id: string, field: string, p: TODO, tsk: TODO): TODO
   export function message_robbery(): void
   export function mil_to_yant_on_heli(actor: TODO, npc: TODO, p: TODO): void
   export function military_guid(actor: TODO, npc: TODO, p: TODO): void

@@ -8,7 +8,7 @@ declare namespace item_artefact {
   export function actor_on_net_destroy(): void
   export function bind(obj: TODO): void
   export function deactivate_hud(): void
-  export function on_console_execute(name: TODO): void
+  export function on_console_execute(name: string): void
   export function on_game_start(): void
   export function on_option_change(): void
   export function print_dbg(txt: TODO, ...args: TODO[]): void

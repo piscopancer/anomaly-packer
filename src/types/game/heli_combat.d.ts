@@ -11,7 +11,7 @@ declare class heli_combat {
   set_enemy(target: TODO): void
   find_valid_target(): boolean
   read_custom_data(ini: TODO, section: TODO): void
-  set_enemy_from_custom_data(combat_enemy: TODO): void
+  set_enemy_from_custom_data(combat_enemy: string): void
   set_combat_type(new_combat_type: TODO): void
   initialize(): void
   fastcall(): boolean

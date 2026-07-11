@@ -54,7 +54,7 @@ declare namespace xrs_debug_tools {
 /** @customConstructor hud_tool */
 declare class hud_tool {
   constructor(custom_static: TODO)
-  add_msg(text: TODO, value: TODO, ...args: TODO[]): void
+  add_msg(text: string, value: TODO, ...args: TODO[]): void
   set_header(header: TODO): void
   display(disable: TODO): void
   export(): TODO

@@ -5,7 +5,7 @@ declare namespace phantom_manager {
   export const phantom_registry: TODO
   export function bind(obj: TODO): void
   export function bind_phantom(obj: TODO): void
-  export function dynamic_phantom_count(sec: TODO): TODO
+  export function dynamic_phantom_count(sec: string): TODO
   export function on_game_start(): void
   export function phantom_count(): TODO
   export function spawn_dynamic_phantom(sec: TODO, pos: TODO, lvid: TODO): void

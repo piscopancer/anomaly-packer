@@ -41,7 +41,7 @@ declare namespace ui_debug_launcher {
   export function set_npc_companion(): TODO
   export function set_relation(relation: TODO): void
   export function set_relation_npc_npc(npc_1: CGameObject, npc_2: TODO, relation: TODO): TODO
-  export function show_owner(ui: TODO, owner: TODO, mode: TODO): void
+  export function show_owner(ui: TODO, owner: TODO, mode: number): void
   export function spawn_basic_equipment(): void
   export function stalker_check(npc: TODO): boolean
   export function start_debug_main(owner: TODO): void
@@ -77,8 +77,8 @@ declare class UIDebugMain extends CUIScriptWnd {
   OnList_editor(): void
   OnConsoleInput(): TODO
   GetColor(mark: TODO): TODO
-  SendOutput(txt: TODO, ...args: TODO[]): TODO
-  SendOutputList(list: TODO, start: TODO, finish: TODO): void
+  SendOutput(txt: string, ...args: TODO[]): string
+  SendOutputList(list: TODO, start: TODO, finish: number): void
   OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
   Close(mode: TODO): void
 }
@@ -90,7 +90,7 @@ declare class UIDebug_Executer extends CUIScriptWnd {
   InitControls(): void
   InitCallBacks(): void
   Reset(): void
-  SetMsg(text: TODO, mark: TODO, tmr: TODO): void
+  SetMsg(text: string, mark: TODO, tmr: TODO): void
   Update(): void
   OnLogicSet(): void
   OnLogicRevert(): void
@@ -121,7 +121,7 @@ declare class UIDebug_ItemSpawn extends CUIScriptWnd {
   InitItems(index: TODO): void
   Spawn(section: TODO): void
   Update(): void
-  SetMsg(text: TODO, mark: TODO, tmr: TODO): void
+  SetMsg(text: string, mark: TODO, tmr: TODO): void
   OnButton_Name(): void
   OnButton_Point(): void
   OnButton_Inv(): void
@@ -143,7 +143,7 @@ declare class UIDebug_ObjSpawn extends CUIScriptWnd {
   InitObjects(index: TODO): void
   Spawn(section: TODO): void
   Update(): void
-  SetMsg(text: TODO, mark: TODO, tmr: TODO): void
+  SetMsg(text: string, mark: TODO, tmr: TODO): void
   OnList_ObjectType(): void
   OnList_Object(): void
   OnList_level(): void

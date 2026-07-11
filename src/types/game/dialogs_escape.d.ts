@@ -4,7 +4,7 @@ declare namespace dialogs_escape {
   export const esc_2_12_buy_item_table: TODO
   export const esc_2_12_costs_table: TODO
   export const item_count_by_category: TODO
-  export const nimble_trade_instead: TODO
+  export const nimble_trade_instead: boolean
   export function actor_dont_has_esc_m_trader_task_2(a: TODO, b: TODO): TODO
   export function actor_dont_has_mar_base_owl_stalker_trader_task_1_pda(a: TODO, b: TODO): TODO
   export function actor_has_esc_m_trader_task_2(a: TODO, b: TODO): TODO

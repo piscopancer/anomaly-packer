@@ -14,8 +14,8 @@ declare class UICompanionInv extends CUIScriptWnd {
   InitControls(): void
   InitCallBacks(): void
   Update(): void
-  SetMsg(text: TODO, tmr: TODO): void
-  SetHint(text: TODO, pos: TODO): void
+  SetMsg(text: string, tmr: TODO): void
+  SetHint(text: string, pos: TODO): void
   Reset(npc: CGameObject): void
   ResetWeight(npc: TODO, inv_table: TODO): void
   InitInventoryCells(s_table: TODO, s_scroll: TODO, s_cells: TODO, callback: TODO): TODO

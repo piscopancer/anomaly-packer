@@ -1,8 +1,8 @@
 /** @noSelfInFile */
 
 declare namespace axr_npc_vs_box {
-  export const actid: TODO
-  export const evaid: TODO
+  export const actid: number
+  export const evaid: number
   export const selected: TODO
   export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO, temp: TODO): TODO
   export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): TODO

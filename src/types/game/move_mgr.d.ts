@@ -1,9 +1,9 @@
 /** @noSelfInFile */
 
 declare namespace move_mgr {
-  export const arrival_after_rotation: TODO
-  export const arrival_before_rotation: TODO
-  export function choose_look_point(patrol_look: TODO, path_look_info: TODO, search_for: TODO): TODO
+  export const arrival_after_rotation: number
+  export const arrival_before_rotation: number
+  export function choose_look_point(patrol_look: number, path_look_info: TODO, search_for: TODO): TODO
 }
 
 /** @customConstructor move_mgr */
@@ -28,5 +28,5 @@ declare class move_mgr {
   time_callback(): void
   scheme_set_signal(sig: TODO): void
   turn_end_callback(): void
-  waypoint_callback(obj: TODO, action_type: TODO, index: TODO): void
+  waypoint_callback(obj: TODO, action_type: TODO, index: number): void
 }

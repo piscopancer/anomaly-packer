@@ -8,7 +8,7 @@ declare namespace ph_sound {
 /** @customConstructor snd_source */
 declare class snd_source {
   constructor(obj: TODO, storage: TODO)
-  reset_scheme(loading: TODO): void
+  reset_scheme(loading: boolean): void
   save(): void
   hit_callback(obj: TODO, amount: TODO, local_direction: TODO, who: TODO, bone_index: TODO): TODO
   update(delta: TODO): TODO

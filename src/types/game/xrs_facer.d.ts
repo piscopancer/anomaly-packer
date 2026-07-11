@@ -1,16 +1,16 @@
 /** @noSelfInFile */
 
 declare namespace xrs_facer {
-  export const actid_facer: TODO
-  export const actid_steal_up_facer: TODO
-  export const evid_facer: TODO
-  export const evid_steal_up_facer: TODO
+  export const actid_facer: number
+  export const actid_steal_up_facer: number
+  export const evid_facer: number
+  export const evid_steal_up_facer: number
   export function add_to_binder(npc: CGameObject, ini: TODO, scheme: TODO, section: TODO, storage: TODO, temp: TODO): void
   export function check_enemy(enemy: TODO, obj: TODO): boolean
   export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void
   export function disable_generic_scheme(npc: TODO, scheme: TODO, stype: TODO): void
   export function get_anim(npc: CGameObject): LuaMultiReturn<[TODO, TODO]>
-  export function hit_callback(obj: TODO, amount: TODO, dir: TODO, who: TODO, bone_index: TODO): void
+  export function hit_callback(obj: TODO, amount: TODO, dir: TODO, who: TODO, bone_index: string): void
   export function npc_add_precondition(action: TODO): void
   export function on_game_start(): void
   export function setup_generic_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void

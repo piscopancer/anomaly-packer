@@ -7,5 +7,5 @@ declare namespace warfare_faction_control {
   export function on_game_start(): void
   export function possess_squad_leader(squad: TODO): boolean
   export function refresh_strings(): void
-  export function translate_smart_name(name: TODO): TODO
+  export function translate_smart_name(name: TODO): string
 }

@@ -1,8 +1,8 @@
 /** @noSelfInFile */
 
 declare namespace xr_campfire_point {
-  export const actid: TODO
-  export const evaid: TODO
+  export const actid: number
+  export const evaid: number
   export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): TODO
   export function set_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): void
 }

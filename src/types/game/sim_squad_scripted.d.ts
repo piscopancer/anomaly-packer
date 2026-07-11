@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace sim_squad_scripted {
-  export const dbg_map_hud: TODO
+  export const dbg_map_hud: boolean
 }
 
 /** @customConstructor sim_squad_scripted */
@@ -17,7 +17,7 @@ declare class sim_squad_scripted extends cse_alife_online_offline_group {
   remove_npc(npc_id: TODO, force: TODO): void
   on_npc_death(se_npc: TODO, se_killer: TODO): void
   assign_squad_member_to_smart(member_id: TODO, smart: TODO, old_smart_id: TODO): void
-  assign_smart(smart: TODO, old_smart_id: TODO): void
+  assign_smart(smart: TODO, old_smart_id: number): void
   check_invulnerability(): void
   set_location_types_section(section: TODO): void
   set_location_types(new_smart_name: TODO): void
@@ -46,7 +46,7 @@ declare class sim_squad_scripted extends cse_alife_online_offline_group {
   hide(): void
   show(): void
   get_squad_props(): TODO
-  get_squad_relation(): TODO
+  get_squad_relation(): string
   get_location(): TODO
   get_current_task(): TODO
   am_i_reached(squad: TODO): TODO

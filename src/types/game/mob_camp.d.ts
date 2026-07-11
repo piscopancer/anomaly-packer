@@ -10,7 +10,7 @@ declare class mob_camp {
   constructor(obj: TODO, storage: TODO)
   reset_scheme(): void
   update(delta: TODO): void
-  select_current_home_point(first_call: TODO): void
+  select_current_home_point(first_call: boolean): void
   select_state(): void
   execute_state(): void
   deactivate(): void

@@ -1,10 +1,10 @@
 /** @noSelfInFile */
 
 declare namespace ui_load_dialog {
-  export const saved_game_extension: TODO
+  export const saved_game_extension: string
   export function AddTimeDigit(str: TODO, dig: TODO): TODO
   export function delete_save_game(filename: TODO): void
-  export function file_data(fname: TODO): TODO
+  export function file_data(fname: TODO): string
   export function file_exist(fname: TODO): boolean
 }
 

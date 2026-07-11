@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace bind_crow {
-  export const crow_counter: TODO
+  export const crow_counter: number
   export const crow_storage: TODO
   export function bind(obj: TODO): void
 }

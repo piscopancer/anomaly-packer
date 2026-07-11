@@ -2,10 +2,10 @@
 
 declare namespace smart_terrain_warfare {
   export const control_hold: TODO
-  export const dbg_hud: TODO
+  export const dbg_hud: boolean
   export const defense_next_update: TODO
   export const defense_timers: TODO
-  export const hide_smarts: TODO
+  export const hide_smarts: boolean
   export const invasions: TODO
   export const manual_point: TODO
   export const patrol_next_update: TODO

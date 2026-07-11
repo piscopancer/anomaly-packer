@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace sr_psy_antenna {
-  export const psy_antenna: TODO
+  export const psy_antenna: boolean
   export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): void
   export function load(p: net_packet): void
   export function save(p: net_packet): void

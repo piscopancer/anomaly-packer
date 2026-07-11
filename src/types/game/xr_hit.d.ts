@@ -9,5 +9,5 @@ declare namespace xr_hit {
 /** @customConstructor action_process_hit */
 declare class action_process_hit {
   constructor(obj: TODO, storage: TODO)
-  hit_callback(obj: TODO, amount: TODO, local_direction: TODO, who: TODO, bone_index: TODO): void
+  hit_callback(obj: TODO, amount: number, local_direction: TODO, who: TODO, bone_index: TODO): void
 }

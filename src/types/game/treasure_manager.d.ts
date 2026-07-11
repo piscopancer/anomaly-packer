@@ -8,13 +8,13 @@ declare namespace treasure_manager {
   export function box_in_same_map(id: TODO): boolean
   export function box_in_valid_map(id: TODO): boolean
   export function create_random_stash(no_spot: TODO, hint: TODO, bonus_items: TODO, spawn_local: TODO, inv_box: TODO): void
-  export function get_random_stash(no_spot: TODO, hint: TODO, spawn_local: TODO, inv_box: TODO): LuaMultiReturn<[number, string]>
+  export function get_random_stash(no_spot: boolean, hint: TODO, spawn_local: TODO, inv_box: TODO): LuaMultiReturn<[number, string]>
   export function init_settings(): void
   export function load(pk: net_packet): void
   export function on_game_start(): void
   export function release_stash_by_id(id: TODO): void
   export function save(pk: net_packet): void
-  export function set_random_stash(no_spot: TODO, hint: TODO, bonus_items: TODO, id: TODO, dbg: TODO): number
-  export function simulate_stash_creation(num: TODO): void
+  export function set_random_stash(no_spot: boolean, hint: TODO, bonus_items: TODO, id: TODO, dbg: TODO): number
+  export function simulate_stash_creation(num: number): void
   export function try_spawn_treasure(box: TODO): void
 }

@@ -7,9 +7,9 @@ declare namespace bind_awr {
   export function dout(call: TODO, fmt: TODO, ...args: TODO[]): TODO
   export function full_access(vice: TODO, npc_s: TODO): void
   export function l_v(name: TODO, def: TODO): TODO
-  export function Lamp(npc_name: TODO, state: TODO): void
+  export function Lamp(npc_name: TODO, state: boolean): void
   export function load_state(m_data: TODO): void
-  export function npc_on_death_callback(victim: TODO, who: TODO): TODO
+  export function npc_on_death_callback(victim: TODO, who: TODO): string
   export function on_game_start(): void
   export function OnDeath(npc: TODO): void
   export function physic_object_on_use_callback(_obj: TODO, who: TODO): boolean

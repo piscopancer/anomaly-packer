@@ -3,7 +3,7 @@
 declare namespace bind_anomaly_field {
   export const dyn_anomalies: TODO
   export const fields_by_names: TODO
-  export function add_marker(lvl: TODO, section: TODO, id: TODO, state: TODO): void
+  export function add_marker(lvl: TODO, section: TODO, id: TODO, state: boolean): void
   export function bind(obj: TODO): void
   export function dyn_anomalies_refresh(force: TODO): boolean
   export function dyn_anomalies_spawn(): void

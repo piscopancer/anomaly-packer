@@ -19,7 +19,7 @@ declare class UISleep extends CUIScriptWnd {
   InitControls(): void
   InitCallbacks(): void
   Initialize(): void
-  TestAndShow(force: TODO): void
+  TestAndShow(force: boolean): void
   Update(): void
   OnTrackButton(): void
   OnButtonSleep(): void

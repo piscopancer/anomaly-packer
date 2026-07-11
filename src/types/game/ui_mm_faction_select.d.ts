@@ -94,7 +94,7 @@ declare class UINewGame extends CUIScriptWnd {
   OnFactionClicked(): void
   OnIconClicked(): void
   OnSelectMap(): void
-  On_CC_Mouse1(cont: TODO, idx: TODO): void
+  On_CC_Mouse1(cont: string, idx: TODO): void
   OnSelectDifficulty(): void
   OnSelectEconomy(): void
   OnSelectHardcoreLives(): void

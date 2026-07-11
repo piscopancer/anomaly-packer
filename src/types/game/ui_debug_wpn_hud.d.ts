@@ -16,11 +16,11 @@ declare class WpnHudEditor extends CUIScriptWnd {
   InitControls(): TODO
   InitCallBacks(): void
   Reset(force: TODO, use_cache: TODO): void
-  GetStringByType(indx: TODO, typ: TODO): TODO
+  GetStringByType(indx: TODO, typ: number): TODO
   GetParameterValue(cnt: TODO): TODO
   SetParameterValue(cnt: TODO, value: TODO): void
-  ApplyParameterValue(typ: TODO, parent: TODO): void
-  IsInvalidValue(cnt: TODO, typ: TODO, value: TODO): boolean
+  ApplyParameterValue(typ: number, parent: TODO): void
+  IsInvalidValue(cnt: TODO, typ: TODO, value: string): boolean
   Send_MSG(text: TODO, ...args: TODO[]): void
   ShowHint(): void
   Update(): void

@@ -50,14 +50,14 @@ declare class UICellContainer {
   TransferItem(cont_to: TODO, obj: TODO, sec: TODO): TODO
   UpdateItem(obj: TODO, sec: TODO): TODO
   FindFreeCell(obj: TODO, sec: TODO): TODO
-  IsFreeRoom(r: TODO, c: TODO, w: TODO, h: TODO): TODO
+  IsFreeRoom(r: number, c: number, w: TODO, h: TODO): TODO
   TakeRoom(r: TODO, c: TODO, w: TODO, h: TODO): TODO
-  FreeRoom(r: TODO, c: TODO, w: TODO, h: TODO): TODO
+  FreeRoom(r: number, c: number, w: TODO, h: TODO): TODO
   FindSimilar(obj: TODO, sec: TODO): TODO
   Grow(): TODO
   IsTradable(obj: TODO): TODO
   GetCellCost(ci: TODO): TODO
-  On_Select(idx: TODO): TODO
+  On_Select(idx: boolean): TODO
   On_Drag(idx: TODO, tg: TODO, set: TODO): TODO
   On_Hover(idx: TODO): TODO
   On_Mouse1(idx: TODO): TODO
@@ -66,7 +66,7 @@ declare class UICellContainer {
   On_Scroll(): TODO
   Update(item_info: TODO, no_info: TODO, hide: TODO): TODO
   OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
-  Callback(func: TODO, ...args: TODO[]): TODO
+  Callback(func: string, ...args: TODO[]): TODO
   Reset(): TODO
   IsCellVisible(ci: TODO): TODO
   Scroll_Reinit(keep_pos: TODO): TODO
@@ -102,7 +102,7 @@ declare class UICellItem {
   Add_Attachements(xml: TODO, obj: TODO, sec: TODO, clsid: TODO): TODO
   Add_CustomText(txt: TODO, align_h: TODO, align_v: TODO, clr: TODO, fnt: TODO): TODO
   Create_Layer(ele: TODO, base: TODO, sec_m: TODO, sec_l: TODO, str_x: TODO, str_y: TODO, str_scale: TODO): TODO
-  Colorize(clr_id: TODO): TODO
+  Colorize(clr_id: string): TODO
   Highlight(state: TODO, clr_id: TODO, main_clr: TODO): TODO
   Check_TradeMode(obj: TODO, sec: TODO): TODO
   GetCost(): TODO
@@ -146,7 +146,7 @@ declare class UIHint {
   constructor(owner: TODO, delay: TODO, path: TODO)
   InitControls(): TODO
   Update(txt: TODO): TODO
-  Pass(txt: TODO): TODO
+  Pass(txt: string): TODO
   Show(state: TODO): TODO
 }
 
@@ -156,7 +156,7 @@ declare class UIInfoItem {
   InitControls(): TODO
   Update(obj: TODO, sec: TODO, flags: TODO): TODO
   Pass(obj: TODO, sec: TODO): TODO
-  GetType(sec: TODO): TODO
+  GetType(sec: TODO): string
   GetUpgrades(obj: TODO): TODO
   Sync_Finale(cond: TODO, ele_syncer: TODO, ele_resizer: TODO, ele_adapter: TODO, offset: TODO): TODO
   Sync_Y(parent: TODO, child: TODO, offset: TODO): TODO
@@ -164,7 +164,7 @@ declare class UIInfoItem {
   Reset_Y(ele: TODO): TODO
   Reset(): TODO
   IsShown(): TODO
-  Show(state: TODO): TODO
+  Show(state: boolean): TODO
 }
 
 /** @customConstructor UIInfoUpgr */

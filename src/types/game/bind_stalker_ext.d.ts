@@ -25,7 +25,7 @@ declare namespace bind_stalker_ext {
   export function actor_on_reinit(binder: TODO): void
   export function actor_on_save(binder: TODO, packet: TODO): void
   export function actor_on_task_callback(binder: TODO, _task: TODO, _state: TODO): void
-  export function actor_on_trade(binder: TODO, item: TODO, sell_bye: TODO, money: TODO): void
+  export function actor_on_trade(binder: TODO, item: TODO, sell_bye: boolean, money: TODO): void
   export function actor_on_update(binder: TODO, delta: TODO): void
   export function actor_on_use_vehicle(binder: TODO, obj: TODO): void
   export function actor_on_weapon_fired(binder: TODO, obj: TODO, wpn: TODO, ammo_elapsed: TODO, grenade_elapsed: TODO, ammo_type: TODO, grenade_type: TODO): void
