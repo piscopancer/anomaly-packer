@@ -1,33 +1,31 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace utils_ui {
   export const stats_table: TODO
-  export function add_stats_table(k1: TODO, k2: TODO, v: TODO): TODO
+  export function add_stats_table(k1: TODO, k2: TODO, v: TODO): void
   export function get_stats_func_value(obj: TODO, sec: TODO, file: TODO, func: TODO, ...args: TODO[]): TODO
-  export function get_stats_string_value(obj: TODO, sec: TODO, gr: TODO, stat: TODO, to_text: TODO): TODO
+  export function get_stats_string_value(obj: TODO, sec: TODO, gr: TODO, stat: TODO, to_text: TODO): string
   export function get_stats_table(sec: TODO): TODO
-  export function get_stats_value(obj: TODO, sec: TODO, gr: TODO, stat: TODO): TODO
+  export function get_stats_value(obj: TODO, sec: TODO, gr: TODO, stat: TODO): number
   export function get_stats_xml(handler: TODO, obj: TODO, sec: TODO, gr: TODO, stat: TODO): TODO
-  export function get_time(): TODO
+  export function get_time(): number
   export function get_utils_xml(): TODO
-  export function main_menu_off(): TODO
-  export function main_menu_on(): TODO
-  export function on_game_start(): TODO
-  export function prepare_stats_table(): TODO
-  export function prop_accuracry(obj: TODO, sec: TODO): TODO
-  export function prop_condition(obj: TODO, sec: TODO): TODO
-  export function prop_damage(obj: TODO, sec: TODO): TODO
-  export function prop_handling(obj: TODO, sec: TODO): TODO
-  export function prop_rpm(obj: TODO, sec: TODO): TODO
-  export function set_item_order(): TODO
-  export function sort_by_index(t: TODO, a: TODO, b: TODO): TODO
-  export function sort_by_kind(t: TODO, a: TODO, b: TODO): TODO
-  export function sort_by_props(t: TODO, a: TODO, b: TODO): TODO
-  export function sort_by_size(t: TODO, a: TODO, b: TODO): TODO
-  export function sort_by_sizekind(t: TODO, a: TODO, b: TODO): TODO
-  export function sort_info(asec: TODO, bsec: TODO): TODO
+  export function main_menu_off(): void
+  export function main_menu_on(): void
+  export function on_game_start(): void
+  export function prepare_stats_table(): void
+  export function prop_accuracry(obj: TODO, sec: TODO): number
+  export function prop_condition(obj: TODO, sec: TODO): number
+  export function prop_damage(obj: TODO, sec: TODO): number
+  export function prop_handling(obj: TODO, sec: TODO): number
+  export function prop_rpm(obj: TODO, sec: TODO): number
+  export function set_item_order(): void
+  export function sort_by_index(t: TODO, a: TODO, b: TODO): boolean
+  export function sort_by_kind(t: TODO, a: TODO, b: TODO): boolean
+  export function sort_by_props(t: TODO, a: TODO, b: TODO): boolean
+  export function sort_by_size(t: TODO, a: TODO, b: TODO): boolean
+  export function sort_by_sizekind(t: TODO, a: TODO, b: TODO): boolean
+  export function sort_info(asec: TODO, bsec: TODO): boolean
 }
 
 /** @customConstructor UICellContainer */
@@ -139,7 +137,7 @@ declare class UICellProperties extends CUIScriptWnd {
 
 /** @customConstructor UICellProperties_item */
 declare class UICellProperties_item extends CUIListBoxItem {
-  constructor(arg0: TODO)
+  constructor()
   __finalize(): TODO
 }
 

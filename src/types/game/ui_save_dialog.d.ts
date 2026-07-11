@@ -1,23 +1,21 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 /** @customConstructor UISaveDialog */
 declare class UISaveDialog extends CUIScriptWnd {
-  constructor(arg0: TODO)
-  __finalize(): TODO
-  FillList(): TODO
-  InitControls(): TODO
-  InitCallBacks(): TODO
+  constructor()
+  __finalize(): void
+  FillList(): void
+  InitControls(): void
+  InitCallBacks(): void
   OnListItemClicked(): TODO
-  OnMsgYes(): TODO
+  OnMsgYes(): void
   OnButton_del_clicked(): TODO
   delete_selected_file(): TODO
-  OnButton_ok_clicked(): TODO
-  OnButton_cancel_clicked(): TODO
-  OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
-  AddItemToList(file_name: TODO, date_time: TODO): TODO
-  SaveFile(fileName: TODO): TODO
+  OnButton_ok_clicked(): void
+  OnButton_cancel_clicked(): void
+  OnKeyboard(dik: TODO, keyboard_action: TODO): boolean
+  AddItemToList(file_name: TODO, date_time: TODO): void
+  SaveFile(fileName: TODO): void
 }
 
 /** @customConstructor save_item */

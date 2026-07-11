@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace gulag_general {
@@ -67,7 +65,7 @@ declare namespace gulag_general {
   export const use_rocket: TODO
   export const use_text: TODO
   export function get_job_precondition(job: TODO): TODO
-  export function get_job_prefix_name(job: TODO): TODO
+  export function get_job_prefix_name(job: TODO): boolean
   export function get_job_prior(job: TODO): TODO
   export function get_job_type(job: TODO): TODO
   export function load_job(smart: TODO, debug_save: TODO): TODO

@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace ui_debug_item {
@@ -45,90 +43,93 @@ declare class UIItemEditor extends CUIScriptWnd {
   Refresh_Item(): TODO
   OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
   Close(): TODO
-  OnInput_1(arg0: TODO): TODO
-  OnInput_2(arg0: TODO): TODO
-  OnInput_3(arg0: TODO): TODO
-  OnInput_4(arg0: TODO): TODO
-  OnInput_5(arg0: TODO): TODO
-  OnInput_6(arg0: TODO): TODO
-  OnInput_7(arg0: TODO): TODO
-  OnInput_8(arg0: TODO): TODO
-  OnInput_9(arg0: TODO): TODO
-  OnInput_10(arg0: TODO): TODO
-  OnInput_11(arg0: TODO): TODO
-  OnInput_12(arg0: TODO): TODO
-  OnInput_13(arg0: TODO): TODO
-  OnInput_14(arg0: TODO): TODO
-  OnInput_15(arg0: TODO): TODO
-  OnInput_16(arg0: TODO): TODO
-  OnInput_17(arg0: TODO): TODO
-  OnInput_18(arg0: TODO): TODO
-  OnInput_19(arg0: TODO): TODO
-  OnInput_20(arg0: TODO): TODO
-  OnInput_21(arg0: TODO): TODO
-  OnInput_22(arg0: TODO): TODO
-  OnInput_23(arg0: TODO): TODO
-  OnInput_24(arg0: TODO): TODO
-  OnInput_25(arg0: TODO): TODO
-  OnInput_26(arg0: TODO): TODO
-  OnInput_27(arg0: TODO): TODO
-  OnInput_28(arg0: TODO): TODO
-  OnInput_29(arg0: TODO): TODO
-  OnInput_30(arg0: TODO): TODO
-  OnInput_31(arg0: TODO): TODO
-  OnInput_32(arg0: TODO): TODO
-  OnInput_33(arg0: TODO): TODO
-  OnInput_34(arg0: TODO): TODO
-  OnInput_35(arg0: TODO): TODO
-  OnInput_36(arg0: TODO): TODO
-  OnInput_37(arg0: TODO): TODO
-  OnInput_38(arg0: TODO): TODO
-  OnInput_39(arg0: TODO): TODO
-  OnInput_40(arg0: TODO): TODO
-  OnInput_41(arg0: TODO): TODO
-  OnInput_42(arg0: TODO): TODO
-  OnInput_43(arg0: TODO): TODO
-  OnInput_44(arg0: TODO): TODO
-  OnInput_45(arg0: TODO): TODO
-  OnInput_46(arg0: TODO): TODO
-  OnInput_47(arg0: TODO): TODO
-  OnInput_48(arg0: TODO): TODO
-  OnInput_49(arg0: TODO): TODO
-  OnInput_50(arg0: TODO): TODO
-  OnInput_51(arg0: TODO): TODO
-  OnInput_52(arg0: TODO): TODO
-  OnInput_53(arg0: TODO): TODO
-  OnInput_54(arg0: TODO): TODO
-  OnInput_55(arg0: TODO): TODO
-  OnInput_56(arg0: TODO): TODO
-  OnInput_57(arg0: TODO): TODO
-  OnInput_58(arg0: TODO): TODO
-  OnInput_59(arg0: TODO): TODO
-  OnInput_60(arg0: TODO): TODO
-  OnInput_61(arg0: TODO): TODO
-  OnInput_62(arg0: TODO): TODO
-  OnInput_63(arg0: TODO): TODO
-  OnInput_64(arg0: TODO): TODO
-  OnInput_65(arg0: TODO): TODO
-  OnInput_66(arg0: TODO): TODO
-  OnInput_67(arg0: TODO): TODO
-  OnInput_68(arg0: TODO): TODO
-  OnInput_69(arg0: TODO): TODO
-  OnInput_70(arg0: TODO): TODO
-  OnInput_71(arg0: TODO): TODO
-  OnInput_72(arg0: TODO): TODO
-  OnInput_73(arg0: TODO): TODO
-  OnInput_74(arg0: TODO): TODO
-  OnInput_75(arg0: TODO): TODO
-  OnInput_76(arg0: TODO): TODO
-  OnInput_77(arg0: TODO): TODO
-  OnInput_78(arg0: TODO): TODO
-  OnInput_79(arg0: TODO): TODO
-  OnInput_80(arg0: TODO): TODO
+  OnInput_1(): TODO
+  OnInput_2(): TODO
+  OnInput_3(): TODO
+  OnInput_4(): TODO
+  OnInput_5(): TODO
+  OnInput_6(): TODO
+  OnInput_7(): TODO
+  OnInput_8(): TODO
+  OnInput_9(): TODO
+  OnInput_10(): TODO
+  OnInput_11(): TODO
+  OnInput_12(): TODO
+  OnInput_13(): TODO
+  OnInput_14(): TODO
+  OnInput_15(): TODO
+  OnInput_16(): TODO
+  OnInput_17(): TODO
+  OnInput_18(): TODO
+  OnInput_19(): TODO
+  OnInput_20(): TODO
+  OnInput_21(): TODO
+  OnInput_22(): TODO
+  OnInput_23(): TODO
+  OnInput_24(): TODO
+  OnInput_25(): TODO
+  OnInput_26(): TODO
+  OnInput_27(): TODO
+  OnInput_28(): TODO
+  OnInput_29(): TODO
+  OnInput_30(): TODO
+  OnInput_31(): TODO
+  OnInput_32(): TODO
+  OnInput_33(): TODO
+  OnInput_34(): TODO
+  OnInput_35(): TODO
+  OnInput_36(): TODO
+  OnInput_37(): TODO
+  OnInput_38(): TODO
+  OnInput_39(): TODO
+  OnInput_40(): TODO
+  OnInput_41(): TODO
+  OnInput_42(): TODO
+  OnInput_43(): TODO
+  OnInput_44(): TODO
+  OnInput_45(): TODO
+  OnInput_46(): TODO
+  OnInput_47(): TODO
+  OnInput_48(): TODO
+  OnInput_49(): TODO
+  OnInput_50(): TODO
+  OnInput_51(): TODO
+  OnInput_52(): TODO
+  OnInput_53(): TODO
+  OnInput_54(): TODO
+  OnInput_55(): TODO
+  OnInput_56(): TODO
+  OnInput_57(): TODO
+  OnInput_58(): TODO
+  OnInput_59(): TODO
+  OnInput_60(): TODO
+  OnInput_61(): TODO
+  OnInput_62(): TODO
+  OnInput_63(): TODO
+  OnInput_64(): TODO
+  OnInput_65(): TODO
+  OnInput_66(): TODO
+  OnInput_67(): TODO
+  OnInput_68(): TODO
+  OnInput_69(): TODO
+  OnInput_70(): TODO
+  OnInput_71(): TODO
+  OnInput_72(): TODO
+  OnInput_73(): TODO
+  OnInput_74(): TODO
+  OnInput_75(): TODO
+  OnInput_76(): TODO
+  OnInput_77(): TODO
+  OnInput_78(): TODO
+  OnInput_79(): TODO
+  OnInput_80(): TODO
 }
 
 /** @customConstructor list_element */
 declare class list_element extends CUIListBoxItem {
-  constructor(idx: TODO, name: TODO, name_: TODO)
+  // shared global name with distinct constructors across ui_debug_item / ui_debug_launcher / ui_workshop
+  constructor(section: TODO, width: TODO)
+  constructor(section: TODO, width: TODO)
+  constructor(section: TODO, width: TODO)
   __finalize(): TODO
 }

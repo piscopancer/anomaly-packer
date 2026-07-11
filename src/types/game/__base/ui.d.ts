@@ -12,14 +12,33 @@ declare function GetFontLetterica25(): CGameFont | null
 declare function GetCursorPosition(): vector2
 declare function SetCursorPosition(pos: vector2): void
 declare function FitInRect(window: CUIWindow, rect: Frect, border?: number, dx16pos?: number): boolean
+/** Global HUD accessor (registered separately from the UI window classes) */
+declare function get_hud(): Hud | null
+declare function get_pda_menu(): CUIPdaWnd | null
+declare function get_actor_menu(): CUIActorMenu | null
+/** @returns the current `EMenuMode` */
+declare function get_menu_mode(): number
+declare function get_maingame(): CUIMainIngameWnd | null
+
 declare class Fbox {
   constructor()
-  min: number
-  max: number
+  /** min corner (`Fvector`) */
+  min: vector
+  /** max corner (`Fvector`) */
+  max: vector
 }
 declare class Frect {
   constructor()
+  /** @returns self */
   set(left: number, top: number, right: number, bottom: number): Frect
+  /** left-top corner (`Fvector2`) */
+  lt: vector2
+  /** right-bottom corner (`Fvector2`) */
+  rb: vector2
+  x1: number
+  x2: number
+  y1: number
+  y2: number
 }
 declare class StaticDrawableWrapper {
   m_endTime: number
@@ -41,7 +60,6 @@ interface Hud {
   update_fake_indicators(_type: number, power: number): void
   enable_fake_indicators(enable: boolean): void
 }
-declare function get_hud(): Hud | null
 declare enum ui_events {
   // CUIWindow
   WINDOW_LBUTTON_DOWN = 0,
@@ -176,6 +194,27 @@ declare const enum EUIMessages {
   MAIN_MENU_RELOADED,
   MAP_SELECT_SPOT2,
 }
+/** Drag-and-drop list kinds of the actor menu (luabind enum `EDDListType`) */
+declare const enum EDDListType {
+  iInvalid = 0,
+  iActorSlot = 1,
+  iActorBag = 2,
+  iActorBelt = 3,
+  iActorTrade = 4,
+  iPartnerTradeBag = 5,
+  iPartnerTrade = 6,
+  iDeadBodyBag = 7,
+  iQuickSlot = 8,
+  iTrashSlot = 9,
+}
+/** Multiplayer game types (luabind enum `GAME_TYPE`, values from `EGameIDs` bit flags) */
+declare const enum GAME_TYPE {
+  GAME_UNKNOWN = -1,
+  eGameIDDeathmatch = 2,
+  eGameIDTeamDeathmatch = 4,
+  eGameIDArtefactHunt = 8,
+  eGameIDCaptureTheArtefact = 16,
+}
 declare const enum TextAlignment {
   Left = 0,
   Right = 1,
@@ -195,59 +234,8 @@ declare class CUILines {
   SetElipsis(ellipsis: boolean): void
   SetTextColor(color: number): void
 }
-declare class CUIStatic extends CUIWindow {
-  constructor()
-  SetTextureColor(color: number): void
-  GetTextureColor(): number
-  AdjustHeightToText(): void
-  AdjustWidthToText(): void
-  GetStretchTexture(): boolean
-  TextControl(): CUILines | null
-  InitTexture(texture: string): void
-  InitTextureEx(texture: string, sh: string): void
-  SetTextureRect(rect: Frect): void
-  SetStretchTexture(stretch: boolean): void
-  GetTextureRect(): Frect | null
-  EnableHeading(enable: boolean): void
-  GetHeading(): number
-  SetHeading(heading: number): void
-  SetConstHeading(heading: boolean): void
-  GetConstHeading(): boolean
-}
-declare class CUIButton extends CUIStatic {
-  constructor()
-}
-declare class CUI3tButton extends CUIButton {
-  constructor()
-}
-declare class CUICheckButton extends CUI3tButton {
-  constructor()
-  GetCheck(): boolean
-  SetCheck(checked: boolean): void
-  SetDependControl(window: CUIWindow): void
-}
-// declare class CUIList {}
-declare class CUIListBox {
-  ShowSelectedItem(show: boolean): void
-  RemoveAll(): void
-  GetSize(): number
-  GetSelectedItem(): CUIListBoxItem | null
-  GetSelectedIndex(): number
-  SetSelectedIndex(index: number): void
-  SetItemHeight(height: number): void
-  GetItemHeight(): number
-  GetItemByIndex(index: number): CUIListBoxItem | null
-  GetItem(index: number): CUIWindow | null
-  RemoveItem(item: CUIWindow): void
-  AddTextItem(text: string): CUIListBoxItem | null
-  AddExistingItem(item: CUIListBoxItem): void
-}
-declare class CUIListBoxItem {
-  GetTextItem(): CUITextWnd | null
-  AddTextField(text: string, width: number): CUITextWnd | null
-  AddIconField(width: number): CUIStatic | null
-  SetTextColor(color: number): void
-}
+
+// --- Core window hierarchy ---
 declare class CUIWindow {
   constructor()
   AttachChild(child: CUIWindow): void
@@ -271,14 +259,21 @@ declare class CUIWindow {
   SetWindowName(name: string): void
   SetPPMode(): void
   ResetPPMode(): void
-}
-declare class UIHint extends CUIWindow {
-  SetWidth(width: number): void
-  SetHeight(height: number): void
+  // built-in hover hint
+  DisableHint(): void
+  EnableHint(): void
+  SetHintDelay(delay: number): void
+  GetHintDelay(): number
+  RemoveHint(): void
+  SetHintWnd(hint: UIHint): void
+  GetHintWnd(): UIHint | null
   SetHintText(hint: string): void
   GetHintText(): string | null
 }
-declare class CDialogHolder {}
+declare class CDialogHolder {
+  AddDialogToRender(dialog: CUIWindow): void
+  RemoveDialogToRender(dialog: CUIWindow): void
+}
 declare class CUIDialogWnd extends CUIWindow {
   ShowDialog(hide_indicators: boolean): void
   HideDialog(): void
@@ -287,29 +282,62 @@ declare class CUIDialogWnd extends CUIWindow {
   AllowCursor(allow: boolean): void
   AllowCenterCursor(allow: boolean): void
 }
-declare class CUIScriptWnd {
+declare class CUIFrameWindow extends CUIWindow {
   constructor()
-  // Load(xml_name: string): true
-  Update(): void
-  Dispatch(): void
-  Register(): void
-  // NewCallback(control_id: string, event: ui_events, functor: () => void, self: CUIWindow): void
-  AddCallback(control_id: string, event: ui_events, functor: () => void, self: CUIWindow): void
-  OnKeyboard(dik: number, ui_message: EUIMessages): boolean
+  SetWidth(width: number): void
+  SetHeight(height: number): void
+  SetColor(color: number): void
 }
-declare class CUIFrameLineWnd {}
-declare class CUIEditBox {}
-declare class CUISpinNum {}
-declare class CUISpinFlt {}
-declare class CUISpinText {}
-declare class CUITabControl {}
-declare class CServerList {}
-declare class CUIMapList {}
-declare class CUIMapInfo {}
-declare class CUITrackBar {}
-declare class CUIMMShniaga {}
-declare class CUIProgressBar {}
+declare class CUIFrameLineWnd extends CUIWindow {
+  constructor()
+  SetWidth(width: number): void
+  SetHeight(height: number): void
+  SetColor(color: number): void
+}
+declare class UIHint extends CUIWindow {
+  constructor()
+  SetWidth(width: number): void
+  SetHeight(height: number): void
+  SetHintText(hint: string): void
+  GetHintText(): string | null
+}
+declare class CUIScrollView extends CUIWindow {
+  constructor()
+  AddWindow(window: CUIWindow, auto_delete: boolean): void
+  RemoveWindow(window: CUIWindow): void
+  Clear(): void
+  ScrollToBegin(): void
+  ScrollToEnd(): void
+  GetMinScrollPos(): number
+  GetMaxScrollPos(): number
+  GetCurrentScrollPos(): number
+  SetFixedScrollBar(fixed: boolean): void
+  SetScrollPos(pos: number): void
+}
+declare class CUIStatic extends CUIWindow {
+  constructor()
+  SetTextureColor(color: number): void
+  GetTextureColor(): number
+  AdjustHeightToText(): void
+  AdjustWidthToText(): void
+  GetStretchTexture(): boolean
+  TextControl(): CUILines | null
+  InitTexture(texture: string): void
+  InitTextureEx(texture: string, sh: string): void
+  SetTextureRect(rect: Frect): void
+  SetStretchTexture(stretch: boolean): void
+  GetTextureRect(): Frect | null
+  EnableHeading(enable: boolean): void
+  GetHeading(): number
+  SetHeading(heading: number): void
+  SetConstHeading(heading: boolean): void
+  GetConstHeading(): boolean
+}
+declare class CUISleepStatic extends CUIStatic {
+  constructor()
+}
 declare class CUITextWnd extends CUIWindow {
+  constructor()
   AdjustHeightToText(): void
   AdjustWidthToText(): void
   SetText(text: string): void
@@ -328,25 +356,109 @@ declare class CUITextWnd extends CUIWindow {
   SetEllipsis(ellipsis: boolean): void
   SetTextOffset(x: number, y: number): void
 }
-declare class CUIScrollView extends CUIWindow {
+
+// --- Buttons ---
+declare class CUIButton extends CUIStatic {
   constructor()
-  AddWindow(window: CUIWindow, auto_delete: boolean): void
-  RemoveWindow(window: CUIWindow): void
-  Clear(): void
-  ScrollToBegin(): void
-  ScrollToEnd(): void
-  GetMinScrollPos(): number
-  GetMaxScrollPos(): number
-  GetCurrentScrollPos(): number
-  SetFixedScrollBar(fixed: boolean): void
-  SetScrollPos(pos: number): void
 }
-declare class CUIFrameWindow extends CUIWindow {
-  SetWidth(width: number): void
-  SetHeight(height: number): void
-  SetColor(color: number): void
+declare class CUI3tButton extends CUIButton {
+  constructor()
 }
-declare class CUIComboBox {
+declare class CUICheckButton extends CUI3tButton {
+  constructor()
+  GetCheck(): boolean
+  SetCheck(checked: boolean): void
+  SetDependControl(window: CUIWindow): void
+}
+declare class CUITabButton extends CUIButton {
+  constructor()
+}
+declare class CUITabControl extends CUIWindow {
+  constructor()
+  AddItem(button: CUITabButton): boolean
+  AddItem(text: string, name: string, pos: vector2, size: vector2): boolean
+  RemoveAll(): void
+  GetActiveId(): string | null
+  GetTabsCount(): number
+  SetActiveTab(name: string): void
+  GetButtonById(id: string): CUITabButton | null
+  GetEnabled(): boolean
+  SetEnabled(enabled: boolean): void
+}
+
+// --- Spins & track bar ---
+declare class CUICustomSpin extends CUIWindow {
+  GetText(): string | null
+}
+declare class CUISpinNum extends CUICustomSpin {
+  constructor()
+}
+declare class CUISpinFlt extends CUICustomSpin {
+  constructor()
+}
+declare class CUISpinText extends CUICustomSpin {
+  constructor()
+}
+declare class CUITrackBar extends CUIWindow {
+  constructor()
+  GetCheck(): boolean
+  SetCheck(checked: boolean): void
+  GetIValue(): number
+  GetFValue(): number
+  SetIValue(value: number): void
+  SetFValue(value: number): void
+  SetStep(step: number): void
+  GetInvert(): boolean
+  SetInvert(invert: boolean): void
+  SetOptIBounds(min: number, max: number): void
+  SetOptFBounds(min: number, max: number): void
+  /** Commit the option value (opt -> current) */
+  SetCurrentValue(): void
+}
+
+// --- Edit boxes ---
+declare class CUICustomEdit extends CUIWindow {
+  SetText(text: string): void
+  GetText(): string | null
+  CaptureFocus(capture: boolean): void
+  SetNextFocusCapturer(next: CUICustomEdit): void
+}
+declare class CUIEditBox extends CUICustomEdit {
+  constructor()
+  InitTexture(texture: string): void
+}
+
+// --- Lists ---
+declare class CUIListBox extends CUIScrollView {
+  constructor()
+  ShowSelectedItem(show: boolean): void
+  RemoveAll(): void
+  GetSize(): number
+  GetSelectedItem(): CUIListBoxItem | null
+  GetSelectedIndex(): number
+  SetSelectedIndex(index: number): void
+  SetItemHeight(height: number): void
+  GetItemHeight(): number
+  GetItemByIndex(index: number): CUIListBoxItem | null
+  GetItem(index: number): CUIWindow | null
+  RemoveItem(item: CUIWindow): void
+  AddTextItem(text: string): CUIListBoxItem | null
+  AddExistingItem(item: CUIListBoxItem): void
+}
+declare class CUIListBoxItem extends CUIFrameLineWnd {
+  constructor(height: number)
+  GetTextItem(): CUITextWnd | null
+  AddTextField(text: string, width: number): CUITextWnd | null
+  AddIconField(width: number): CUIStatic | null
+  SetTextColor(color: number): void
+}
+declare class CUIListBoxItemMsgChain extends CUIListBoxItem {
+  constructor(height: number)
+}
+
+// --- Combo box ---
+declare class CUIComboBox extends CUIWindow {
+  constructor()
   SetVertScroll(scroll: boolean): void
   SetListLength(length: number): void
   CurrentID(): number
@@ -361,13 +473,190 @@ declare class CUIComboBox {
   SetCurrentIdx(index: number): void
   GetCurrentIdx(): number
 }
-declare class CUIPropertiesBox {
+
+// --- Properties / message / progress / map ---
+declare class CUIPropertiesBox extends CUIFrameWindow {
+  constructor()
   RemoveItem(tag: number): void
   RemoveAll(): void
-  Show(parent_rect: Frect, point: vector2): void
+  Show(x: number, y: number): void
   Hide(): void
   GetSelectedItem(): CUIListBoxItem | null
   AutoUpdateSize(): void
   AddItem(title: string): boolean
   InitPropertiesBox(pos: vector2, size: vector2): void
+}
+declare class CUIMessageBox extends CUIStatic {
+  constructor()
+  InitMessageBox(xml_template: string): void
+  SetText(text: string): void
+  GetHost(): string | null
+  GetPassword(): string | null
+}
+declare class CUIMessageBoxEx extends CUIDialogWnd {
+  constructor()
+  InitMessageBox(xml_template: string): void
+  SetText(text: string): void
+  GetHost(): string | null
+  GetPassword(): string | null
+}
+declare class CUIProgressBar extends CUIWindow {
+  constructor()
+  SetProgressPos(pos: number): void
+  GetProgressPos(): number
+  GetRange_min(): number
+  GetRange_max(): number
+  SetRange(min: number, max: number): void
+  ShowBackground(status: boolean): void
+  SetColor(color: number): void
+  UseColor(status: boolean): void
+  SetMinColor(color: number): void
+  SetMiddleColor(color: number): void
+  SetMaxColor(color: number): void
+}
+declare class CUIMapInfo extends CUIWindow {
+  constructor()
+  Init(pos: vector2, size: vector2): void
+  InitMap(map_name: string, map_ver: string): void
+}
+
+// --- Script window base ---
+declare class CUIScriptWnd {
+  constructor()
+  // Load(xml_name: string): true
+  Update(): void
+  Dispatch(): void
+  Register(): void
+  // NewCallback(control_id: string, event: ui_events, functor: () => void, self: CUIWindow): void
+  AddCallback(control_id: string, event: ui_events, functor: () => void, self: CUIWindow): void
+  OnKeyboard(dik: number, ui_message: EUIMessages): boolean
+}
+
+// --- Actor menu / PDA / in-game HUD windows ---
+declare class CUIActorMenu extends CUIDialogWnd {
+  constructor()
+  get_drag_item(): CGameObject | null
+  /** @param type one of `game_object` highlight kinds */
+  highlight_section_in_slot(section: string, type: number, slot_id?: number): void
+  /** @param functor called per matching item; return `true` to stop */
+  highlight_for_each_in_slot(functor: (this: void) => boolean, type: number, slot_id: number): void
+  refresh_current_cell_item(): void
+  IsShown(): boolean
+  ShowDialog(hide_indicators: boolean): void
+  HideDialog(): void
+  ToSlot(object: CGameObject, force_place: boolean, slot_id: number): boolean
+  ToBelt(object: CGameObject, use_cursor_pos: boolean): boolean
+}
+declare class CUIPdaWnd extends CUIDialogWnd {
+  constructor()
+  IsShown(): boolean
+  ShowDialog(hide_indicators: boolean): void
+  HideDialog(): void
+  SetActiveSubdialog(section: string): void
+  SetActiveDialog(ui: CUIWindow): void
+  GetActiveDialog(): CUIWindow | null
+  GetActiveSection(): string | null
+  GetTabControl(): CUITabControl | null
+}
+declare class CUIMotionIcon extends CUIWindow {
+  constructor()
+}
+declare class CUIZoneMap {
+  constructor()
+  disabled: boolean
+  readonly visible: boolean
+  MapFrame(): CUIWindow | null
+  Background(): CUIStatic | null
+}
+declare class CUIHudStatesWnd extends CUIWindow {
+  constructor()
+  readonly m_back: CUIStatic
+  readonly m_ui_weapon_ammo_color_active: number
+  readonly m_ui_weapon_ammo_color_inactive: number
+  readonly m_ui_weapon_cur_ammo: CUIStatic
+  readonly m_ui_weapon_fmj_ammo: CUIStatic
+  readonly m_ui_weapon_ap_ammo: CUIStatic
+  readonly m_ui_weapon_third_ammo: CUIStatic
+  readonly m_fire_mode: CUIStatic
+  readonly m_ui_grenade: CUIStatic
+  readonly m_ui_weapon_icon: CUIStatic
+  readonly m_ui_health_bar: CUIProgressBar
+  readonly m_ui_stamina_bar: CUIProgressBar
+  readonly m_ui_psy_bar: CUIProgressBar
+  readonly m_radia_damage: CUIStatic
+  m_ui_health_bar_show: boolean
+  m_ui_stamina_bar_show: boolean
+  m_ui_psy_bar_show: boolean
+}
+declare class CUIMainIngameWnd extends CUIWindow {
+  constructor()
+  readonly UIStaticDiskIO: CUIStatic
+  readonly UIStaticQuickHelp: CUIStatic
+  readonly UIMotionIcon: CUIMotionIcon
+  readonly UIZoneMap: CUIZoneMap
+  readonly m_ui_hud_states: CUIHudStatesWnd
+  readonly m_ind_bleeding: CUIStatic
+  readonly m_ind_radiation: CUIStatic
+  readonly m_ind_starvation: CUIStatic
+  readonly m_ind_weapon_broken: CUIStatic
+  readonly m_ind_helmet_broken: CUIStatic
+  readonly m_ind_outfit_broken: CUIStatic
+  readonly m_ind_overweight: CUIStatic
+  readonly m_ind_boost_psy: CUIStatic
+  readonly m_ind_boost_radia: CUIStatic
+  readonly m_ind_boost_chem: CUIStatic
+  readonly m_ind_boost_wound: CUIStatic
+  readonly m_ind_boost_weight: CUIStatic
+  readonly m_ind_boost_health: CUIStatic
+  readonly m_ind_boost_power: CUIStatic
+  readonly m_ind_boost_rad: CUIStatic
+}
+
+// --- Multiplayer / main-menu only (registered by the engine, not used by single-player addons) ---
+declare class SServerFilters {
+  constructor()
+  empty: boolean
+  full: boolean
+  with_pass: boolean
+  without_pass: boolean
+  without_ff: boolean
+  listen_servers: boolean
+}
+declare class connect_error_cb {
+  constructor()
+  bind(object: TODO, fn: TODO): void
+  clear(): void
+}
+declare class CServerList extends CUIWindow {
+  constructor()
+  SetConnectionErrCb(cb: connect_error_cb): void
+  ConnectToSelected(): void
+  SetFilters(filters: SServerFilters): void
+  SetPlayerName(name: string): void
+  RefreshList(): void
+  RefreshQuick(): void
+  ShowServerInfo(): void
+  NetRadioChanged(net: boolean): void
+  SetSortFunc(func: TODO): void
+}
+declare class CUIMapList extends CUIWindow {
+  constructor()
+  SetWeatherSelector(selector: CUIComboBox): void
+  SetModeSelector(selector: CUIComboBox): void
+  OnModeChange(): void
+  LoadMapList(): void
+  SaveMapList(): void
+  GetCommandLine(name: string): string | null
+  SetServerParams(params: string): void
+  GetCurGameType(): number
+  StartDedicatedServer(): void
+  SetMapPic(pic: CUIStatic): void
+  SetMapInfo(info: CUIMapInfo): void
+  ClearList(): void
+  IsEmpty(): boolean
+}
+declare class CUIMMShniaga extends CUIWindow {
+  SetVisibleMagnifier(visible: boolean): void
+  SetPage(page: number): void
+  ShowPage(page: number): void
 }

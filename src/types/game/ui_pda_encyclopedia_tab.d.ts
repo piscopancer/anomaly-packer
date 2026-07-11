@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 /** @customConstructor pda_encyclopedia_entry */

@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace se_heli {
@@ -9,11 +7,11 @@ declare namespace se_heli {
 /** @customConstructor se_heli */
 declare class se_heli extends cse_alife_helicopter {
   constructor(section: TODO)
-  on_register(): TODO
-  on_unregister(): TODO
+  on_register(): void
+  on_unregister(): void
   can_switch_online(): TODO
-  clear_smart_terrain(): TODO
-  STATE_Write(packet: TODO): TODO
-  STATE_Read(packet: TODO, size: TODO): TODO
-  keep_saved_data_anyway(): TODO
+  clear_smart_terrain(): void
+  STATE_Write(packet: net_packet): void
+  STATE_Read(packet: net_packet, size: TODO): void
+  keep_saved_data_anyway(): boolean
 }

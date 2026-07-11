@@ -9,9 +9,9 @@ interface GameEvents {
   on_before_level_changing(): void
   on_level_changing(): void
   actor_on_before_death(_0: number, _1: AnyTable): void
-  actor_on_net_destroy(binder: ObjectBinder): void
-  actor_on_first_update(binder: ObjectBinder, delta_time: number): void
-  actor_on_update(binder: ObjectBinder, delta_time: number): void
+  actor_on_net_destroy(binder: object_binder): void
+  actor_on_first_update(binder: object_binder, delta_time: number): void
+  actor_on_update(binder: object_binder, delta_time: number): void
   actor_on_weapon_fired(obj: CGameObject, weapon: CGameObject, ammo_elapsed: number, grenade_elapsed: number, ammo_type: number, grenade_type: number): void
   actor_on_weapon_jammed(weapon: CGameObject): void
   actor_on_weapon_no_ammo(weapon: CGameObject, ammo_total: number): void
@@ -31,8 +31,8 @@ interface GameEvents {
   actor_item_to_ruck(item: CGameObject): void
   actor_item_to_slot(item: CGameObject): void
   actor_on_trade(item: CGameObject, sell_buy: TODO, money: number): void
-  actor_on_init(binder: ObjectBinder): void
-  actor_on_reinit(binder: ObjectBinder): void
+  actor_on_init(binder: object_binder): void
+  actor_on_reinit(binder: object_binder): void
   actor_on_info_callback(obj: CGameObject, info_id: number): void
   actor_on_hit_callback(obj: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
   actor_on_attach_vehicle(vehicle: CGameObject): void
@@ -155,7 +155,7 @@ interface GameEvents {
   main_menu_on_quit(wnd: /** CUIScriptWnd */ TODO): void
   on_screen_resolution_changed(): void
   // Technical
-  on_game_load(binder: ObjectBinder): void
+  on_game_load(binder: object_binder): void
   on_key_press(key: number): void
   on_key_release(key: number): void
   on_key_hold(key: number): void
@@ -358,24 +358,24 @@ declare function ini_file(filename: string): system_ini
  * @customConstructor ini_file_ex
  */
 declare class ini_file_ex {
-  constructor(filename: string, advanced_mode?: boolean)
+  constructor(fname: TODO, advanced_mode: TODO)
   cache: Record<TODO, TODO>
-  collect_section(section: string): Record<string, any>
+  collect_section(section: TODO): Record<string, any>
   fname: string
   get_sections<KT extends boolean>(keytable?: boolean): KT extends true ? Record<string, true> : string[]
   ini: system_ini
-  line_exist(section: string, key: string): boolean
-  r_bool_ex(section: string, key: string, def_val: boolean): boolean
-  r_float_ex(section: string, key: string): string | null
-  r_list(section: string, key: string, def_val: boolean): string[]
-  r_mult(section: string, key: string, ...args: any[]): TODO
-  r_string_ex(section: string, key: string): string | null
-  r_string_to_condlist(section: string, key: string, def_val?: any): Record<TODO, TODO> | null
-  r_value(section: string, key: string, _type: number, def_val: any): string | null
-  remove_line(section: string, key: string): void
+  line_exist(section: TODO, key: TODO): boolean
+  r_bool_ex(s: TODO, k: TODO, def: TODO): boolean
+  r_float_ex(s: TODO, k: TODO): string | null
+  r_list(s: TODO, k: TODO, def: TODO): string[]
+  r_mult(s: TODO, k: TODO, ...args: TODO[]): TODO
+  r_string_ex(s: TODO, k: TODO): string | null
+  r_string_to_condlist(s: TODO, k: TODO, def: TODO): Record<TODO, TODO> | null
+  r_value(s: TODO, k: TODO, typ: TODO, def: TODO): string | null
+  remove_line(section: TODO, key: TODO): void
   save(): void
-  section_exist(section: string): boolean
-  w_value(section: string, key: string, val: any, comment?: string): void
+  section_exist(section: TODO): boolean
+  w_value(s: TODO, k: TODO, val: TODO, comment: TODO): void
 }
 declare const INISYS_CACHE: AnyTable
 declare function SYS_GetParam(_type: number, section: string, param: string, def_val: any): any

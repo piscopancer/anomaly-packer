@@ -1,16 +1,14 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 /** @customConstructor context_item */
 declare class context_item extends CUIListBoxItem {
-  constructor(arg0: TODO)
+  constructor()
   __finalize(): TODO
 }
 
 /** @customConstructor context_menu */
 declare class context_menu extends CUIScriptWnd {
-  constructor(owner: TODO, pos_override: TODO, action_list: TODO, arg3: TODO)
+  constructor(owner: TODO, pos_override: TODO, action_list: TODO, ...args: TODO[])
   __finalize(): TODO
   InitControls(): TODO
   Update(): TODO
@@ -46,7 +44,9 @@ declare class load_item extends CUIListBoxItem {
 
 /** @customConstructor msg_box_ui */
 declare class msg_box_ui extends CUIScriptWnd {
-  constructor(obj: TODO, disable_msg: TODO, item: TODO)
+  // shared global name: variadic form defined in ui_dyn_msg_box, 3-arg form in ui_sr_teleport
+  constructor(typ: TODO, show: TODO, txt: TODO, func_ok: TODO, func_cancel: TODO, ...args: TODO[])
+  constructor(typ: TODO, show: TODO, txt: TODO, func_ok: TODO, func_cancel: TODO, ...args: TODO[])
   __finalize(): TODO
   InitCallBacks(): TODO
   OnMsgOk(): TODO
@@ -57,7 +57,7 @@ declare class msg_box_ui extends CUIScriptWnd {
 
 /** @customConstructor multi_choice */
 declare class multi_choice extends CUIScriptWnd {
-  constructor(action_list: TODO, arg1: TODO)
+  constructor(action_list: TODO, ...args: TODO[])
   __finalize(): TODO
   InitControls(): TODO
   InitCallBacks(): TODO

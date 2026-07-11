@@ -1,5 +1,9 @@
 /// <reference path="__base/alife.d.ts" />
 /// <reference path="__base/clsid.d.ts" />
+/// <reference path="__base/condition.d.ts" />
+/// <reference path="__base/engine-classes.d.ts" />
+/// <reference path="__base/math.d.ts" />
+/// <reference path="__base/streams.d.ts" />
 /// <reference path="__base/fs.d.ts" />
 /// <reference path="__base/gameobject.d.ts" />
 /// <reference path="__base/items.d.ts" />
@@ -16,30 +20,38 @@ type TODO = any
 // Suggest is more confident when TODO but only for string values, although it allows any string, it gives a siggestion in the IDE
 type Suggest<S extends string> = S | (string & {})
 
-declare class NetPacket {}
-declare class IReader {}
 declare class CScriptSoundInfo {}
-declare class ObjectBinder {
+/** @customConstructor object_binder */
+declare class object_binder {
   constructor(obj: CGameObject)
   readonly object: CGameObject
   reinit(): void
   reload(section: string): void
   net_spawn(se_obj: CseAlifeObject): boolean
   net_destroy(): void
-  net_import(net_packet: NetPacket): void
-  net_export(net_packet: NetPacket): void
+  net_import(packet: net_packet): void
+  net_export(packet: net_packet): void
   update(delta_time: number): void
-  save(output_packet: NetPacket): void
-  load(input_packet: IReader): void
+  save(output_packet: net_packet): void
+  load(input_packet: reader): void
   net_save_relevant(): boolean
   net_Relcase(obj: CGameObject): void
 }
+declare class sound_params {
+  position: vector
+  volume: number
+  frequency: number
+  min_distance: number
+  max_distance: number
+}
 /** @customConstructor sound_object */
 declare class sound_object {
-  constructor(sound: string, sound_type?: TODO)
-  readonly looped: 0
-  readonly s2d: 1
-  readonly s3d: 2
+  constructor(sound: string, sound_type?: number)
+  /** `sm_Looped` (`1 << 0`) */
+  readonly looped: 1
+  /** `sm_2D` (`1 << 1`) */
+  readonly s2d: 2
+  readonly s3d: 0
   frequency: number
   min_distance: number
   max_distance: number
@@ -57,150 +69,42 @@ declare class sound_object {
   length(): number
   attach_tail(sound: string): void
 }
-declare class CWound {
-  TypeSize(hit_type: number): number
-  BloodSize(): number
-  AddHit(power: number, type: number): void
-  Incarnation(percent: number, min_wound_size: number): void
-  TotalSize(): number
-  SetBoneNum(num: number): void
-  GetBoneNum(): number
-  GetParticleBoneNum(): number
-  SetParticleBoneNum(num: number): void
-  SetDestroy(destroy: boolean): void
-  GetDestroy(): boolean
-}
-declare class CEntityCondition {
-  readonly eBoostHpRestore: 0
-  readonly eBoostPowerRestore: 1
-  readonly eBoostRadiationRestore: 2
-  readonly eBoostBleedingRestore: 3
-  readonly eBoostMaxWeight: 4
-  readonly eBoostRadiationProtection: 5
-  readonly eBoostTelepaticProtection: 6
-  readonly eBoostChemicalBurnProtection: 7
-  readonly eBoostBurnImmunity: 8
-  readonly eBoostShockImmunity: 9
-  readonly eBoostRadiationImmunity: 10
-  readonly eBoostTelepaticImmunity: 11
-  readonly eBoostChemicalBurnImmunity: 12
-  readonly eBoostExplImmunity: 13
-  readonly eBoostStrikeImmunity: 14
-  readonly eBoostFireWoundImmunity: 15
-  readonly eBoostWoundImmunity: 16
-  AddWound(hit_power: number, hit_type: number, element: number): CWound
-  ClearWounds(): void
-  GetWhoHitLastTimeID(): number
-  GetPower(): number
-  SetPower(power: number): void
-  GetRadiation(): number
-  GetPsyHealth(): number
-  GetSatiety(): number
-  GetEntityMorale(): number
-  GetHealthLost(): number
-  IsLimping(): boolean
-  ChangeSatiety(satiety: number): void
-  ChangeHealth(health: number): void
-  ChangePower(power: number): void
-  ChangeRadiation(rad: number): void
-  ChangePsyHealth(psy: number): void
-  ChangeAlcohol(alcohol: number): void
-  SetMaxPower(power: number): void
-  GetMaxPower(): number
-  ChangeEntityMorale(morale: number): void
-  ChangeBleeding(bleeding: number): void
-  BleedingSpeed(): number
-}
+/**
+ * 32-bit flag set. In luabind this class is registered as `flags32`.
+ * @customConstructor flags32
+ */
 declare class Flags {
   constructor()
-  get(...args: TODO): TODO
-  zero(...args: TODO): TODO
-  one(...args: TODO): TODO
-  invert(...args: TODO): TODO
-  invert(...args: TODO): TODO
-  invert(...args: TODO): TODO
-  assign(...args: TODO): TODO
-  assign(...args: TODO): TODO
-  or(...args: TODO): TODO
-  or(...args: TODO): TODO
-  and(...args: TODO): TODO
-  and(...args: TODO): TODO
-  set(...args: TODO): TODO
-  is(...args: TODO): TODO
-  is_any(...args: TODO): TODO
-  test(...args: TODO): TODO
-  equal(...args: TODO): TODO
-  equal(...args: TODO): TODO
-}
-declare class SBooster {
-  constructor()
-  fBoostTime: number
-  fBoostValue: number
-  m_type: number
-}
-declare class CActorCondition {
-  readonly eCriticalPowerReached: 1
-  readonly eCriticalBleedingSpeed: 4
-  readonly eCriticalSatietyReached: 8
-  readonly eCriticalRadiationReached: 16
-  readonly eWeaponJammedReached: 32
-  readonly ePhyHealthMinReached: 64
-  readonly eCantWalkWeight: 128
-  readonly eCantWalkWeightReached: 256
-  m_MaxWalkWeight: number
-  m_fJumpPower: number
-  m_fStandPower: number
-  m_fJumpWeightPower: number
-  m_fWalkWeightPower: number
-  m_fOverweightWalkK: number
-  m_fOverweightJumpK: number
-  m_fAccelK: number
-  m_fSprintK: number
-  m_condition_flags: Flags
-  ClearAllBoosters(condition: CActorCondition): void
-  ApplyBooster(condition: CActorCondition, booster: SBooster, section: string): boolean
-  BoosterForEach(condition: CActorCondition, functor: () => void): void
-  WoundForEach(condition: CActorCondition, functor: () => void): void
-  V_Satiety(): number
-  V_SatietyPower(): number
-  V_SatietyHealth(): number
-  SatietyCritical(): number
-  GetSatiety(): number
-  SetPsyBar(psybar: number): void
-  GetPsyBar(): number
-  BoostMaxWeight(weight: number): void
-  BoostHpRestore(restore: number): void
-  BoostPowerRestore(restore: number): void
-  BoostRadiationRestore(restore: number): void
-  BoostBleedingRestore(restore: number): void
-  BoostBurnImmunity(restore: number): void
-  BoostShockImmunity(restore: number): void
-  BoostRadiationImmunity(restore: number): void
-  BoostTelepaticImmunity(restore: number): void
-  BoostChemicalBurnImmunity(restore: number): void
-  BoostExplImmunity(restore: number): void
-  BoostStrikeImmunity(restore: number): void
-  BoostFireWoundImmunity(restore: number): void
-  BoostWoundImmunity(restore: number): void
-  BoostRadiationProtection(restore: number): void
-  BoostTelepaticProtection(restore: number): void
-  BoostChemicalBurnProtection(restore: number): void
-  IsLimping(): boolean
-  IsCantWalk(): boolean
-  IsCantWalkWeight(): boolean
-  IsCantSprint(): boolean
+  get(): number
+  zero(): Flags
+  /** Sets every bit to one. */
+  one(): void
+  invert(): Flags
+  invert(f: Flags): Flags
+  invert(mask: number): Flags
+  assign(f: Flags): Flags
+  assign(mask: number): Flags
+  or(mask: number): Flags
+  or(f: Flags, mask: number): Flags
+  and(mask: number): Flags
+  and(f: Flags, mask: number): Flags
+  set(mask: number, value: boolean): Flags
+  is(mask: number): boolean
+  is_any(mask: number): boolean
+  test(mask: number): boolean
+  equal(f: Flags): boolean
+  equal(f: Flags, mask: number): boolean
 }
 declare class CActor extends CGameObject {
   constructor()
-  conditions: CActorCondition
+  conditions(): CActorCondition
   inventory_disabled(): boolean
   set_inventory_disabled(disabled: boolean): void
 }
-declare const RayPick: RayPickCtor
-interface RayPickCtor {
-  new (): RayPick
-}
-interface RayPick {
+/** @customConstructor ray_pick */
+declare class ray_pick {
+  constructor()
+  constructor(pos: vector, dir: vector, range: number, flags: rq_target, obj: CGameObject)
   set_position(pos: vector): void
   set_direction(dir: vector): void
   set_range(range: number): void
@@ -216,21 +120,6 @@ declare class rq_result {
   readonly object: CGameObject | null
   readonly range: number
   readonly element: number
-  readonly material_name: string | null
-  readonly material_flags: number
-  readonly material_phfriction: number
-  readonly material_phdamping: number
-  readonly material_phspring: number
-  readonly material_phbounce_start_velocity: number
-  readonly material_phbouncing: number
-  readonly material_flotation_factor: number
-  readonly material_shoot_factor: number
-  readonly material_shoot_factor_mp: number
-  readonly material_bounce_damage_factor: number
-  readonly material_injurious_speed: number
-  readonly material_vis_transparency_factor: number
-  readonly material_snd_occlusion_factor: number
-  readonly material_density_factor: number
 }
 declare const enum rq_target {
   None = 0,
@@ -240,33 +129,6 @@ declare const enum rq_target {
   Obstacle = 1 << 3,
   Both = rq_target.Object | rq_target.Static,
   Dyn = rq_target.Object | rq_target.Shape | rq_target.Obstacle,
-}
-/** @customConstructor vector */
-declare class vector {
-  constructor()
-  x: number
-  y: number
-  z: number
-  set(x: number, y: number, z: number): vector
-  set(v: vector): vector
-  // add(value: number): vector
-  add(v: vector): vector
-  // sub(value: number): vector
-  sub(v: vector): vector
-  div(value: number): vector
-  div(v: vector): vector
-  mul(value: number): vector
-  mul(v: vector): vector
-  distance_to(to: vector): number
-  distance_to_sqr(pos: vector): number
-}
-/** @customConstructor vector2 */
-declare class vector2 {
-  constructor()
-  x: number
-  y: number
-  set(x: number, y: number): vector2
-  set(v: vector): vector2
 }
 declare class hit {
   constructor()
@@ -281,6 +143,7 @@ declare class hit {
   static readonly fire_wound: 6
   static readonly explosion: 8
   static readonly light_burn: 10
+  static readonly dummy: 11
   power: number
   direction: vector
   draftsman: CGameObject
@@ -291,6 +154,7 @@ declare class hit {
 }
 declare class Time {
   constructor()
+  constructor(other: Time)
   readonly DateToDay: 0
   readonly DateToMonth: 1
   readonly DateToYear: 2
@@ -308,15 +172,19 @@ declare class Time {
   dateToString(mode: typeof this.DateToDay | typeof this.DateToMonth | typeof this.DateToYear): string
   timeToString(mode: typeof this.TimeToHours | typeof this.TimeToMinutes | typeof this.TimeToSeconds | typeof this.TimeToMilisecs): string
 }
-declare class CGameTask {
-  constructor()
-  // state
+/** Global holder of task state/type enums (luabind class `task`). */
+declare const task: {
+  // task_state
   readonly fail: 0
   readonly in_progress: 1
   readonly completed: 2
-  // type
+  readonly task_dummy: -1
+  // task_type
   readonly storyline: 0
   readonly additional: 1
+}
+declare class CGameTask {
+  constructor()
   get_id(): string
   set_id(id: string): void
   get_priority(): number
@@ -335,7 +203,11 @@ declare class CGameTask {
   add_on_fail_func(name: string): void
   add_on_complete_func(name: string): void
   set_icon_name(icon: string): void
+  get_icon_name(): string
   set_map_location(map_loc: string): void
+  get_map_location(): string
+  get_map_object_id(): number
+  create_map_location(on_load: boolean): void
   add_on_complete_info(info: string): void
   change_map_location(map_loc: string, map_obj_id: number): void
   remove_map_locations(notify: boolean): void
@@ -381,20 +253,49 @@ type Color =
 declare class alife {
   constructor()
   actor(): CseAlifeCreatureActor
+  valid_object_id(object_id: number): boolean
   switch_distance(): number
-  switch_distance(distance: number): void
+  set_switch_distance(distance: number): void
   level_name(level_id: number): LevelName
   level_id(): number
   has_info(obj_id: number, info_portion: string): boolean
+  dont_has_info(obj_id: number, info_portion: string): boolean
+  give_info(obj_id: number, info_portion: string): void
+  disable_info(obj_id: number, info_portion: string): void
+  iterate_info(obj_id: number, functor: (this: void, obj_id: number, info_id: string) => void): void
   teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, pos: vector): void
   object(id: number): CseAbstract | null
   story_object(sid: string): CseAbstract | null
   set_switch_online(obj_id: number, state: boolean): void
   set_switch_offline(obj_id: number, state: boolean): void
+  set_interactive(obj_id: number, interactive: boolean): void
+  kill_entity(monster: CseAlifeCreatureAbstract): void
+  kill_entity(monster: CseAlifeCreatureAbstract, game_vertex_id: number): void
+  add_in_restriction(monster: CseAlifeCreatureAbstract, restrictor_id: number): void
+  add_out_restriction(monster: CseAlifeCreatureAbstract, restrictor_id: number): void
+  remove_in_restriction(monster: CseAlifeCreatureAbstract, restrictor_id: number): void
+  remove_out_restriction(monster: CseAlifeCreatureAbstract, restrictor_id: number): void
+  remove_all_restrictions(obj_id: number, restrictor_type: number): void
   create(section: string, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): CseAbstract
   create_ammo(section: string): CseAbstract
+  /** Resolves a spawn story id (`_SPAWN_STORY_ID`) to a spawn id (`_SPAWN_ID`). */
+  spawn_id(spawn_story_id: number): number
+  /** Duplicates a magazined weapon server object, copying its condition, ammo, addons and upgrades. */
+  clone_weapon(
+    object: CseAbstract,
+    section: string,
+    position: vector,
+    level_vertex_id: number,
+    game_vertex_id: number,
+    id_parent: number,
+    register?: boolean
+  ): CseAbstract | null
+  /** Iterates the ids of an object's children: `for id in alife():get_children(obj) do ... end`. */
+  get_children(object: CseAbstract): LuaIterable<number>
   register(server_object: CseAbstract): void
   release(server_object: CseAbstract): void
+  set_objects_per_update(count: number): void
+  set_process_time(micro: number): void
 }
 type LevelName =
   | 'fake_start'

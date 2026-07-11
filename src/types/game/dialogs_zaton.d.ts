@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace dialogs_zaton {
@@ -15,45 +13,45 @@ declare namespace dialogs_zaton {
   export function actor_has_not_gas(first_speaker: TODO, second_speaker: TODO): TODO
   export function actor_hasnt_artefact(first_speaker: TODO, second_speaker: TODO): TODO
   export function check_npc_name_mechanics(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_actor_battery(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_actor_repaired_gauss_rifle(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_actor_zat_a23_access_card(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_compass_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_tech_gauss_rifle(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_toolkit_1(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_toolkit_2(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_toolkit_3(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_vodka(first_speaker: TODO, second_speaker: TODO): TODO
-  export function give_zat_a23_gauss_rifle_docs(first_speaker: TODO, second_speaker: TODO): TODO
+  export function give_actor_battery(first_speaker: TODO, second_speaker: TODO): void
+  export function give_actor_repaired_gauss_rifle(first_speaker: TODO, second_speaker: TODO): void
+  export function give_actor_zat_a23_access_card(first_speaker: TODO, second_speaker: TODO): void
+  export function give_compass_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function give_tech_gauss_rifle(first_speaker: TODO, second_speaker: TODO): void
+  export function give_toolkit_1(first_speaker: TODO, second_speaker: TODO): void
+  export function give_toolkit_2(first_speaker: TODO, second_speaker: TODO): void
+  export function give_toolkit_3(first_speaker: TODO, second_speaker: TODO): void
+  export function give_vodka(first_speaker: TODO, second_speaker: TODO): void
+  export function give_zat_a23_gauss_rifle_docs(first_speaker: TODO, second_speaker: TODO): void
   export function if_actor_has_gauss_rifle(first_speaker: TODO, second_speaker: TODO): TODO
   export function if_actor_has_toolkit_1(first_speaker: TODO, second_speaker: TODO): TODO
   export function if_actor_has_toolkit_2(first_speaker: TODO, second_speaker: TODO): TODO
   export function if_actor_has_toolkit_3(first_speaker: TODO, second_speaker: TODO): TODO
   export function if_actor_has_vodka(first_speaker: TODO, second_speaker: TODO): TODO
   export function if_actor_has_zat_a23_gauss_rifle_docs(first_speaker: TODO, second_speaker: TODO): TODO
-  export function is_good_gun(npc: TODO, item: TODO): TODO
-  export function is_not_zat_b106_hunting_time(first_speaker: TODO, second_speaker: TODO): TODO
-  export function is_zat_b106_hunting_time(first_speaker: TODO, second_speaker: TODO): TODO
-  export function jup_a9_owl_stalker_trader_sell_jup_a9_delivery_info(first_speaker: TODO, second_speaker: TODO): TODO
-  export function jup_a9_owl_stalker_trader_sell_jup_a9_evacuation_info(first_speaker: TODO, second_speaker: TODO): TODO
-  export function jup_a9_owl_stalker_trader_sell_jup_a9_losses_info(first_speaker: TODO, second_speaker: TODO): TODO
-  export function jup_a9_owl_stalker_trader_sell_jup_a9_meeting_info(first_speaker: TODO, second_speaker: TODO): TODO
-  export function relocate_need_money_to_buy_battery(first_speaker: TODO, second_speaker: TODO): TODO
-  export function return_zat_a23_gauss_rifle_docs(first_speaker: TODO, second_speaker: TODO): TODO
+  export function is_good_gun(npc: TODO, item: TODO): void
+  export function is_not_zat_b106_hunting_time(first_speaker: TODO, second_speaker: TODO): boolean
+  export function is_zat_b106_hunting_time(first_speaker: TODO, second_speaker: TODO): boolean
+  export function jup_a9_owl_stalker_trader_sell_jup_a9_delivery_info(first_speaker: TODO, second_speaker: TODO): void
+  export function jup_a9_owl_stalker_trader_sell_jup_a9_evacuation_info(first_speaker: TODO, second_speaker: TODO): void
+  export function jup_a9_owl_stalker_trader_sell_jup_a9_losses_info(first_speaker: TODO, second_speaker: TODO): void
+  export function jup_a9_owl_stalker_trader_sell_jup_a9_meeting_info(first_speaker: TODO, second_speaker: TODO): void
+  export function relocate_need_money_to_buy_battery(first_speaker: TODO, second_speaker: TODO): void
+  export function return_zat_a23_gauss_rifle_docs(first_speaker: TODO, second_speaker: TODO): void
   export function zat_a23_actor_has_access_card(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_a23_transfer_access_card_to_tech(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_a23_transfer_access_card_to_tech(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b103_actor_has_needed_food(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b103_transfer_mechanic_toolkit_2(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b103_transfer_merc_supplies(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b106_give_reward(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b103_transfer_mechanic_toolkit_2(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b103_transfer_merc_supplies(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b106_give_reward(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b106_soroka_gone(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b106_soroka_not_gone(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b106_soroka_reward(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b106_transfer_weap_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b12_actor_have_documents(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b12_actor_transfer_documents(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b14_bar_transfer_money(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b14_transfer_artefact(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b106_soroka_reward(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b106_transfer_weap_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b12_actor_have_documents(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b12_actor_transfer_documents(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b14_bar_transfer_money(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b14_transfer_artefact(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b215_actor_has_money_poor(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b215_actor_has_money_poor_pripyat(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b215_actor_has_money_rich(first_speaker: TODO, second_speaker: TODO): TODO
@@ -64,38 +62,38 @@ declare namespace dialogs_zaton {
   export function zat_b215_actor_has_no_money_rich_pripyat(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b215_counter_greater_3(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b215_counter_less_4(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b215_relocate_money_poor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b215_relocate_money_poor_pripyat(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b215_relocate_money_rich(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b215_relocate_money_rich_pripyat(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b215_relocate_money_poor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b215_relocate_money_poor_pripyat(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b215_relocate_money_rich(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b215_relocate_money_rich_pripyat(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b22_actor_has_proof(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b22_transfer_proof(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_do_not_has_adv_task_af(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_do_not_has_adv_task_af_1(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_do_not_has_adv_task_af_2(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_do_not_has_adv_task_af_3(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_do_not_has_adv_task_af_4(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_do_not_has_adv_task_af_5(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_do_not_has_adv_task_af_6(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_do_not_has_adv_task_af_7(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_do_not_has_adv_task_af_8(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_exchange(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_adv_task_af(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_adv_task_af_1(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_adv_task_af_2(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_adv_task_af_3(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_adv_task_af_4(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_adv_task_af_5(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_adv_task_af_6(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_adv_task_af_7(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_adv_task_af_8(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_actor_has_exchange_item(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_create_af_in_anomaly(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b29_linker_get_adv_task_af(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b22_transfer_proof(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b29_actor_do_not_has_adv_task_af(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_do_not_has_adv_task_af_1(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_do_not_has_adv_task_af_2(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_do_not_has_adv_task_af_3(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_do_not_has_adv_task_af_4(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_do_not_has_adv_task_af_5(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_do_not_has_adv_task_af_6(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_do_not_has_adv_task_af_7(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_do_not_has_adv_task_af_8(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_exchange(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b29_actor_has_adv_task_af(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_has_adv_task_af_1(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_has_adv_task_af_2(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_has_adv_task_af_3(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_has_adv_task_af_4(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_has_adv_task_af_5(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_has_adv_task_af_6(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_has_adv_task_af_7(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_has_adv_task_af_8(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_actor_has_exchange_item(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b29_create_af_in_anomaly(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b29_linker_get_adv_task_af(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b29_linker_give_adv_task(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b3_actor_got_toolkit(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b3_tech_drinks_precond(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_actor_exchange(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b3_actor_got_toolkit(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b3_tech_drinks_precond(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b30_actor_exchange(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b30_actor_has_1000(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b30_actor_has_200(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b30_actor_has_compass(first_speaker: TODO, second_speaker: TODO): TODO
@@ -110,30 +108,30 @@ declare namespace dialogs_zaton {
   export function zat_b30_actor_has_noah_pda(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b30_actor_has_pri_b306_envoy_pda(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b30_actor_has_pri_b36_monolith_hiding_place_pda(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_actor_has_two_detectors(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_actor_second_exchange(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b30_actor_has_two_detectors(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b30_actor_second_exchange(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b30_barmen_do_not_has_percent(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b30_barmen_has_percent(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_give_owls_share_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_npc_has_detector(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b30_give_owls_share_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_npc_has_detector(first_speaker: TODO, second_speaker: TODO): boolean
   export function zat_b30_owl_can_say_about_heli(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_owl_stalker_trader_actor_has_item_to_sell(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_owl_stalker_trader_sell_device_flash_snag(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_owl_stalker_trader_sell_device_pda_port_bandit_leader(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_owl_stalker_trader_sell_jup_b10_ufo_memory(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_owl_stalker_trader_sell_jup_b202_bandit_pda(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_sell_jup_b10_strelok_notes_1(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_sell_jup_b10_strelok_notes_2(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_sell_jup_b10_strelok_notes_3(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_sell_jup_b207_merc_pda_with_contract(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_sell_noah_pda(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_sell_pri_b306_envoy_pda(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_sell_pri_b36_monolith_hiding_place_pda(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_transfer_1000(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_transfer_200(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_transfer_af_from_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_transfer_detector_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b30_transfer_percent(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b30_owl_stalker_trader_actor_has_item_to_sell(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b30_owl_stalker_trader_sell_device_flash_snag(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_owl_stalker_trader_sell_device_pda_port_bandit_leader(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_owl_stalker_trader_sell_jup_b10_ufo_memory(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_owl_stalker_trader_sell_jup_b202_bandit_pda(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_sell_jup_b10_strelok_notes_1(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_sell_jup_b10_strelok_notes_2(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_sell_jup_b10_strelok_notes_3(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_sell_jup_b207_merc_pda_with_contract(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_sell_noah_pda(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_sell_pri_b306_envoy_pda(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_sell_pri_b36_monolith_hiding_place_pda(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_transfer_1000(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_transfer_200(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_transfer_af_from_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_transfer_detector_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b30_transfer_percent(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b33_actor_has_needed_money(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b33_actor_hasnt_habar(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b33_actor_hasnt_needed_money(first_speaker: TODO, second_speaker: TODO): TODO
@@ -149,57 +147,57 @@ declare namespace dialogs_zaton {
   export function zat_b33_counter_le_4(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b33_counter_le_8(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b33_counter_ne_10(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b33_relocate_money(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b33_set_counter_10(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b33_transfer_fifth_item(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b33_transfer_first_item(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b33_transfer_fourth_item(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b33_transfer_safe_container(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b33_transfer_second_item(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b33_transfer_third_item(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b33_relocate_money(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b33_set_counter_10(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b33_transfer_fifth_item(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b33_transfer_first_item(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b33_transfer_fourth_item(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b33_transfer_safe_container(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b33_transfer_second_item(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b33_transfer_third_item(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b40_actor_has_merc_pda_1(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b40_actor_has_merc_pda_2(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b40_actor_has_notebook(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b40_transfer_merc_pda_1(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b40_transfer_merc_pda_2(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b40_transfer_notebook(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b40_transfer_merc_pda_1(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b40_transfer_merc_pda_2(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b40_transfer_notebook(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b44_actor_has_not_pda_global(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b44_actor_has_pda_barge(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b44_actor_has_pda_both(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b44_actor_has_pda_global(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b44_actor_has_pda_joker(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b44_frends_dialog_enabled(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b44_transfer_pda_barge(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b44_transfer_pda_both(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b44_transfer_pda_joker(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b5_bandits_revard(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b5_dealer_easy_revard(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b5_dealer_full_revard(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b5_stalker_transfer_money(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b51_buy_item(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b51_give_prepay(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b51_has_item_cost(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b44_transfer_pda_barge(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b44_transfer_pda_both(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b44_transfer_pda_joker(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b5_bandits_revard(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b5_dealer_easy_revard(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b5_dealer_full_revard(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b5_stalker_transfer_money(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b51_buy_item(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b51_give_prepay(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b51_has_item_cost(first_speaker: TODO, second_speaker: TODO): boolean
   export function zat_b51_has_prepay(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b51_hasnt_item_cost(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b51_hasnt_prepay(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b51_randomize_item(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b51_refuse_item(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b51_rob_nimble_weapon(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b51_robbery(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b51_randomize_item(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b51_refuse_item(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b51_rob_nimble_weapon(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b51_robbery(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b53_if_actor_has_detector_advanced(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b53_if_actor_hasnt_detector_advanced(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b53_transfer_detector_advanced_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b53_transfer_fireball_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b53_transfer_medkit_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b53_transfer_medkit_to_npc(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b53_transfer_detector_advanced_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b53_transfer_fireball_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b53_transfer_medkit_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b53_transfer_medkit_to_npc(first_speaker: TODO, second_speaker: TODO): void
   export function zat_b57_actor_has_money(first_speaker: TODO, second_speaker: TODO): TODO
   export function zat_b57_actor_hasnt_money(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b57_stalker_reward_to_actor_detector(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b57_transfer_gas_money(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b7_give_bandit_reward_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b7_give_stalker_reward_2_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b7_give_stalker_reward_to_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b7_killed_self_precond(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b7_rob_actor(first_speaker: TODO, second_speaker: TODO): TODO
-  export function zat_b7_squad_alive(first_speaker: TODO, second_speaker: TODO): TODO
+  export function zat_b57_stalker_reward_to_actor_detector(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b57_transfer_gas_money(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b7_give_bandit_reward_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b7_give_stalker_reward_2_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b7_give_stalker_reward_to_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b7_killed_self_precond(first_speaker: TODO, second_speaker: TODO): boolean
+  export function zat_b7_rob_actor(first_speaker: TODO, second_speaker: TODO): void
+  export function zat_b7_squad_alive(first_speaker: TODO, second_speaker: TODO): boolean
 }

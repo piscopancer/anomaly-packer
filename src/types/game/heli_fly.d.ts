@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace heli_fly {
@@ -13,8 +11,8 @@ declare class heli_fly {
   get_block_flook(): TODO
   calc_point(): TODO
   lagrange(x: TODO, xArr: TODO, yArr: TODO): TODO
-  correct_velocity(): TODO
-  look_at_position(): TODO
-  set_block_flook(fl_block: TODO): TODO
-  set_look_point(l_point: TODO): TODO
+  correct_velocity(): void
+  look_at_position(): void
+  set_block_flook(fl_block: TODO): void
+  set_look_point(l_point: TODO): void
 }

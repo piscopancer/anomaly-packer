@@ -1,99 +1,97 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace ui_debug_wpn_hud {
   export const GUI: TODO
-  export function on_game_start(): TODO
-  export function on_key_hold(key: TODO): TODO
-  export function on_key_release(key: TODO): TODO
-  export function print_dbg(...args: TODO[]): TODO
-  export function start(owner: TODO): TODO
+  export function on_game_start(): void
+  export function on_key_hold(key: TODO): void
+  export function on_key_release(key: TODO): void
+  export function print_dbg(...args: TODO[]): void
+  export function start(owner: TODO): void
 }
 
 /** @customConstructor WpnHudEditor */
 declare class WpnHudEditor extends CUIScriptWnd {
   constructor(owner: TODO, section: TODO)
-  __finalize(): TODO
+  __finalize(): void
   InitControls(): TODO
-  InitCallBacks(): TODO
-  Reset(force: TODO, use_cache: TODO): TODO
+  InitCallBacks(): void
+  Reset(force: TODO, use_cache: TODO): void
   GetStringByType(indx: TODO, typ: TODO): TODO
   GetParameterValue(cnt: TODO): TODO
-  SetParameterValue(cnt: TODO, value: TODO): TODO
-  ApplyParameterValue(typ: TODO, parent: TODO): TODO
-  IsInvalidValue(cnt: TODO, typ: TODO, value: TODO): TODO
-  Send_MSG(text: TODO, ...args: TODO[]): TODO
-  ShowHint(): TODO
-  Update(): TODO
-  OnButtonCopy(): TODO
-  OnButtonPaste(): TODO
+  SetParameterValue(cnt: TODO, value: TODO): void
+  ApplyParameterValue(typ: TODO, parent: TODO): void
+  IsInvalidValue(cnt: TODO, typ: TODO, value: TODO): boolean
+  Send_MSG(text: TODO, ...args: TODO[]): void
+  ShowHint(): void
+  Update(): void
+  OnButtonCopy(): void
+  OnButtonPaste(): void
   OnButtonSave(): TODO
-  OnButtonAlign(): TODO
-  OnButtonResume(): TODO
-  CleanMemo(): TODO
+  OnButtonAlign(): void
+  OnButtonResume(): void
+  CleanMemo(): void
   SwitchParam(state: TODO, vert: TODO): TODO
-  SwitchValue(state: TODO, selected: TODO): TODO
-  SwitchValueGroup(state: TODO, selected_group: TODO): TODO
-  OnInput(cnt: TODO): TODO
-  Close(): TODO
+  SwitchValue(state: TODO, selected: TODO): void
+  SwitchValueGroup(state: TODO, selected_group: TODO): void
+  OnInput(cnt: TODO): void
+  Close(): void
   OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
-  OnInput_1(): TODO
-  OnInput_2(): TODO
-  OnInput_3(): TODO
-  OnInput_4(): TODO
-  OnInput_5(): TODO
-  OnInput_6(): TODO
-  OnInput_7(): TODO
-  OnInput_8(): TODO
-  OnInput_9(): TODO
-  OnInput_10(): TODO
-  OnInput_11(): TODO
-  OnInput_12(): TODO
-  OnInput_13(): TODO
-  OnInput_14(): TODO
-  OnInput_15(): TODO
-  OnInput_16(): TODO
-  OnInput_17(): TODO
-  OnInput_18(): TODO
-  OnInput_19(): TODO
-  OnInput_20(): TODO
-  OnInput_21(): TODO
-  OnInput_22(): TODO
-  OnInput_23(): TODO
-  OnInput_24(): TODO
-  OnInput_25(): TODO
-  OnInput_26(): TODO
-  OnInput_27(): TODO
-  OnInput_28(): TODO
-  OnInput_29(): TODO
-  OnInput_30(): TODO
-  OnInput_31(): TODO
-  OnInput_32(): TODO
-  OnInput_33(): TODO
-  OnInput_34(): TODO
-  OnInput_35(): TODO
-  OnInput_36(): TODO
-  OnInput_37(): TODO
-  OnInput_38(): TODO
-  OnInput_39(): TODO
-  OnInput_40(): TODO
-  OnInput_41(): TODO
-  OnInput_42(): TODO
-  OnInput_43(): TODO
-  OnInput_44(): TODO
-  OnInput_45(): TODO
-  OnInput_46(): TODO
-  OnInput_47(): TODO
-  OnInput_48(): TODO
-  OnInput_49(): TODO
-  OnInput_50(): TODO
-  OnInput_51(): TODO
-  OnInput_52(): TODO
-  OnInput_53(): TODO
-  OnInput_54(): TODO
-  OnInput_55(): TODO
-  OnInput_56(): TODO
-  OnInput_57(): TODO
-  OnInput_58(): TODO
+  OnInput_1(): void
+  OnInput_2(): void
+  OnInput_3(): void
+  OnInput_4(): void
+  OnInput_5(): void
+  OnInput_6(): void
+  OnInput_7(): void
+  OnInput_8(): void
+  OnInput_9(): void
+  OnInput_10(): void
+  OnInput_11(): void
+  OnInput_12(): void
+  OnInput_13(): void
+  OnInput_14(): void
+  OnInput_15(): void
+  OnInput_16(): void
+  OnInput_17(): void
+  OnInput_18(): void
+  OnInput_19(): void
+  OnInput_20(): void
+  OnInput_21(): void
+  OnInput_22(): void
+  OnInput_23(): void
+  OnInput_24(): void
+  OnInput_25(): void
+  OnInput_26(): void
+  OnInput_27(): void
+  OnInput_28(): void
+  OnInput_29(): void
+  OnInput_30(): void
+  OnInput_31(): void
+  OnInput_32(): void
+  OnInput_33(): void
+  OnInput_34(): void
+  OnInput_35(): void
+  OnInput_36(): void
+  OnInput_37(): void
+  OnInput_38(): void
+  OnInput_39(): void
+  OnInput_40(): void
+  OnInput_41(): void
+  OnInput_42(): void
+  OnInput_43(): void
+  OnInput_44(): void
+  OnInput_45(): void
+  OnInput_46(): void
+  OnInput_47(): void
+  OnInput_48(): void
+  OnInput_49(): void
+  OnInput_50(): void
+  OnInput_51(): void
+  OnInput_52(): void
+  OnInput_53(): void
+  OnInput_54(): void
+  OnInput_55(): void
+  OnInput_56(): void
+  OnInput_57(): void
+  OnInput_58(): void
 }

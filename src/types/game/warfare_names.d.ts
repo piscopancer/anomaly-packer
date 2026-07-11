@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace warfare_names {
@@ -8,7 +6,7 @@ declare namespace warfare_names {
   export function get_name(input: TODO): TODO
   export function get_smart_name(smart: TODO): TODO
   export function get_squad_name(squad: TODO): TODO
-  export function on_game_start(): TODO
-  export function refresh_strings(): TODO
+  export function on_game_start(): void
+  export function refresh_strings(): void
   export function translate_smart_name(name: TODO): TODO
 }

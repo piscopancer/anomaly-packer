@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace heli_look {
@@ -9,5 +7,5 @@ declare namespace heli_look {
 /** @customConstructor heli_look */
 declare class heli_look {
   constructor(obj: TODO)
-  calc_look_point(dest_point: TODO, look_state: TODO): TODO
+  calc_look_point(dest_point: TODO, look_state: TODO): void
 }

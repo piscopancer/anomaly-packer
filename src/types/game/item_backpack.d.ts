@@ -1,28 +1,26 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace item_backpack {
   export const GUI: TODO
-  export function actor_on_item_take_from_box(box: TODO, obj: TODO): TODO
-  export function actor_on_item_use(obj: TODO): TODO
-  export function func_stash(obj: TODO): TODO
-  export function is_ammo_for_wpn(sec: TODO): TODO
-  export function is_in_slot(obj: TODO): TODO
+  export function actor_on_item_take_from_box(box: TODO, obj: TODO): void
+  export function actor_on_item_use(obj: TODO): boolean
+  export function func_stash(obj: TODO): void
+  export function is_ammo_for_wpn(sec: TODO): boolean
+  export function is_in_slot(obj: TODO): boolean
   export function menu_stash(obj: TODO): TODO
-  export function on_game_start(): TODO
-  export function start(obj: TODO): TODO
+  export function on_game_start(): void
+  export function start(obj: TODO): void
 }
 
 /** @customConstructor UICreateStash */
 declare class UICreateStash extends CUIScriptWnd {
-  constructor(arg0: TODO)
-  __finalize(): TODO
-  InitControls(): TODO
-  InitCallBacks(): TODO
-  Reset(obj: TODO): TODO
-  Update(): TODO
-  OnAccept(): TODO
+  constructor()
+  __finalize(): void
+  InitControls(): void
+  InitCallBacks(): void
+  Reset(obj: TODO): void
+  Update(): void
+  OnAccept(): void
   OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
-  Close(): TODO
+  Close(): void
 }

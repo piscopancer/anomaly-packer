@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace ui_dosimeter {
@@ -8,7 +6,7 @@ declare namespace ui_dosimeter {
 
 /** @customConstructor ui_dosimeter */
 declare class ui_dosimeter extends CUIScriptWnd {
-  constructor(arg0: TODO)
-  __finalize(): TODO
-  Update(): TODO
+  constructor()
+  __finalize(): void
+  Update(): void
 }

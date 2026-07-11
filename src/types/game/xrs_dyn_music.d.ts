@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace xrs_dyn_music {
@@ -20,33 +18,33 @@ declare namespace xrs_dyn_music {
   export const next_track_start_time: TODO
   export const npc_table: TODO
   export const theme: TODO
-  export function activate_feature(): TODO
-  export function actor_in_silence_zone(): TODO
+  export function activate_feature(): void
+  export function actor_in_silence_zone(): boolean
   export function ambient_is_fading(): TODO
-  export function deactivate_feature(): TODO
-  export function fade_ambient(): TODO
-  export function fade_theme(): TODO
-  export function finish_theme(): TODO
+  export function deactivate_feature(): void
+  export function fade_ambient(): void
+  export function fade_theme(): void
+  export function finish_theme(): void
   export function get_theme_state(): TODO
-  export function initialize_themes(): TODO
-  export function main_menu_off(): TODO
-  export function main_menu_on(): TODO
-  export function on_actor_destroy(): TODO
-  export function on_game_start(): TODO
-  export function select_next_track(): TODO
-  export function start_theme(): TODO
+  export function initialize_themes(): void
+  export function main_menu_off(): void
+  export function main_menu_on(): void
+  export function on_actor_destroy(): void
+  export function on_game_start(): void
+  export function select_next_track(): void
+  export function start_theme(): void
   export function theme_is_fading(): TODO
 }
 
 /** @customConstructor stereo_sound */
 declare class stereo_sound {
   constructor()
-  initialize(sound: TODO, lvl: TODO): TODO
+  initialize(sound: TODO, lvl: TODO): void
   play(): TODO
   play_at_time(time: TODO, sound: TODO, lvl: TODO): TODO
   playing(): TODO
-  update(vol: TODO): TODO
-  stop(): TODO
+  update(vol: TODO): void
+  stop(): void
   length(): TODO
-  set_volume(num: TODO): TODO
+  set_volume(num: TODO): void
 }

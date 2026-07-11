@@ -1,27 +1,25 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace item_repair {
   export const GUI: TODO
-  export function func_tool(obj: TODO): TODO
+  export function func_tool(obj: TODO): void
   export function menu_tool(obj: TODO): TODO
-  export function on_game_start(): TODO
-  export function start(obj: TODO, sec: TODO): TODO
+  export function on_game_start(): void
+  export function start(obj: TODO, sec: TODO): void
 }
 
 /** @customConstructor UIRepair */
 declare class UIRepair extends CUIScriptWnd {
   constructor(obj: TODO, section: TODO)
-  __finalize(): TODO
-  InitControls(): TODO
-  InitCallBacks(): TODO
-  Reset(obj: TODO, section: TODO): TODO
-  InitInventory(n: TODO): TODO
-  Update(): TODO
-  On_CC_Mouse1(cont: TODO, idx: TODO): TODO
-  OnItemSelect(n: TODO): TODO
+  __finalize(): void
+  InitControls(): void
+  InitCallBacks(): void
+  Reset(obj: TODO, section: TODO): void
+  InitInventory(n: TODO): void
+  Update(): void
+  On_CC_Mouse1(cont: TODO, idx: TODO): void
+  OnItemSelect(n: TODO): void
   OnRepair(): TODO
   OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
-  OnCancel(): TODO
+  OnCancel(): void
 }

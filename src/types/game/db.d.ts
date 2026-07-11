@@ -2,7 +2,7 @@
 
 declare namespace db {
   const actor: CGameObject | null
-  const actor_binder: ObjectBinder
+  const actor_binder: object_binder
   const offline_objects: Record<
     number,
     {

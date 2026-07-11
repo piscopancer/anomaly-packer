@@ -1,31 +1,29 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace ui_companion_inv {
   export const GUI: TODO
   export function functor_inv(t: TODO, a: TODO, b: TODO): TODO
-  export function set_item_order(): TODO
-  export function start(npc: TODO): TODO
+  export function set_item_order(): void
+  export function start(npc: TODO): void
 }
 
 /** @customConstructor UICompanionInv */
 declare class UICompanionInv extends CUIScriptWnd {
-  constructor(arg0: TODO)
-  __finalize(): TODO
-  InitControls(): TODO
-  InitCallBacks(): TODO
-  Update(): TODO
-  SetMsg(text: TODO, tmr: TODO): TODO
-  SetHint(text: TODO, pos: TODO): TODO
-  Reset(npc: TODO): TODO
-  ResetWeight(npc: TODO, inv_table: TODO): TODO
+  constructor()
+  __finalize(): void
+  InitControls(): void
+  InitCallBacks(): void
+  Update(): void
+  SetMsg(text: TODO, tmr: TODO): void
+  SetHint(text: TODO, pos: TODO): void
+  Reset(npc: CGameObject): void
+  ResetWeight(npc: TODO, inv_table: TODO): void
   InitInventoryCells(s_table: TODO, s_scroll: TODO, s_cells: TODO, callback: TODO): TODO
-  Delay(npc: TODO, to_npc: TODO): TODO
+  Delay(npc: TODO, to_npc: TODO): boolean
   OnInvClicked_player(): TODO
   OnInvClicked_comp(): TODO
   OnBtn_TakeAll(): TODO
   OnBtn_GiveAll(): TODO
   OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
-  Close(): TODO
+  Close(): void
 }

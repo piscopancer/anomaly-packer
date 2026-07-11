@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace xr_state {
@@ -16,8 +14,8 @@ declare namespace xr_state {
 declare class body_state {
   constructor(npc: TODO)
   finish_state(): TODO
-  set_state(id: TODO): TODO
-  transanim(object: TODO, target_state: TODO): TODO
+  set_state(id: TODO): boolean
+  transanim(object: TODO, target_state: TODO): void
   weapon_slot(): TODO
   anim_update(type: TODO): TODO
 }

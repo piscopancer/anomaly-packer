@@ -1,121 +1,119 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace ui_mm_faction_select {
-  export function on_game_start(): TODO
+  export function on_game_start(): void
 }
 
 /** @customConstructor UINewGame */
 declare class UINewGame extends CUIScriptWnd {
   constructor(owner: TODO)
-  __finalize(): TODO
-  Main_Controls(): TODO
-  Main_CallBacks(): TODO
-  Update(): TODO
-  PopupFaction_Controls(): TODO
-  PopupFaction_Callbacks(): TODO
-  PopupFaction_Show(state: TODO): TODO
-  OnFactionSelect(faction: TODO): TODO
-  OnFaction_stalker(): TODO
-  OnFaction_bandit(): TODO
-  OnFaction_csky(): TODO
-  OnFaction_dolg(): TODO
-  OnFaction_freedom(): TODO
-  OnFaction_killer(): TODO
-  OnFaction_army(): TODO
-  OnFaction_ecolog(): TODO
-  OnFaction_monolith(): TODO
-  OnFaction_renegade(): TODO
-  OnFaction_greh(): TODO
-  OnFaction_isg(): TODO
-  OnFaction_zombied(): TODO
-  PopupIcon_Controls(): TODO
-  PopupIcon_Callbacks(): TODO
-  PopupIcon_Show(state: TODO): TODO
-  OnIconSelect(num: TODO): TODO
-  OnIcon_1(): TODO
-  OnIcon_2(): TODO
-  OnIcon_3(): TODO
-  OnIcon_4(): TODO
-  OnIcon_5(): TODO
-  OnIcon_6(): TODO
-  OnIcon_7(): TODO
-  OnIcon_8(): TODO
-  OnIcon_9(): TODO
-  OnIcon_10(): TODO
-  OnIcon_11(): TODO
-  OnIcon_12(): TODO
-  OnIcon_13(): TODO
-  OnIcon_14(): TODO
-  OnIcon_15(): TODO
-  OnIcon_16(): TODO
-  OnIcon_17(): TODO
-  OnIcon_18(): TODO
-  OnIcon_19(): TODO
-  OnIcon_20(): TODO
-  OnIcon_21(): TODO
-  OnIcon_22(): TODO
-  OnIcon_23(): TODO
-  OnIcon_24(): TODO
-  OnIcon_25(): TODO
-  OnIcon_26(): TODO
-  OnIcon_27(): TODO
-  OnIcon_28(): TODO
-  OnIcon_29(): TODO
-  OnIcon_30(): TODO
-  OnIcon_31(): TODO
-  OnIcon_32(): TODO
-  OnIcon_33(): TODO
-  OnIcon_34(): TODO
-  OnIcon_35(): TODO
-  OnIcon_36(): TODO
-  OnIcon_37(): TODO
-  OnIcon_38(): TODO
-  OnIcon_39(): TODO
-  OnIcon_40(): TODO
-  OnIcon_41(): TODO
-  OnIcon_42(): TODO
-  OnIcon_43(): TODO
-  OnIcon_44(): TODO
-  OnIcon_45(): TODO
-  OnIcon_46(): TODO
-  OnIcon_47(): TODO
-  OnIcon_48(): TODO
-  OnIcon_49(): TODO
-  OnIcon_50(): TODO
-  LoadFaction(rand: TODO, faction: TODO): TODO
-  LoadIcon(rand: TODO): TODO
-  LoadMap(rand: TODO): TODO
-  LoadLoadout(rand: TODO): TODO
-  LoadDifficulty(rand: TODO): TODO
-  LoadEconomy(rand: TODO): TODO
-  LoadHardcoreLives(rand: TODO): TODO
-  LoadHardcoreRegen(rand: TODO): TODO
-  LoadTimer(rand: TODO): TODO
-  OnFactionClicked(): TODO
-  OnIconClicked(): TODO
-  OnSelectMap(): TODO
-  On_CC_Mouse1(cont: TODO, idx: TODO): TODO
-  OnSelectDifficulty(): TODO
-  OnSelectEconomy(): TODO
-  OnSelectHardcoreLives(): TODO
-  OnSelectHardcoreRegen(): TODO
-  OnSelectTimer(): TODO
-  OnCheckSetStory(): TODO
-  OnCheckSetAzazel(): TODO
-  OnCheckSetWarfare(): TODO
-  OnCheckSetSurvival(): TODO
-  OnCheckResetList(): TODO
-  UpdateAll(rand: TODO, faction: TODO): TODO
-  UpdateFaction(): TODO
-  UpdateIcon(): TODO
-  UpdateMap(): TODO
-  UpdateMoney(): TODO
-  UpdateDescr(): TODO
+  __finalize(): void
+  Main_Controls(): void
+  Main_CallBacks(): void
+  Update(): void
+  PopupFaction_Controls(): void
+  PopupFaction_Callbacks(): void
+  PopupFaction_Show(state: TODO): void
+  OnFactionSelect(faction: TODO): void
+  OnFaction_stalker(): void
+  OnFaction_bandit(): void
+  OnFaction_csky(): void
+  OnFaction_dolg(): void
+  OnFaction_freedom(): void
+  OnFaction_killer(): void
+  OnFaction_army(): void
+  OnFaction_ecolog(): void
+  OnFaction_monolith(): void
+  OnFaction_renegade(): void
+  OnFaction_greh(): void
+  OnFaction_isg(): void
+  OnFaction_zombied(): void
+  PopupIcon_Controls(): void
+  PopupIcon_Callbacks(): void
+  PopupIcon_Show(state: TODO): void
+  OnIconSelect(num: TODO): void
+  OnIcon_1(): void
+  OnIcon_2(): void
+  OnIcon_3(): void
+  OnIcon_4(): void
+  OnIcon_5(): void
+  OnIcon_6(): void
+  OnIcon_7(): void
+  OnIcon_8(): void
+  OnIcon_9(): void
+  OnIcon_10(): void
+  OnIcon_11(): void
+  OnIcon_12(): void
+  OnIcon_13(): void
+  OnIcon_14(): void
+  OnIcon_15(): void
+  OnIcon_16(): void
+  OnIcon_17(): void
+  OnIcon_18(): void
+  OnIcon_19(): void
+  OnIcon_20(): void
+  OnIcon_21(): void
+  OnIcon_22(): void
+  OnIcon_23(): void
+  OnIcon_24(): void
+  OnIcon_25(): void
+  OnIcon_26(): void
+  OnIcon_27(): void
+  OnIcon_28(): void
+  OnIcon_29(): void
+  OnIcon_30(): void
+  OnIcon_31(): void
+  OnIcon_32(): void
+  OnIcon_33(): void
+  OnIcon_34(): void
+  OnIcon_35(): void
+  OnIcon_36(): void
+  OnIcon_37(): void
+  OnIcon_38(): void
+  OnIcon_39(): void
+  OnIcon_40(): void
+  OnIcon_41(): void
+  OnIcon_42(): void
+  OnIcon_43(): void
+  OnIcon_44(): void
+  OnIcon_45(): void
+  OnIcon_46(): void
+  OnIcon_47(): void
+  OnIcon_48(): void
+  OnIcon_49(): void
+  OnIcon_50(): void
+  LoadFaction(rand: TODO, faction: TODO): void
+  LoadIcon(rand: TODO): void
+  LoadMap(rand: TODO): void
+  LoadLoadout(rand: TODO): void
+  LoadDifficulty(rand: TODO): void
+  LoadEconomy(rand: TODO): void
+  LoadHardcoreLives(rand: TODO): void
+  LoadHardcoreRegen(rand: TODO): void
+  LoadTimer(rand: TODO): void
+  OnFactionClicked(): void
+  OnIconClicked(): void
+  OnSelectMap(): void
+  On_CC_Mouse1(cont: TODO, idx: TODO): void
+  OnSelectDifficulty(): void
+  OnSelectEconomy(): void
+  OnSelectHardcoreLives(): void
+  OnSelectHardcoreRegen(): void
+  OnSelectTimer(): void
+  OnCheckSetStory(): void
+  OnCheckSetAzazel(): void
+  OnCheckSetWarfare(): void
+  OnCheckSetSurvival(): void
+  OnCheckResetList(): void
+  UpdateAll(rand: TODO, faction: TODO): void
+  UpdateFaction(): void
+  UpdateIcon(): void
+  UpdateMap(): void
+  UpdateMoney(): void
+  UpdateDescr(): void
   GetAxis_Icon(main: TODO, element: TODO, all_row: TODO, all_col: TODO, row: TODO, col: TODO): TODO
-  OnQuit(): TODO
-  OnRandomize(): TODO
+  OnQuit(): void
+  OnRandomize(): void
   OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
-  OnStartGame(): TODO
+  OnStartGame(): void
 }

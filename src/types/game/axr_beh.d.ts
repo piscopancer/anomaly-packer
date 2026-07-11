@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace axr_beh {
@@ -13,7 +11,7 @@ declare namespace axr_beh {
 
 /** @customConstructor action_beh */
 declare class action_beh extends action_base {
-  constructor(npc_name: TODO, action_name: TODO, storage: TODO, action_name_: TODO)
+  constructor(npc_name: TODO, action_name: TODO, storage: TODO)
   initialize(): TODO
   execute(): TODO
   set_desired_target(): TODO
@@ -31,12 +29,14 @@ declare class action_beh extends action_base {
 
 /** @customConstructor evaluator_beh */
 declare class evaluator_beh extends property_evaluator {
-  constructor(storage: TODO, name: TODO, name_: TODO)
+  constructor(storage: TODO, name: TODO)
   evaluate(): TODO
 }
 
 /** @customConstructor position_node */
 declare class position_node {
   constructor(amt: TODO)
-  select_best_vertex_id(object: TODO, dir: TODO, lvid: TODO, min_dist: TODO, max_dist: TODO, find_furthest: TODO): TODO
+  // shared global name: 4-arg form defined in axr_beh, 6-arg form in xr_danger
+  select_best_vertex_id(object: TODO, dir: TODO, lvid: TODO, distance: TODO): TODO
+  select_best_vertex_id(object: TODO, dir: TODO, lvid: TODO, distance: TODO): TODO
 }

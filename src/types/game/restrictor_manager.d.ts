@@ -1,5 +1,3 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace restrictor_manager {
@@ -9,5 +7,5 @@ declare namespace restrictor_manager {
 /** @customConstructor Crestrictor_manager */
 declare class Crestrictor_manager {
   constructor(obj: TODO)
-  reset_restrictions(st: TODO, section: TODO): TODO
+  reset_restrictions(st: TODO, section: TODO): void
 }

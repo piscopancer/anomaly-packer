@@ -1,83 +1,81 @@
-// @generated skeleton — auto-produced from Lua scripts, refine by hand
-
 /** @noSelfInFile */
 
 declare namespace game_achievements {
-  export function absolver_functor(): TODO
+  export function absolver_functor(): boolean
   export function absolver_requirements(): TODO
-  export function absolver_rewards(): TODO
-  export function artificer_eagerness_functor(): TODO
+  export function absolver_rewards(): void
+  export function artificer_eagerness_functor(): boolean
   export function artificer_eagerness_requirements(): TODO
-  export function artificer_eagerness_rewards(): TODO
-  export function bookworm_food_functor(): TODO
+  export function artificer_eagerness_rewards(): void
+  export function bookworm_food_functor(): boolean
   export function bookworm_food_requirements(): TODO
-  export function bookworm_food_rewards(): TODO
-  export function can_unlock(): TODO
-  export function collaborator_functor(): TODO
+  export function bookworm_food_rewards(): void
+  export function can_unlock(): boolean
+  export function collaborator_functor(): boolean
   export function collaborator_requirements(): TODO
-  export function collaborator_rewards(): TODO
-  export function completionist_functor(): TODO
+  export function collaborator_rewards(): void
+  export function completionist_functor(): boolean
   export function completionist_requirements(): TODO
-  export function completionist_rewards(): TODO
-  export function down_to_earth_functor(): TODO
+  export function completionist_rewards(): void
+  export function down_to_earth_functor(): boolean
   export function down_to_earth_requirements(): TODO
-  export function down_to_earth_rewards(): TODO
-  export function duga_free_functor(): TODO
+  export function down_to_earth_rewards(): void
+  export function duga_free_functor(): boolean
   export function duga_free_requirements(): TODO
-  export function duga_free_rewards(): TODO
-  export function geologist_functor(): TODO
+  export function duga_free_rewards(): void
+  export function geologist_functor(): boolean
   export function geologist_requirements(): TODO
-  export function geologist_rewards(): TODO
-  export function get_achievements_count(): TODO
-  export function get_achievements_locked_count(): TODO
-  export function get_achievements_unlocked_count(): TODO
-  export function has_achievement(achievement: TODO): TODO
-  export function heavy_pockets_functor(): TODO
+  export function geologist_rewards(): void
+  export function get_achievements_count(): number
+  export function get_achievements_locked_count(): number
+  export function get_achievements_unlocked_count(): number
+  export function has_achievement(achievement: TODO): boolean
+  export function heavy_pockets_functor(): boolean
   export function heavy_pockets_requirements(): TODO
-  export function heavy_pockets_rewards(): TODO
-  export function infantile_pleasure_functor(): TODO
+  export function heavy_pockets_rewards(): void
+  export function infantile_pleasure_functor(): boolean
   export function infantile_pleasure_requirements(): TODO
-  export function infantile_pleasure_rewards(): TODO
-  export function infopreneur_functor(): TODO
+  export function infantile_pleasure_rewards(): void
+  export function infopreneur_functor(): boolean
   export function infopreneur_requirements(): TODO
-  export function infopreneur_rewards(): TODO
-  export function invictus_functor(): TODO
+  export function infopreneur_rewards(): void
+  export function invictus_functor(): boolean
   export function invictus_requirements(): TODO
-  export function invictus_rewards(): TODO
-  export function iron_curtain_functor(): TODO
+  export function invictus_rewards(): void
+  export function iron_curtain_functor(): boolean
   export function iron_curtain_requirements(): TODO
-  export function iron_curtain_rewards(): TODO
-  export function mechanized_warfare_functor(): TODO
+  export function iron_curtain_rewards(): void
+  export function mechanized_warfare_functor(): boolean
   export function mechanized_warfare_requirements(): TODO
-  export function mechanized_warfare_rewards(): TODO
-  export function murky_spirit_functor(): TODO
+  export function mechanized_warfare_rewards(): void
+  export function murky_spirit_functor(): boolean
   export function murky_spirit_requirements(): TODO
-  export function murky_spirit_rewards(): TODO
-  export function patriarch_functor(): TODO
+  export function murky_spirit_rewards(): void
+  export function patriarch_functor(): boolean
   export function patriarch_requirements(): TODO
-  export function patriarch_rewards(): TODO
-  export function radiotherapy_functor(): TODO
+  export function patriarch_rewards(): void
+  export function radiotherapy_functor(): boolean
   export function radiotherapy_requirements(): TODO
-  export function radiotherapy_rewards(): TODO
-  export function rag_and_bone_functor(): TODO
+  export function radiotherapy_rewards(): void
+  export function rag_and_bone_functor(): boolean
   export function rag_and_bone_requirements(): TODO
-  export function rag_and_bone_rewards(): TODO
-  export function recycler_functor(): TODO
+  export function rag_and_bone_rewards(): void
+  export function recycler_functor(): boolean
   export function recycler_requirements(): TODO
-  export function recycler_rewards(): TODO
-  export function silver_or_lead_functor(): TODO
+  export function recycler_rewards(): void
+  export function silver_or_lead_functor(): boolean
   export function silver_or_lead_requirements(): TODO
-  export function silver_or_lead_rewards(): TODO
-  export function tourist_functor(): TODO
+  export function silver_or_lead_rewards(): void
+  export function tourist_functor(): boolean
   export function tourist_requirements(): TODO
-  export function tourist_rewards(): TODO
-  export function unforeseen_guest_functor(): TODO
+  export function tourist_rewards(): void
+  export function unforeseen_guest_functor(): boolean
   export function unforeseen_guest_requirements(): TODO
-  export function unforeseen_guest_rewards(): TODO
-  export function well_dressed_functor(): TODO
+  export function unforeseen_guest_rewards(): void
+  export function well_dressed_functor(): boolean
   export function well_dressed_requirements(): TODO
-  export function well_dressed_rewards(): TODO
-  export function wishful_thinking_functor(): TODO
+  export function well_dressed_rewards(): void
+  export function wishful_thinking_functor(): boolean
   export function wishful_thinking_requirements(): TODO
-  export function wishful_thinking_rewards(): TODO
+  export function wishful_thinking_rewards(): void
 }
