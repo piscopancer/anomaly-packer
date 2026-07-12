@@ -1,135 +1,149 @@
 /** @noSelfInFile */
 
 declare namespace ui_debug_item {
-  export const GUI: TODO
-  export const parameters: TODO
-  export function on_game_start(): TODO
-  export function on_key_hold(key: TODO): TODO
-  export function on_key_release(key: TODO): TODO
-  export function print_dbg(...args: TODO[]): TODO
-  export function reset_anim(anim_state: TODO): TODO
-  export function start(owner: TODO, object: TODO, section: TODO, item_type: TODO, item_kinds: TODO): TODO
-  export function start_artfact(owner: TODO): TODO
-  export function start_outfit(owner: TODO): TODO
-  export function start_weapon(owner: TODO): TODO
+  // Editable parameter descriptor, as declared in the `parameters` config.
+  export interface ParameterDescriptor {
+    index: number
+    type: number
+    def: number[]
+    min: number
+    max: number
+    step: number
+    from?: string
+    show: number
+    name: string
+    reversed?: boolean
+    precision?: number
+  }
+  export const GUI: UIItemEditor | undefined
+  export const parameters: Record<string, Record<string, ParameterDescriptor>>
+  export function on_game_start(): void
+  export function on_key_hold(key: number): void
+  export function on_key_release(key: number): void
+  export function print_dbg(...args: unknown[]): void
+  export function reset_anim(anim_state: string): boolean
+  export function start(owner: CUIScriptWnd | undefined, object: CGameObject, section: string, item_type: string, item_kinds: Record<string, boolean>): void
+  export function start_artfact(owner?: CUIScriptWnd): void
+  export function start_outfit(owner?: CUIScriptWnd): void
+  export function start_weapon(owner?: CUIScriptWnd): void
 }
 
 /** @customConstructor UIItemEditor */
 declare class UIItemEditor extends CUIScriptWnd {
-  constructor(owner: TODO, object: TODO, section: TODO, item_type: TODO, item_kinds: TODO)
-  __finalize(): TODO
-  InitControls(): TODO
-  InitCallbacks(): TODO
-  ResetList(item_type: TODO, item_kinds: TODO): TODO
-  ResetParameters(force_def: boolean): TODO
-  ResetComparison(p: TODO): TODO
-  Update(): TODO
-  Update_Pending(cnt: TODO): TODO
-  GetStringByType(index: TODO, typ: number): TODO
-  GetParameterValue(cnt: TODO): TODO
-  SetParameterValue(cnt: TODO, value: TODO): TODO
-  IsInvalidValue(cnt: TODO, typ: number, value: string): TODO
-  Send_MSG(text: TODO, ...args: TODO[]): TODO
-  SetHint(text: string, pos: TODO, _w: TODO): TODO
-  SetHelp(text: string, stop: TODO): TODO
-  SwitchParam(state: TODO, vert: TODO): TODO
-  SwitchValue(state: TODO, selected: TODO): TODO
-  SwitchValueGroup(state: TODO, selected_group: TODO): TODO
-  OnInput(cnt: TODO): TODO
-  OnButton_Copy(): TODO
-  OnButton_Paste(): TODO
-  OnButton_Reset(): TODO
-  OnButton_Apply(): TODO
-  Refresh_Item(): TODO
-  OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
-  Close(): TODO
-  OnInput_1(): TODO
-  OnInput_2(): TODO
-  OnInput_3(): TODO
-  OnInput_4(): TODO
-  OnInput_5(): TODO
-  OnInput_6(): TODO
-  OnInput_7(): TODO
-  OnInput_8(): TODO
-  OnInput_9(): TODO
-  OnInput_10(): TODO
-  OnInput_11(): TODO
-  OnInput_12(): TODO
-  OnInput_13(): TODO
-  OnInput_14(): TODO
-  OnInput_15(): TODO
-  OnInput_16(): TODO
-  OnInput_17(): TODO
-  OnInput_18(): TODO
-  OnInput_19(): TODO
-  OnInput_20(): TODO
-  OnInput_21(): TODO
-  OnInput_22(): TODO
-  OnInput_23(): TODO
-  OnInput_24(): TODO
-  OnInput_25(): TODO
-  OnInput_26(): TODO
-  OnInput_27(): TODO
-  OnInput_28(): TODO
-  OnInput_29(): TODO
-  OnInput_30(): TODO
-  OnInput_31(): TODO
-  OnInput_32(): TODO
-  OnInput_33(): TODO
-  OnInput_34(): TODO
-  OnInput_35(): TODO
-  OnInput_36(): TODO
-  OnInput_37(): TODO
-  OnInput_38(): TODO
-  OnInput_39(): TODO
-  OnInput_40(): TODO
-  OnInput_41(): TODO
-  OnInput_42(): TODO
-  OnInput_43(): TODO
-  OnInput_44(): TODO
-  OnInput_45(): TODO
-  OnInput_46(): TODO
-  OnInput_47(): TODO
-  OnInput_48(): TODO
-  OnInput_49(): TODO
-  OnInput_50(): TODO
-  OnInput_51(): TODO
-  OnInput_52(): TODO
-  OnInput_53(): TODO
-  OnInput_54(): TODO
-  OnInput_55(): TODO
-  OnInput_56(): TODO
-  OnInput_57(): TODO
-  OnInput_58(): TODO
-  OnInput_59(): TODO
-  OnInput_60(): TODO
-  OnInput_61(): TODO
-  OnInput_62(): TODO
-  OnInput_63(): TODO
-  OnInput_64(): TODO
-  OnInput_65(): TODO
-  OnInput_66(): TODO
-  OnInput_67(): TODO
-  OnInput_68(): TODO
-  OnInput_69(): TODO
-  OnInput_70(): TODO
-  OnInput_71(): TODO
-  OnInput_72(): TODO
-  OnInput_73(): TODO
-  OnInput_74(): TODO
-  OnInput_75(): TODO
-  OnInput_76(): TODO
-  OnInput_77(): TODO
-  OnInput_78(): TODO
-  OnInput_79(): TODO
-  OnInput_80(): TODO
+  constructor(owner: CUIScriptWnd | undefined, object: CGameObject, section: string, item_type: string, item_kinds: Record<string, boolean>)
+  __finalize(): void
+  InitControls(): void
+  InitCallbacks(): void
+  ResetList(item_type: string, item_kinds: Record<string, boolean>): void
+  ResetParameters(force_def?: boolean): void
+  ResetComparison(p?: string): void
+  Update(): void
+  Update_Pending(cnt: number): void
+  GetStringByType(index: number, typ: number): string
+  GetParameterValue(cnt: number): string | number
+  SetParameterValue(cnt: number, value: string | number): void
+  IsInvalidValue(cnt: number, typ: number, value: string): boolean
+  Send_MSG(text: string, ...args: unknown[]): void
+  SetHint(text: string, pos?: vector2, _w?: number): void
+  SetHelp(text: string, stop?: boolean): void
+  SwitchParam(state: boolean, vert: boolean): void
+  SwitchValue(state: boolean, selected?: number): void
+  SwitchValueGroup(state: boolean, selected_group?: number): void
+  OnInput(cnt: number): void
+  OnButton_Copy(): void
+  OnButton_Paste(): void
+  OnButton_Reset(): void
+  OnButton_Apply(): void
+  Refresh_Item(): void
+  OnKeyboard(dik: number, keyboard_action: number): boolean
+  Close(): void
+  OnInput_1(): void
+  OnInput_2(): void
+  OnInput_3(): void
+  OnInput_4(): void
+  OnInput_5(): void
+  OnInput_6(): void
+  OnInput_7(): void
+  OnInput_8(): void
+  OnInput_9(): void
+  OnInput_10(): void
+  OnInput_11(): void
+  OnInput_12(): void
+  OnInput_13(): void
+  OnInput_14(): void
+  OnInput_15(): void
+  OnInput_16(): void
+  OnInput_17(): void
+  OnInput_18(): void
+  OnInput_19(): void
+  OnInput_20(): void
+  OnInput_21(): void
+  OnInput_22(): void
+  OnInput_23(): void
+  OnInput_24(): void
+  OnInput_25(): void
+  OnInput_26(): void
+  OnInput_27(): void
+  OnInput_28(): void
+  OnInput_29(): void
+  OnInput_30(): void
+  OnInput_31(): void
+  OnInput_32(): void
+  OnInput_33(): void
+  OnInput_34(): void
+  OnInput_35(): void
+  OnInput_36(): void
+  OnInput_37(): void
+  OnInput_38(): void
+  OnInput_39(): void
+  OnInput_40(): void
+  OnInput_41(): void
+  OnInput_42(): void
+  OnInput_43(): void
+  OnInput_44(): void
+  OnInput_45(): void
+  OnInput_46(): void
+  OnInput_47(): void
+  OnInput_48(): void
+  OnInput_49(): void
+  OnInput_50(): void
+  OnInput_51(): void
+  OnInput_52(): void
+  OnInput_53(): void
+  OnInput_54(): void
+  OnInput_55(): void
+  OnInput_56(): void
+  OnInput_57(): void
+  OnInput_58(): void
+  OnInput_59(): void
+  OnInput_60(): void
+  OnInput_61(): void
+  OnInput_62(): void
+  OnInput_63(): void
+  OnInput_64(): void
+  OnInput_65(): void
+  OnInput_66(): void
+  OnInput_67(): void
+  OnInput_68(): void
+  OnInput_69(): void
+  OnInput_70(): void
+  OnInput_71(): void
+  OnInput_72(): void
+  OnInput_73(): void
+  OnInput_74(): void
+  OnInput_75(): void
+  OnInput_76(): void
+  OnInput_77(): void
+  OnInput_78(): void
+  OnInput_79(): void
+  OnInput_80(): void
 }
 
 /** @customConstructor list_element */
 declare class list_element extends CUIListBoxItem {
   // shared global name with distinct constructors across ui_debug_item / ui_debug_launcher / ui_workshop
-  constructor(section: TODO, width: TODO)
-  constructor(section: TODO, width: TODO)
-  constructor(section: TODO, width: TODO)
-  __finalize(): TODO
+  constructor(section: string, width: number)
+  constructor(section: string, width: number)
+  constructor(section: string, width: number)
+  __finalize(): void
 }

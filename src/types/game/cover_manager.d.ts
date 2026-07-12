@@ -1,17 +1,17 @@
 /** @noSelfInFile */
 
 declare namespace cover_manager {
-  export function get_cover(obj: TODO, smrttrn: TODO): TODO
-  export function has_cover(se_obj: TODO, smrttrn: TODO): boolean
-  export function has_smart_cover(se_obj: TODO, smrttrn: TODO): boolean
+  export function get_cover(obj: CGameObject, smrttrn: se_smart_terrain): any
+  export function has_cover(se_obj: CseAbstract, smrttrn: se_smart_terrain): boolean
+  export function has_smart_cover(se_obj: CseAbstract, smrttrn: se_smart_terrain): boolean
 }
 
 /** @customConstructor CCover_manager */
 declare class CCover_manager {
-  constructor(smart: TODO)
-  register_squad(squad: TODO): void
-  unregister_squad(squad: TODO): void
-  calculate_covers(position: TODO): void
+  constructor(smart: se_smart_terrain)
+  register_squad(squad: CseAlifeOnlineOfflineGroup): void
+  unregister_squad(squad: CseAlifeOnlineOfflineGroup): void
+  calculate_covers(position: vector): void
   save(packet: net_packet): void
   load(packet: net_packet): void
 }

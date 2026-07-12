@@ -7,12 +7,11 @@
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
     "strict": true,
-    "skipLibCheck": true,
-    "types": []
+    "skipLibCheck": true
   },
   "files": ["./lua-lib.d.ts"],
   "tstl": {
-    "luaTarget": "5.1",
+    "luaTarget": "JIT",
     "luaLibImport": "inline",
     "noHeader": true
   }

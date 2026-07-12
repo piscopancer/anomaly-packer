@@ -51,7 +51,7 @@ declare class se_smart_terrain extends cse_alife_smart_zone {
   am_i_reached(squad: sim_squad_scripted): boolean
   on_after_reach(squad: sim_squad_scripted): void
   on_reach_target(squad: sim_squad_scripted): void
-  get_alife_task(): TODO
+  get_alife_task(): CALifeSmartTerrainTask
   sim_available(): boolean
   target_precondition(squad: sim_squad_scripted, ignore_population?: boolean, skip_props?: boolean): boolean
   evaluate_prior(squad: sim_squad_scripted): number

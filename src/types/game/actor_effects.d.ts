@@ -1,15 +1,15 @@
 /** @noSelfInFile */
 
 declare namespace actor_effects {
-  export function actor_can_shoot(state: TODO): boolean
+  export function actor_can_shoot(state: boolean): boolean
   export function allow_animation(): void
   export function clear_mask_hud(): void
   export function disable_effects_timer(n: number): void
   export function Hit_GrenadeQuickthrow(): void
   export function Hit_MaskCleaning(): void
   export function Hit_TorchToggle(): void
-  export function HUD_fog(enabled: boolean, actor: CGameObject, rect?: TODO): void
-  export function HUD_mask(helm_hud: TODO, helm_name: string, helm_respi: TODO): void
+  export function HUD_fog(enabled: boolean, actor: CGameObject, rect?: any): void
+  export function HUD_mask(helm_hud: any, helm_name: string, helm_respi: any): void
   export function init_main_settings(): void
   export function init_settings(): void
   export function is_animations_on(): boolean
@@ -36,7 +36,7 @@ declare namespace actor_effects {
   export function Update_ItemSwap(actor: CGameObject): void
   export function Update_Mask(actor: CGameObject): void
   export function Update_Rad(actor: CGameObject): void
-  export function Update_Shooting(obj: CGameObject, wpn: CGameObject, ammo_elapsed: number, grenade_elapsed: number, ammo_type: TODO, grenade_type: TODO): void
+  export function Update_Shooting(obj: CGameObject, wpn: CGameObject, ammo_elapsed: number, grenade_elapsed: number, ammo_type: string, grenade_type: string): void
   export function Update_StaminaHUD(actor: CGameObject): void
   export function use_helmet(): void
   export function use_weapon(f: boolean): void

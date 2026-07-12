@@ -77,7 +77,7 @@ declare class matrix {
   set(i: vector, j: vector, k: vector, c: vector): matrix
   identity(): matrix
   /** Build transform from a quaternion rotation and a translation */
-  mk_xform(rotation: TODO, translate: vector): matrix
+  mk_xform(rotation: quaternion, translate: vector): matrix
   mul(a: matrix, b: matrix): matrix
   mul(m: matrix, scalar: number): matrix
   mul(scalar: number): matrix
@@ -87,6 +87,14 @@ declare class matrix {
   setXYZ(x: number, y: number, z: number): matrix
   setXYZi(x: number, y: number, z: number): matrix
   getHPB(): vector
+}
+/**
+ * Quaternion rotation (`Fquaternion`). The engine has no luabind registration for it,
+ * so it cannot be constructed or read from script — it exists only as the rotation
+ * argument type of {@link matrix.mk_xform}.
+ */
+declare class quaternion {
+  private constructor()
 }
 /** @customConstructor vector2 */
 declare class vector2 {

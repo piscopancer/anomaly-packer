@@ -7,6 +7,10 @@ declare namespace xr_motivator {
 /** @customConstructor motivator_binder */
 declare class motivator_binder extends object_binder {
   constructor(obj: TODO)
+  /** Runtime state table for the bound object (`db.storage[obj:id()]`). */
+  st: ObjectState
+  /** `true` when the binder is being restored from a save (`reinit`/`load`). */
+  loaded: boolean
   extrapolate_callback(cur_pt: TODO): boolean
   reinit(): void
   net_spawn(se_abstract: TODO): boolean

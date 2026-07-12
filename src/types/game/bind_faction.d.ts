@@ -1,12 +1,12 @@
 /** @noSelfInFile */
 
 declare namespace bind_faction {
-  export function bind(obj: TODO): void
+  export function bind(obj: CGameObject): void
 }
 
 /** @customConstructor faction_binder */
 declare class faction_binder extends object_binder {
-  constructor(obj: TODO)
-  net_spawn(se_abstract: TODO): boolean
-  update(delta: TODO): void
+  constructor(obj: CGameObject)
+  net_spawn(se_abstract: CseAbstract): boolean
+  update(delta: number): void
 }

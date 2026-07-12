@@ -6,7 +6,7 @@ declare namespace dynamic_news_manager {
   export function actor_on_update(): void
   export function destroy_dynamic_news(): void
   export function get_dynamic_news(): DynamicNewsManager
-  export function get_story_npc_info(section: string): TODO
+  export function get_story_npc_info(section: string): { name: string; icon: string } | undefined
   export function on_game_start(): void
   export function update_settings(): void
 }
@@ -21,47 +21,47 @@ declare class DynamicNewsManager {
   TickTask(): boolean
   TickRandom(): boolean
   TickCompanion(): boolean
-  monster_on_net_spawn(npc: TODO, se_obj: TODO): void
-  monster_on_death_callback(victim: TODO, who: TODO): void
-  npc_on_death_callback(victim: TODO, who: TODO): void
-  npc_on_hear_callback(npc: TODO, who_id: TODO, s_type: TODO, sound_dist: TODO, sound_power: TODO, sound_position: TODO): void
-  npc_on_get_all_from_corpse(npc: TODO, corpse_npc: TODO, item: TODO, lootable_table: TODO): void
-  PushToChannel(name: TODO, t: TODO, fifo: TODO): boolean
-  FindSpeakerNoVictim(who: TODO, same_as_who: boolean, not_in_combat: boolean): CGameObject | null
-  FindSpeaker(victim: TODO, who: TODO, same_as_victim: boolean, same_as_who: boolean, not_in_combat: boolean, can_see: boolean): CGameObject | null
-  FindSpeakerWithEnemy(victim: TODO, who: TODO, same_as_victim: boolean, same_as_who: boolean, can_see: boolean): CGameObject | null
+  monster_on_net_spawn(npc: CGameObject, se_obj: CseAlifeObject): void
+  monster_on_death_callback(victim: CGameObject, who: CGameObject): void
+  npc_on_death_callback(victim: CGameObject, who: CGameObject): void
+  npc_on_hear_callback(npc: CGameObject, who_id: number, s_type: number, sound_dist: number, sound_power: number, sound_position: vector): void
+  npc_on_get_all_from_corpse(npc: CGameObject, corpse_npc: CGameObject, item: CGameObject, lootable_table: AnyTable): void
+  PushToChannel(name: string, t: AnyTable, fifo: boolean): boolean
+  FindSpeakerNoVictim(who: CGameObject, same_as_who: boolean, not_in_combat: boolean): CGameObject | null
+  FindSpeaker(victim: CGameObject, who: CGameObject, same_as_victim: boolean, same_as_who: boolean, not_in_combat: boolean, can_see: boolean): CGameObject | null
+  FindSpeakerWithEnemy(victim: CGameObject, who: CGameObject, same_as_victim: boolean, same_as_who: boolean, can_see: boolean): CGameObject | null
   FindSpeakerRandom(not_in_combat: boolean, speaker_community: string): CGameObject | null
-  FindSpeakerAndTarget(not_in_combat: boolean, distance: TODO, speaker_community: TODO): CGameObject | null
-  FindSpeakerAnywhere(natural_only: TODO, faction: TODO): CGameObject | null
+  FindSpeakerAndTarget(not_in_combat: boolean, distance: number, speaker_community: string): CGameObject | null
+  FindSpeakerAnywhere(natural_only: boolean, faction: string): CGameObject | null
   IsCommunitySame(npc_1: CGameObject, npc_2: CGameObject): boolean
   PickCompanion(): void
   PickNewCompanion(): boolean
-  GetLootValue(item_tbl: TODO): number
-  GetLootBestItem(item_tbl: TODO): CGameObject
+  GetLootValue(item_tbl: CGameObject[]): number
+  GetLootBestItem(item_tbl: CGameObject[]): CGameObject
   NewsToggle(): boolean
   WelcomeToNetwork(): void
-  DeathBySurge(victim: TODO, who: TODO, comm: TODO): boolean
+  DeathBySurge(victim: CGameObject, who: CGameObject, comm: string): boolean
   ReportDeathBySurge(): boolean
-  DeathByStalker(victim: TODO, who: TODO, comm: TODO): boolean
+  DeathByStalker(victim: CGameObject, who: CGameObject, comm: string): boolean
   ReportDeathByStalker(victim: CGameObject, who: CGameObject): boolean
-  DeathByMutant(victim: TODO, who: TODO, comm: TODO): boolean
-  ReportDeathByMutant(victim: CGameObject, who: TODO): boolean
-  GossipDeathByStalker(sender: CGameObject, victim: TODO, who: TODO): boolean
-  SOSDeathByStalker(victim: TODO, who: TODO, comm: TODO): boolean
-  SeenDeathOfStalker(sender: CGameObject, victim: TODO, who: TODO, comm: TODO): boolean
-  SeenDeathOfMutant(victim: TODO, who: TODO): boolean
-  SeenDeathByMutant(sender: CGameObject, victim: TODO, who: TODO, comm: TODO): boolean
-  GossipDeathOfMutant(victim: TODO, who: TODO, comm: TODO): boolean
-  SOSDeathByMutant(victim: TODO, who: TODO): boolean
-  SOSBattleOffline(sq_v: TODO, sq_w: TODO): void
-  SOSWarfareCapture(sq: TODO): boolean
-  KillWounded(sender: CGameObject, victim: TODO, is_hostage: TODO): boolean
-  RadioInHeli(sender: CGameObject, who: TODO): boolean
-  FoundArtefact(sender: CGameObject, itm: TODO): boolean
+  DeathByMutant(victim: CGameObject, who: CGameObject, comm: string): boolean
+  ReportDeathByMutant(victim: CGameObject, who: CGameObject): boolean
+  GossipDeathByStalker(sender: CGameObject, victim: CGameObject, who: CGameObject): boolean
+  SOSDeathByStalker(victim: CGameObject, who: CGameObject, comm: string): boolean
+  SeenDeathOfStalker(sender: CGameObject, victim: CGameObject, who: CGameObject, comm: string): boolean
+  SeenDeathOfMutant(victim: CGameObject, who: CGameObject): boolean
+  SeenDeathByMutant(sender: CGameObject, victim: CGameObject, who: CGameObject, comm: string): boolean
+  GossipDeathOfMutant(victim: CGameObject, who: CGameObject, comm: string): boolean
+  SOSDeathByMutant(victim: CGameObject, who: CGameObject): boolean
+  SOSBattleOffline(sq_v: cse_alife_online_offline_group, sq_w: cse_alife_online_offline_group): void
+  SOSWarfareCapture(sq: cse_alife_online_offline_group): boolean
+  KillWounded(sender: CGameObject, victim: CGameObject, is_hostage: boolean): boolean
+  RadioInHeli(sender: CGameObject, who: CGameObject): boolean
+  FoundArtefact(sender: CGameObject, itm: CGameObject): boolean
   FoundStash(): boolean
-  BoughtItems(sender: CGameObject, who: TODO, list: TODO): boolean
-  UpgradedItems(sender: CGameObject, who: TODO, wpn_sec: TODO, list: TODO): boolean
-  GossipLoot(sender: CGameObject, best_item: TODO, all_value: TODO): boolean
+  BoughtItems(sender: CGameObject, who: CGameObject, list: AnyTable): boolean
+  UpgradedItems(sender: CGameObject, who: CGameObject, wpn_sec: string, list: AnyTable): boolean
+  GossipLoot(sender: CGameObject, best_item: CGameObject, all_value: number): boolean
   ReportNextEmission(): boolean
   ReportByFaction(): boolean
   ReportZoneActivity(): boolean
@@ -71,7 +71,7 @@ declare class DynamicNewsManager {
   GossipWeather(): boolean
   GossipNearbyActivity(): boolean
   DumbZombie(): boolean
-  monster_on_respawn(npc: TODO, near: TODO): void
+  monster_on_respawn(npc: CGameObject, near: boolean): void
   GossipBounty(): boolean
   GossipAlphaSquad(): boolean
   GossipTaskRepeatTimeout(task_id: string): boolean
@@ -83,20 +83,20 @@ declare class DynamicNewsManager {
   CompanionAboutLevel(sender: CGameObject): boolean
   CompanionAboutActor(sender: CGameObject): boolean
   GossipEmissionEnd(what: string): boolean
-  ResponseOnFoundArtefact(who: TODO): boolean
+  ResponseOnFoundArtefact(who: CGameObject): boolean
   ResponseOnFoundStash(): boolean
-  ResponseOnBoughtItems(who: TODO): boolean
-  ResponseOnGossipNearbyActivity(who: TODO, activity: TODO): boolean
+  ResponseOnBoughtItems(who: CGameObject): boolean
+  ResponseOnGossipNearbyActivity(who: CGameObject, activity: string): boolean
   ResponseOnDumbZombie(): boolean
-  ResponseOnDeathByStalker(who: TODO): boolean
-  ResponseOnDeathByMutant(who: TODO): boolean
-  ResponseOnDeathBySurges(who: TODO): boolean
+  ResponseOnDeathByStalker(who: CGameObject): boolean
+  ResponseOnDeathByMutant(who: CGameObject): boolean
+  ResponseOnDeathBySurges(who: CGameObject): boolean
   ResponseOnDeathByStalker_Fake(): boolean
   ResponseOnDeathByMutant_Fake(): boolean
   ResponseOnDeathBySurges_Fake(): boolean
-  BuildSentenceStalkerEnemy(victim: CGameObject, who: CGameObject, mn: TODO, mx: TODO): boolean
-  BuildSentenceStalkerEnemy_Offline(comm_w: TODO): boolean
-  IsSpecialNPC(npc: TODO): boolean
-  IsMonoCommunity(npc: TODO): boolean
-  IsUnknownCommunity(npc: TODO): boolean
+  BuildSentenceStalkerEnemy(victim: CGameObject, who: CGameObject, mn: number, mx: number): boolean
+  BuildSentenceStalkerEnemy_Offline(comm_w: string): boolean
+  IsSpecialNPC(npc: CGameObject): boolean
+  IsMonoCommunity(npc: CGameObject): boolean
+  IsUnknownCommunity(npc: CGameObject): boolean
 }

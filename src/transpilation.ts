@@ -32,7 +32,7 @@ export function transpile(scripts: NonNullable<PackOptions['scripts']>, addonId:
   tstl.transpileProject(
     process.cwd() + '/gamedata/scripts/tsconfig.json',
     {
-      luaTarget: tstl.LuaTarget.Lua51,
+      luaTarget: tstl.LuaTarget.LuaJIT,
       luaLibImport: tstl.LuaLibImportKind.Inline,
       extension: '.script',
       noHeader: true,

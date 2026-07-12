@@ -1,21 +1,21 @@
 /** @noSelfInFile */
 
 declare namespace bind_awr {
-  export function access(obj: TODO): boolean
+  export function access(obj: CGameObject): boolean
   export function actor_on_first_update(): void
   export function CloseDl(): void
-  export function dout(call: TODO, fmt: TODO, ...args: TODO[]): TODO
-  export function full_access(vice: TODO, npc_s: TODO): void
-  export function l_v(name: TODO, def: TODO): TODO
-  export function Lamp(npc_name: TODO, state: boolean): void
-  export function load_state(m_data: TODO): void
-  export function npc_on_death_callback(victim: TODO, who: TODO): string
+  export function dout(call: any, fmt: string, ...args: any[]): void
+  export function full_access(vice: any, npc_s: any): void
+  export function l_v(name: string, def: any): any
+  export function Lamp(npc_name: string, state: boolean): void
+  export function load_state(m_data: AnyTable): void
+  export function npc_on_death_callback(victim: CGameObject, who: CGameObject): string
   export function on_game_start(): void
-  export function OnDeath(npc: TODO): void
-  export function physic_object_on_use_callback(_obj: TODO, who: TODO): boolean
-  export function print_table(tbl: TODO, header: TODO, format_only: TODO): TODO
+  export function OnDeath(npc: CGameObject): void
+  export function physic_object_on_use_callback(_obj: CGameObject, who: CGameObject): boolean
+  export function print_table(tbl: AnyTable, header: string, format_only: boolean): void
   export function r_unused(): void
-  export function s_v(name: TODO, val: TODO): void
-  export function save_state(m_data: TODO): void
-  export function SetMarker(name: TODO): void
+  export function s_v(name: string, val: any): void
+  export function save_state(m_data: AnyTable): void
+  export function SetMarker(name: string): void
 }

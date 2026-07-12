@@ -3,24 +3,24 @@
 declare namespace axr_radio_in_heli {
   export const actid: number
   export const evaid: number
-  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO, temp: TODO): TODO
-  export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): TODO
-  export function disable_generic_scheme(npc: TODO, scheme: TODO, stype: TODO): void
-  export function npc_add_precondition(action: TODO): TODO
-  export function setup_generic_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable, temp?: AnyTable): void
+  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function disable_generic_scheme(npc: CGameObject, scheme: string, stype: number): void
+  export function npc_add_precondition(action: any): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
 }
 
 /** @customConstructor action_radio_in_heli */
 declare class action_radio_in_heli extends action_base {
-  constructor(npc: TODO, name: TODO, storage: TODO)
+  constructor(npc: CGameObject, name: string, storage: AnyTable)
   initialize(): void
-  try_go_cover(npc: TODO, ene_pos: TODO): TODO
+  try_go_cover(npc: CGameObject, ene_pos: vector): number | undefined
   execute(): void
   finalize(): void
 }
 
 /** @customConstructor evaluator_radio_in_heli */
 declare class evaluator_radio_in_heli extends property_evaluator {
-  constructor(npc: TODO, name: TODO, storage: TODO)
+  constructor(npc: CGameObject, name: string, storage: AnyTable)
   evaluate(): boolean
 }

@@ -1,19 +1,19 @@
 /** @noSelfInFile */
 
 declare namespace bind_camp {
-  export const camps: TODO
-  export function bind(obj: TODO): void
+  export const camps: AnyTable
+  export function bind(obj: CGameObject): void
 }
 
 /** @customConstructor camp_binder */
 declare class camp_binder extends object_binder {
-  constructor(obj: TODO, char_ini: TODO)
-  reload(section: TODO): void
+  constructor(obj: CGameObject, char_ini: system_ini)
+  reload(section: string): void
   reinit(): void
-  net_spawn(se_abstract: TODO): boolean
+  net_spawn(se_abstract: CseAbstract): boolean
   net_destroy(): void
-  update(delta: TODO): void
+  update(delta: number): void
   net_save_relevant(): boolean
-  save(packet: TODO): void
-  load(reader: TODO): void
+  save(packet: net_packet): void
+  load(reader: net_packet): void
 }

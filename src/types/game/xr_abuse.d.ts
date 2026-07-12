@@ -1,23 +1,23 @@
 /** @noSelfInFile */
 
 declare namespace xr_abuse {
-  export function add_abuse(npc: TODO, value: TODO): void
-  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, st: TODO, temp: TODO): TODO
-  export function clear_abuse(npc: TODO): void
-  export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): TODO
-  export function disable_abuse(npc: TODO): void
-  export function enable_abuse(npc: TODO): void
-  export function is_abuse(npc: TODO): boolean
-  export function setup_generic_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void
+  export function add_abuse(npc: CGameObject, value: number): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, st: AnyTable, temp?: AnyTable): void
+  export function clear_abuse(npc: CGameObject): void
+  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function disable_abuse(npc: CGameObject): void
+  export function enable_abuse(npc: CGameObject): void
+  export function is_abuse(npc: CGameObject): boolean
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
 }
 
 /** @customConstructor CAbuseManager */
 declare class CAbuseManager {
-  constructor(npc: TODO, storage: TODO)
-  SetAbuseRate(rate: TODO): void
-  abused(): TODO
+  constructor(npc: CGameObject, storage: AnyTable)
+  SetAbuseRate(rate: number): void
+  abused(): boolean
   update(): boolean
-  addAbuse(value: TODO): void
+  addAbuse(value: number): void
   clearAbuse(): void
   disableAbuse(): void
   enableAbuse(): void
@@ -25,7 +25,7 @@ declare class CAbuseManager {
 
 /** @customConstructor action_abuse_hit */
 declare class action_abuse_hit extends action_base {
-  constructor(npc_name: TODO, action_name: TODO, storage: TODO, char_ini: TODO)
+  constructor(npc_name: string, action_name: string, storage: AnyTable, char_ini: system_ini)
   initialize(): void
   execute(): void
   finalize(): void
@@ -33,6 +33,6 @@ declare class action_abuse_hit extends action_base {
 
 /** @customConstructor evaluator_abuse */
 declare class evaluator_abuse extends property_evaluator {
-  constructor(name: TODO, storage: TODO)
+  constructor(name: string, storage: AnyTable)
   evaluate(): boolean
 }

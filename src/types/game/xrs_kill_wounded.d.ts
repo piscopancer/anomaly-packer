@@ -3,29 +3,29 @@
 declare namespace xrs_kill_wounded {
   export const actid: number
   export const evaid: number
-  export const hostage_list: TODO
-  export const ini: TODO
-  export function add_common_precondition(action: TODO): TODO
-  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, st: TODO, temp: TODO): TODO
-  export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): TODO
-  export function is_under_kill_wounded(npc: TODO): boolean
+  export const hostage_list: AnyTable
+  export const ini: system_ini
+  export function add_common_precondition(action: any): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, st: AnyTable, temp?: AnyTable): void
+  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function is_under_kill_wounded(npc: CGameObject): boolean
   export function on_game_start(): boolean
-  export function setup_generic_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
 }
 
 /** @customConstructor act_kill_wounded */
 declare class act_kill_wounded extends action_base {
-  constructor(name: TODO, storage: TODO)
+  constructor(name: string, storage: AnyTable)
   initialize(): void
   reset(): void
   execute(): void
-  begin_kill_wounded(vo: TODO): TODO
+  begin_kill_wounded(vo: CGameObject): void
   finalize(): void
 }
 
 /** @customConstructor eva_kill_wounded */
 declare class eva_kill_wounded extends property_evaluator {
-  constructor(name: TODO, storage: TODO)
+  constructor(name: string, storage: AnyTable)
   find_target(): boolean
   evaluate(): boolean
 }

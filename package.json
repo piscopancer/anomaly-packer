@@ -33,6 +33,8 @@
     "build": "tsdown && tsx src/scripts/gen-type-barrels.ts",
     "anomaly-packer": "tsx src/cli/anomaly-packer.ts",
     "gen-script-skeletons": "tsx src/scripts/gen-script-skeletons.ts",
+    "audit-coverage": "tsx src/scripts/audit-coverage.ts",
+    "todos": "tsx src/scripts/audit-coverage.ts --todos",
     "format": "prettier --write .",
     "changeset": "changeset",
     "changeset:version": "changeset version",

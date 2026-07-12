@@ -57,10 +57,8 @@ declare class net_packet {
   w_dir(v: vector): void
   w_sdir(v: vector): void
   w_stringZ(value: string): void
-  /** @param matrix `Fmatrix` */
-  w_matrix(matrix: TODO): void
-  /** @param id `ClientID` */
-  w_clientID(id: TODO): void
+  w_matrix(matrix: matrix): void
+  w_clientID(id: ClientID): void
   w_chunk_open8(): number
   w_chunk_close8(chunk: number): void
   w_chunk_open16(): number
@@ -88,9 +86,19 @@ declare class net_packet {
   r_dir(): vector
   r_sdir(): vector
   r_stringZ(): string
-  /** `ClientID` */
-  r_clientID(): TODO
+  /** Reads an `Fmatrix`, filling `matrix` in place. */
+  r_matrix(matrix: matrix): void
+  r_clientID(): ClientID
   r_elapsed(): number
   r_advance(pos: number): void
   r_eof(): boolean
+}
+/**
+ * Network client identifier (`ClientID`, luabind class `ClientID`).
+ * @customConstructor ClientID
+ */
+declare class ClientID {
+  constructor()
+  value(): number
+  set(value: number): void
 }

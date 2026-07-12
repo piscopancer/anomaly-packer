@@ -1,32 +1,32 @@
 /** @noSelfInFile */
 
 declare namespace tasks_recover_item_on_corpse {
-  export const status_recover_item_on_corpse: TODO
-  export const target_recover_item_on_corpse: TODO
-  export function cleanup_recover_item_on_corpse(a: TODO, b: TODO, c: TODO): void
-  export function has_item(item_id: TODO, owner_id: TODO): TODO
-  export function id_exists(id: TODO): TODO
-  export function kill_if_online(id: TODO): void
-  export function kill_if_online_mutant(id: TODO, random_push: TODO): void
-  export function load_state(m: TODO): void
-  export function on_descr(a: TODO, b: TODO, c: TODO): boolean
+  export const status_recover_item_on_corpse: AnyTable
+  export const target_recover_item_on_corpse: AnyTable
+  export function cleanup_recover_item_on_corpse(a: string, b: string, c: AnyTable): void
+  export function has_item(item_id: number, owner_id: number): boolean
+  export function id_exists(id: number): boolean
+  export function kill_if_online(id: number): void
+  export function kill_if_online_mutant(id: number, random_push?: boolean): void
+  export function load_state(m: AnyTable): void
+  export function on_descr(a: string, b: string, c: AnyTable): boolean
   export function on_game_start(): void
-  export function parse_settings(task_id: TODO): TODO
-  export function pick_random_array(arr: TODO): TODO
-  export function precondition_corpse_task_petr(a: TODO, b: TODO, c: TODO): TODO
-  export function precondition_corpse_task_sak(a: TODO, b: TODO, c: TODO): TODO
-  export function precondition_corpse_task_sid(a: TODO, b: TODO, c: TODO): TODO
-  export function randsign(): TODO
-  export function release_item_if_exists(id: TODO): void
-  export function reward(a: TODO, b: TODO, c: TODO): void
-  export function safe_target(id: TODO): TODO
-  export function same_level(id1: TODO, id2: TODO): TODO
-  export function same_level_se(se1: TODO, se2: TODO): TODO
-  export function save_state(m: TODO): void
-  export function section_from_critter_category(x: TODO): TODO
-  export function spawn_on_id(section: TODO, target_id: TODO): TODO
-  export function spawn_on_id_position(section: TODO, target_id: TODO): TODO
-  export function split(str: TODO): TODO
-  export function split_and_pick(str: TODO): TODO
-  export function split_tonumber(str: TODO): TODO
+  export function parse_settings(task_id: string): AnyTable
+  export function pick_random_array<T>(arr: T[]): T
+  export function precondition_corpse_task_petr(a: string, b: string, c: AnyTable): boolean
+  export function precondition_corpse_task_sak(a: string, b: string, c: AnyTable): boolean
+  export function precondition_corpse_task_sid(a: string, b: string, c: AnyTable): boolean
+  export function randsign(): number
+  export function release_item_if_exists(id: number): void
+  export function reward(a: string, b: string, c: AnyTable): void
+  export function safe_target(id: number): number | undefined
+  export function same_level(id1: number, id2: number): boolean
+  export function same_level_se(se1: CseAbstract, se2: CseAbstract): boolean
+  export function save_state(m: AnyTable): void
+  export function section_from_critter_category(x: string): string
+  export function spawn_on_id(section: string, target_id: number): CseAbstract | undefined
+  export function spawn_on_id_position(section: string, target_id: number): CseAbstract | undefined
+  export function split(str: string): string[]
+  export function split_and_pick(str: string): string
+  export function split_tonumber(str: string): number[]
 }

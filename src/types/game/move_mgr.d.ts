@@ -4,6 +4,8 @@ declare namespace move_mgr {
   export const arrival_after_rotation: number
   export const arrival_before_rotation: number
   export function choose_look_point(patrol_look: number, path_look_info: TODO, search_for: TODO): TODO
+  /** The `move_mgr` class table, called as a constructor: `move_mgr.move_mgr(npc)`. */
+  export const move_mgr: (this: void, npc: TODO) => move_mgr
 }
 
 /** @customConstructor move_mgr */

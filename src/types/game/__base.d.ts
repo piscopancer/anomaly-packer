@@ -1,6 +1,7 @@
 /// <reference path="__base/alife.d.ts" />
 /// <reference path="__base/clsid.d.ts" />
 /// <reference path="__base/condition.d.ts" />
+/// <reference path="__base/dialogs.d.ts" />
 /// <reference path="__base/engine-classes.d.ts" />
 /// <reference path="__base/math.d.ts" />
 /// <reference path="__base/streams.d.ts" />
@@ -36,6 +37,18 @@ declare class object_binder {
   load(input_packet: reader): void
   net_save_relevant(): boolean
   net_Relcase(obj: CGameObject): void
+  /** Base-method super-call form: `object_binder.net_spawn(self, se_abstract)`. */
+  static net_spawn(self: object_binder, se_abstract: CseAbstract): boolean
+  /** Base-method super-call form: `object_binder.net_destroy(self)`. */
+  static net_destroy(self: object_binder): void
+  /** Base-method super-call form: `object_binder.reinit(self)`. */
+  static reinit(self: object_binder): void
+  /** Base-method super-call form: `object_binder.update(self, delta_time)`. */
+  static update(self: object_binder, delta_time: number): void
+  /** Base-method super-call form: `object_binder.save(self, packet)`. */
+  static save(self: object_binder, output_packet: net_packet): void
+  /** Base-method super-call form: `object_binder.load(self, reader)`. */
+  static load(self: object_binder, input_packet: reader): void
 }
 declare class sound_params {
   position: vector
@@ -48,10 +61,10 @@ declare class sound_params {
 declare class sound_object {
   constructor(sound: string, sound_type?: number)
   /** `sm_Looped` (`1 << 0`) */
-  readonly looped: 1
+  static readonly looped: 1
   /** `sm_2D` (`1 << 1`) */
-  readonly s2d: 2
-  readonly s3d: 0
+  static readonly s2d: 2
+  static readonly s3d: 0
   frequency: number
   min_distance: number
   max_distance: number
@@ -62,7 +75,8 @@ declare class sound_object {
   play(source: CGameObject, delay?: number, flags?: number): void
   /** @param pos only mono channel sounds like `device` can be played at a position */
   play_at_pos(source: CGameObject, pos: vector, delay?: number, flags?: number): void
-  play_no_feedback(source: CGameObject, flags: number, delay: number, pos: vector, vol: number, freq: number): void
+  /** @param freq engine declares it required, but luabind tolerates omitting the trailing frequency */
+  play_no_feedback(source: CGameObject, flags: number, delay: number, pos: vector, vol: number, freq?: number): void
   stop(): void
   stop_deffered(): void
   playing(): boolean
@@ -95,12 +109,7 @@ declare class Flags {
   equal(f: Flags): boolean
   equal(f: Flags, mask: number): boolean
 }
-declare class CActor extends CGameObject {
-  constructor()
-  conditions(): CActorCondition
-  inventory_disabled(): boolean
-  set_inventory_disabled(disabled: boolean): void
-}
+
 /** @customConstructor ray_pick */
 declare class ray_pick {
   constructor()

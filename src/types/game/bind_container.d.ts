@@ -1,20 +1,20 @@
 /** @noSelfInFile */
 
 declare namespace bind_container {
-  export const containers: TODO
-  export const curBoxID: TODO
-  export function access_inventory(obj: TODO): void
-  export function bind(obj: TODO): void
-  export function calculate_weight(se_inv_box: TODO, base: TODO): boolean
+  export const containers: AnyTable
+  export const curBoxID: number
+  export function access_inventory(obj: CGameObject): void
+  export function bind(obj: CGameObject): void
+  export function calculate_weight(se_inv_box: CseAbstract, base: boolean): boolean
 }
 
 /** @customConstructor container_binder */
 declare class container_binder extends object_binder {
-  constructor(obj: TODO)
-  update(delta: TODO): void
-  reload(section: TODO): void
+  constructor(obj: CGameObject)
+  update(delta: number): void
+  reload(section: string): void
   reinit(): void
-  net_spawn(se_abstract: TODO): boolean
+  net_spawn(se_abstract: CseAbstract): boolean
   net_destroy(): void
   net_save_relevant(): boolean
   save(stpk: net_packet): void

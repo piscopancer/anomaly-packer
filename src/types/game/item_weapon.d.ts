@@ -1,23 +1,24 @@
 /** @noSelfInFile */
 
 declare namespace item_weapon {
-  export const GUI: TODO
+  /** Ammo wheel UI instance, don't touch. */
+  export const GUI: UIWheelAmmo
   export const can_overheat: boolean
-  export function ammo_aggregation(obj: TODO, npc: CGameObject): boolean
-  export function ammo_aggregation_full(npc_id: TODO): boolean
-  export function ammo_injection(obj_1: TODO, obj_2: TODO, sec_1: TODO, sec_2: TODO): void
-  export function attach_scope(item: TODO, weapon: TODO): void
-  export function clear_cache(obj: TODO): void
-  export function detach_scope(weapon: TODO): void
-  export function func_scope(weapon: TODO): void
-  export function get_grenades(section: TODO): TODO
+  export function ammo_aggregation(obj: CGameObject, npc: CGameObject): boolean
+  export function ammo_aggregation_full(npc_id: number): boolean
+  export function ammo_injection(obj_1: CGameObject, obj_2: CGameObject, sec_1: string, sec_2: string): void
+  export function attach_scope(item: CGameObject, weapon: CGameObject): void
+  export function clear_cache(obj: CGameObject): void
+  export function detach_scope(weapon: CGameObject): void
+  export function func_scope(weapon: CGameObject): void
+  export function get_grenades(section: string): AnyTable
   export function get_weapon_slot(): CGameObject
-  export function menu_scope(weapon: TODO): string
-  export function menu_scope_inv(weapon: TODO): string
+  export function menu_scope(weapon: CGameObject): string
+  export function menu_scope_inv(weapon: CGameObject): string
   export function on_game_start(): void
-  export function relocate_ammo_from_actor(actor: CGameObject, npc: TODO, section: TODO, amount: TODO): void
-  export function relocate_ammo_to_actor(actor: TODO, npc: TODO, section: TODO, amount: TODO): void
-  export function remove_extra_ammo(npc_id: TODO): void
+  export function relocate_ammo_from_actor(actor: CGameObject, npc: CGameObject, section: string, amount: number): void
+  export function relocate_ammo_to_actor(actor: CGameObject, npc: CGameObject, section: string, amount: number): void
+  export function remove_extra_ammo(npc_id: number): void
   export function start_ammo_wheel(): void
   export function test_silencer(): void
   export function toggle_silencer(): void
@@ -32,9 +33,9 @@ declare class UIWheelAmmo extends CUIScriptWnd {
   InitControls(): void
   InitCallBacks(): void
   Update(): void
-  Reset(obj: TODO): void
+  Reset(obj: CGameObject): void
   SwitchNextAmmo(): void
-  OnAmmo(n: TODO): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): boolean
+  OnAmmo(n: number): void
+  OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
 }

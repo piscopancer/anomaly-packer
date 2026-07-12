@@ -1,3 +1,27 @@
+// CGameObject subclasses, one file each (see ./gameobject/)
+/// <reference path="gameobject/CActor.d.ts" />
+/// <reference path="gameobject/CInventoryOwner.d.ts" />
+/// <reference path="gameobject/CInventoryBox.d.ts" />
+/// <reference path="gameobject/CCustomOutfit.d.ts" />
+/// <reference path="gameobject/CHelmet.d.ts" />
+/// <reference path="gameobject/CArtefact.d.ts" />
+/// <reference path="gameobject/CWeaponAmmo.d.ts" />
+/// <reference path="gameobject/CWeapon.d.ts" />
+/// <reference path="gameobject/CWeaponMagazined.d.ts" />
+/// <reference path="gameobject/CWeaponMagazinedWGrenade.d.ts" />
+/// <reference path="gameobject/CEatableItem.d.ts" />
+/// <reference path="gameobject/CBottleItem.d.ts" />
+/// <reference path="gameobject/CHelicopter.d.ts" />
+/// <reference path="gameobject/CHangingLamp.d.ts" />
+/// <reference path="gameobject/CZoneCampfire.d.ts" />
+/// <reference path="gameobject/CPhysicObject.d.ts" />
+/// <reference path="gameobject/CCustomZone.d.ts" />
+/// <reference path="gameobject/CTorridZone.d.ts" />
+/// <reference path="gameobject/CMosquitoBald.d.ts" />
+/// <reference path="gameobject/CMedkit.d.ts" />
+/// <reference path="gameobject/CAntirad.d.ts" />
+/// <reference path="gameobject/CFoodItem.d.ts" />
+
 /**
  * Global holder of the `game_object` luabind class enums, accessed as `game_object.enemy`,
  * `game_object.level_path` and so on. The instance type is {@link CGameObject}.
@@ -39,6 +63,12 @@ declare const game_object: {
   readonly relation_fight_help_human: 2
   readonly relation_fight_help_monster: 4
 }
+/**
+ * A functor passed to engine callback setters such as {@link CGameObject.set_callback}.
+ * The bound `this` and argument list vary per callback type, so both are left open.
+ */
+declare type EngineCallback = (this: any, ...args: any[]) => any
+
 declare class CGameObject {
   constructor()
   health: number
@@ -117,8 +147,8 @@ declare class CGameObject {
   reload_weapon(): void
   hide_weapon(): void
   disable_hit_marks(_0: boolean): void
-  get_task_state(task_id: string): TODO // number
-  set_task_state(state: TODO /** number */, task_id: string): void
+  get_task_state(task_id: string): number // ETaskState
+  set_task_state(state: number /** ETaskState */, task_id: string): void
   give_task(task: CGameTask, dt: number, check_existing: boolean, timer: number): void
   set_active_task(task: CGameTask): void
   is_active_task(task: CGameTask): boolean
@@ -134,20 +164,20 @@ declare class CGameObject {
   get_enemy(): CGameObject | null
   get_corpse(): CGameObject | null
   get_enemy_strength(): number
-  get_sound_info(): TODO
-  get_monster_hit_info(): TODO
-  best_danger(): TODO
+  get_sound_info(): CScriptSoundInfo
+  get_monster_hit_info(): CScriptMonsterHitInfo
+  best_danger(): CDangerObject
   best_enemy(): CGameObject
   best_item(): CGameObject
-  motivation_action_manager(): TODO // CScriptActionPlanner
+  motivation_action_manager(): CScriptActionPlanner
   action_count(): number
-  action_by_index(index: number): TODO
+  action_by_index(index: number): CScriptEntityAction
   memory_time(): number
   memory_position(obj: CGameObject): vector
   best_weapon(): CGameObject | null
   patrol(): string | null
-  command(action: TODO, high_priority: boolean): void
-  action(): TODO
+  command(action: CScriptEntityAction, high_priority?: boolean): void
+  action(): CScriptEntityAction
   accuracy(): number
   kill(by: CGameObject): void
   death_time(): number
@@ -194,7 +224,7 @@ declare class CGameObject {
   is_trade_enabled(): boolean
   get_inv_weight(): number
   get_inv_max_weight(): number
-  get_current_outfit(): TODO
+  get_current_outfit(): CGameObject
   //
   // weapon
   //
@@ -257,9 +287,8 @@ declare class CGameObject {
   set_start_dialog(dialog_id: string): void
   get_start_dialog(): void
   restore_default_start_dialog(): void
-  show_condition(ini_file: TODO, section: string): void
-  show_condition(ini_file: TODO, section: string): TODO
-  buy_supplies(ini_file: TODO, section: string): void
+  show_condition(ini_file: system_ini, section: string): void
+  buy_supplies(ini_file: system_ini, section: string): void
   is_trader(): boolean
   set_trader_global_anim(anim: string): void
   set_trader_head_anim(anim: string): void
@@ -341,12 +370,12 @@ declare class CGameObject {
   inactualize_patrol_path(): void
   set_dest_level_vertex_id(level_vertex_id: number): void
   set_dest_game_vertex_id(game_vertex_id: number): void
-  set_movement_selection_type(selection_type: TODO): void
+  set_movement_selection_type(selection_type: number /** ESelectionType */): void
   get_movement_speed(): vector
   vertex_in_direction(level_vertex_id: number, direction: vector, max_distance: number): number
-  debug_planner(planner: TODO): TODO
+  debug_planner(planner: CScriptActionPlanner): void
   get_smart_cover_description(): string
-  find_best_cover(position_to_cover_from: vector): TODO
+  find_best_cover(position_to_cover_from: vector): CCoverPoint
   in_smart_cover(): boolean
   get_dest_smart_cover_name(): string
   set_smart_cover_target_idle(): void
@@ -361,13 +390,13 @@ declare class CGameObject {
   get_current_point_index(): number
   path_completed(): boolean
   patrol_path_make_inactual(): void
-  best_cover(position: vector, enemy_position: vector, radius: number, min_enemy_distance: number, max_enemy_distance: number): TODO
-  safe_cover(position: vector, radius: number, min_distance: number): TODO
+  best_cover(position: vector, enemy_position: vector, radius: number, min_enemy_distance: number, max_enemy_distance: number): CCoverPoint
+  safe_cover(position: vector, radius: number, min_distance: number): CCoverPoint
   accessible(position: vector): boolean
   accessible(level_vertex_id: number): boolean
   accessible_nearest(position: vector, result: vector): number
   location_on_path(distance: number, location: vector): number
-  sight_params(): TODO
+  sight_params(): CSightParams
   movement_enabled(enable: boolean): void
   movement_enabled(): boolean
   actor_look_at_point(point: vector): void
@@ -421,9 +450,9 @@ declare class CGameObject {
   is_inv_upgrade_enabled(): boolean
   transfer_item(pItem: CGameObject, pForWho: CGameObject): void
   take_item(pItem: CGameObject): void
-  iterate_ruck(functor: number, _object: number): void
-  iterate_belt(functor: number, _object: number): void
-  iterate_inventory_box(functor: number, _object: number): void
+  iterate_ruck(iterator: (npc: CGameObject, item: CGameObject) => void, npc: CGameObject): void
+  iterate_belt(iterator: (npc: CGameObject, item: CGameObject) => void, npc: CGameObject): void
+  iterate_inventory_box(iterator: (npc: CGameObject, item: CGameObject) => void, npc: CGameObject): void
   move_to_ruck(pItem: CGameObject): void
   move_to_slot(pItem: CGameObject, slot_id: number): void
   move_to_belt(pItem: CGameObject): void
@@ -495,8 +524,8 @@ declare class CGameObject {
   character_reputation(): number
   set_character_reputation(a0: number): void
   change_character_reputation(a0: number): void
-  get_actor_relation_flags(): TODO
-  set_actor_relation_flags(a0: TODO): void
+  get_actor_relation_flags(): Flags
+  set_actor_relation_flags(flags: Flags): void
   set_character_icon(iconName: string): void
   //
   // Callbacks & scripting control
@@ -507,7 +536,7 @@ declare class CGameObject {
   set_vis_state(value: number): void
   set_collision_off(val: boolean): void
   can_script_capture(): boolean
-  set_visual_name(visual: string, bForce: boolean): void
+  set_visual_name(visual: string, bForce?: boolean): void
   set_nonscript_usable(nonscript_usable: boolean): void
   //
   // Attachable items
@@ -540,7 +569,7 @@ declare class CGameObject {
   get_current_outfit_protection(hit_type: number): number
   set_npc_position(pos: vector): void
   get_visual_name(): string
-  spawn_ini(): TODO
+  spawn_ini(): system_ini
   enable_vision(value: boolean): void
   vision_enabled(): boolean
   bone_position(bone_name: string, bHud?: boolean): vector
@@ -561,17 +590,17 @@ declare class CGameObject {
   set_artefact_power(value: number): void
   set_artefact_bleeding(value: number): void
   set_artefact_immunity(hit_type: number, value: number): void
-  get_helicopter(): TODO
-  get_car(): TODO
-  get_hanging_lamp(): TODO
+  get_helicopter(): CHelicopter
+  get_car(): CCar
+  get_hanging_lamp(): CHangingLamp
   get_bone_id(bone_name: string): number
-  get_physics_shell(): TODO
-  get_holder_class(): TODO
-  get_current_holder(): TODO
+  get_physics_shell(): physics_shell | null
+  get_holder_class(): CHolderCustom
+  get_current_holder(): CHolderCustom
   set_tip_text(tip_text: string): void
   set_tip_text_default(): void
   active_zone_contact(id: number): boolean
-  set_fastcall(functor: number, _object: number): void
+  set_fastcall<T>(functor: (object: T) => boolean, object: T): void
   set_const_force(dir: vector, value: number, time_interval: number): void
   info_add(text: string): void
   info_clear(): void
@@ -582,9 +611,9 @@ declare class CGameObject {
   is_there_items_to_pickup(): boolean
   mark_item_dropped(item: CGameObject, flag: boolean): void
   critically_wounded(): boolean
-  get_campfire(): TODO
-  get_artefact(): TODO
-  get_physics_object(): TODO
+  get_campfire(): CZoneCampfire
+  get_artefact(): CArtefact
+  get_physics_object(): CPhysicObject
   enable_level_changer(b: boolean): void
   is_level_changer_enabled(): boolean
   set_level_changer_invitation(str: string): void
@@ -594,7 +623,7 @@ declare class CGameObject {
   detach_vehicle(bForce?: boolean): void
   get_attached_vehicle(): CGameObject | null
   reset_bone_protections(imm_sect: string, bone_sect: string): void
-  iterate_feel_touch(functor: number): void
+  iterate_feel_touch(functor: (id: number) => void): void
   get_luminocity_hemi(): number
   get_luminocity(): number
   set_health_ex(hp: number): void
@@ -605,19 +634,19 @@ declare class CGameObject {
   destroy_object(): void
   install_upgrade(upgrade: string): boolean
   has_upgrade(upgrade: string): boolean
-  iterate_installed_upgrades(functor: number): void
+  iterate_installed_upgrades(functor: (upgrade_section: string, owner: CGameObject) => boolean): void
   switch_state(state: number): void
   get_state(): number
-  cast_Car(): TODO
-  cast_Heli(): TODO
-  cast_CustomZone(): TODO
-  cast_TorridZone(): TODO
-  cast_MosquitoBald(): TODO
-  cast_ZoneCampfire(): TODO
-  cast_InventoryItem(): TODO
-  cast_Medkit(): TODO
-  cast_Antirad(): TODO
-  cast_FoodItem(): TODO
+  cast_Car(): CCar
+  cast_Heli(): CHelicopter
+  cast_CustomZone(): CCustomZone
+  cast_TorridZone(): CTorridZone
+  cast_MosquitoBald(): CMosquitoBald
+  cast_ZoneCampfire(): CZoneCampfire
+  cast_InventoryItem(): CInventoryItem
+  cast_Medkit(): CMedkit
+  cast_Antirad(): CAntirad
+  cast_FoodItem(): CFoodItem
   is_entity_alive(): boolean
   is_inventory_item(): boolean
   is_inventory_owner(): boolean
@@ -650,203 +679,328 @@ declare class CGameObject {
   set_actor_runback_coef(run_back_coef: number): void
   set_can_be_harmed(state: boolean): void
   can_be_harmed(): boolean
+  // Engine bindings previously missing — verified against script_game_object.h / *.cpp
+  active_sound_count(): number
+  add_animation(animation: string, hand_usage: boolean, use_movement_controller: boolean): void
+  add_animation(animation: string, hand_usage: boolean, position: vector, rotation: vector, local_animation: boolean): void
+  add_sound(prefix: string, max_count: number, type: number, priority: number, mask: number, internal_type: number, bone_name?: string, head_anim?: string): number
+  add_combat_sound(prefix: string, max_count: number, type: number, priority: number, mask: number, internal_type: number, bone_name: string): number
+  aim_bone_id(): string
+  aim_bone_id(value: string): void
+  aim_time(weapon: CGameObject): number
+  aim_time(weapon: CGameObject, time: number): void
+  apply_loophole_direction_distance(): number
+  apply_loophole_direction_distance(value: number): void
+  buy_condition(ini_file: system_ini, section: string): void
+  buy_condition(friend_factor: number, enemy_factor: number): void
+  can_select_weapon(): boolean
+  can_select_weapon(status: boolean): void
+  can_throw_grenades(): boolean
+  change_team(team: number, squad: number, group: number): void
+  death_sound_enabled(): boolean
+  death_sound_enabled(value: boolean): void
+  extrapolate_length(): number
+  extrapolate_length(extrapolate_length: number): void
+  get_dest_smart_cover(): CCoverPoint
+  give_talk_message(caption: string, icon: string, text: string): void
+  group_throw_time_interval(): number
+  group_throw_time_interval(throw_time_interval: number): void
+  idle_max_time(): number
+  idle_min_time(): number
+  inside(position: vector, epsilon: number): boolean
+  invulnerable(): boolean
+  invulnerable(invulnerable: boolean): void
+  lookout_max_time(): number
+  lookout_min_time(): number
+  play_cycle(anim: string): void
+  play_cycle(anim: string, mix_in: boolean): void
+  sell_condition(ini_file: system_ini, section: string): void
+  sell_condition(friend_factor: number, enemy_factor: number): void
+  set_callback(type: number): void
+  set_callback(type: number, functor: EngineCallback | null, object?: any): void
+  set_desired_direction(): void
+  set_desired_position(): void
+  set_dest_loophole(): void
+  set_dest_loophole(loophole_id: string): void
+  set_dest_smart_cover(): void
+  set_dest_smart_cover(cover_id: string): void
+  set_enemy_callback(): void
+  set_enemy_callback(functor: (this: void, ...args: any[]) => boolean): void
+  set_enemy_callback(functor: (this: void, ...args: any[]) => boolean, object: any): void
+  set_home(name: string, r_min: number, r_max: number, aggressive: boolean, r_mid: number): void
+  set_home(lv_id: number, r_min: number, r_max: number, aggressive: boolean, r_mid: number): void
+  set_item(object_action: number): void
+  set_item(object_action: number, game_object: CGameObject): void
+  set_item(object_action: number, game_object: CGameObject, queue_size: number): void
+  set_item(object_action: number, game_object: CGameObject, queue_size: number, queue_interval: number): void
+  set_override_animation(anim_name: string): void
+  set_patrol_extrapolate_callback(): void
+  set_patrol_extrapolate_callback(functor: EngineCallback | null, object?: any): void
+  set_smart_cover_target(): void
+  set_smart_cover_target(position: vector): void
+  set_smart_cover_target(object: CGameObject): void
+  set_smart_cover_target_selector(): void
+  set_smart_cover_target_selector(functor: (this: void, ...args: any[]) => void): void
+  set_smart_cover_target_selector(functor: (this: void, ...args: any[]) => void, object: any): void
+  sniper_fire_mode(): boolean
+  sniper_fire_mode(value: boolean): void
+  sniper_update_rate(): boolean
+  sniper_update_rate(value: boolean): void
+  sound_prefix(): string
+  sound_prefix(sound_prefix: string): void
+  special_danger_move(): boolean
+  special_danger_move(value: boolean): void
+  take_items_enabled(): boolean
+  take_items_enabled(value: boolean): void
+  use_smart_covers_only(): boolean
+  use_smart_covers_only(value: boolean): void
+  wounded(): boolean
+  wounded(value: boolean): void
 }
 //
 // casts
 //
-declare class CInventoryOwner extends CGameObject {
-  constructor()
-  IconName(): string
-  get_money(): number
-  EnableTalk(): void
-  DisableTalk(): void
-  IsTalkEnabled(): boolean
-  EnableTrade(): void
-  DisableTrade(): void
-  IsTradeEnabled(): boolean
-  EnableInvUpgrade(): void
-  DisableInvUpgrade(): void
-  IsInvUpgradeEnabled(): boolean
-  GetTalkPartner(): CInventoryOwner
-  /** @returns talk was offered */
-  OfferTalk(talk_partner: CInventoryOwner): boolean
-  StartTalk(talk_partner: CInventoryOwner, start_trade?: boolean): void
-  StopTalk(): void
-  IsTalking(): boolean
-  deadbody_can_take(can: boolean): void
-  deadbody_can_take_status(): boolean
-  deadbody_closed(closed: boolean): void
-  deadbody_closed_status(): boolean
+
+//
+// Engine object types returned by game_object getters/casts. Declared as stubs
+// (correct luabind/engine name) to keep return types precise; members to be
+// filled in from the engine as needed. Not registered as script game objects,
+// so they carry no CGameObject methods.
+//
+
+/** Sight parameters (luabind class `CSightParams`). */
+declare class CSightParams {
+  readonly m_object: CGameObject
+  readonly m_vector: vector
+  /** One of the `CSightParams.eSightType*` constants. */
+  readonly m_sight_type: number
 }
-declare class CInventoryBox extends CGameObject {
-  constructor()
-  can_take(): boolean
-  set_can_take(can: boolean): void
-  set_closed(closed: boolean, reason: string): void
+/** Sight-type constants of the `CSightParams` luabind class (`SightManager::ESightType`). */
+declare const CSightParams: {
+  readonly eSightTypeCurrentDirection: 0
+  readonly eSightTypePathDirection: 1
+  readonly eSightTypeDirection: 2
+  readonly eSightTypePosition: 3
+  readonly eSightTypeObject: 4
+  readonly eSightTypeCover: 5
+  readonly eSightTypeSearch: 6
+  readonly eSightTypeLookOver: 7
+  readonly eSightTypeCoverLookOver: 8
+  readonly eSightTypeFireObject: 9
+  readonly eSightTypeFirePosition: 10
+  readonly eSightTypeAnimationDirection: 11
+  readonly eSightTypeDummy: -1
 }
-declare class CCustomOutfit extends CGameObject {
-  constructor()
-  m_fPowerLoss: number
-  m_fHealthRestoreSpeed: number
-  m_fRadiationRestoreSpeed: number
-  m_fSatietyRestoreSpeed: number
-  m_fPowerRestoreSpeed: number
-  m_fBleedingRestoreSpeed: number
-  readonly bIsHelmetAvaliable: boolean
-  readonly bIsBackpackAvaliable: boolean
-  BonePassBullet(bone_id: number): boolean
-  get_HitFracActor(): number
-  get_artefact_count(): number
-  GetDefHitTypeProtection(outfit: CCustomOutfit, hit_type: number): number
-  GetHitTypeProtection(outfit: CCustomOutfit, hit_type: number, element: string): number
-  GetBoneArmor(element: number): number
+/**
+ * Engine base-client object (luabind class `CGameObject`, C++ `CGameObject` from
+ * `base_client_classes`). This is a DIFFERENT class from the `game_object`
+ * (`CScriptGameObject`) modelled by {@link CGameObject}: it is the common engine base of
+ * non-scriptable objects such as {@link CCar}, {@link CHelicopter}, {@link CPhysicObject}
+ * and {@link CZoneCampfire}, which are obtained through the `game_object:get_*()` /
+ * `cast_*()` accessors and expose only these low-level members (not the rich `game_object`
+ * API). Modelled as an interface so it does not shadow the `CGameObject` value.
+ */
+interface CGameObjectBase {
+  _construct(): CGameObjectBase
+  Visual(): IRender_Visual
+  net_Export(packet: net_packet): void
+  net_Import(packet: net_packet): void
+  net_Spawn(se_abstract: CseAbstract): boolean
+  use(who_use: CGameObjectBase): boolean
+  getVisible(): boolean
+  getEnabled(): boolean
 }
-declare class CHelmet extends CGameObject {
-  constructor()
-  m_fPowerLoss: number
-  m_fHealthRestoreSpeed: number
-  m_fRadiationRestoreSpeed: number
-  m_fSatietyRestoreSpeed: number
-  m_fPowerRestoreSpeed: number
-  m_fBleedingRestoreSpeed: number
-  get_HitFracActor(): number
-  GetDefHitTypeProtection(helmet: CHelmet, hit_type: number): number
-  GetHitTypeProtection(helmet: CHelmet, hit_type: number, element: string): number
-  GetBoneArmor(element: number): number
+/** Render visual of an object (luabind class `IRender_Visual`, C++ `IRenderVisual`), returned by {@link CGameObjectBase.Visual}. */
+declare class IRender_Visual {
+  dcast_PKinematicsAnimated(): IKinematicsAnimated | null
 }
-declare class CArtefact extends CGameObject {
-  constructor()
-  m_bCanSpawnZone: boolean
-  m_fHealthRestoreSpeed: number
-  m_fRadiationRestoreSpeed: number
-  m_fSatietyRestoreSpeed: number
-  m_fPowerRestoreSpeed: number
-  m_fBleedingRestoreSpeed: number
-  ActivateArtefact(): void
-  CanBeActivated(): boolean
-  AdditionalInventoryWeight(): number
-  FollowByPath(path: string, start_index: number, magic_force: vector): void
-  SwitchVisibility(visible: boolean): void
-  GetAfRank(): number
+/** Animated skeleton visual (luabind class `IKinematicsAnimated`). */
+declare class IKinematicsAnimated {
+  PlayCycle(anim: string): void
 }
-declare class CWeaponAmmo extends CGameObject {
-  constructor()
-  m_boxSize: number
-  m_boxCurr: number
-  m_tracer: boolean
-  m_4to1_tracer: boolean
-  Weight(): number
-  Cost(): number
+/** Animation blend handle (luabind class `CBlend`). */
+declare class CBlend {}
+/** Last monster hit info (luabind class `MonsterHitInfo`, C++ `CScriptMonsterHitInfo`). */
+declare class CScriptMonsterHitInfo {
+  who: CGameObject | null
+  direction: vector
+  time: number
 }
-declare class CWeapon extends CGameObject {
-  constructor()
-  // EWeaponStates
-  readonly eFire: 5
-  readonly eFire2: 6
-  readonly eReload: 7
-  readonly eMisfire: 8
-  readonly eSwitch: 9
-  readonly eSwitchMode: 10
-  // EWeaponSubStates
-  readonly eSubstateReloadBegin: 0
-  readonly eSubstateReloadInProcess: 1
-  readonly eSubstateReloadEnd: 2
-  can_kill(): boolean
-  IsGrenadeLauncherAttached(): boolean
-  GrenadeLauncherAttachable(): boolean
-  GetGrenadeLauncherName(): string
-  IsScopeAttached(): boolean
-  ScopeAttachable(): boolean
-  GetScopeName(): string
-  IsSilencerAttached(): boolean
-  SilencerAttachable(): boolean
-  GetSilencerName(): string
-  IsZoomEnabled(): boolean
-  IsZoomed(): boolean
-  GetZoomFactor(): number
-  SetZoomFactor(factor: number): void
-  IsSingleHanded(): boolean
-  GetBaseDispersion(cartridge_k: number): number
-  GetFireDispersion(): number
-  GetMisfireStartCondition(): number
-  GetMisfireEndCondition(): number
-  GetAmmoElapsed(): number
-  GetAmmoMagSize(): number
-  GetSuitableAmmoTotal(use_item_to_spawn?: boolean): number
-  SetAmmoElapsed(count: number): void
-  SwitchAmmoType(flags: number): boolean
-  GetMagazineWeight(): number
-  GetAmmoCount_forType(type: string): number
-  set_ef_main_weapon_type(type: number): void
-  set_ef_weapon_type(type: number): void
-  SetAmmoType(type: number): void
-  GetAmmoType(): number
-  AmmoTypeForEach(functor: () => void): void
-  RPM(): number
-  ModeRPM(): number
-  GetZoomType(): number
-  Get_PDM_Base(): number
-  Get_Silencer_PDM_Base(): number
-  Get_Scope_PDM_Base(): number
-  Get_Launcher_PDM_Base(): number
-  Get_PDM_BuckShot(): number
-  Get_PDM_Vel_F(): number
-  Get_Silencer_PDM_Vel(): number
-  Get_Scope_PDM_Vel(): number
-  Get_Launcher_PDM_Vel(): number
-  Get_PDM_Accel_F(): number
-  Get_Silencer_PDM_Accel(): number
-  Get_Scope_PDM_Accel(): number
-  Get_Launcher_PDM_Accel(): number
-  Get_PDM_Crouch(): number
-  Get_PDM_Crouch_NA(): number
-  GetCrosshairInertion(): number
-  Get_Silencer_CrosshairInertion(): number
-  Get_Scope_CrosshairInertion(): number
-  Get_Launcher_CrosshairInertion(): number
-  GetFirstBulletDisp(): number
-  GetHitPower(): number
-  GetHitPowerCritical(): number
-  GetHitImpulse(): number
-  GetFireDistance(): number
-  GetFireMode(): number
-  GetInertionAimFactor(): number
-  Cost(): number
-  Weight(): number
-  IsMisfire(): boolean
-  SetMisfire(value: boolean): void
-  IsPending(): boolean
-  SetPending(): boolean
+/** A perceived danger (luabind class `danger_object`, C++ `CDangerObject`). */
+declare class CDangerObject {
+  position(): vector
+  time(): number
+  /** One of the `CDangerObject.danger_type` constants. */
+  type(): number
+  /** One of the `CDangerObject.danger_perceive_type` constants. */
+  perceive_type(): number
+  object(): CGameObject | null
+  dependent_object(): CGameObject | null
 }
-declare class CWeaponMagazined extends CWeapon {
-  constructor()
-  SetFireMode(mode: number): void
+/** Enum constants of the `danger_object` luabind class (`danger_type`/`danger_perceive_type`). */
+declare const CDangerObject: {
+  readonly bullet_ricochet: 0
+  readonly attack_sound: 1
+  readonly entity_attacked: 2
+  readonly entity_death: 3
+  readonly entity_corpse: 4
+  readonly attacked: 5
+  readonly grenade: 6
+  readonly enemy_sound: 7
+  readonly visual: 0
+  readonly sound: 1
+  readonly hit: 2
 }
-declare class CWeaponMagazinedWGrenade extends CWeaponMagazined {
-  constructor()
-  GetGrenadeLauncherMode(): boolean
-  SetGrenadeLauncherMode(mode: boolean): void
-  SetAmmoElapsed2(count: number): void
-  GetAmmoElapsed2(): number
-  GetAmmoMagSize2(): number
-  SetAmmoType2(type: number): void
-  GetAmmoType2(): number
-  AmmoTypeForEach2(functor: () => void): void
+// --- GOAP planner core (xrGame graph-engine script bindings) ---
+
+/**
+ * A single world-state property: a `(condition_id, value)` pair
+ * (luabind class `world_property`, C++ `CScriptWorldProperty`).
+ * @customConstructor world_property
+ */
+declare class CScriptWorldProperty {
+  constructor(condition: number, value: boolean)
+  condition(): number
+  value(): boolean
 }
-declare class CEatableItem extends CGameObject {
+/**
+ * A set of {@link CScriptWorldProperty} entries (luabind class `world_state`,
+ * C++ `CScriptWorldState`).
+ * @customConstructor world_state
+ */
+declare class CScriptWorldState {
   constructor()
-  Empty(): boolean
-  CanDelete(): boolean
-  GetMaxUses(): number
-  GetRemainingUses(): number
-  SetRemainingUses(uses: number): void
-  m_bRemoveAfterUse: boolean
-  m_fWeightFull: number
-  m_fWeightEmpty: number
-  Weight(): number
-  Cost(): number
+  constructor(other: CScriptWorldState)
+  add_property(property: CScriptWorldProperty): void
+  remove_property(condition: number): void
+  clear(): void
+  includes(state: CScriptWorldState): boolean
+  property(condition: number): CScriptWorldProperty
 }
-declare class CBottleItem extends CGameObject {
+/**
+ * Solver property storage mapping condition ids to boolean values
+ * (luabind class `property_storage`, C++ `CPropertyStorage`).
+ * @customConstructor property_storage
+ */
+declare class CPropertyStorage {
   constructor()
-  BreakToPieces(): void
+  set_property(condition: number, value: boolean): void
+  property(condition: number): boolean
 }
+/**
+ * Property evaluator, subclassable from Lua/TS (luabind class `property_evaluator`,
+ * C++ `CScriptPropertyEvaluator`).
+ * @customConstructor property_evaluator
+ */
+declare class CScriptPropertyEvaluator {
+  readonly object: CGameObject
+  readonly storage: CPropertyStorage
+  constructor()
+  constructor(object: CGameObject)
+  constructor(object: CGameObject, name: string)
+  setup(object: CGameObject, storage: CPropertyStorage): void
+  evaluate(): boolean
+}
+/**
+ * Constant-value property evaluator (luabind class `property_evaluator_const`).
+ * @customConstructor property_evaluator_const
+ */
+declare class CPropertyEvaluatorConst extends CScriptPropertyEvaluator {
+  constructor(value: boolean)
+}
+/**
+ * GOAP action, subclassable from Lua/TS (luabind class `action_base`,
+ * C++ `CScriptActionBase`).
+ * @customConstructor action_base
+ */
+declare class CScriptActionBase {
+  readonly object: CGameObject
+  readonly storage: CPropertyStorage
+  constructor()
+  constructor(object: CGameObject)
+  constructor(object: CGameObject, name: string)
+  add_precondition(condition: CScriptWorldProperty): void
+  add_effect(effect: CScriptWorldProperty): void
+  remove_precondition(condition: number): void
+  remove_effect(condition: number): void
+  setup(object: CGameObject, storage: CPropertyStorage): void
+  initialize(): void
+  execute(): void
+  finalize(): void
+  set_weight(weight: number): void
+  show(caption: string): void
+}
+/**
+ * GOAP action planner: holds actions and evaluators and drives the solver
+ * (luabind class `action_planner`, C++ `CScriptActionPlanner`).
+ * @customConstructor action_planner
+ */
+declare class CScriptActionPlanner {
+  readonly object: CGameObject
+  readonly storage: CPropertyStorage
+  constructor()
+  /** Whether the current plan is still actual. */
+  actual(): boolean
+  setup(object: CGameObject): void
+  update(): void
+  add_action(action_id: number, action: CScriptActionBase): void
+  remove_action(action_id: number): void
+  action(action_id: number): CScriptActionBase
+  add_evaluator(evaluator_id: number, evaluator: CScriptPropertyEvaluator): void
+  remove_evaluator(evaluator_id: number): void
+  evaluator(evaluator_id: number): CScriptPropertyEvaluator
+  current_action_id(): number
+  current_action(): CScriptActionBase
+  initialized(): boolean
+  set_goal_world_state(world_state: CScriptWorldState): void
+  clear(): void
+  show(caption: string): void
+}
+/**
+ * An action that is itself a planner (luabind class `planner_action`,
+ * C++ `CScriptActionPlannerAction`; engine bases `action_planner` + `action_base`).
+ * @customConstructor planner_action
+ */
+interface CScriptActionPlannerAction extends CScriptActionPlanner, CScriptActionBase {}
+declare class CScriptActionPlannerAction {
+  constructor()
+  constructor(object: CGameObject)
+  constructor(object: CGameObject, name: string)
+  weight(): number
+}
+
+/**
+ * Composite monster/entity action (luabind class `entity_action`, C++ `CScriptEntityAction`).
+ * Its `set_action` accepts the monster action objects (`move`/`look`/`anim`/`sound`/`particle`/
+ * `object`/`cond`/`act`), which are not yet modelled; typed loosely for now.
+ */
+declare class CScriptEntityAction {
+  constructor()
+  constructor(other: CScriptEntityAction)
+  set_action(action: object): void
+  move(): boolean
+  look(): boolean
+  anim(): boolean
+  sound(): boolean
+  particle(): boolean
+  object(): boolean
+  time(): boolean
+  all(): boolean
+  completed(): boolean
+}
+/** A cover point (luabind class `cover_point`, C++ `CCoverPoint`). */
+declare class CCoverPoint {
+  position(): vector
+  level_vertex_id(): number
+  is_smart_cover(): boolean
+}
+/** Vehicle/holder interface (luabind class `holder`, C++ `CHolderCustom`). */
+declare class CHolderCustom {
+  /** Whether the holder currently has an owner. */
+  engaged(): boolean
+  Action(id: number, flags: number): void
+  SetParam(id: number, value: vector): void
+  SetEnterLocked(locked: boolean): void
+  SetExitLocked(locked: boolean): void
+}
+declare class CInventoryItem {}

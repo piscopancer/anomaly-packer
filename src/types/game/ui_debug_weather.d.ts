@@ -1,28 +1,29 @@
 /** @noSelfInFile */
 
 declare namespace ui_debug_weather {
-  export const GUI: TODO
-  export function start(owner: TODO): void
+  /** The live weather-editor instance (`nil` until opened). */
+  export const GUI: WeatherEditor | undefined
+  export function start(owner?: any): void
 }
 
-/** @customConstructor WeatherEditor */
+/** In-game weather editor debug UI. @customConstructor WeatherEditor */
 declare class WeatherEditor extends CUIScriptWnd {
-  constructor(owner: TODO)
+  constructor(owner?: any)
   __finalize(): void
-  InitControls(): TODO
+  InitControls(): void
   InitCallBacks(): void
-  Reset(force: TODO): void
-  Refresh(clear: TODO): void
+  Reset(force?: boolean): void
+  Refresh(clear?: boolean): void
   Update(): void
   Viewer_Play(): void
   Viewer_Pause(): void
   Viewer_Exit(): void
-  Viewer_Value(): TODO
+  Viewer_Value(): LuaMultiReturn<[number, number]>
   Viewer_Update(): void
   Viewer_Start(): void
   On_Weather(): void
-  On_Time(h: TODO, m: TODO): void
-  On_Param(idx: TODO, val: TODO, ignore: TODO): void
+  On_Time(h: number, m: number): void
+  On_Param(idx: number, val: any, ignore?: boolean): void
   OnBTN_Copy(): void
   OnBTN_Paste(): void
   OnBTN_Copy_Param(): void
@@ -33,33 +34,33 @@ declare class WeatherEditor extends CUIScriptWnd {
   OnBTN_Clear(): void
   OnBTN_Clear_Moment(): void
   OnBTN_Exit(): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
-  CurrentMoment(): TODO
-  Apply(par: TODO, typ: number, memo: TODO): void
-  LerpMoment(f: TODO, h: TODO, m: TODO): TODO
-  Lerp(h: TODO, m: TODO, ts: TODO, te: TODO, ps: TODO, pe: TODO): TODO
-  ClearMomentsInRange(f: TODO, hh: TODO, mm: TODO): void
-  GetTimeRange(t: TODO): TODO
-  GetNearestMoment(t: TODO, hh: number, mm: TODO): TODO
-  SwitchParam(state: TODO, vert: TODO): TODO
-  SwitchValue(state: TODO, idx: TODO, ignore: TODO): void
-  SwitchValueGroup(state: TODO): void
-  ReviseTime(h: TODO, m: TODO): TODO
-  HasChanges(): TODO
+  OnKeyboard(dik: number, keyboard_action: number): boolean
+  CurrentMoment(): AnyTable | undefined
+  Apply(par: string, typ: number, memo: AnyTable): void
+  LerpMoment(f: string, h: number, m: number): AnyTable | undefined
+  Lerp(h: number, m: number, ts: number, te: number, ps: number, pe: number): any
+  ClearMomentsInRange(f: string, hh: number, mm: number): void
+  GetTimeRange(t: number): { s: number; e: number }
+  GetNearestMoment(t: number, hh: number, mm: number): LuaMultiReturn<[number, number]>
+  SwitchParam(state: boolean, vert?: boolean): any
+  SwitchValue(state: boolean, idx: number, ignore?: boolean): void
+  SwitchValueGroup(state: boolean): void
+  ReviseTime(h: number, m: number): LuaMultiReturn<[number, number]>
+  HasChanges(): number
   SaveToFile(): void
   Discard(): void
-  GetStringByType(indx: TODO, typ: number): TODO
-  IsList(typ: number): TODO
-  AddToList(par: TODO, indx: TODO, cnt: TODO, value: TODO): void
-  Reset_FolderList(indx: TODO, par: TODO, val: TODO, val_2: TODO): void
-  StringToTime(str: TODO): number
-  TimeToString(h: TODO, m: TODO): string
-  ParseFromString(ltx: TODO, sec: TODO, par: TODO, typ: number): TODO
-  IsInvalidValue(idx: TODO, typ: TODO, val: string): boolean
-  ScrollToElement(idx: TODO): void
+  GetStringByType(indx: number, typ: number): string
+  IsList(typ: number): boolean
+  AddToList(par: string, indx: number, cnt: number, value: any): void
+  Reset_FolderList(indx: number, par: string, val: any, val_2: any): void
+  StringToTime(str: string): LuaMultiReturn<[number, number]>
+  TimeToString(h: number, m: number): string
+  ParseFromString(ltx: any, sec: string, par: string, typ: number): any
+  IsInvalidValue(idx: number, typ: number, val: string): boolean
+  ScrollToElement(idx: number): void
   PauseEngine(state: boolean): void
   Close(): void
   SetHint(text: string, cl: boolean): void
-  MSG(fmt: TODO, ...args: TODO[]): void
-  Print(fmt: TODO, ...args: TODO[]): void
+  MSG(fmt: string, ...args: any[]): void
+  Print(fmt: string, ...args: any[]): void
 }

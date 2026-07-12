@@ -3,6 +3,83 @@
 declare const ini_sys: system_ini
 declare function start_game_callback(): void
 
+/** `true` when the `marshal` Lua library is available (`USE_MARSHAL = marshal ~= nil`). */
+declare const USE_MARSHAL: boolean
+
+/** Anomaly's additions to the Lua `string` library (`_g.script`). */
+declare namespace string {
+  /**
+   * Iterates the segments of `s` split on separator `sep`, as a stateless
+   * generator: `for seg in string.gsplit(s, ",") do ... end`.
+   * @param plain when true, `sep` is matched literally instead of as a pattern
+   */
+  function gsplit(this: void, s: string, sep: string, plain?: boolean): LuaIterable<string>
+}
+
+/**
+ * Engine callback-type enum (`GameObject::ECallbackType`, luabind class `callback`),
+ * used with {@link CGameObject.set_callback}. Values are opaque integers.
+ */
+declare namespace callback {
+  const trade_start: number
+  const trade_stop: number
+  const trade_sell_buy_item: number
+  const trade_perform_operation: number
+  const trader_global_anim_request: number
+  const trader_head_anim_request: number
+  const trader_sound_end: number
+  const zone_enter: number
+  const zone_exit: number
+  const level_border_exit: number
+  const level_border_enter: number
+  const death: number
+  const patrol_path_in_point: number
+  const inventory_pda: number
+  const inventory_info: number
+  const article_info: number
+  const use_object: number
+  const hit: number
+  const sound: number
+  const action_removed: number
+  const action_movement: number
+  const action_watch: number
+  const action_animation: number
+  const action_sound: number
+  const action_particle: number
+  const action_object: number
+  const actor_sleep: number
+  const helicopter_on_point: number
+  const helicopter_on_hit: number
+  const on_item_take: number
+  const on_item_drop: number
+  const script_animation: number
+  const task_state: number
+  const take_item_from_box: number
+  const weapon_no_ammo: number
+  const hud_animation_end: number
+  const key_press: number
+  const key_release: number
+  const key_hold: number
+  const mouse_move: number
+  const mouse_wheel: number
+  const actor_before_death: number
+  const on_attach_vehicle: number
+  const on_detach_vehicle: number
+  const on_use_vehicle: number
+  const weapon_fired: number
+  const weapon_jammed: number
+  const weapon_zoom_in: number
+  const weapon_zoom_out: number
+  const weapon_magazine_empty: number
+  const weapon_lowered: number
+  const weapon_raised: number
+  const item_to_belt: number
+  const item_to_slot: number
+  const item_to_ruck: number
+  const on_foot_step: number
+  const map_location_added: number
+}
+
 /** @noSelf */
 interface GameEvents {
   // Actor
@@ -30,7 +107,7 @@ interface GameEvents {
   actor_item_to_belt(item: CGameObject): void
   actor_item_to_ruck(item: CGameObject): void
   actor_item_to_slot(item: CGameObject): void
-  actor_on_trade(item: CGameObject, sell_buy: TODO, money: number): void
+  actor_on_trade(item: CGameObject, sell_buy: boolean, money: number): void
   actor_on_init(binder: object_binder): void
   actor_on_reinit(binder: object_binder): void
   actor_on_info_callback(obj: CGameObject, info_id: number): void
@@ -49,22 +126,22 @@ interface GameEvents {
     },
     obj: CGameObject | null
   ): void
-  actor_on_hud_animation_end(item: CGameObject, section: string, motion: TODO, state: TODO, slot: number): void
+  actor_on_hud_animation_end(item: CGameObject, section: string, motion: string, state: number, slot: number): void
   actor_on_hud_animation_mark(state: number, mark: string): void
   actor_on_sleep(hours: number): void
   actor_on_foot_step(ground: CGameObject, power: number, play: boolean, on_ground: boolean, hud_view: boolean): void
   actor_on_interaction(_type: string, obj: CGameObject | null, name: string): void
-  actor_on_before_hit(_hit: hit, bone_id: number, flags: TODO): void
-  actor_on_before_hit_belt(hit_table: TODO, power: number, _type: TODO): void
-  actor_on_weapon_before_fire(flags: TODO): void
-  actor_on_feeling_anomaly(zone: CGameObject, flags: TODO): void
+  actor_on_before_hit(_hit: hit, bone_id: number, flags: { ret_value: boolean }): void
+  actor_on_before_hit_belt(hit_table: AnyTable, power: number, _type: number): void
+  actor_on_weapon_before_fire(flags: { ret_value: boolean }): void
+  actor_on_feeling_anomaly(zone: CGameObject, flags: { ret_value: boolean }): void
   actor_on_leave_dialog(npc_id: number): void
   actor_on_stash_create(stash: { id: number; name: string; section: string }): void
   actor_on_stash_remove(stash: { id: number; cancel: boolean }): void
   actor_on_frequency_change(old_freq: number, new_freq: number): void
   actor_on_achievement_earned(ach_id: string, message: string): void
-  actor_on_movement_changed(cmd: TODO): void
-  actor_on_footstep(material: string, power: number, hud_view: boolean, flags: TODO): void
+  actor_on_movement_changed(cmd: number): void
+  actor_on_footstep(material: string, power: number, hud_view: boolean, flags: { ret_value: boolean }): void
   actor_on_jump(): void
   actor_on_land(landing_speed: number): void
   // NPCs
@@ -150,9 +227,9 @@ interface GameEvents {
   GUI_on_hide(name: string, path?: string): void
   map_spot_menu_add_property(ui: { AddItem: (text: string) => void }, spot_id: string, level: string): void
   map_spot_menu_property_clicked(ui: { AddItem: (text: string) => void }, spot_id: string, level: string, clicked_property: string): void
-  main_menu_on_keyboard(dik: number, keyboard_action: number, wnd: /** CUIScriptWnd */ TODO, level_present: boolean): void
-  main_menu_on_init(wnd: /** CUIScriptWnd */ TODO): void
-  main_menu_on_quit(wnd: /** CUIScriptWnd */ TODO): void
+  main_menu_on_keyboard(dik: number, keyboard_action: number, wnd: CUIScriptWnd, level_present: boolean): void
+  main_menu_on_init(wnd: CUIScriptWnd): void
+  main_menu_on_quit(wnd: CUIScriptWnd): void
   on_screen_resolution_changed(): void
   // Technical
   on_game_load(binder: object_binder): void
@@ -168,8 +245,8 @@ interface GameEvents {
   // Files
   save_state(m_data: MData): void
   load_state(m_data: MData): void
-  on_pstor_save_all(obj: CGameObject, netp: TODO): void
-  on_pstor_load_all(obj: CGameObject, netp: TODO): void
+  on_pstor_save_all(obj: CGameObject, netp: net_packet): void
+  on_pstor_load_all(obj: CGameObject, netp: net_packet): void
   // Other
   on_enemy_eval(obj: CGameObject, enemy: CGameObject, flags: { result: boolean; override: boolean }): void
   on_before_surge(flags: { allow: boolean }): void
@@ -177,7 +254,7 @@ interface GameEvents {
   on_get_item_cost(
     _type: 'multiuse' | 'ammo' | 'condition_based',
     obj: CGameObject,
-    profile: { cfg: string; mode: 1 | 2; cond_exponent: TODO; discount: number; list: Suggest<'trade_generic_buy' | 'trade_generic_sell'> },
+    profile: { cfg: string; mode: 1 | 2; cond_exponent: number; discount: number; list: Suggest<'trade_generic_buy' | 'trade_generic_sell'> },
     cost: number,
     ret: { new_cost?: number }
   ): void
@@ -211,15 +288,15 @@ interface GameEvents {
  *}
  * ```
  */
-declare function RegisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E]): void
-declare function UnregisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E]): void
+declare function RegisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E] | { [K in E]: (this: any, ...args: any[]) => any }): void
+declare function UnregisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E] | { [K in E]: (this: any, ...args: any[]) => any }): void
 declare function SendScriptCallback<E extends keyof GameEvents>(event: E, ...args: Parameters<GameEvents[E]>): void
 declare function Unregister_UI(name: string): void
 declare function DestroyAll_UI(name: string): void
 declare function Check_UI(name: string): boolean
 declare function Overlapped_UI(name: string): boolean
 declare function CloseAll_UI(): void
-declare function GetActorMenu(): TODO
+declare function GetActorMenu(): UIInventory | undefined
 declare function hide_hud_all(): void
 declare function hide_hud_inventory(): void
 declare function hide_hud_pda(): void
@@ -241,22 +318,22 @@ declare function main_hud_shown(): boolean
  * ```
  * */
 declare function CreateTimeEvent<F extends (...args: any) => boolean>(
-  event_id: number,
+  event_id: string | number,
   action_id: string,
   delay_s: number,
   action: F,
   ...args: Parameters<F>
 ): void
 /** @see {@link CreateTimeEvent} */
-declare function ResetTimeEvent(event_id: number, action_id: string, new_delay_s: number): void
+declare function ResetTimeEvent(event_id: string | number, action_id: string, new_delay_s: number): void
 /** @see {@link CreateTimeEvent} */
-declare function RemoveTimeEvent(event_id: number, action_id: string): void
+declare function RemoveTimeEvent(event_id: string | number, action_id: string): void
 declare function ProcessEventQueue(force: boolean): boolean
 declare function ProcessEventQueueState(m_data: MData, save: boolean): void
 declare function ChangeLevel(pos: vector, level_vertex_id: number, game_vertex_id: number, angle: vector, anim?: boolean): void
 declare function change_level_now(pos: vector, level_vertex_id: number, game_vertex_id: number, angle: vector): void
-declare function AddUniqueCall(functor: TODO): void
-declare function RemoveUniqueCall(functor: TODO): void
+declare function AddUniqueCall(functor: (this: void, ...args: any[]) => unknown): void
+declare function RemoveUniqueCall(functor: (this: void, ...args: any[]) => unknown): void
 declare function JumpToLevel(level: string): boolean
 declare function TeleportObject(id: number, pos: vector, level_vertex_id: number, game_vertex_id: number): void
 declare function TeleportSquad(squad: CseAlifeOnlineOfflineGroup, pos: vector, level_vertex_id: number, game_vertex_id: number): void
@@ -280,9 +357,9 @@ declare function LoadScheme(filename: string, scheme: string, ...args: any[]): v
 declare function printf(...args: any[]): void
 declare function printe(...args: any[]): void
 declare function printdbg(...args: any[]): void
-declare function abort(msg: TODO, ...args: any[]): void
+declare function abort(msg: string, ...args: any[]): void
 declare function callstack(c1: boolean, to_str: boolean): string | null
-declare function get_console_cmd(_type: string, name: string): TODO
+declare function get_console_cmd(_type: number, name: string): string | number | boolean | undefined
 declare function exec_console_cmd(cmd: string): void
 declare const time_infinite: number
 /** @returns Current time in ms */
@@ -309,11 +386,11 @@ declare function distance_2d_sqr(vec_1: vector, vec_2: vector): number
 declare function trim(str: string): string
 declare function strformat(str: string, ...items: any[]): string
 declare function str_explode(str: string, separator: string, plain: any): string[]
-declare function parse_list(ini: TODO, key: string, val: string, convert: boolean): Record<TODO, TODO>
+declare function parse_list(ini: system_ini, key: string, val: string, convert: boolean): Record<string, any>
 declare function parse_names(str: string): string[]
 declare function parse_key_value(str: string): Record<string, any>
 declare function parse_nums(str: string): number[]
-declare function parse_func(sec: string, param: string, ...args: any[]): TODO | null
+declare function parse_func(sec: string, param: string, ...args: any[]): any
 declare function starts_with(str: string, with_text: string): boolean
 declare function has_translation(str: string): boolean
 declare function get_param_string(src_str: string, obj: CGameObject): LuaMultiReturn<[string, boolean]>
@@ -324,7 +401,7 @@ declare function action(obj: CGameObject, ...args: any[]): any
 declare function action_first(obj: CGameObject, ...args: any[]): any
 declare function interrupt_action(npc: CGameObject, script_name: string): void
 declare function get_clsid(obj: CGameObject): number
-declare function set_save_marker(netp: TODO, mode: 'save' | 'load', check: boolean, prefix: string): void
+declare function set_save_marker(netp: net_packet, mode: 'save' | 'load', check: boolean, prefix: string): void
 declare const ActorMoveStates: {
   mcFwd: 1
   mcBack: 2
@@ -358,27 +435,27 @@ declare function ini_file(filename: string): system_ini
  * @customConstructor ini_file_ex
  */
 declare class ini_file_ex {
-  constructor(fname: TODO, advanced_mode: TODO)
-  cache: Record<TODO, TODO>
-  collect_section(section: TODO): Record<string, any>
+  constructor(fname: string, advanced_mode?: boolean)
+  cache: Record<string, any>
+  collect_section(section: string): Record<string, any>
   fname: string
   get_sections<KT extends boolean>(keytable?: boolean): KT extends true ? Record<string, true> : string[]
   ini: system_ini
-  line_exist(section: TODO, key: TODO): boolean
-  r_bool_ex(s: TODO, k: TODO, def: TODO): boolean
-  r_float_ex(s: TODO, k: TODO): string | null
-  r_list(s: TODO, k: TODO, def: TODO): string[]
-  r_mult(s: TODO, k: TODO, ...args: TODO[]): TODO
-  r_string_ex(s: TODO, k: TODO): string | null
-  r_string_to_condlist(s: TODO, k: TODO, def: TODO): Record<TODO, TODO> | null
-  r_value(s: TODO, k: TODO, typ: number, def: TODO): string | null
-  remove_line(section: TODO, key: TODO): void
+  line_exist(section: string, key: string): boolean
+  r_bool_ex(s: string, k: string, def?: boolean): boolean
+  r_float_ex(s: string, k: string): string | null
+  r_list(s: string, k: string, def?: string[]): string[]
+  r_mult(s: string, k: string, ...args: any[]): any
+  r_string_ex(s: string, k: string): string | null
+  r_string_to_condlist(s: string, k: string, def?: any): Record<string, any> | null
+  r_value(s: string, k: string, typ: number, def?: any): string | null
+  remove_line(section: string, key: string): void
   save(): void
-  section_exist(section: TODO): boolean
-  w_value(s: TODO, k: TODO, val: TODO, comment: TODO): void
+  section_exist(section: string): boolean
+  w_value(s: string, k: string, val: any, comment?: string): void
 }
 declare const INISYS_CACHE: AnyTable
-declare function SYS_GetParam(_type: number, section: string, param: string, def_val: any): any
+declare function SYS_GetParam(_type: number, section: string, param: string, def_val?: any): any
 declare function is_empty(table: AnyTable): boolean
 declare function is_not_empty(table: AnyTable): boolean
 declare function iempty_table(table: AnyTable): AnyTable
@@ -395,7 +472,7 @@ declare function k2t_table(table: AnyTable): void
 /** @deprecated unused */
 declare function print_table(table: AnyTable): void
 declare function store_table(table: AnyTable, subs?: string): void
-declare function spairs(table: AnyTable, order?: (table: AnyTable, a: any, b: any) => any): () => any
+declare function spairs<K extends string | number, V>(table: Record<K, V>, order?: (table: Record<K, V>, a: K, b: K) => boolean): LuaIterable<LuaMultiReturn<[K, V]>>
 declare const VEC_ZERO: vector
 declare const VEC_X: vector
 declare const VEC_Y: vector
@@ -466,7 +543,9 @@ declare const _ALIFE_WARNING: number
 declare const _ALIFE_CACHE: AnyTable
 declare const _ALIFE_CACHE_RECORD: boolean
 declare const _ALIFE_UNREGISTER: AnyTable
-declare function alife_object(id: number): CseAbstract | null
+declare function alife_object(id: number): CseAlifeDynamicObject | null
+declare function alife_object(id: number, no_assert: boolean): CseAlifeDynamicObject | null
+declare function alife_object(name: string): CseAlifeDynamicObject | null
 /**
  * @param state if register (spawn) created item, defaults to `true`. Item can be modified and spawned later using `new alife().register(se_obj)`
  */
@@ -499,7 +578,7 @@ declare function alife_process_item(
     uses: number
   }>
 ): void
-declare function alife_release(se_obj: CseAbstract, msg?: string): void
+declare function alife_release(se_obj: CseAbstract | CGameObject, msg?: string): void
 declare function alife_release_id(id: number, msg?: string): void
 declare function alife_clone_weapon(se_obj: CseAbstract, section: string, parent_id: number): CseAbstract | void
 declare function alife_character_community(se_obj: CseAbstract): Community | void
@@ -522,7 +601,7 @@ declare function set_actor_true_community(comm: Community, now: boolean): void
 declare function get_object_squad(obj: CGameObject): CseAlifeOnlineOfflineGroup | null
 declare function set_inactivate_input_time(delta_time: number): void
 declare function npc_in_actor_frustrum(npc: CGameObject): boolean
-declare function change_team_squad_group(se_obj: CseAbstract, team: TODO, squad: TODO, group: TODO): void
+declare function change_team_squad_group(se_obj: CseAbstract, team: number, squad: number, group: number): void
 declare function get_speaker(safe: boolean, all: boolean): CGameObject
 declare function distance_between(obj_1: CGameObject, obj_2: CGameObject): number
 declare function has_alife_info(info_portion: string): boolean
@@ -538,8 +617,8 @@ declare function save_var(obj: CGameObject | null, var_name: string, val?: boole
 declare function load_var(obj: CGameObject | null, var_name: string, def_val?: boolean | string | number | null): any
 declare function save_ctime(obj: CGameObject | null, var_name: string, val: boolean | string | number): void
 declare function load_ctime(obj: CGameObject | null, var_name: string): any
-declare function se_save_var(id: string, name: string, varname: string, val: any): void
-declare function se_load_var(id: string, name: string, varname: string): any
+declare function se_save_var(id: number, name: string, varname: string, val: any): void
+declare function se_load_var(id: number, name: string, varname: string): any
 //
 // story id handlers
 //
@@ -624,7 +703,7 @@ declare function IsArtefact(obj: null, clsid: number): boolean
 // items lookup table
 //
 declare const ITM: AnyTable
-declare function IsItem(_type: string, section: string, obj: CGameObject): boolean
+declare function IsItem(_type: string, section: string, obj?: CGameObject | null): boolean
 declare function GetItemList(_type: string): AnyTable
 declare function Parse_ITM(): void
 /**
@@ -644,7 +723,7 @@ declare function update_best_weapon(
 ): CGameObject | void
 declare const SIMBOARD: SIMBOARD
 declare interface SIMBOARD {
-  assign_squad_to_smart(squad: CseAlifeOnlineOfflineGroup, _0: TODO): void
+  assign_squad_to_smart(squad: CseAlifeOnlineOfflineGroup, _0: number): void
   create_squad(smart: CseAbstract, squad_id: number): CseAlifeOnlineOfflineGroup
   create_squad_at_named_location(location: string, squad_id: string): CseAlifeOnlineOfflineGroup | null
   fill_start_position(): void
@@ -662,7 +741,7 @@ declare interface SIMBOARD {
       squads: Record<number, CGameObject>
     }
   >
-  unregister_smart(smart: TODO): void
+  unregister_smart(smart: CseAbstract): void
 }
 interface MData {}
 /**
@@ -685,3 +764,81 @@ interface MData {}
  * ```
  */
 declare var m_data: MData
+
+// ---- Globals & engine callback hooks from _g.script ----
+
+/** Anomaly game version string, e.g. `"1.5.3"`. */
+declare const GAME_VERSION: string
+declare const USE_INI_MEMOIZE: boolean
+declare const DEACTIVATE_SIM_ON_NON_LINKED_LEVELS: boolean
+/** The `marshal` Lua library, present only in some builds (see {@link USE_MARSHAL}). */
+declare const marshal: AnyTable
+/** Actor id constant used across scripts. */
+declare const AC_ID: number
+/** Scratch storage for temporarily muted music/ambient volumes. */
+declare const mus_vol: number
+declare const amb_vol: number
+declare const timer_transparent: number
+/** When true, scripted GUIs may disable action keybinds while active. */
+declare const KEYS_UNLOCK: boolean
+/** Registers a new custom script-callback name (delegates to `axr_main.callback_add`). */
+declare function AddScriptCallback(name: string): void
+declare const _HUD_STATE: boolean
+/** Registered scripted GUIs, keyed by name. */
+declare const _GUIs: Record<string, { path?: string; instance?: any }>
+declare const _GUIsInstances: Record<string, any>
+declare const _GUIs_keyfree: Record<string, any>
+declare function Register_UI(name: string, path?: string, instance?: any): void
+declare const schemes: Record<string, any>
+declare const schemes_by_stype: Record<string, any>
+declare function stop_play_sound(obj: CGameObject): void
+/** Yields the current script thread for `time_to_wait` game-time ms (nil = one frame). */
+declare function wait_game(time_to_wait?: number): void
+/** Yields the current script thread for `time_to_wait` real-time ms (nil = one frame). */
+declare function wait(time_to_wait?: number): void
+declare function on_actor_critical_power(): void
+declare function on_actor_critical_max_power(): void
+declare function on_actor_bleeding(): void
+declare function on_actor_satiety(): void
+declare function on_actor_radiation(): void
+declare function on_actor_weapon_jammed(): void
+declare function on_actor_cant_walk_weight(): void
+declare function on_actor_psy(): void
+// Engine method overrides that dispatch to script callbacks (invoked by the engine).
+declare function CInventory__eat(item: CGameObject): boolean
+declare function CActor__HitArtefactsOnBelt(hit_table: AnyTable, hit_power: number, hit_type: number): AnyTable
+declare function CHudItem__OnMotionMark(state: number, mark: string): void
+declare function CHudItem__PlayHUDMotion(anm_table: AnyTable, obj: CGameObject | null): AnyTable
+declare function player_hud__OnMovementChanged(cmd: number): void
+declare function CMissile__PutNextToSlot(itm: CGameObject): CGameObject
+declare function CBulletManager__ObjectHit(section: string, obj: CGameObject, pos: vector, dir: vector, mtl: number, speed: number, wpn_id: number): void
+declare function CAI_Stalker__GetWeaponAccuracy(obj: CGameObject, wpn: CGameObject, dispersion: number, body_state: number, move_type: number): number
+declare function CActor__BeforeHitCallback(actor: CGameObject, shit: hit, bone_id: number): boolean
+declare function CAI_Stalker__BeforeHitCallback(npc: CGameObject, shit: hit, bone_id: number): boolean
+declare function CBaseMonster__BeforeHitCallback(monster: CGameObject, shit: hit, bone_id: number): boolean
+declare function CActor__FootstepCallback(material: string, power: number, hud_view: boolean): boolean
+declare function CActor_Fire(): boolean
+declare function CCustomZone_BeforeActivateCallback(zone: CGameObject, obj: CGameObject): boolean
+declare function CBurer_BeforeWeaponDropCallback(monster: CGameObject, wpn: CGameObject): boolean
+declare function CBolt__State(id: number): boolean
+declare function CZone_Touch(obj: CGameObject): boolean
+declare function CHUDManager_OnScreenResolutionChanged(): void
+declare function CActor_on_jump(): void
+declare function CActor_on_land(landing_speed: number): void
+declare function CALifeUpdateManager__on_before_change_level(packet: net_packet): void
+declare function run_dynamic_element(folder: CUIWindow, close_inv?: boolean): void
+declare function give_object_to_actor(sec: string, count?: number): void
+/** Movement-command bit masks, keyed by name (`mcFwd`, `mcBack`, …). */
+declare const actor_move_states: Record<string, number>
+declare function clear_ini_cache(ini: string): void
+declare function vec_set(vec: vector): vector
+/** Inventory slots scanned for cosmetics/upgrades, keyed by slot id. */
+declare const SCANNED_SLOTS: Record<number, boolean>
+/** Squad behaviour names that mark a squad as a monster squad. */
+declare const is_squad_monster: Record<string, boolean>
+/** Maps squad behaviour name to its community. */
+declare const squad_community_by_behaviour: Record<string, string>
+declare function get_object_by_id(id: number): CGameObject | undefined
+declare function distance_between_safe(obj1: CGameObject, obj2: CGameObject): number
+declare const _EVENT: Record<string, any>
+declare const _ITM: AnyTable

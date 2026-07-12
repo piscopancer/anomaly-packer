@@ -20,7 +20,7 @@ declare class CExplosive {
 }
 
 /** Drivable car. Obtained via `game_object:get_car()`. */
-declare class CCar extends CGameObject {
+declare class CCar extends CGameObjectBase implements CHolderCustom {
   Action(id: number, flags: number): void
   SetParam(id: number, value: vector): void
   /** Whether the mounted weapon can hit its target */
@@ -73,9 +73,9 @@ declare class physics_shell {
   get_element_by_bone_id(bone_id: number): physics_element
   get_element_by_order(order: number): physics_element
   get_elements_number(): number
-  get_joint_by_bone_name(bone_name: string): TODO
-  get_joint_by_bone_id(bone_id: number): TODO
-  get_joint_by_order(order: number): TODO
+  get_joint_by_bone_name(bone_name: string): physics_joint
+  get_joint_by_bone_id(bone_id: number): physics_joint
+  get_joint_by_order(order: number): physics_joint
   get_joints_number(): number
   block_breaking(): void
   unblock_breaking(): void
@@ -100,6 +100,33 @@ declare class physics_element {
   release_fixed(): void
   is_fixed(): boolean
   global_transform(): matrix
+}
+
+/** A single physics joint (constraint between two {@link physics_element}s) of a {@link physics_shell}. */
+declare class physics_joint {
+  get_bone_id(): number
+  get_first_element(): physics_element
+  get_stcond_element(): physics_element
+  set_anchor_global(x: number, y: number, z: number): void
+  set_anchor_vs_first_element(x: number, y: number, z: number): void
+  set_anchor_vs_second_element(x: number, y: number, z: number): void
+  get_axes_number(): number
+  set_axis_spring_dumping_factors(spring_factor: number, damping_factor: number, axis_num: number): void
+  set_joint_spring_dumping_factors(spring_factor: number, damping_factor: number): void
+  set_axis_dir_global(x: number, y: number, z: number, axis_num: number): void
+  set_axis_dir_vs_first_element(x: number, y: number, z: number, axis_num: number): void
+  set_axis_dir_vs_second_element(x: number, y: number, z: number, axis_num: number): void
+  set_limits(low: number, high: number, axis_num: number): void
+  set_max_force_and_velocity(force: number, velocity?: number, axis_num?: number): void
+  get_max_force_and_velocity(force: number, velocity: number, axis_num: number): void
+  get_axis_angle(axis_num: number): number
+  /** Fills `lo_limit`, `hi_limit` (out params) and returns them as a multi-return. */
+  get_limits(lo_limit: number, hi_limit: number, axis_num: number): LuaMultiReturn<[lo: number, hi: number]>
+  /** Writes the axis direction into `axis` (mutated in place). */
+  get_axis_dir(num: number, axis: vector): void
+  /** Writes the anchor into `anchor` (mutated in place). */
+  get_anchor(anchor: vector): void
+  is_breakable(): boolean
 }
 
 //#endregion

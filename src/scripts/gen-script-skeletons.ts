@@ -26,6 +26,63 @@ const MARKER = '// @generated skeleton — auto-produced from Lua scripts, refin
 const TS_RESERVED = new Set(['function', 'var', 'let', 'const', 'class', 'return', 'default', 'new', 'delete', 'in', 'of', 'typeof', 'void', 'this', 'super', 'null', 'true', 'false', 'enum', 'export', 'import', 'extends', 'implements', 'interface', 'package', 'private', 'public', 'static', 'yield', 'await', 'debugger', 'with', 'switch', 'case', 'break', 'continue', 'do', 'while', 'for', 'if', 'else', 'throw', 'try', 'catch', 'finally', 'instanceof'])
 const LUA_KEYWORDS = new Set(['if', 'for', 'while', 'return', 'local', 'end', 'else', 'elseif', 'do', 'then', 'repeat', 'until', 'function', 'and', 'or', 'not', 'in', 'break', 'goto'])
 
+/**
+ * Blanks Lua comments and long-bracket strings so the parser never mistakes their
+ * contents for code. Handles `-- line`, `--[[ block ]]`, `[[ long string ]]` and
+ * their `[=[ ]=]` level variants across lines, and skips `--` inside quoted
+ * strings. Without this, `.ltx` text inside `[[ ]]` blocks leaks in as phantom
+ * members and trailing `--( … )` comments leak in as phantom parameters.
+ */
+function stripLua(lines: string[]): string[] {
+  const out: string[] = []
+  let close: string | null = null
+  for (const raw of lines) {
+    let line = raw
+    if (close !== null) {
+      const idx = line.indexOf(close)
+      if (idx === -1) { out.push(''); continue }
+      line = ' '.repeat(idx + close.length) + line.slice(idx + close.length)
+      close = null
+    }
+    let res = ''
+    let i = 0
+    while (i < line.length) {
+      if (line.slice(i, i + 2) === '--') {
+        const m = line.slice(i + 2).match(/^\[(=*)\[/)
+        if (m) {
+          const cl = ']' + m[1] + ']'
+          const rest = line.slice(i + 2 + m[0].length)
+          const j = rest.indexOf(cl)
+          if (j === -1) { close = cl; line = ''; break }
+          line = rest.slice(j + cl.length); i = 0; continue
+        }
+        break // line comment
+      }
+      const m = line.slice(i).match(/^\[(=*)\[/)
+      if (m) {
+        const cl = ']' + m[1] + ']'
+        const rest = line.slice(i + m[0].length)
+        const j = rest.indexOf(cl)
+        if (j === -1) { close = cl; line = ''; break }
+        line = rest.slice(j + cl.length); i = 0; continue
+      }
+      const c = line[i]
+      if (c === '"' || c === "'") {
+        res += c; i++
+        while (i < line.length && line[i] !== c) {
+          if (line[i] === '\\') { res += line[i]; i++ }
+          if (i < line.length) { res += line[i]; i++ }
+        }
+        if (i < line.length) { res += line[i]; i++ }
+        continue
+      }
+      res += c; i++
+    }
+    out.push(res)
+  }
+  return out
+}
+
 type ClassMethod = { name: string; params: string; static: boolean }
 type LuaClass = { base: string | null; methods: Map<string, ClassMethod>; file: string | null }
 type FileMembers = { funcs: Map<string, string>; vars: Set<string> }
@@ -78,7 +135,7 @@ function ensureClass(name: string): LuaClass {
 // ---- Pass 1: collect namespace members (per file) and Lua classes (global) ----
 for (const file of files) {
   const ns = basename(file, '.script')
-  const lines = readFileSync(join(SCRIPTS_DIR, file), 'latin1').split(/\r?\n/)
+  const lines = stripLua(readFileSync(join(SCRIPTS_DIR, file), 'latin1').split(/\r?\n/))
   const funcs = new Map<string, string>()
   const vars = new Set<string>()
 

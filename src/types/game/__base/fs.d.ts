@@ -29,10 +29,8 @@ declare class getFS {
   path_exist(path: string): boolean
   /** Resolve `src` under the path alias `initial` (e.g. `$game_config$`) into a full path string */
   update_path(initial: string, src: string): string
-  /** `FS_Path` — not modelled */
-  get_path(path: string): TODO
-  /** `FS_Path` — not modelled */
-  append_path(path_alias: string, root: string, add: string, recursive: boolean): TODO
+  get_path(path: string): FS_Path
+  append_path(path_alias: string, root: string, add: string, recursive: boolean): FS_Path
   rescan_path(initial: string): void
   rescan_pathes(): void
   file_delete(path: string, nm: string): void
@@ -49,15 +47,29 @@ declare class getFS {
   r_open(path: string, nm: string): reader | null
   r_open(nm: string): reader | null
   r_close(file: reader): void
-  /** `IWriter` — not modelled */
-  w_open(path: string, nm: string): TODO
-  /** `IWriter` — not modelled */
-  w_open(nm: string): TODO
-  /** @param writer `IWriter` */
-  w_close(writer: TODO): void
+  w_open(path: string, nm: string): IWriter
+  w_open(nm: string): IWriter
+  w_close(writer: IWriter): void
   file_list_open(initial: string, folder: string, flags: number): FS_file_list
   file_list_open(initial: string, flags: number): FS_file_list
   file_list_open_ex(path: string, flags: number, mask: string): FS_file_list_ex
+}
+
+/**
+ * A registered file-system path (`FS_Path`), returned by {@link getFS.get_path} /
+ * {@link getFS.append_path}. Its luabind registration is commented out in the engine,
+ * so it exposes no members from script.
+ */
+declare class FS_Path {
+  private constructor()
+}
+
+/**
+ * Writable file stream (`IWriter`), returned by {@link getFS.w_open} and released by
+ * {@link getFS.w_close}. Not registered with luabind, so it exposes no members from script.
+ */
+declare class IWriter {
+  private constructor()
 }
 
 /** A single entry of `CLocatorAPI` (luabind class `fs_file`) */

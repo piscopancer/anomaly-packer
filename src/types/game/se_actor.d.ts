@@ -11,7 +11,7 @@ declare class se_actor extends cse_alife_creature_actor {
   am_i_reached(squad: TODO): boolean
   on_after_reach(squad: TODO): void
   on_reach_target(squad: TODO): void
-  get_alife_task(): TODO
+  get_alife_task(): CALifeSmartTerrainTask
   sim_available(): boolean
   target_precondition(squad: TODO): boolean
   evaluate_prior(squad: TODO): number

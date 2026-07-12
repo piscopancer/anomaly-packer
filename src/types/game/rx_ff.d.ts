@@ -1,18 +1,18 @@
 /** @noSelfInFile */
 
 declare namespace rx_ff {
-  export const actid: TODO
+  export const actid: number
   export const evaid: number
-  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, st: TODO, temp: TODO): void
-  export function configure_actions(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void
-  export function disable_generic_scheme(npc: TODO, scheme: TODO, stype: TODO): void
-  export function npc_add_precondition(action: TODO): void
-  export function setup_generic_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, stype: TODO, temp: TODO): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, st: AnyTable, temp?: AnyTable): void
+  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function disable_generic_scheme(npc: CGameObject, scheme: string, stype: number): void
+  export function npc_add_precondition(action: any): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
 }
 
 /** @customConstructor action_verso */
 declare class action_verso extends action_base {
-  constructor(npc: TODO, name: TODO, storage: TODO)
+  constructor(npc: CGameObject, name: string, storage: AnyTable)
   initialize(): void
   execute(): void
   finalize(): void
@@ -20,8 +20,8 @@ declare class action_verso extends action_base {
 
 /** @customConstructor evaluator_dont_shoot */
 declare class evaluator_dont_shoot extends property_evaluator {
-  constructor(npc: TODO, name: TODO, storage: TODO)
-  check_in_los(friend: TODO, be: TODO, be_pos: TODO): boolean
+  constructor(npc: CGameObject, name: string, storage: AnyTable)
+  check_in_los(friend: CGameObject, be: CGameObject, be_pos: vector): boolean
   check_all_in_los(): boolean
   evaluate(): boolean
 }

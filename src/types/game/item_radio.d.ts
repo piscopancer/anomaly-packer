@@ -1,23 +1,23 @@
 /** @noSelfInFile */
 
 declare namespace item_radio {
-  export const RF_stashes: TODO
-  export const RF_targets: TODO
-  export function add_stash(lvl: TODO, id: TODO, freq: TODO): void
-  export function add_target(id: TODO, freq: TODO, dist: TODO): void
-  export function change_freq(num: TODO): void
-  export function clear_stash(lvl: TODO, id: TODO): void
-  export function clear_target(id: TODO): void
-  export function create_rf_table(id: TODO, cls: TODO, dist_pos: TODO, freq: TODO, dist: TODO, snd: TODO): TODO
-  export function get_freq(): TODO
-  export function get_random_freq(): TODO
-  export function get_UI(): TODO
-  export function get_vol_range(freq: TODO): TODO
-  export function is_in_range(freq: TODO): boolean
+  export const RF_stashes: AnyTable
+  export const RF_targets: AnyTable
+  export function add_stash(lvl: string, id: number, freq: number): void
+  export function add_target(id: number, freq: number, dist: number): void
+  export function change_freq(num: number): void
+  export function clear_stash(lvl: string, id: number): void
+  export function clear_target(id: number): void
+  export function create_rf_table(id: number, cls: number, dist_pos: vector, freq: number, dist: number, snd: any): AnyTable
+  export function get_freq(): number
+  export function get_random_freq(): number
+  export function get_UI(): UI3D_RF
+  export function get_vol_range(freq: number): number
+  export function is_in_range(freq: number): boolean
   export function on_game_start(): void
-  export function print_dbg(fmt: TODO, ...args: TODO[]): void
+  export function print_dbg(fmt: string, ...args: any[]): void
   export function scan_online_sources(): void
-  export function sound_trigger(state: TODO): void
+  export function sound_trigger(state: boolean): void
   export function validate_RF_targets(): void
 }
 

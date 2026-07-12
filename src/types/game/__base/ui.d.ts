@@ -226,6 +226,12 @@ declare const enum VerticalTextAlignment {
   Bottom = 2,
 }
 declare class CGameFont {}
+/** Horizontal alignment constants of the `CGameFont` luabind class (`EAligment`). */
+declare const CGameFont: {
+  readonly alLeft: 1
+  readonly alRight: 2
+  readonly alCenter: 16
+}
 declare class CUILines {
   SetFont(font: CGameFont): void
   SetText(text: string): void
@@ -624,7 +630,8 @@ declare class SServerFilters {
 }
 declare class connect_error_cb {
   constructor()
-  bind(object: TODO, fn: TODO): void
+  /** Bind a Lua handler; it is invoked as `fn(object, error, text)` on a connection error. */
+  bind(object: any, fn: (this: void, error: number, text: string) => void): void
   clear(): void
 }
 declare class CServerList extends CUIWindow {
@@ -637,7 +644,12 @@ declare class CServerList extends CUIWindow {
   RefreshQuick(): void
   ShowServerInfo(): void
   NetRadioChanged(net: boolean): void
-  SetSortFunc(func: TODO): void
+  SetSortFunc(func_name: string, make_sort: boolean): void
+}
+/** Connection-error constants of the `CServerList` luabind class. */
+declare const CServerList: {
+  readonly ece_unique_nick_not_registred: 1
+  readonly ece_unique_nick_expired: 2
 }
 declare class CUIMapList extends CUIWindow {
   constructor()
@@ -659,4 +671,10 @@ declare class CUIMMShniaga extends CUIWindow {
   SetVisibleMagnifier(visible: boolean): void
   SetPage(page: number): void
   ShowPage(page: number): void
+}
+/** Page-id constants of the `CUIMMShniaga` luabind class (`EPageIds`). */
+declare const CUIMMShniaga: {
+  readonly epi_main: 0
+  readonly epi_new_game: 1
+  readonly epi_new_network_game: 2
 }

@@ -20,8 +20,7 @@ declare class system_ini {
   line_count(section: string): number
   r_clsid(section: string, line: string): number
   r_bool(section: string, line: string): boolean
-  /** @param token_list `CScriptTokenList` */
-  r_token(section: string, line: string, token_list: TODO): number
+  r_token(section: string, line: string, token_list: token_list): number
   /** `r_string` without trimming trailing whitespace */
   r_string_wq(section: string, line: string): string
   r_string(section: string, line: string): string
@@ -37,13 +36,11 @@ declare class system_ini {
   w_bool(section: string, line: string, value: boolean, comment?: string): void
   /** @param value packed `u32` color */
   w_color(section: string, line: string, value: number, comment?: string): void
-  /** @param value `Fcolor` */
-  w_fcolor(section: string, line: string, value: TODO, comment?: string): void
+  w_fcolor(section: string, line: string, value: fcolor, comment?: string): void
   w_float(section: string, line: string, value: number, comment?: string): void
   w_fvector2(section: string, line: string, value: vector2, comment?: string): void
   w_fvector3(section: string, line: string, value: vector, comment?: string): void
-  /** @param value `Fvector4` */
-  w_fvector4(section: string, line: string, value: TODO, comment?: string): void
+  w_fvector4(section: string, line: string, value: vector4, comment?: string): void
   w_s8(section: string, line: string, value: number, comment?: string): void
   w_s16(section: string, line: string, value: number, comment?: string): void
   w_s32(section: string, line: string, value: number, comment?: string): void
@@ -67,8 +64,31 @@ declare class system_ini {
   r_string_ex(section: string, prop: string): string | null
   r_bool_ex(section: string, prop: string): boolean | null
   r_float_ex(section: string, prop: string): number | null
-  r_string_to_condlist(section: string, key: string, def_val?: any): Record<TODO, TODO> | null
-  r_list(section: string, key: string, def_val?: any): string[] | null
-  r_line_ex(section: string, key_or_index: string | number, def_val?: any): LuaMultiReturn<[result: TODO | null, id: string | null, value: string | null]>
-  r_mult(section: string, key: string, ...args: any[]): TODO
+  /** Parses the value with `xr_logic.parse_condlist` into a condlist (array of condition entries). */
+  r_string_to_condlist(section: string, key: string, def_val?: string): any[] | null
+  r_list(section: string, key: string, def_val?: string): string[] | null
+  /** Wraps `r_line`, returning `(exists, id, value)`. */
+  r_line_ex(section: string, key_or_index: string | number): LuaMultiReturn<[exists: boolean, id: string, value: string]>
+  /** Splits the value with `parse_names` and returns each name; falls back to `args` when unset. */
+  r_mult(section: string, key: string, ...args: any[]): LuaMultiReturn<any[]>
+}
+
+/** A single `(name, id)` token entry (luabind class `token`). */
+declare class token {
+  constructor()
+  name: string
+  id: number
+}
+/**
+ * Editable list of `(name, id)` tokens (luabind class `token_list`, C++ `CScriptTokenList`),
+ * passed to {@link system_ini.r_token}.
+ * @customConstructor token_list
+ */
+declare class token_list {
+  constructor()
+  add(name: string, id: number): void
+  remove(name: string): void
+  clear(): void
+  id(name: string): number
+  name(id: number): string
 }
