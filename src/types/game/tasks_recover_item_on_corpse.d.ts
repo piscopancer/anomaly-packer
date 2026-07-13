@@ -24,8 +24,8 @@ declare namespace tasks_recover_item_on_corpse {
   export function same_level_se(se1: CseAbstract, se2: CseAbstract): boolean
   export function save_state(m: AnyTable): void
   export function section_from_critter_category(x: string): string
-  export function spawn_on_id(section: string, target_id: number): CseAbstract | undefined
-  export function spawn_on_id_position(section: string, target_id: number): CseAbstract | undefined
+  export function spawn_on_id(section: Section, target_id: number): CseAbstract | undefined
+  export function spawn_on_id_position(section: Section, target_id: number): CseAbstract | undefined
   export function split(str: string): string[]
   export function split_and_pick(str: string): string
   export function split_tonumber(str: string): number[]

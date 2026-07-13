@@ -2,7 +2,7 @@
 
 /** @customConstructor se_monster */
 declare class se_monster extends cse_alife_monster_base {
-  constructor(section: string)
+  constructor(section: Section)
   can_switch_offline(): boolean
   can_switch_online(): boolean
   switch_online(): void

@@ -2,7 +2,7 @@
 
 /** @customConstructor se_car */
 declare class se_car extends cse_alife_car {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   on_unregister(): void
   can_switch_offline(): boolean

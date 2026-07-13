@@ -3,11 +3,11 @@
 declare namespace mob_trade {
   export function ActorMenu_on_trade_closed(): void
   export function ActorMenu_on_trade_started(): void
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, st: AnyTable, temp: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, st: AnyTable, temp: AnyTable): void
   export function disable_generic_scheme(npc: CGameObject, scheme: string, stype: number): void
   export function GetTalkingNpc(): CGameObject
   export function on_game_start(): void
-  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp: AnyTable): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp: AnyTable): void
 }
 
 /** @customConstructor mob_trade */

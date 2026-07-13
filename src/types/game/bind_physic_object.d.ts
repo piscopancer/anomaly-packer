@@ -7,7 +7,7 @@ declare namespace bind_physic_object {
 /** @customConstructor generic_physics_binder */
 declare class generic_physics_binder extends object_binder {
   constructor(obj: CGameObject)
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   update(delta: number): void
   net_spawn(se_abstract: CseAbstract): boolean

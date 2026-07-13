@@ -1,8 +1,8 @@
 /** @noSelfInFile */
 
 declare namespace mob_trader {
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
-  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section): void
 }
 
 /** @customConstructor mob_trader */

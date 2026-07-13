@@ -22,7 +22,7 @@ declare namespace ui_debug_item {
   export function on_key_release(key: number): void
   export function print_dbg(...args: unknown[]): void
   export function reset_anim(anim_state: string): boolean
-  export function start(owner: CUIScriptWnd | undefined, object: CGameObject, section: string, item_type: string, item_kinds: Record<string, boolean>): void
+  export function start(owner: CUIScriptWnd | undefined, object: CGameObject, section: Section, item_type: string, item_kinds: Record<string, boolean>): void
   export function start_artfact(owner?: CUIScriptWnd): void
   export function start_outfit(owner?: CUIScriptWnd): void
   export function start_weapon(owner?: CUIScriptWnd): void
@@ -30,7 +30,7 @@ declare namespace ui_debug_item {
 
 /** @customConstructor UIItemEditor */
 declare class UIItemEditor extends CUIScriptWnd {
-  constructor(owner: CUIScriptWnd | undefined, object: CGameObject, section: string, item_type: string, item_kinds: Record<string, boolean>)
+  constructor(owner: CUIScriptWnd | undefined, object: CGameObject, section: Section, item_type: string, item_kinds: Record<string, boolean>)
   __finalize(): void
   InitControls(): void
   InitCallbacks(): void
@@ -142,8 +142,8 @@ declare class UIItemEditor extends CUIScriptWnd {
 /** @customConstructor list_element */
 declare class list_element extends CUIListBoxItem {
   // shared global name with distinct constructors across ui_debug_item / ui_debug_launcher / ui_workshop
-  constructor(section: string, width: number)
-  constructor(section: string, width: number)
-  constructor(section: string, width: number)
+  constructor(section: Section, width: number)
+  constructor(section: Section, width: number)
+  constructor(section: Section, width: number)
   __finalize(): void
 }

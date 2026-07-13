@@ -16,18 +16,18 @@ declare namespace xr_effects {
   export function make_actor_visible_to_npc(actor: CGameObject, npc: CGameObject): void
   export function remove_squad(actor: CGameObject, npc: CGameObject, squad_story_id: string): void
   export function reward_random_money(actor: CGameObject, npc: CGameObject, min: number | string, max: number | string): void
-  export function reward_random_item(actor: CGameObject, npc: CGameObject, ...sections: Item[]): void
+  export function reward_random_item(actor: CGameObject, npc: CGameObject, ...sections: Section[]): void
   export function reward_stash(actor: CGameObject, npc: CGameObject, random: boolean): void
-  export function reward_item(actor: CGameObject, npc: CGameObject, section: Item): void
+  export function reward_item(actor: CGameObject, npc: CGameObject, section: Section): void
   export function reward_item_cost_mult_and_remove(
     actor: CGameObject,
     npc: CGameObject,
-    section: Item,
+    section: Section,
     cost_mult?: string | number,
     remove_items?: number | string
   ): void
-  export function remove_item(actor: CGameObject, npc: CGameObject, section: Item, count: number | string): void
-  export function spawn_item_to_npc(actor: CGameObject, npc: CGameObject, section: Item): void
+  export function remove_item(actor: CGameObject, npc: CGameObject, section: Section, count: number | string): void
+  export function spawn_item_to_npc(actor: CGameObject, npc: CGameObject, section: Section): void
   export function show_csky_squads_on_map(actor: CGameObject, npc: CGameObject): void
   export function start_surge(actor: CGameObject, npc: CGameObject): void
   export function stop_surge(actor: CGameObject, npc: CGameObject): void

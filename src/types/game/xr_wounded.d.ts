@@ -1,18 +1,18 @@
 /** @noSelfInFile */
 
 declare namespace xr_wounded {
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, st: AnyTable, temp?: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, st: AnyTable, temp?: AnyTable): void
   export function as_play_sound(actor: CGameObject, obj: CGameObject, p: AnyTable): void
   export function as_self_explode(actor: CGameObject, obj: CGameObject): void
-  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp?: AnyTable): void
   export function eat_medkit(npc: CGameObject): void
   export function hit_callback(npc_id: number): void
-  export function init_wounded(npc: CGameObject, ini: system_ini, section: string, st: AnyTable, scheme: string): void
+  export function init_wounded(npc: CGameObject, ini: system_ini, section: Section, st: AnyTable, scheme: string): void
   export function is_heavy_wounded_by_id(npc_id: number): boolean
   export function is_psy_wounded_by_id(npc_id: number): boolean
   export function is_wounded(npc: CGameObject): boolean
-  export function reset_generic_scheme(npc: CGameObject, scheme: string, section: string, stype: number, st: AnyTable): void
-  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function reset_generic_scheme(npc: CGameObject, scheme: string, section: Section, stype: number, st: AnyTable): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp?: AnyTable): void
   export function unlock_medkit(npc: CGameObject): void
 }
 

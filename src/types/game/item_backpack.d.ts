@@ -5,7 +5,7 @@ declare namespace item_backpack {
   export function actor_on_item_take_from_box(box: CGameObject, obj: CGameObject): void
   export function actor_on_item_use(obj: CGameObject): boolean
   export function func_stash(obj: CGameObject): void
-  export function is_ammo_for_wpn(sec: string): boolean
+  export function is_ammo_for_wpn(sec: Section): boolean
   export function is_in_slot(obj: CGameObject): boolean
   export function menu_stash(obj: CGameObject): string | undefined
   export function on_game_start(): void

@@ -5,7 +5,7 @@ declare namespace heli_alife_warfare {
   export const helicopters: AnyTable
   export const printd: (...args: any[]) => void
   export function blargh(): void
-  export function create_heli_weak(faction: string, targetID: number, smart: se_smart_terrain, pos: vector): CseAbstract
+  export function create_heli_weak(faction: Community, targetID: number, smart: se_smart_terrain, pos: vector): CseAbstract
   export function force_target_destination(id: number, target_id: number): void
   export function get_heli_info(se_obj: CseAbstract): AnyTable
   export function hide(se_obj: CseAbstract): void

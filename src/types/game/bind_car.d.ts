@@ -7,7 +7,7 @@ declare namespace bind_car {
 /** @customConstructor car_binder */
 declare class car_binder extends object_binder {
   constructor(obj: CGameObject)
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   update(delta: number): void
   net_spawn(se_abstract: CseAbstract): boolean

@@ -11,7 +11,7 @@ declare namespace bind_heli {
 /** @customConstructor heli_binder */
 declare class heli_binder extends object_binder {
   constructor(obj: CGameObject)
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   update(delta: number): void
   net_spawn(se_abstract: CseAbstract): boolean

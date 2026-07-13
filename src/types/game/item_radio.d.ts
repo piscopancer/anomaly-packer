@@ -3,10 +3,10 @@
 declare namespace item_radio {
   export const RF_stashes: AnyTable
   export const RF_targets: AnyTable
-  export function add_stash(lvl: string, id: number, freq: number): void
+  export function add_stash(lvl: LevelName, id: number, freq: number): void
   export function add_target(id: number, freq: number, dist: number): void
   export function change_freq(num: number): void
-  export function clear_stash(lvl: string, id: number): void
+  export function clear_stash(lvl: LevelName, id: number): void
   export function clear_target(id: number): void
   export function create_rf_table(id: number, cls: number, dist_pos: vector, freq: number, dist: number, snd: any): AnyTable
   export function get_freq(): number

@@ -11,7 +11,7 @@ declare namespace item_parts {
   export function func_disassembly(obj: CGameObject, obj_d: CGameObject): boolean
   export function get_parts_con(obj: CGameObject, id: number, evaluate: boolean): any
   export function get_suitable_dtool(obj: CGameObject): CGameObject
-  export function get_suitable_part_con(sec: string, con: number): number
+  export function get_suitable_part_con(sec: Section, con: number): number
   export function init_settings(): void
   export function is_suitable_dtool(obj: CGameObject, obj_d: CGameObject): boolean
   export function menu_disassembly(obj: CGameObject): void

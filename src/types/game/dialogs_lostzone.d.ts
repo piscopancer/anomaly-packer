@@ -100,5 +100,5 @@ declare namespace dialogs_lostzone {
   export function unlock_routes_north(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function unlock_routes_south(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function unlock_routes_underpass(first_speaker: CGameObject, second_speaker: CGameObject): void
-  export function update_lttz_faction_info(old_faction: string, new_faction: string): void
+  export function update_lttz_faction_info(old_faction: Community, new_faction: Community): void
 }

@@ -2,7 +2,7 @@
 
 declare namespace ui_mutant_loot {
   export const GUI: AnyTable
-  export function loot_mutant(section: string, clsid: number, loot_table: AnyTable, npc: CGameObject, dont_create: boolean, victim: CGameObject): void
+  export function loot_mutant(section: Section, clsid: number, loot_table: AnyTable, npc: CGameObject, dont_create: boolean, victim: CGameObject): void
   export function monster_on_loot_init(obj: CGameObject, t: AnyTable): void
   export function on_game_start(): void
   export function start(obj: CGameObject, for_bug1: AnyTable, for_bug2: AnyTable): void

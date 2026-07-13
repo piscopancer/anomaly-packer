@@ -1,11 +1,11 @@
 /** @noSelfInFile */
 
 declare namespace ph_car {
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
   export function angle_xz(npc: CGameObject, target_pos: vector): number
   export function get_katet(npc: CGameObject, target_pos: vector): number
   export function printf(): void
-  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, gulag_name: string): void
 }
 
 /** @customConstructor action_car */

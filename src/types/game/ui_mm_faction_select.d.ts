@@ -14,7 +14,7 @@ declare class UINewGame extends CUIScriptWnd {
   PopupFaction_Controls(): void
   PopupFaction_Callbacks(): void
   PopupFaction_Show(state: string): void
-  OnFactionSelect(faction: string): void
+  OnFactionSelect(faction: Community): void
   OnFaction_stalker(): void
   OnFaction_bandit(): void
   OnFaction_csky(): void
@@ -82,7 +82,7 @@ declare class UINewGame extends CUIScriptWnd {
   OnIcon_48(): void
   OnIcon_49(): void
   OnIcon_50(): void
-  LoadFaction(rand: boolean, faction: string): void
+  LoadFaction(rand: boolean, faction: Community): void
   LoadIcon(rand: boolean): void
   LoadMap(rand: boolean): void
   LoadLoadout(rand: boolean): void
@@ -105,7 +105,7 @@ declare class UINewGame extends CUIScriptWnd {
   OnCheckSetWarfare(): void
   OnCheckSetSurvival(): void
   OnCheckResetList(): void
-  UpdateAll(rand: boolean, faction: string): void
+  UpdateAll(rand: boolean, faction: Community): void
   UpdateFaction(): void
   UpdateIcon(): void
   UpdateMap(): void

@@ -106,7 +106,7 @@ declare class UIDebug_FactionSwitch extends CUIScriptWnd {
   __finalize(): void
   InitControls(): void
   Reset(for_target?: boolean): void
-  OnButton_Faction(faction: string): void
+  OnButton_Faction(faction: Community): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
 }
@@ -120,7 +120,7 @@ declare class UIDebug_ItemSpawn extends CUIScriptWnd {
   Setup(): void
   Reset(): void
   InitItems(index: number): void
-  Spawn(section: string): void
+  Spawn(section: Section): void
   Update(): void
   SetMsg(text: string, mark?: string, tmr?: number): void
   OnButton_Name(): void
@@ -142,7 +142,7 @@ declare class UIDebug_ObjSpawn extends CUIScriptWnd {
   Setup(): void
   Reset(): void
   InitObjects(index: number): void
-  Spawn(section: string): void
+  Spawn(section: Section): void
   Update(): void
   SetMsg(text: string, mark?: string, tmr?: number): void
   OnList_ObjectType(): void

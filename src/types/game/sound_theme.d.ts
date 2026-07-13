@@ -19,7 +19,7 @@ declare namespace sound_theme {
  * @customConstructor npc_sound
  */
 declare class npc_sound {
-  constructor(snd_ini: system_ini, section: string)
+  constructor(snd_ini: system_ini, section: Section)
   reset(npc_id: number): void
   is_playing(npc_id?: number): boolean
   init_npc(npc: CGameObject): void
@@ -37,7 +37,7 @@ declare class npc_sound {
 
 /** @customConstructor actor_sound */
 declare class actor_sound {
-  constructor(snd_ini: system_ini, section: string)
+  constructor(snd_ini: system_ini, section: Section)
   callback(npc_id: number): void
   is_playing(): boolean
   play(obj_id: number, faction?: Community, point?: vector, sound?: string): boolean
@@ -54,7 +54,7 @@ declare class actor_sound {
 
 /** @customConstructor object_sound */
 declare class object_sound {
-  constructor(snd_ini: system_ini, section: string)
+  constructor(snd_ini: system_ini, section: Section)
   callback(npc_id: number): void
   is_playing(): boolean
   play(obj_id: number, faction?: Community, point?: vector, sound?: string): boolean

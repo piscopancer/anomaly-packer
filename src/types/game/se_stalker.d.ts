@@ -2,7 +2,7 @@
 
 /** @customConstructor se_stalker */
 declare class se_stalker extends cse_alife_human_stalker {
-  constructor(section: string)
+  constructor(section: Section)
   can_switch_offline(): boolean
   can_switch_online(): boolean
   switch_online(): void
@@ -19,7 +19,7 @@ declare class se_stalker extends cse_alife_human_stalker {
 
 /** @customConstructor se_trader */
 declare class se_trader extends cse_alife_trader {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   on_unregister(): void
   keep_saved_data_anyway(): boolean

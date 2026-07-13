@@ -6,14 +6,14 @@ declare namespace xr_danger {
   export const actid: number
   export const evaid: number
   export const ini: system_ini
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable, temp: AnyTable): void
-  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable, temp: AnyTable): void
+  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp: AnyTable): void
   export function get_danger_time(danger: AnyTable, npc: CGameObject): number
   export function has_danger(npc: CGameObject): boolean
   export function on_game_start(): void
-  export function reset_generic_scheme(npc: CGameObject, scheme: string, section: string, stype: number, st: AnyTable): void
+  export function reset_generic_scheme(npc: CGameObject, scheme: string, section: Section, stype: number, st: AnyTable): void
   export function set_script_danger(npc: CGameObject, time: number, who_id: number, pos: vector): void
-  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp: AnyTable): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp: AnyTable): void
 }
 
 /** @customConstructor action_danger */

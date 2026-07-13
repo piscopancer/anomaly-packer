@@ -8,7 +8,7 @@ declare namespace bind_camp {
 /** @customConstructor camp_binder */
 declare class camp_binder extends object_binder {
   constructor(obj: CGameObject, char_ini: system_ini)
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   net_spawn(se_abstract: CseAbstract): boolean
   net_destroy(): void

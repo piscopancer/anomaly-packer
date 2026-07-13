@@ -10,7 +10,7 @@ declare class heli_combat {
   is_enemy(obj: CGameObject): boolean
   set_enemy(target: CGameObject): void
   find_valid_target(): boolean
-  read_custom_data(ini: system_ini, section: string): void
+  read_custom_data(ini: system_ini, section: Section): void
   set_enemy_from_custom_data(combat_enemy: string): void
   set_combat_type(new_combat_type: number): void
   initialize(): void

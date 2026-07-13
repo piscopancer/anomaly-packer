@@ -39,11 +39,11 @@ declare namespace xr_bribe {
   export function is_enemy_to_killer(): boolean
   export function is_enemy_to_stalker(): boolean
   export function load_state(m_data: AnyTable): void
-  export function npc_on_hit_callback(comm: string): void
+  export function npc_on_hit_callback(comm: Community): void
   export function npc_on_update(obj: CGameObject): void
   export function on_game_start(): void
   export function save_state(m_data: AnyTable): void
-  export function set_bribe(faction: string, distance: number, seconds: number): void
+  export function set_bribe(faction: Community, distance: number, seconds: number): void
   export function split(txt: string): string[]
   export function take_money_10000(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function take_money_12000(first_speaker: CGameObject, second_speaker: CGameObject): void
@@ -51,6 +51,6 @@ declare namespace xr_bribe {
   export function take_money_5000(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function take_money_6000(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function take_money_8000(first_speaker: CGameObject, second_speaker: CGameObject): void
-  export function trigger_warning(comm: string): void
+  export function trigger_warning(comm: Community): void
   export function try_to_toggle(state: boolean): void
 }

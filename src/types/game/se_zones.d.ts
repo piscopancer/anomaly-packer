@@ -2,7 +2,7 @@
 
 /** @customConstructor se_restrictor */
 declare class se_restrictor extends cse_alife_space_restrictor {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   switch_online(): void
   keep_saved_data_anyway(): boolean
@@ -11,7 +11,7 @@ declare class se_restrictor extends cse_alife_space_restrictor {
 
 /** @customConstructor se_zone_anom */
 declare class se_zone_anom extends cse_anomalous_zone {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   update(): void
   STATE_Write(packet: net_packet): void
@@ -21,7 +21,7 @@ declare class se_zone_anom extends cse_anomalous_zone {
 
 /** @customConstructor se_zone_torrid */
 declare class se_zone_torrid extends cse_torrid_zone {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   update(): void
   STATE_Write(packet: net_packet): void
@@ -31,7 +31,7 @@ declare class se_zone_torrid extends cse_torrid_zone {
 
 /** @customConstructor se_zone_visual */
 declare class se_zone_visual extends cse_zone_visual {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   update(): void
   STATE_Write(packet: net_packet): void

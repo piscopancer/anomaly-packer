@@ -3,9 +3,9 @@
 declare namespace axr_beh {
   export const beh_actid: number
   export const beh_evid: number
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
   export function am_i_reached(npc: CGameObject, index: number): boolean
-  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, gulag_name: string): void
 }
 
 /** @customConstructor action_beh */

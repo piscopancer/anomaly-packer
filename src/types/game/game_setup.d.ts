@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace game_setup {
-  export function add_marker(name: string, section: string, id: number, typ: string): void
+  export function add_marker(name: string, section: Section, id: number, typ: string): void
   export function bar_medic_remove_stuff(): void
   export function darkscape_remove_physics_objects(): void
   export function freedom_medic_fix(): void

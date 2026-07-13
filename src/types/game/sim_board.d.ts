@@ -17,7 +17,7 @@ declare class simulation_board {
   unregister_smart(obj: CGameObject): void
   start_sim(): void
   stop_sim(): void
-  set_actor_community(community: string): void
+  set_actor_community(community: Community): void
   init_smart(obj: CGameObject): void
   create_squad(spawn_smart: se_smart_terrain, sq_id: number): sim_squad_scripted
   create_squad_at_named_location(loc_name: string, squad_id: number): sim_squad_scripted

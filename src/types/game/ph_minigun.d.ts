@@ -1,9 +1,9 @@
 /** @noSelfInFile */
 
 declare namespace ph_minigun {
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
   export function angle_xz(npc: CGameObject, target_pos: vector, start_direction: vector): number
-  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, gulag_name: string): void
 }
 
 /** @customConstructor action_mgun */

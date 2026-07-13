@@ -2,7 +2,7 @@
 
 /** @customConstructor se_actor */
 declare class se_actor extends cse_alife_creature_actor {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   on_unregister(): void
   STATE_Write(packet: net_packet): void

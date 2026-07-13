@@ -7,7 +7,7 @@ declare namespace ui_sleep_dialog {
   export function main(): void
   export function on_game_start(): void
   export function sleep(force: boolean): void
-  export function sleep_bag(ph_sleepbag_id: number, sec: string): void
+  export function sleep_bag(ph_sleepbag_id: number, sec: Section): void
   export function sleep_forced(hours: number): void
   export function sleep_in_zone(actor: CGameObject, npc: CGameObject): void
 }

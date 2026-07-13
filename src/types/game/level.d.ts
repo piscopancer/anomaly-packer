@@ -7,7 +7,7 @@ declare namespace level {
   /** Distance to an object at the crosshair */
   export function get_target_dist(): number
   export function get_target_element(): number
-  export function spawn_item(section: string, pos: vector, level_vertex_id: number, parent_id: number, return_item?: boolean): void
+  export function spawn_item(section: Section, pos: vector, level_vertex_id: number, parent_id: number, return_item?: boolean): void
   export function get_active_cam(): 0 | 1 | 2 | 3 | 4
   export function set_active_cam(mode: 0 | 1 | 2 | 3 | 4): void
   export function get_start_time(): Time
@@ -82,7 +82,7 @@ declare namespace level {
   export function add_pp_effector(path: string, id: number, cyclic: boolean): void
   export function set_pp_effector_factor(id: number, factor: number, factor_sp?: number): void
   export function remove_pp_effector(id: number): void
-  export function add_complex_effector(section: string, id: number): void
+  export function add_complex_effector(section: Section, id: number): void
   export function remove_complex_effector(id: number): void
   export function vertex_id(pos: vector): number
   export function game_id(): number

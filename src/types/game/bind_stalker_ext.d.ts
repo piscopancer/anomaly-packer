@@ -11,7 +11,7 @@ declare namespace bind_stalker_ext {
   export function actor_on_first_update(binder: object_binder, delta: number): void
   export function actor_on_foot_step(binder: object_binder, obj: CGameObject, power: number, b_play: boolean, b_on_ground: boolean, b_hud_view: boolean): void
   export function actor_on_hit_callback(binder: object_binder, obj: CGameObject, amount: number, local_direction: vector, who: CGameObject, bone_index: number): void
-  export function actor_on_hud_animation_end(binder: object_binder, item: CGameObject, section: string, motion: string, state: number, slot: number): void
+  export function actor_on_hud_animation_end(binder: object_binder, item: CGameObject, section: Section, motion: string, state: number, slot: number): void
   export function actor_on_info_callback(binder: object_binder, obj: CGameObject, info_id: number): void
   export function actor_on_init(binder: object_binder): void
   export function actor_on_item_before_pickup(item: CGameObject): boolean

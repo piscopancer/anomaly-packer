@@ -1,8 +1,8 @@
 /** @noSelfInFile */
 
 declare namespace ph_door {
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
-  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, gulag_name: string): void
   export function try_to_close_door(npc: CGameObject, doors: AnyTable): void
   export function try_to_open_door(npc: CGameObject, opened_doors: AnyTable): void
 }

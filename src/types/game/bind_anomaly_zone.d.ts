@@ -19,7 +19,7 @@ declare class anomaly_zone_binder extends object_binder {
   refresh(from?: any): void
   get_artefact_path(): string
   set_forced_override(artefact_name: string): void
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   net_spawn(se_abstract: CseAbstract): boolean
   net_destroy(): void

@@ -344,7 +344,7 @@ declare namespace dialogs_mlr {
   export function sell_money_to_tech_yard_guid_marsh(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function sell_money_to_yantar_guid_bar(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function sell_money_to_zaton_guid_jup(first_speaker: CGameObject, second_speaker: CGameObject): void
-  export function show_goodwill_change_message(comm: string, comm_n: string, comm_e: string, is_gain: boolean): void
+  export function show_goodwill_change_message(comm: Community, comm_n: Community, comm_e: Community, is_gain: boolean): void
   export function spawn_1_11_af_medusa_kmb(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function spawn_lx8_history_douemnts(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function spawn_povars_12_70(first_speaker: CGameObject, second_speaker: CGameObject): void

@@ -22,11 +22,11 @@ declare namespace warfare {
   export function distance_to_xz_sqr(a: vector, b: vector): number
   export function fill_start_position(): void
   export function fill_start_position_on_load(): void
-  export function get_squad_section_faction(squad_section: string): string
+  export function get_squad_section_faction(squad_section: Section): string
   export function hash_table_to_array(tbl: AnyTable): AnyTable
   export function initialize(): void
   export function initialize_random_starting_locations(): void
-  export function is_squad_section_enemy_of_faction(squad_section: string, faction: string): boolean
+  export function is_squad_section_enemy_of_faction(squad_section: Section, faction: Community): boolean
   export function is_warfare_trader(npc: CGameObject): boolean
   export function lerp(a: number, b: number, f: number): number
   export function load_state(m_data: AnyTable): void

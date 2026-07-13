@@ -4,14 +4,14 @@ declare namespace axr_turn_on_campfire {
   export const actid: number
   export const already_selected: AnyTable
   export const evaid: number
-  export function add_to_binder(npc: CGameObject, char_ini: system_ini, scheme: string, section: string, st: AnyTable, temp?: AnyTable): void
-  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function add_to_binder(npc: CGameObject, char_ini: system_ini, scheme: string, section: Section, st: AnyTable, temp?: AnyTable): void
+  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp?: AnyTable): void
   export function is_under_turn_on_campfire(npc: CGameObject): boolean
   export function light_campfire(npc: CGameObject): boolean
   export function npc_add_precondition(action: any): void
   export function on_game_start(): void
-  export function reset_generic_scheme(npc: CGameObject, scheme: string, section: string, stype: number, st: AnyTable): void
-  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function reset_generic_scheme(npc: CGameObject, scheme: string, section: Section, stype: number, st: AnyTable): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp?: AnyTable): void
 }
 
 /** @customConstructor act_turn_on_campfire */

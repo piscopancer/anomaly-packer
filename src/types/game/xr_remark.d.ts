@@ -1,9 +1,9 @@
 /** @noSelfInFile */
 
 declare namespace xr_remark {
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
   export function init_target(obj: CGameObject, target_str: string): LuaMultiReturn<[vector | undefined, number | undefined, boolean]>
-  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, gulag_name: string): void
 }
 
 /** @customConstructor action_remark_activity */

@@ -110,7 +110,7 @@ declare class CGameObject {
   story_id(): number
   position(): vector
   direction(): vector
-  section(): string
+  section(): AnySection
   /** XML name */
   profile_name(): string | null
   name(): string
@@ -197,7 +197,7 @@ declare class CGameObject {
   activate_slot(slot: number): void
   active_item(): CGameObject | null
   object_count(): number
-  object(section: string): CGameObject | null
+  object(section: Section): CGameObject | null
   inventory_for_each(iterator: (item: CGameObject, npc: CGameObject) => void): void
   team(): number
   squad(): number
@@ -208,7 +208,7 @@ declare class CGameObject {
   character_name(): string | null
   character_icon(): string
   character_community(): string
-  set_character_community(comm: string, _0: 0, _1: 0): void
+  set_character_community(comm: Community, _0: 0, _1: 0): void
   money(): number
   transfer_money(sum: number, to: CGameObject): void
   give_money(sum: number): void
@@ -284,11 +284,11 @@ declare class CGameObject {
   //
   run_talk_dialog(pToWho: CGameObject, disable_break: boolean): void
   allow_break_talk_dialog(disable_break: boolean): void
-  set_start_dialog(dialog_id: string): void
+  set_start_dialog(dialog_id: Dialog): void
   get_start_dialog(): void
   restore_default_start_dialog(): void
-  show_condition(ini_file: system_ini, section: string): void
-  buy_supplies(ini_file: system_ini, section: string): void
+  show_condition(ini_file: system_ini, section: Section): void
+  buy_supplies(ini_file: system_ini, section: Section): void
   is_trader(): boolean
   set_trader_global_anim(anim: string): void
   set_trader_head_anim(anim: string): void
@@ -341,7 +341,7 @@ declare class CGameObject {
   //
   // Info portions
   //
-  dont_has_info(info_id: string): boolean
+  dont_has_info(info_id: InfoPortion): boolean
   //
   // Deadbody & inventory owner
   //
@@ -492,7 +492,7 @@ declare class CGameObject {
   ammo_set_count(count: number): void
   ammo_box_size(): number
   weapon_addon_attach(item: CGameObject): void
-  weapon_addon_detach(item_section: string, b_spawn_item?: boolean): void
+  weapon_addon_detach(item_section: Section, b_spawn_item?: boolean): void
   weapon_in_grenade_mode(): boolean
   phantom_set_enemy(a0: CGameObject): void
   is_weapon(): boolean
@@ -516,8 +516,8 @@ declare class CGameObject {
   change_goodwill(delta_goodwill: number, pWhoToSet: CGameObject): void
   general_goodwill(pToWho: CGameObject): number
   set_relation(relation: number, pWhoToSet: CGameObject): void
-  community_goodwill(community: string): number
-  set_community_goodwill(community: string, goodwill: number): void
+  community_goodwill(community: Community): number
+  set_community_goodwill(community: Community, goodwill: number): void
   sympathy(): number
   set_sympathy(sympathy: number): void
   change_character_rank(a0: number): void
@@ -543,7 +543,7 @@ declare class CGameObject {
   //
   enable_attachable_item(value: boolean): void
   attachable_item_enabled(): boolean
-  attachable_item_load_attach(section: string): void
+  attachable_item_load_attach(section: Section): void
   //
   // Anomaly zone
   //
@@ -691,7 +691,7 @@ declare class CGameObject {
   aim_time(weapon: CGameObject, time: number): void
   apply_loophole_direction_distance(): number
   apply_loophole_direction_distance(value: number): void
-  buy_condition(ini_file: system_ini, section: string): void
+  buy_condition(ini_file: system_ini, section: Section): void
   buy_condition(friend_factor: number, enemy_factor: number): void
   can_select_weapon(): boolean
   can_select_weapon(status: boolean): void
@@ -714,7 +714,7 @@ declare class CGameObject {
   lookout_min_time(): number
   play_cycle(anim: string): void
   play_cycle(anim: string, mix_in: boolean): void
-  sell_condition(ini_file: system_ini, section: string): void
+  sell_condition(ini_file: system_ini, section: Section): void
   sell_condition(friend_factor: number, enemy_factor: number): void
   set_callback(type: number): void
   set_callback(type: number, functor: EngineCallback | null, object?: any): void

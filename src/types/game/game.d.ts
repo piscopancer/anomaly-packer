@@ -12,7 +12,7 @@ declare namespace game {
   export function get_resolutions(): string
   export function play_hud_motion(hand: string, item_name: string, anim_name: string, mixin?: boolean, speed?: number): number
   export function stop_hud_motion(): void
-  export function get_motion_length(section: string, name: string, speed: number): number
+  export function get_motion_length(section: Section, name: string, speed: number): number
   export function hud_motion_allowed(): boolean
   export function play_hud_anm(name: string, part: number, speed: number, power: number, loop: boolean, no_restart?: boolean): void
   export function stop_hud_anm(name: string, force: boolean): void

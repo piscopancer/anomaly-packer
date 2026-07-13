@@ -11,7 +11,7 @@ declare class crow_binder extends object_binder {
   constructor(obj: CGameObject)
   update(delta: number): void
   use_callback(obj: CGameObject, who: CGameObject): void
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   net_spawn(se_abstract: CseAbstract): boolean
   net_destroy(): void

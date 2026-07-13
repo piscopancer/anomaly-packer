@@ -22,8 +22,8 @@ declare namespace ui_options {
   export function func_crosshair_clr(n: string): void
   export function func_debug_hud(): void
   export function func_debug_map_hud(): void
-  export function func_economy_diff(fac: string): void
-  export function func_gameplay_diff(fac: string): void
+  export function func_economy_diff(fac: Community): void
+  export function func_gameplay_diff(fac: Community): void
   export function func_hardcore_ai_aim(): void
   export function func_hud_autohide_bar(): void
   export function func_hud_minimap(): void

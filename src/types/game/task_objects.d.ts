@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace task_objects {
-  export function get_guider(target_level: string): number | undefined
+  export function get_guider(target_level: LevelName): number | undefined
 }
 
 /** @customConstructor CGeneralTask */

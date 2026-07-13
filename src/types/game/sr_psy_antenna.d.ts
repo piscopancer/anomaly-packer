@@ -2,10 +2,10 @@
 
 declare namespace sr_psy_antenna {
   export const psy_antenna: boolean
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
   export function load(p: net_packet): void
   export function save(p: net_packet): void
-  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, gulag_name: string): void
 }
 
 /** @customConstructor PsyAntenna */

@@ -2,13 +2,13 @@
 
 declare namespace xr_abuse {
   export function add_abuse(npc: CGameObject, value: number): void
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, st: AnyTable, temp?: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, st: AnyTable, temp?: AnyTable): void
   export function clear_abuse(npc: CGameObject): void
-  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp?: AnyTable): void
   export function disable_abuse(npc: CGameObject): void
   export function enable_abuse(npc: CGameObject): void
   export function is_abuse(npc: CGameObject): boolean
-  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp?: AnyTable): void
 }
 
 /** @customConstructor CAbuseManager */

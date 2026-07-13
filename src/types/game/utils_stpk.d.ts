@@ -132,7 +132,7 @@ declare namespace utils_stpk {
   export function set_visual_zone_data(t: AnyTable, sobj: CseAbstract): void
   export function set_weapon_data(t: AnyTable, sobj: CseAbstract): void
   export function spawn_heli(): CseAbstract | null
-  export function spawn_smart_cover(anm: string, sec: string, pos: vector, lvid: number, gvid: number): CseAbstract | null
+  export function spawn_smart_cover(anm: string, sec: Section, pos: vector, lvid: number, gvid: number): CseAbstract | null
   export function write_chunk(stpk: net_packet, tab: Array<number | string | boolean> | undefined, c_type: ChunkType): void
   export function writevu32stringZ(pk: net_packet, v: string[]): void
   export function writevu8uN(stpk: net_packet, v: number[]): void

@@ -12,8 +12,8 @@ declare namespace itms_manager {
   export const n: number
   export const item_rewards: AnyTable
   export const item_combine: AnyTable
-  export function relocate_item_to_actor(actor: CGameObject, npc: CGameObject, section: string, count: number): void
-  export function relocate_item_from_actor(actor: CGameObject, npc: CGameObject, section: string, amount: number): void
+  export function relocate_item_to_actor(actor: CGameObject, npc: CGameObject, section: Section, count: number): void
+  export function relocate_item_from_actor(actor: CGameObject, npc: CGameObject, section: Section, amount: number): void
 
   export function on_game_start(): void
   export function actor_on_item_before_use(obj: CGameObject, flags: AnyTable): void
@@ -45,7 +45,7 @@ declare namespace itms_manager {
   export function new_game_equippment(): boolean
   export function bolt_manager(): boolean
   export function give_item_reward(num_of_items: number): boolean
-  export function send_itm_msg(sec: string): void
+  export function send_itm_msg(sec: Section): void
   export function extract_upgr_tools(t1: AnyTable, current_grp: string): void
   export function play_item_sound(item: CGameObject, vol: number): void
   export function get_item_processor(): ItemProcessor
@@ -63,8 +63,8 @@ declare class ItemProcessor {
   constructor()
   update(): void
   /** @returns the created server object(s), or `nil` */
-  Create_Item(section: string, owner?: CGameObject, t?: AnyTable): CseAbstract | AnyTable | undefined
-  Process_Item(section: string, id: number, t?: AnyTable): void
+  Create_Item(section: Section, owner?: CGameObject, t?: AnyTable): CseAbstract | AnyTable | undefined
+  Process_Item(section: Section, id: number, t?: AnyTable): void
   Remove_Process(id: number, mark?: any, str?: string): void
   Random_Choice(arg: any[]): any
   Random_Condition(arg: number[]): number

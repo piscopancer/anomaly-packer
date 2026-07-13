@@ -15,7 +15,7 @@ declare namespace utils_ui {
     sign?: boolean
     show_always?: boolean
     condition?: boolean
-    section?: string
+    section?: Section
     sign_inverse?: boolean
     sign_inverse_txt?: boolean
     // { file, func, ...args } used to compute the value via a global function.
@@ -23,22 +23,22 @@ declare namespace utils_ui {
   }
   export const stats_table: Record<string, Record<string, StatDescriptor>>
   export function add_stats_table(k1: string, k2: string, v: StatDescriptor): void
-  export function get_stats_func_value(obj: CGameObject, sec: string, file: string, func: string, ...args: unknown[]): number | undefined
-  export function get_stats_string_value(obj: CGameObject, sec: string, gr: string | StatDescriptor, stat: string, to_text: boolean): LuaMultiReturn<[string | number, boolean]>
-  export function get_stats_table(sec: string): Record<string, StatDescriptor> | undefined
-  export function get_stats_value(obj: CGameObject, sec: string, gr: string | StatDescriptor, stat: string): number | false
-  export function get_stats_xml(handler: CUIWindow, obj: CGameObject, sec: string, gr: string | StatDescriptor, stat: string): CUIStatic | undefined
+  export function get_stats_func_value(obj: CGameObject, sec: Section, file: string, func: string, ...args: unknown[]): number | undefined
+  export function get_stats_string_value(obj: CGameObject, sec: Section, gr: string | StatDescriptor, stat: string, to_text: boolean): LuaMultiReturn<[string | number, boolean]>
+  export function get_stats_table(sec: Section): Record<string, StatDescriptor> | undefined
+  export function get_stats_value(obj: CGameObject, sec: Section, gr: string | StatDescriptor, stat: string): number | false
+  export function get_stats_xml(handler: CUIWindow, obj: CGameObject, sec: Section, gr: string | StatDescriptor, stat: string): CUIStatic | undefined
   export function get_time(): number
   export function get_utils_xml(): CScriptXmlInit
   export function main_menu_off(): void
   export function main_menu_on(): void
   export function on_game_start(): void
   export function prepare_stats_table(): void
-  export function prop_accuracry(obj: CGameObject, sec: string): number
-  export function prop_condition(obj: CGameObject, sec: string): number
-  export function prop_damage(obj: CGameObject, sec: string): number
-  export function prop_handling(obj: CGameObject, sec: string): number
-  export function prop_rpm(obj: CGameObject, sec: string): number
+  export function prop_accuracry(obj: CGameObject, sec: Section): number
+  export function prop_condition(obj: CGameObject, sec: Section): number
+  export function prop_damage(obj: CGameObject, sec: Section): number
+  export function prop_handling(obj: CGameObject, sec: Section): number
+  export function prop_rpm(obj: CGameObject, sec: Section): number
   export function set_item_order(): void
   export function sort_by_index(t: AnyTable, a: number, b: number): boolean
   export function sort_by_kind(t: AnyTable, a: number, b: number): boolean
@@ -53,27 +53,27 @@ declare class UICellContainer {
   constructor(id: string, owner: CUIScriptWnd, path: string, prof: string, ele_base: CUIWindow, manual: boolean, use_frame: boolean)
   InitControls(owner: CUIScriptWnd, prof: string, ele_base: CUIWindow): void
   Reinit(t?: AnyTable, tf?: AnyTable): void
-  AddIndex(id: number, sec: string | undefined, indx: number): void
-  RemoveIndex(id: number, sec?: string, indx?: number): void
+  AddIndex(id: number, sec: Section | undefined, indx: number): void
+  RemoveIndex(id: number, sec?: Section, indx?: number): void
   GetCell_ID(id: number, only_indx?: boolean): number | UICellItem | undefined
-  GetCell_SEC(sec: string): UICellItem | false
+  GetCell_SEC(sec: Section): UICellItem | false
   GetCell_Selected(only_obj?: boolean): CGameObject | UICellItem | undefined
   GetCell_Focused(only_cell?: boolean): UICellItem | LuaMultiReturn<[string, number, CGameObject | undefined]> | undefined
   GetObj(idx: number): CGameObject | undefined
-  GetID(obj: CGameObject | undefined, sec: string, create?: boolean): number | undefined
-  AddItemInCell(obj: CGameObject | undefined, sec: string, indx: number, area?: { y: number; x: number; w: number; h: number }): boolean
-  AddItem(obj?: CGameObject, sec?: string, info?: unknown): number | undefined
-  AddItemManual(obj?: CGameObject, sec?: string, indx?: number): boolean | undefined
-  RemoveItem(obj?: CGameObject, sec?: string): void
+  GetID(obj: CGameObject | undefined, sec: Section, create?: boolean): number | undefined
+  AddItemInCell(obj: CGameObject | undefined, sec: Section, indx: number, area?: { y: number; x: number; w: number; h: number }): boolean
+  AddItem(obj?: CGameObject, sec?: Section, info?: unknown): number | undefined
+  AddItemManual(obj?: CGameObject, sec?: Section, indx?: number): boolean | undefined
+  RemoveItem(obj?: CGameObject, sec?: Section): void
   RemoveItem_byID(id: number): void
   RemoveItemManual(indx: number): void
-  TransferItem(cont_to: UICellContainer, obj?: CGameObject, sec?: string): UICellItem | undefined
-  UpdateItem(obj?: CGameObject, sec?: string): void
-  FindFreeCell(obj?: CGameObject, sec?: string): { y: number; x: number; w: number; h: number } | false
+  TransferItem(cont_to: UICellContainer, obj?: CGameObject, sec?: Section): UICellItem | undefined
+  UpdateItem(obj?: CGameObject, sec?: Section): void
+  FindFreeCell(obj?: CGameObject, sec?: Section): { y: number; x: number; w: number; h: number } | false
   IsFreeRoom(r: number, c: number, w: number, h: number): boolean
   TakeRoom(r: number, c: number, w: number, h: number): { y: number; x: number; w: number; h: number }
   FreeRoom(r: number, c: number, w: number, h: number): void
-  FindSimilar(obj?: CGameObject, sec?: string): UICellItem | false
+  FindSimilar(obj?: CGameObject, sec?: Section): UICellItem | false
   Grow(): void
   IsTradable(obj: CGameObject): boolean | undefined
   GetCellCost(ci: UICellItem): number
@@ -114,18 +114,18 @@ declare class UICellItem {
   // `obj` is a game object, or its section string for showcase cells.
   Set(obj: CGameObject | string, area?: { x: number; y: number; w: number; h: number }): boolean
   Update(obj?: CGameObject): boolean
-  Add_Icon(sec: string, w: number, h: number): void
-  Add_Shadow(sec: string, w: number, h: number): void
-  Add_Layers(xml: CScriptXmlInit, obj: CGameObject, sec: string, clsid: number): void
-  Add_ProgressBar(xml: CScriptXmlInit, obj: CGameObject, sec: string, clsid: number): void
-  Add_Counter(xml: CScriptXmlInit, obj: CGameObject, sec: string): void
-  Add_Upgrade(xml: CScriptXmlInit, obj: CGameObject, sec: string): void
-  Add_Attachements(xml: CScriptXmlInit, obj: CGameObject, sec: string, clsid: number): void
+  Add_Icon(sec: Section, w: number, h: number): void
+  Add_Shadow(sec: Section, w: number, h: number): void
+  Add_Layers(xml: CScriptXmlInit, obj: CGameObject, sec: Section, clsid: number): void
+  Add_ProgressBar(xml: CScriptXmlInit, obj: CGameObject, sec: Section, clsid: number): void
+  Add_Counter(xml: CScriptXmlInit, obj: CGameObject, sec: Section): void
+  Add_Upgrade(xml: CScriptXmlInit, obj: CGameObject, sec: Section): void
+  Add_Attachements(xml: CScriptXmlInit, obj: CGameObject, sec: Section, clsid: number): void
   Add_CustomText(txt: string, align_h?: number, align_v?: number, clr?: number, fnt?: string): void
   Create_Layer(ele: CUIStatic, base: CUIStatic, sec_m: string, sec_l: string, str_x?: string, str_y?: string, str_scale?: string): void
   Colorize(clr_id: string): void
   Highlight(state: boolean, clr_id?: string, main_clr?: boolean): void
-  Check_TradeMode(obj: CGameObject, sec: string): boolean
+  Check_TradeMode(obj: CGameObject, sec: Section): boolean
   GetCost(): void
   AddChild(obj: CGameObject): boolean
   PopChild(obj?: CGameObject, id?: number): void
@@ -175,9 +175,9 @@ declare class UIHint {
 declare class UIInfoItem {
   constructor(owner: CUIScriptWnd, delay?: number)
   InitControls(): void
-  Update(obj?: CGameObject, sec?: string, flags?: AnyTable): void
-  Pass(obj?: CGameObject, sec?: string): boolean
-  GetType(sec: string): string
+  Update(obj?: CGameObject, sec?: Section, flags?: AnyTable): void
+  Pass(obj?: CGameObject, sec?: Section): boolean
+  GetType(sec: Section): string
   GetUpgrades(obj?: CGameObject): unknown
   Sync_Finale(cond: boolean, ele_syncer: CUIWindow | undefined, ele_resizer: CUIWindow, ele_adapter: CUIWindow, offset: number): boolean
   Sync_Y(parent: CUIWindow | undefined, child: CUIWindow, offset?: number): number
@@ -193,8 +193,8 @@ declare class UIInfoUpgr {
   constructor(owner: CUIScriptWnd, delay?: number)
   InitControls(): void
   Update(upgr: string, prereq: string, installed: boolean): void
-  Pass(sec: string): boolean
-  ExtractFunctor(sec: string, param: string, ...args: unknown[]): unknown
+  Pass(sec: Section): boolean
+  ExtractFunctor(sec: Section, param: string, ...args: unknown[]): unknown
   Sync_Y(parent: CUIWindow | undefined, child: CUIWindow, offset?: number): number
   Sync_H(parent: CUIWindow, child: CUIWindow, offset: number): number
   Reset(): void

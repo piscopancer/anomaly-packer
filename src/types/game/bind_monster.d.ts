@@ -18,7 +18,7 @@ declare class generic_object_binder extends object_binder {
   use_callback(obj: CGameObject, who: CGameObject): void
   net_spawn(se_abstract: CseAbstract): boolean
   net_destroy(): void
-  reload(section: string): void
+  reload(section: Section): void
   net_save_relevant(): boolean
   save(packet: net_packet): void
   load(reader: net_packet): void

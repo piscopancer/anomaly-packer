@@ -2,7 +2,7 @@
 
 /** @customConstructor se_artefact */
 declare class se_artefact extends cse_alife_item_artefact {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   on_unregister(): void
   can_switch_offline(): boolean

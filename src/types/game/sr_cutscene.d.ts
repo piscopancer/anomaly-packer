@@ -6,9 +6,9 @@ declare namespace sr_cutscene {
   export const pri_a15_cameffector: AnyTable
   export const pri_b305_camera_2: AnyTable
   export const pri_b305_camera_5: AnyTable
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
   export function effector_callback(obj: CGameObject): void
-  export function set_scheme(obj: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
+  export function set_scheme(obj: CGameObject, ini: system_ini, scheme: string, section: Section, gulag_name: string): void
 }
 
 /** @customConstructor action_cutscene */

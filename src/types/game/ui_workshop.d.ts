@@ -8,7 +8,7 @@ declare namespace ui_workshop {
   export function AdjustCon(sec_part: string, con: number, num: number, is_outfit?: boolean): number
   export function get_workshop_ui(...args: any[]): UIWorkshop
   export function print_ws(fmt: string, ...args: any[]): void
-  export function SetTip(tip: string, warning: string, solution: string, sec: string, pass: boolean, XMLtxt: CScriptXmlInit): void
+  export function SetTip(tip: string, warning: string, solution: string, sec: Section, pass: boolean, XMLtxt: CScriptXmlInit): void
 }
 
 /** @customConstructor UIWorkshop */
@@ -37,7 +37,7 @@ declare class UIWorkshopCraft extends CUIScriptWnd {
   ListRecipes(): void
   ListItems(): void
   On_CC_Mouse1(cont: string, idx: number): void
-  UpdateItem(n: number, sec: string, amount: number, result: any, toolkit_idx: number, toolkit_sec: string): void
+  UpdateItem(n: number, sec: Section, amount: number, result: any, toolkit_idx: number, toolkit_sec: string): void
   ShowComponents(sh: boolean): void
   Close(): void
   Craft(): void
@@ -89,8 +89,8 @@ declare class UIWorkshopUpgrade extends CUIScriptWnd {
   EvaluateUpgrade(row: number, col: number, info: AnyTable): void
   GetWorkshopkit(obj: CGameObject): any
   CollectUpgradekits(sec_add: string): AnyTable
-  SetkitInfo(sec: string, XML_txt: CScriptXmlInit, XML_ico: CScriptXmlInit, XML_ico_tmp: CScriptXmlInit): void
-  DischargeKit(sec: string): void
+  SetkitInfo(sec: Section, XML_txt: CScriptXmlInit, XML_ico: CScriptXmlInit, XML_ico_tmp: CScriptXmlInit): void
+  DischargeKit(sec: Section): void
   Close(): void
   Upgrade(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean

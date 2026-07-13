@@ -2,7 +2,7 @@
 
 /** @customConstructor se_level_changer */
 declare class se_level_changer extends cse_alife_level_changer {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   on_unregister(): void
   STATE_Write(packet: net_packet): void

@@ -11,7 +11,7 @@ declare namespace bind_dynamo_hand {
 /** @customConstructor dynamo_hand_binder */
 declare class dynamo_hand_binder extends object_binder {
   constructor(obj: CGameObject)
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   net_spawn(se_abstract: CseAbstract): boolean
   update(delta: number): void

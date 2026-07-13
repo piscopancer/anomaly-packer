@@ -69,7 +69,7 @@ interface hud {
 declare function player_hud(): PlayerHud | null
 
 declare class PlayerHud {
-  set_hands(section: string): void
+  set_hands(section: Section): void
   reset_hands(): void
 }
 
@@ -82,13 +82,13 @@ interface ini_file {
   get_filename(): string
   dltx_print(
     /** @default null */
-    section?: string | null,
+    section?: Section | null,
     /** @default null */
     line?: string | null
   ): void
-  dltx_get_filename_of_line(section: string, line: string): string
-  dltx_get_section(section: string): AnyTable
-  dltx_is_override(section: string, line: string): boolean
+  dltx_get_filename_of_line(section: Section, line: string): string
+  dltx_get_section(section: Section): AnyTable
+  dltx_is_override(section: Section, line: string): boolean
 }
 
 declare namespace level {

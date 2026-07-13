@@ -9,7 +9,7 @@ declare namespace bind_dynamic_light {
 /** @customConstructor generic_light_binder */
 declare class generic_light_binder extends object_binder {
   constructor(obj: CGameObject)
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   update(delta: number): void
   net_spawn(data: CseAbstract): void

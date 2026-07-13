@@ -5,7 +5,7 @@ interface Bullet {
   direction: vector
   speed: number
   distance: number
-  section: string
+  section: Section
   id: number
   weapon_id: number
   parent_id: number

@@ -65,7 +65,7 @@ declare namespace txr_routes {
   export function check_route_yan_agr(first_speaker: CGameObject, second_speaker: CGameObject): boolean
   export function check_route_yan_x16(first_speaker: CGameObject, second_speaker: CGameObject): boolean
   export function check_spot(id: number, spot: string): boolean
-  export function get_map(sec: string): string
+  export function get_map(sec: Section): string
   export function get_route(map_1: string, map_2: string): string[] | undefined
   export function get_route_info(sr_name: string): LuaMultiReturn<[number, string | false, string | false]>
   export function get_section(map: string): string

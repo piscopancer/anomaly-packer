@@ -5,14 +5,14 @@ declare namespace xrs_facer {
   export const actid_steal_up_facer: number
   export const evid_facer: number
   export const evid_steal_up_facer: number
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable, temp?: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable, temp?: AnyTable): void
   export function check_enemy(enemy: CGameObject, obj: CGameObject): boolean
-  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function configure_actions(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp?: AnyTable): void
   export function get_anim(npc: CGameObject): LuaMultiReturn<[string, string | undefined]>
   export function hit_callback(obj: CGameObject, amount: number, dir: vector, who: CGameObject, bone_index: string): void
   export function npc_add_precondition(action: any): void
   export function on_game_start(): void
-  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp?: AnyTable): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp?: AnyTable): void
 }
 
 /** @customConstructor action_facer */

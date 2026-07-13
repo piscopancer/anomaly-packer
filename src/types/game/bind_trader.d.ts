@@ -7,7 +7,7 @@ declare namespace bind_trader {
 /** @customConstructor trader_object_binder */
 declare class trader_object_binder extends object_binder {
   constructor(obj: CGameObject)
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   update(delta: number): void
   net_spawn(se_abstract: CseAbstract): boolean

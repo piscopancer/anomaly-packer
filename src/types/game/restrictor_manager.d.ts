@@ -7,5 +7,5 @@ declare namespace restrictor_manager {
 /** @customConstructor Crestrictor_manager */
 declare class Crestrictor_manager {
   constructor(obj: CGameObject)
-  reset_restrictions(st: AnyTable, section: string): void
+  reset_restrictions(st: AnyTable, section: Section): void
 }

@@ -11,13 +11,13 @@ declare namespace item_weapon {
   export function clear_cache(obj: CGameObject): void
   export function detach_scope(weapon: CGameObject): void
   export function func_scope(weapon: CGameObject): void
-  export function get_grenades(section: string): AnyTable
+  export function get_grenades(section: Section): AnyTable
   export function get_weapon_slot(): CGameObject
   export function menu_scope(weapon: CGameObject): string
   export function menu_scope_inv(weapon: CGameObject): string
   export function on_game_start(): void
-  export function relocate_ammo_from_actor(actor: CGameObject, npc: CGameObject, section: string, amount: number): void
-  export function relocate_ammo_to_actor(actor: CGameObject, npc: CGameObject, section: string, amount: number): void
+  export function relocate_ammo_from_actor(actor: CGameObject, npc: CGameObject, section: Section, amount: number): void
+  export function relocate_ammo_to_actor(actor: CGameObject, npc: CGameObject, section: Section, amount: number): void
   export function remove_extra_ammo(npc_id: number): void
   export function start_ammo_wheel(): void
   export function test_silencer(): void

@@ -20,7 +20,7 @@ declare namespace pda {
   export function on_game_start(): void
   export function on_low_battery(): void
   export function pda_use(): void
-  export function property_box_add_properties(property_ui: AnyTable, id: number, level_name: string, hint: string): void
+  export function property_box_add_properties(property_ui: AnyTable, id: number, level_name: LevelName, hint: string): void
   export function property_box_clicked(property_ui: AnyTable): void
-  export function set_active_subdialog(section: string): void
+  export function set_active_subdialog(section: Section): void
 }

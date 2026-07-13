@@ -55,7 +55,7 @@ declare class WeatherEditor extends CUIScriptWnd {
   Reset_FolderList(indx: number, par: string, val: any, val_2: any): void
   StringToTime(str: string): LuaMultiReturn<[number, number]>
   TimeToString(h: number, m: number): string
-  ParseFromString(ltx: any, sec: string, par: string, typ: number): any
+  ParseFromString(ltx: any, sec: Section, par: string, typ: number): any
   IsInvalidValue(idx: number, typ: number, val: string): boolean
   ScrollToElement(idx: number): void
   PauseEngine(state: boolean): void

@@ -7,9 +7,9 @@ declare namespace xr_companion {
   export const beh_walk_ignore: number
   export const beh_walk_near: number
   export const beh_walk_simple: number
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
   export function select_position(npc: CGameObject, st: AnyTable): number | undefined
-  export function set_scheme(object: CGameObject, ini: system_ini, scheme: string, section: string): void
+  export function set_scheme(object: CGameObject, ini: system_ini, scheme: string, section: Section): void
   export function vector_rotate_y(v: vector, angle: number): vector
 }
 

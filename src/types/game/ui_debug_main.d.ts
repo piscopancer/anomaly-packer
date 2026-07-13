@@ -51,7 +51,7 @@ declare class debug_ui extends CUIScriptWnd {
   OnTabChange(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   spawn_section(text: string): boolean
-  spawn_squad(section: string, smart_name: string): boolean
+  spawn_squad(section: Section, smart_name: string): boolean
   FindNearest(txt: string): void
   FillList(name: string): void
   FillEditorList(name: string): void
@@ -90,7 +90,7 @@ declare class debug_ui_attach extends CUIScriptWnd {
   OnAttachListSelect(): void
   OnStateListSelect(): void
   OnWeaponListSelect(): void
-  OnAttachSave(section: string): void
+  OnAttachSave(section: Section): void
   On_fld_attach_x(): void
   On_fld_attach_y(): void
   On_fld_attach_z(): void

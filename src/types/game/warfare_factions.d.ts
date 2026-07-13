@@ -8,5 +8,5 @@ declare namespace warfare_factions {
   export const factions_p: AnyTable
   export const printd: (e: number, optionalMessage?: string) => void
   export function update(): void
-  export function update_faction(faction: string): void
+  export function update_faction(faction: Community): void
 }

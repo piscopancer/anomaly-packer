@@ -14,7 +14,7 @@ declare namespace utils_xml {
   export function get_Mhud_xml(): CScriptXmlInit
   /** Condition-graded colour (red/orange/yellow/green by `condition` 0–100). */
   export function get_color_con(condition: number, to_code?: boolean): string
-  export function get_icons_texture(section?: string): string
+  export function get_icons_texture(section?: Section): string
   /**
    * Interpolates an ARGB colour for `val` between the `{A,R,G,B,value}` stops.
    * @param mi min stop @param md middle stop @param mx max stop
@@ -34,16 +34,16 @@ declare namespace utils_xml {
    * @returns `{x1,y1,x2,y2,w,h}`, or the four corner values `(x1, y1, x2, y2)`
    * as a multi-return when `unpacked` is set.
    */
-  export function get_item_axis(section: string, grid_size?: number, unpacked?: boolean): { x1: number; y1: number; x2: number; y2: number; w: number; h: number } | LuaMultiReturn<[number, number, number, number]>
+  export function get_item_axis(section: Section, grid_size?: number, unpacked?: boolean): { x1: number; y1: number; x2: number; y2: number; w: number; h: number } | LuaMultiReturn<[number, number, number, number]>
   export function is_widescreen(): boolean
   export function screen_ratio(): number
   export function hide_menu(): void
-  export function get_name_cond(condition: number, is_wpn?: boolean, section?: string): string
+  export function get_name_cond(condition: number, is_wpn?: boolean, section?: Section): string
   export function set_msg(str: string, ignore?: boolean): void
   /** Human-readable level name for a level section id (falls back to the id). */
   export function get_special_txt(str: string): string
-  export function set_icon(sec: string, hidden: boolean | undefined, XML_temp: CScriptXmlInit, XML_box: CScriptXmlInit, XML_box_small?: CScriptXmlInit): void
-  export function set_upgr_icon(obj: CGameObject, sec: string, XML_box: CScriptXmlInit, XML_temp: CScriptXmlInit): void
+  export function set_icon(sec: Section, hidden: boolean | undefined, XML_temp: CScriptXmlInit, XML_box: CScriptXmlInit, XML_box_small?: CScriptXmlInit): void
+  export function set_upgr_icon(obj: CGameObject, sec: Section, XML_box: CScriptXmlInit, XML_temp: CScriptXmlInit): void
   /** Places item `p` into the first free spot of `grid`; returns the last row used. */
   export function set_grid_element(p: AnyTable, grid: AnyTable, ...ele: CUIWindow[]): number
   /** Minimal XML parser object (`XmlParser:loadFile`, `:ParseXmlText`, …). */

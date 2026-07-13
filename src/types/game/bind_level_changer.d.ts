@@ -8,7 +8,7 @@ declare namespace bind_level_changer {
 declare class lchanger_binder extends object_binder {
   constructor(obj: CGameObject)
   update(delta: number): void
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   net_spawn(se_abstract: CseAbstract): boolean
   net_destroy(): void

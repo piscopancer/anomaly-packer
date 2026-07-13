@@ -22,7 +22,7 @@ declare class motivator_binder extends object_binder {
   death_callback(victim: CGameObject, who: CGameObject): void
   use_callback(obj: CGameObject, who: CGameObject): void
   update(delta: number): void
-  reload(section: string): void
+  reload(section: Section): void
   net_save_relevant(): boolean
   save(packet: net_packet): void
   load(reader: net_packet): void

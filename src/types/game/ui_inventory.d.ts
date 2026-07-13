@@ -74,9 +74,9 @@ declare class UIInventory extends CUIScriptWnd {
   UpdateQuick(): void
   UpdateStats(): void
   On_Sort(ii: number, ignore?: boolean): void
-  Highlight(sec: string, bag_id: string): void
+  Highlight(sec: Section, bag_id: string): void
   UnHighlight_All(): void
-  highlight_section_in_slot(sec: string, bag_id: string): void
+  highlight_section_in_slot(sec: Section, bag_id: string): void
   Picker_Refresh(): void
   Picker_Toggle(bag: string | undefined, idx?: number, update_mode?: boolean, force_hide?: boolean): void
   Picker_Ownership(bag: string, idx: number, obj?: CGameObject): LuaMultiReturn<[string, number]>

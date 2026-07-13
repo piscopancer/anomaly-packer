@@ -18,7 +18,7 @@ declare namespace tasks_pump_station_defense {
   export function on_game_start(): void
   export function rkeys(t: AnyTable): any
   export function save_state(m_data: AnyTable): void
-  export function spawn_and_set(kill: boolean, sec: string, x: number, y: number, z: number, lvid: number, gvid: number, guard_profile: string, give_guns: boolean): number
+  export function spawn_and_set(kill: boolean, sec: Section, x: number, y: number, z: number, lvid: number, gvid: number, guard_profile: string, give_guns: boolean): number
   export function start_message(): void
   export function warning_message(): void
 }

@@ -128,7 +128,7 @@ declare class XmlObj {
   /** Add unique `actor_dialog` line for `specific_character` element in `character_desc` */
   insertActorDialog(
     character_id: string,
-    dialog_id: string,
+    dialog_id: Dialog,
     /**
      * Where to insert the dialog line
      * @default before `<actor_break_dialog>`
@@ -140,9 +140,9 @@ declare class XmlObj {
 interface DxmlCharacterData {
   name: string | null
   bio: string | null
-  community: string | null
+  community: Community | null
   icon: string | null
-  start_dialog: string | null
+  start_dialog: Dialog | null
   panic_threshold: number
   hit_probability_factor: number
   crouch_type: number
@@ -164,14 +164,14 @@ interface DxmlCharacterData {
 
 declare class DialogList {
   /** @returns index of added dialog line */
-  add(dialog_id: string): number
-  find(regex: RegExp): string | null
+  add(dialog_id: Dialog): number
+  find(regex: RegExp): Dialog | null
   /** @returns index of dialog line */
-  has(dialog_id: string): number
+  has(dialog_id: Dialog): number
   /** @returns index of added dialog line */
-  add_first(dialog_id: string): number
+  add_first(dialog_id: Dialog): number
   /** @returns index of added dialog line */
-  add_last(dialog_id: string): number
-  remove(dialog_id: string): LuaMultiReturn<[dialog_id: string, index: number]>
-  get_dialogs(): string[]
+  add_last(dialog_id: Dialog): number
+  remove(dialog_id: Dialog): LuaMultiReturn<[dialog_id: Dialog, index: number]>
+  get_dialogs(): Dialog[]
 }

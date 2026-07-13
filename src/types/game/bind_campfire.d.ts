@@ -25,7 +25,7 @@ declare namespace bind_campfire {
 /** @customConstructor campfire_binder */
 declare class campfire_binder extends object_binder {
   constructor(obj: CGameObject)
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   net_spawn(se_abstract: CseAbstract): boolean
   net_destroy(se_abstract: CseAbstract): void

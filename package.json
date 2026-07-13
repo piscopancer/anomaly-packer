@@ -38,7 +38,11 @@
     "format": "prettier --write .",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "changeset:publish": "pnpm build && changeset publish"
+    "changeset:publish": "pnpm build && changeset publish",
+    "gen-sections": "tsx src/scripts/gen-sections.ts",
+    "gen-info-portions": "tsx src/scripts/gen-info-portions.ts",
+    "gen-weather": "tsx src/scripts/gen-weather.ts",
+    "gen-dialogs": "tsx src/scripts/gen-dialogs.ts"
   },
   "bin": {
     "anomaly-packer": "dist/cli/anomaly-packer.mjs"

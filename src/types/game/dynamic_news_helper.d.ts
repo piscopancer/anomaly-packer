@@ -5,7 +5,7 @@ declare namespace dynamic_news_helper {
   export function GetColor(num: number): string
   export function GetCommunityDescription(obj: CGameObject, index: number): string
   export function GetFaction(key1: string, key2: string): string
-  export function GetMonsterDescription(obj: CGameObject, index: number, sec: string, cls: number): string
+  export function GetMonsterDescription(obj: CGameObject, index: number, sec: Section, cls: number): string
   export function GetMutant(key1: string, key2: string): string
   export function GetPointDescription(obj: CGameObject): string
   export function GetTimePharseAsString(): string

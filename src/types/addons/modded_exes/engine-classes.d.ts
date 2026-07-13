@@ -114,7 +114,7 @@ interface CExplosive {
   /** Id of the object that initiated the explosion */
   Initiator(): number
   SetInitiator(id: number): void
-  LoadExplosiveSection(section: string): void
+  LoadExplosiveSection(section: Section): void
 }
 
 interface CCar {

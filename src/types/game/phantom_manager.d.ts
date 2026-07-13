@@ -5,10 +5,10 @@ declare namespace phantom_manager {
   export const phantom_registry: AnyTable
   export function bind(obj: CGameObject): void
   export function bind_phantom(obj: CGameObject): void
-  export function dynamic_phantom_count(sec: string): number
+  export function dynamic_phantom_count(sec: Section): number
   export function on_game_start(): void
   export function phantom_count(): number
-  export function spawn_dynamic_phantom(sec: string, pos: vector, lvid: number): void
+  export function spawn_dynamic_phantom(sec: Section, pos: vector, lvid: number): void
   export function spawn_phantom(pos: vector): void
 }
 
@@ -25,7 +25,7 @@ declare class Phantom extends object_binder {
   net_spawn(se_abstract: CseAbstract): boolean
   update(delta: number): void
   net_destroy(): void
-  reload(section: string): void
+  reload(section: Section): void
   net_save_relevant(): boolean
   save(packet: net_packet): void
   load(reader: net_packet): void

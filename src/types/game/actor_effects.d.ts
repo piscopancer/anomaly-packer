@@ -22,7 +22,7 @@ declare namespace actor_effects {
   export function play_sound_breath_mask(actor: CGameObject): void
   export function reset_idle_anim(wpn: CGameObject, empty?: boolean): void
   export function set_animations(state: boolean): void
-  export function shoot_effect(sect: string): void
+  export function shoot_effect(sect: Section): void
   export function switch_helm(): void
   export function toggle_active_slot(f: boolean): void
   export function toggle_hud_autohide(state: boolean): void

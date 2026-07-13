@@ -78,7 +78,7 @@ declare class CActorCondition extends CEntityCondition {
   m_fSprintK: number
   m_condition_flags: Flags
   ClearAllBoosters(): void
-  ApplyBooster(booster: SBooster, section: string): boolean
+  ApplyBooster(booster: SBooster, section: Section): boolean
   /** @param functor called for each active booster as `(boostType, boostTime, boostValue)`; return `true` to stop iteration */
   BoosterForEach(functor: (this: void, boostType: number, boostTime: number, boostValue: number) => boolean): void
   /** @param functor called for each wound; return `true` to stop iteration */

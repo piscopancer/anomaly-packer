@@ -3,7 +3,7 @@
 declare namespace bind_anomaly_field {
   export const dyn_anomalies: AnyTable
   export const fields_by_names: AnyTable
-  export function add_marker(lvl: string, section: string, id: number, state: boolean): void
+  export function add_marker(lvl: LevelName, section: Section, id: number, state: boolean): void
   export function bind(obj: CGameObject): void
   export function dyn_anomalies_refresh(force: boolean): boolean
   export function dyn_anomalies_spawn(): void
@@ -18,7 +18,7 @@ declare namespace bind_anomaly_field {
 /** @customConstructor anomaly_field_binder */
 declare class anomaly_field_binder extends object_binder {
   constructor(obj: CGameObject)
-  reload(section: string): void
+  reload(section: Section): void
   reinit(): void
   net_spawn(se_abstract: CseAbstract): boolean
   net_destroy(): void

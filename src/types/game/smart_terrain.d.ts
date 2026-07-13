@@ -14,7 +14,7 @@ declare namespace smart_terrain {
 
 /** @customConstructor se_smart_terrain */
 declare class se_smart_terrain extends cse_alife_smart_zone {
-  constructor(section: string)
+  constructor(section: Section)
   on_before_register(): void
   on_register(): void
   on_unregister(): void
@@ -45,7 +45,7 @@ declare class se_smart_terrain extends cse_alife_smart_zone {
   update(): void
   set_alarm(enemy: CGameObject): void
   check_alarm(): void
-  find_job_by_section(section: string): AnyTable | undefined
+  find_job_by_section(section: Section): AnyTable | undefined
   setup_logic(npc: CGameObject): void
   get_location(): LuaMultiReturn<[vector, number, number]>
   am_i_reached(squad: sim_squad_scripted): boolean

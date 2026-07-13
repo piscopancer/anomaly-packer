@@ -68,9 +68,15 @@ function linkRuntimes(lua: string, addonId: string, runtimes: Map<string, string
 /** tstl wraps a module in an ES-like shell (____exports table, local declarations, __TS__ lib helpers) — Anomaly expects a flat script of global functions, so we unwrap it. Order matters: strip ____exports before globalizing, otherwise "local ____exports = {}" loses its "local" and stops matching. */
 function modifyLua(lua: string) {
   lua = removeExports(lua)
+  lua = dropTopLevelForwardDeclarations(lua)
   lua = globalizeTopLevel(lua)
   lua = stripTsHelperPrefix(lua)
   return lua
+}
+
+/** Drops tstl's top-level forward declarations — `local name` or `local a, b, c` with no initializer, which it emits to hoist a function used before its definition (or a lualib class group like `local Error, RangeError, ...`). Left alone they would survive {@link globalizeTopLevel} as a bare `name` / `a, b, c` line, which is not a valid Lua statement and breaks the whole script on load. Globals need no forward declaration, so the line can simply be removed. Anchored to column 0 and requires the whole line to be `local` + identifiers (no `=`, no `(`), so real declarations like `local x = 1` and `local function f(` are untouched. */
+function dropTopLevelForwardDeclarations(lua: string) {
+  return lua.replaceAll(/^local \w[\w, ]*$\n?/gm, '')
 }
 
 /** Drops the "__TS__" prefix from tstl runtime helpers (both their definitions and call sites). Restricted to identifier characters so it never reaches into string literals or comments. */

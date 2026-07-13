@@ -18,9 +18,9 @@ declare namespace dialogs {
    * @param npc if specified, will receive items in their invetory, otherwise items will be simply removed
    * @param type `in` to actor, `out` from actor
    */
-  export function relocate_item_section(npc: CGameObject | null, section: string, type: RelocationType, amount?: number): void
-  export function relocate_item_section_to_actor(speaker_1: CGameObject, speaker_2: CGameObject, section: string, amount?: number): void
-  export function relocate_item_section_from_actor(speaker_1: CGameObject, speaker_2: CGameObject, section: string, amount?: number): void
+  export function relocate_item_section(npc: CGameObject | null, section: Section, type: RelocationType, amount?: number): void
+  export function relocate_item_section_to_actor(speaker_1: CGameObject, speaker_2: CGameObject, section: Section, amount?: number): void
+  export function relocate_item_section_from_actor(speaker_1: CGameObject, speaker_2: CGameObject, section: Section, amount?: number): void
   // --- auto-added by audit-coverage (missing from hand-refined types; refine by hand) ---
   export function can_do_task_mysteries_of_the_zone(a: CGameObject, b: CGameObject): boolean
   export function give_task_mysteries_of_the_zone(a: CGameObject, b: CGameObject): void
@@ -201,8 +201,8 @@ declare namespace dialogs {
   export function want_trade(seller: CGameObject, buyer: CGameObject): boolean
   export function dont_want_trade(seller: CGameObject, buyer: CGameObject): boolean
   export function who_is_actor(first_speaker: CGameObject, second_speaker: CGameObject): boolean
-  export function actor_has_item(first_speaker: CGameObject, second_speaker: CGameObject, section: string): boolean
-  export function npc_has_item(first_speaker: CGameObject, second_speaker: CGameObject, section: string): boolean
+  export function actor_has_item(first_speaker: CGameObject, second_speaker: CGameObject, section: Section): boolean
+  export function npc_has_item(first_speaker: CGameObject, second_speaker: CGameObject, section: Section): boolean
   export function who_is_npc(first_speaker: CGameObject, second_speaker: CGameObject): boolean
   export function transfer_any_pistol_from_actor(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function is_pistol(npc: CGameObject, item: CGameObject): boolean

@@ -6,7 +6,7 @@ declare namespace sim_squad_scripted {
 
 /** @customConstructor sim_squad_scripted */
 declare class sim_squad_scripted extends cse_alife_online_offline_group {
-  constructor(section: string)
+  constructor(section: Section)
   init_squad(): void
   init_squad_on_load(): void
   get_script_target(): number
@@ -19,9 +19,9 @@ declare class sim_squad_scripted extends cse_alife_online_offline_group {
   assign_squad_member_to_smart(member_id: number, smart: se_smart_terrain, old_smart_id: number): void
   assign_smart(smart: se_smart_terrain, old_smart_id: number): void
   check_invulnerability(): void
-  set_location_types_section(section: string): void
+  set_location_types_section(section: Section): void
   set_location_types(new_smart_name: string): void
-  add_new_member_forced(section: string, pos: vector, lvid: number, gvid: number): void
+  add_new_member_forced(section: Section, pos: vector, lvid: number, gvid: number): void
   add_squad_member(spawn_section: string, spawn_position: vector, lv_id: number, gv_id: number): number
   create_npc(spawn_smart: se_smart_terrain, pos: vector, lvid: number, gvid: number): void
   set_squad_sympathy(sympathy: number): void

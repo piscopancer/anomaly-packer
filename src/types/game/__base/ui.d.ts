@@ -543,7 +543,7 @@ declare class CUIActorMenu extends CUIDialogWnd {
   constructor()
   get_drag_item(): CGameObject | null
   /** @param type one of `game_object` highlight kinds */
-  highlight_section_in_slot(section: string, type: number, slot_id?: number): void
+  highlight_section_in_slot(section: Section, type: number, slot_id?: number): void
   /** @param functor called per matching item; return `true` to stop */
   highlight_for_each_in_slot(functor: (this: void) => boolean, type: number, slot_id: number): void
   refresh_current_cell_item(): void
@@ -558,7 +558,7 @@ declare class CUIPdaWnd extends CUIDialogWnd {
   IsShown(): boolean
   ShowDialog(hide_indicators: boolean): void
   HideDialog(): void
-  SetActiveSubdialog(section: string): void
+  SetActiveSubdialog(section: Section): void
   SetActiveDialog(ui: CUIWindow): void
   GetActiveDialog(): CUIWindow | null
   GetActiveSection(): string | null

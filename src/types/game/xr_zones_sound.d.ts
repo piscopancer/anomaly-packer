@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace xr_zones_sound {
-  export function r_num(spawn_ini: system_ini, section: string, line: string, default_: number): number
+  export function r_num(spawn_ini: system_ini, section: Section, line: string, default_: number): number
   export function table_include(dest: AnyTable, src: AnyTable): void
 }
 

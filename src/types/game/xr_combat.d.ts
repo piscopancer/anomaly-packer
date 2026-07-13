@@ -1,10 +1,10 @@
 /** @noSelfInFile */
 
 declare namespace xr_combat {
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable, temp: AnyTable): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable, temp: AnyTable): void
   export function disable_scheme(npc: CGameObject, scheme: string, stype: number): void
   export function set_combat_type(npc: CGameObject, actor: CGameObject, t: AnyTable): void
-  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, stype: number, temp: AnyTable): void
+  export function setup_generic_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, stype: number, temp: AnyTable): void
 }
 
 /** @customConstructor evaluator_check_combat */

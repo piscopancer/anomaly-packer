@@ -6,7 +6,7 @@ declare namespace se_heli {
 
 /** @customConstructor se_heli */
 declare class se_heli extends cse_alife_helicopter {
-  constructor(section: string)
+  constructor(section: Section)
   on_register(): void
   on_unregister(): void
   can_switch_online(): boolean

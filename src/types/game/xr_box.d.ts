@@ -2,7 +2,7 @@
 
 declare namespace xr_box {
   export const ph_item_box_manager: AnyTable
-  export function create_items(obj: CGameObject, section: string, number: number, rnd: boolean): void
+  export function create_items(obj: CGameObject, section: Section, number: number, rnd: boolean): void
   export function create_obligatory_items(obj: CGameObject, spawn_ini: system_ini): void
   export function get_box_manager(): AnyTable
 }

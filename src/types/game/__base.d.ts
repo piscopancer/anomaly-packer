@@ -7,7 +7,8 @@
 /// <reference path="__base/streams.d.ts" />
 /// <reference path="__base/fs.d.ts" />
 /// <reference path="__base/gameobject.d.ts" />
-/// <reference path="__base/items.d.ts" />
+/// <reference path="__base/sections.d.ts" />
+/// <reference path="__base/info-portions.d.ts" />
 /// <reference path="__base/keys.d.ts" />
 /// <reference path="__base/smarts.d.ts" />
 /// <reference path="__base/system_ini.d.ts" />
@@ -27,7 +28,7 @@ declare class object_binder {
   constructor(obj: CGameObject)
   readonly object: CGameObject
   reinit(): void
-  reload(section: string): void
+  reload(section: Section): void
   net_spawn(se_obj: CseAlifeObject): boolean
   net_destroy(): void
   net_import(packet: net_packet): void
@@ -201,11 +202,11 @@ declare class CGameTask {
   get_title(): string
   set_title(title: string): void
   set_map_hint(hint: string): void
-  add_on_fail_info(info: string): void
+  add_on_fail_info(info: InfoPortion): void
   add_complete_func(name: string): void
   add_fail_func(name: string): void
-  add_fail_info(info: string): void
-  add_complete_info(info: string): void
+  add_fail_info(info: InfoPortion): void
+  add_complete_info(info: InfoPortion): void
   set_type(type: number): void
   set_map_object_id(id: number): void
   set_description(desc: string): void
@@ -217,29 +218,61 @@ declare class CGameTask {
   get_map_location(): string
   get_map_object_id(): number
   create_map_location(on_load: boolean): void
-  add_on_complete_info(info: string): void
+  add_on_complete_info(info: InfoPortion): void
   change_map_location(map_loc: string, map_obj_id: number): void
   remove_map_locations(notify: boolean): void
 }
-type Community =
-  | 'stalker'
-  | 'bandit'
-  | 'csky'
-  | 'army'
-  | 'freedom'
-  | 'dolg'
-  | 'ecolog'
-  | 'killer'
-  | 'monolith'
-  | 'greh'
-  | 'renegade'
-  | 'isg'
-  | 'monster'
-  | 'zombied'
-type Rank = 'novice' | 'trainee' | 'experienced' | 'professional' | 'veteran' | 'expert' | 'master' | 'legend'
+// The finite vanilla vocabularies below are declared as mergeable `interface`
+// registries so an addon's own .d.ts can extend them via declaration merging
+// (e.g. `interface Communities { my_faction: 0 }`); the `keyof` union then grows
+// automatically in the consumer's project.
+interface Communities {
+  stalker: 0
+  bandit: 0
+  csky: 0
+  army: 0
+  freedom: 0
+  dolg: 0
+  ecolog: 0
+  killer: 0
+  monolith: 0
+  greh: 0
+  renegade: 0
+  isg: 0
+  monster: 0
+  zombied: 0
+}
+type Community = keyof Communities
+interface Ranks {
+  novice: 0
+  trainee: 0
+  experienced: 0
+  professional: 0
+  veteran: 0
+  expert: 0
+  master: 0
+  legend: 0
+}
+type Rank = keyof Ranks
 /** Ранги монстров (creatures\game_relations.ltx → monster_rating) */
-type MonsterRank = 'weak' | 'normal' | 'strong'
-type Reputation = 'excellent' | 'really_good' | 'very_good' | 'good' | 'neutral' | 'bad' | 'very_bad' | 'really_bad' | 'terrible'
+interface MonsterRanks {
+  weak: 0
+  normal: 0
+  strong: 0
+}
+type MonsterRank = keyof MonsterRanks
+interface Reputations {
+  excellent: 0
+  really_good: 0
+  very_good: 0
+  good: 0
+  neutral: 0
+  bad: 0
+  very_bad: 0
+  really_bad: 0
+  terrible: 0
+}
+type Reputation = keyof Reputations
 type Color =
   | 'default'
   | 'red'
@@ -267,11 +300,11 @@ declare class alife {
   set_switch_distance(distance: number): void
   level_name(level_id: number): LevelName
   level_id(): number
-  has_info(obj_id: number, info_portion: string): boolean
-  dont_has_info(obj_id: number, info_portion: string): boolean
-  give_info(obj_id: number, info_portion: string): void
-  disable_info(obj_id: number, info_portion: string): void
-  iterate_info(obj_id: number, functor: (this: void, obj_id: number, info_id: string) => void): void
+  has_info(obj_id: number, info_portion: InfoPortion): boolean
+  dont_has_info(obj_id: number, info_portion: InfoPortion): boolean
+  give_info(obj_id: number, info_portion: InfoPortion): void
+  disable_info(obj_id: number, info_portion: InfoPortion): void
+  iterate_info(obj_id: number, functor: (this: void, obj_id: number, info_id: InfoPortion) => void): void
   teleport_object(id: number, game_vertex_id: number, level_vertex_id: number, pos: vector): void
   object(id: number): CseAbstract | null
   story_object(sid: string): CseAbstract | null
@@ -285,14 +318,14 @@ declare class alife {
   remove_in_restriction(monster: CseAlifeCreatureAbstract, restrictor_id: number): void
   remove_out_restriction(monster: CseAlifeCreatureAbstract, restrictor_id: number): void
   remove_all_restrictions(obj_id: number, restrictor_type: number): void
-  create(section: string, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): CseAbstract
-  create_ammo(section: string): CseAbstract
+  create(section: Section, pos: vector, level_vertex_id: number, game_vertex_id: number, parent_id?: number): CseAbstract
+  create_ammo(section: Section): CseAbstract
   /** Resolves a spawn story id (`_SPAWN_STORY_ID`) to a spawn id (`_SPAWN_ID`). */
   spawn_id(spawn_story_id: number): number
   /** Duplicates a magazined weapon server object, copying its condition, ammo, addons and upgrades. */
   clone_weapon(
     object: CseAbstract,
-    section: string,
+    section: Section,
     position: vector,
     level_vertex_id: number,
     game_vertex_id: number,
@@ -306,41 +339,43 @@ declare class alife {
   set_objects_per_update(count: number): void
   set_process_time(micro: number): void
 }
-type LevelName =
-  | 'fake_start'
-  | 'k00_marsh'
-  | 'l01_escape'
-  | 'k01_darkscape'
-  | 'l02_garbage'
-  | 'k02_trucks_cemetery'
-  | 'l03_agroprom'
-  | 'l03u_agr_underground'
-  | 'l04_darkvalley'
-  | 'y04_pole'
-  | 'l04u_labx18'
-  | 'l05_bar'
-  | 'l06_rostok'
-  | 'l07_military'
-  | 'l08_yantar'
-  | 'l08u_brainlab'
-  | 'l09_deadcity'
-  | 'l10_limansk'
-  | 'l10_radar'
-  | 'l10_red_forest'
-  | 'l10u_bunker'
-  | 'l11_hospital'
-  | 'l11_pripyat'
-  | 'l12_stancia'
-  | 'l12_stancia_2'
-  | 'l12u_control_monolith'
-  | 'l12u_sarcofag'
-  | 'l13_generators'
-  | 'l13u_warlab'
-  | 'jupiter'
-  | 'jupiter_underground'
-  | 'labx8'
-  | 'pripyat'
-  | 'zaton'
+interface LevelNames {
+  fake_start: 0
+  k00_marsh: 0
+  l01_escape: 0
+  k01_darkscape: 0
+  l02_garbage: 0
+  k02_trucks_cemetery: 0
+  l03_agroprom: 0
+  l03u_agr_underground: 0
+  l04_darkvalley: 0
+  y04_pole: 0
+  l04u_labx18: 0
+  l05_bar: 0
+  l06_rostok: 0
+  l07_military: 0
+  l08_yantar: 0
+  l08u_brainlab: 0
+  l09_deadcity: 0
+  l10_limansk: 0
+  l10_radar: 0
+  l10_red_forest: 0
+  l10u_bunker: 0
+  l11_hospital: 0
+  l11_pripyat: 0
+  l12_stancia: 0
+  l12_stancia_2: 0
+  l12u_control_monolith: 0
+  l12u_sarcofag: 0
+  l13_generators: 0
+  l13u_warlab: 0
+  jupiter: 0
+  jupiter_underground: 0
+  labx8: 0
+  pripyat: 0
+  zaton: 0
+}
+type LevelName = keyof LevelNames
 declare class vertex {
   level_id(): number
   level_point(): vector

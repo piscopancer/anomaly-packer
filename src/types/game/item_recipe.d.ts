@@ -5,7 +5,7 @@ declare namespace item_recipe {
   export function func_letter(obj: CGameObject): void
   export function func_recipe(obj: CGameObject): void
   export function menu_read(obj: CGameObject): string | undefined
-  export function start(sec: string): void
+  export function start(sec: Section): void
 }
 
 /** @customConstructor UIRecipe */
@@ -14,7 +14,7 @@ declare class UIRecipe extends CUIScriptWnd {
   __finalize(): void
   InitControls(): void
   InitCallBacks(): void
-  Reset(section: string): void
+  Reset(section: Section): void
   LoadRecipes(): void
   Update(): void
   Close(): void

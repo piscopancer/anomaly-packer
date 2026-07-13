@@ -4,7 +4,7 @@ declare namespace utils_obj {
   export function accessible(npc: CGameObject, point: number | vector): boolean
   export function add_anim(npc: CGameObject, anm: string): void
   export function assign_squad_to_smart(squad_id: number, id: number): void
-  export function create_squad(section: string, smart_name: string): sim_squad_scripted | undefined
+  export function create_squad(section: Section, smart_name: string): sim_squad_scripted | undefined
   export function debug_nearest(npc: CGameObject, msg: string, ...args: any[]): void
   export function execute_script_on_squad(obj: CGameObject, script_to_execute: (member: CGameObject, ...args: any[]) => void, ...args: any[]): void
   export function execute_script_on_squad_not_commander(obj: CGameObject, script_to_execute: (member: CGameObject, ...args: any[]) => void, ...args: any[]): void
@@ -13,7 +13,7 @@ declare namespace utils_obj {
   export function find_random_cover(npc: CGameObject, pos: vector, min_rad: number, max_rad: number): number | false
   export function get_commander(npc: CGameObject): CGameObject | undefined
   export function get_communities_list(): string[]
-  export function get_communities_list_key(): { [community: string]: boolean }
+  export function get_communities_list_key(): { [community: Community]: boolean }
   export function get_current_action_id(npc: CGameObject): number | false
   export function get_nearest_object(npc: CGameObject, objects: AnyTable, max_dist: number): LuaMultiReturn<[CGameObject, number]> | undefined
   export function get_nearest_stalker(npc: CGameObject | 'cam'): LuaMultiReturn<[CGameObject, number]> | undefined

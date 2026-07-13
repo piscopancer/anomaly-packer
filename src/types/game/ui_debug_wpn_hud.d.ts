@@ -11,7 +11,7 @@ declare namespace ui_debug_wpn_hud {
 
 /** @customConstructor WpnHudEditor */
 declare class WpnHudEditor extends CUIScriptWnd {
-  constructor(owner: CGameObject, section: string)
+  constructor(owner: CGameObject, section: Section)
   __finalize(): void
   InitControls(): void
   InitCallBacks(): void

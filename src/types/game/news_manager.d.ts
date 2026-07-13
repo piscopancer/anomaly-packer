@@ -93,7 +93,7 @@ declare namespace news_manager {
   // --- auto-added by audit-coverage (missing from hand-refined types; refine by hand) ---
   export const tips_icons: AnyTable
   export function on_game_start(): void
-  export function send_sound(npc: CGameObject, faction: string, point: AnyTable, str: string, str2: string, delay_sound: boolean): void
+  export function send_sound(npc: CGameObject, faction: Community, point: AnyTable, str: string, str2: string, delay_sound: boolean): void
   export function is_npc_stalker(class_id: number): boolean
   export function send_task(actor: CGameObject, type: string, tsk: AnyTable): boolean
   export function send_treasure(param: AnyTable): void
