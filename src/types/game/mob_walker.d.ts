@@ -1,19 +1,19 @@
 /** @noSelfInFile */
 
 declare namespace mob_walker {
-  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): void
-  export function set_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
 }
 
 /** @customConstructor mob_walker */
 declare class mob_walker {
-  constructor(obj: TODO, storage: TODO)
+  constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(): void
-  update(delta: TODO): void
-  arrived_to_first_waypoint(): TODO
-  waypoint_callback(obj: TODO, action_type: TODO, index: number): void
+  update(delta: number): void
+  arrived_to_first_waypoint(): boolean
+  waypoint_callback(obj: CGameObject, action_type: number, index: number): void
   update_movement_state(): void
   update_standing_state(): void
   deactivate(): void
-  look_at_waypoint(pt: TODO): void
+  look_at_waypoint(pt: vector): void
 }

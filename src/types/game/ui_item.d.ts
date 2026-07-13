@@ -6,7 +6,7 @@ declare namespace ui_item {
   export function build_name_first(obj: CGameObject, sec: string, str: string): string
   export function build_name_last(obj: CGameObject, sec: string, str: string): string
   export function build_short_name_first(obj: CGameObject, sec: string, str: string): string
-  export function get_list_highlight(): TODO
+  export function get_list_highlight(): number
   export function get_obj_desc(obj: CGameObject): string
   export function get_obj_name(obj: CGameObject): string
   export function get_obj_short_name(obj: CGameObject): string

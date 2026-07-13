@@ -2,80 +2,80 @@
 
 declare namespace game_achievements {
   export function absolver_functor(): boolean
-  export function absolver_requirements(): TODO
+  export function absolver_requirements(): boolean
   export function absolver_rewards(): void
   export function artificer_eagerness_functor(): boolean
-  export function artificer_eagerness_requirements(): TODO
+  export function artificer_eagerness_requirements(): boolean
   export function artificer_eagerness_rewards(): void
   export function bookworm_food_functor(): boolean
-  export function bookworm_food_requirements(): TODO
+  export function bookworm_food_requirements(): boolean
   export function bookworm_food_rewards(): void
   export function can_unlock(): boolean
   export function collaborator_functor(): boolean
-  export function collaborator_requirements(): TODO
+  export function collaborator_requirements(): boolean
   export function collaborator_rewards(): void
   export function completionist_functor(): boolean
-  export function completionist_requirements(): TODO
+  export function completionist_requirements(): boolean
   export function completionist_rewards(): void
   export function down_to_earth_functor(): boolean
-  export function down_to_earth_requirements(): TODO
+  export function down_to_earth_requirements(): boolean
   export function down_to_earth_rewards(): void
   export function duga_free_functor(): boolean
-  export function duga_free_requirements(): TODO
+  export function duga_free_requirements(): boolean
   export function duga_free_rewards(): void
   export function geologist_functor(): boolean
-  export function geologist_requirements(): TODO
+  export function geologist_requirements(): boolean
   export function geologist_rewards(): void
   export function get_achievements_count(): number
   export function get_achievements_locked_count(): number
   export function get_achievements_unlocked_count(): number
-  export function has_achievement(achievement: TODO): boolean
+  export function has_achievement(achievement: string): boolean
   export function heavy_pockets_functor(): boolean
-  export function heavy_pockets_requirements(): TODO
+  export function heavy_pockets_requirements(): boolean
   export function heavy_pockets_rewards(): void
   export function infantile_pleasure_functor(): boolean
-  export function infantile_pleasure_requirements(): TODO
+  export function infantile_pleasure_requirements(): boolean
   export function infantile_pleasure_rewards(): void
   export function infopreneur_functor(): boolean
-  export function infopreneur_requirements(): TODO
+  export function infopreneur_requirements(): boolean
   export function infopreneur_rewards(): void
   export function invictus_functor(): boolean
-  export function invictus_requirements(): TODO
+  export function invictus_requirements(): boolean
   export function invictus_rewards(): void
   export function iron_curtain_functor(): boolean
-  export function iron_curtain_requirements(): TODO
+  export function iron_curtain_requirements(): boolean
   export function iron_curtain_rewards(): void
   export function mechanized_warfare_functor(): boolean
-  export function mechanized_warfare_requirements(): TODO
+  export function mechanized_warfare_requirements(): boolean
   export function mechanized_warfare_rewards(): void
   export function murky_spirit_functor(): boolean
-  export function murky_spirit_requirements(): TODO
+  export function murky_spirit_requirements(): boolean
   export function murky_spirit_rewards(): void
   export function patriarch_functor(): boolean
-  export function patriarch_requirements(): TODO
+  export function patriarch_requirements(): boolean
   export function patriarch_rewards(): void
   export function radiotherapy_functor(): boolean
-  export function radiotherapy_requirements(): TODO
+  export function radiotherapy_requirements(): boolean
   export function radiotherapy_rewards(): void
   export function rag_and_bone_functor(): boolean
-  export function rag_and_bone_requirements(): TODO
+  export function rag_and_bone_requirements(): boolean
   export function rag_and_bone_rewards(): void
   export function recycler_functor(): boolean
-  export function recycler_requirements(): TODO
+  export function recycler_requirements(): boolean
   export function recycler_rewards(): void
   export function silver_or_lead_functor(): boolean
-  export function silver_or_lead_requirements(): TODO
+  export function silver_or_lead_requirements(): boolean
   export function silver_or_lead_rewards(): void
   export function tourist_functor(): boolean
-  export function tourist_requirements(): TODO
+  export function tourist_requirements(): boolean
   export function tourist_rewards(): void
   export function unforeseen_guest_functor(): boolean
-  export function unforeseen_guest_requirements(): TODO
+  export function unforeseen_guest_requirements(): boolean
   export function unforeseen_guest_rewards(): void
   export function well_dressed_functor(): boolean
-  export function well_dressed_requirements(): TODO
+  export function well_dressed_requirements(): boolean
   export function well_dressed_rewards(): void
   export function wishful_thinking_functor(): boolean
-  export function wishful_thinking_requirements(): TODO
+  export function wishful_thinking_requirements(): boolean
   export function wishful_thinking_rewards(): void
 }

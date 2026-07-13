@@ -1,25 +1,25 @@
 /** @noSelfInFile */
 
 declare namespace item_repair {
-  export const GUI: TODO
-  export function func_tool(obj: TODO): void
-  export function menu_tool(obj: TODO): TODO
+  export const GUI: UIRepair
+  export function func_tool(obj: CGameObject): void
+  export function menu_tool(obj: CGameObject): string | undefined
   export function on_game_start(): void
-  export function start(obj: TODO, sec: TODO): void
+  export function start(obj: CGameObject, sec: string): void
 }
 
 /** @customConstructor UIRepair */
 declare class UIRepair extends CUIScriptWnd {
-  constructor(obj: TODO, section: TODO)
+  constructor(obj: CGameObject, section: string)
   __finalize(): void
   InitControls(): void
   InitCallBacks(): void
-  Reset(obj: TODO, section: TODO): void
+  Reset(obj: CGameObject, section: string): void
   InitInventory(n: number): void
   Update(): void
-  On_CC_Mouse1(cont: number, idx: TODO): void
+  On_CC_Mouse1(cont: number, idx: any): void
   OnItemSelect(n: number): void
-  OnRepair(): TODO
-  OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
+  OnRepair(): void
+  OnKeyboard(dik: number, keyboard_action: number): boolean
   OnCancel(): void
 }

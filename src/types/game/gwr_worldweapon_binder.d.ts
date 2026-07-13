@@ -1,11 +1,11 @@
 /** @noSelfInFile */
 
 declare namespace gwr_worldweapon_binder {
-  export function init_m98(obj: TODO): void
+  export function init_m98(obj: CGameObject): void
 }
 
 /** @customConstructor gwr_wpn_m98_binder */
 declare class gwr_wpn_m98_binder extends object_binder {
-  constructor(obj: TODO)
+  constructor(obj: CGameObject)
   update(): void
 }

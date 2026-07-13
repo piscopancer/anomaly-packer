@@ -7,18 +7,18 @@ declare class UISaveDialog extends CUIScriptWnd {
   FillList(): void
   InitControls(): void
   InitCallBacks(): void
-  OnListItemClicked(): TODO
+  OnListItemClicked(): void
   OnMsgYes(): void
-  OnButton_del_clicked(): TODO
-  delete_selected_file(): TODO
+  OnButton_del_clicked(): void
+  delete_selected_file(): void
   OnButton_ok_clicked(): void
   OnButton_cancel_clicked(): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): boolean
-  AddItemToList(file_name: TODO, date_time: TODO): void
-  SaveFile(fileName: TODO): void
+  OnKeyboard(dik: number, keyboard_action: number): boolean
+  AddItemToList(file_name: string, date_time: string): void
+  SaveFile(fileName: string): void
 }
 
 /** @customConstructor save_item */
 declare class save_item extends CUIListBoxItem {
-  constructor(height: TODO)
+  constructor(height: number)
 }

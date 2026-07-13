@@ -1,10 +1,10 @@
 /** @noSelfInFile */
 
 declare namespace simulation_objects {
-  export const available_by_id: TODO
-  export const base_smarts: TODO
-  export const config: TODO
-  export const object_registry: TODO
+  export const available_by_id: AnyTable
+  export const base_smarts: AnyTable
+  export const config: AnyTable
+  export const object_registry: AnyTable
   export const object_registry_size: number
   export function evaluate_prior(target: CseAbstract, squad: CseAbstract): number
   export function get_props(se_obj: CseAbstract): void

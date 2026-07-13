@@ -7,15 +7,15 @@ declare namespace xr_companion {
   export const beh_walk_ignore: number
   export const beh_walk_near: number
   export const beh_walk_simple: number
-  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): TODO
-  export function select_position(npc: TODO, st: TODO): TODO
-  export function set_scheme(object: TODO, ini: TODO, scheme: TODO, section: TODO): void
-  export function vector_rotate_y(v: TODO, angle: TODO): TODO
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function select_position(npc: CGameObject, st: AnyTable): number | undefined
+  export function set_scheme(object: CGameObject, ini: system_ini, scheme: string, section: string): void
+  export function vector_rotate_y(v: vector, angle: number): vector
 }
 
 /** @customConstructor action_companion_activity */
 declare class action_companion_activity extends action_base {
-  constructor(npc_name: TODO, action_name: TODO, storage: TODO)
+  constructor(npc_name: string, action_name: string, storage: AnyTable)
   initialize(): void
   beh_walk_simple(): void
   beh_wait_simple(): void
@@ -25,6 +25,6 @@ declare class action_companion_activity extends action_base {
 
 /** @customConstructor evaluator_need_companion */
 declare class evaluator_need_companion extends property_evaluator {
-  constructor(storage: TODO, name: TODO)
-  evaluate(): TODO
+  constructor(storage: AnyTable, name: string)
+  evaluate(): boolean
 }

@@ -10,20 +10,20 @@ declare namespace ui_pda_radio_tab {
   export function action_plyr_stop(): void
   export function action_plyr_v_down(): void
   export function action_plyr_v_up(): void
-  export function action_radio_ch(n: TODO): void
+  export function action_radio_ch(n: number): void
   export function action_radio_start(): void
   export function action_radio_stop(): void
   export function action_radio_v_down(): void
   export function action_radio_v_up(): void
-  export function get_num_of_plyr(): TODO
-  export function get_playing_object(i: TODO): TODO
-  export function get_plyr_param(): TODO
-  export function get_ui(): TODO
+  export function get_num_of_plyr(): number
+  export function get_playing_object(i: number): CGameObject | undefined
+  export function get_plyr_param(): AnyTable
+  export function get_ui(): AnyTable
   export function is_snd_playing(): boolean
   export function on_game_start(): void
-  export function plyr_pick(num_of_tracks: number, plyr_now: number, previous: TODO, shuffle: TODO, loop: number, counter: number, index: number): TODO
-  export function radio_pick(radio_index_i: number, number_of_tracks: number): TODO
-  export function radio_setVolume(radio_vol: TODO): void
+  export function plyr_pick(num_of_tracks: number, plyr_now: number, previous: number, shuffle: boolean, loop: number, counter: number, index: number): number
+  export function radio_pick(radio_index_i: number, number_of_tracks: number): number
+  export function radio_setVolume(radio_vol: number): void
   export function update_settings(): void
 }
 
@@ -34,7 +34,7 @@ declare class pda_radio_tab extends CUIScriptWnd {
   InitControls(): void
   InitCallbacks(): void
   Update(): void
-  SwitchChannel(n: TODO): void
+  SwitchChannel(n: number): void
   On_Radio_Channel_1(): void
   On_Radio_Channel_2(): void
   On_Radio_Volume_Down(): void

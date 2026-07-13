@@ -2,9 +2,9 @@
 
 /** @customConstructor se_level_changer */
 declare class se_level_changer extends cse_alife_level_changer {
-  constructor(section: TODO)
+  constructor(section: string)
   on_register(): void
   on_unregister(): void
   STATE_Write(packet: net_packet): void
-  STATE_Read(packet: net_packet, size: TODO): void
+  STATE_Read(packet: net_packet, size: number): void
 }

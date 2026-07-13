@@ -1,12 +1,12 @@
 /** @noSelfInFile */
 
 declare namespace warfare_factions {
-  export const all_factions: TODO
-  export const faction_information: TODO
-  export const faction_timers: TODO
-  export const factions: TODO
-  export const factions_p: TODO
-  export const printd: TODO
+  export const all_factions: AnyTable
+  export const faction_information: AnyTable
+  export const faction_timers: AnyTable
+  export const factions: AnyTable
+  export const factions_p: AnyTable
+  export const printd: (e: number, optionalMessage?: string) => void
   export function update(): void
   export function update_faction(faction: string): void
 }

@@ -77,7 +77,7 @@ declare namespace txr_routes {
   export function is_route_left(): boolean
   // Return shape depends on flags: connected maps as `Record<string, string[]>`, or as
   // couple tables `Array<[string, string]>` when `couple` is set.
-  export function list_map(discovered: boolean, connected: boolean, couple: boolean): TODO
+  export function list_map(discovered: boolean, connected: boolean, couple: boolean): AnyTable
   export function msg_route(map_1: string, map_2: string): void
   export function msg_route_general(): void
   export function on_game_start(): void

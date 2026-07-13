@@ -6,15 +6,15 @@ declare namespace ui_mm_faction_select {
 
 /** @customConstructor UINewGame */
 declare class UINewGame extends CUIScriptWnd {
-  constructor(owner: TODO)
+  constructor(owner: CGameObject)
   __finalize(): void
   Main_Controls(): void
   Main_CallBacks(): void
   Update(): void
   PopupFaction_Controls(): void
   PopupFaction_Callbacks(): void
-  PopupFaction_Show(state: TODO): void
-  OnFactionSelect(faction: TODO): void
+  PopupFaction_Show(state: string): void
+  OnFactionSelect(faction: string): void
   OnFaction_stalker(): void
   OnFaction_bandit(): void
   OnFaction_csky(): void
@@ -30,8 +30,8 @@ declare class UINewGame extends CUIScriptWnd {
   OnFaction_zombied(): void
   PopupIcon_Controls(): void
   PopupIcon_Callbacks(): void
-  PopupIcon_Show(state: TODO): void
-  OnIconSelect(num: TODO): void
+  PopupIcon_Show(state: string): void
+  OnIconSelect(num: number): void
   OnIcon_1(): void
   OnIcon_2(): void
   OnIcon_3(): void
@@ -82,19 +82,19 @@ declare class UINewGame extends CUIScriptWnd {
   OnIcon_48(): void
   OnIcon_49(): void
   OnIcon_50(): void
-  LoadFaction(rand: TODO, faction: TODO): void
-  LoadIcon(rand: TODO): void
-  LoadMap(rand: TODO): void
-  LoadLoadout(rand: TODO): void
-  LoadDifficulty(rand: TODO): void
-  LoadEconomy(rand: TODO): void
-  LoadHardcoreLives(rand: TODO): void
-  LoadHardcoreRegen(rand: TODO): void
-  LoadTimer(rand: TODO): void
+  LoadFaction(rand: boolean, faction: string): void
+  LoadIcon(rand: boolean): void
+  LoadMap(rand: boolean): void
+  LoadLoadout(rand: boolean): void
+  LoadDifficulty(rand: boolean): void
+  LoadEconomy(rand: boolean): void
+  LoadHardcoreLives(rand: boolean): void
+  LoadHardcoreRegen(rand: boolean): void
+  LoadTimer(rand: boolean): void
   OnFactionClicked(): void
   OnIconClicked(): void
   OnSelectMap(): void
-  On_CC_Mouse1(cont: string, idx: TODO): void
+  On_CC_Mouse1(cont: string, idx: number): void
   OnSelectDifficulty(): void
   OnSelectEconomy(): void
   OnSelectHardcoreLives(): void
@@ -105,15 +105,15 @@ declare class UINewGame extends CUIScriptWnd {
   OnCheckSetWarfare(): void
   OnCheckSetSurvival(): void
   OnCheckResetList(): void
-  UpdateAll(rand: TODO, faction: TODO): void
+  UpdateAll(rand: boolean, faction: string): void
   UpdateFaction(): void
   UpdateIcon(): void
   UpdateMap(): void
   UpdateMoney(): void
   UpdateDescr(): void
-  GetAxis_Icon(main: TODO, element: TODO, all_row: TODO, all_col: TODO, row: TODO, col: TODO): TODO
+  GetAxis_Icon(main: AnyTable, element: AnyTable, all_row: number, all_col: number, row: number, col: number): number
   OnQuit(): void
   OnRandomize(): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
+  OnKeyboard(dik: number, keyboard_action: number): boolean
   OnStartGame(): void
 }

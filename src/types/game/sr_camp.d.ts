@@ -1,20 +1,20 @@
 /** @noSelfInFile */
 
 declare namespace sr_camp {
-  export function get_current_camp(position: TODO): CCampManager | null
-  export function start_guitar(npc: TODO): void
-  export function start_harmonica(npc: TODO): void
+  export function get_current_camp(position: vector): CCampManager | null
+  export function start_guitar(npc: CGameObject): void
+  export function start_harmonica(npc: CGameObject): void
 }
 
 /** @customConstructor CCampManager */
 declare class CCampManager {
-  constructor(object: TODO)
+  constructor(object: CGameObject)
   update(): void
-  set_next_state(new_state: TODO): void
+  set_next_state(new_state: string): void
   get_director(): number
   set_story(): void
-  get_camp_action(npc_id: TODO): LuaMultiReturn<[TODO, boolean]>
-  register_npc(npc_id: TODO): void
-  unregister_npc(npc_id: TODO): void
-  get_npc_role(npc_id: TODO, state: string): TODO
+  get_camp_action(npc_id: number): LuaMultiReturn<[string, boolean]>
+  register_npc(npc_id: number): void
+  unregister_npc(npc_id: number): void
+  get_npc_role(npc_id: number, state: string): number
 }

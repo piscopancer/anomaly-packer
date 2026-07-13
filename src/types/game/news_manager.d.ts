@@ -91,11 +91,11 @@ declare namespace news_manager {
    */
   export function relocate_money(actor: null, type: 'in' | 'out', sum: number): void
   // --- auto-added by audit-coverage (missing from hand-refined types; refine by hand) ---
-  export const tips_icons: TODO
-  export function on_game_start(): TODO
-  export function send_sound(npc: TODO, faction: TODO, point: TODO, str: TODO, str2: TODO, delay_sound: TODO): TODO
-  export function is_npc_stalker(class_id: TODO): TODO
-  export function send_task(actor: TODO, type: TODO, tsk: TODO): TODO
-  export function send_treasure(param: TODO): TODO
-  export function relocate_item(actor: TODO, type: TODO, item: TODO, amount: TODO): TODO
+  export const tips_icons: AnyTable
+  export function on_game_start(): void
+  export function send_sound(npc: CGameObject, faction: string, point: AnyTable, str: string, str2: string, delay_sound: boolean): void
+  export function is_npc_stalker(class_id: number): boolean
+  export function send_task(actor: CGameObject, type: string, tsk: AnyTable): boolean
+  export function send_treasure(param: AnyTable): void
+  export function relocate_item(actor: CGameObject, type: string, item: CGameObject, amount: number): void
 }

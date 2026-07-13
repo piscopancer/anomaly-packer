@@ -1,17 +1,17 @@
 /** @noSelfInFile */
 
 declare namespace xr_remark {
-  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): TODO
-  export function init_target(obj: TODO, target_str: string): TODO
-  export function set_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function init_target(obj: CGameObject, target_str: string): LuaMultiReturn<[vector | undefined, number | undefined, boolean]>
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
 }
 
 /** @customConstructor action_remark_activity */
 declare class action_remark_activity extends action_base {
-  constructor(npc_name: TODO, action_name: TODO, storage: TODO)
+  constructor(npc_name: string, action_name: string, storage: AnyTable)
   initialize(): void
   activate_scheme(): void
-  get_target(): TODO
+  get_target(): AnyTable | undefined
   time_callback(): void
   update(): void
   execute(): void
@@ -20,6 +20,6 @@ declare class action_remark_activity extends action_base {
 
 /** @customConstructor evaluator_need_remark */
 declare class evaluator_need_remark extends property_evaluator {
-  constructor(storage: TODO, name: TODO)
-  evaluate(): TODO
+  constructor(storage: AnyTable, name: string)
+  evaluate(): boolean
 }

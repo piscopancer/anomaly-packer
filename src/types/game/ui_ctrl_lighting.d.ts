@@ -1,10 +1,10 @@
 /** @noSelfInFile */
 
 declare namespace ui_ctrl_lighting {
-  export const GUI: TODO
+  export const GUI: AnyTable
   export function actor_on_first_update(): void
   export function on_game_start(): void
-  export function on_key_release(key: TODO): void
+  export function on_key_release(key: number): void
   export function start(): void
 }
 
@@ -13,8 +13,8 @@ declare class UILightControl extends CUIScriptWnd {
   constructor()
   __finalize(): void
   InitControls(): void
-  Callback_Track(i: TODO, val: TODO): void
+  Callback_Track(i: number, val: number): void
   Update(): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
+  OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
 }

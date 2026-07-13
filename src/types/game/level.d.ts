@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace level {
-  export function send(net_packet: TODO, reliable?: boolean, sequential?: boolean, high_priority?: boolean, send_immediately?: boolean): void
+  export function send(net_packet: net_packet, reliable?: boolean, sequential?: boolean, high_priority?: boolean, send_immediately?: boolean): void
   /** Target object at the crosshair */
   export function get_target_obj(): CGameObject | null
   /** Distance to an object at the crosshair */
@@ -24,7 +24,7 @@ declare namespace level {
   export function is_wfx_playing(): boolean
   export function get_wfx_time(): number
   export function stop_weather_fx(): void
-  export function environment(): TODO
+  export function environment(): AnyTable
   export function set_time_factor(factor: number): void
   export function get_time_factor(): number
   export function set_game_difficulty(diff: 0 | 1 | 2 | 3): void
@@ -41,7 +41,7 @@ declare namespace level {
   export function vertex_position(level_vertex_id: number): vector
   export function name(): LevelName
   export function prefetch_sound(name: string): void
-  export function client_spawn_manager(): TODO
+  export function client_spawn_manager(): AnyTable
   type MapSpot = Suggest<'red_location' | 'blue_location' | 'green_location'>
   export function map_add_object_spot_ser(id: number, spot_type: MapSpot, text: string): void
   export function map_add_object_spot(id: number, spot_type: MapSpot, text: string): void
@@ -49,27 +49,27 @@ declare namespace level {
   /** @returns 0 - not found */
   export function map_has_object_spot(id: number, spot_type: MapSpot): number
   export function map_change_spot_hint(id: number, spot_type: MapSpot, text: string): void
-  export function add_dialog_to_render(dialog_window: TODO /** CUIDialogWnd */): void
-  export function remove_dialog_to_render(dialog_window: TODO /** CUIDialogWnd */): void
+  export function add_dialog_to_render(dialog_window: CUIDialogWnd /** CUIDialogWnd */): void
+  export function remove_dialog_to_render(dialog_window: CUIDialogWnd /** CUIDialogWnd */): void
   export function hide_indicators(): void
   export function hide_indicators_safe(): void
   export function show_indicators(): void
   export function show_weapon(show: boolean): void
-  export function add_call(lua_obj: TODO, condition: TODO, action: TODO): void
+  export function add_call(lua_obj: AnyTable, condition: AnyTable, action: AnyTable): void
   // add_call(): TODO
   // add_call(): TODO
-  export function remove_call(lua_obj: TODO, condition: TODO, action: TODO): void
+  export function remove_call(lua_obj: AnyTable, condition: AnyTable, action: AnyTable): void
   // remove_call(): TODO
   // remove_call(): TODO
-  export function remove_calls_for_object(lua_obj: TODO): void
+  export function remove_calls_for_object(lua_obj: AnyTable): void
   export function present(): boolean
   export function disable_input(): void
   export function enable_input(): void
   export function spawn_phantom(pos: vector): void
-  export function get_bounding_volume(): TODO // Fbox
+  export function get_bounding_volume(): Fbox
   export function iterate_sounds(prefix: string, max_count: number, functor: () => void): void
   // iterate_sounds(): TODO
-  export function physics_world(): TODO //cphysics_world_scripted
+  export function physics_world(): AnyTable //cphysics_world_scripted
   export function get_snd_volume(): number
   export function get_rain_volume(): number
   export function set_snd_volume(volume: number): void

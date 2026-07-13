@@ -1,33 +1,33 @@
 /** @noSelfInFile */
 
 declare namespace xr_motivator {
-  export function AddToMotivator(npc: TODO): void
+  export function AddToMotivator(npc: CGameObject): void
 }
 
 /** @customConstructor motivator_binder */
 declare class motivator_binder extends object_binder {
-  constructor(obj: TODO)
+  constructor(obj: CGameObject)
   /** Runtime state table for the bound object (`db.storage[obj:id()]`). */
   st: ObjectState
   /** `true` when the binder is being restored from a save (`reinit`/`load`). */
   loaded: boolean
-  extrapolate_callback(cur_pt: TODO): boolean
+  extrapolate_callback(cur_pt: number): boolean
   reinit(): void
-  net_spawn(se_abstract: TODO): boolean
-  on_item_take(item: TODO): void
-  take_item_from_box(box: TODO, item: TODO): void
-  on_item_drop(item: TODO): void
+  net_spawn(se_abstract: CseAbstract): boolean
+  on_item_take(item: CGameObject): void
+  take_item_from_box(box: CGameObject, item: CGameObject): void
+  on_item_drop(item: CGameObject): void
   net_destroy(): void
-  hit_callback(obj: CGameObject, amount: TODO, local_direction: TODO, who: TODO, bone_index: number): void
-  death_callback(victim: CGameObject, who: TODO): void
-  use_callback(obj: TODO, who: TODO): void
-  update(delta: TODO): void
-  reload(section: TODO): void
+  hit_callback(obj: CGameObject, amount: number, local_direction: vector, who: CGameObject, bone_index: number): void
+  death_callback(victim: CGameObject, who: CGameObject): void
+  use_callback(obj: CGameObject, who: CGameObject): void
+  update(delta: number): void
+  reload(section: string): void
   net_save_relevant(): boolean
-  save(packet: TODO): void
-  load(reader: TODO): void
-  hear_callback(npc: TODO, who_id: TODO, sound_type: TODO, sound_position: TODO, sound_power: TODO): void
-  save_state(m_data: TODO): void
+  save(packet: net_packet): void
+  load(reader: net_packet): void
+  hear_callback(npc: CGameObject, who_id: number, sound_type: number, sound_position: vector, sound_power: number): void
+  save_state(m_data: AnyTable): void
   load_state(): void
-  setup_known_info(npc: CGameObject, char_ini: TODO, known_info: TODO): void
+  setup_known_info(npc: CGameObject, char_ini: system_ini, known_info: AnyTable): void
 }

@@ -1,15 +1,15 @@
 /** @noSelfInFile */
 
 declare namespace sr_timer {
-  export function add_to_binder(obj: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): void
-  export function parse_data(npc: TODO, s: TODO): TODO
-  export function set_scheme(obj: TODO, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): void
-  export function time2str(n: TODO): string
+  export function add_to_binder(obj: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function parse_data(npc: CGameObject, s: string): AnyTable
+  export function set_scheme(obj: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
+  export function time2str(n: number): string
 }
 
 /** @customConstructor action_timer */
 declare class action_timer {
-  constructor(obj: TODO, storage: TODO)
-  update(delta: TODO): void
-  deactivate(delta: TODO): void
+  constructor(obj: CGameObject, storage: AnyTable)
+  update(delta: number): void
+  deactivate(delta: number): void
 }

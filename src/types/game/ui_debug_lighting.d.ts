@@ -1,25 +1,25 @@
 /** @noSelfInFile */
 
 declare namespace ui_debug_lighting {
-  export const GUI: TODO
+  export const GUI: AnyTable
   export function on_game_start(): void
-  export function on_key_hold(key: TODO): void
-  export function on_key_release(key: TODO): void
+  export function on_key_hold(key: string): void
+  export function on_key_release(key: string): void
   export function on_localization_change(): void
-  export function print_dbg(...args: TODO[]): void
-  export function start(owner: TODO): void
+  export function print_dbg(...args: any[]): void
+  export function start(owner: CGameObject): void
 }
 
 /** @customConstructor LightEditor */
 declare class LightEditor extends CUIScriptWnd {
-  constructor(owner: TODO)
+  constructor(owner: CGameObject)
   __finalize(): void
-  InitControls(): TODO
+  InitControls(): void
   InitCallBacks(): void
   Reset(): void
   Update(): void
   OnSelectWeather(): void
-  OnInput(n: TODO): void
+  OnInput(n: number): void
   OnInput_1(): void
   OnInput_2(): void
   OnInput_3(): void
@@ -59,9 +59,9 @@ declare class LightEditor extends CUIScriptWnd {
   OnInput_37(): void
   OnInput_38(): void
   OnInput_39(): void
-  Hightlight(idx: TODO): void
-  SwitchCommand(state: TODO): void
-  SwitchValue(state: TODO): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
+  Hightlight(idx: number): void
+  SwitchCommand(state: string): void
+  SwitchValue(state: string): void
+  OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
 }

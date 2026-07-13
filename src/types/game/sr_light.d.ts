@@ -1,16 +1,16 @@
 /** @noSelfInFile */
 
 declare namespace sr_light {
-  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
   export function check_light(stalker: CGameObject): void
   export function clean_up(): void
-  export function set_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
 }
 
 /** @customConstructor action_light */
 declare class action_light {
-  constructor(obj: TODO, storage: TODO)
+  constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(): void
-  update(delta: TODO): void
-  check_stalker(stalker: TODO): boolean
+  update(delta: number): void
+  check_stalker(stalker: CGameObject): boolean
 }

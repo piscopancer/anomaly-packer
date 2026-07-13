@@ -27,7 +27,7 @@ declare namespace game {
   export function actor_lower_weapon(lower: boolean): void
   export function prefetch_texture(name: string): void
   export function prefetch_model(name: string): void
-  export function get_visual_userdata(visual: string): TODO // @returns CScriptIniFile
-  export function world2ui(pos: vector, hud?: boolean): TODO // @returns Fvector2
+  export function get_visual_userdata(visual: string): CScriptIniFile
+  export function world2ui(pos: vector, hud?: boolean): vector2
   export function open_originals_link(): void
 }

@@ -1,25 +1,25 @@
 /** @noSelfInFile */
 
 declare namespace xr_walker {
-  export function add_to_binder(npc: TODO, ini: TODO, scheme: TODO, section: TODO, storage: TODO): TODO
-  export function set_scheme(npc: TODO, ini: TODO, scheme: TODO, section: TODO, gulag_name: TODO): void
+  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: string, storage: AnyTable): void
+  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: string, gulag_name: string): void
 }
 
 /** @customConstructor action_walker_activity */
 declare class action_walker_activity extends action_base {
-  constructor(npc: TODO, action_name: TODO, storage: TODO)
+  constructor(npc: CGameObject, action_name: string, storage: AnyTable)
   initialize(): void
-  activate_scheme(loading: TODO, npc: TODO): void
-  reset_scheme(loading: TODO, npc: TODO): void
+  activate_scheme(loading: boolean, npc: CGameObject): void
+  reset_scheme(loading: boolean, npc: CGameObject): void
   execute(): void
   update(): void
   finalize(): void
-  position_riched(): TODO
-  net_destroy(npc: TODO): void
+  position_riched(): boolean
+  net_destroy(npc: CGameObject): void
 }
 
 /** @customConstructor evaluator_need_walker */
 declare class evaluator_need_walker extends property_evaluator {
-  constructor(storage: TODO, name: TODO)
-  evaluate(): TODO
+  constructor(storage: AnyTable, name: string)
+  evaluate(): boolean
 }

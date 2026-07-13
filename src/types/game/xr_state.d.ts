@@ -5,17 +5,17 @@ declare namespace xr_state {
   export const sit_wait: number
   export const sleep: number
   export const stand: number
-  export function anim_update(type: TODO, npc: TODO): TODO
-  export function change_state(npc: TODO, id: TODO): TODO
-  export function finish_state(npc: TODO): TODO
+  export function anim_update(type: string, npc: CGameObject): void
+  export function change_state(npc: CGameObject, id: number): void
+  export function finish_state(npc: CGameObject): void
 }
 
 /** @customConstructor body_state */
 declare class body_state {
-  constructor(npc: TODO)
-  finish_state(): TODO
-  set_state(id: TODO): boolean
-  transanim(object: TODO, target_state: TODO): void
+  constructor(npc: CGameObject)
+  finish_state(): void
+  set_state(id: number): boolean
+  transanim(object: CGameObject, target_state: string): void
   weapon_slot(): number
-  anim_update(type: TODO): TODO
+  anim_update(type: string): void
 }

@@ -2,10 +2,10 @@
 
 declare namespace ui_load_dialog {
   export const saved_game_extension: string
-  export function AddTimeDigit(str: TODO, dig: TODO): TODO
-  export function delete_save_game(filename: TODO): void
-  export function file_data(fname: TODO): string
-  export function file_exist(fname: TODO): boolean
+  export function AddTimeDigit(str: string, dig: string): string
+  export function delete_save_game(filename: string): void
+  export function file_data(fname: string): string
+  export function file_exist(fname: string): boolean
 }
 
 /** @customConstructor UILoadDialog */
@@ -15,14 +15,14 @@ declare class UILoadDialog extends CUIScriptWnd {
   FillList(): void
   InitControls(): void
   InitCallBacks(): void
-  OnListItemClicked(): TODO
+  OnListItemClicked(): void
   OnListItemDbClicked(): void
-  OnMsgYes(): TODO
-  load_game_internal(): TODO
+  OnMsgYes(): void
+  load_game_internal(): void
   OnButton_load_clicked(): void
   OnButton_back_clicked(): void
-  OnButton_del_clicked(): TODO
-  OnKeyboard(dik: TODO, keyboard_action: TODO): boolean
-  AddItemToList(file_name: TODO, date_time: TODO): void
-  SelectNextItem(state: TODO): void
+  OnButton_del_clicked(): void
+  OnKeyboard(dik: number, keyboard_action: number): boolean
+  AddItemToList(file_name: string, date_time: string): void
+  SelectNextItem(state: string): void
 }

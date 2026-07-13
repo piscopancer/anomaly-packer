@@ -5,9 +5,9 @@ declare namespace utils_obj {
   export function add_anim(npc: CGameObject, anm: string): void
   export function assign_squad_to_smart(squad_id: number, id: number): void
   export function create_squad(section: string, smart_name: string): sim_squad_scripted | undefined
-  export function debug_nearest(npc: CGameObject, msg: string, ...args: TODO[]): void
-  export function execute_script_on_squad(obj: CGameObject, script_to_execute: (member: CGameObject, ...args: TODO[]) => void, ...args: TODO[]): void
-  export function execute_script_on_squad_not_commander(obj: CGameObject, script_to_execute: (member: CGameObject, ...args: TODO[]) => void, ...args: TODO[]): void
+  export function debug_nearest(npc: CGameObject, msg: string, ...args: any[]): void
+  export function execute_script_on_squad(obj: CGameObject, script_to_execute: (member: CGameObject, ...args: any[]) => void, ...args: any[]): void
+  export function execute_script_on_squad_not_commander(obj: CGameObject, script_to_execute: (member: CGameObject, ...args: any[]) => void, ...args: any[]): void
   export function find_close_cover(npc: CGameObject, base_position: vector, pos: vector, cover_dist?: number, mn?: number, mx?: number): number | false
   export function find_cover_in_rand_direction(npc: CGameObject, base_point: number, pos: vector): number | false
   export function find_random_cover(npc: CGameObject, pos: vector, min_rad: number, max_rad: number): number | false
@@ -15,9 +15,9 @@ declare namespace utils_obj {
   export function get_communities_list(): string[]
   export function get_communities_list_key(): { [community: string]: boolean }
   export function get_current_action_id(npc: CGameObject): number | false
-  export function get_nearest_object(npc: CGameObject, objects: TODO, max_dist: number): LuaMultiReturn<[CGameObject, number]> | undefined
+  export function get_nearest_object(npc: CGameObject, objects: AnyTable, max_dist: number): LuaMultiReturn<[CGameObject, number]> | undefined
   export function get_nearest_stalker(npc: CGameObject | 'cam'): LuaMultiReturn<[CGameObject, number]> | undefined
-  export function get_nearest_waypoint(obj: CGameObject, pathname: string, ptr: TODO, cnt: number): number | undefined
+  export function get_nearest_waypoint(obj: CGameObject, pathname: string, ptr: number, cnt: number): number | undefined
   export function get_rank_list(): string[]
   export function get_reputation_list(): string[]
   export function get_reputation_name(value: number): string | undefined
@@ -33,17 +33,17 @@ declare namespace utils_obj {
   export function is_trader(obj: CGameObject): boolean
   export function lmove(npc: CGameObject, vid: number, old_vid?: number): number | undefined
   export function nearest_object(s: string | number, offline?: boolean): LuaMultiReturn<[CseAbstract, number]> | undefined
-  export function npc_in_zone(npc: CGameObject, zone: string | TODO): boolean
-  export function parse_waypoint_data(pathname: string, wpflags: number, wpname: string): TODO
-  export function path_parse_waypoints(pathname: string): TODO
-  export function path_parse_waypoints_from_arglist(pathname: string, num_points: number, ...args: TODO[]): TODO
+  export function npc_in_zone(npc: CGameObject, zone: string | CGameObject): boolean
+  export function parse_waypoint_data(pathname: string, wpflags: number, wpname: string): AnyTable
+  export function path_parse_waypoints(pathname: string): AnyTable
+  export function path_parse_waypoints_from_arglist(pathname: string, num_points: number, ...args: any[]): AnyTable
   export function play_sound(path: string, vol?: number): void
-  export function print_dbg(...args: TODO[]): void
+  export function print_dbg(...args: any[]): void
   export function safe_bone_pos(obj: CGameObject, bone: string): vector
-  export function send_to_nearest_accessible_vertex(npc: CGameObject, v_id: number, caller?: TODO): number
-  export function smart_has_uncommon_squad(name: string, only_arrived?: boolean): TODO
+  export function send_to_nearest_accessible_vertex(npc: CGameObject, v_id: number, caller?: CGameObject): number
+  export function smart_has_uncommon_squad(name: string, only_arrived?: boolean): LuaMultiReturn<[number, string]> | undefined
   export function squad_in_los(npc: CGameObject, enemy: CGameObject): boolean
-  export function stalker_at_waypoint(stalker: CGameObject, patrol_path: TODO, path_point: number): boolean
+  export function stalker_at_waypoint(stalker: CGameObject, patrol_path: AnyTable, path_point: number): boolean
   export function switch_offline(id: number): void
   export function switch_online(id: number): void
   export function time_spent_in_zone(i: number): number | false

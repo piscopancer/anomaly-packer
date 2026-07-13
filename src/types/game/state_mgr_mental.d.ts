@@ -2,7 +2,7 @@
 
 /** @customConstructor act_state_mgr_mental_danger */
 declare class act_state_mgr_mental_danger extends action_base {
-  constructor(name: TODO)
+  constructor(name: string)
   initialize(): void
   execute(): void
   finalize(): void
@@ -10,7 +10,7 @@ declare class act_state_mgr_mental_danger extends action_base {
 
 /** @customConstructor act_state_mgr_mental_free */
 declare class act_state_mgr_mental_free extends action_base {
-  constructor(name: TODO)
+  constructor(name: string)
   initialize(): void
   execute(): void
   finalize(): void
@@ -18,7 +18,7 @@ declare class act_state_mgr_mental_free extends action_base {
 
 /** @customConstructor act_state_mgr_mental_panic */
 declare class act_state_mgr_mental_panic extends action_base {
-  constructor(name: TODO)
+  constructor(name: string)
   initialize(): void
   execute(): void
   finalize(): void
@@ -26,42 +26,42 @@ declare class act_state_mgr_mental_panic extends action_base {
 
 /** @customConstructor eva_state_mgr_mental */
 declare class eva_state_mgr_mental extends property_evaluator {
-  constructor(name: TODO, st: TODO)
-  evaluate(): TODO
+  constructor(name: string, st: AnyTable)
+  evaluate(): boolean
 }
 
 /** @customConstructor eva_state_mgr_mental_danger */
 declare class eva_state_mgr_mental_danger extends property_evaluator {
-  constructor(name: TODO, st: TODO)
-  evaluate(): TODO
+  constructor(name: string, st: AnyTable)
+  evaluate(): boolean
 }
 
 /** @customConstructor eva_state_mgr_mental_danger_now */
 declare class eva_state_mgr_mental_danger_now extends property_evaluator {
-  constructor(name: TODO, st: TODO)
-  evaluate(): TODO
+  constructor(name: string, st: AnyTable)
+  evaluate(): boolean
 }
 
 /** @customConstructor eva_state_mgr_mental_free */
 declare class eva_state_mgr_mental_free extends property_evaluator {
-  constructor(name: TODO, st: TODO)
-  evaluate(): TODO
+  constructor(name: string, st: AnyTable)
+  evaluate(): boolean
 }
 
 /** @customConstructor eva_state_mgr_mental_free_now */
 declare class eva_state_mgr_mental_free_now extends property_evaluator {
-  constructor(name: TODO, st: TODO)
-  evaluate(): TODO
+  constructor(name: string, st: AnyTable)
+  evaluate(): boolean
 }
 
 /** @customConstructor eva_state_mgr_mental_panic */
 declare class eva_state_mgr_mental_panic extends property_evaluator {
-  constructor(name: TODO, st: TODO)
-  evaluate(): TODO
+  constructor(name: string, st: AnyTable)
+  evaluate(): boolean
 }
 
 /** @customConstructor eva_state_mgr_mental_panic_now */
 declare class eva_state_mgr_mental_panic_now extends property_evaluator {
-  constructor(name: TODO, st: TODO)
-  evaluate(): TODO
+  constructor(name: string, st: AnyTable)
+  evaluate(): boolean
 }

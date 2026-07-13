@@ -1,12 +1,12 @@
 /** @noSelfInFile */
 
 declare namespace xr_zones_sound {
-  export function r_num(spawn_ini: TODO, section: TODO, line: TODO, default_: TODO): TODO
-  export function table_include(dest: TODO, src: TODO): void
+  export function r_num(spawn_ini: system_ini, section: string, line: string, default_: number): number
+  export function table_include(dest: AnyTable, src: AnyTable): void
 }
 
 /** @customConstructor zone_sound */
 declare class zone_sound {
-  constructor(zone: TODO, binder: TODO, ini: TODO)
-  on_enter(obj: TODO): void
+  constructor(zone: CGameObject, binder: AnyTable, ini: system_ini)
+  on_enter(obj: CGameObject): void
 }

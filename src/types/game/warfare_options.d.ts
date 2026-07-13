@@ -7,7 +7,7 @@ declare namespace warfare_options {
   export const SHOW_ALL_SQUADS: boolean
   export const SQUAD_COUNT_MAX: number
   export const SQUAD_COUNT_MIN: number
-  export const options: TODO
+  export const options: AnyTable
   export function get_random_start_location(): string
   export function on_game_start(): void
   export function override_functions(): void

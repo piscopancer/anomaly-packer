@@ -1,13 +1,13 @@
 /** @noSelfInFile */
 
 declare namespace ui_scenes {
-  export const gOldVer: TODO
+  export const gOldVer: AnyTable
   export function main(): void
 }
 
 /** @customConstructor scene_item */
 declare class scene_item extends CUIListBoxItem {
-  constructor(height: TODO)
+  constructor(height: number)
 }
 
 /** @customConstructor scenes_item_dialog */
@@ -19,6 +19,6 @@ declare class scenes_item_dialog extends CUIScriptWnd {
   InitCallBacks(): void
   OnButton_create_clicked(): void
   OnButton_close_clicked(): void
-  OnKeyboard(dik: number, keyboard_action: TODO): boolean
-  AddItemToList(item_name: TODO): void
+  OnKeyboard(dik: number, keyboard_action: number): boolean
+  AddItemToList(item_name: string): void
 }

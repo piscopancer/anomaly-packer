@@ -1,12 +1,12 @@
 /** @noSelfInFile */
 
 declare namespace state_mgr {
-  export const combat_action_ids: TODO
-  export const no_idle_alife_ids: TODO
+  export const combat_action_ids: AnyTable
+  export const no_idle_alife_ids: AnyTable
   export function bind_manager(object: CGameObject): state_manager | undefined
   export function get_state(npc: CGameObject): string | undefined
   export function is_npc_in_combat(npc: CGameObject): boolean
-  export function set_state(npc: CGameObject, state_name: string, callback?: TODO, timeout?: number, target?: TODO, extra?: TODO): void
+  export function set_state(npc: CGameObject, state_name: string, callback?: AnyTable, timeout?: number, target?: AnyTable, extra?: AnyTable): void
 }
 
 /** @customConstructor act_state_mgr_end */
@@ -78,7 +78,7 @@ declare class evaluator_state_mgr_logic_active extends property_evaluator {
 /** @customConstructor state_manager */
 declare class state_manager {
   constructor(npc: CGameObject)
-  set_state(state_name: string, callback?: TODO, timeout?: number, target?: TODO, extra?: TODO): void
+  set_state(state_name: string, callback?: AnyTable, timeout?: number, target?: AnyTable, extra?: AnyTable): void
   get_state(): string
   update(): void
 }

@@ -1,5 +1,5 @@
 /** @noSelfInFile */
 
 declare namespace smart_covers_loophole_crouch_right {
-  export function get_loophole(id: TODO, fov_direction: TODO, position: TODO, enter_direction: TODO): TODO
+  export function get_loophole(id: string, fov_direction: vector, position: vector, enter_direction: vector): AnyTable
 }

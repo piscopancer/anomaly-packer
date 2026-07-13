@@ -1,17 +1,17 @@
 /** @noSelfInFile */
 
 declare namespace ui_numpad {
-  export const GUI: TODO
-  export function start(owner: TODO): void
+  export const GUI: UINumpad | undefined
+  export function start(owner: CGameObject): void
 }
 
 /** @customConstructor UINumpad */
 declare class UINumpad extends CUIScriptWnd {
-  constructor(owner: TODO)
+  constructor(owner: CGameObject)
   __finalize(): void
   InitControls(): void
   InitCallBacks(): void
-  AddNumber(number: TODO): void
+  AddNumber(number: number): void
   OnButton_backspace_clicked(): void
   OnButton_c_clicked(): void
   OnButton_0_clicked(): void
@@ -25,6 +25,6 @@ declare class UINumpad extends CUIScriptWnd {
   OnButton_8_clicked(): void
   OnButton_9_clicked(): void
   OnButton_OK_clicked(): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): boolean
+  OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
 }

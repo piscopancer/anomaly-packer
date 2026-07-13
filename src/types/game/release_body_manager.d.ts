@@ -8,10 +8,10 @@ declare namespace release_body_manager {
 /** @customConstructor Crelease_body */
 declare class Crelease_body {
   constructor()
-  can_release(obj: TODO): boolean
-  add_corpse(obj: TODO): void
-  moving_dead_body(obj: TODO, net_spawn: TODO): void
-  clear(all: TODO, dist: TODO): void
-  save(packet: TODO): void
-  load(reader: TODO): void
+  can_release(obj: CGameObject): boolean
+  add_corpse(obj: CGameObject): void
+  moving_dead_body(obj: CGameObject, net_spawn: boolean): void
+  clear(all: boolean, dist: number): void
+  save(packet: net_packet): void
+  load(reader: net_packet): void
 }

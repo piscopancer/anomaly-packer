@@ -1,12 +1,12 @@
 /** @noSelfInFile */
 
 declare namespace heli_fire {
-  export function get_heli_firer(obj: TODO): TODO
+  export function get_heli_firer(obj: CGameObject): heli_fire
 }
 
 /** @customConstructor heli_fire */
 declare class heli_fire {
-  constructor(obj: TODO)
+  constructor(obj: CGameObject)
   update_enemy_state(): void
   set_enemy(): void
   update_enemy_arr(): void

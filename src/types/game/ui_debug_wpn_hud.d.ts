@@ -1,41 +1,41 @@
 /** @noSelfInFile */
 
 declare namespace ui_debug_wpn_hud {
-  export const GUI: TODO
+  export const GUI: AnyTable
   export function on_game_start(): void
-  export function on_key_hold(key: TODO): void
-  export function on_key_release(key: TODO): void
-  export function print_dbg(...args: TODO[]): void
-  export function start(owner: TODO): void
+  export function on_key_hold(key: string): void
+  export function on_key_release(key: string): void
+  export function print_dbg(...args: any[]): void
+  export function start(owner: CGameObject): void
 }
 
 /** @customConstructor WpnHudEditor */
 declare class WpnHudEditor extends CUIScriptWnd {
-  constructor(owner: TODO, section: TODO)
+  constructor(owner: CGameObject, section: string)
   __finalize(): void
-  InitControls(): TODO
+  InitControls(): void
   InitCallBacks(): void
-  Reset(force: TODO, use_cache: TODO): void
-  GetStringByType(indx: TODO, typ: number): TODO
-  GetParameterValue(cnt: TODO): TODO
-  SetParameterValue(cnt: TODO, value: TODO): void
-  ApplyParameterValue(typ: number, parent: TODO): void
-  IsInvalidValue(cnt: TODO, typ: TODO, value: string): boolean
-  Send_MSG(text: TODO, ...args: TODO[]): void
+  Reset(force: boolean, use_cache: boolean): void
+  GetStringByType(indx: number, typ: number): string
+  GetParameterValue(cnt: number): any
+  SetParameterValue(cnt: number, value: string): void
+  ApplyParameterValue(typ: number, parent: CUIScriptWnd): void
+  IsInvalidValue(cnt: number, typ: number, value: string): boolean
+  Send_MSG(text: string, ...args: any[]): void
   ShowHint(): void
   Update(): void
   OnButtonCopy(): void
   OnButtonPaste(): void
-  OnButtonSave(): TODO
+  OnButtonSave(): void
   OnButtonAlign(): void
   OnButtonResume(): void
   CleanMemo(): void
-  SwitchParam(state: TODO, vert: TODO): TODO
-  SwitchValue(state: TODO, selected: TODO): void
-  SwitchValueGroup(state: TODO, selected_group: TODO): void
-  OnInput(cnt: TODO): void
+  SwitchParam(state: string, vert: boolean): void
+  SwitchValue(state: string, selected: number): void
+  SwitchValueGroup(state: string, selected_group: number): void
+  OnInput(cnt: number): void
   Close(): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
+  OnKeyboard(dik: number, keyboard_action: number): boolean
   OnInput_1(): void
   OnInput_2(): void
   OnInput_3(): void

@@ -34,7 +34,7 @@ declare namespace xr_effects {
   export function set_speaker_as_enemy(actor: CGameObject, npc: CGameObject): void
   export function set_active_task(actor: CGameObject, npc: CGameObject, task: CGameTask): void
   // --- auto-added by audit-coverage (missing from hand-refined types; refine by hand) ---
-  export const blacklisted_maps: TODO
+  export const blacklisted_maps: AnyTable
   export function unlock_note_mysteries_of_the_zone(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function unlock_note_living_legend(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function unlock_note_mortal_sin(actor: CGameObject, npc: CGameObject, p: AnyTable): void
@@ -63,8 +63,8 @@ declare namespace xr_effects {
   export function anim_obj_up(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function anim_obj_stop(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function disable_begin_the_battle(): void
-  export function teleport_for_totaliz_out(first_speaker: TODO, second_speaker: TODO): void
-  export function devushka_quest_one_reward(first_speaker: TODO, second_speaker: TODO): void
+  export function teleport_for_totaliz_out(first_speaker: CGameObject, second_speaker: CGameObject): void
+  export function devushka_quest_one_reward(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function spawn_strelok_notes(): void
   export function spawn_wpn_gauss_quest(): void
   export function lttz_ll_take_wpn_gauss_quest(actor: CGameObject, npc: CGameObject): void
@@ -72,12 +72,12 @@ declare namespace xr_effects {
   export function spawn_x8_documents(): void
   export function spawn_monolith_shard(): void
   export function lttz_ll_take_x8_documents(actor: CGameObject, npc: CGameObject): void
-  export function lttz_ll_give_wpn_gauss_quest(first_speaker: TODO, second_speaker: TODO): void
-  export function lttz_ll_give_gauss_ammo(first_speaker: TODO, second_speaker: TODO): void
+  export function lttz_ll_give_wpn_gauss_quest(first_speaker: CGameObject, second_speaker: CGameObject): void
+  export function lttz_ll_give_gauss_ammo(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function lttz_ll_take_monolith_shard(actor: CGameObject, npc: CGameObject): void
-  export function lttz_ll_give_strelok_pendrive(first_speaker: TODO, second_speaker: TODO): void
+  export function lttz_ll_give_strelok_pendrive(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function lttz_ll_take_strelok_pendrive(actor: CGameObject, npc: CGameObject): void
-  export function lttz_ll_give_doctor_artefact(first_speaker: TODO, second_speaker: TODO): void
+  export function lttz_ll_give_doctor_artefact(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function spawn_stitch_decoder(): void
   export function lttz_ms_take_stitch_decoder(actor: CGameObject, npc: CGameObject): void
   export function lttz_ms_take_attackers_pda(actor: CGameObject, npc: CGameObject): void
@@ -86,16 +86,16 @@ declare namespace xr_effects {
   export function lttz_ms_take_contact_lost_pda(actor: CGameObject, npc: CGameObject): void
   export function gen_stitch_message(): void
   export function premature_emission(actor: CGameObject, npc: CGameObject): void
-  export function lttz_oa_give_decryption_radio(first_speaker: TODO, second_speaker: TODO): void
+  export function lttz_oa_give_decryption_radio(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function lttz_ll_take_zat_b40_sarge_pda(actor: CGameObject, npc: CGameObject): void
   export function lttz_oa_take_decryption_radio(actor: CGameObject, npc: CGameObject): void
   export function intercepted_transmission(): void
   export function set_squad_enemy_lttz(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function yanov_invitation(): void
   export function yanov_invitation2(): void
-  export function lttz_oa_give_special_delivery_case(first_speaker: TODO, second_speaker: TODO): void
+  export function lttz_oa_give_special_delivery_case(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function lttz_oa_take_special_delivery_case(actor: CGameObject, npc: CGameObject): void
-  export function lttz_oa_give_army_isg_spy_pendrive(first_speaker: TODO, second_speaker: TODO): void
+  export function lttz_oa_give_army_isg_spy_pendrive(first_speaker: CGameObject, second_speaker: CGameObject): void
   export function lttz_oa_take_army_isg_spy_pendrive(actor: CGameObject, npc: CGameObject): void
   export function spawn_jupiter_documents(): void
   export function lttz_oa_take_jupiter_documents(actor: CGameObject, npc: CGameObject): void
@@ -131,8 +131,8 @@ declare namespace xr_effects {
   export function setup_task_target_anomaly(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function force_talk(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function unlock_smart(actor: CGameObject, npc: CGameObject, p: AnyTable): void
-  export function update_npc_logic(actor: CGameObject, object: TODO, p: AnyTable): void
-  export function update_obj_logic(actor: CGameObject, object: TODO, p: AnyTable): void
+  export function update_npc_logic(actor: CGameObject, object: CGameObject, p: AnyTable): void
+  export function update_obj_logic(actor: CGameObject, object: CGameObject, p: AnyTable): void
   export function disable_ui(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function disable_ui_only(actor: CGameObject, npc: CGameObject): void
   export function disable_nv(actor: CGameObject, npc: CGameObject): void
@@ -379,7 +379,7 @@ declare namespace xr_effects {
   export function obj_at_job_switch_section(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function change_visual(actor: CGameObject, npc: CGameObject, p: AnyTable): void
   export function switch_offline(actor: CGameObject, npc: CGameObject, p: AnyTable): void
-  export function update_visual(id: TODO, vis: TODO): void
+  export function update_visual(id: number, vis: string): void
   export function up_start(): void
   export function up_freeplay(): void
   export function yan_gluk(actor: CGameObject, npc: CGameObject): void

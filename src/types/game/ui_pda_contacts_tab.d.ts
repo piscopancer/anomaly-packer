@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace ui_pda_contacts_tab {
-  export function get_ui(): TODO
+  export function get_ui(): pda_contacts_tab
 }
 
 /** @customConstructor pda_contacts_tab */
@@ -15,5 +15,5 @@ declare class pda_contacts_tab extends CUIScriptWnd {
 
 /** @customConstructor ui_contact_row */
 declare class ui_contact_row extends CUIListBoxItem {
-  constructor(parent: TODO, row: TODO, xml: TODO)
+  constructor(parent: CUIScriptWnd, row: number, xml: CScriptXmlInit)
 }

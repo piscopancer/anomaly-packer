@@ -1,16 +1,16 @@
 /** @noSelfInFile */
 
 declare namespace axr_companions {
-  export const GUI: TODO
-  export const HUD: TODO
+  export const GUI: AnyTable
+  export const HUD: AnyTable
   export const allow_only_friends_as_companions: boolean
   export const allow_simulation_squads_as_companions: boolean
-  export const companion_squads: TODO
+  export const companion_squads: AnyTable
   export const max_actor_squad_size: number
-  export const non_task_companions: TODO
+  export const non_task_companions: AnyTable
   export function activate_hud(): void
   export function actor_on_net_destroy(): void
-  export function add_special_squad(squad: sim_squad_scripted, special?: TODO, cannot_teleport?: boolean): TODO
+  export function add_special_squad(squad: sim_squad_scripted, special?: AnyTable, cannot_teleport?: boolean): void
   export function add_special_task_npc_to_actor_squad(npc: CGameObject): void
   export function add_to_actor_squad(npc: CGameObject): void
   export function can_handle_all_items(a: CGameObject, b: CGameObject): boolean
@@ -20,14 +20,14 @@ declare namespace axr_companions {
   export function companion_inventory_mode(npc: CGameObject): number
   export function companion_remove_waypoints(npc: CGameObject): void
   export function companion_squad_can_teleport(squad: sim_squad_scripted): boolean
-  export function compare_smaller(a: TODO, b: TODO): boolean
+  export function compare_smaller(a: AnyTable, b: AnyTable): boolean
   export function cw_prepare(): void
   export function cycle_companions_combat_mode(force_mode?: number, no_msg?: boolean): void
   export function cycle_companions_distance_mode(force_mode?: number, no_msg?: boolean): void
   export function cycle_companions_loot_mode(force_mode?: number, no_msg?: boolean): void
   export function cycle_companions_move_mode(force_mode?: number, no_msg?: boolean): void
   export function cycle_companions_stealth_mode(force_mode?: number, no_msg?: boolean): void
-  export function cycle_state(states: TODO, key: string, include_hostages?: boolean, force_mode?: number, no_msg?: boolean): void
+  export function cycle_state(states: AnyTable, key: string, include_hostages?: boolean, force_mode?: number, no_msg?: boolean): void
   export function deactivate_hud(): void
   export function dismiss_special_squad(squad: sim_squad_scripted): void
   export function epic_hack(): void
@@ -37,20 +37,20 @@ declare namespace axr_companions {
   export function get_companion_loot_mode(npc: CGameObject): number
   export function get_companion_move_mode(npc: CGameObject): number
   export function get_companion_stealth_mode(npc: CGameObject): number
-  export function get_inventory_table(npc: CGameObject, npc_id: number, mode: number): TODO
-  export function get_inventory_weight(tbl_inv: TODO): number
+  export function get_inventory_table(npc: CGameObject, npc_id: number, mode: number): AnyTable
+  export function get_inventory_weight(tbl_inv: AnyTable): number
   export function get_nearby_companion(): CGameObject | boolean
   export function give_all_to_companion(a: CGameObject, b: CGameObject): void
   export function is_assigned_companion(a: CGameObject, b: CGameObject): boolean
   export function is_assigned_item(npc_id: number, item_id: number): boolean
   export function is_overweight(npc: CGameObject, npc_id?: number, comp_weight?: number): LuaMultiReturn<[boolean, number, number]>
-  export function list_actor_squad_by_id(): TODO
-  export function move_to_point(p: TODO): void
-  export function on_console_execute(name: string): TODO
+  export function list_actor_squad_by_id(): AnyTable
+  export function move_to_point(p: AnyTable): void
+  export function on_console_execute(name: string): void
   export function on_game_start(): void
   export function on_key_release(key: number): void
-  export function OnItemAfterMove(npc_id: number, obj: CGameObject, mode: number, bag_from: TODO): void
-  export function OnItemBeforeMove(flags: TODO, npc_id: number, obj: CGameObject, mode: number, bag_from: TODO): TODO
+  export function OnItemAfterMove(npc_id: number, obj: CGameObject, mode: number, bag_from: number): void
+  export function OnItemBeforeMove(flags: number, npc_id: number, obj: CGameObject, mode: number, bag_from: number): void
   export function release_all_squads(): void
   export function release_special_squad(squad: sim_squad_scripted): void
   export function remove_all_from_actor_squad(): sim_squad_scripted[]
@@ -81,7 +81,7 @@ declare namespace axr_companions {
   export function set_companion_to_stay_far(npc: CGameObject): void
   export function set_companion_to_stealth_substate(npc: CGameObject): void
   export function set_companion_to_wait_state(npc: CGameObject): void
-  export function setup_companion_logic(npc: CGameObject, st?: TODO, loaded?: boolean, cannot_dismiss?: boolean): void
+  export function setup_companion_logic(npc: CGameObject, st?: AnyTable, loaded?: boolean, cannot_dismiss?: boolean): void
   export function start_CW(): void
   export function start_trade(a: CGameObject, b: CGameObject): void
   export function switch_companion_distance(npc: CGameObject): void
@@ -110,7 +110,7 @@ declare class UIWheelCompanion extends CUIScriptWnd {
   InitCallBacks(): void
   Reset(npc: CGameObject): void
   Update(): void
-  Order(cmd: TODO): void
+  Order(cmd: AnyTable): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
 }

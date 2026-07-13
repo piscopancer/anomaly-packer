@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace state_mgr_goap {
-  export const operators: TODO
-  export const properties: TODO
-  export function goap_graph(st: TODO, npc: TODO): void
+  export const operators: AnyTable
+  export const properties: AnyTable
+  export function goap_graph(st: AnyTable, npc: CGameObject): void
 }

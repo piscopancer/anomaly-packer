@@ -1,34 +1,34 @@
 /** @noSelfInFile */
 
 declare namespace phantom_manager {
-  export const g_PhantomManager: TODO
-  export const phantom_registry: TODO
-  export function bind(obj: TODO): void
-  export function bind_phantom(obj: TODO): void
-  export function dynamic_phantom_count(sec: string): TODO
+  export const g_PhantomManager: AnyTable
+  export const phantom_registry: AnyTable
+  export function bind(obj: CGameObject): void
+  export function bind_phantom(obj: CGameObject): void
+  export function dynamic_phantom_count(sec: string): number
   export function on_game_start(): void
-  export function phantom_count(): TODO
-  export function spawn_dynamic_phantom(sec: TODO, pos: TODO, lvid: TODO): void
-  export function spawn_phantom(pos: TODO): void
+  export function phantom_count(): number
+  export function spawn_dynamic_phantom(sec: string, pos: vector, lvid: number): void
+  export function spawn_phantom(pos: vector): void
 }
 
 /** @customConstructor DynamicPhantom */
 declare class DynamicPhantom extends object_binder {
-  constructor(obj: TODO)
+  constructor(obj: CGameObject)
   net_destroy(): void
 }
 
 /** @customConstructor Phantom */
 declare class Phantom extends object_binder {
-  constructor(obj: TODO)
+  constructor(obj: CGameObject)
   reinit(): void
-  net_spawn(se_abstract: TODO): boolean
-  update(delta: TODO): void
+  net_spawn(se_abstract: CseAbstract): boolean
+  update(delta: number): void
   net_destroy(): void
-  reload(section: TODO): void
+  reload(section: string): void
   net_save_relevant(): boolean
-  save(packet: TODO): void
-  load(reader: TODO): void
+  save(packet: net_packet): void
+  load(reader: net_packet): void
 }
 
 /** @customConstructor PhantomManager */
@@ -36,5 +36,5 @@ declare class PhantomManager {
   constructor()
   add_phantom(): void
   remove_phantom(): void
-  spawn_phantom(pos: TODO): void
+  spawn_phantom(pos: vector): void
 }

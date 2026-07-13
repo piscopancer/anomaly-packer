@@ -41,15 +41,15 @@ declare namespace xr_conditions {
   export function sim_avail(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function dist_to_obj_on_job_le(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function dist_to_job_point_ge(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
-  export function check_enemy_name(enemy: TODO, npc: CGameObject, p: AnyTable): boolean
-  export function is_enemy_fighting_actor(enemy: TODO, npc: CGameObject): boolean
-  export function is_enemy_actor(enemy: TODO, npc: CGameObject): boolean
-  export function is_enemy_actor_or_companion(enemy: TODO, npc: CGameObject): boolean
-  export function fighting_dist_ge(enemy: TODO, npc: CGameObject, p: AnyTable): boolean
-  export function fighting_dist_le(enemy: TODO, npc: CGameObject, p: AnyTable): boolean
-  export function enemy_in_zone(enemy: TODO, npc: CGameObject, p: AnyTable): boolean
-  export function is_enemy_community(enemy: TODO, npc: CGameObject, p: AnyTable): boolean
-  export function enemy_group(enemy: TODO, npc: CGameObject, p: AnyTable): boolean
+  export function check_enemy_name(enemy: CGameObject, npc: CGameObject, p: AnyTable): boolean
+  export function is_enemy_fighting_actor(enemy: CGameObject, npc: CGameObject): boolean
+  export function is_enemy_actor(enemy: CGameObject, npc: CGameObject): boolean
+  export function is_enemy_actor_or_companion(enemy: CGameObject, npc: CGameObject): boolean
+  export function fighting_dist_ge(enemy: CGameObject, npc: CGameObject, p: AnyTable): boolean
+  export function fighting_dist_le(enemy: CGameObject, npc: CGameObject, p: AnyTable): boolean
+  export function enemy_in_zone(enemy: CGameObject, npc: CGameObject, p: AnyTable): boolean
+  export function is_enemy_community(enemy: CGameObject, npc: CGameObject, p: AnyTable): boolean
+  export function enemy_group(enemy: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function is_enemy_same_group(actor: CGameObject, npc: CGameObject): boolean
   export function see_pure_enemy(actor: CGameObject, npc: CGameObject): boolean
   export function pure_enemy_dist_le(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
@@ -68,11 +68,11 @@ declare namespace xr_conditions {
   export function is_wounded(actor: CGameObject, npc: CGameObject): boolean
   export function dist_to_actor_le(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function dist_to_actor_ge(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
-  export function obj_in_zone(actor: CGameObject, zone: TODO, p: AnyTable): boolean
+  export function obj_in_zone(actor: CGameObject, zone: CGameObject, p: AnyTable): boolean
   export function check_npc_from_gulag_in_zone(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
-  export function one_obj_in_zone(actor: CGameObject, zone: TODO, p: AnyTable): boolean
+  export function one_obj_in_zone(actor: CGameObject, zone: CGameObject, p: AnyTable): boolean
   export function story_obj_in_zone_by_name(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
-  export function actor_inside_me(actor: CGameObject, zone: TODO, p: AnyTable): boolean
+  export function actor_inside_me(actor: CGameObject, zone: CGameObject, p: AnyTable): boolean
   export function actor_in_zone(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function actor_inside_zone(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function actor_near_smart(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
@@ -158,7 +158,7 @@ declare namespace xr_conditions {
   export function squads_in_zone_b41(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function squads_in_zone_yan_smart_terrain_6_4(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function target_squad_name(actor: CGameObject, obj: CGameObject, p: AnyTable): boolean
-  export function target_smart_name(actor: CGameObject, smart: TODO, p: AnyTable): boolean
+  export function target_smart_name(actor: CGameObject, smart: se_smart_terrain, p: AnyTable): boolean
   export function squad_exist(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function squad_name_exist(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function is_squad_commander(actor: CGameObject, npc: CGameObject): boolean
@@ -230,7 +230,7 @@ declare namespace xr_conditions {
   export function squad_hit_by_smart(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function actor_look_away(actor: CGameObject, npc: CGameObject): boolean
   export function between_time(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
-  export function squad_is_monster(actor: CGameObject, squad: TODO, p: AnyTable): boolean
+  export function squad_is_monster(actor: CGameObject, squad: CseAlifeOnlineOfflineGroup, p: AnyTable): boolean
   export function after_first_meet(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function squad_on_actor_map(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function squad_commander_active_section(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
@@ -286,7 +286,7 @@ declare namespace xr_conditions {
   export function bar_arena_fight_8_end(actor: CGameObject, npc: CGameObject): boolean
   export function heli_exist_on_level(actor: CGameObject, npc: CGameObject): boolean
   export function kill_count_ge(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
-  export function any_on_level(actor: CGameObject, npc: CGameObject, faction_list: TODO): boolean
+  export function any_on_level(actor: CGameObject, npc: CGameObject, faction_list: AnyTable): boolean
   export function is_actor_surge_immuned(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function get_start_time_elapsed_ge(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean
   export function awr_have_no_info(actor: CGameObject, npc: CGameObject, p: AnyTable): boolean

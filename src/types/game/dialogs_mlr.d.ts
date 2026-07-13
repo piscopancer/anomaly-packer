@@ -307,7 +307,7 @@ declare namespace dialogs_mlr {
   export function marsh_tech_yard_guid(first_speaker: CGameObject, second_speaker: CGameObject): void
   // Task-target functor (not a dialog callback): `p`/`tsk` are the task-system params
   // (tsk = a task_info table, not a modelled type); returns the target object id.
-  export function merc_pri_grifon_mlr_task_target(task_id: string, field: string, p: TODO, tsk: TODO): number
+  export function merc_pri_grifon_mlr_task_target(task_id: string, field: string, p: any, tsk: AnyTable): number
   export function message_robbery(): void
   export function mil_to_yant_on_heli(actor: CGameObject, npc: CGameObject, p: string): void
   export function military_guid(actor: CGameObject, npc: CGameObject, p: string): void

@@ -1,17 +1,17 @@
 /** @noSelfInFile */
 
 declare namespace closecaption {
-  export function both_heli_info(): TODO
-  export function cc_display_normal(cc_id: TODO, showtime: TODO, color: number): void
-  export function cc_display_radio(sender: CGameObject, sender_faction: TODO, sender_id: string, showtime: TODO, cc_text: TODO, delay_sound: TODO, cc_type: TODO): boolean
-  export function cc_display_tutorial(cc_id: TODO): void
-  export function cc_npc_disabled(): TODO
-  export function del_variable(variable_name: TODO): void
-  export function get_game_version(): TODO
-  export function is_cc_npc_enabled(): TODO
-  export function not_both_heli_info(): TODO
+  export function both_heli_info(): boolean
+  export function cc_display_normal(cc_id: string, showtime: number, color: number): void
+  export function cc_display_radio(sender: CGameObject, sender_faction: string, sender_id: string, showtime: number, cc_text: string, delay_sound: number, cc_type: string): boolean
+  export function cc_display_tutorial(cc_id: string): void
+  export function cc_npc_disabled(): boolean
+  export function del_variable(variable_name: string): void
+  export function get_game_version(): number
+  export function is_cc_npc_enabled(): boolean
+  export function not_both_heli_info(): boolean
   export function on_actor_update_cc(): void
   export function read_cc_ini(): void
-  export function sender_unidentified(): TODO
-  export function sound(_sound: string, showtime: TODO, sender: TODO, sender_faction: string, sender_id: TODO, delay_sound: TODO): boolean
+  export function sender_unidentified(): string
+  export function sound(_sound: string, showtime: number, sender: CGameObject, sender_faction: string, sender_id: string, delay_sound: number): boolean
 }

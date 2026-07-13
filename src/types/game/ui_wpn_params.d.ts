@@ -1,12 +1,12 @@
 /** @noSelfInFile */
 
 declare namespace ui_wpn_params {
-  export function GetAccuracy(wpn_section: TODO, upgr_sections: TODO): TODO
-  export function GetDamage(wpn_section: TODO, upgr_sections: TODO): TODO
-  export function GetDamageMP(wpn_section: TODO, upgr_sections: TODO): TODO
-  export function GetHandling(wpn_section: TODO, upgr_sections: TODO): TODO
-  export function GetRPM(wpn_section: TODO, upgr_sections: TODO): TODO
-  export function normalizeMP(val: TODO): TODO
-  export function read_float(wpn_section: TODO, upgr_sections: string, param: string): TODO
-  export function read_if_exist(section: TODO, value: TODO, default_: TODO): TODO
+  export function GetAccuracy(wpn_section: string, upgr_sections: string): number
+  export function GetDamage(wpn_section: string, upgr_sections: string): number
+  export function GetDamageMP(wpn_section: string, upgr_sections: string): number
+  export function GetHandling(wpn_section: string, upgr_sections: string): number
+  export function GetRPM(wpn_section: string, upgr_sections: string): number
+  export function normalizeMP(val: number): number
+  export function read_float(wpn_section: string, upgr_sections: string, param: string): number
+  export function read_if_exist(section: string, value: string, default_: number): number
 }

@@ -2,17 +2,17 @@
 
 /** @customConstructor se_actor */
 declare class se_actor extends cse_alife_creature_actor {
-  constructor(section: TODO)
+  constructor(section: string)
   on_register(): void
   on_unregister(): void
   STATE_Write(packet: net_packet): void
-  STATE_Read(packet: net_packet, size: TODO): void
+  STATE_Read(packet: net_packet, size: number): void
   get_location(): LuaMultiReturn<[vector, number, number]>
-  am_i_reached(squad: TODO): boolean
-  on_after_reach(squad: TODO): void
-  on_reach_target(squad: TODO): void
+  am_i_reached(squad: CseAlifeOnlineOfflineGroup): boolean
+  on_after_reach(squad: CseAlifeOnlineOfflineGroup): void
+  on_reach_target(squad: CseAlifeOnlineOfflineGroup): void
   get_alife_task(): CALifeSmartTerrainTask
   sim_available(): boolean
-  target_precondition(squad: TODO): boolean
-  evaluate_prior(squad: TODO): number
+  target_precondition(squad: CseAlifeOnlineOfflineGroup): boolean
+  evaluate_prior(squad: CseAlifeOnlineOfflineGroup): number
 }

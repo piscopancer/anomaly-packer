@@ -1,14 +1,14 @@
 /** @noSelfInFile */
 
 declare namespace game_statistics {
-  export const actor_achievements: TODO
-  export const actor_anomaly_maps: TODO
-  export const actor_artefacts: TODO
-  export const actor_miscellaneous: TODO
-  export const actor_statistics: TODO
-  export const actor_visited_levels: TODO
-  export const actor_visited_smarts: TODO
-  export const npc_statistics: TODO
+  export const actor_achievements: AnyTable
+  export const actor_anomaly_maps: AnyTable
+  export const actor_artefacts: AnyTable
+  export const actor_miscellaneous: AnyTable
+  export const actor_statistics: AnyTable
+  export const actor_visited_levels: AnyTable
+  export const actor_visited_smarts: AnyTable
+  export const npc_statistics: AnyTable
   export function actor_on_achievement_earned(achievement: string, message: string): void
   export function actor_on_interaction(typ: string, obj: CGameObject, name: string): void
   export function actor_on_item_take(item: CGameObject): void
@@ -29,12 +29,12 @@ declare namespace game_statistics {
   export function increment_rank(value: number): void
   export function increment_reputation(value: number): void
   export function increment_statistic(value: string, custom_rank?: number, custom_rept?: number): void
-  export function load(packet: TODO): void
-  export function load_state(data: TODO): void
+  export function load(packet: net_packet): void
+  export function load_state(data: AnyTable): void
   export function npc_on_death_callback(victim: CGameObject, killer: CGameObject): void
   export function on_game_load(): void
   export function on_game_start(): void
   export function on_level_changing(): void
-  export function save(packet: TODO): void
-  export function save_state(data: TODO): void
+  export function save(packet: net_packet): void
+  export function save_state(data: AnyTable): void
 }

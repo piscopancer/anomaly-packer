@@ -2,13 +2,13 @@
 
 declare namespace ui_freeplay_dialog {
   export function main(): void
-  export function show(mb_type: TODO, text: TODO): void
+  export function show(mb_type: number, text: string): void
 }
 
 /** @customConstructor freeplay_dialog */
 declare class freeplay_dialog extends CUIScriptWnd {
   constructor()
-  Show(mb_type: TODO, text: TODO): void
+  Show(mb_type: number, text: string): void
   OnMsgOk(): void
   OnMsgYes(): void
   OnMsgNo(): void

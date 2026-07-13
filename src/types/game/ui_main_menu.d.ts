@@ -5,9 +5,9 @@ declare class main_menu extends CUIScriptWnd {
   constructor()
   __finalize(): void
   InitControls(): void
-  InitCallBacks(): TODO
+  InitCallBacks(): void
   Update(): void
-  Show(f: TODO): void
+  Show(f: boolean): void
   OnButton_last_save(): void
   OnButton_new_game(): void
   OnButton_originals_clicked(): void
@@ -27,8 +27,8 @@ declare class main_menu extends CUIScriptWnd {
   ShowFactionUI(): void
   LoadLastSave(): void
   on_localization_change(): void
-  Dispatch(cmd: number, param: TODO): boolean
-  OnKeyboard(dik: TODO, keyboard_action: TODO): boolean
+  Dispatch(cmd: number, param: any): boolean
+  OnKeyboard(dik: number, keyboard_action: number): boolean
   OnMenuReloaded(): void
-  SetMsg(text: string, tmr: TODO, align: number): void
+  SetMsg(text: string, tmr: number, align: number): void
 }

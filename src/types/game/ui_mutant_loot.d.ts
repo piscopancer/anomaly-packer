@@ -1,11 +1,11 @@
 /** @noSelfInFile */
 
 declare namespace ui_mutant_loot {
-  export const GUI: TODO
-  export function loot_mutant(section: TODO, clsid: TODO, loot_table: TODO, npc: TODO, dont_create: TODO, victim: TODO): void
-  export function monster_on_loot_init(obj: TODO, t: TODO): void
+  export const GUI: AnyTable
+  export function loot_mutant(section: string, clsid: number, loot_table: AnyTable, npc: CGameObject, dont_create: boolean, victim: CGameObject): void
+  export function monster_on_loot_init(obj: CGameObject, t: AnyTable): void
   export function on_game_start(): void
-  export function start(obj: TODO, for_bug1: TODO, for_bug2: TODO): void
+  export function start(obj: CGameObject, for_bug1: AnyTable, for_bug2: AnyTable): void
 }
 
 /** @customConstructor UIMutantLoot */
@@ -14,15 +14,15 @@ declare class UIMutantLoot extends CUIScriptWnd {
   __finalize(): void
   InitControls(): void
   InitCallBacks(): void
-  Reset(obj: TODO, for_bug1: TODO, for_bug2: TODO): boolean
+  Reset(obj: CGameObject, for_bug1: AnyTable, for_bug2: AnyTable): boolean
   Update(): void
   SetMutantImage(): void
-  Loot(loot_all: TODO): void
+  Loot(loot_all: boolean): void
   FillList(): boolean
-  SetMutantState(is_more_loot: TODO, obj_mutant: TODO): void
-  On_CC_Mouse1(cont: TODO, idx: TODO): void
+  SetMutantState(is_more_loot: boolean, obj_mutant: CGameObject): void
+  On_CC_Mouse1(cont: AnyTable, idx: number): void
   OnButton_LootSelected(): void
   OnButton_LootAll(): void
   Close(): void
-  OnKeyboard(dik: TODO, keyboard_action: TODO): TODO
+  OnKeyboard(dik: number, keyboard_action: number): boolean
 }

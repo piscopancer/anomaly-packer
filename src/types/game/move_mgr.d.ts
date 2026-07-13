@@ -3,32 +3,32 @@
 declare namespace move_mgr {
   export const arrival_after_rotation: number
   export const arrival_before_rotation: number
-  export function choose_look_point(patrol_look: number, path_look_info: TODO, search_for: TODO): TODO
+  export function choose_look_point(patrol_look: number, path_look_info: AnyTable, search_for: number): AnyTable | undefined
   /** The `move_mgr` class table, called as a constructor: `move_mgr.move_mgr(npc)`. */
-  export const move_mgr: (this: void, npc: TODO) => move_mgr
+  export const move_mgr: (this: void, npc: CGameObject) => move_mgr
 }
 
 /** @customConstructor move_mgr */
 declare class move_mgr {
-  constructor(npc: TODO)
-  initialize(npc: TODO): void
+  constructor(npc: CGameObject)
+  initialize(npc: CGameObject): void
   disable(): void
   validate_paths(): void
-  extrapolate_callback(npc: TODO): void
+  extrapolate_callback(npc: CGameObject): void
   standing_on_terminal_waypoint(): boolean
-  at_terminal_waypoint(): TODO
-  reset(path_walk: TODO, path_walk_info: TODO, path_look: TODO, path_look_info: TODO, team: TODO, suggested_state: TODO, move_cb_info: TODO, no_validation: TODO, continue_: TODO, use_default_sound: TODO): void
+  at_terminal_waypoint(): boolean
+  reset(path_walk: string, path_walk_info: AnyTable, path_look: string, path_look_info: AnyTable, team: number, suggested_state: string, move_cb_info: AnyTable, no_validation: boolean, continue_: boolean, use_default_sound: boolean): void
   continue(): void
   setup_movement_by_patrol_path(): void
-  arrived_to_first_waypoint(): TODO
+  arrived_to_first_waypoint(): boolean
   sync_ok(): boolean
   update(): void
-  set_current_state_moving(state: TODO): void
-  finalize(npc: TODO): void
+  set_current_state_moving(state: string): void
+  finalize(npc: CGameObject): void
   update_movement_state(): void
-  update_standing_state(look_pos: TODO, snd: TODO): void
+  update_standing_state(look_pos: vector, snd: string): void
   time_callback(): void
-  scheme_set_signal(sig: TODO): void
+  scheme_set_signal(sig: string): void
   turn_end_callback(): void
-  waypoint_callback(obj: TODO, action_type: TODO, index: number): void
+  waypoint_callback(obj: CGameObject, action_type: number, index: number): void
 }

@@ -1,7 +1,7 @@
 /** @noSelfInFile */
 
 declare namespace ui_dosimeter {
-  export function get_UI(): TODO
+  export function get_UI(): ui_dosimeter
 }
 
 /** @customConstructor ui_dosimeter */
