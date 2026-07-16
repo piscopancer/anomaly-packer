@@ -11,6 +11,7 @@ declare namespace ui_debug_main {
 
 /** @customConstructor anim_ui */
 declare class anim_ui extends CUIScriptWnd {
+  anims_list: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   Update(): void
@@ -24,6 +25,37 @@ declare class anim_ui extends CUIScriptWnd {
 
 /** @customConstructor debug_ui */
 declare class debug_ui extends CUIScriptWnd {
+  _addons: TODO // @generated field — refine type
+  _scopes: TODO // @generated field — refine type
+  binds: TODO // @generated field — refine type
+  console: TODO // @generated field — refine type
+  console_input: TODO // @generated field — refine type
+  console_relay: boolean // @generated field — refine type
+  console_size: number // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  editor_old_h: TODO // @generated field — refine type
+  editor_old_w: TODO // @generated field — refine type
+  editor_old_x: TODO // @generated field — refine type
+  editor_old_y: TODO // @generated field — refine type
+  form: TODO // @generated field — refine type
+  icon_scale: number // @generated field — refine type
+  level_present: TODO // @generated field — refine type
+  need_save_h: TODO // @generated field — refine type
+  need_save_offset_x: TODO // @generated field — refine type
+  need_save_offset_y: TODO // @generated field — refine type
+  need_save_w: TODO // @generated field — refine type
+  need_save_x: TODO // @generated field — refine type
+  need_save_y: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  spawn_gvid: TODO // @generated field — refine type
+  spawn_lvid: TODO // @generated field — refine type
+  spawn_pos: TODO // @generated field — refine type
+  tab: TODO // @generated field — refine type
+  tab_list: TODO // @generated field — refine type
+  txt_console: TODO // @generated field — refine type
+  txt_focus: TODO // @generated field — refine type
+  txt_near: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner?: any, binds?: AnyTable)
   __finalize(): void
   Reinit(level_present?: boolean): void
@@ -78,6 +110,7 @@ declare class debug_ui extends CUIScriptWnd {
 
 /** @customConstructor debug_ui_advanced */
 declare class debug_ui_advanced extends CUIWindow {
+  owner: TODO // @generated field — refine type
   constructor(owner?: any, binds?: AnyTable)
   __finalize(): void
   InitControls(x: number, y: number, xml: CScriptXmlInit, owner?: any): void
@@ -85,6 +118,14 @@ declare class debug_ui_advanced extends CUIWindow {
 
 /** @customConstructor debug_ui_attach */
 declare class debug_ui_attach extends CUIScriptWnd {
+  _last: string // @generated field — refine type
+  anim_states: TODO // @generated field — refine type
+  attachable: TODO // @generated field — refine type
+  flds: TODO // @generated field — refine type
+  form: TODO // @generated field — refine type
+  need_save: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner?: any, binds?: AnyTable)
   __finalize(): void
   OnAttachListSelect(): void
@@ -105,6 +146,7 @@ declare class debug_ui_attach extends CUIScriptWnd {
 
 /** @customConstructor debug_ui_editor */
 declare class debug_ui_editor extends CUIWindow {
+  owner: TODO // @generated field — refine type
   constructor(owner?: any, binds?: AnyTable)
   __finalize(): void
   InitControls(x: number, y: number, xml: CScriptXmlInit, owner?: any): void
@@ -112,6 +154,7 @@ declare class debug_ui_editor extends CUIWindow {
 
 /** @customConstructor debug_ui_hud */
 declare class debug_ui_hud extends CUIWindow {
+  owner: TODO // @generated field — refine type
   constructor(owner?: any, binds?: AnyTable)
   __finalize(): void
   InitControls(x: number, y: number, xml: CScriptXmlInit, owner?: any): void
@@ -119,6 +162,7 @@ declare class debug_ui_hud extends CUIWindow {
 
 /** @customConstructor debug_ui_object */
 declare class debug_ui_object extends CUIWindow {
+  owner: TODO // @generated field — refine type
   constructor(owner?: any, binds?: AnyTable)
   __finalize(): void
   InitControls(x: number, y: number, xml: CScriptXmlInit, owner?: any): void
@@ -126,6 +170,7 @@ declare class debug_ui_object extends CUIWindow {
 
 /** @customConstructor debug_ui_spawner */
 declare class debug_ui_spawner extends CUIWindow {
+  owner: TODO // @generated field — refine type
   constructor(owner?: any, binds?: AnyTable)
   __finalize(): void
   InitControls(x: number, y: number, xml: CScriptXmlInit, owner?: any): void
@@ -133,5 +178,36 @@ declare class debug_ui_spawner extends CUIWindow {
 
 /** @customConstructor set_list_text */
 declare class set_list_text extends CUIListBoxItem {
+  sect: TODO // @generated field — refine type
   constructor(height: number)
+}
+
+declare namespace ui_debug_main {
+  /** Anomaly `class "anim_ui"` is also reachable on the `ui_debug_main` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_main.anim_ui.Method = ...`). */
+  export const anim_ui: anim_ui
+  /** Anomaly `class "debug_ui"` is also reachable on the `ui_debug_main` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_main.debug_ui.Method = ...`). */
+  export const debug_ui: debug_ui
+  /** Anomaly `class "debug_ui_advanced"` is also reachable on the `ui_debug_main` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_main.debug_ui_advanced.Method = ...`). */
+  export const debug_ui_advanced: debug_ui_advanced
+  /** Anomaly `class "debug_ui_attach"` is also reachable on the `ui_debug_main` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_main.debug_ui_attach.Method = ...`). */
+  export const debug_ui_attach: debug_ui_attach
+  /** Anomaly `class "debug_ui_editor"` is also reachable on the `ui_debug_main` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_main.debug_ui_editor.Method = ...`). */
+  export const debug_ui_editor: debug_ui_editor
+  /** Anomaly `class "debug_ui_hud"` is also reachable on the `ui_debug_main` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_main.debug_ui_hud.Method = ...`). */
+  export const debug_ui_hud: debug_ui_hud
+  /** Anomaly `class "debug_ui_object"` is also reachable on the `ui_debug_main` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_main.debug_ui_object.Method = ...`). */
+  export const debug_ui_object: debug_ui_object
+  /** Anomaly `class "debug_ui_spawner"` is also reachable on the `ui_debug_main` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_main.debug_ui_spawner.Method = ...`). */
+  export const debug_ui_spawner: debug_ui_spawner
+  /** Anomaly `class "set_list_text"` is also reachable on the `ui_debug_main` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_main.set_list_text.Method = ...`). */
+  export const set_list_text: set_list_text
 }

@@ -10,6 +10,12 @@ declare namespace ui_ctrl_lighting {
 
 /** @customConstructor UILightControl */
 declare class UILightControl extends CUIScriptWnd {
+  Num: TODO // @generated field — refine type
+  Track: TODO // @generated field — refine type
+  Value: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  scroll: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -17,4 +23,10 @@ declare class UILightControl extends CUIScriptWnd {
   Update(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
+}
+
+declare namespace ui_ctrl_lighting {
+  /** Anomaly `class "UILightControl"` is also reachable on the `ui_ctrl_lighting` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_ctrl_lighting.UILightControl.Method = ...`). */
+  export const UILightControl: UILightControl
 }

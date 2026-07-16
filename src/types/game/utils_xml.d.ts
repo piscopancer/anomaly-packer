@@ -1,5 +1,15 @@
 /** @noSelfInFile */
 
+/** Item pixel axis returned by {@link utils_xml.get_item_axis}. */
+interface ItemAxis {
+  x1: number
+  y1: number
+  x2: number
+  y2: number
+  w: number
+  h: number
+}
+
 /** A parsed XML node produced by {@link utils_xml.XmlParser}. */
 interface XmlNode {
   Name?: string
@@ -34,7 +44,7 @@ declare namespace utils_xml {
    * @returns `{x1,y1,x2,y2,w,h}`, or the four corner values `(x1, y1, x2, y2)`
    * as a multi-return when `unpacked` is set.
    */
-  export function get_item_axis(section: Section, grid_size?: number, unpacked?: boolean): { x1: number; y1: number; x2: number; y2: number; w: number; h: number } | LuaMultiReturn<[number, number, number, number]>
+  export function get_item_axis<Unpacked extends boolean = false>(section: Section, grid_size?: number, unpacked?: Unpacked): Unpacked extends true ? LuaMultiReturn<[number, number, number, number]> : ItemAxis
   export function is_widescreen(): boolean
   export function screen_ratio(): number
   export function hide_menu(): void

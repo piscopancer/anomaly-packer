@@ -24,6 +24,7 @@ declare namespace bind_campfire {
 
 /** @customConstructor campfire_binder */
 declare class campfire_binder extends object_binder {
+  campfire: TODO // @generated field — refine type
   constructor(obj: CGameObject)
   reload(section: Section): void
   reinit(): void
@@ -31,4 +32,10 @@ declare class campfire_binder extends object_binder {
   net_destroy(se_abstract: CseAbstract): void
   update(delta: number): void
   use_campfire(): void
+}
+
+declare namespace bind_campfire {
+  /** Anomaly `class "campfire_binder"` is also reachable on the `bind_campfire` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`bind_campfire.campfire_binder.Method = ...`). */
+  export const campfire_binder: campfire_binder
 }

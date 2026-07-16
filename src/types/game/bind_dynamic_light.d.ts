@@ -8,6 +8,10 @@ declare namespace bind_dynamic_light {
 
 /** @customConstructor generic_light_binder */
 declare class generic_light_binder extends object_binder {
+  humming: TODO // @generated field — refine type
+  humming_max: TODO // @generated field — refine type
+  last_state: TODO // @generated field — refine type
+  tg: TODO // @generated field — refine type
   constructor(obj: CGameObject)
   reload(section: Section): void
   reinit(): void
@@ -20,4 +24,10 @@ declare class generic_light_binder extends object_binder {
   use_callback(obj: CGameObject, who: CGameObject): void
   hit_callback(obj: CGameObject, amount: number, local_direction: vector, who: CGameObject, bone_index: number): void
   death_callback(victim: CGameObject, who: CGameObject): void
+}
+
+declare namespace bind_dynamic_light {
+  /** Anomaly `class "generic_light_binder"` is also reachable on the `bind_dynamic_light` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`bind_dynamic_light.generic_light_binder.Method = ...`). */
+  export const generic_light_binder: generic_light_binder
 }

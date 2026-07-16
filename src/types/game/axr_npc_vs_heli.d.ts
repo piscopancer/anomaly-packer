@@ -13,6 +13,8 @@ declare namespace axr_npc_vs_heli {
 
 /** @customConstructor action_npc_vs_heli */
 declare class action_npc_vs_heli extends action_base {
+  st: TODO // @generated field — refine type
+  stand: boolean // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   initialize(): void
   try_go_cover(npc: CGameObject, ene_pos: vector, r: number): number | undefined
@@ -24,6 +26,16 @@ declare class action_npc_vs_heli extends action_base {
 
 /** @customConstructor evaluator_npc_vs_heli */
 declare class evaluator_npc_vs_heli extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   evaluate(): boolean
+}
+
+declare namespace axr_npc_vs_heli {
+  /** Anomaly `class "action_npc_vs_heli"` is also reachable on the `axr_npc_vs_heli` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_npc_vs_heli.action_npc_vs_heli.Method = ...`). */
+  export const action_npc_vs_heli: action_npc_vs_heli
+  /** Anomaly `class "evaluator_npc_vs_heli"` is also reachable on the `axr_npc_vs_heli` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_npc_vs_heli.evaluator_npc_vs_heli.Method = ...`). */
+  export const evaluator_npc_vs_heli: evaluator_npc_vs_heli
 }

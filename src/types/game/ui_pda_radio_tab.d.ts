@@ -29,6 +29,28 @@ declare namespace ui_pda_radio_tab {
 
 /** @customConstructor pda_radio_tab */
 declare class pda_radio_tab extends CUIScriptWnd {
+  btn_plyr_loop: TODO // @generated field — refine type
+  btn_plyr_next: TODO // @generated field — refine type
+  btn_plyr_playlist: TODO // @generated field — refine type
+  btn_plyr_prev: TODO // @generated field — refine type
+  btn_plyr_shuffle: TODO // @generated field — refine type
+  btn_plyr_start: TODO // @generated field — refine type
+  btn_plyr_stop: TODO // @generated field — refine type
+  btn_plyr_v_down: TODO // @generated field — refine type
+  btn_plyr_v_up: TODO // @generated field — refine type
+  btn_radio_ch: TODO // @generated field — refine type
+  btn_radio_start: TODO // @generated field — refine type
+  btn_radio_stop: TODO // @generated field — refine type
+  btn_radio_v_down: TODO // @generated field — refine type
+  btn_radio_v_up: TODO // @generated field — refine type
+  loop_text: TODO // @generated field — refine type
+  playing_text: TODO // @generated field — refine type
+  playlist_text: TODO // @generated field — refine type
+  radio_ch: TODO // @generated field — refine type
+  radio_display_ch: TODO // @generated field — refine type
+  radio_off: TODO // @generated field — refine type
+  suffle_text: TODO // @generated field — refine type
+  time_text: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -50,4 +72,10 @@ declare class pda_radio_tab extends CUIScriptWnd {
   On_Player_Stop(): void
   On_Player_Start(): void
   On_Player_Next(): void
+}
+
+declare namespace ui_pda_radio_tab {
+  /** Anomaly `class "pda_radio_tab"` is also reachable on the `ui_pda_radio_tab` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_pda_radio_tab.pda_radio_tab.Method = ...`). */
+  export const pda_radio_tab: pda_radio_tab
 }

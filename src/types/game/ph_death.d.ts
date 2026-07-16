@@ -8,8 +8,16 @@ declare namespace ph_death {
 
 /** @customConstructor ph_on_death */
 declare class ph_on_death {
+  object: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(): void
   update(delta: number): void
   death_callback(obj: CGameObject, who: CGameObject): void
+}
+
+declare namespace ph_death {
+  /** Anomaly `class "ph_on_death"` is also reachable on the `ph_death` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ph_death.ph_on_death.Method = ...`). */
+  export const ph_on_death: ph_on_death
 }

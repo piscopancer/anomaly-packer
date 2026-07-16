@@ -1,0 +1,35 @@
+// AUTO-GENERATED addon pack for `xlib` by `anomaly-packer gen-addon`. Barrel — reference this from your project.
+// Refine `TODO` (= any) by hand where the mod gave no type.
+// Usage: /// <reference types="anomaly-packer/types/addons/xlib" />
+
+/// <reference path="xlib/xactor.d.ts" />
+/// <reference path="xlib/xbus.d.ts" />
+/// <reference path="xlib/xchange.d.ts" />
+/// <reference path="xlib/xcombat.d.ts" />
+/// <reference path="xlib/xconst.d.ts" />
+/// <reference path="xlib/xcreature.d.ts" />
+/// <reference path="xlib/xdata.d.ts" />
+/// <reference path="xlib/xevent.d.ts" />
+/// <reference path="xlib/xinspect.d.ts" />
+/// <reference path="xlib/xinventory.d.ts" />
+/// <reference path="xlib/xlevel.d.ts" />
+/// <reference path="xlib/xlibs.d.ts" />
+/// <reference path="xlib/xlibs_mcm.d.ts" />
+/// <reference path="xlib/xlog.d.ts" />
+/// <reference path="xlib/xmath.d.ts" />
+/// <reference path="xlib/xmcm.d.ts" />
+/// <reference path="xlib/xobject.d.ts" />
+/// <reference path="xlib/xpda.d.ts" />
+/// <reference path="xlib/xpp.d.ts" />
+/// <reference path="xlib/xprofiler.d.ts" />
+/// <reference path="xlib/xslice.d.ts" />
+/// <reference path="xlib/xsmart.d.ts" />
+/// <reference path="xlib/xsmart_spawn.d.ts" />
+/// <reference path="xlib/xsound.d.ts" />
+/// <reference path="xlib/xsquad.d.ts" />
+/// <reference path="xlib/xstash.d.ts" />
+/// <reference path="xlib/xstring.d.ts" />
+/// <reference path="xlib/xtable.d.ts" />
+/// <reference path="xlib/xtime.d.ts" />
+/// <reference path="xlib/xtrace.d.ts" />
+/// <reference path="xlib/xttltable.d.ts" />

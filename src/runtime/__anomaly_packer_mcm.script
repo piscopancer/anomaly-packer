@@ -21,8 +21,29 @@ function title(props)
     return props
 end
 
+function list(props)
+    props.type = "list"
+    props.val = 0
+    return props
+end
+
+function desc(props)
+    props.type = "desc"
+    return props
+end
+
 function slide(props)
     props.type = "slide"
+    return props
+end
+
+function group(props)
+    if props.sh == nil then props.sh = true end
+    return props
+end
+
+function menu(props)
+    if props.sh == nil then props.sh = true end
     return props
 end
 

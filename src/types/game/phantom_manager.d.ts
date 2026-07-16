@@ -33,8 +33,21 @@ declare class Phantom extends object_binder {
 
 /** @customConstructor PhantomManager */
 declare class PhantomManager {
+  phantom_count: TODO // @generated field — refine type
   constructor()
   add_phantom(): void
   remove_phantom(): void
   spawn_phantom(pos: vector): void
+}
+
+declare namespace phantom_manager {
+  /** Anomaly `class "DynamicPhantom"` is also reachable on the `phantom_manager` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`phantom_manager.DynamicPhantom.Method = ...`). */
+  export const DynamicPhantom: DynamicPhantom
+  /** Anomaly `class "Phantom"` is also reachable on the `phantom_manager` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`phantom_manager.Phantom.Method = ...`). */
+  export const Phantom: Phantom
+  /** Anomaly `class "PhantomManager"` is also reachable on the `phantom_manager` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`phantom_manager.PhantomManager.Method = ...`). */
+  export const PhantomManager: PhantomManager
 }

@@ -39,6 +39,10 @@ declare namespace item_device {
 
 /** @customConstructor device_binder */
 declare class device_binder extends object_binder {
+  N_V: TODO // @generated field — refine type
+  first_update: TODO // @generated field — refine type
+  flicker: TODO // @generated field — refine type
+  type: TODO // @generated field — refine type
   constructor(obj: CGameObject)
   update(delta: number): void
   process_power(id: number, section: Section, condition: number): void
@@ -51,4 +55,10 @@ declare class device_binder extends object_binder {
   net_destroy(): void
   save(stpk: net_packet): void
   load(stpk: net_packet): void
+}
+
+declare namespace item_device {
+  /** Anomaly `class "device_binder"` is also reachable on the `item_device` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`item_device.device_binder.Method = ...`). */
+  export const device_binder: device_binder
 }

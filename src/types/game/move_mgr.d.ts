@@ -10,6 +10,40 @@ declare namespace move_mgr {
 
 /** @customConstructor move_mgr */
 declare class move_mgr {
+  __disable: TODO // @generated field — refine type
+  at_terminal_waypoint_flag: boolean // @generated field — refine type
+  can_use_get_current_point_index: boolean // @generated field — refine type
+  cur_state_moving: TODO // @generated field — refine type
+  cur_state_standing: TODO // @generated field — refine type
+  current_point_index: TODO // @generated field — refine type
+  current_point_init_time: TODO // @generated field — refine type
+  default_state_moving1: TODO // @generated field — refine type
+  default_state_moving2: TODO // @generated field — refine type
+  default_state_moving3: TODO // @generated field — refine type
+  default_state_standing: TODO // @generated field — refine type
+  keep_state_until: TODO // @generated field — refine type
+  last_index: TODO // @generated field — refine type
+  last_look_index: TODO // @generated field — refine type
+  move_cb_info: TODO // @generated field — refine type
+  no_validation: TODO // @generated field — refine type
+  object: TODO // @generated field — refine type
+  path_look: TODO // @generated field — refine type
+  path_look_info: TODO // @generated field — refine type
+  path_walk: TODO // @generated field — refine type
+  path_walk_info: TODO // @generated field — refine type
+  patrol_look: TODO // @generated field — refine type
+  patrol_walk: TODO // @generated field — refine type
+  pt_wait_time: TODO // @generated field — refine type
+  retval_after_rotation: TODO // @generated field — refine type
+  run_until: TODO // @generated field — refine type
+  sound_after_anim_start: TODO // @generated field — refine type
+  state: TODO // @generated field — refine type
+  suggested_state: TODO // @generated field — refine type
+  syn_signal: TODO // @generated field — refine type
+  syn_signal_set_tm: TODO // @generated field — refine type
+  team: TODO // @generated field — refine type
+  use_default_sound: TODO // @generated field — refine type
+  walk_until: TODO // @generated field — refine type
   constructor(npc: CGameObject)
   initialize(npc: CGameObject): void
   disable(): void

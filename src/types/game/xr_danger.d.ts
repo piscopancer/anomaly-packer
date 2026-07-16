@@ -18,6 +18,7 @@ declare namespace xr_danger {
 
 /** @customConstructor action_danger */
 declare class action_danger extends action_base {
+  a: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable, name_?: string)
   initialize(): void
   execute(): void
@@ -26,12 +27,26 @@ declare class action_danger extends action_base {
 
 /** @customConstructor evaluator_check_danger */
 declare class evaluator_check_danger extends property_evaluator {
+  a: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable, name_?: string)
   evaluate(): boolean
 }
 
 /** @customConstructor evaluator_danger */
 declare class evaluator_danger extends property_evaluator {
+  a: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable, npc: CGameObject, name_?: string)
   evaluate(): boolean
+}
+
+declare namespace xr_danger {
+  /** Anomaly `class "action_danger"` is also reachable on the `xr_danger` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_danger.action_danger.Method = ...`). */
+  export const action_danger: action_danger
+  /** Anomaly `class "evaluator_check_danger"` is also reachable on the `xr_danger` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_danger.evaluator_check_danger.Method = ...`). */
+  export const evaluator_check_danger: evaluator_check_danger
+  /** Anomaly `class "evaluator_danger"` is also reachable on the `xr_danger` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_danger.evaluator_danger.Method = ...`). */
+  export const evaluator_danger: evaluator_danger
 }

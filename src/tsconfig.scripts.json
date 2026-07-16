@@ -13,6 +13,7 @@
   "tstl": {
     "luaTarget": "JIT",
     "luaLibImport": "inline",
-    "noHeader": true
+    "noHeader": true,
+    "noImplicitSelf": true
   }
 }

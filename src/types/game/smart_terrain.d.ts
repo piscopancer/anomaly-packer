@@ -14,6 +14,49 @@ declare namespace smart_terrain {
 
 /** @customConstructor se_smart_terrain */
 declare class se_smart_terrain extends cse_alife_smart_zone {
+  __campfire_check_time: TODO // @generated field — refine type
+  alarm_length: TODO // @generated field — refine type
+  alarm_start_sound: TODO // @generated field — refine type
+  alarm_stop_sound: TODO // @generated field — refine type
+  already_spawned: TODO // @generated field — refine type
+  arrive_dist: TODO // @generated field — refine type
+  arriving_npc: TODO // @generated field — refine type
+  b_registred: boolean // @generated field — refine type
+  check_time: TODO // @generated field — refine type
+  death_idle_time: TODO // @generated field — refine type
+  def_restr: TODO // @generated field — refine type
+  default_faction: TODO // @generated field — refine type
+  disabled: boolean // @generated field — refine type
+  dist_to_actor: TODO // @generated field — refine type
+  faction: TODO // @generated field — refine type
+  faction_controlled: TODO // @generated field — refine type
+  faction_war_in_progress: boolean // @generated field — refine type
+  fname: TODO // @generated field — refine type
+  ignore_zone: TODO // @generated field — refine type
+  ini: TODO // @generated field — refine type
+  is_on_actor_level: TODO // @generated field — refine type
+  job_count: TODO // @generated field — refine type
+  last_respawn_update: TODO // @generated field — refine type
+  level_id: TODO // @generated field — refine type
+  load_info: TODO // @generated field — refine type
+  max_population: TODO // @generated field — refine type
+  min_population: TODO // @generated field — refine type
+  need_init_npc: TODO // @generated field — refine type
+  npc_by_job_section: TODO // @generated field — refine type
+  npc_info: TODO // @generated field — refine type
+  npc_to_register: TODO // @generated field — refine type
+  respawn_idle: TODO // @generated field — refine type
+  respawn_only_level: TODO // @generated field — refine type
+  respawn_only_smart: TODO // @generated field — refine type
+  respawn_params: TODO // @generated field — refine type
+  respawn_point: boolean // @generated field — refine type
+  respawn_radius: TODO // @generated field — refine type
+  safe_restr: TODO // @generated field — refine type
+  smart_alarm_position: TODO // @generated field — refine type
+  smart_alarm_time: TODO // @generated field — refine type
+  smart_alife_task: TODO // @generated field — refine type
+  spawn_point: TODO // @generated field — refine type
+  squad_id: TODO // @generated field — refine type
   constructor(section: Section)
   on_before_register(): void
   on_register(): void
@@ -56,4 +99,10 @@ declare class se_smart_terrain extends cse_alife_smart_zone {
   target_precondition(squad: sim_squad_scripted, ignore_population?: boolean, skip_props?: boolean): boolean
   evaluate_prior(squad: sim_squad_scripted): number
   try_respawn(): void
+}
+
+declare namespace smart_terrain {
+  /** Anomaly `class "se_smart_terrain"` is also reachable on the `smart_terrain` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`smart_terrain.se_smart_terrain.Method = ...`). */
+  export const se_smart_terrain: se_smart_terrain
 }

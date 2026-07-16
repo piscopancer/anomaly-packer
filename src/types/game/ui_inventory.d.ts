@@ -15,6 +15,111 @@ declare namespace ui_inventory {
 
 /** @customConstructor UIInventory */
 declare class UIInventory extends CUIScriptWnd {
+  CC: TODO // @generated field — refine type
+  bag_id: TODO // @generated field — refine type
+  blocker_arty: TODO // @generated field — refine type
+  blocker_bkpk: TODO // @generated field — refine type
+  blocker_helm: TODO // @generated field — refine type
+  boost_id: TODO // @generated field — refine type
+  boost_id_inv: TODO // @generated field — refine type
+  box_init_update: TODO // @generated field — refine type
+  equ_background: TODO // @generated field — refine type
+  equ_dialog: TODO // @generated field — refine type
+  flags: TODO // @generated field — refine type
+  found_cell: TODO // @generated field — refine type
+  hint_wnd: TODO // @generated field — refine type
+  hint_wnd_text: TODO // @generated field — refine type
+  holding_ctrl: boolean // @generated field — refine type
+  holding_shift: boolean // @generated field — refine type
+  hover: TODO // @generated field — refine type
+  item_info: TODO // @generated field — refine type
+  item_props: TODO // @generated field — refine type
+  message_box: TODO // @generated field — refine type
+  message_box_up: TODO // @generated field — refine type
+  mode: TODO // @generated field — refine type
+  npc_background: TODO // @generated field — refine type
+  npc_community: TODO // @generated field — refine type
+  npc_dialog: TODO // @generated field — refine type
+  npc_icon: TODO // @generated field — refine type
+  npc_id: TODO // @generated field — refine type
+  npc_is_box: TODO // @generated field — refine type
+  npc_is_companion: TODO // @generated field — refine type
+  npc_is_not_npc: TODO // @generated field — refine type
+  npc_money: TODO // @generated field — refine type
+  npc_name: TODO // @generated field — refine type
+  npc_takeall: TODO // @generated field — refine type
+  npc_trade: TODO // @generated field — refine type
+  npc_trade_buy: TODO // @generated field — refine type
+  npc_trade_cap: TODO // @generated field — refine type
+  npc_trade_price: TODO // @generated field — refine type
+  npc_trade_weight: TODO // @generated field — refine type
+  npc_up_background: TODO // @generated field — refine type
+  npc_up_community: TODO // @generated field — refine type
+  npc_up_dialog: TODO // @generated field — refine type
+  npc_up_icon: TODO // @generated field — refine type
+  npc_up_item: TODO // @generated field — refine type
+  npc_up_money: TODO // @generated field — refine type
+  npc_up_name: TODO // @generated field — refine type
+  npc_up_repair: TODO // @generated field — refine type
+  npc_up_scheme: TODO // @generated field — refine type
+  npc_weight: TODO // @generated field — refine type
+  npc_weight_cap: TODO // @generated field — refine type
+  npc_weight_max: TODO // @generated field — refine type
+  player_background: TODO // @generated field — refine type
+  player_community: TODO // @generated field — refine type
+  player_dialog: TODO // @generated field — refine type
+  player_icon: TODO // @generated field — refine type
+  player_money: TODO // @generated field — refine type
+  player_name: TODO // @generated field — refine type
+  player_putall: TODO // @generated field — refine type
+  player_trade: TODO // @generated field — refine type
+  player_trade_cap: TODO // @generated field — refine type
+  player_trade_price: TODO // @generated field — refine type
+  player_trade_sell: TODO // @generated field — refine type
+  player_trade_weight: TODO // @generated field — refine type
+  player_weight: TODO // @generated field — refine type
+  player_weight_cap: TODO // @generated field — refine type
+  player_weight_max: TODO // @generated field — refine type
+  possible_kind: TODO // @generated field — refine type
+  properties: TODO // @generated field — refine type
+  quick_txt: TODO // @generated field — refine type
+  slot_cell: TODO // @generated field — refine type
+  slot_hl: TODO // @generated field — refine type
+  sort_btn: TODO // @generated field — refine type
+  sort_dialog: TODO // @generated field — refine type
+  sort_num: TODO // @generated field — refine type
+  stat: TODO // @generated field — refine type
+  stat_arty: TODO // @generated field — refine type
+  stat_boost: TODO // @generated field — refine type
+  stat_helm: TODO // @generated field — refine type
+  stat_list: TODO // @generated field — refine type
+  stat_outfit: TODO // @generated field — refine type
+  stats_dialog: TODO // @generated field — refine type
+  tg_hint: TODO // @generated field — refine type
+  tg_hint_step: number // @generated field — refine type
+  tg_info: TODO // @generated field — refine type
+  tg_info_step: number // @generated field — refine type
+  tg_inv: TODO // @generated field — refine type
+  tg_inv_step: number // @generated field — refine type
+  tg_m1: TODO // @generated field — refine type
+  tg_play: TODO // @generated field — refine type
+  tg_stats: TODO // @generated field — refine type
+  tg_stats_step: number // @generated field — refine type
+  trash: TODO // @generated field — refine type
+  update_bags: TODO // @generated field — refine type
+  update_info: boolean // @generated field — refine type
+  update_inv: boolean // @generated field — refine type
+  update_items: TODO // @generated field — refine type
+  upgr: TODO // @generated field — refine type
+  upgr_info: TODO // @generated field — refine type
+  upgr_installed: TODO // @generated field — refine type
+  upgr_last_col: TODO // @generated field — refine type
+  upgr_last_ii: TODO // @generated field — refine type
+  upgr_last_row: TODO // @generated field — refine type
+  upgr_order: TODO // @generated field — refine type
+  upgr_tree: TODO // @generated field — refine type
+  upx: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -138,4 +243,10 @@ declare class UIInventory extends CUIScriptWnd {
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
   Print(mark: string | undefined, fmt: string, ...args: unknown[]): void
+}
+
+declare namespace ui_inventory {
+  /** Anomaly `class "UIInventory"` is also reachable on the `ui_inventory` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_inventory.UIInventory.Method = ...`). */
+  export const UIInventory: UIInventory
 }

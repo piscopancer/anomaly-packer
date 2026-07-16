@@ -7,6 +7,16 @@ declare namespace sr_teleport {
 
 /** @customConstructor action_teleport */
 declare class action_teleport {
+  object: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
+  state: TODO // @generated field — refine type
+  timer: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   update(delta: number): void
+}
+
+declare namespace sr_teleport {
+  /** Anomaly `class "action_teleport"` is also reachable on the `sr_teleport` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`sr_teleport.action_teleport.Method = ...`). */
+  export const action_teleport: action_teleport
 }

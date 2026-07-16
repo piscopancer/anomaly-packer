@@ -20,6 +20,19 @@ declare namespace xr_meet {
 
 /** @customConstructor Cmeet_manager */
 declare class Cmeet_manager {
+  __stimer: TODO // @generated field — refine type
+  a: TODO // @generated field — refine type
+  abuse_mode: TODO // @generated field — refine type
+  allow_break: TODO // @generated field — refine type
+  bye_passed: boolean // @generated field — refine type
+  curent_distance: TODO // @generated field — refine type
+  current_distance: TODO // @generated field — refine type
+  hello_passed: boolean // @generated field — refine type
+  npc: TODO // @generated field — refine type
+  npc_is_camp_director: boolean // @generated field — refine type
+  startdialog: TODO // @generated field — refine type
+  trade_enable: TODO // @generated field — refine type
+  use: TODO // @generated field — refine type
   constructor(npc: CGameObject, storage: AnyTable)
   update_state(): void
   set_start_distance(): void
@@ -28,6 +41,8 @@ declare class Cmeet_manager {
 
 /** @customConstructor action_meet_wait */
 declare class action_meet_wait extends action_base {
+  a: TODO // @generated field — refine type
+  char_ini: TODO // @generated field — refine type
   constructor(npc_name: string, action_name: string, storage: AnyTable, char_ini: system_ini)
   initialize(): void
   execute(): void
@@ -36,6 +51,19 @@ declare class action_meet_wait extends action_base {
 
 /** @customConstructor evaluator_contact */
 declare class evaluator_contact extends property_evaluator {
+  a: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   evaluate(): boolean
+}
+
+declare namespace xr_meet {
+  /** Anomaly `class "Cmeet_manager"` is also reachable on the `xr_meet` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_meet.Cmeet_manager.Method = ...`). */
+  export const Cmeet_manager: Cmeet_manager
+  /** Anomaly `class "action_meet_wait"` is also reachable on the `xr_meet` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_meet.action_meet_wait.Method = ...`). */
+  export const action_meet_wait: action_meet_wait
+  /** Anomaly `class "evaluator_contact"` is also reachable on the `xr_meet` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_meet.evaluator_contact.Method = ...`). */
+  export const evaluator_contact: evaluator_contact
 }

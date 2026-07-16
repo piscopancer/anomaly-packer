@@ -9,7 +9,15 @@ declare namespace sr_timer {
 
 /** @customConstructor action_timer */
 declare class action_timer {
+  object: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   update(delta: number): void
   deactivate(delta: number): void
+}
+
+declare namespace sr_timer {
+  /** Anomaly `class "action_timer"` is also reachable on the `sr_timer` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`sr_timer.action_timer.Method = ...`). */
+  export const action_timer: action_timer
 }

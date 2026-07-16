@@ -13,6 +13,7 @@ declare namespace axr_npc_vs_box {
 
 /** @customConstructor action_npc_vs_box */
 declare class action_npc_vs_box extends action_base {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   initialize(): void
   execute(): void
@@ -21,6 +22,16 @@ declare class action_npc_vs_box extends action_base {
 
 /** @customConstructor evaluator_npc_vs_box */
 declare class evaluator_npc_vs_box extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   evaluate(): boolean
+}
+
+declare namespace axr_npc_vs_box {
+  /** Anomaly `class "action_npc_vs_box"` is also reachable on the `axr_npc_vs_box` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_npc_vs_box.action_npc_vs_box.Method = ...`). */
+  export const action_npc_vs_box: action_npc_vs_box
+  /** Anomaly `class "evaluator_npc_vs_box"` is also reachable on the `axr_npc_vs_box` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_npc_vs_box.evaluator_npc_vs_box.Method = ...`). */
+  export const evaluator_npc_vs_box: evaluator_npc_vs_box
 }

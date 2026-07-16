@@ -11,6 +11,42 @@ declare namespace ui_debug_wpn_hud {
 
 /** @customConstructor WpnHudEditor */
 declare class WpnHudEditor extends CUIScriptWnd {
+  _h: TODO // @generated field — refine type
+  _w: TODO // @generated field — refine type
+  btn_align: TODO // @generated field — refine type
+  btn_ini_copy: TODO // @generated field — refine type
+  btn_ini_paste: TODO // @generated field — refine type
+  btn_ratio: TODO // @generated field — refine type
+  btn_reload: TODO // @generated field — refine type
+  btn_save: TODO // @generated field — refine type
+  cnt: TODO // @generated field — refine type
+  cnt_group: TODO // @generated field — refine type
+  crosshair: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  hint_wnd: TODO // @generated field — refine type
+  hint_wnd_show: TODO // @generated field — refine type
+  hint_wnd_text: TODO // @generated field — refine type
+  index: TODO // @generated field — refine type
+  msg_wnd: TODO // @generated field — refine type
+  msg_wnd_text: TODO // @generated field — refine type
+  msg_wnd_timer: TODO // @generated field — refine type
+  name: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  par: TODO // @generated field — refine type
+  par_cap: TODO // @generated field — refine type
+  par_hl: TODO // @generated field — refine type
+  par_list: TODO // @generated field — refine type
+  par_list_n: TODO // @generated field — refine type
+  parent: TODO // @generated field — refine type
+  scroll_par: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
+  selected: TODO // @generated field — refine type
+  selected_group: TODO // @generated field — refine type
+  txt_section: TODO // @generated field — refine type
+  typ: TODO // @generated field — refine type
+  value: TODO // @generated field — refine type
+  value_i: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner: CGameObject, section: Section)
   __finalize(): void
   InitControls(): void
@@ -94,4 +130,10 @@ declare class WpnHudEditor extends CUIScriptWnd {
   OnInput_56(): void
   OnInput_57(): void
   OnInput_58(): void
+}
+
+declare namespace ui_debug_wpn_hud {
+  /** Anomaly `class "WpnHudEditor"` is also reachable on the `ui_debug_wpn_hud` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_wpn_hud.WpnHudEditor.Method = ...`). */
+  export const WpnHudEditor: WpnHudEditor
 }

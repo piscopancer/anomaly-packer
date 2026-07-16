@@ -13,6 +13,26 @@ declare namespace ui_workshop {
 
 /** @customConstructor UIWorkshop */
 declare class UIWorkshop extends CUIScriptWnd {
+  background: TODO // @generated field — refine type
+  btn_tab_craft: TODO // @generated field — refine type
+  btn_tab_repair: TODO // @generated field — refine type
+  btn_tab_state: TODO // @generated field — refine type
+  btn_tab_upgrade: TODO // @generated field — refine type
+  cap_tab: TODO // @generated field — refine type
+  dbg: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  dlg_craft: TODO // @generated field — refine type
+  dlg_repair: TODO // @generated field — refine type
+  dlg_state: TODO // @generated field — refine type
+  dlg_upgrade: TODO // @generated field — refine type
+  info_ico: TODO // @generated field — refine type
+  item_info: TODO // @generated field — refine type
+  mechanic: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  toolkits_state: TODO // @generated field — refine type
+  toolkits_workshop: TODO // @generated field — refine type
+  upgr_info: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -27,6 +47,46 @@ declare class UIWorkshop extends CUIScriptWnd {
 
 /** @customConstructor UIWorkshopCraft */
 declare class UIWorkshopCraft extends CUIScriptWnd {
+  CC: TODO // @generated field — refine type
+  btn_back: TODO // @generated field — refine type
+  btn_craft: TODO // @generated field — refine type
+  cap_components: TODO // @generated field — refine type
+  cap_r: TODO // @generated field — refine type
+  craft_allow: TODO // @generated field — refine type
+  craft_allow_r: TODO // @generated field — refine type
+  craft_item: TODO // @generated field — refine type
+  craft_item_r: TODO // @generated field — refine type
+  craft_item_remain: TODO // @generated field — refine type
+  info_text: TODO // @generated field — refine type
+  itm_b: TODO // @generated field — refine type
+  itm_b_r: TODO // @generated field — refine type
+  itm_b_t: TODO // @generated field — refine type
+  itm_ico: TODO // @generated field — refine type
+  itm_ico_r: TODO // @generated field — refine type
+  itm_ico_t: TODO // @generated field — refine type
+  itm_ico_temp: TODO // @generated field — refine type
+  itm_ico_temp_r: TODO // @generated field — refine type
+  itm_ico_temp_t: TODO // @generated field — refine type
+  itm_line: TODO // @generated field — refine type
+  itm_line_c: TODO // @generated field — refine type
+  itm_line_r1: TODO // @generated field — refine type
+  itm_line_r3: TODO // @generated field — refine type
+  itm_name: TODO // @generated field — refine type
+  itm_name_r: TODO // @generated field — refine type
+  itm_name_t: TODO // @generated field — refine type
+  itm_num: TODO // @generated field — refine type
+  itm_num_r: TODO // @generated field — refine type
+  last_index: TODO // @generated field — refine type
+  last_type: TODO // @generated field — refine type
+  list_menu: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  recipes: TODO // @generated field — refine type
+  recipes_items: TODO // @generated field — refine type
+  recipes_type: TODO // @generated field — refine type
+  selected_index: TODO // @generated field — refine type
+  toolkits_state: TODO // @generated field — refine type
+  toolkits_workshop: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(xml: CScriptXmlInit, owner: CGameObject, x: number, y: number)
   __finalize(): void
   InitControls(x?: number, y?: number): void
@@ -46,6 +106,39 @@ declare class UIWorkshopCraft extends CUIScriptWnd {
 
 /** @customConstructor UIWorkshopRepair */
 declare class UIWorkshopRepair extends CUIScriptWnd {
+  CC: TODO // @generated field — refine type
+  btn_back: TODO // @generated field — refine type
+  btn_repair: TODO // @generated field — refine type
+  dot: TODO // @generated field — refine type
+  highlight_btn: TODO // @generated field — refine type
+  info_text: TODO // @generated field — refine type
+  itm_b: TODO // @generated field — refine type
+  itm_b_r: TODO // @generated field — refine type
+  itm_b_rq: TODO // @generated field — refine type
+  itm_btn: TODO // @generated field — refine type
+  itm_con: TODO // @generated field — refine type
+  itm_con_r: TODO // @generated field — refine type
+  itm_ico: TODO // @generated field — refine type
+  itm_ico_r: TODO // @generated field — refine type
+  itm_ico_rq: TODO // @generated field — refine type
+  itm_ico_temp: TODO // @generated field — refine type
+  itm_ico_temp_r: TODO // @generated field — refine type
+  itm_ico_temp_rq: TODO // @generated field — refine type
+  itm_line: TODO // @generated field — refine type
+  itm_name: TODO // @generated field — refine type
+  itm_num_rq: TODO // @generated field — refine type
+  itm_selected: TODO // @generated field — refine type
+  line_r: TODO // @generated field — refine type
+  new_con: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  parts: TODO // @generated field — refine type
+  selected_btn: TODO // @generated field — refine type
+  toolkit: TODO // @generated field — refine type
+  toolkit_inv: TODO // @generated field — refine type
+  toolkit_pick: TODO // @generated field — refine type
+  toolkits_state: TODO // @generated field — refine type
+  toolkits_workshop: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(xml: CScriptXmlInit, owner: CGameObject, x: number, y: number)
   __finalize(): void
   InitControls(x?: number, y?: number): void
@@ -65,6 +158,16 @@ declare class UIWorkshopRepair extends CUIScriptWnd {
 
 /** @customConstructor UIWorkshopState */
 declare class UIWorkshopState extends CUIScriptWnd {
+  btn_back: TODO // @generated field — refine type
+  info_text: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  toolkit_b: TODO // @generated field — refine type
+  toolkit_ico: TODO // @generated field — refine type
+  toolkit_ico_temp: TODO // @generated field — refine type
+  toolkit_txt: TODO // @generated field — refine type
+  toolkits_state: TODO // @generated field — refine type
+  toolkits_workshop: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(xml: CScriptXmlInit, owner: CGameObject, x: number, y: number)
   __finalize(): void
   InitControls(x?: number, y?: number): void
@@ -76,6 +179,35 @@ declare class UIWorkshopState extends CUIScriptWnd {
 
 /** @customConstructor UIWorkshopUpgrade */
 declare class UIWorkshopUpgrade extends CUIScriptWnd {
+  CC: TODO // @generated field — refine type
+  btn_back: TODO // @generated field — refine type
+  btn_upgrade: TODO // @generated field — refine type
+  info_text: TODO // @generated field — refine type
+  ini: TODO // @generated field — refine type
+  inst_upgr: TODO // @generated field — refine type
+  inst_upgr_xml: TODO // @generated field — refine type
+  itm_b_rq: TODO // @generated field — refine type
+  itm_cap_rq: TODO // @generated field — refine type
+  itm_ico_r: TODO // @generated field — refine type
+  itm_ico_rq: TODO // @generated field — refine type
+  itm_ico_temp_r: TODO // @generated field — refine type
+  itm_ico_temp_rq: TODO // @generated field — refine type
+  itm_num_rq: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  scroll_upgr: TODO // @generated field — refine type
+  step: number // @generated field — refine type
+  toolkits_state: TODO // @generated field — refine type
+  toolkits_workshop: TODO // @generated field — refine type
+  update_cache: TODO // @generated field — refine type
+  upgr: TODO // @generated field — refine type
+  upgr_flags: TODO // @generated field — refine type
+  upgr_idx: TODO // @generated field — refine type
+  upgr_order: TODO // @generated field — refine type
+  upgr_toolkit: TODO // @generated field — refine type
+  upgr_tools: TODO // @generated field — refine type
+  upgr_tools_pick: TODO // @generated field — refine type
+  upgr_xml: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(xml: CScriptXmlInit, owner: CGameObject, x: number, y: number)
   __finalize(): void
   InitControls(x?: number, y?: number): void
@@ -94,4 +226,22 @@ declare class UIWorkshopUpgrade extends CUIScriptWnd {
   Close(): void
   Upgrade(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
+}
+
+declare namespace ui_workshop {
+  /** Anomaly `class "UIWorkshop"` is also reachable on the `ui_workshop` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_workshop.UIWorkshop.Method = ...`). */
+  export const UIWorkshop: UIWorkshop
+  /** Anomaly `class "UIWorkshopCraft"` is also reachable on the `ui_workshop` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_workshop.UIWorkshopCraft.Method = ...`). */
+  export const UIWorkshopCraft: UIWorkshopCraft
+  /** Anomaly `class "UIWorkshopRepair"` is also reachable on the `ui_workshop` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_workshop.UIWorkshopRepair.Method = ...`). */
+  export const UIWorkshopRepair: UIWorkshopRepair
+  /** Anomaly `class "UIWorkshopState"` is also reachable on the `ui_workshop` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_workshop.UIWorkshopState.Method = ...`). */
+  export const UIWorkshopState: UIWorkshopState
+  /** Anomaly `class "UIWorkshopUpgrade"` is also reachable on the `ui_workshop` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_workshop.UIWorkshopUpgrade.Method = ...`). */
+  export const UIWorkshopUpgrade: UIWorkshopUpgrade
 }

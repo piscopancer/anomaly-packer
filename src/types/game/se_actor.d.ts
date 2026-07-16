@@ -2,6 +2,8 @@
 
 /** @customConstructor se_actor */
 declare class se_actor extends cse_alife_creature_actor {
+  m_registred: boolean // @generated field — refine type
+  start_position_filled: TODO // @generated field — refine type
   constructor(section: Section)
   on_register(): void
   on_unregister(): void
@@ -15,4 +17,10 @@ declare class se_actor extends cse_alife_creature_actor {
   sim_available(): boolean
   target_precondition(squad: CseAlifeOnlineOfflineGroup): boolean
   evaluate_prior(squad: CseAlifeOnlineOfflineGroup): number
+}
+
+declare namespace se_actor {
+  /** Anomaly `class "se_actor"` is also reachable on the `se_actor` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`se_actor.se_actor.Method = ...`). */
+  export const se_actor: se_actor
 }

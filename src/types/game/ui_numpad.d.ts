@@ -7,6 +7,8 @@ declare namespace ui_numpad {
 
 /** @customConstructor UINumpad */
 declare class UINumpad extends CUIScriptWnd {
+  owner: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(owner: CGameObject)
   __finalize(): void
   InitControls(): void
@@ -27,4 +29,10 @@ declare class UINumpad extends CUIScriptWnd {
   OnButton_OK_clicked(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
+}
+
+declare namespace ui_numpad {
+  /** Anomaly `class "UINumpad"` is also reachable on the `ui_numpad` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_numpad.UINumpad.Method = ...`). */
+  export const UINumpad: UINumpad
 }

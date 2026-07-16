@@ -16,6 +16,7 @@ declare namespace xr_gather_items {
 
 /** @customConstructor act_gather_itm */
 declare class act_gather_itm extends action_base {
+  st: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   initialize(): void
   execute(): void
@@ -24,6 +25,7 @@ declare class act_gather_itm extends action_base {
 
 /** @customConstructor eva_gather_itm */
 declare class eva_gather_itm extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable, npc: CGameObject)
   find_valid_item(): boolean
   evaluate(): boolean
@@ -31,6 +33,19 @@ declare class eva_gather_itm extends property_evaluator {
 
 /** @customConstructor evaluator_gather_items */
 declare class evaluator_gather_items extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable, npc: CGameObject)
   evaluate(): boolean
+}
+
+declare namespace xr_gather_items {
+  /** Anomaly `class "act_gather_itm"` is also reachable on the `xr_gather_items` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_gather_items.act_gather_itm.Method = ...`). */
+  export const act_gather_itm: act_gather_itm
+  /** Anomaly `class "eva_gather_itm"` is also reachable on the `xr_gather_items` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_gather_items.eva_gather_itm.Method = ...`). */
+  export const eva_gather_itm: eva_gather_itm
+  /** Anomaly `class "evaluator_gather_items"` is also reachable on the `xr_gather_items` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_gather_items.evaluator_gather_items.Method = ...`). */
+  export const evaluator_gather_items: evaluator_gather_items
 }

@@ -11,6 +11,16 @@ declare namespace sr_deimos {
 
 /** @customConstructor CDeimos */
 declare class CDeimos {
+  cam_effector_time: TODO // @generated field — refine type
+  object: TODO // @generated field — refine type
+  phase: number // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   update(delta: number): void
+}
+
+declare namespace sr_deimos {
+  /** Anomaly `class "CDeimos"` is also reachable on the `sr_deimos` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`sr_deimos.CDeimos.Method = ...`). */
+  export const CDeimos: CDeimos
 }

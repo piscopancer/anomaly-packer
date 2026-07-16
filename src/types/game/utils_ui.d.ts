@@ -50,6 +50,56 @@ declare namespace utils_ui {
 
 /** @customConstructor UICellContainer */
 declare class UICellContainer {
+  ID: TODO // @generated field — refine type
+  can_select: boolean // @generated field — refine type
+  cell: TODO // @generated field — refine type
+  cell_vis_offset: number // @generated field — refine type
+  col_end: TODO // @generated field — refine type
+  cols: TODO // @generated field — refine type
+  db: TODO // @generated field — refine type
+  disable_bar: boolean // @generated field — refine type
+  disable_callback: TODO // @generated field — refine type
+  disable_drag: boolean // @generated field — refine type
+  disable_highlight: boolean // @generated field — refine type
+  disable_info: boolean // @generated field — refine type
+  disable_scroll: TODO // @generated field — refine type
+  disable_scroll_dragdrop: boolean // @generated field — refine type
+  disable_stack: boolean // @generated field — refine type
+  drag_area: TODO // @generated field — refine type
+  drag_down: TODO // @generated field — refine type
+  drag_up: TODO // @generated field — refine type
+  grid: TODO // @generated field — refine type
+  grid_line: TODO // @generated field — refine type
+  grid_size: TODO // @generated field — refine type
+  hold: TODO // @generated field — refine type
+  hover: TODO // @generated field — refine type
+  idxer: TODO // @generated field — refine type
+  ignore_scroll: boolean // @generated field — refine type
+  indx_id: TODO // @generated field — refine type
+  indx_sec: TODO // @generated field — refine type
+  line: TODO // @generated field — refine type
+  line_cnt: number // @generated field — refine type
+  manual: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  pad: TODO // @generated field — refine type
+  path: TODO // @generated field — refine type
+  pd: TODO // @generated field — refine type
+  prof: TODO // @generated field — refine type
+  rKind: TODO // @generated field — refine type
+  row_end: TODO // @generated field — refine type
+  scolling_power: TODO // @generated field — refine type
+  scolling_power_up: number // @generated field — refine type
+  scroll: TODO // @generated field — refine type
+  scroll_pause: boolean // @generated field — refine type
+  scroll_pos: TODO // @generated field — refine type
+  scroll_tg: TODO // @generated field — refine type
+  selected: TODO // @generated field — refine type
+  showcase: boolean // @generated field — refine type
+  sort_method: string // @generated field — refine type
+  st: TODO // @generated field — refine type
+  stack_all: boolean // @generated field — refine type
+  use_frame: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(id: string, owner: CUIScriptWnd, path: string, prof: string, ele_base: CUIWindow, manual: boolean, use_frame: boolean)
   InitControls(owner: CUIScriptWnd, prof: string, ele_base: CUIWindow): void
   Reinit(t?: AnyTable, tf?: AnyTable): void
@@ -109,7 +159,52 @@ declare class UICellContainer {
 
 /** @customConstructor UICellItem */
 declare class UICellItem {
+  H: TODO // @generated field — refine type
+  W: TODO // @generated field — refine type
+  area: TODO // @generated field — refine type
+  bar: TODO // @generated field — refine type
+  childs: TODO // @generated field — refine type
+  cnt: TODO // @generated field — refine type
+  ctxt: TODO // @generated field — refine type
+  ctxts: TODO // @generated field — refine type
+  ico_gl: TODO // @generated field — refine type
+  ico_scope: TODO // @generated field — refine type
+  ico_sil: TODO // @generated field — refine type
+  layer: TODO // @generated field — refine type
+  upgr: TODO // @generated field — refine type
   constructor(container: UICellContainer, st: CUIStatic | { path: string; base: CUIStatic }, indx: number, manual: boolean)
+
+  // Instance fields set in __init/InitControls (utils_ui.script). The skeleton previously listed
+  // only methods; these are the `self.*` data members the class actually carries.
+  container: UICellContainer
+  /** Container path this cell's xml nodes hang off of. */
+  path: string
+  indx: number
+  /** `manual` placement disables some behaviour; `false` for object-attached cells. */
+  manual: boolean
+  /** `[0]` attached to object / `[1]` attached to section (showcase) / `[2]` showcase, no room adjust. */
+  showcase: number
+  /** Cell xml node name: `"cell"`, or `"cell_<indx>"` in manual placement. */
+  cx: string
+  grid_size: number
+  grid_line: number
+  /** Free-form table for custom per-cell info. */
+  flags: AnyTable
+  disable_bar: boolean
+  /** Highlight static (`:highlight`). */
+  hl: CUIStatic
+  /** Main cell static. */
+  cell: CUIStatic
+  /** Shadow static (`:pic` over `cell`). */
+  shadow: CUIStatic
+  /** Icon static (`:pic`). */
+  ico: CUIStatic
+  /** Set for free cells built from a `{ path, base }` descriptor. */
+  st?: CUIStatic
+  /** Game-object id once the cell is bound to an object; `undefined` for showcase cells. */
+  ID?: number
+  /** Section of the bound object/showcase; `undefined` when reset. */
+  section?: string
   InitControls(path: string, st: CUIStatic | { path: string; base: CUIStatic }): void
   // `obj` is a game object, or its section string for showcase cells.
   Set(obj: CGameObject | string, area?: { x: number; y: number; w: number; h: number }): boolean
@@ -142,6 +237,20 @@ declare class UICellItem {
 
 /** @customConstructor UICellProperties */
 declare class UICellProperties extends CUIScriptWnd {
+  H: TODO // @generated field — refine type
+  H_L: number // @generated field — refine type
+  PDH: number // @generated field — refine type
+  PDW: number // @generated field — refine type
+  W: TODO // @generated field — refine type
+  W_L: number // @generated field — refine type
+  action_moment: TODO // @generated field — refine type
+  file_item_fn_sz: TODO // @generated field — refine type
+  file_item_main_sz: TODO // @generated field — refine type
+  form: TODO // @generated field — refine type
+  frame: TODO // @generated field — refine type
+  highlight: TODO // @generated field — refine type
+  list_box: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
   constructor(owner: CUIScriptWnd)
   __finalize(): void
   InitControls(): void
@@ -158,12 +267,20 @@ declare class UICellProperties extends CUIScriptWnd {
 
 /** @customConstructor UICellProperties_item */
 declare class UICellProperties_item extends CUIListBoxItem {
+  textControl: TODO // @generated field — refine type
   constructor()
   __finalize(): void
 }
 
 /** @customConstructor UIHint */
 declare class UIHint {
+  delay: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  dialog_text: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  path: TODO // @generated field — refine type
+  timer: TODO // @generated field — refine type
+  txt: TODO // @generated field — refine type
   constructor(owner: CUIScriptWnd, delay?: number, path?: string)
   InitControls(): void
   Update(txt: string): void
@@ -173,6 +290,27 @@ declare class UIHint {
 
 /** @customConstructor UIInfoItem */
 declare class UIInfoItem {
+  ammo: TODO // @generated field — refine type
+  ammo_cap: TODO // @generated field — refine type
+  ammo_ico: TODO // @generated field — refine type
+  ammo_ico_temp: TODO // @generated field — refine type
+  ammo_parse: TODO // @generated field — refine type
+  ammo_txt: TODO // @generated field — refine type
+  can_compare: boolean // @generated field — refine type
+  delay: TODO // @generated field — refine type
+  desc: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  frame: TODO // @generated field — refine type
+  id: TODO // @generated field — refine type
+  name: TODO // @generated field — refine type
+  note: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
+  stats: TODO // @generated field — refine type
+  stats_dialog: TODO // @generated field — refine type
+  timer: TODO // @generated field — refine type
+  value: TODO // @generated field — refine type
+  weight: TODO // @generated field — refine type
   constructor(owner: CUIScriptWnd, delay?: number)
   InitControls(): void
   Update(obj?: CGameObject, sec?: Section, flags?: AnyTable): void
@@ -190,6 +328,19 @@ declare class UIInfoItem {
 
 /** @customConstructor UIInfoUpgr */
 declare class UIInfoUpgr {
+  cost: TODO // @generated field — refine type
+  delay: TODO // @generated field — refine type
+  desc: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  frame: TODO // @generated field — refine type
+  name: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  prereq: TODO // @generated field — refine type
+  prop: TODO // @generated field — refine type
+  prop_frame: TODO // @generated field — refine type
+  prop_h: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
+  timer: TODO // @generated field — refine type
   constructor(owner: CUIScriptWnd, delay?: number)
   InitControls(): void
   Update(upgr: string, prereq: string, installed: boolean): void
@@ -200,4 +351,28 @@ declare class UIInfoUpgr {
   Reset(): void
   IsShown(): boolean
   Show(state: boolean): void
+}
+
+declare namespace utils_ui {
+  /** Anomaly `class "UICellContainer"` is also reachable on the `utils_ui` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`utils_ui.UICellContainer.Method = ...`). */
+  export const UICellContainer: UICellContainer
+  /** Anomaly `class "UICellItem"` is also reachable on the `utils_ui` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`utils_ui.UICellItem.Method = ...`). */
+  export const UICellItem: UICellItem
+  /** Anomaly `class "UICellProperties"` is also reachable on the `utils_ui` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`utils_ui.UICellProperties.Method = ...`). */
+  export const UICellProperties: UICellProperties
+  /** Anomaly `class "UICellProperties_item"` is also reachable on the `utils_ui` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`utils_ui.UICellProperties_item.Method = ...`). */
+  export const UICellProperties_item: UICellProperties_item
+  /** Anomaly `class "UIHint"` is also reachable on the `utils_ui` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`utils_ui.UIHint.Method = ...`). */
+  export const UIHint: UIHint
+  /** Anomaly `class "UIInfoItem"` is also reachable on the `utils_ui` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`utils_ui.UIInfoItem.Method = ...`). */
+  export const UIInfoItem: UIInfoItem
+  /** Anomaly `class "UIInfoUpgr"` is also reachable on the `utils_ui` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`utils_ui.UIInfoUpgr.Method = ...`). */
+  export const UIInfoUpgr: UIInfoUpgr
 }

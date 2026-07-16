@@ -10,6 +10,10 @@ declare namespace axr_beh {
 
 /** @customConstructor action_beh */
 declare class action_beh extends action_base {
+  dist_to_assist_pt: TODO // @generated field — refine type
+  in_camp: TODO // @generated field — refine type
+  keep_state_until: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(npc_name: string, action_name: string, storage: AnyTable)
   initialize(): void
   execute(): void
@@ -28,14 +32,28 @@ declare class action_beh extends action_base {
 
 /** @customConstructor evaluator_beh */
 declare class evaluator_beh extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(storage: AnyTable, name: string)
   evaluate(): boolean
 }
 
 /** @customConstructor position_node */
 declare class position_node {
+  node: TODO // @generated field — refine type
   constructor(amt: number)
   // shared global name: 4-arg form defined in axr_beh, 6-arg form in xr_danger
   select_best_vertex_id(object: CGameObject, dir: vector, lvid: number, distance: number): number
   select_best_vertex_id(object: CGameObject, dir: vector, lvid: number, min_dist: number, max_dist: number, find_furthest?: boolean): number
+}
+
+declare namespace axr_beh {
+  /** Anomaly `class "action_beh"` is also reachable on the `axr_beh` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_beh.action_beh.Method = ...`). */
+  export const action_beh: action_beh
+  /** Anomaly `class "evaluator_beh"` is also reachable on the `axr_beh` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_beh.evaluator_beh.Method = ...`). */
+  export const evaluator_beh: evaluator_beh
+  /** Anomaly `class "position_node"` is also reachable on the `axr_beh` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_beh.position_node.Method = ...`). */
+  export const position_node: position_node
 }

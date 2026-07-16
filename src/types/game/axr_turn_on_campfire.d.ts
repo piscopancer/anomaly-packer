@@ -16,6 +16,7 @@ declare namespace axr_turn_on_campfire {
 
 /** @customConstructor act_turn_on_campfire */
 declare class act_turn_on_campfire extends action_base {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   initialize(): void
   execute(): void
@@ -24,7 +25,17 @@ declare class act_turn_on_campfire extends action_base {
 
 /** @customConstructor eva_turn_on_campfire */
 declare class eva_turn_on_campfire extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   find_valid_target(): boolean
   evaluate(): boolean
+}
+
+declare namespace axr_turn_on_campfire {
+  /** Anomaly `class "act_turn_on_campfire"` is also reachable on the `axr_turn_on_campfire` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_turn_on_campfire.act_turn_on_campfire.Method = ...`). */
+  export const act_turn_on_campfire: act_turn_on_campfire
+  /** Anomaly `class "eva_turn_on_campfire"` is also reachable on the `axr_turn_on_campfire` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_turn_on_campfire.eva_turn_on_campfire.Method = ...`). */
+  export const eva_turn_on_campfire: eva_turn_on_campfire
 }

@@ -13,6 +13,13 @@ declare namespace sr_cutscene {
 
 /** @customConstructor action_cutscene */
 declare class action_cutscene {
+  motion: TODO // @generated field — refine type
+  motion_id: TODO // @generated field — refine type
+  object: TODO // @generated field — refine type
+  postprocess: boolean // @generated field — refine type
+  st: TODO // @generated field — refine type
+  state: string // @generated field — refine type
+  ui_disabled: boolean // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(): void
   update(delta: number): void
@@ -23,9 +30,26 @@ declare class action_cutscene {
 
 /** @customConstructor cam_effector_set */
 declare class cam_effector_set {
+  condlist: TODO // @generated field — refine type
+  cur_effect: TODO // @generated field — refine type
+  enabled: boolean // @generated field — refine type
+  looped: boolean // @generated field — refine type
+  playing: boolean // @generated field — refine type
+  set: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
+  state: string // @generated field — refine type
   constructor(set: AnyTable, storage: AnyTable)
   start_effect(eff: AnyTable): void
   stop_effect(): void
   update(): void
   select_effect(): AnyTable
+}
+
+declare namespace sr_cutscene {
+  /** Anomaly `class "action_cutscene"` is also reachable on the `sr_cutscene` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`sr_cutscene.action_cutscene.Method = ...`). */
+  export const action_cutscene: action_cutscene
+  /** Anomaly `class "cam_effector_set"` is also reachable on the `sr_cutscene` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`sr_cutscene.cam_effector_set.Method = ...`). */
+  export const cam_effector_set: cam_effector_set
 }

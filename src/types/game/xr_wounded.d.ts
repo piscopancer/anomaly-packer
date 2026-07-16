@@ -18,6 +18,13 @@ declare namespace xr_wounded {
 
 /** Per-NPC wound state controller. @customConstructor Cwound_manager */
 declare class Cwound_manager {
+  a: TODO // @generated field — refine type
+  can_use_medkit: boolean // @generated field — refine type
+  cover: string // @generated field — refine type
+  fight: TODO // @generated field — refine type
+  npc: TODO // @generated field — refine type
+  sound: TODO // @generated field — refine type
+  victim: TODO // @generated field — refine type
   constructor(npc: CGameObject, storage: AnyTable)
   update(): void
   unlock_medkit(): void
@@ -32,6 +39,8 @@ declare class Cwound_manager {
 
 /** @customConstructor action_wounded */
 declare class action_wounded extends action_base {
+  a: TODO // @generated field — refine type
+  suicide: boolean // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   initialize(): void
   execute(): void
@@ -40,12 +49,29 @@ declare class action_wounded extends action_base {
 
 /** @customConstructor evaluator_can_fight */
 declare class evaluator_can_fight extends property_evaluator {
+  a: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   evaluate(): boolean
 }
 
 /** @customConstructor evaluator_wound */
 declare class evaluator_wound extends property_evaluator {
+  a: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   evaluate(): boolean
+}
+
+declare namespace xr_wounded {
+  /** Anomaly `class "Cwound_manager"` is also reachable on the `xr_wounded` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_wounded.Cwound_manager.Method = ...`). */
+  export const Cwound_manager: Cwound_manager
+  /** Anomaly `class "action_wounded"` is also reachable on the `xr_wounded` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_wounded.action_wounded.Method = ...`). */
+  export const action_wounded: action_wounded
+  /** Anomaly `class "evaluator_can_fight"` is also reachable on the `xr_wounded` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_wounded.evaluator_can_fight.Method = ...`). */
+  export const evaluator_can_fight: evaluator_can_fight
+  /** Anomaly `class "evaluator_wound"` is also reachable on the `xr_wounded` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_wounded.evaluator_wound.Method = ...`). */
+  export const evaluator_wound: evaluator_wound
 }

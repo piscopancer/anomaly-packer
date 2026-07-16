@@ -8,9 +8,17 @@ declare namespace ph_on_hit {
 
 /** @customConstructor ph_on_hit */
 declare class ph_on_hit {
+  object: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(): void
   update(delta: number): void
   hit_callback(obj: CGameObject, amount: number, local_direction: vector, who: CGameObject, bone_index: number): void
   deactivate(): void
+}
+
+declare namespace ph_on_hit {
+  /** Anomaly `class "ph_on_hit"` is also reachable on the `ph_on_hit` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ph_on_hit.ph_on_hit.Method = ...`). */
+  export const ph_on_hit: ph_on_hit
 }

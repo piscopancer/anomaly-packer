@@ -2,6 +2,16 @@
 
 /** @customConstructor main_menu */
 declare class main_menu extends CUIScriptWnd {
+  load_dlg: TODO // @generated field — refine type
+  mbox_mode: number // @generated field — refine type
+  message_box: TODO // @generated field — refine type
+  msg_wnd: TODO // @generated field — refine type
+  msg_wnd_text: TODO // @generated field — refine type
+  msg_wnd_timer: TODO // @generated field — refine type
+  new_game_dlg: TODO // @generated field — refine type
+  opt_dlg: TODO // @generated field — refine type
+  save_dlg: TODO // @generated field — refine type
+  shniaga: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -31,4 +41,10 @@ declare class main_menu extends CUIScriptWnd {
   OnKeyboard(dik: number, keyboard_action: number): boolean
   OnMenuReloaded(): void
   SetMsg(text: string, tmr: number, align: number): void
+}
+
+declare namespace ui_main_menu {
+  /** Anomaly `class "main_menu"` is also reachable on the `ui_main_menu` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_main_menu.main_menu.Method = ...`). */
+  export const main_menu: main_menu
 }

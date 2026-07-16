@@ -13,6 +13,21 @@ declare namespace dynamic_news_manager {
 
 /** @customConstructor DynamicNewsManager */
 declare class DynamicNewsManager {
+  channel_status: TODO // @generated field — refine type
+  companions_list: TODO // @generated field — refine type
+  counter: TODO // @generated field — refine type
+  loot: TODO // @generated field — refine type
+  max_cnt: number // @generated field — refine type
+  mono: TODO // @generated field — refine type
+  news_toggle: TODO // @generated field — refine type
+  queue: TODO // @generated field — refine type
+  response: TODO // @generated field — refine type
+  sentences_fnames: TODO // @generated field — refine type
+  sentences_snames: TODO // @generated field — refine type
+  spammer: TODO // @generated field — refine type
+  surge_shift: TODO // @generated field — refine type
+  surge_type: string // @generated field — refine type
+  unknown: TODO // @generated field — refine type
   constructor()
   destroy(): void
   TickNews(): boolean
@@ -99,4 +114,10 @@ declare class DynamicNewsManager {
   IsSpecialNPC(npc: CGameObject): boolean
   IsMonoCommunity(npc: CGameObject): boolean
   IsUnknownCommunity(npc: CGameObject): boolean
+}
+
+declare namespace dynamic_news_manager {
+  /** Anomaly `class "DynamicNewsManager"` is also reachable on the `dynamic_news_manager` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`dynamic_news_manager.DynamicNewsManager.Method = ...`). */
+  export const DynamicNewsManager: DynamicNewsManager
 }

@@ -13,6 +13,7 @@ export type TranspiledScript = {
  */
 export const runtimeModules = {
   'anomaly-packer/mcm': { template: '__anomaly_packer_mcm', suffix: 'ap_mcm' },
+  'anomaly-packer/class': { template: '__anomaly_packer_class', suffix: 'ap_class' },
 } as const
 
 /** The flat Anomaly script name a registered source file is built to: the entry `index` becomes the bare addon id, every other short name is prefixed with it (`mcm` -> `<addonId>_mcm`). */

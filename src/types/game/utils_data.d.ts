@@ -5,7 +5,8 @@ declare namespace utils_data {
   export function angle_left(dir1: vector, dir2: vector): boolean
   export function angle_left_xz(dir1: vector, dir2: vector): boolean
   export function cfg_get_string(char_ini: system_ini, section: Section, field: string, object: CGameObject, mandatory: boolean, gulag_name?: string, default_val?: string): string | undefined
-  export function collect_section(ini: system_ini, section: Section, keytable?: boolean): AnyTable
+  /** Collects a section's lines: by default an array of line ids; with `keytable`, a `{ id: value }` map (`true` for empty values). */
+  export function collect_section<KT extends boolean = false>(ini: system_ini, section: Section, keytable?: KT): KT extends true ? Record<string, string | true> : string[]
   export function collect_sections(ini: system_ini, sections: string[]): LuaMultiReturn<[AnyTable, AnyTable]>
   export function collect_translations(st: string, is_translated?: boolean): string[] | false
   export function CTime_from_table(t: AnyTable): Time
@@ -63,6 +64,10 @@ declare namespace utils_data {
 
 /** @customConstructor cfg_file */
 declare class cfg_file {
+  directory: TODO // @generated field — refine type
+  fname: TODO // @generated field — refine type
+  insert: TODO // @generated field — refine type
+  root: TODO // @generated field — refine type
   constructor(fname: string, simple_mode?: boolean)
   GetValue(sec: Section, key: string, typ?: number | string, def?: any): any
   GetKeys(sec: Section): string[]
@@ -72,4 +77,10 @@ declare class cfg_file {
   KeyExist(sec: Section, key: string): boolean
   SaveExt(): void
   Save(): void
+}
+
+declare namespace utils_data {
+  /** Anomaly `class "cfg_file"` is also reachable on the `utils_data` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`utils_data.cfg_file.Method = ...`). */
+  export const cfg_file: cfg_file
 }

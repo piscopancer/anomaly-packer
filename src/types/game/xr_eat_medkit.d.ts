@@ -14,6 +14,19 @@ declare namespace xr_eat_medkit {
 
 /** @customConstructor eat_medkit */
 declare class eat_medkit {
+  heal_kind: string // @generated field — refine type
+  item: TODO // @generated field — refine type
+  rank: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
+  stage: number // @generated field — refine type
+  state: number // @generated field — refine type
+  timer: TODO // @generated field — refine type
   constructor(object: CGameObject, storage: AnyTable)
   update(npc: CGameObject): void
+}
+
+declare namespace xr_eat_medkit {
+  /** Anomaly `class "eat_medkit"` is also reachable on the `xr_eat_medkit` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_eat_medkit.eat_medkit.Method = ...`). */
+  export const eat_medkit: eat_medkit
 }

@@ -10,6 +10,17 @@ declare namespace item_recipe {
 
 /** @customConstructor UIRecipe */
 declare class UIRecipe extends CUIScriptWnd {
+  cap: TODO // @generated field — refine type
+  cap_shadow: TODO // @generated field — refine type
+  cells: TODO // @generated field — refine type
+  cells_tool: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  item_info: TODO // @generated field — refine type
+  recipes: TODO // @generated field — refine type
+  scroll: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
+  toolkit: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -19,4 +30,10 @@ declare class UIRecipe extends CUIScriptWnd {
   Update(): void
   Close(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
+}
+
+declare namespace item_recipe {
+  /** Anomaly `class "UIRecipe"` is also reachable on the `item_recipe` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`item_recipe.UIRecipe.Method = ...`). */
+  export const UIRecipe: UIRecipe
 }

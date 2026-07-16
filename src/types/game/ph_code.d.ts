@@ -7,10 +7,18 @@ declare namespace ph_code {
 
 /** @customConstructor codepad */
 declare class codepad {
+  object: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(): void
   update(delta: number): void
   use_callback(obj: CGameObject, who: CGameObject): void
   OnNumberReceive(text: string): void
   deactivate(): void
+}
+
+declare namespace ph_code {
+  /** Anomaly `class "codepad"` is also reachable on the `ph_code` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ph_code.codepad.Method = ...`). */
+  export const codepad: codepad
 }

@@ -53,10 +53,20 @@ declare namespace xrs_debug_tools {
 
 /** @customConstructor hud_tool */
 declare class hud_tool {
+  custom_static: TODO // @generated field — refine type
+  header: TODO // @generated field — refine type
+  msg: TODO // @generated field — refine type
+  old_msg: TODO // @generated field — refine type
   constructor(custom_static: string)
   add_msg(text: string, value?: unknown, ...args: unknown[]): void
   set_header(header: string): void
   display(disable?: boolean): void
   export(): void
   clear(): void
+}
+
+declare namespace xrs_debug_tools {
+  /** Anomaly `class "hud_tool"` is also reachable on the `xrs_debug_tools` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xrs_debug_tools.hud_tool.Method = ...`). */
+  export const hud_tool: hud_tool
 }

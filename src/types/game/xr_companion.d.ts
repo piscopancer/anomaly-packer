@@ -15,6 +15,10 @@ declare namespace xr_companion {
 
 /** @customConstructor action_companion_activity */
 declare class action_companion_activity extends action_base {
+  assist_point: TODO // @generated field — refine type
+  keep_state_until: TODO // @generated field — refine type
+  last_state: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(npc_name: string, action_name: string, storage: AnyTable)
   initialize(): void
   beh_walk_simple(): void
@@ -25,6 +29,16 @@ declare class action_companion_activity extends action_base {
 
 /** @customConstructor evaluator_need_companion */
 declare class evaluator_need_companion extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(storage: AnyTable, name: string)
   evaluate(): boolean
+}
+
+declare namespace xr_companion {
+  /** Anomaly `class "action_companion_activity"` is also reachable on the `xr_companion` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_companion.action_companion_activity.Method = ...`). */
+  export const action_companion_activity: action_companion_activity
+  /** Anomaly `class "evaluator_need_companion"` is also reachable on the `xr_companion` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_companion.evaluator_need_companion.Method = ...`). */
+  export const evaluator_need_companion: evaluator_need_companion
 }

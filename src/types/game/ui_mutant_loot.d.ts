@@ -10,6 +10,20 @@ declare namespace ui_mutant_loot {
 
 /** @customConstructor UIMutantLoot */
 declare class UIMutantLoot extends CUIScriptWnd {
+  CC: TODO // @generated field — refine type
+  btn_cancel: TODO // @generated field — refine type
+  btn_loot_all: TODO // @generated field — refine type
+  btn_loot_one: TODO // @generated field — refine type
+  clsid: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  frame: TODO // @generated field — refine type
+  id: TODO // @generated field — refine type
+  image: TODO // @generated field — refine type
+  item_info: TODO // @generated field — refine type
+  loot: TODO // @generated field — refine type
+  obj: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -25,4 +39,10 @@ declare class UIMutantLoot extends CUIScriptWnd {
   OnButton_LootAll(): void
   Close(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
+}
+
+declare namespace ui_mutant_loot {
+  /** Anomaly `class "UIMutantLoot"` is also reachable on the `ui_mutant_loot` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_mutant_loot.UIMutantLoot.Method = ...`). */
+  export const UIMutantLoot: UIMutantLoot
 }

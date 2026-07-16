@@ -317,17 +317,17 @@ declare function main_hud_shown(): boolean
  * CreateTimeEvent(0, 'kill_random_npcs', 5, kill_random_npcs, 100)
  * ```
  * */
-declare function CreateTimeEvent<F extends (...args: any) => boolean>(
+declare function CreateTimeEvent<F extends (this: void, ...args: any) => boolean>(
   event_id: string | number,
-  action_id: string,
+  action_id: string | number,
   delay_s: number,
   action: F,
   ...args: Parameters<F>
 ): void
 /** @see {@link CreateTimeEvent} */
-declare function ResetTimeEvent(event_id: string | number, action_id: string, new_delay_s: number): void
+declare function ResetTimeEvent(event_id: string | number, action_id: string | number, new_delay_s: number): void
 /** @see {@link CreateTimeEvent} */
-declare function RemoveTimeEvent(event_id: string | number, action_id: string): void
+declare function RemoveTimeEvent(event_id: string | number, action_id: string | number): void
 declare function ProcessEventQueue(force: boolean): boolean
 declare function ProcessEventQueueState(m_data: MData, save: boolean): void
 declare function ChangeLevel(pos: vector, level_vertex_id: number, game_vertex_id: number, angle: vector, anim?: boolean): void
@@ -378,14 +378,16 @@ declare function random_float(min: number, max: number): number
 declare function yaw(vec_1: vector, vec_2: vector): number
 declare function yaw_degree(vec_1: vector, vec_2: vector): number
 declare function yaw_degree3d(vec_1: vector, vec_2: vector): number
-declare function vector_cross(vec_1: vector, vec_2: vector): number
-declare function vec_to_str(vec: vector): vector
+declare function vector_cross(vec_1: vector, vec_2: vector): vector
+declare function vec_to_str(vec: vector): string
 declare function vector_rotate_y(v: vector, deg: number): vector
 declare function distance_2d(vec_1: vector, vec_2: vector): number
 declare function distance_2d_sqr(vec_1: vector, vec_2: vector): number
 declare function trim(str: string): string
 declare function strformat(str: string, ...items: any[]): string
-declare function str_explode(str: string, separator: string, plain: any): string[]
+/** Splits a branded {@link SymbolSeparatedString} on its declared separator, yielding the element union `V[]`. */
+declare function str_explode<V extends string, Sep extends string>(str: SymbolSeparatedString<V, Sep>, separator: Sep, plain?: boolean): V[]
+declare function str_explode(str: string, separator: string, plain?: boolean): string[]
 declare function parse_list(ini: system_ini, key: string, val: string, convert: boolean): Record<string, any>
 declare function parse_names(str: string): string[]
 declare function parse_key_value(str: string): Record<string, any>
@@ -426,34 +428,78 @@ declare const ActorMoveStates: {
 }
 type StringToNumber<T extends string> = T extends `${infer N extends number}` ? N : never
 type ActorMoveState = (typeof ActorMoveStates)[keyof typeof ActorMoveStates]
-declare function IsMoveState(state: keyof typeof ActorMoveStates, compare_state: number): boolean
+declare function IsMoveState(state: keyof typeof ActorMoveStates, compare_state?: number): boolean
+/**
+ * Engine keybinding indices (`EGameActions`), exposed as the global `key_bindings` table.
+ * Values are the numeric bind ids compared against {@link dik_to_bind}'s return.
+ * Known named binds are listed for autocomplete; the index signature covers the rest of the enum.
+ */
+declare const key_bindings: {
+  readonly [bind: string]: number
+  readonly kFREELOOK: number
+  readonly kCROUCH: number
+  readonly kACCEL: number
+  readonly kSPRINT_TOGGLE: number
+  readonly kR_LOOKOUT: number
+  readonly kL_LOOKOUT: number
+  readonly kUSE: number
+  readonly kWPN_FIRE: number
+  readonly kWPN_NEXT: number
+  readonly kWPN_ZOOM: number
+  readonly kTORCH: number
+  readonly kNIGHT_VISION: number
+  readonly kINVENTORY: number
+  readonly kACTIVE_JOBS: number
+  readonly kQUICK_SAVE: number
+  readonly kQUICK_LOAD: number
+  readonly kSCREENSHOT: number
+  readonly kCONSOLE: number
+  readonly kQUIT: number
+  readonly kCAM_ZOOM_IN: number
+  readonly kCAM_ZOOM_OUT: number
+}
+/** Map a DIK scan code to its bound engine action ({@link key_bindings} value), or the code itself when unbound. */
+declare function dik_to_bind(dik: number): number
 declare function reload_ini_sys(): void
 /** Open an .ltx file and return an ini object exposing the r_* readers. Register the path in {@link IniFileSchemas} to get a {@link TypedIni} with section/field autocomplete and per-field value-type checking. */
 declare function ini_file<P extends keyof IniFileSchemas>(filename: P): TypedIni<IniFileSchemas[P]>
 declare function ini_file(filename: string): TypedIni<UntypedIniSchema>
 /**
- * May be an extended version of ini_file. Read any ltx file
+ * Resolves the schema for an {@link ini_file_ex} from the filename passed to its constructor:
+ * the {@link IniFileSchemas} entry when the path is registered, otherwise {@link UntypedIniSchema}
+ * (any section, any field, untyped values). Lets a registered `.ltx` narrow its reads while any
+ * other file stays fully permissive and error-free.
+ */
+type IniExSchemaOf<P> = P extends keyof IniFileSchemas ? IniFileSchemas[P] : UntypedIniSchema
+
+/**
+ * May be an extended version of ini_file. Read any ltx file.
+ *
+ * Generic over the constructor filename `P`: register the exact path string in {@link IniFileSchemas}
+ * to get section/field autocomplete and per-field value-type checking on the `r_*_ex` readers
+ * (`new ini_file_ex("plugins\\my_addon.ltx")` — xray needs Windows `\` separators; forward slashes crash the game). Unregistered paths fall back to {@link UntypedIniSchema},
+ * preserving the previous untyped behaviour.
  * @customConstructor ini_file_ex
  */
-declare class ini_file_ex {
-  constructor(fname: string, advanced_mode?: boolean)
+declare class ini_file_ex<P extends string = string> {
+  constructor(fname: P, advanced_mode?: boolean)
   cache: Record<string, any>
-  collect_section(section: AnySection): Record<string, any>
+  collect_section<S extends keyof IniExSchemaOf<P>>(section: S): IniExSchemaOf<P>[S]
   fname: string
-  get_sections<KT extends boolean>(keytable?: boolean): KT extends true ? Record<string, true> : string[]
+  get_sections<KT extends boolean = false>(keytable?: KT): KT extends true ? Record<keyof IniExSchemaOf<P> & string, true> : (keyof IniExSchemaOf<P> & string)[]
   ini: system_ini
-  line_exist(section: AnySection, key: string): boolean
-  r_bool_ex(s: string, k: string, def?: boolean): boolean
-  r_float_ex(s: string, k: string): string | null
-  r_list(s: string, k: string, def?: string[]): string[]
-  r_mult(s: string, k: string, ...args: any[]): any
-  r_string_ex(s: string, k: string): string | null
-  r_string_to_condlist(s: string, k: string, def?: any): Record<string, any> | null
-  r_value(s: string, k: string, typ: number, def?: any): string | null
-  remove_line(section: AnySection, key: string): void
+  line_exist<S extends keyof IniExSchemaOf<P>>(section: S, key: IniLineKeys<IniExSchemaOf<P>, S>): boolean
+  r_bool_ex<S extends keyof IniExSchemaOf<P>, K extends IniLineKeysOfType<IniExSchemaOf<P>, S, boolean>>(s: S, k: K, def?: boolean): boolean
+  r_float_ex<S extends keyof IniExSchemaOf<P>, K extends IniLineKeysOfType<IniExSchemaOf<P>, S, number>>(s: S, k: K): number | null
+  r_list(s: keyof IniExSchemaOf<P> & string, k: string, def?: string[]): string[]
+  r_mult(s: keyof IniExSchemaOf<P> & string, k: string, ...args: any[]): any
+  r_string_ex<S extends keyof IniExSchemaOf<P>, K extends IniLineKeysOfType<IniExSchemaOf<P>, S, string>>(s: S, k: K): IniExSchemaOf<P>[S][K] | null
+  r_string_to_condlist(s: keyof IniExSchemaOf<P> & string, k: string, def?: any): Record<string, any> | null
+  r_value(s: keyof IniExSchemaOf<P> & string, k: string, typ: number, def?: any): string | null
+  remove_line(section: keyof IniExSchemaOf<P> & string, key: string): void
   save(): void
-  section_exist(section: AnySection): boolean
-  w_value(s: string, k: string, val: any, comment?: string): void
+  section_exist(section: keyof IniExSchemaOf<P> & string): boolean
+  w_value(s: keyof IniExSchemaOf<P> & string, k: string, val: any, comment?: string): void
 }
 declare const INISYS_CACHE: AnyTable
 declare function SYS_GetParam(_type: number, section: AnySection, param: string, def_val?: any): any
@@ -704,7 +750,10 @@ declare function IsArtefact(obj: null, clsid: number): boolean
 // items lookup table
 //
 declare const ITM: AnyTable
-declare function IsItem(_type: string, section: AnySection, obj?: CGameObject | null): boolean
+// Returns `_ITM[type][section]`: `true` for plain membership types, but the parsed value for
+// value-carrying types (e.g. `"meal"` -> cook-stage number, other types -> string/table), or
+// `undefined`/`false` when the section is not of that type. Truthy in every positive case.
+declare function IsItem(_type: string, section: AnySection, obj?: CGameObject | null): boolean | number | string | AnyTable | undefined
 declare function GetItemList(_type: string): AnyTable
 declare function Parse_ITM(): void
 /**
@@ -843,3 +892,9 @@ declare function get_object_by_id(id: number): CGameObject | undefined
 declare function distance_between_safe(obj1: CGameObject, obj2: CGameObject): number
 declare const _EVENT: Record<string, any>
 declare const _ITM: AnyTable
+
+declare namespace _g {
+  /** Anomaly `class "ini_file_ex"` is also reachable on the `_g` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`_g.ini_file_ex.Method = ...`). */
+  export const ini_file_ex: ini_file_ex
+}

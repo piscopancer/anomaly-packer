@@ -15,6 +15,7 @@ declare namespace xrs_kill_wounded {
 
 /** @customConstructor act_kill_wounded */
 declare class act_kill_wounded extends action_base {
+  st: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   initialize(): void
   reset(): void
@@ -25,7 +26,17 @@ declare class act_kill_wounded extends action_base {
 
 /** @customConstructor eva_kill_wounded */
 declare class eva_kill_wounded extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   find_target(): boolean
   evaluate(): boolean
+}
+
+declare namespace xrs_kill_wounded {
+  /** Anomaly `class "act_kill_wounded"` is also reachable on the `xrs_kill_wounded` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xrs_kill_wounded.act_kill_wounded.Method = ...`). */
+  export const act_kill_wounded: act_kill_wounded
+  /** Anomaly `class "eva_kill_wounded"` is also reachable on the `xrs_kill_wounded` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xrs_kill_wounded.eva_kill_wounded.Method = ...`). */
+  export const eva_kill_wounded: eva_kill_wounded
 }

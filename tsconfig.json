@@ -15,7 +15,8 @@
     "outDir": "dist",
     "paths": {
       "@/*": ["./src/*"],
-      "#/*": ["./*"]
+      "#/*": ["./*"],
+      "anomaly-packer": ["./src/index.ts"]
     },
     "types": ["lua-types/jit", "node"]
   },

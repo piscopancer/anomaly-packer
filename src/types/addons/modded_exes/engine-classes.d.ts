@@ -270,8 +270,11 @@ declare class CWeaponSSRS extends CGameObject {}
 
 /** Base scriptable debug-render object. Obtained via the {@link debug_render} namespace. */
 declare class DBG_ScriptObject {
-  /** ARGB color */
-  color: number
+  /** Object-type constant passed to {@link debug_render.add_object}. */
+  static readonly line: number
+  static readonly sphere: number
+  static readonly box: number
+  color: fcolor
   hud: boolean
   visible: boolean
   cast_dbg_sphere(): DBG_ScriptSphere | null

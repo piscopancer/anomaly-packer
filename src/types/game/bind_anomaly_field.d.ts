@@ -17,6 +17,7 @@ declare namespace bind_anomaly_field {
 
 /** @customConstructor anomaly_field_binder */
 declare class anomaly_field_binder extends object_binder {
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject)
   reload(section: Section): void
   reinit(): void
@@ -25,4 +26,10 @@ declare class anomaly_field_binder extends object_binder {
   set_enable(bEnable: boolean): void
   update(delta: number): void
   net_save_relevant(): boolean
+}
+
+declare namespace bind_anomaly_field {
+  /** Anomaly `class "anomaly_field_binder"` is also reachable on the `bind_anomaly_field` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`bind_anomaly_field.anomaly_field_binder.Method = ...`). */
+  export const anomaly_field_binder: anomaly_field_binder
 }

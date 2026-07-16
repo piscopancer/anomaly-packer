@@ -38,6 +38,9 @@ declare namespace xrs_dyn_music {
 
 /** @customConstructor stereo_sound */
 declare class stereo_sound {
+  both: TODO // @generated field — refine type
+  both_tail: TODO // @generated field — refine type
+  end_time: TODO // @generated field — refine type
   constructor()
   initialize(sound: string, lvl: number): void
   play(): void
@@ -47,4 +50,10 @@ declare class stereo_sound {
   stop(): void
   length(): number
   set_volume(num: number): void
+}
+
+declare namespace xrs_dyn_music {
+  /** Anomaly `class "stereo_sound"` is also reachable on the `xrs_dyn_music` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xrs_dyn_music.stereo_sound.Method = ...`). */
+  export const stereo_sound: stereo_sound
 }

@@ -12,3 +12,9 @@ declare class ph_item_box {
   constructor()
   spawn_items(obj: CGameObject, who: CGameObject, spawn_ini: system_ini): void
 }
+
+declare namespace xr_box {
+  /** Anomaly `class "ph_item_box"` is also reachable on the `xr_box` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_box.ph_item_box.Method = ...`). */
+  export const ph_item_box: ph_item_box
+}

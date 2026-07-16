@@ -17,6 +17,10 @@ declare namespace xrs_facer {
 
 /** @customConstructor action_facer */
 declare class action_facer extends action_base {
+  end_time: TODO // @generated field — refine type
+  hit_time: TODO // @generated field — refine type
+  rank: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, action_name: string, storage: AnyTable)
   initialize(): void
   execute(): void
@@ -26,6 +30,7 @@ declare class action_facer extends action_base {
 
 /** @customConstructor action_steal_up */
 declare class action_steal_up extends action_base {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, action_name: string, storage: AnyTable)
   initialize(): void
   execute(): void
@@ -34,12 +39,29 @@ declare class action_steal_up extends action_base {
 
 /** @customConstructor evaluator_facer */
 declare class evaluator_facer extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   evaluate(): boolean
 }
 
 /** @customConstructor evaluator_steal_up */
 declare class evaluator_steal_up extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   evaluate(): boolean
+}
+
+declare namespace xrs_facer {
+  /** Anomaly `class "action_facer"` is also reachable on the `xrs_facer` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xrs_facer.action_facer.Method = ...`). */
+  export const action_facer: action_facer
+  /** Anomaly `class "action_steal_up"` is also reachable on the `xrs_facer` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xrs_facer.action_steal_up.Method = ...`). */
+  export const action_steal_up: action_steal_up
+  /** Anomaly `class "evaluator_facer"` is also reachable on the `xrs_facer` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xrs_facer.evaluator_facer.Method = ...`). */
+  export const evaluator_facer: evaluator_facer
+  /** Anomaly `class "evaluator_steal_up"` is also reachable on the `xrs_facer` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xrs_facer.evaluator_steal_up.Method = ...`). */
+  export const evaluator_steal_up: evaluator_steal_up
 }

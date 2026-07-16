@@ -1,3 +1,5 @@
+/** @noSelfInFile */
+
 declare function GetARGB(a: number, r: number, g: number, b: number): number
 declare function GetFontSmall(): CGameFont | null
 declare function GetFontMedium(): CGameFont | null
@@ -301,6 +303,13 @@ declare class CUIFrameLineWnd extends CUIWindow {
   SetColor(color: number): void
 }
 declare class UIHint extends CUIWindow {
+  delay: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  dialog_text: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  path: TODO // @generated field — refine type
+  timer: TODO // @generated field — refine type
+  txt: TODO // @generated field — refine type
   constructor()
   SetWidth(width: number): void
   SetHeight(height: number): void
@@ -677,4 +686,10 @@ declare const CUIMMShniaga: {
   readonly epi_main: 0
   readonly epi_new_game: 1
   readonly epi_new_network_game: 2
+}
+
+declare namespace utils_ui {
+  /** Anomaly `class "UIHint"` is also reachable on the `utils_ui` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`utils_ui.UIHint.Method = ...`). */
+  export const UIHint: UIHint
 }

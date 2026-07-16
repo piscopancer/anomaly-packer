@@ -65,6 +65,22 @@ declare namespace ui_debug_launcher {
 
 /** @customConstructor UIDebugMain */
 declare class UIDebugMain extends CUIScriptWnd {
+  background: TODO // @generated field — refine type
+  console: TODO // @generated field — refine type
+  console_cap: TODO // @generated field — refine type
+  console_frame: TODO // @generated field — refine type
+  console_frame_in: TODO // @generated field — refine type
+  console_input: TODO // @generated field — refine type
+  console_relay: boolean // @generated field — refine type
+  console_size: number // @generated field — refine type
+  elements: TODO // @generated field — refine type
+  key_list: TODO // @generated field — refine type
+  name: string // @generated field — refine type
+  obj1_txt: TODO // @generated field — refine type
+  obj2_txt: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  txt_console: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner?: CUIScriptWnd)
   __finalize(): void
   InitControls(): void
@@ -86,6 +102,31 @@ declare class UIDebugMain extends CUIScriptWnd {
 
 /** @customConstructor UIDebug_Executer */
 declare class UIDebug_Executer extends CUIScriptWnd {
+  background: TODO // @generated field — refine type
+  dl1: TODO // @generated field — refine type
+  dl1_btn_revert: TODO // @generated field — refine type
+  dl1_btn_set: TODO // @generated field — refine type
+  dl1_cap: TODO // @generated field — refine type
+  dl1_file_cap: TODO // @generated field — refine type
+  dl1_file_input: TODO // @generated field — refine type
+  dl1_frame: TODO // @generated field — refine type
+  dl1_logic_cap: TODO // @generated field — refine type
+  dl1_logic_input: TODO // @generated field — refine type
+  dl1_obj: TODO // @generated field — refine type
+  dl1_sec_cap: TODO // @generated field — refine type
+  dl1_sec_input: TODO // @generated field — refine type
+  dl2: TODO // @generated field — refine type
+  dl2_btn: TODO // @generated field — refine type
+  dl2_cap: TODO // @generated field — refine type
+  dl2_frame: TODO // @generated field — refine type
+  dl2_input: TODO // @generated field — refine type
+  id: TODO // @generated field — refine type
+  msg_wnd: TODO // @generated field — refine type
+  msg_wnd_text: TODO // @generated field — refine type
+  msg_wnd_timer: TODO // @generated field — refine type
+  name: string // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner?: CUIScriptWnd)
   __finalize(): void
   InitControls(): void
@@ -102,6 +143,16 @@ declare class UIDebug_Executer extends CUIScriptWnd {
 
 /** @customConstructor UIDebug_FactionSwitch */
 declare class UIDebug_FactionSwitch extends CUIScriptWnd {
+  background: TODO // @generated field — refine type
+  dl1: TODO // @generated field — refine type
+  dl1_btn: TODO // @generated field — refine type
+  dl1_cap: TODO // @generated field — refine type
+  dl1_frame: TODO // @generated field — refine type
+  factions: TODO // @generated field — refine type
+  name: string // @generated field — refine type
+  npc_id: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner?: CUIScriptWnd)
   __finalize(): void
   InitControls(): void
@@ -113,6 +164,39 @@ declare class UIDebug_FactionSwitch extends CUIScriptWnd {
 
 /** @customConstructor UIDebug_ItemSpawn */
 declare class UIDebug_ItemSpawn extends CUIScriptWnd {
+  background: TODO // @generated field — refine type
+  d1: TODO // @generated field — refine type
+  d12: TODO // @generated field — refine type
+  d12_cap: TODO // @generated field — refine type
+  d12_frame: TODO // @generated field — refine type
+  d12_frame_list: TODO // @generated field — refine type
+  d14_input: TODO // @generated field — refine type
+  d1_cap: TODO // @generated field — refine type
+  d1_frame: TODO // @generated field — refine type
+  d1_frame_list: TODO // @generated field — refine type
+  d2: TODO // @generated field — refine type
+  d2_CC: TODO // @generated field — refine type
+  d2_cap: TODO // @generated field — refine type
+  d2_frame: TODO // @generated field — refine type
+  d2_frame_inv: TODO // @generated field — refine type
+  d2_info_box: TODO // @generated field — refine type
+  dl4: TODO // @generated field — refine type
+  dl4_btn: TODO // @generated field — refine type
+  dl4_cap: TODO // @generated field — refine type
+  dl4_cap_i: TODO // @generated field — refine type
+  dl4_cap_p: TODO // @generated field — refine type
+  dl4_chk_i: TODO // @generated field — refine type
+  dl4_chk_p: TODO // @generated field — refine type
+  dl4_frame: TODO // @generated field — refine type
+  index: TODO // @generated field — refine type
+  list: TODO // @generated field — refine type
+  msg_wnd: TODO // @generated field — refine type
+  msg_wnd_text: TODO // @generated field — refine type
+  msg_wnd_timer: TODO // @generated field — refine type
+  name: string // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  type: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner?: CUIScriptWnd)
   __finalize(): void
   InitControls(): void
@@ -135,6 +219,43 @@ declare class UIDebug_ItemSpawn extends CUIScriptWnd {
 
 /** @customConstructor UIDebug_ObjSpawn */
 declare class UIDebug_ObjSpawn extends CUIScriptWnd {
+  background: TODO // @generated field — refine type
+  d1: TODO // @generated field — refine type
+  d12: TODO // @generated field — refine type
+  d12_cap: TODO // @generated field — refine type
+  d12_frame: TODO // @generated field — refine type
+  d12_frame_list: TODO // @generated field — refine type
+  d13: TODO // @generated field — refine type
+  d13_btn: TODO // @generated field — refine type
+  d13_cap: TODO // @generated field — refine type
+  d13_frame: TODO // @generated field — refine type
+  d13_input: TODO // @generated field — refine type
+  d14: TODO // @generated field — refine type
+  d14_cap: TODO // @generated field — refine type
+  d14_cap_lvl: TODO // @generated field — refine type
+  d14_cap_smrt: TODO // @generated field — refine type
+  d14_chk_s: TODO // @generated field — refine type
+  d14_frame: TODO // @generated field — refine type
+  d14_list_lvl: TODO // @generated field — refine type
+  d14_list_smrt: TODO // @generated field — refine type
+  d15: TODO // @generated field — refine type
+  d15_cap_n: TODO // @generated field — refine type
+  d15_cap_p: TODO // @generated field — refine type
+  d15_chk_n: TODO // @generated field — refine type
+  d15_chk_p: TODO // @generated field — refine type
+  d15_frame: TODO // @generated field — refine type
+  d1_cap: TODO // @generated field — refine type
+  d1_frame: TODO // @generated field — refine type
+  d1_frame_list: TODO // @generated field — refine type
+  index: TODO // @generated field — refine type
+  list: TODO // @generated field — refine type
+  msg_wnd: TODO // @generated field — refine type
+  msg_wnd_text: TODO // @generated field — refine type
+  msg_wnd_timer: TODO // @generated field — refine type
+  name: string // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  type: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner?: CUIScriptWnd)
   __finalize(): void
   InitControls(): void
@@ -154,4 +275,22 @@ declare class UIDebug_ObjSpawn extends CUIScriptWnd {
   OnButton_Nearby(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
+}
+
+declare namespace ui_debug_launcher {
+  /** Anomaly `class "UIDebugMain"` is also reachable on the `ui_debug_launcher` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_launcher.UIDebugMain.Method = ...`). */
+  export const UIDebugMain: UIDebugMain
+  /** Anomaly `class "UIDebug_Executer"` is also reachable on the `ui_debug_launcher` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_launcher.UIDebug_Executer.Method = ...`). */
+  export const UIDebug_Executer: UIDebug_Executer
+  /** Anomaly `class "UIDebug_FactionSwitch"` is also reachable on the `ui_debug_launcher` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_launcher.UIDebug_FactionSwitch.Method = ...`). */
+  export const UIDebug_FactionSwitch: UIDebug_FactionSwitch
+  /** Anomaly `class "UIDebug_ItemSpawn"` is also reachable on the `ui_debug_launcher` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_launcher.UIDebug_ItemSpawn.Method = ...`). */
+  export const UIDebug_ItemSpawn: UIDebug_ItemSpawn
+  /** Anomaly `class "UIDebug_ObjSpawn"` is also reachable on the `ui_debug_launcher` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_launcher.UIDebug_ObjSpawn.Method = ...`). */
+  export const UIDebug_ObjSpawn: UIDebug_ObjSpawn
 }

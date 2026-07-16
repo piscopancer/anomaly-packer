@@ -47,3 +47,95 @@ interface WeatherCycles {
   storm: 0
 }
 type WeatherCycle = keyof WeatherCycles
+
+// --- file schemas (IniFileSchemas) ---------------------------------------
+// Shared field shape of a weather preset's time-of-day section. Field value
+// types are inferred from the vanilla ltx (color tuples -> vector, scalars ->
+// number, texture/section refs -> string).
+interface WeatherSectionFields {
+  ambient: string
+  ambient_color: vector
+  clouds_color: vector
+  clouds_texture: string
+  far_plane: number
+  fog_color: vector
+  fog_density: number
+  fog_distance: number
+  hemisphere_color: vector
+  rain_color: vector
+  rain_density: number
+  sky_color: vector
+  sky_rotation: number
+  sky_texture: string
+  sun: string
+  sun_altitude: number
+  sun_color: vector
+  sun_longitude: number
+  sun_shafts_intensity: number
+  thunderbolt_collection: string
+  thunderbolt_duration: number
+  thunderbolt_period: number
+  tree_amplitude_intensity: number
+  water_intensity: number
+  wind_direction: number
+  wind_velocity: number
+}
+/** A weather preset file: time-of-day section (`HH:MM:SS`) -> fields. Section
+ *  names are runtime time strings, so an index signature keys them. */
+type WeatherFileSchema = Record<string, WeatherSectionFields>
+
+/** Schema of `environment/dynamic_weather_graphs.ltx`. Sections are enumerated
+ *  for name autocomplete; entries are read generically (`r_line_ex` /
+ *  `collect_section`), so fields stay permissive. */
+interface WeatherGraphsSchema {
+  brightness_bright: Record<string, string>
+  brightness_dark: Record<string, string>
+  brightness_medium: Record<string, string>
+  brightness_slight: Record<string, string>
+  cycle_clear: Record<string, string>
+  cycle_cloudy: Record<string, string>
+  cycle_foggy: Record<string, string>
+  cycle_partly: Record<string, string>
+  cycle_pre_blowout: Record<string, string>
+  cycle_rain: Record<string, string>
+  cycle_storm: Record<string, string>
+  distant_storm_sounds: Record<string, string>
+  dof_kernels: Record<string, string>
+  global_modifiers: Record<string, string>
+  weather_cycles: Record<string, string>
+}
+
+// Keys use Windows separators (\\) because xray's FS requires them (forward
+// slashes crash the game); binds on literal opens and on template opens.
+interface IniFileSchemas {
+  'environment\\weathers\\[default].ltx': WeatherFileSchema
+  'environment\\weathers\\default_clear.ltx': WeatherFileSchema
+  'environment\\weathers\\default_cloudy.ltx': WeatherFileSchema
+  'environment\\weathers\\default_rain.ltx': WeatherFileSchema
+  'environment\\weathers\\indoor.ltx': WeatherFileSchema
+  'environment\\weathers\\indoor_ambient.ltx': WeatherFileSchema
+  'environment\\weathers\\map.ltx': WeatherFileSchema
+  'environment\\weathers\\night.ltx': WeatherFileSchema
+  'environment\\weathers\\old_version_weather.ltx': WeatherFileSchema
+  'environment\\weathers\\stancia2.ltx': WeatherFileSchema
+  'environment\\weathers\\sun_shafts.ltx': WeatherFileSchema
+  'environment\\weathers\\w_clear1.ltx': WeatherFileSchema
+  'environment\\weathers\\w_clear2.ltx': WeatherFileSchema
+  'environment\\weathers\\w_cloudy1.ltx': WeatherFileSchema
+  'environment\\weathers\\w_cloudy2_dark.ltx': WeatherFileSchema
+  'environment\\weathers\\w_foggy1.ltx': WeatherFileSchema
+  'environment\\weathers\\w_foggy2.ltx': WeatherFileSchema
+  'environment\\weathers\\w_indoor_agr_underground.ltx': WeatherFileSchema
+  'environment\\weathers\\w_indoor_ambient.ltx': WeatherFileSchema
+  'environment\\weathers\\w_indoor_default.ltx': WeatherFileSchema
+  'environment\\weathers\\w_indoor_jupiter_underground.ltx': WeatherFileSchema
+  'environment\\weathers\\w_indoor_sarcofag.ltx': WeatherFileSchema
+  'environment\\weathers\\w_partly1.ltx': WeatherFileSchema
+  'environment\\weathers\\w_partly2.ltx': WeatherFileSchema
+  'environment\\weathers\\w_rain1.ltx': WeatherFileSchema
+  'environment\\weathers\\w_rain2.ltx': WeatherFileSchema
+  'environment\\weathers\\w_rain3.ltx': WeatherFileSchema
+  'environment\\weathers\\w_storm1.ltx': WeatherFileSchema
+  'environment\\weathers\\w_storm2.ltx': WeatherFileSchema
+  'environment\\dynamic_weather_graphs.ltx': WeatherGraphsSchema
+}

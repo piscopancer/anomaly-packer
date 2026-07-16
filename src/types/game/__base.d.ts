@@ -14,6 +14,7 @@
 /// <reference path="__base/system_ini.d.ts" />
 /// <reference path="__base/ui.d.ts" />
 /// <reference path="__base/weather.d.ts" />
+/// <reference path="__base/ini.d.ts" />
 
 // This is the base type declaration file that includes types from the _unpacked and luabind definitions from XRay Monolith.
 
@@ -21,6 +22,27 @@
 type TODO = any
 // Suggest is more confident when TODO but only for string values, although it allows any string, it gives a siggestion in the IDE
 type Suggest<S extends string> = S | (string & {})
+
+declare const separatorBrand: unique symbol
+/**
+ * A `string` at runtime, branded at compile time as a `Separator`-delimited list of
+ * `Values`. Carries the element union and the separator so splitters (e.g.
+ * {@link str_explode}) can return `Values[]` instead of `string[]`. Assignable to and
+ * from plain `string`; the brand only refines what a splitter yields.
+ * @example
+ * // a comma list of level names read from ltx:
+ * const raw: CommaSeparatedString<LevelName> = ini.r_string(sec, 'levels')
+ * const levels = str_explode(raw, ',') // LevelName[]
+ */
+type SymbolSeparatedString<Values extends string, Separator extends string> = string & {
+  readonly [separatorBrand]: { values: Values; separator: Separator }
+}
+/** {@link SymbolSeparatedString} split on `,`. */
+type CommaSeparatedString<Values extends string> = SymbolSeparatedString<Values, ','>
+/** {@link SymbolSeparatedString} split on `/`. */
+type SlashSeparatedString<Values extends string> = SymbolSeparatedString<Values, '/'>
+/** {@link SymbolSeparatedString} split on `\\` (two backslash characters). */
+type TwoBackslashSeparatedString<Values extends string> = SymbolSeparatedString<Values, '\\\\'>
 
 declare class CScriptSoundInfo {}
 /** @customConstructor object_binder */
@@ -118,7 +140,7 @@ declare class ray_pick {
   set_position(pos: vector): void
   set_direction(dir: vector): void
   set_range(range: number): void
-  set_flags(collide: rq_target[keyof rq_target]): void
+  set_flags(collide: number): void
   set_ignore_object(obj: CGameObject): void
   query(): boolean
   get_result(): rq_result

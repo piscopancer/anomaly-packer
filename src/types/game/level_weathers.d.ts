@@ -11,6 +11,41 @@ declare namespace level_weathers {
 
 /** @customConstructor WeatherManager */
 declare class WeatherManager {
+  ___timer: TODO // @generated field — refine type
+  boundaries: TODO // @generated field — refine type
+  brightness: TODO // @generated field — refine type
+  brightness_table: TODO // @generated field — refine type
+  curr_weather: TODO // @generated field — refine type
+  cycle: TODO // @generated field — refine type
+  distant_sounds: TODO // @generated field — refine type
+  distant_storm_on: TODO // @generated field — refine type
+  distant_storm_prob: number // @generated field — refine type
+  dof_factor: number // @generated field — refine type
+  forced_weather_change_on_time_change: boolean // @generated field — refine type
+  ini: TODO // @generated field — refine type
+  inited_time: TODO // @generated field — refine type
+  last_hour: TODO // @generated field — refine type
+  last_period_change_date: TODO // @generated field — refine type
+  levelWeather: TODO // @generated field — refine type
+  meteorites_on: boolean // @generated field — refine type
+  meteorites_particle: TODO // @generated field — refine type
+  next_hour: TODO // @generated field — refine type
+  next_thunder_at: TODO // @generated field — refine type
+  next_weather: TODO // @generated field — refine type
+  pre_blowout_period: boolean // @generated field — refine type
+  preset: TODO // @generated field — refine type
+  presets: TODO // @generated field — refine type
+  presets_pre_blowout: TODO // @generated field — refine type
+  storm_directions: TODO // @generated field — refine type
+  thunder_index: TODO // @generated field — refine type
+  thunders: TODO // @generated field — refine type
+  transition_period: boolean // @generated field — refine type
+  update_time: TODO // @generated field — refine type
+  weatherType: TODO // @generated field — refine type
+  weather_file: TODO // @generated field — refine type
+  weather_fx: TODO // @generated field — refine type
+  weather_storage: TODO // @generated field — refine type
+  wfx_time: TODO // @generated field — refine type
   constructor()
   reset(): void
   update(): void
@@ -37,4 +72,10 @@ declare class WeatherManager {
   save_state(m_data: AnyTable): void
   finalize(): void
   Print(fmt: string, ...args: any[]): void
+}
+
+declare namespace level_weathers {
+  /** Anomaly `class "WeatherManager"` is also reachable on the `level_weathers` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`level_weathers.WeatherManager.Method = ...`). */
+  export const WeatherManager: WeatherManager
 }

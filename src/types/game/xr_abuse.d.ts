@@ -13,6 +13,14 @@ declare namespace xr_abuse {
 
 /** @customConstructor CAbuseManager */
 declare class CAbuseManager {
+  a: TODO // @generated field — refine type
+  abuse_rate: TODO // @generated field — refine type
+  abuse_threshold: number // @generated field — refine type
+  abuse_value: TODO // @generated field — refine type
+  enable: boolean // @generated field — refine type
+  hit_done: boolean // @generated field — refine type
+  last_update: TODO // @generated field — refine type
+  npc: TODO // @generated field — refine type
   constructor(npc: CGameObject, storage: AnyTable)
   SetAbuseRate(rate: number): void
   abused(): boolean
@@ -25,6 +33,8 @@ declare class CAbuseManager {
 
 /** @customConstructor action_abuse_hit */
 declare class action_abuse_hit extends action_base {
+  a: TODO // @generated field — refine type
+  hit_done: boolean // @generated field — refine type
   constructor(npc_name: string, action_name: string, storage: AnyTable, char_ini: system_ini)
   initialize(): void
   execute(): void
@@ -33,6 +43,19 @@ declare class action_abuse_hit extends action_base {
 
 /** @customConstructor evaluator_abuse */
 declare class evaluator_abuse extends property_evaluator {
+  a: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   evaluate(): boolean
+}
+
+declare namespace xr_abuse {
+  /** Anomaly `class "CAbuseManager"` is also reachable on the `xr_abuse` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_abuse.CAbuseManager.Method = ...`). */
+  export const CAbuseManager: CAbuseManager
+  /** Anomaly `class "action_abuse_hit"` is also reachable on the `xr_abuse` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_abuse.action_abuse_hit.Method = ...`). */
+  export const action_abuse_hit: action_abuse_hit
+  /** Anomaly `class "evaluator_abuse"` is also reachable on the `xr_abuse` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_abuse.evaluator_abuse.Method = ...`). */
+  export const evaluator_abuse: evaluator_abuse
 }

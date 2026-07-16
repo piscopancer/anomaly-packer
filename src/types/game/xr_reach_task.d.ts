@@ -8,6 +8,7 @@ declare namespace xr_reach_task {
 
 /** @customConstructor action_reach_task_location */
 declare class action_reach_task_location extends action_base {
+  st: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   initialize(): void
   execute(): void
@@ -22,6 +23,16 @@ declare class action_reach_task_location extends action_base {
 
 /** @customConstructor evaluator_reached_task_location */
 declare class evaluator_reached_task_location extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable)
   evaluate(): boolean
+}
+
+declare namespace xr_reach_task {
+  /** Anomaly `class "action_reach_task_location"` is also reachable on the `xr_reach_task` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_reach_task.action_reach_task_location.Method = ...`). */
+  export const action_reach_task_location: action_reach_task_location
+  /** Anomaly `class "evaluator_reached_task_location"` is also reachable on the `xr_reach_task` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_reach_task.evaluator_reached_task_location.Method = ...`). */
+  export const evaluator_reached_task_location: evaluator_reached_task_location
 }

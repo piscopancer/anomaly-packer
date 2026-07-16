@@ -17,6 +17,8 @@ declare namespace xr_corpse_detection {
 
 /** @customConstructor action_search_corpse */
 declare class action_search_corpse extends action_base {
+  a: TODO // @generated field — refine type
+  sound: boolean // @generated field — refine type
   constructor(npc_name: string, action_name: string, storage: AnyTable)
   initialize(): void
   execute(): void
@@ -25,7 +27,17 @@ declare class action_search_corpse extends action_base {
 
 /** @customConstructor evaluator_corpse */
 declare class evaluator_corpse extends property_evaluator {
+  a: TODO // @generated field — refine type
   constructor(name: string, storage: AnyTable, npc: CGameObject)
   find_valid_target(): boolean
   evaluate(): boolean
+}
+
+declare namespace xr_corpse_detection {
+  /** Anomaly `class "action_search_corpse"` is also reachable on the `xr_corpse_detection` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_corpse_detection.action_search_corpse.Method = ...`). */
+  export const action_search_corpse: action_search_corpse
+  /** Anomaly `class "evaluator_corpse"` is also reachable on the `xr_corpse_detection` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_corpse_detection.evaluator_corpse.Method = ...`). */
+  export const evaluator_corpse: evaluator_corpse
 }

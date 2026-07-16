@@ -26,9 +26,24 @@ declare namespace actor_status {
 
 /** @customConstructor UIIndicators */
 declare class UIIndicators extends CUIScriptWnd {
+  W: number // @generated field — refine type
+  _tmr: TODO // @generated field — refine type
+  clr_list: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  index: TODO // @generated field — refine type
+  mirrored: boolean // @generated field — refine type
+  offset: number // @generated field — refine type
+  ratio: TODO // @generated field — refine type
+  slot: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
   Clear(): void
   Update(force: boolean): void
+}
+
+declare namespace actor_status {
+  /** Anomaly `class "UIIndicators"` is also reachable on the `actor_status` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`actor_status.UIIndicators.Method = ...`). */
+  export const UIIndicators: UIIndicators
 }

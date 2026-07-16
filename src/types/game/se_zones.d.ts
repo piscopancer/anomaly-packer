@@ -38,3 +38,18 @@ declare class se_zone_visual extends cse_zone_visual {
   STATE_Read(packet: net_packet, size: number): void
   on_unregister(): void
 }
+
+declare namespace se_zones {
+  /** Anomaly `class "se_restrictor"` is also reachable on the `se_zones` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`se_zones.se_restrictor.Method = ...`). */
+  export const se_restrictor: se_restrictor
+  /** Anomaly `class "se_zone_anom"` is also reachable on the `se_zones` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`se_zones.se_zone_anom.Method = ...`). */
+  export const se_zone_anom: se_zone_anom
+  /** Anomaly `class "se_zone_torrid"` is also reachable on the `se_zones` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`se_zones.se_zone_torrid.Method = ...`). */
+  export const se_zone_torrid: se_zone_torrid
+  /** Anomaly `class "se_zone_visual"` is also reachable on the `se_zones` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`se_zones.se_zone_visual.Method = ...`). */
+  export const se_zone_visual: se_zone_visual
+}

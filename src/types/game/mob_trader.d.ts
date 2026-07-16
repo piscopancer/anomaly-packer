@@ -7,6 +7,8 @@ declare namespace mob_trader {
 
 /** @customConstructor mob_trader */
 declare class mob_trader {
+  object: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(): void
   use_callback(): void
@@ -18,4 +20,10 @@ declare class mob_trader {
   on_sound_end(): void
   deactivate(): void
   net_destroy(): void
+}
+
+declare namespace mob_trader {
+  /** Anomaly `class "mob_trader"` is also reachable on the `mob_trader` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`mob_trader.mob_trader.Method = ...`). */
+  export const mob_trader: mob_trader
 }

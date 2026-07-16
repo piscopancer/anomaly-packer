@@ -10,7 +10,20 @@ declare namespace tasks_measure {
 
 /** @customConstructor UI3D_Anomaly */
 declare class UI3D_Anomaly extends CUIScriptWnd {
+  beep: string // @generated field — refine type
+  m_seg: TODO // @generated field — refine type
+  step: TODO // @generated field — refine type
+  step_tot: number // @generated field — refine type
+  tg: TODO // @generated field — refine type
+  timer: number // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   Update(): void
+}
+
+declare namespace tasks_measure {
+  /** Anomaly `class "UI3D_Anomaly"` is also reachable on the `tasks_measure` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`tasks_measure.UI3D_Anomaly.Method = ...`). */
+  export const UI3D_Anomaly: UI3D_Anomaly
 }

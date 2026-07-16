@@ -12,6 +12,8 @@ declare namespace axr_fight_from_cover {
 
 /** @customConstructor action_fight_from_cover */
 declare class action_fight_from_cover extends action_base {
+  st: TODO // @generated field — refine type
+  stand: boolean // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   initialize(): void
   try_go_cover(npc: CGameObject, ene_pos: vector): number | undefined
@@ -23,6 +25,16 @@ declare class action_fight_from_cover extends action_base {
 
 /** @customConstructor evaluator_fight_from_cover */
 declare class evaluator_fight_from_cover extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   evaluate(): boolean
+}
+
+declare namespace axr_fight_from_cover {
+  /** Anomaly `class "action_fight_from_cover"` is also reachable on the `axr_fight_from_cover` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_fight_from_cover.action_fight_from_cover.Method = ...`). */
+  export const action_fight_from_cover: action_fight_from_cover
+  /** Anomaly `class "evaluator_fight_from_cover"` is also reachable on the `axr_fight_from_cover` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_fight_from_cover.evaluator_fight_from_cover.Method = ...`). */
+  export const evaluator_fight_from_cover: evaluator_fight_from_cover
 }

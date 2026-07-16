@@ -96,6 +96,11 @@ declare namespace axr_companions {
 
 /** @customConstructor UICompanionList */
 declare class UICompanionList extends CUIScriptWnd {
+  _tmr: TODO // @generated field — refine type
+  clr_list: TODO // @generated field — refine type
+  companion_info: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  update_rate: number // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -104,6 +109,22 @@ declare class UICompanionList extends CUIScriptWnd {
 
 /** @customConstructor UIWheelCompanion */
 declare class UIWheelCompanion extends CUIScriptWnd {
+  clr_off: TODO // @generated field — refine type
+  clr_on: TODO // @generated field — refine type
+  cmd_btn: TODO // @generated field — refine type
+  cmd_pic: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  dialog_health: TODO // @generated field — refine type
+  dialog_info: TODO // @generated field — refine type
+  dialog_weight: TODO // @generated field — refine type
+  hint: TODO // @generated field — refine type
+  icon: TODO // @generated field — refine type
+  id: TODO // @generated field — refine type
+  name: TODO // @generated field — refine type
+  prog_health: TODO // @generated field — refine type
+  prog_weight: TODO // @generated field — refine type
+  states: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -113,4 +134,13 @@ declare class UIWheelCompanion extends CUIScriptWnd {
   Order(cmd: AnyTable): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
+}
+
+declare namespace axr_companions {
+  /** Anomaly `class "UICompanionList"` is also reachable on the `axr_companions` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_companions.UICompanionList.Method = ...`). */
+  export const UICompanionList: UICompanionList
+  /** Anomaly `class "UIWheelCompanion"` is also reachable on the `axr_companions` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_companions.UIWheelCompanion.Method = ...`). */
+  export const UIWheelCompanion: UIWheelCompanion
 }

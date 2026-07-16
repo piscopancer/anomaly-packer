@@ -6,6 +6,40 @@ declare namespace sim_squad_scripted {
 
 /** @customConstructor sim_squad_scripted */
 declare class sim_squad_scripted extends cse_alife_online_offline_group {
+  __lock: TODO // @generated field — refine type
+  action_condlist: TODO // @generated field — refine type
+  always_arrived: TODO // @generated field — refine type
+  assigned_target_id: TODO // @generated field — refine type
+  common: TODO // @generated field — refine type
+  current_action: TODO // @generated field — refine type
+  current_spot_id: TODO // @generated field — refine type
+  current_target_id: TODO // @generated field — refine type
+  death_condlist: TODO // @generated field — refine type
+  dist_to_actor: TODO // @generated field — refine type
+  first_update: boolean // @generated field — refine type
+  forced_online_status: TODO // @generated field — refine type
+  idle_time: TODO // @generated field — refine type
+  invul_condlist: TODO // @generated field — refine type
+  item_on_all: TODO // @generated field — refine type
+  last_gvid: TODO // @generated field — refine type
+  level_name: TODO // @generated field — refine type
+  need_to_reset_location_masks: boolean // @generated field — refine type
+  player_id: TODO // @generated field — refine type
+  random_targets: TODO // @generated field — refine type
+  relationship: TODO // @generated field — refine type
+  relationship_condlist: TODO // @generated field — refine type
+  respawn_point_id: TODO // @generated field — refine type
+  respawn_point_prop_section: TODO // @generated field — refine type
+  rush: TODO // @generated field — refine type
+  rush_to_target: boolean // @generated field — refine type
+  scripted_target: TODO // @generated field — refine type
+  show_disabled: boolean // @generated field — refine type
+  smart_id: TODO // @generated field — refine type
+  spot_section: TODO // @generated field — refine type
+  stay_time: TODO // @generated field — refine type
+  sympathy: TODO // @generated field — refine type
+  task_target_id: TODO // @generated field — refine type
+  was_forced_offline: boolean // @generated field — refine type
   constructor(section: Section)
   init_squad(): void
   init_squad_on_load(): void
@@ -56,4 +90,10 @@ declare class sim_squad_scripted extends cse_alife_online_offline_group {
   sim_available(): boolean
   target_precondition(squad: sim_squad_scripted): boolean
   evaluate_prior(squad: sim_squad_scripted): number
+}
+
+declare namespace sim_squad_scripted {
+  /** Anomaly `class "sim_squad_scripted"` is also reachable on the `sim_squad_scripted` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`sim_squad_scripted.sim_squad_scripted.Method = ...`). */
+  export const sim_squad_scripted: sim_squad_scripted
 }

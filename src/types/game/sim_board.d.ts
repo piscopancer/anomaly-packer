@@ -12,6 +12,12 @@ declare namespace sim_board {
 
 /** @customConstructor simulation_board */
 declare class simulation_board {
+  simulation_started: boolean // @generated field — refine type
+  smarts: TODO // @generated field — refine type
+  smarts_by_names: TODO // @generated field — refine type
+  squads: TODO // @generated field — refine type
+  start_position_filled: boolean // @generated field — refine type
+  tmp_assigned_squad: TODO // @generated field — refine type
   constructor()
   register_smart(obj: CGameObject): void
   unregister_smart(obj: CGameObject): void
@@ -28,4 +34,10 @@ declare class simulation_board {
   get_smart_by_name(name: string): se_smart_terrain | undefined
   get_smart_population(smart: se_smart_terrain): number
   get_squad_target(squad: CseAlifeOnlineOfflineGroup): AnyTable | undefined
+}
+
+declare namespace sim_board {
+  /** Anomaly `class "simulation_board"` is also reachable on the `sim_board` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`sim_board.simulation_board.Method = ...`). */
+  export const simulation_board: simulation_board
 }

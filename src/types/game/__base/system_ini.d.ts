@@ -81,10 +81,13 @@ declare class system_ini {
  * `ini_file(path)` returns a {@link TypedIni} that autocompletes section and field names and
  * checks each reader/writer against the field's declared value type.
  *
+ * Path keys must use Windows separators (`\\` in a TS string literal) — xray's FS
+ * requires backslashes, and forward slashes crash the game.
+ *
  * @example
  * declare global {
  *   interface IniFileSchemas {
- *     "plugins/my_addon.ltx": Record<string, { armorType: string; armorMult: number }>
+ *     "plugins\\my_addon.ltx": Record<string, { armorType: string; armorMult: number }>
  *   }
  * }
  */

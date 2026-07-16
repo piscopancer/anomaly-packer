@@ -15,8 +15,16 @@ declare namespace xr_combat_ignore {
 
 /** @customConstructor action_process_enemy */
 declare class action_process_enemy {
+  object: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   trader_enemy_callback(obj: CGameObject, enemy: CGameObject): void
   enemy_callback(npc: CGameObject, enemy: CGameObject): void
   hit_callback(obj: CGameObject, amount: number, local_direction: vector, who: CGameObject, bone_index: number): void
+}
+
+declare namespace xr_combat_ignore {
+  /** Anomaly `class "action_process_enemy"` is also reachable on the `xr_combat_ignore` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_combat_ignore.action_process_enemy.Method = ...`). */
+  export const action_process_enemy: action_process_enemy
 }

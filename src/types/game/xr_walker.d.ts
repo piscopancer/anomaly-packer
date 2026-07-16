@@ -7,6 +7,11 @@ declare namespace xr_walker {
 
 /** @customConstructor action_walker_activity */
 declare class action_walker_activity extends action_base {
+  avail_actions: TODO // @generated field — refine type
+  camp: TODO // @generated field — refine type
+  in_camp: TODO // @generated field — refine type
+  move_mgr: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, action_name: string, storage: AnyTable)
   initialize(): void
   activate_scheme(loading: boolean, npc: CGameObject): void
@@ -20,6 +25,16 @@ declare class action_walker_activity extends action_base {
 
 /** @customConstructor evaluator_need_walker */
 declare class evaluator_need_walker extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(storage: AnyTable, name: string)
   evaluate(): boolean
+}
+
+declare namespace xr_walker {
+  /** Anomaly `class "action_walker_activity"` is also reachable on the `xr_walker` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_walker.action_walker_activity.Method = ...`). */
+  export const action_walker_activity: action_walker_activity
+  /** Anomaly `class "evaluator_need_walker"` is also reachable on the `xr_walker` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_walker.evaluator_need_walker.Method = ...`). */
+  export const evaluator_need_walker: evaluator_need_walker
 }

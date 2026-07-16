@@ -9,6 +9,15 @@ declare namespace ph_door {
 
 /** @customConstructor action_door */
 declare class action_door {
+  block: boolean // @generated field — refine type
+  hi_limits: TODO // @generated field — refine type
+  initialized: boolean // @generated field — refine type
+  joint: TODO // @generated field — refine type
+  object: TODO // @generated field — refine type
+  show_tips: TODO // @generated field — refine type
+  snd_obj: TODO // @generated field — refine type
+  soundless_block: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(loading: boolean): void
   update(delta: number): void
@@ -23,4 +32,10 @@ declare class action_door {
   use_callback(door: CGameObject, actor: CGameObject): void
   hit_callback(obj: CGameObject, amount: number, local_direction: vector, who: CGameObject, bone_index: number): void
   deactivate(): void
+}
+
+declare namespace ph_door {
+  /** Anomaly `class "action_door"` is also reachable on the `ph_door` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ph_door.action_door.Method = ...`). */
+  export const action_door: action_door
 }

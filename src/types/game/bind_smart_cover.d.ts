@@ -12,3 +12,9 @@ declare class smart_cover_binder extends object_binder {
   net_destroy(): void
   update(delta: number): void
 }
+
+declare namespace bind_smart_cover {
+  /** Anomaly `class "smart_cover_binder"` is also reachable on the `bind_smart_cover` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`bind_smart_cover.smart_cover_binder.Method = ...`). */
+  export const smart_cover_binder: smart_cover_binder
+}

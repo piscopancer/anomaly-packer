@@ -30,6 +30,65 @@ declare namespace ui_debug_item {
 
 /** @customConstructor UIItemEditor */
 declare class UIItemEditor extends CUIScriptWnd {
+  bar: TODO // @generated field — refine type
+  bar_perc: TODO // @generated field — refine type
+  bar_str: TODO // @generated field — refine type
+  bar_txt: TODO // @generated field — refine type
+  btn_apply: TODO // @generated field — refine type
+  btn_copy: TODO // @generated field — refine type
+  btn_paste: TODO // @generated field — refine type
+  btn_reset: TODO // @generated field — refine type
+  cap_i: TODO // @generated field — refine type
+  cfg: TODO // @generated field — refine type
+  cnt: TODO // @generated field — refine type
+  cnt_g: TODO // @generated field — refine type
+  cnt_gn: TODO // @generated field — refine type
+  cnt_n: TODO // @generated field — refine type
+  d1: TODO // @generated field — refine type
+  d2: TODO // @generated field — refine type
+  d3: TODO // @generated field — refine type
+  ele_i: TODO // @generated field — refine type
+  ele_i_2: TODO // @generated field — refine type
+  help_wnd: TODO // @generated field — refine type
+  help_wnd_text: TODO // @generated field — refine type
+  hint_wnd: TODO // @generated field — refine type
+  hint_wnd_height: TODO // @generated field — refine type
+  hint_wnd_text: TODO // @generated field — refine type
+  hint_wnd_text_height: TODO // @generated field — refine type
+  hint_wnd_text_width: TODO // @generated field — refine type
+  hint_wnd_width: TODO // @generated field — refine type
+  hl_i: TODO // @generated field — refine type
+  i: TODO // @generated field — refine type
+  ico_1: TODO // @generated field — refine type
+  ico_1_s: TODO // @generated field — refine type
+  ico_1_tmp: TODO // @generated field — refine type
+  ico_2: TODO // @generated field — refine type
+  ico_2_s: TODO // @generated field — refine type
+  ico_2_tmp: TODO // @generated field — refine type
+  id: TODO // @generated field — refine type
+  item_type: TODO // @generated field — refine type
+  list: TODO // @generated field — refine type
+  list_i: TODO // @generated field — refine type
+  list_n: TODO // @generated field — refine type
+  msg_wnd_frame: TODO // @generated field — refine type
+  msg_wnd_text: TODO // @generated field — refine type
+  msg_wnd_timer: TODO // @generated field — refine type
+  name_1: TODO // @generated field — refine type
+  name_2: TODO // @generated field — refine type
+  name_i: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  p: TODO // @generated field — refine type
+  scroll_d1: TODO // @generated field — refine type
+  scroll_d3: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
+  selected: TODO // @generated field — refine type
+  selected_group: TODO // @generated field — refine type
+  show_help: boolean // @generated field — refine type
+  typ_i: TODO // @generated field — refine type
+  value_g: TODO // @generated field — refine type
+  value_i: TODO // @generated field — refine type
+  value_tmp: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner: CUIScriptWnd | undefined, object: CGameObject, section: Section, item_type: string, item_kinds: Record<string, boolean>)
   __finalize(): void
   InitControls(): void
@@ -141,9 +200,25 @@ declare class UIItemEditor extends CUIScriptWnd {
 
 /** @customConstructor list_element */
 declare class list_element extends CUIListBoxItem {
+  flag: TODO // @generated field — refine type
+  idx: TODO // @generated field — refine type
+  index: TODO // @generated field — refine type
+  name: TODO // @generated field — refine type
+  obj_related: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
+  text: TODO // @generated field — refine type
   // shared global name with distinct constructors across ui_debug_item / ui_debug_launcher / ui_workshop
   constructor(section: Section, width: number)
   constructor(section: Section, width: number)
   constructor(section: Section, width: number)
   __finalize(): void
+}
+
+declare namespace ui_debug_item {
+  /** Anomaly `class "UIItemEditor"` is also reachable on the `ui_debug_item` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_item.UIItemEditor.Method = ...`). */
+  export const UIItemEditor: UIItemEditor
+  /** Anomaly `class "list_element"` is also reachable on the `ui_debug_item` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_item.list_element.Method = ...`). */
+  export const list_element: list_element
 }

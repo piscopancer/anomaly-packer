@@ -10,6 +10,42 @@ declare namespace item_repair {
 
 /** @customConstructor UIRepair */
 declare class UIRepair extends CUIScriptWnd {
+  CC: TODO // @generated field — refine type
+  add_condition: TODO // @generated field — refine type
+  b_inv: TODO // @generated field — refine type
+  b_item: TODO // @generated field — refine type
+  box_item_main: TODO // @generated field — refine type
+  box_item_main_temp: TODO // @generated field — refine type
+  btn_cancel: TODO // @generated field — refine type
+  btn_repair: TODO // @generated field — refine type
+  cap: TODO // @generated field — refine type
+  cap_menu: TODO // @generated field — refine type
+  cell_item: TODO // @generated field — refine type
+  clr_b: TODO // @generated field — refine type
+  con_txt: TODO // @generated field — refine type
+  con_txt_base: TODO // @generated field — refine type
+  con_txt_new: TODO // @generated field — refine type
+  con_val: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  item_info: TODO // @generated field — refine type
+  list: TODO // @generated field — refine type
+  max_condition: TODO // @generated field — refine type
+  min_condition: TODO // @generated field — refine type
+  msg_wnd_timer: TODO // @generated field — refine type
+  obj: TODO // @generated field — refine type
+  part_bonus: TODO // @generated field — refine type
+  parts_match: TODO // @generated field — refine type
+  parts_multi: TODO // @generated field — refine type
+  parts_sections: TODO // @generated field — refine type
+  repair_frame: TODO // @generated field — refine type
+  repair_only: TODO // @generated field — refine type
+  repair_type: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
+  text_item: TODO // @generated field — refine type
+  use_actor_effects: TODO // @generated field — refine type
+  use_condition: TODO // @generated field — refine type
+  use_parts: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(obj: CGameObject, section: Section)
   __finalize(): void
   InitControls(): void
@@ -22,4 +58,10 @@ declare class UIRepair extends CUIScriptWnd {
   OnRepair(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   OnCancel(): void
+}
+
+declare namespace item_repair {
+  /** Anomaly `class "UIRepair"` is also reachable on the `item_repair` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`item_repair.UIRepair.Method = ...`). */
+  export const UIRepair: UIRepair
 }

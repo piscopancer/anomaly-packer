@@ -8,6 +8,14 @@ declare namespace xr_death {
 
 /** @customConstructor action_process_death */
 declare class action_process_death {
+  object: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   death_callback(victim: CGameObject, who: CGameObject): void
+}
+
+declare namespace xr_death {
+  /** Anomaly `class "action_process_death"` is also reachable on the `xr_death` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_death.action_process_death.Method = ...`). */
+  export const action_process_death: action_process_death
 }

@@ -17,3 +17,9 @@ declare class camp_binder extends object_binder {
   save(packet: net_packet): void
   load(reader: net_packet): void
 }
+
+declare namespace bind_camp {
+  /** Anomaly `class "camp_binder"` is also reachable on the `bind_camp` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`bind_camp.camp_binder.Method = ...`). */
+  export const camp_binder: camp_binder
+}

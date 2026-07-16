@@ -46,6 +46,37 @@ declare namespace ui_options {
 
 /** @customConstructor UIOptions */
 declare class UIOptions extends CUIScriptWnd {
+  Change_Done: boolean // @generated field — refine type
+  Keybinds_Shown: boolean // @generated field — refine type
+  Need_Restart: boolean // @generated field — refine type
+  Need_VidRestart: boolean // @generated field — refine type
+  Save_AXR: boolean // @generated field — refine type
+  Save_CFG: boolean // @generated field — refine type
+  _Cap: TODO // @generated field — refine type
+  _Check: TODO // @generated field — refine type
+  _Input: TODO // @generated field — refine type
+  _List: TODO // @generated field — refine type
+  _Radio: TODO // @generated field — refine type
+  _Track: TODO // @generated field — refine type
+  background: TODO // @generated field — refine type
+  bl: TODO // @generated field — refine type
+  btn_accept: TODO // @generated field — refine type
+  btn_cancel: TODO // @generated field — refine type
+  btn_default: TODO // @generated field — refine type
+  btn_reset: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  dlg_controls: TODO // @generated field — refine type
+  hint_wnd: TODO // @generated field — refine type
+  last_curr_tree: TODO // @generated field — refine type
+  last_path: TODO // @generated field — refine type
+  last_tree: TODO // @generated field — refine type
+  message_box: TODO // @generated field — refine type
+  pending: TODO // @generated field — refine type
+  preset: TODO // @generated field — refine type
+  preset_cap: TODO // @generated field — refine type
+  scroll_opt: TODO // @generated field — refine type
+  tree: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -101,4 +132,13 @@ declare class opt_controls extends CUIWindow {
   constructor()
   __finalize(): void
   InitControls(x: number, y: number, xml: CScriptXmlInit, handler: CUIWindow): void
+}
+
+declare namespace ui_options {
+  /** Anomaly `class "UIOptions"` is also reachable on the `ui_options` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_options.UIOptions.Method = ...`). */
+  export const UIOptions: UIOptions
+  /** Anomaly `class "opt_controls"` is also reachable on the `ui_options` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_options.opt_controls.Method = ...`). */
+  export const opt_controls: opt_controls
 }

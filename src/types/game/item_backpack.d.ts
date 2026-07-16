@@ -14,6 +14,10 @@ declare namespace item_backpack {
 
 /** @customConstructor UICreateStash */
 declare class UICreateStash extends CUIScriptWnd {
+  dialog: TODO // @generated field — refine type
+  id: TODO // @generated field — refine type
+  input: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -23,4 +27,10 @@ declare class UICreateStash extends CUIScriptWnd {
   OnAccept(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
+}
+
+declare namespace item_backpack {
+  /** Anomaly `class "UICreateStash"` is also reachable on the `item_backpack` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`item_backpack.UICreateStash.Method = ...`). */
+  export const UICreateStash: UICreateStash
 }

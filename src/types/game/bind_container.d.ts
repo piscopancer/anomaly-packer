@@ -20,3 +20,9 @@ declare class container_binder extends object_binder {
   save(stpk: net_packet): void
   load(stpk: net_packet): void
 }
+
+declare namespace bind_container {
+  /** Anomaly `class "container_binder"` is also reachable on the `bind_container` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`bind_container.container_binder.Method = ...`). */
+  export const container_binder: container_binder
+}

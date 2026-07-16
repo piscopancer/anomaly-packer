@@ -7,6 +7,20 @@ declare namespace mob_walker {
 
 /** @customConstructor mob_walker */
 declare class mob_walker {
+  crouch: boolean // @generated field — refine type
+  cur_anim_set: TODO // @generated field — refine type
+  last_index: TODO // @generated field — refine type
+  last_look_index: TODO // @generated field — refine type
+  object: TODO // @generated field — refine type
+  path_look_info: TODO // @generated field — refine type
+  path_walk_info: TODO // @generated field — refine type
+  patrol_look: TODO // @generated field — refine type
+  patrol_walk: TODO // @generated field — refine type
+  pt_wait_time: TODO // @generated field — refine type
+  running: boolean // @generated field — refine type
+  scheduled_snd: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
+  state: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(): void
   update(delta: number): void
@@ -16,4 +30,10 @@ declare class mob_walker {
   update_standing_state(): void
   deactivate(): void
   look_at_waypoint(pt: vector): void
+}
+
+declare namespace mob_walker {
+  /** Anomaly `class "mob_walker"` is also reachable on the `mob_walker` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`mob_walker.mob_walker.Method = ...`). */
+  export const mob_walker: mob_walker
 }

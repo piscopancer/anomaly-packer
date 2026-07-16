@@ -12,6 +12,8 @@ declare namespace mob_trade {
 
 /** @customConstructor mob_trade */
 declare class mob_trade {
+  object: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject, storage: AnyTable)
   reset_scheme(): void
   update(delta: number): void
@@ -19,4 +21,10 @@ declare class mob_trade {
   start_trade(zone: CGameObject, obj: CGameObject): void
   end_trade(): void
   on_trade(buy_coast: AnyTable, sell_coast: AnyTable): void
+}
+
+declare namespace mob_trade {
+  /** Anomaly `class "mob_trade"` is also reachable on the `mob_trade` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`mob_trade.mob_trade.Method = ...`). */
+  export const mob_trade: mob_trade
 }

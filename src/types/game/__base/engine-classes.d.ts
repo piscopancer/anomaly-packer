@@ -1,3 +1,5 @@
+/** @noSelfInFile */
+
 // Engine luabind classes that stock Anomaly (vanilla) registers but were not yet
 // modelled during the vanilla pass: holders/vehicles, physics, device and console.
 // Members added by modded exes live in `addons/modded_exes.d.ts` as interface merges.

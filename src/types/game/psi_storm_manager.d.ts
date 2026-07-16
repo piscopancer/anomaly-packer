@@ -20,6 +20,32 @@ declare namespace psi_storm_manager {
 
 /** @customConstructor CPsiStormManager */
 declare class CPsiStormManager {
+  _delta: TODO // @generated field — refine type
+  finished: boolean // @generated field — refine type
+  first_update: boolean // @generated field — refine type
+  game_time_factor: TODO // @generated field — refine type
+  hitFactor: number // @generated field — refine type
+  humanParticles: TODO // @generated field — refine type
+  ini: TODO // @generated field — refine type
+  inited_time: TODO // @generated field — refine type
+  last_psi_storm_time: TODO // @generated field — refine type
+  max_distance_electro_hit: number // @generated field — refine type
+  max_distance_npc_hit: number // @generated field — refine type
+  max_distance_psi_hit: number // @generated field — refine type
+  next_vortex_at: TODO // @generated field — refine type
+  psi_storm_duration: number // @generated field — refine type
+  psi_storm_message: string // @generated field — refine type
+  psi_storm_task_sect: string // @generated field — refine type
+  skip_message: TODO // @generated field — refine type
+  stages: TODO // @generated field — refine type
+  started: boolean // @generated field — refine type
+  task_given: TODO // @generated field — refine type
+  time_forwarded: boolean // @generated field — refine type
+  vortex_distance_max: number // @generated field — refine type
+  vortex_index: TODO // @generated field — refine type
+  vortex_period_max: number // @generated field — refine type
+  vortex_period_min: number // @generated field — refine type
+  vortexes: TODO // @generated field — refine type
   constructor()
   initialize(): void
   start(manual: boolean): void
@@ -34,4 +60,10 @@ declare class CPsiStormManager {
   kill_objects_at_pos(vortex_pos: vector, fate: any): void
   kill_crows_at_pos(pos: vector): void
   give_psi_storm_hide_task(): void
+}
+
+declare namespace psi_storm_manager {
+  /** Anomaly `class "CPsiStormManager"` is also reachable on the `psi_storm_manager` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`psi_storm_manager.CPsiStormManager.Method = ...`). */
+  export const CPsiStormManager: CPsiStormManager
 }

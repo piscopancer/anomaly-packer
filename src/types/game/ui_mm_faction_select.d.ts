@@ -6,6 +6,91 @@ declare namespace ui_mm_faction_select {
 
 /** @customConstructor UINewGame */
 declare class UINewGame extends CUIScriptWnd {
+  CC: TODO // @generated field — refine type
+  access: boolean // @generated field — refine type
+  black_1: TODO // @generated field — refine type
+  black_2: TODO // @generated field — refine type
+  box_faction: TODO // @generated field — refine type
+  box_icon: TODO // @generated field — refine type
+  box_item: TODO // @generated field — refine type
+  box_item_temp: TODO // @generated field — refine type
+  box_map: TODO // @generated field — refine type
+  btn_faction: TODO // @generated field — refine type
+  btn_icon: TODO // @generated field — refine type
+  cap_faction: TODO // @generated field — refine type
+  cap_icon: TODO // @generated field — refine type
+  character_name: TODO // @generated field — refine type
+  ck_azazel_mode: TODO // @generated field — refine type
+  ck_azazel_mode_cap: TODO // @generated field — refine type
+  ck_campfire: TODO // @generated field — refine type
+  ck_campfire_cap: TODO // @generated field — refine type
+  ck_conditions: TODO // @generated field — refine type
+  ck_conditions_cap: TODO // @generated field — refine type
+  ck_hardcore: TODO // @generated field — refine type
+  ck_hardcore_cap: TODO // @generated field — refine type
+  ck_reset: TODO // @generated field — refine type
+  ck_routes: TODO // @generated field — refine type
+  ck_routes_cap: TODO // @generated field — refine type
+  ck_states: TODO // @generated field — refine type
+  ck_story: TODO // @generated field — refine type
+  ck_story_cap: TODO // @generated field — refine type
+  ck_survival: TODO // @generated field — refine type
+  ck_survival_cap: TODO // @generated field — refine type
+  ck_warfare: TODO // @generated field — refine type
+  ck_warfare_cap: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  dialog_1: TODO // @generated field — refine type
+  dialog_2: TODO // @generated field — refine type
+  faction_cell: TODO // @generated field — refine type
+  hint_wnd: TODO // @generated field — refine type
+  ini_ico: TODO // @generated field — refine type
+  ini_opt: TODO // @generated field — refine type
+  item_info: TODO // @generated field — refine type
+  list_difficulty: TODO // @generated field — refine type
+  list_difficulty_cap: TODO // @generated field — refine type
+  list_economy: TODO // @generated field — refine type
+  list_economy_cap: TODO // @generated field — refine type
+  list_hardcore_lives: TODO // @generated field — refine type
+  list_hardcore_lives_cap: TODO // @generated field — refine type
+  list_hardcore_regen: TODO // @generated field — refine type
+  list_hardcore_regen_cap: TODO // @generated field — refine type
+  list_map: TODO // @generated field — refine type
+  list_timer: TODO // @generated field — refine type
+  list_timer_cap: TODO // @generated field — refine type
+  main_frame: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  points_left: TODO // @generated field — refine type
+  points_used: TODO // @generated field — refine type
+  scroll_desc: TODO // @generated field — refine type
+  scroll_faction: TODO // @generated field — refine type
+  scroll_icon: TODO // @generated field — refine type
+  scroll_options: TODO // @generated field — refine type
+  selected_difficulty: TODO // @generated field — refine type
+  selected_economy: TODO // @generated field — refine type
+  selected_faction: TODO // @generated field — refine type
+  selected_hardcore_lives: TODO // @generated field — refine type
+  selected_hardcore_regen: TODO // @generated field — refine type
+  selected_icon: TODO // @generated field — refine type
+  selected_map: TODO // @generated field — refine type
+  selected_money: TODO // @generated field — refine type
+  selected_timer: TODO // @generated field — refine type
+  table_difficulty: TODO // @generated field — refine type
+  table_economy: TODO // @generated field — refine type
+  table_faction: TODO // @generated field — refine type
+  table_hardcore_lives: TODO // @generated field — refine type
+  table_hardcore_regen: TODO // @generated field — refine type
+  table_icon: TODO // @generated field — refine type
+  table_map: TODO // @generated field — refine type
+  table_timer: TODO // @generated field — refine type
+  temp_icon: TODO // @generated field — refine type
+  templ_options: TODO // @generated field — refine type
+  tempy_icon: TODO // @generated field — refine type
+  text_descr: TODO // @generated field — refine type
+  text_money: TODO // @generated field — refine type
+  text_points_left: TODO // @generated field — refine type
+  text_points_used: TODO // @generated field — refine type
+  text_relations: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner: CGameObject)
   __finalize(): void
   Main_Controls(): void
@@ -116,4 +201,10 @@ declare class UINewGame extends CUIScriptWnd {
   OnRandomize(): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   OnStartGame(): void
+}
+
+declare namespace ui_mm_faction_select {
+  /** Anomaly `class "UINewGame"` is also reachable on the `ui_mm_faction_select` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_mm_faction_select.UINewGame.Method = ...`). */
+  export const UINewGame: UINewGame
 }

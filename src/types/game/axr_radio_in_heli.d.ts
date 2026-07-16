@@ -12,6 +12,7 @@ declare namespace axr_radio_in_heli {
 
 /** @customConstructor action_radio_in_heli */
 declare class action_radio_in_heli extends action_base {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   initialize(): void
   try_go_cover(npc: CGameObject, ene_pos: vector): number | undefined
@@ -21,6 +22,16 @@ declare class action_radio_in_heli extends action_base {
 
 /** @customConstructor evaluator_radio_in_heli */
 declare class evaluator_radio_in_heli extends property_evaluator {
+  st: TODO // @generated field — refine type
   constructor(npc: CGameObject, name: string, storage: AnyTable)
   evaluate(): boolean
+}
+
+declare namespace axr_radio_in_heli {
+  /** Anomaly `class "action_radio_in_heli"` is also reachable on the `axr_radio_in_heli` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_radio_in_heli.action_radio_in_heli.Method = ...`). */
+  export const action_radio_in_heli: action_radio_in_heli
+  /** Anomaly `class "evaluator_radio_in_heli"` is also reachable on the `axr_radio_in_heli` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`axr_radio_in_heli.evaluator_radio_in_heli.Method = ...`). */
+  export const evaluator_radio_in_heli: evaluator_radio_in_heli
 }

@@ -6,6 +6,11 @@ declare namespace xr_motivator {
 
 /** @customConstructor motivator_binder */
 declare class motivator_binder extends object_binder {
+  __tmr: TODO // @generated field — refine type
+  first_update: boolean // @generated field — refine type
+  object: TODO // @generated field — refine type
+  opened_doors: TODO // @generated field — refine type
+  squad: TODO // @generated field — refine type
   constructor(obj: CGameObject)
   /** Runtime state table for the bound object (`db.storage[obj:id()]`). */
   st: ObjectState
@@ -30,4 +35,10 @@ declare class motivator_binder extends object_binder {
   save_state(m_data: AnyTable): void
   load_state(): void
   setup_known_info(npc: CGameObject, char_ini: system_ini, known_info: AnyTable): void
+}
+
+declare namespace xr_motivator {
+  /** Anomaly `class "motivator_binder"` is also reachable on the `xr_motivator` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`xr_motivator.motivator_binder.Method = ...`). */
+  export const motivator_binder: motivator_binder
 }

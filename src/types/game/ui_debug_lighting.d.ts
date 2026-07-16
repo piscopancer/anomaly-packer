@@ -12,6 +12,18 @@ declare namespace ui_debug_lighting {
 
 /** @customConstructor LightEditor */
 declare class LightEditor extends CUIScriptWnd {
+  cnt: TODO // @generated field — refine type
+  commands_ind: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  list_weather: TODO // @generated field — refine type
+  op: TODO // @generated field — refine type
+  op_cap: TODO // @generated field — refine type
+  op_hl: TODO // @generated field — refine type
+  owner: TODO // @generated field — refine type
+  scroll: TODO // @generated field — refine type
+  selected: TODO // @generated field — refine type
+  weather_presets: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor(owner: CGameObject)
   __finalize(): void
   InitControls(): void
@@ -64,4 +76,10 @@ declare class LightEditor extends CUIScriptWnd {
   SwitchValue(state: string): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
+}
+
+declare namespace ui_debug_lighting {
+  /** Anomaly `class "LightEditor"` is also reachable on the `ui_debug_lighting` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`ui_debug_lighting.LightEditor.Method = ...`). */
+  export const LightEditor: LightEditor
 }

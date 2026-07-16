@@ -60,6 +60,12 @@ declare namespace itms_manager {
  * @customConstructor ItemProcessor
  */
 declare class ItemProcessor {
+  Ammo: TODO // @generated field — refine type
+  Cond: TODO // @generated field — refine type
+  Cycles: number // @generated field — refine type
+  Debug: boolean // @generated field — refine type
+  Remove: TODO // @generated field — refine type
+  Uses: TODO // @generated field — refine type
   constructor()
   update(): void
   /** @returns the created server object(s), or `nil` */
@@ -69,4 +75,10 @@ declare class ItemProcessor {
   Random_Choice(arg: any[]): any
   Random_Condition(arg: number[]): number
   Extract_Uses(sec_d: string): LuaMultiReturn<[string, number]>
+}
+
+declare namespace itms_manager {
+  /** Anomaly `class "ItemProcessor"` is also reachable on the `itms_manager` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`itms_manager.ItemProcessor.Method = ...`). */
+  export const ItemProcessor: ItemProcessor
 }

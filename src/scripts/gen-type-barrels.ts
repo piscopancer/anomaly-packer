@@ -10,9 +10,19 @@ import { join, resolve } from 'node:path'
 
 const typesDir = resolve('dist/types')
 
+// Groups that must NOT get an auto-generated barrel. `addons` holds third-party mod
+// integrations (mcm, modded_exes) that pull in ambient globals; each is referenced
+// selectively with `/// <reference types="anomaly-packer/types/addons/<name>" />` only
+// by addons that use it, so they never pollute the global scope of ones that don't.
+// `sections` is a real importable ES module (`anomaly-packer/sections`), not an ambient
+// group — it must not get a triple-slash barrel (that would re-expose it ambiently and
+// clash with its module exports). It is reached via the package `./sections` export.
+const excludedGroups = new Set(['addons', 'sections'])
+
 for (const entry of readdirSync(typesDir)) {
   const dir = join(typesDir, entry)
   if (!statSync(dir).isDirectory()) continue
+  if (excludedGroups.has(entry)) continue
 
   const modules = readdirSync(dir)
     .filter((file) => file.endsWith('.d.ts'))

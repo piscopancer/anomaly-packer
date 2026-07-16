@@ -6,6 +6,8 @@ declare namespace bind_trader {
 
 /** @customConstructor trader_object_binder */
 declare class trader_object_binder extends object_binder {
+  loaded: boolean // @generated field — refine type
+  st: TODO // @generated field — refine type
   constructor(obj: CGameObject)
   reload(section: Section): void
   reinit(): void
@@ -17,4 +19,10 @@ declare class trader_object_binder extends object_binder {
   load(reader: net_packet): void
   save_state(m_data: AnyTable): void
   load_state(): void
+}
+
+declare namespace bind_trader {
+  /** Anomaly `class "trader_object_binder"` is also reachable on the `bind_trader` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`bind_trader.trader_object_binder.Method = ...`). */
+  export const trader_object_binder: trader_object_binder
 }

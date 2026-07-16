@@ -40,6 +40,7 @@
     "changeset:version": "changeset version",
     "changeset:publish": "pnpm build && changeset publish",
     "gen-sections": "tsx src/scripts/gen-sections.ts",
+    "gen-ini-schemas": "tsx src/scripts/gen-ini-schemas.ts",
     "gen-info-portions": "tsx src/scripts/gen-info-portions.ts",
     "gen-weather": "tsx src/scripts/gen-weather.ts",
     "gen-dialogs": "tsx src/scripts/gen-dialogs.ts"
@@ -63,6 +64,7 @@
     "typescript": "^6.0.0"
   },
   "dependencies": {
+    "@tree-sitter-grammars/tree-sitter-lua": "^0.4.1",
     "chalk": "^5.6.2",
     "fast-xml-parser": "^5.9.3",
     "iconv-lite": "^0.7.3",
@@ -70,6 +72,7 @@
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "simplified-jsx-to-ast": "^0.4.0",
-    "typescript-to-lua": "^1.37.0"
+    "typescript-to-lua": "^1.37.0",
+    "web-tree-sitter": "^0.26.11"
   }
 }

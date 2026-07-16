@@ -22,6 +22,7 @@ declare namespace task_manager {
 
 /** @customConstructor CRandomTask */
 declare class CRandomTask {
+  task_info: TODO // @generated field — refine type
   constructor()
   save(packet: net_packet): void
   load(reader: net_packet): void
@@ -32,4 +33,10 @@ declare class CRandomTask {
   update(): void
   task_complete(p1: string): boolean
   task_fail(p1: string): boolean
+}
+
+declare namespace task_manager {
+  /** Anomaly `class "CRandomTask"` is also reachable on the `task_manager` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`task_manager.CRandomTask.Method = ...`). */
+  export const CRandomTask: CRandomTask
 }

@@ -28,6 +28,33 @@ declare namespace item_weapon {
 
 /** @customConstructor UIWheelAmmo */
 declare class UIWheelAmmo extends CUIScriptWnd {
+  ammo_inv: TODO // @generated field — refine type
+  ammo_list: TODO // @generated field — refine type
+  ammo_max: number // @generated field — refine type
+  ammo_type: TODO // @generated field — refine type
+  avail: TODO // @generated field — refine type
+  background: TODO // @generated field — refine type
+  box: TODO // @generated field — refine type
+  box_btn: TODO // @generated field — refine type
+  box_hl_1: TODO // @generated field — refine type
+  box_hl_2: TODO // @generated field — refine type
+  box_icon: TODO // @generated field — refine type
+  box_icon_r: TODO // @generated field — refine type
+  box_icon_tmp: TODO // @generated field — refine type
+  box_icon_tmp_r: TODO // @generated field — refine type
+  box_num: TODO // @generated field — refine type
+  box_r: TODO // @generated field — refine type
+  box_txt: TODO // @generated field — refine type
+  box_txt_r: TODO // @generated field — refine type
+  dialog: TODO // @generated field — refine type
+  extended: TODO // @generated field — refine type
+  grenade_mode: TODO // @generated field — refine type
+  id: TODO // @generated field — refine type
+  key: TODO // @generated field — refine type
+  object: TODO // @generated field — refine type
+  section: TODO // @generated field — refine type
+  show_verybad: TODO // @generated field — refine type
+  xml: TODO // @generated field — refine type
   constructor()
   __finalize(): void
   InitControls(): void
@@ -38,4 +65,10 @@ declare class UIWheelAmmo extends CUIScriptWnd {
   OnAmmo(n: number): void
   OnKeyboard(dik: number, keyboard_action: number): boolean
   Close(): void
+}
+
+declare namespace item_weapon {
+  /** Anomaly `class "UIWheelAmmo"` is also reachable on the `item_weapon` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`item_weapon.UIWheelAmmo.Method = ...`). */
+  export const UIWheelAmmo: UIWheelAmmo
 }

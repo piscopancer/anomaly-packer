@@ -35,6 +35,39 @@ declare namespace surge_manager {
 /** The surge (blowout) controller. Access via {@link surge_manager.get_surge_manager}. */
 /** @customConstructor CSurgeManager */
 declare class CSurgeManager {
+  _delta: TODO // @generated field — refine type
+  aspectRatio: number // @generated field — refine type
+  blowout_sound: boolean // @generated field — refine type
+  blowout_sounds: TODO // @generated field — refine type
+  blowout_waves: TODO // @generated field — refine type
+  body_tears: TODO // @generated field — refine type
+  condlist: TODO // @generated field — refine type
+  covers: TODO // @generated field — refine type
+  drug_chemical_burn_protection: TODO // @generated field — refine type
+  drug_radiation_protection: TODO // @generated field — refine type
+  drug_telepatic_protection: TODO // @generated field — refine type
+  effector_set: boolean // @generated field — refine type
+  finished: boolean // @generated field — refine type
+  first_update: boolean // @generated field — refine type
+  game_time_factor: TODO // @generated field — refine type
+  hitFactor: TODO // @generated field — refine type
+  ini: TODO // @generated field — refine type
+  inited_time: TODO // @generated field — refine type
+  last_surge_time: TODO // @generated field — refine type
+  objects_to_kill: TODO // @generated field — refine type
+  second_message_given: boolean // @generated field — refine type
+  skip_message: TODO // @generated field — refine type
+  stages: TODO // @generated field — refine type
+  started: boolean // @generated field — refine type
+  surge_message: string // @generated field — refine type
+  surge_task_sect: string // @generated field — refine type
+  surge_time: number // @generated field — refine type
+  survive: TODO // @generated field — refine type
+  task_given: TODO // @generated field — refine type
+  time_forwarded: boolean // @generated field — refine type
+  ui_disabled: boolean // @generated field — refine type
+  wave_sound: boolean // @generated field — refine type
+  zombie_count: TODO // @generated field — refine type
   constructor()
   initialize(): void
   start(manual?: boolean): void
@@ -61,4 +94,10 @@ declare class CSurgeManager {
   turn_to_zombie(se_obj: CseAbstract, squad?: any): void
   explode(se_obj: CseAbstract, squad?: any): void
   give_surge_hide_task(): void
+}
+
+declare namespace surge_manager {
+  /** Anomaly `class "CSurgeManager"` is also reachable on the `surge_manager` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`surge_manager.CSurgeManager.Method = ...`). */
+  export const CSurgeManager: CSurgeManager
 }

@@ -10,6 +10,18 @@ declare namespace bind_heli {
 
 /** @customConstructor heli_binder */
 declare class heli_binder extends object_binder {
+  flame_start_health: TODO // @generated field — refine type
+  heli_fire: TODO // @generated field — refine type
+  initialized: boolean // @generated field — refine type
+  is_story_heli: TODO // @generated field — refine type
+  last_hit_snd_timeout: TODO // @generated field — refine type
+  loaded: boolean // @generated field — refine type
+  self_destruct: boolean // @generated field — refine type
+  snd_damage: TODO // @generated field — refine type
+  snd_down: TODO // @generated field — refine type
+  snd_hit: TODO // @generated field — refine type
+  st: TODO // @generated field — refine type
+  target_alt: number // @generated field — refine type
   constructor(obj: CGameObject)
   reload(section: Section): void
   reinit(): void
@@ -22,4 +34,10 @@ declare class heli_binder extends object_binder {
   check_health(): void
   on_hit(power: number, impulse: number, hit_type: number, enemy_id: number): void
   on_point(distance: number, position: vector, path_idx: number): void
+}
+
+declare namespace bind_heli {
+  /** Anomaly `class "heli_binder"` is also reachable on the `bind_heli` script namespace; typed as
+   *  the instance so its methods can be captured/overridden (`bind_heli.heli_binder.Method = ...`). */
+  export const heli_binder: heli_binder
 }
