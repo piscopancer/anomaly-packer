@@ -2,62 +2,65 @@
 // Schema of `ai_tweaks\\xr_danger.ltx`. Sections enumerated for autocomplete; `AiTweaksXrDangerIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksXrDangerIni {
-  danger_inertion: {
-    attack_sound: number
-    attacked: number
-    bullet_ricochet: number
-    enemy_sound: number
-    entity_attacked: number
-    entity_corpse: number
-    entity_death: number
-    grenade: number
-    hit: number
-    sound: number
-    visual: number
+declare global {
+  interface AiTweaksXrDangerIni {
+    danger_inertion: {
+      attack_sound: number
+      attacked: number
+      bullet_ricochet: number
+      enemy_sound: number
+      entity_attacked: number
+      entity_corpse: number
+      entity_death: number
+      grenade: number
+      hit: number
+      sound: number
+      visual: number
+    }
+    danger_object: {
+      attack_sound: number
+      attacked: number
+      bullet_ricochet: number
+      enemy_sound: number
+      entity_attacked: number
+      entity_corpse: number
+      entity_death: number
+      grenade: number
+      hit: number
+      sound: number
+      visual: number
+    }
+    danger_inertion_actor: {
+      attack_sound: number
+      attacked: number
+      bullet_ricochet: number
+      enemy_sound: number
+      entity_attacked: number
+      entity_corpse: number
+      entity_death: number
+      grenade: number
+      hit: number
+      sound: number
+      visual: number
+    }
+    danger_object_actor: {
+      attack_sound: number
+      attacked: number
+      bullet_ricochet: number
+      enemy_sound: number
+      entity_attacked: number
+      entity_corpse: number
+      entity_death: number
+      grenade: number
+      hit: number
+      sound: number
+      visual: number
+    }
   }
-  danger_object: {
-    attack_sound: number
-    attacked: number
-    bullet_ricochet: number
-    enemy_sound: number
-    entity_attacked: number
-    entity_corpse: number
-    entity_death: number
-    grenade: number
-    hit: number
-    sound: number
-    visual: number
-  }
-  danger_inertion_actor: {
-    attack_sound: number
-    attacked: number
-    bullet_ricochet: number
-    enemy_sound: number
-    entity_attacked: number
-    entity_corpse: number
-    entity_death: number
-    grenade: number
-    hit: number
-    sound: number
-    visual: number
-  }
-  danger_object_actor: {
-    attack_sound: number
-    attacked: number
-    bullet_ricochet: number
-    enemy_sound: number
-    entity_attacked: number
-    entity_corpse: number
-    entity_death: number
-    grenade: number
-    hit: number
-    sound: number
-    visual: number
-  }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xr_danger.ltx': AiTweaksXrDangerIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xr_danger.ltx': AiTweaksXrDangerIni
+  }
 }

@@ -2,172 +2,175 @@
 // Schema of `scripts\\scenes.ltx`. Sections enumerated for autocomplete; `ScriptsScenesIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface ScriptsScenesIni {
-  pripyat: {
-    pri_a15_sokolov_out: string
-    pri_a15_vano_out: string
-    pri_a15_wanderer_out: string
-    pri_a15_zulus_out: string
-    pri_a17: CommaSeparatedString<string>
-    pri_a18: CommaSeparatedString<string>
-    pri_a20: CommaSeparatedString<string>
-    pri_a21: CommaSeparatedString<string>
-    'pri_a22 + pri_a25': CommaSeparatedString<string>
-    pri_a28_cutscene: string
-    pri_a28_evac: CommaSeparatedString<string>
-    pri_a28_skip: string
-    pri_b301: string
-    pri_b302: string
-    pri_b304_scene: string
-    'pri_b305_scene_(continue_of_pri_b25)': string
-    pri_b306_scene: string
-    pri_b35: string
-    pri_b35_continue: string
-    pri_b36_scene: string
+declare global {
+  interface ScriptsScenesIni {
+    pripyat: {
+      pri_a15_sokolov_out: string
+      pri_a15_vano_out: string
+      pri_a15_wanderer_out: string
+      pri_a15_zulus_out: string
+      pri_a17: CommaSeparatedString<string[]>
+      pri_a18: CommaSeparatedString<string[]>
+      pri_a20: CommaSeparatedString<string[]>
+      pri_a21: CommaSeparatedString<string[]>
+      'pri_a22 + pri_a25': CommaSeparatedString<string[]>
+      pri_a28_cutscene: string
+      pri_a28_evac: CommaSeparatedString<string[]>
+      pri_a28_skip: string
+      pri_b301: string
+      pri_b302: string
+      pri_b304_scene: string
+      'pri_b305_scene_(continue_of_pri_b25)': string
+      pri_b306_scene: string
+      pri_b35: string
+      pri_b35_continue: string
+      pri_b36_scene: string
+    }
+    jupiter: {
+      jup_a10_scene: string
+      jup_a12_scene: CommaSeparatedString<string[]>
+      jup_b1_scene: CommaSeparatedString<string[]>
+      jup_b10_Azot: string
+      jup_b10_s01: string
+      jup_b10_s02: string
+      jup_b10_s03: string
+      jup_b10_UFO: string
+      jup_b107_scene: string
+      jup_b15_scene: string
+      jup_b16_scene: CommaSeparatedString<string[]>
+      jup_b19_scene: string
+      jup_b201_scene: string
+      jup_b203_scene: string
+      jup_b204_scene: string
+      jup_b205_scene: string
+      jup_b206_scene: string
+      jup_b207_scene: string
+      jup_b207_wo_morgan_scene: string
+      jup_b208_scene_done: string
+      jup_b209_scene: string
+      jup_b211_scene: string
+      jup_b212_scene_start: string
+      jup_b213_scene: string
+      jup_b214_scene: string
+      jup_b217_scene: CommaSeparatedString<string[]>
+      jup_b218_scene_monolith: string
+      jup_b218_scene_sokolov: string
+      jup_b218_scene_vano: string
+      jup_b219_monolith: string
+      jup_b219_soldier: string
+      jup_b219_start: string
+      jup_b219_vano: string
+      jup_b220_scene: string
+      'jup_b220_scene+jup_b212': string
+      'jup_b220_scene+zat_b106': string
+      'jup_b220_scene+zat_b57': string
+      jup_b32_scene: string
+      jup_b4_scene: CommaSeparatedString<string[]>
+      jup_b43: CommaSeparatedString<string[]>
+      jup_b46_scene: string
+      jup_b6_scene: CommaSeparatedString<string[]>
+      jup_b8_scene: string
+      jup_b8_scene_zatichka: string
+      jupiter_b9_scene: CommaSeparatedString<string[]>
+      zat_b215_on_jup_a16_guide_met: string
+      zat_b215_on_jup_evac_way_gates_counter: string
+      zat_b215_on_jup_evac_way_to_pripyat_counter: string
+      zat_b215_on_jup_heli_2: string
+      zat_b215_on_jup_no_infos: string
+      zat_b30_scene: CommaSeparatedString<string[]>
+    }
+    zaton: {
+      jup_b207_scene: string
+      zat_a1_gamestart: string
+      zat_b101_scene: string
+      zat_b103_scene: string
+      zat_b103_scene_mercs: string
+      zat_b104_scene: string
+      zat_b106_scene: string
+      'zat_b106_scene(found_soroka)': string
+      zat_b107_scene: string
+      zat_b12_scene: CommaSeparatedString<string[]>
+      zat_b14_scene: string
+      zat_b18_scene: string
+      zat_b20_scene: string
+      zat_b215_scene: string
+      zat_b22_scene: string
+      zat_b29_exclusive_scene: string
+      zat_b29_scene: CommaSeparatedString<string[]>
+      'zat_b3_scene(give_docs)': string
+      'zat_b3_scene(give_gauss)': string
+      'zat_b3_scene(give_tools)': CommaSeparatedString<string[]>
+      'zat_b3_scene(teleport&vodka)': CommaSeparatedString<string[]>
+      zat_b30_scene: string
+      zat_b38_scene: string
+      zat_b39: CommaSeparatedString<string[]>
+      zat_b40_scene: string
+      zat_b42_scene: string
+      zat_b44_scene: string
+      zat_b44_scene_anomaly: string
+      zat_b5_scene_bandits: string
+      zat_b5_scene_dealer: string
+      zat_b5_scene_stalkers: string
+      zat_b51_scene: string
+      zat_b52_scene: CommaSeparatedString<string[]>
+      zat_b53: string
+      zat_b54: string
+      zat_b55_scene: string
+      zat_b56: string
+      zat_b57_scene: CommaSeparatedString<string[]>
+      zat_b7_scene: CommaSeparatedString<string[]>
+      zaton_b28_scene: CommaSeparatedString<string[]>
+    }
+    jupiter_b9: {
+      jupiter_b9_scene: CommaSeparatedString<string[]>
+      jupiter_b9_timer_scene: CommaSeparatedString<string[]>
+    }
+    zaton_b28: {
+      zaton_b28_scene: CommaSeparatedString<string[]>
+    }
+    jupiter_b219: {
+      jupiter_b219_monolith: string
+      jupiter_b219_sokolov: string
+      jupiter_b219_start: string
+      jupiter_b219_vano: string
+    }
+    bes_selo_jup: {
+      jup_b219_monolith: string
+      jup_b219_soldier: string
+      jup_b219_start: string
+      jup_b219_vano: string
+    }
+    corr_snorks: {
+      zat_b12_scene: CommaSeparatedString<string[]>
+    }
+    corr_bloodsuckers: {
+      zat_b38_scene_1: string
+      zat_b38_scene_2: string
+      zat_b38_scene_3: string
+      zat_b38_scene_4: string
+    }
+    corr_controler: {
+      zat_b42_scene: string
+    }
+    corr_chimera: {
+      zat_b106_1_scene: string
+      zat_b106_2_scene: string
+    }
+    corr_tushkano: {
+      pri_b304_scene: string
+    }
+    corr_burer: {
+      jup_b205_scene: string
+    }
+    redstain_selo: {
+      all_bad: string
+      all_good: string
+    }
   }
-  jupiter: {
-    jup_a10_scene: string
-    jup_a12_scene: CommaSeparatedString<string>
-    jup_b1_scene: CommaSeparatedString<string>
-    jup_b10_Azot: string
-    jup_b10_s01: string
-    jup_b10_s02: string
-    jup_b10_s03: string
-    jup_b10_UFO: string
-    jup_b107_scene: string
-    jup_b15_scene: string
-    jup_b16_scene: CommaSeparatedString<string>
-    jup_b19_scene: string
-    jup_b201_scene: string
-    jup_b203_scene: string
-    jup_b204_scene: string
-    jup_b205_scene: string
-    jup_b206_scene: string
-    jup_b207_scene: string
-    jup_b207_wo_morgan_scene: string
-    jup_b208_scene_done: string
-    jup_b209_scene: string
-    jup_b211_scene: string
-    jup_b212_scene_start: string
-    jup_b213_scene: string
-    jup_b214_scene: string
-    jup_b217_scene: CommaSeparatedString<string>
-    jup_b218_scene_monolith: string
-    jup_b218_scene_sokolov: string
-    jup_b218_scene_vano: string
-    jup_b219_monolith: string
-    jup_b219_soldier: string
-    jup_b219_start: string
-    jup_b219_vano: string
-    jup_b220_scene: string
-    'jup_b220_scene+jup_b212': string
-    'jup_b220_scene+zat_b106': string
-    'jup_b220_scene+zat_b57': string
-    jup_b32_scene: string
-    jup_b4_scene: CommaSeparatedString<string>
-    jup_b43: CommaSeparatedString<string>
-    jup_b46_scene: string
-    jup_b6_scene: CommaSeparatedString<string>
-    jup_b8_scene: string
-    jup_b8_scene_zatichka: string
-    jupiter_b9_scene: CommaSeparatedString<string>
-    zat_b215_on_jup_a16_guide_met: string
-    zat_b215_on_jup_evac_way_gates_counter: string
-    zat_b215_on_jup_evac_way_to_pripyat_counter: string
-    zat_b215_on_jup_heli_2: string
-    zat_b215_on_jup_no_infos: string
-    zat_b30_scene: CommaSeparatedString<string>
-  }
-  zaton: {
-    jup_b207_scene: string
-    zat_a1_gamestart: string
-    zat_b101_scene: string
-    zat_b103_scene: string
-    zat_b103_scene_mercs: string
-    zat_b104_scene: string
-    zat_b106_scene: string
-    'zat_b106_scene(found_soroka)': string
-    zat_b107_scene: string
-    zat_b12_scene: CommaSeparatedString<string>
-    zat_b14_scene: string
-    zat_b18_scene: string
-    zat_b20_scene: string
-    zat_b215_scene: string
-    zat_b22_scene: string
-    zat_b29_exclusive_scene: string
-    zat_b29_scene: CommaSeparatedString<string>
-    'zat_b3_scene(give_docs)': string
-    'zat_b3_scene(give_gauss)': string
-    'zat_b3_scene(give_tools)': CommaSeparatedString<string>
-    'zat_b3_scene(teleport&vodka)': CommaSeparatedString<string>
-    zat_b30_scene: string
-    zat_b38_scene: string
-    zat_b39: CommaSeparatedString<string>
-    zat_b40_scene: string
-    zat_b42_scene: string
-    zat_b44_scene: string
-    zat_b44_scene_anomaly: string
-    zat_b5_scene_bandits: string
-    zat_b5_scene_dealer: string
-    zat_b5_scene_stalkers: string
-    zat_b51_scene: string
-    zat_b52_scene: CommaSeparatedString<string>
-    zat_b53: string
-    zat_b54: string
-    zat_b55_scene: string
-    zat_b56: string
-    zat_b57_scene: CommaSeparatedString<string>
-    zat_b7_scene: CommaSeparatedString<string>
-    zaton_b28_scene: CommaSeparatedString<string>
-  }
-  jupiter_b9: {
-    jupiter_b9_scene: CommaSeparatedString<string>
-    jupiter_b9_timer_scene: CommaSeparatedString<string>
-  }
-  zaton_b28: {
-    zaton_b28_scene: CommaSeparatedString<string>
-  }
-  jupiter_b219: {
-    jupiter_b219_monolith: string
-    jupiter_b219_sokolov: string
-    jupiter_b219_start: string
-    jupiter_b219_vano: string
-  }
-  bes_selo_jup: {
-    jup_b219_monolith: string
-    jup_b219_soldier: string
-    jup_b219_start: string
-    jup_b219_vano: string
-  }
-  corr_snorks: {
-    zat_b12_scene: CommaSeparatedString<string>
-  }
-  corr_bloodsuckers: {
-    zat_b38_scene_1: string
-    zat_b38_scene_2: string
-    zat_b38_scene_3: string
-    zat_b38_scene_4: string
-  }
-  corr_controler: {
-    zat_b42_scene: string
-  }
-  corr_chimera: {
-    zat_b106_1_scene: string
-    zat_b106_2_scene: string
-  }
-  corr_tushkano: {
-    pri_b304_scene: string
-  }
-  corr_burer: {
-    jup_b205_scene: string
-  }
-  redstain_selo: {
-    all_bad: string
-    all_good: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\scenes.ltx': ScriptsScenesIni
+  interface IniFileSchemas {
+    'scripts\\scenes.ltx': ScriptsScenesIni
+  }
 }

@@ -2,13 +2,16 @@
 // Schema of `scripts\\dummy.ltx`. Sections enumerated for autocomplete; `ScriptsDummyIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsDummyIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsDummyIni {
+    logic: {
+      active: string
+    }
   }
-}
 
-interface IniFileSchemas {
-  'scripts\\dummy.ltx': ScriptsDummyIni
+  interface IniFileSchemas {
+    'scripts\\dummy.ltx': ScriptsDummyIni
+  }
 }

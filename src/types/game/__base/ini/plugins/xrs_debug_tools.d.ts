@@ -2,23 +2,26 @@
 // Schema of `plugins\\xrs_debug_tools.ltx`. Sections enumerated for autocomplete; `PluginsXrsDebugToolsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsXrsDebugToolsIni {
-  plugin: {
-    debug_gulag: boolean
-    developer_debug: boolean
-    enable: boolean
-    file_save_position_info: string
-    keybind_debug_ui_nearest_stalker: string
-    keybind_debug_ui_spawn_position: string
-    keybind_print_position: string
-    keybind_teleport_to_cam: string
-    keybind_toggle_left_hud: number
-    keybind_toggle_right_hud: number
-    keybind_toggle_top_hud: number
+declare global {
+  interface PluginsXrsDebugToolsIni {
+    plugin: {
+      debug_gulag: boolean
+      developer_debug: boolean
+      enable: boolean
+      file_save_position_info: string
+      keybind_debug_ui_nearest_stalker: string
+      keybind_debug_ui_spawn_position: string
+      keybind_print_position: string
+      keybind_teleport_to_cam: string
+      keybind_toggle_left_hud: number
+      keybind_toggle_right_hud: number
+      keybind_toggle_top_hud: number
+    }
   }
-}
 
-interface IniFileSchemas {
-  'plugins\\xrs_debug_tools.ltx': PluginsXrsDebugToolsIni
+  interface IniFileSchemas {
+    'plugins\\xrs_debug_tools.ltx': PluginsXrsDebugToolsIni
+  }
 }

@@ -2,17 +2,20 @@
 // Schema of `ai_tweaks\\axr_companions.ltx`. Sections enumerated for autocomplete; `AiTweaksAxrCompanionsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksAxrCompanionsIni {
-  main: {
-    allow_only_friends_as_companions: boolean
-    allow_simulation_squads_as_companions: boolean
-    enable: boolean
-    max_actor_squad_size: number
-    max_actor_squad_size_patriarch: number
+declare global {
+  interface AiTweaksAxrCompanionsIni {
+    main: {
+      allow_only_friends_as_companions: boolean
+      allow_simulation_squads_as_companions: boolean
+      enable: boolean
+      max_actor_squad_size: number
+      max_actor_squad_size_patriarch: number
+    }
   }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\axr_companions.ltx': AiTweaksAxrCompanionsIni
+  interface IniFileSchemas {
+    'ai_tweaks\\axr_companions.ltx': AiTweaksAxrCompanionsIni
+  }
 }

@@ -2,71 +2,74 @@
 // Schema of `misc\\smart_names.ltx`. Sections enumerated for autocomplete; `MiscSmartNamesIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface MiscSmartNamesIni {
-  levels: Record<string, string>
-  zaton: {
-    zat_a2: string
-    zat_b100: string
-    zat_b101: string
-    zat_b103: string
-    zat_b104: string
-    zat_b106: string
-    zat_b12: string
-    zat_b14: string
-    zat_b18: string
-    zat_b20: string
-    zat_b28: string
-    zat_b33: string
-    zat_b38: string
-    zat_b39: string
-    zat_b40: string
-    zat_b5: string
-    zat_b52: string
-    zat_b53: string
-    zat_b54: string
-    zat_b55: string
-    zat_b56: string
-    zat_b7: string
+declare global {
+  interface MiscSmartNamesIni {
+    levels: string[]
+    zaton: {
+      zat_a2: string
+      zat_b100: string
+      zat_b101: string
+      zat_b103: string
+      zat_b104: string
+      zat_b106: string
+      zat_b12: string
+      zat_b14: string
+      zat_b18: string
+      zat_b20: string
+      zat_b28: string
+      zat_b33: string
+      zat_b38: string
+      zat_b39: string
+      zat_b40: string
+      zat_b5: string
+      zat_b52: string
+      zat_b53: string
+      zat_b54: string
+      zat_b55: string
+      zat_b56: string
+      zat_b7: string
+    }
+    jupiter: {
+      jup_a10: string
+      jup_a12: string
+      jup_a6: string
+      jup_a9: string
+      jup_b1: string
+      jup_b19: string
+      jup_b200: string
+      jup_b201: string
+      jup_b202: string
+      jup_b205: string
+      jup_b206: string
+      jup_b208: string
+      jup_b209: string
+      jup_b211: string
+      jup_b212: string
+      jup_b25: string
+      jup_b32: string
+      jup_b46: string
+      jup_b6: string
+      jup_b9: string
+    }
+    pripyat: {
+      pri_a16: string
+      pri_a17: string
+      pri_a18: string
+      pri_a21: string
+      pri_a25: string
+      pri_a28: string
+      pri_b301: string
+      pri_b303: string
+      pri_b304: string
+      pri_b306: string
+      pri_b35: string
+      pri_b36: string
+    }
   }
-  jupiter: {
-    jup_a10: string
-    jup_a12: string
-    jup_a6: string
-    jup_a9: string
-    jup_b1: string
-    jup_b19: string
-    jup_b200: string
-    jup_b201: string
-    jup_b202: string
-    jup_b205: string
-    jup_b206: string
-    jup_b208: string
-    jup_b209: string
-    jup_b211: string
-    jup_b212: string
-    jup_b25: string
-    jup_b32: string
-    jup_b46: string
-    jup_b6: string
-    jup_b9: string
-  }
-  pripyat: {
-    pri_a16: string
-    pri_a17: string
-    pri_a18: string
-    pri_a21: string
-    pri_a25: string
-    pri_a28: string
-    pri_b301: string
-    pri_b303: string
-    pri_b304: string
-    pri_b306: string
-    pri_b35: string
-    pri_b36: string
-  }
-}
 
-interface IniFileSchemas {
-  'misc\\smart_names.ltx': MiscSmartNamesIni
+  interface IniFileSchemas {
+    'misc\\smart_names.ltx': MiscSmartNamesIni
+  }
 }

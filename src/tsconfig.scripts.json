@@ -7,7 +7,13 @@
     "moduleResolution": "Bundler",
     "moduleDetection": "force",
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    // Config modules author xml as JSX. The automatic runtime is required (the classic one
+    // emits bare `React.createElement`, which fails since these modules never import React),
+    // and the source is this package rather than `react` so the xray element types come from
+    // a single place — see `src/jsx-runtime.ts` for why pointing at react does not work.
+    "jsx": "react-jsx",
+    "jsxImportSource": "anomaly-packer"
   },
   "files": ["./lua-lib.d.ts"],
   "tstl": {

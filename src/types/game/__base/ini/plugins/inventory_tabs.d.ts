@@ -2,38 +2,41 @@
 // Schema of `plugins\\inventory_tabs.ltx`. Sections enumerated for autocomplete; `PluginsInventoryTabsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface PluginsInventoryTabsIni {
-  settings: {
-    button_amount: number
-    hotkeys: boolean
+declare global {
+  interface PluginsInventoryTabsIni {
+    settings: {
+      button_amount: number
+      hotkeys: boolean
+    }
+    button_sort_tab_1: {
+      kinds: string
+    }
+    button_sort_tab_2: {
+      kinds: CommaSeparatedString<string[]>
+    }
+    button_sort_tab_3: {
+      kinds: CommaSeparatedString<string[]>
+    }
+    button_sort_tab_4: {
+      kinds: CommaSeparatedString<string[]>
+    }
+    button_sort_tab_5: {
+      kinds: CommaSeparatedString<string[]>
+    }
+    button_sort_tab_6: {
+      kinds: CommaSeparatedString<string[]>
+    }
+    button_sort_tab_7: {
+      kinds: CommaSeparatedString<string[]>
+    }
+    button_sort_tab_8: {
+      kinds: CommaSeparatedString<string[]>
+    }
   }
-  button_sort_tab_1: {
-    kinds: string
-  }
-  button_sort_tab_2: {
-    kinds: CommaSeparatedString<string>
-  }
-  button_sort_tab_3: {
-    kinds: CommaSeparatedString<string>
-  }
-  button_sort_tab_4: {
-    kinds: CommaSeparatedString<string>
-  }
-  button_sort_tab_5: {
-    kinds: CommaSeparatedString<string>
-  }
-  button_sort_tab_6: {
-    kinds: CommaSeparatedString<string>
-  }
-  button_sort_tab_7: {
-    kinds: CommaSeparatedString<string>
-  }
-  button_sort_tab_8: {
-    kinds: CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\inventory_tabs.ltx': PluginsInventoryTabsIni
+  interface IniFileSchemas {
+    'plugins\\inventory_tabs.ltx': PluginsInventoryTabsIni
+  }
 }

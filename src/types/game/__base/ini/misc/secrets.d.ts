@@ -2,19 +2,710 @@
 // Schema of `misc\\secrets.ltx`. Sections enumerated for autocomplete; `MiscSecretsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface MiscSecretsIni {
-  list: Record<string, string>
-  pri_b36_tower_treasure: {
-    ammo_gauss: CommaSeparatedString<string>
-    medkit_army: CommaSeparatedString<string>
+declare global {
+  interface MiscSecretsIni {
+    list_zaton: string[]
+    zat_hiding_place_1: {
+      ammo_9x18_fmj: CommaSeparatedString<string[]>
+      wpn_pm: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_2: {
+      drug_radioprotector: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_3: {
+      ammo_9x18_fmj: CommaSeparatedString<string[]>
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_4: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      wpn_ak74: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_5: {
+      conserva: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_6: {
+      ammo_gauss: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_7: {
+      ammo_12x70_buck: CommaSeparatedString<string[]>
+      wpn_spas12: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_8: {
+      antirad: CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_9: {
+      antirad: CommaSeparatedString<string[]>
+      medkit_scientic: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_10: {
+      bandage: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_11: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_12: {
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_13: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_14: {
+      bandage: CommaSeparatedString<string[]>
+      drug_booster: CommaSeparatedString<string[]>
+      drug_coagulant: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_15: {
+      stalker_outfit: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_16: {
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+      grenade_rgd5: CommaSeparatedString<string[]>
+      wpn_mp5: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_17: {
+      bandage: CommaSeparatedString<string[]>
+      grenade_rgd5: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_18: {
+      'ammo_7.62x54_7h1': CommaSeparatedString<string[]>
+      wpn_svd: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_19: {
+      grenade_f1: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_20: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      'ammo_vog-25': CommaSeparatedString<string[]>
+      wpn_addon_grenade_launcher: CommaSeparatedString<string[]>
+      wpn_ak74: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_21: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_22: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      wpn_l85: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_23: {
+      bread: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      kolbasa: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_24: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_25: {
+      'ammo_vog-25': CommaSeparatedString<string[]>
+      wpn_addon_grenade_launcher: CommaSeparatedString<string[]>
+      wpn_addon_scope: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_26: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      wpn_colt1911: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_27: {
+      ammo_12x70_buck: CommaSeparatedString<string[]>
+      wpn_toz34: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_28: {
+      vodka: CommaSeparatedString<string[]>
+      wpn_pm: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_29: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      wpn_lr300: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_30: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      wpn_desert_eagle: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_31: {
+      bandage: CommaSeparatedString<string[]>
+      drug_antidot: CommaSeparatedString<string[]>
+      drug_coagulant: CommaSeparatedString<string[]>
+      drug_radioprotector: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_32: {
+      ammo_pkm_100: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_33: {
+      bandage: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_34: {
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+      wpn_beretta: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_35: {
+      grenade_f1: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_36: {
+      ammo_m209: CommaSeparatedString<string[]>
+      wpn_addon_grenade_launcher_m203: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_37: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_38: {
+      'ammo_7.62x54_7h1': CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_39: {
+      bandage: CommaSeparatedString<string[]>
+      drug_anabiotic: CommaSeparatedString<string[]>
+      drug_antidot: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_40: {
+      'ammo_vog-25': CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      medkit_scientic: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_41: {
+      ammo_12x70_buck: CommaSeparatedString<string[]>
+      wpn_wincheaster1300: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_42: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_43: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_44: {
+      bandage: CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_45: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      ammo_m209: CommaSeparatedString<string[]>
+      wpn_lr300: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_46: {
+      ammo_gauss: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_47: {
+      grenade_rgd5: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_48: {
+      conserva: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_49: {
+      wpn_vintorez: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_50: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      drug_coagulant: CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_51: {
+      ammo_gauss: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_52: {
+      bandage: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_53: {
+      vodka: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_54: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      antirad: number
+      bandage: number
+      conserva: number
+      energy_drink: CommaSeparatedString<string[]>
+      medkit: number
+      wpn_sig220: CommaSeparatedString<string[]>
+    }
+    zat_hiding_place_55: {
+      wpn_ak74: CommaSeparatedString<string[]>
+    }
+    list_jupiter: string[]
+    jup_b10_secret_01_mapspot: {
+      empty: CommaSeparatedString<string[]>
+    }
+    jup_b10_secret_02_mapspot: {
+      empty: CommaSeparatedString<string[]>
+    }
+    jup_b10_secret_03_mapspot: {
+      empty: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_1: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      wpn_abakan: CommaSeparatedString<string[]>
+      wpn_addon_scope: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_2: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      grenade_f1: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_3: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      wpn_addon_silencer: CommaSeparatedString<string[]>
+      wpn_groza: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_4: {
+      conserva: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_5: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+      wpn_desert_eagle: CommaSeparatedString<string[]>
+      wpn_mp5: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_6: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      drug_anabiotic: CommaSeparatedString<string[]>
+      drug_antidot: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      wpn_ak74u: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_7: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      grenade_rgd5: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_8: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      wpn_ak74: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_9: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      antirad: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      wpn_lr300: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_10: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      grenade_rgd5: CommaSeparatedString<string[]>
+      wpn_sig550: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_11: {
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+      antirad: CommaSeparatedString<string[]>
+      helm_tactic: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      wpn_beretta: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_12: {
+      ammo_gauss: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_13: {
+      'ammo_7.62x54_7h1': CommaSeparatedString<string[]>
+      wpn_svd: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_14: {
+      bandage: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      drug_radioprotector: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_15: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      'ammo_vog-25': CommaSeparatedString<string[]>
+      wpn_groza: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_16: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      grenade_f1: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      wpn_ak74u: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_17: {
+      ammo_gauss: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_18: {
+      ammo_12x70_buck: CommaSeparatedString<string[]>
+      ammo_12x76_zhekan: CommaSeparatedString<string[]>
+      grenade_f1: CommaSeparatedString<string[]>
+      wpn_spas12: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_19: {
+      ammo_12x70_buck: CommaSeparatedString<string[]>
+      ammo_12x76_zhekan: CommaSeparatedString<string[]>
+      wpn_spas12: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_20: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      antirad: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      wpn_l85: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_21: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      antirad: CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_22: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      'ammo_vog-25': CommaSeparatedString<string[]>
+      wpn_abakan: CommaSeparatedString<string[]>
+      wpn_addon_grenade_launcher: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_23: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      ammo_12x70_buck: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      wpn_colt1911: CommaSeparatedString<string[]>
+      wpn_wincheaster1300: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_24: {
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+      wpn_mp5: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_25: {
+      antirad: CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_26: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      grenade_rgd5: CommaSeparatedString<string[]>
+      wpn_lr300: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_27: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      wpn_groza: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_28: {
+      'ammo_7.62x54_7h1': CommaSeparatedString<string[]>
+      wpn_svu: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_29: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      wpn_ak74: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_30: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      'ammo_vog-25': CommaSeparatedString<string[]>
+      wpn_addon_grenade_launcher: CommaSeparatedString<string[]>
+      wpn_groza: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_31: {
+      drug_radioprotector: CommaSeparatedString<string[]>
+      helm_hardhat: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_32: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      wpn_lr300: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_33: {
+      antirad: CommaSeparatedString<string[]>
+      detector_elite: CommaSeparatedString<string[]>
+      drug_psy_blockade: CommaSeparatedString<string[]>
+      drug_radioprotector: CommaSeparatedString<string[]>
+      medkit_scientic: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_34: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      wpn_ak74: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_35: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      wpn_beretta: CommaSeparatedString<string[]>
+      wpn_lr300: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_36: {
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+      grenade_f1: CommaSeparatedString<string[]>
+      wpn_hpsa: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_37: {
+      ammo_9x19_fmj: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      grenade_rgd5: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+      wpn_mp5: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_38: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      antirad: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+      wpn_sig550: CommaSeparatedString<string[]>
+      wpn_usp: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_39: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      wpn_abakan: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_40: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      antirad: CommaSeparatedString<string[]>
+      drug_antidot: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      wpn_ak74u: CommaSeparatedString<string[]>
+      wpn_l85: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_41: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      antirad: CommaSeparatedString<string[]>
+      drug_psy_blockade: CommaSeparatedString<string[]>
+      grenade_rgd5: CommaSeparatedString<string[]>
+      wpn_sig220: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_42: {
+      ammo_gauss: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_43: {
+      ammo_12x76_zhekan: CommaSeparatedString<string[]>
+      drug_antidot: CommaSeparatedString<string[]>
+      wpn_spas12: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_44: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      'ammo_7.62x54_7h1': CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      wpn_desert_eagle: CommaSeparatedString<string[]>
+      wpn_svu: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_45: {
+      bandage: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      drug_psy_blockade: CommaSeparatedString<string[]>
+      drug_radioprotector: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_46: {
+      ammo_12x70_buck: CommaSeparatedString<string[]>
+      ammo_12x76_zhekan: CommaSeparatedString<string[]>
+      wpn_protecta: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_47: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      drug_antidot: CommaSeparatedString<string[]>
+      wpn_addon_silencer: CommaSeparatedString<string[]>
+      wpn_ak74: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_48: {
+      bread: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      kolbasa: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_49: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      grenade_f1: CommaSeparatedString<string[]>
+      wpn_val: CommaSeparatedString<string[]>
+    }
+    jup_hiding_place_50: {
+      ammo_12x70_buck: CommaSeparatedString<string[]>
+      ammo_12x76_zhekan: CommaSeparatedString<string[]>
+      wpn_toz34: CommaSeparatedString<string[]>
+    }
+    list_pripyat: string[]
+    pri_hiding_place_1: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_2: {
+      'ammo_7.62x54_7h1': vector
+    }
+    pri_hiding_place_3: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_4: {
+      ammo_m209: CommaSeparatedString<string[]>
+      wpn_addon_grenade_launcher_m203: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_5: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_6: {
+      'ammo_og-7b': vector
+    }
+    pri_hiding_place_7: {
+      'ammo_vog-25': CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_8: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      wpn_g36: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_9: {
+      ammo_m209: vector
+    }
+    pri_hiding_place_10: {
+      'ammo_7.62x54_7h1': CommaSeparatedString<string[]>
+      wpn_svu: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_11: {
+      'ammo_og-7b': CommaSeparatedString<string[]>
+      wpn_rpg7: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_12: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      antirad: CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      drug_antidot: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_13: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      drug_psy_blockade: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_14: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      'ammo_7.62x54_7h1': CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_15: {
+      'ammo_11.43x23_fmj': CommaSeparatedString<string[]>
+      drug_antidot: CommaSeparatedString<string[]>
+      grenade_f1: CommaSeparatedString<string[]>
+      wpn_desert_eagle: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_16: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      'ammo_vog-25': CommaSeparatedString<string[]>
+      wpn_addon_grenade_launcher: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_17: {
+      bandage: CommaSeparatedString<string[]>
+      conserva: CommaSeparatedString<string[]>
+      drug_coagulant: CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_18: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      wpn_val: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_19: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      grenade_rgd5: CommaSeparatedString<string[]>
+      wpn_sig550: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_20: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      wpn_groza: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_21: {
+      'ammo_5.56x45_ss190': CommaSeparatedString<string[]>
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      grenade_f1: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_22: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      drug_booster: CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      wpn_abakan: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_23: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      grenade_rgd5: CommaSeparatedString<string[]>
+      wpn_vintorez: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_24: {
+      antirad: CommaSeparatedString<string[]>
+      bandage: CommaSeparatedString<string[]>
+      drug_radioprotector: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_25: {
+      'ammo_5.45x39_fmj': CommaSeparatedString<string[]>
+      grenade_f1: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_26: {
+      ammo_12x76_zhekan: CommaSeparatedString<string[]>
+      wpn_spas12: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_27: {
+      conserva: CommaSeparatedString<string[]>
+      drug_antidot: CommaSeparatedString<string[]>
+      energy_drink: CommaSeparatedString<string[]>
+      medkit: CommaSeparatedString<string[]>
+      vodka: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_28: {
+      antirad: CommaSeparatedString<string[]>
+      detector_elite: CommaSeparatedString<string[]>
+      drug_coagulant: CommaSeparatedString<string[]>
+      scientific_outfit: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_29: {
+      ammo_9x39_pab9: CommaSeparatedString<string[]>
+      wpn_groza: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_30: {
+      ammo_pkm_100: CommaSeparatedString<string[]>
+      wpn_pkm: CommaSeparatedString<string[]>
+    }
+    pri_hiding_place_31: {
+      ammo_gauss: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
+    list: MiscSecretsIni['list_zaton'] & MiscSecretsIni['list_pripyat'] & MiscSecretsIni['list_jupiter']
+    pri_b36_tower_treasure: {
+      ammo_gauss: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
+    pri_b36_ground_treasure: {
+      ammo_gauss: CommaSeparatedString<string[]>
+      medkit_army: CommaSeparatedString<string[]>
+    }
   }
-  pri_b36_ground_treasure: {
-    ammo_gauss: CommaSeparatedString<string>
-    medkit_army: CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'misc\\secrets.ltx': MiscSecretsIni
+  interface IniFileSchemas {
+    'misc\\secrets.ltx': MiscSecretsIni
+  }
 }

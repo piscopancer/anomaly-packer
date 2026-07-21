@@ -1,6 +1,6 @@
 import { existsSync, readdirSync } from "node:fs"
 import { basename, join } from "node:path"
-import { buildAddonIniSchemas } from "./ini-core"
+import { buildAddonIniSchemas, findIncluders } from "./ini-core"
 import { extractScript } from "./lua-ast"
 import { bucketSections, ITEM_NAMES, OBJECT_NAMES } from "./sections-core"
 
@@ -38,6 +38,14 @@ export type AddonPackOptions = {
   modScripts: string
   /** Vanilla `configs` dir, for section inheritance + the diff baseline. */
   vanillaConfigs: string
+  /**
+   * Config roots of the wider install (vanilla + the other installed mods' `gamedata/configs`),
+   * used only to discover which file wildcard-includes this mod's ltx. Without it a file that is
+   * never opened directly — `groups/group_hv.ltx`, globbed in by another addon's
+   * `groups/base_groups.ltx` — registers a schema under its own path that no script ever reads.
+   * Defaults to `[vanillaConfigs]`.
+   */
+  includeContext?: readonly string[]
 }
 
 export type AddonPack = {
@@ -98,23 +106,41 @@ export async function buildAddonPack(opts: AddonPackOptions): Promise<AddonPack>
 
   // --- 2. Section augmentations (mod sections not already in vanilla) ---
   const newSections: Record<string, number> = {}
+  // Every item / non-item section known once this mod is installed (vanilla + the mod's own).
+  // Shared with step 3, where they decide whether a list-style ltx section is `Section.Item[]`
+  // (a grouping file listing items) or `string[]` (contains a known non-item, so not item names).
+  const itemSections = new Set<string>()
+  const nonItemSections = new Set<string>()
   if (existsSync(opts.modConfigs)) {
     const vanilla = bucketSections([opts.vanillaConfigs]).buckets
     const combined = bucketSections([opts.vanillaConfigs, opts.modConfigs]).buckets
+    for (const cat of ITEM_NAMES) for (const n of combined.get(cat) ?? []) itemSections.add(n)
+    for (const cat of OBJECT_NAMES) for (const n of combined.get(cat) ?? []) nonItemSections.add(n)
     let body = ""
     for (const cat of [...ITEM_NAMES, ...OBJECT_NAMES]) {
       const added = [...(combined.get(cat) ?? [])].filter((n) => !vanilla.get(cat)?.has(n)).sort()
       if (!added.length) continue
       newSections[cat] = added.length
-      body += `  interface ${cat}s {\n`
-      for (const n of added) body += `    ${key(n)}: 0\n`
-      body += `  }\n`
+      body += `    interface ${cat}s {\n`
+      for (const n of added) body += `      ${key(n)}: 0\n`
+      body += `    }\n`
     }
     if (body) {
+      // Two things here are load-bearing and easy to get wrong:
+      //  - `export {}` makes this file a module, which is what turns `declare module` into an
+      //    *augmentation*. Without it the file is a script and the same syntax declares an ambient
+      //    module that SHADOWS the real package — every genuine export (`Section` included)
+      //    disappears the moment a consumer references this pack.
+      //  - the categories live under the `Section` namespace (`Section.Weapon`), so they must be
+      //    augmented there, not at the module's top level.
       leaves.set("sections.d.ts", `${HEADER(opts.slug, "Sections this mod adds over vanilla.")}
 
+export {}
+
 declare module 'anomaly-packer' {
-${body}}
+  namespace Section {
+${body}  }
+}
 `)
       refs.push(`${opts.slug}/sections.d.ts`)
     }
@@ -123,7 +149,8 @@ ${body}}
   // --- 3. IniFileSchemas for the mod's config ltx ---
   let iniFiles = 0
   if (existsSync(opts.modConfigs)) {
-    const ini = buildAddonIniSchemas(opts.slug, opts.modConfigs, HEADER(opts.slug, "Config ltx schemas."))
+    const includers = findIncluders(opts.includeContext ?? [opts.vanillaConfigs])
+    const ini = buildAddonIniSchemas(opts.slug, opts.modConfigs, HEADER(opts.slug, "Config ltx schemas."), includers, itemSections, nonItemSections)
     for (const [name, content] of ini.leaves) {
       leaves.set(name, content)
       refs.push(`${opts.slug}/${name}`)

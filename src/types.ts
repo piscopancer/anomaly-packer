@@ -1,6 +1,25 @@
 import * as texts from './texts'
 export type Texts = typeof texts
 
+declare const separatorBrand: unique symbol
+/**
+ * A `string` at runtime, branded at compile time as a `Separator`-delimited list whose
+ * split result is `Values` — an array or tuple (`string[]` for a homogeneous list, or a
+ * positional tuple like `[str: string, op: Comparison, val: number]`). Carries that array
+ * and the separator so splitters (e.g. `str_explode`) can return `Values` instead of
+ * `string[]`. Assignable to and from plain `string`; the brand only refines what a
+ * splitter yields. Imported from `anomaly-packer` — an AP utility, not a game global.
+ */
+export type SymbolSeparatedString<Values extends readonly unknown[], Separator extends string> = string & {
+  readonly [separatorBrand]: { values: Values; separator: Separator }
+}
+/** {@link SymbolSeparatedString} split on `,`. */
+export type CommaSeparatedString<Values extends readonly unknown[]> = SymbolSeparatedString<Values, ','>
+/** {@link SymbolSeparatedString} split on `/`. */
+export type SlashSeparatedString<Values extends readonly unknown[]> = SymbolSeparatedString<Values, '/'>
+/** {@link SymbolSeparatedString} split on `\\` (two backslash characters). */
+export type TwoBackslashSeparatedString<Values extends readonly unknown[]> = SymbolSeparatedString<Values, '\\\\'>
+
 /**
  * - `%=func%` return the function's returned value
  * - `{=func}` check the function's returned value

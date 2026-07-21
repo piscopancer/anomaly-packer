@@ -2,37 +2,40 @@
 // Schema of `scripts\\door_metal_small_unlocked.ltx`. Sections enumerated for autocomplete; `ScriptsDoorMetalSmallUnlockedIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsDoorMetalSmallUnlockedIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsDoorMetalSmallUnlockedIni {
+    logic: {
+      active: string
+    }
+    'ph_door@close': {
+      closed: boolean
+      hit_on_bone: string
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@open': {
+      closed: boolean
+      hit_on_bone: string
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@free': {
+      closed: boolean
+      locked: boolean
+      no_force: boolean
+      on_use: string
+    }
   }
-  'ph_door@close': {
-    closed: boolean
-    hit_on_bone: string
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@open': {
-    closed: boolean
-    hit_on_bone: string
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@free': {
-    closed: boolean
-    locked: boolean
-    no_force: boolean
-    on_use: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\door_metal_small_unlocked.ltx': ScriptsDoorMetalSmallUnlockedIni
+  interface IniFileSchemas {
+    'scripts\\door_metal_small_unlocked.ltx': ScriptsDoorMetalSmallUnlockedIni
+  }
 }

@@ -2,18 +2,21 @@
 // Schema of `ai_tweaks\\xr_corpse_detection.ltx`. Sections enumerated for autocomplete; `AiTweaksXrCorpseDetectionIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksXrCorpseDetectionIni {
-  settings: {
-    always_detect_dist: number
-    enable_mutant_looting: boolean
-    state_run: string
-    state_walk: string
+declare global {
+  interface AiTweaksXrCorpseDetectionIni {
+    settings: {
+      always_detect_dist: number
+      enable_mutant_looting: boolean
+      state_run: string
+      state_walk: string
+    }
+    loot_mutant_communities: string[]
+    ignore_sections: string[]
   }
-  loot_mutant_communities: Record<string, string>
-  ignore_sections: Record<string, string>
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xr_corpse_detection.ltx': AiTweaksXrCorpseDetectionIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xr_corpse_detection.ltx': AiTweaksXrCorpseDetectionIni
+  }
 }

@@ -2,33 +2,36 @@
 // Schema of `ai_tweaks\\xr_eat_medkit.ltx`. Sections enumerated for autocomplete; `AiTweaksXrEatMedkitIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface AiTweaksXrEatMedkitIni {
-  plugin: {
-    bandage_bleeding: number
-    enable: boolean
-    in_combat: boolean
-    medkit_health: number
-    out_combat: boolean
+declare global {
+  interface AiTweaksXrEatMedkitIni {
+    plugin: {
+      bandage_bleeding: number
+      enable: boolean
+      in_combat: boolean
+      medkit_health: number
+      out_combat: boolean
+    }
+    novice: {
+      bandage_delay: CommaSeparatedString<string[]>
+      medkit_delay: CommaSeparatedString<string[]>
+    }
+    experienced: {
+      bandage_delay: CommaSeparatedString<string[]>
+      medkit_delay: CommaSeparatedString<string[]>
+    }
+    veteran: {
+      bandage_delay: CommaSeparatedString<string[]>
+      medkit_delay: CommaSeparatedString<string[]>
+    }
+    master: {
+      bandage_delay: CommaSeparatedString<string[]>
+      medkit_delay: CommaSeparatedString<string[]>
+    }
   }
-  novice: {
-    bandage_delay: CommaSeparatedString<string>
-    medkit_delay: CommaSeparatedString<string>
-  }
-  experienced: {
-    bandage_delay: CommaSeparatedString<string>
-    medkit_delay: CommaSeparatedString<string>
-  }
-  veteran: {
-    bandage_delay: CommaSeparatedString<string>
-    medkit_delay: CommaSeparatedString<string>
-  }
-  master: {
-    bandage_delay: CommaSeparatedString<string>
-    medkit_delay: CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xr_eat_medkit.ltx': AiTweaksXrEatMedkitIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xr_eat_medkit.ltx': AiTweaksXrEatMedkitIni
+  }
 }

@@ -2,13 +2,16 @@
 // Schema of `default_custom_data.ltx`. Sections enumerated for autocomplete; `DefaultCustomDataIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface DefaultCustomDataIni {
-  logic: {
-    active: string
+declare global {
+  interface DefaultCustomDataIni {
+    logic: {
+      active: string
+    }
   }
-}
 
-interface IniFileSchemas {
-  'default_custom_data.ltx': DefaultCustomDataIni
+  interface IniFileSchemas {
+    'default_custom_data.ltx': DefaultCustomDataIni
+  }
 }

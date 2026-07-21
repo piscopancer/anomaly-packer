@@ -2,145 +2,147 @@
 // Schema of `scripts\\beh_companion.ltx`. Sections enumerated for autocomplete; `ScriptsBehCompanionIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface ScriptsBehCompanionIni {
-  logic: {
-    active: string
-    level_spot: string
-    post_combat_time: CommaSeparatedString<string>
-    trade: string
+declare global {
+  interface ScriptsBehCompanionIni {
+    logic: {
+      active: string
+      level_spot: string
+      post_combat_time: CommaSeparatedString<string[]>
+      trade: string
+    }
+    'beh@general_no_companion': {
+      behavior_state: string
+      combat_ignore_cond: CommaSeparatedString<string[]>
+      combat_ignore_keep_when_attacked: boolean
+      corpse_detection_enabled: boolean
+      delay_anim: string
+      gather_items_enabled: boolean
+      help_wounded_enabled: boolean
+      invulnerable: boolean
+      jog_anim: string
+      jog_dist: number
+      meet: string
+      run_anim: string
+      sound_idle: string
+      target: string
+      use_camp: boolean
+      wait_anim: string
+      walk_anim: string
+      walk_dist: number
+    }
+    'beh@general': {
+      actor_dialogs: string
+      behavior_state: CommaSeparatedString<string[]>
+      combat_ignore_cond: CommaSeparatedString<string[]>
+      combat_ignore_keep_when_attacked: boolean
+      corpse_detection_enabled: CommaSeparatedString<string[]>
+      delay_anim: CommaSeparatedString<string[]>
+      far_desired_dist: CommaSeparatedString<string[]>
+      gather_items_enabled: CommaSeparatedString<string[]>
+      jog_anim: CommaSeparatedString<string[]>
+      jog_dist: CommaSeparatedString<string[]>
+      keep_distance: CommaSeparatedString<string[]>
+      meet: string
+      near_desired_dist: CommaSeparatedString<string[]>
+      run_anim: CommaSeparatedString<string[]>
+      run_dist: CommaSeparatedString<string[]>
+      sprint_anim: CommaSeparatedString<string[]>
+      target: CommaSeparatedString<string[]>
+      wait_anim: CommaSeparatedString<string[]>
+      walk_anim: CommaSeparatedString<string[]>
+      walk_dist: CommaSeparatedString<string[]>
+    }
+    meet: {
+      abuse: boolean
+      allow_break: boolean
+      close_anim: CommaSeparatedString<string[]>
+      close_distance: CommaSeparatedString<string[]>
+      close_snd_bye: string
+      close_snd_hello: string
+      close_victim: CommaSeparatedString<string[]>
+      far_anim: string
+      far_distance: number
+      far_snd: string
+      far_victim: string
+      meet_dialog: CommaSeparatedString<string[]>
+      snd_on_use: CommaSeparatedString<string[]>
+      trade_enable: boolean
+      use: CommaSeparatedString<string[]>
+      use_text: string
+    }
+    actor_dialogs: {
+      disable: CommaSeparatedString<string[]>
+    }
+    'beh@base': Omit<ScriptsBehCompanionIni['beh@general'], 'on_info1' | 'on_info2' | 'on_info3'> & {
+      on_info1: CommaSeparatedString<string[]>
+      on_info2: string
+      on_info3: string
+    }
+    'meet@ecolog_companion_task_1': Omit<ScriptsBehCompanionIni['meet'], 'meet_dialog'> & {
+      meet_dialog: CommaSeparatedString<string[]>
+    }
+    'meet@ecolog_companion_task_2': Omit<ScriptsBehCompanionIni['meet'], 'meet_dialog'> & {
+      meet_dialog: CommaSeparatedString<string[]>
+    }
+    'beh@ecolog_companion_task_1': Omit<ScriptsBehCompanionIni['beh@general'], 'meet' | 'on_info1' | 'on_info2' | 'on_info3'> & {
+      meet: string
+      on_info1: CommaSeparatedString<string[]>
+      on_info2: string
+      on_info3: string
+    }
+    'beh@ecolog_companion_task_2': Omit<ScriptsBehCompanionIni['beh@general'], 'meet' | 'on_info1' | 'on_info2' | 'on_info3'> & {
+      meet: string
+      on_info1: CommaSeparatedString<string[]>
+      on_info2: string
+      on_info3: string
+    }
+    'beh@yan_ecolog_semenov_task_1': Omit<ScriptsBehCompanionIni['beh@general'], 'mutant_corpse_analysis'> & {
+      mutant_corpse_analysis: string
+    }
+    'meet@bandit_companion_task_1': Omit<ScriptsBehCompanionIni['meet'], 'meet_dialog'> & {
+      meet_dialog: CommaSeparatedString<string[]>
+    }
+    'beh@bandit_companion_task_1': Omit<ScriptsBehCompanionIni['beh@general'], 'corpse_detection_enabled' | 'meet' | 'on_info2'> & {
+      corpse_detection_enabled: boolean
+      meet: string
+      on_info2: string
+    }
+    'meet@hostage_companion_task_1': Omit<ScriptsBehCompanionIni['meet'], 'meet_dialog' | 'meet_on_talking'> & {
+      meet_dialog: CommaSeparatedString<string[]>
+      meet_on_talking: boolean
+    }
+    'beh@hostage_1': Omit<ScriptsBehCompanionIni['beh@general_no_companion'], 'combat_ignore_cond' | 'combat_ignore_keep_when_attacked' | 'corpse_detection_enabled' | 'enemy_ignore_cond' | 'gather_items_enabled' | 'help_wounded_enabled' | 'meet' | 'on_info1' | 'target' | 'wait_anim'> & {
+      combat_ignore_cond: CommaSeparatedString<string[]>
+      combat_ignore_keep_when_attacked: boolean
+      corpse_detection_enabled: boolean
+      enemy_ignore_cond: boolean
+      gather_items_enabled: boolean
+      help_wounded_enabled: boolean
+      meet: string
+      on_info1: string
+      target: string
+      wait_anim: string
+    }
+    'beh@hostage_companion_task_1': ScriptsBehCompanionIni['beh@general']
+    'beh@task_target_anomaly_1': Omit<ScriptsBehCompanionIni['beh@general_no_companion'], 'on_info1' | 'on_info2' | 'target' | 'wait_anim'> & {
+      on_info1: string
+      on_info2: CommaSeparatedString<string[]>
+      target: string
+      wait_anim: string
+    }
+    'beh@task_target_anomaly_2': Omit<ScriptsBehCompanionIni['beh@general_no_companion'], 'on_game_timer' | 'target' | 'wait_anim'> & {
+      on_game_timer: string
+      target: string
+      wait_anim: string
+    }
+    'beh@task_target_anomaly_3': {
+      on_info: CommaSeparatedString<string[]>
+    }
   }
-  'beh@general_no_companion': {
-    behavior_state: string
-    combat_ignore_cond: CommaSeparatedString<string>
-    combat_ignore_keep_when_attacked: boolean
-    corpse_detection_enabled: boolean
-    delay_anim: string
-    gather_items_enabled: boolean
-    help_wounded_enabled: boolean
-    invulnerable: boolean
-    jog_anim: string
-    jog_dist: number
-    meet: string
-    run_anim: string
-    sound_idle: string
-    target: string
-    use_camp: boolean
-    wait_anim: string
-    walk_anim: string
-    walk_dist: number
-  }
-  'beh@general': {
-    actor_dialogs: string
-    behavior_state: CommaSeparatedString<string>
-    combat_ignore_cond: CommaSeparatedString<string>
-    combat_ignore_keep_when_attacked: boolean
-    corpse_detection_enabled: CommaSeparatedString<string>
-    delay_anim: CommaSeparatedString<string>
-    far_desired_dist: CommaSeparatedString<string>
-    gather_items_enabled: CommaSeparatedString<string>
-    jog_anim: CommaSeparatedString<string>
-    jog_dist: CommaSeparatedString<string>
-    keep_distance: CommaSeparatedString<string>
-    meet: string
-    near_desired_dist: CommaSeparatedString<string>
-    run_anim: CommaSeparatedString<string>
-    run_dist: CommaSeparatedString<string>
-    sprint_anim: CommaSeparatedString<string>
-    target: CommaSeparatedString<string>
-    wait_anim: CommaSeparatedString<string>
-    walk_anim: CommaSeparatedString<string>
-    walk_dist: CommaSeparatedString<string>
-  }
-  meet: {
-    abuse: boolean
-    allow_break: boolean
-    close_anim: CommaSeparatedString<string>
-    close_distance: CommaSeparatedString<string>
-    close_snd_bye: string
-    close_snd_hello: string
-    close_victim: CommaSeparatedString<string>
-    far_anim: string
-    far_distance: number
-    far_snd: string
-    far_victim: string
-    meet_dialog: CommaSeparatedString<string>
-    snd_on_use: CommaSeparatedString<string>
-    trade_enable: boolean
-    use: CommaSeparatedString<string>
-    use_text: string
-  }
-  actor_dialogs: {
-    disable: CommaSeparatedString<string>
-  }
-  'beh@base': {
-    on_info1: CommaSeparatedString<string>
-    on_info2: string
-    on_info3: string
-  }
-  'meet@ecolog_companion_task_1': {
-    meet_dialog: CommaSeparatedString<string>
-  }
-  'meet@ecolog_companion_task_2': {
-    meet_dialog: CommaSeparatedString<string>
-  }
-  'beh@ecolog_companion_task_1': {
-    meet: string
-    on_info1: CommaSeparatedString<string>
-    on_info2: string
-    on_info3: string
-  }
-  'beh@ecolog_companion_task_2': {
-    meet: string
-    on_info1: CommaSeparatedString<string>
-    on_info2: string
-    on_info3: string
-  }
-  'beh@yan_ecolog_semenov_task_1': {
-    mutant_corpse_analysis: string
-  }
-  'meet@bandit_companion_task_1': {
-    meet_dialog: CommaSeparatedString<string>
-  }
-  'beh@bandit_companion_task_1': {
-    corpse_detection_enabled: boolean
-    meet: string
-    on_info2: string
-  }
-  'meet@hostage_companion_task_1': {
-    meet_dialog: CommaSeparatedString<string>
-    meet_on_talking: boolean
-  }
-  'beh@hostage_1': {
-    combat_ignore_cond: CommaSeparatedString<string>
-    combat_ignore_keep_when_attacked: boolean
-    corpse_detection_enabled: boolean
-    enemy_ignore_cond: boolean
-    gather_items_enabled: boolean
-    help_wounded_enabled: boolean
-    meet: string
-    on_info1: string
-    target: string
-    wait_anim: string
-  }
-  'beh@hostage_companion_task_1': {
-  }
-  'beh@task_target_anomaly_1': {
-    on_info1: string
-    on_info2: CommaSeparatedString<string>
-    target: string
-    wait_anim: string
-  }
-  'beh@task_target_anomaly_2': {
-    on_game_timer: string
-    target: string
-    wait_anim: string
-  }
-  'beh@task_target_anomaly_3': {
-    on_info: CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\beh_companion.ltx': ScriptsBehCompanionIni
+  interface IniFileSchemas {
+    'scripts\\beh_companion.ltx': ScriptsBehCompanionIni
+  }
 }

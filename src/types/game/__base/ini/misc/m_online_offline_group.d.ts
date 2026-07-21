@@ -2,14 +2,17 @@
 // Schema of `misc\\m_online_offline_group.ltx`. Sections enumerated for autocomplete; `MiscMOnlineOfflineGroupIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface MiscMOnlineOfflineGroupIni {
-  online_offline_group: {
-    class: string
-    GroupControlSection: string
+declare global {
+  interface MiscMOnlineOfflineGroupIni {
+    online_offline_group: {
+      class: string
+      GroupControlSection: string
+    }
   }
-}
 
-interface IniFileSchemas {
-  'misc\\m_online_offline_group.ltx': MiscMOnlineOfflineGroupIni
+  interface IniFileSchemas {
+    'misc\\m_online_offline_group.ltx': MiscMOnlineOfflineGroupIni
+  }
 }

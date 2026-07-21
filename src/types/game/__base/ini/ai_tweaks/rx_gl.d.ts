@@ -2,36 +2,39 @@
 // Schema of `ai_tweaks\\rx_gl.ltx`. Sections enumerated for autocomplete; `AiTweaksRxGlIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksRxGlIni {
-  main: {
-    check_period: number
-    enabled: boolean
-    forbidden_factions: string
-    forbidden_npcs: string
-    forbidden_weapons: string
-    max_dist: number
-    min_dist: number
-    spawn_period: number
+declare global {
+  interface AiTweaksRxGlIni {
+    main: {
+      check_period: number
+      enabled: boolean
+      forbidden_factions: string
+      forbidden_npcs: string
+      forbidden_weapons: string
+      max_dist: number
+      min_dist: number
+      spawn_period: number
+    }
+    novice: {
+      aim_time: number
+      reload_time: number
+    }
+    experienced: {
+      aim_time: number
+      reload_time: number
+    }
+    veteran: {
+      aim_time: number
+      reload_time: number
+    }
+    master: {
+      aim_time: number
+      reload_time: number
+    }
   }
-  novice: {
-    aim_time: number
-    reload_time: number
-  }
-  experienced: {
-    aim_time: number
-    reload_time: number
-  }
-  veteran: {
-    aim_time: number
-    reload_time: number
-  }
-  master: {
-    aim_time: number
-    reload_time: number
-  }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\rx_gl.ltx': AiTweaksRxGlIni
+  interface IniFileSchemas {
+    'ai_tweaks\\rx_gl.ltx': AiTweaksRxGlIni
+  }
 }

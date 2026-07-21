@@ -2,248 +2,251 @@
 // Schema of `misc\\travel_manager.ltx`. Sections enumerated for autocomplete; `MiscTravelManagerIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface MiscTravelManagerIni {
-  locations: {
-    jup_a10_smart_terrain: string
-    jup_a12: string
-    jup_a12_merc: string
-    jup_a6: string
-    jup_a9: string
-    jup_b1: string
-    jup_b19: string
-    jup_b200: string
-    jup_b200_tushkan_smart_terrain: string
-    jup_b202: string
-    jup_b203: string
-    jup_b204: string
-    jup_b205_smart_terrain: string
-    jup_b205_smart_terrain_tushkano: string
-    jup_b206: string
-    jup_b207: string
-    jup_b207_depot_attack: string
-    jup_b208: string
-    jup_b209: string
-    jup_b211: string
-    jup_b212: string
-    jup_b219: string
-    jup_b25: string
-    jup_b32: string
-    jup_b4: string
-    jup_b41: string
-    jup_b46: string
-    jup_b47: string
-    jup_b6_anom_2: string
-    jup_b8_smart_terrain: string
-    jup_sim_1: string
-    jup_sim_10: string
-    jup_sim_11: string
-    jup_sim_12: string
-    jup_sim_13: string
-    jup_sim_14: string
-    jup_sim_15: string
-    jup_sim_16: string
-    jup_sim_17: string
-    jup_sim_18: string
-    jup_sim_19: string
-    jup_sim_2: string
-    jup_sim_3: string
-    jup_sim_4: string
-    jup_sim_5: string
-    jup_sim_6: string
-    jup_sim_7: string
-    jup_sim_8: string
-    jup_sim_9: string
-    pri_a15: string
-    pri_a16: string
-    pri_a17: string
-    pri_a18_smart_terrain: string
-    pri_a20: string
-    pri_a21_smart_terrain: string
-    pri_a22_smart_terrain: string
-    pri_a25_smart_terrain: string
-    pri_a28: string
-    pri_b301: string
-    pri_b302: string
-    pri_b303: string
-    pri_b304: string
-    pri_b304_monsters_smart_terrain: string
-    pri_b305_dogs: string
-    pri_b306: string
-    pri_b307: string
-    pri_b35_envoy: string
-    pri_b35_mercs: string
-    pri_b35_military: string
-    pri_b36_smart_terrain: string
-    pri_sim_1: string
-    pri_sim_2: string
-    pri_sim_3: string
-    pri_sim_4: string
-    pri_sim_5: string
-    zat_a1: string
-    zat_a23_smart_terrain: string
-    zat_b100: string
-    zat_b101: string
-    zat_b103_merc_smart: string
-    zat_b104_zombied: string
-    zat_b106_smart_terrain: string
-    zat_b12: string
-    zat_b14_smart_terrain: string
-    zat_b18: string
-    zat_b20_smart_terrain: string
-    zat_b28: string
-    zat_b33: string
-    zat_b38: string
-    zat_b38u: string
-    zat_b39: string
-    zat_b40_smart_terrain: string
-    zat_b42_smart_terrain: string
-    zat_b5_smart_terrain: string
-    zat_b52: string
-    zat_b53: string
-    zat_b54: string
-    zat_b55: string
-    zat_b56: string
-    zat_b7: string
-    zat_b7_stalker_raider: string
-    zat_medic_home_smart: string
-    zat_sim_1: string
-    zat_sim_10: string
-    zat_sim_11: string
-    zat_sim_12: string
-    zat_sim_13: string
-    zat_sim_14: string
-    zat_sim_15: string
-    zat_sim_16: string
-    zat_sim_17: string
-    zat_sim_18: string
-    zat_sim_19: string
-    zat_sim_2: string
-    zat_sim_20: string
-    zat_sim_21: string
-    zat_sim_22: string
-    zat_sim_23: string
-    zat_sim_24: string
-    zat_sim_25: string
-    zat_sim_26: string
-    zat_sim_27: string
-    zat_sim_3: string
-    zat_sim_4: string
-    zat_sim_5: string
-    zat_sim_6: string
-    zat_sim_7: string
-    zat_sim_8: string
-    zat_sim_9: string
-    zat_stalker_base_smart: string
+declare global {
+  interface MiscTravelManagerIni {
+    locations: {
+      jup_a10_smart_terrain: string
+      jup_a12: string
+      jup_a12_merc: string
+      jup_a6: string
+      jup_a9: string
+      jup_b1: string
+      jup_b19: string
+      jup_b200: string
+      jup_b200_tushkan_smart_terrain: string
+      jup_b202: string
+      jup_b203: string
+      jup_b204: string
+      jup_b205_smart_terrain: string
+      jup_b205_smart_terrain_tushkano: string
+      jup_b206: string
+      jup_b207: string
+      jup_b207_depot_attack: string
+      jup_b208: string
+      jup_b209: string
+      jup_b211: string
+      jup_b212: string
+      jup_b219: string
+      jup_b25: string
+      jup_b32: string
+      jup_b4: string
+      jup_b41: string
+      jup_b46: string
+      jup_b47: string
+      jup_b6_anom_2: string
+      jup_b8_smart_terrain: string
+      jup_sim_1: string
+      jup_sim_10: string
+      jup_sim_11: string
+      jup_sim_12: string
+      jup_sim_13: string
+      jup_sim_14: string
+      jup_sim_15: string
+      jup_sim_16: string
+      jup_sim_17: string
+      jup_sim_18: string
+      jup_sim_19: string
+      jup_sim_2: string
+      jup_sim_3: string
+      jup_sim_4: string
+      jup_sim_5: string
+      jup_sim_6: string
+      jup_sim_7: string
+      jup_sim_8: string
+      jup_sim_9: string
+      pri_a15: string
+      pri_a16: string
+      pri_a17: string
+      pri_a18_smart_terrain: string
+      pri_a20: string
+      pri_a21_smart_terrain: string
+      pri_a22_smart_terrain: string
+      pri_a25_smart_terrain: string
+      pri_a28: string
+      pri_b301: string
+      pri_b302: string
+      pri_b303: string
+      pri_b304: string
+      pri_b304_monsters_smart_terrain: string
+      pri_b305_dogs: string
+      pri_b306: string
+      pri_b307: string
+      pri_b35_envoy: string
+      pri_b35_mercs: string
+      pri_b35_military: string
+      pri_b36_smart_terrain: string
+      pri_sim_1: string
+      pri_sim_2: string
+      pri_sim_3: string
+      pri_sim_4: string
+      pri_sim_5: string
+      zat_a1: string
+      zat_a23_smart_terrain: string
+      zat_b100: string
+      zat_b101: string
+      zat_b103_merc_smart: string
+      zat_b104_zombied: string
+      zat_b106_smart_terrain: string
+      zat_b12: string
+      zat_b14_smart_terrain: string
+      zat_b18: string
+      zat_b20_smart_terrain: string
+      zat_b28: string
+      zat_b33: string
+      zat_b38: string
+      zat_b38u: string
+      zat_b39: string
+      zat_b40_smart_terrain: string
+      zat_b42_smart_terrain: string
+      zat_b5_smart_terrain: string
+      zat_b52: string
+      zat_b53: string
+      zat_b54: string
+      zat_b55: string
+      zat_b56: string
+      zat_b7: string
+      zat_b7_stalker_raider: string
+      zat_medic_home_smart: string
+      zat_sim_1: string
+      zat_sim_10: string
+      zat_sim_11: string
+      zat_sim_12: string
+      zat_sim_13: string
+      zat_sim_14: string
+      zat_sim_15: string
+      zat_sim_16: string
+      zat_sim_17: string
+      zat_sim_18: string
+      zat_sim_19: string
+      zat_sim_2: string
+      zat_sim_20: string
+      zat_sim_21: string
+      zat_sim_22: string
+      zat_sim_23: string
+      zat_sim_24: string
+      zat_sim_25: string
+      zat_sim_26: string
+      zat_sim_27: string
+      zat_sim_3: string
+      zat_sim_4: string
+      zat_sim_5: string
+      zat_sim_6: string
+      zat_sim_7: string
+      zat_sim_8: string
+      zat_sim_9: string
+      zat_stalker_base_smart: string
+    }
+    traveler: string[]
+    zat_b55: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    zat_b100: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    zat_b104_zombied: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    zat_b38: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    zat_b40_smart_terrain: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    zat_b53: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    zat_b56: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    zat_b5_smart_terrain: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    zat_stalker_base_smart: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    jup_a6: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    jup_b41: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    jup_b6_anom_2: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    jup_b209: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    jup_sim_17: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    jup_b200: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    jup_b212: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    jup_a12: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    pri_b307: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    pri_b302: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    pri_a16: {
+      condlist: boolean
+      level: string
+      name: string
+    }
+    pri_a18_smart_terrain: {
+      condlist: boolean
+      level: string
+      name: string
+    }
   }
-  traveler: Record<string, string>
-  zat_b55: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  zat_b100: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  zat_b104_zombied: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  zat_b38: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  zat_b40_smart_terrain: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  zat_b53: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  zat_b56: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  zat_b5_smart_terrain: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  zat_stalker_base_smart: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  jup_a6: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  jup_b41: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  jup_b6_anom_2: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  jup_b209: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  jup_sim_17: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  jup_b200: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  jup_b212: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  jup_a12: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  pri_b307: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  pri_b302: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  pri_a16: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-  pri_a18_smart_terrain: {
-    condlist: boolean
-    level: string
-    name: string
-  }
-}
 
-interface IniFileSchemas {
-  'misc\\travel_manager.ltx': MiscTravelManagerIni
+  interface IniFileSchemas {
+    'misc\\travel_manager.ltx': MiscTravelManagerIni
+  }
 }

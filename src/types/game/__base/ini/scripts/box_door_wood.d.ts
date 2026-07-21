@@ -2,36 +2,39 @@
 // Schema of `scripts\\box_door_wood.ltx`. Sections enumerated for autocomplete; `ScriptsBoxDoorWoodIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsBoxDoorWoodIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsBoxDoorWoodIni {
+    logic: {
+      active: string
+    }
+    'ph_door@locked': {
+      closed: boolean
+      locked: boolean
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@close': {
+      closed: boolean
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@open': {
+      closed: boolean
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
   }
-  'ph_door@locked': {
-    closed: boolean
-    locked: boolean
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@close': {
-    closed: boolean
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@open': {
-    closed: boolean
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\box_door_wood.ltx': ScriptsBoxDoorWoodIni
+  interface IniFileSchemas {
+    'scripts\\box_door_wood.ltx': ScriptsBoxDoorWoodIni
+  }
 }

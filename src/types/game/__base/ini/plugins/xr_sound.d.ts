@@ -2,31 +2,24 @@
 // Schema of `plugins\\xr_sound.ltx`. Sections enumerated for autocomplete; `PluginsXrSoundIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsXrSoundIni {
-  shared_radio_music: Record<string, string>
-  agr_smart_terrain_1_6_radio: {
+declare global {
+  interface PluginsXrSoundIni {
+    shared_radio_music: string[]
+    agr_smart_terrain_1_6_radio: PluginsXrSoundIni['shared_radio_music']
+    agr_smart_terrain_4_4_radio: PluginsXrSoundIni['shared_radio_music']
+    agr_smart_terrain_1_6_near_2_radio: PluginsXrSoundIni['shared_radio_music']
+    agr_smart_terrain_1_6_near_1_radio: PluginsXrSoundIni['shared_radio_music']
+    bar_visitors_radio: PluginsXrSoundIni['shared_radio_music']
+    val_smart_terrain_7_3_radio: PluginsXrSoundIni['shared_radio_music']
+    gar_smart_terrain_3_5_radio: PluginsXrSoundIni['shared_radio_music']
+    mar_smart_terrain_base_radio: PluginsXrSoundIni['shared_radio_music']
+    esc_sidorovich_radio: PluginsXrSoundIni['shared_radio_music']
+    red_forester_radio: PluginsXrSoundIni['shared_radio_music']
   }
-  agr_smart_terrain_4_4_radio: {
-  }
-  agr_smart_terrain_1_6_near_2_radio: {
-  }
-  agr_smart_terrain_1_6_near_1_radio: {
-  }
-  bar_visitors_radio: {
-  }
-  val_smart_terrain_7_3_radio: {
-  }
-  gar_smart_terrain_3_5_radio: {
-  }
-  mar_smart_terrain_base_radio: {
-  }
-  esc_sidorovich_radio: {
-  }
-  red_forester_radio: {
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\xr_sound.ltx': PluginsXrSoundIni
+  interface IniFileSchemas {
+    'plugins\\xr_sound.ltx': PluginsXrSoundIni
+  }
 }

@@ -2,21 +2,24 @@
 // Schema of `scripts\\sr_sleep.ltx`. Sections enumerated for autocomplete; `ScriptsSrSleepIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface ScriptsSrSleepIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsSrSleepIni {
+    logic: {
+      active: string
+    }
+    'sr_idle@wait': {
+      on_actor_inside: CommaSeparatedString<string[]>
+    }
+    'sr_idle@run': {
+      on_actor_outside: CommaSeparatedString<string[]>
+      on_info: CommaSeparatedString<string[]>
+      on_info2: string
+    }
   }
-  'sr_idle@wait': {
-    on_actor_inside: CommaSeparatedString<string>
-  }
-  'sr_idle@run': {
-    on_actor_outside: CommaSeparatedString<string>
-    on_info: CommaSeparatedString<string>
-    on_info2: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\sr_sleep.ltx': ScriptsSrSleepIni
+  interface IniFileSchemas {
+    'scripts\\sr_sleep.ltx': ScriptsSrSleepIni
+  }
 }

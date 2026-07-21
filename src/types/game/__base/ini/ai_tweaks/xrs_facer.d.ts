@@ -2,59 +2,62 @@
 // Schema of `ai_tweaks\\xrs_facer.ltx`. Sections enumerated for autocomplete; `AiTweaksXrsFacerIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksXrsFacerIni {
-  plugin: {
-    enable: boolean
-    forbidden_factions: string
-    refused_names: string
+declare global {
+  interface AiTweaksXrsFacerIni {
+    plugin: {
+      enable: boolean
+      forbidden_factions: string
+      refused_names: string
+    }
+    novice: {
+      enable_vs_actor: boolean
+      enable_vs_monster: boolean
+      enable_vs_stalker: boolean
+      k_actor: number
+      k_friend: number
+      k_mutant: number
+      k_stalker: number
+      min_delay: number
+      power: number
+    }
+    experienced: {
+      enable_vs_actor: boolean
+      enable_vs_monster: boolean
+      enable_vs_stalker: boolean
+      k_actor: number
+      k_friend: number
+      k_mutant: number
+      k_stalker: number
+      min_delay: number
+      power: number
+    }
+    veteran: {
+      enable_vs_actor: boolean
+      enable_vs_monster: boolean
+      enable_vs_stalker: boolean
+      k_actor: number
+      k_friend: number
+      k_mutant: number
+      k_stalker: number
+      min_delay: number
+      power: number
+    }
+    master: {
+      enable_vs_actor: boolean
+      enable_vs_monster: boolean
+      enable_vs_stalker: boolean
+      k_actor: number
+      k_friend: number
+      k_mutant: number
+      k_stalker: number
+      min_delay: number
+      power: number
+    }
   }
-  novice: {
-    enable_vs_actor: boolean
-    enable_vs_monster: boolean
-    enable_vs_stalker: boolean
-    k_actor: number
-    k_friend: number
-    k_mutant: number
-    k_stalker: number
-    min_delay: number
-    power: number
-  }
-  experienced: {
-    enable_vs_actor: boolean
-    enable_vs_monster: boolean
-    enable_vs_stalker: boolean
-    k_actor: number
-    k_friend: number
-    k_mutant: number
-    k_stalker: number
-    min_delay: number
-    power: number
-  }
-  veteran: {
-    enable_vs_actor: boolean
-    enable_vs_monster: boolean
-    enable_vs_stalker: boolean
-    k_actor: number
-    k_friend: number
-    k_mutant: number
-    k_stalker: number
-    min_delay: number
-    power: number
-  }
-  master: {
-    enable_vs_actor: boolean
-    enable_vs_monster: boolean
-    enable_vs_stalker: boolean
-    k_actor: number
-    k_friend: number
-    k_mutant: number
-    k_stalker: number
-    min_delay: number
-    power: number
-  }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xrs_facer.ltx': AiTweaksXrsFacerIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xrs_facer.ltx': AiTweaksXrsFacerIni
+  }
 }

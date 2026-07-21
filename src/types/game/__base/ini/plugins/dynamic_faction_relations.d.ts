@@ -2,32 +2,35 @@
 // Schema of `plugins\\dynamic_faction_relations.ltx`. Sections enumerated for autocomplete; `PluginsDynamicFactionRelationsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface PluginsDynamicFactionRelationsIni {
-  controls: {
-    death_value: number
-    enemy_count_limit: number
-    enemy_limit: number
-    friend_count_limit: number
-    friend_limit: number
+declare global {
+  interface PluginsDynamicFactionRelationsIni {
+    controls: {
+      death_value: number
+      enemy_count_limit: number
+      enemy_limit: number
+      friend_count_limit: number
+      friend_limit: number
+    }
+    unaffected_factions: string[]
+    unaffected_pairs: {
+      pair_1: CommaSeparatedString<string[]>
+      pair_10: CommaSeparatedString<string[]>
+      pair_12: CommaSeparatedString<string[]>
+      pair_14: CommaSeparatedString<string[]>
+      pair_15: CommaSeparatedString<string[]>
+      pair_2: CommaSeparatedString<string[]>
+      pair_3: CommaSeparatedString<string[]>
+      pair_4: CommaSeparatedString<string[]>
+      pair_5: CommaSeparatedString<string[]>
+      pair_6: CommaSeparatedString<string[]>
+      pair_7: CommaSeparatedString<string[]>
+      pair_9: CommaSeparatedString<string[]>
+    }
   }
-  unaffected_factions: Record<string, string>
-  unaffected_pairs: {
-    pair_1: CommaSeparatedString<string>
-    pair_10: CommaSeparatedString<string>
-    pair_12: CommaSeparatedString<string>
-    pair_14: CommaSeparatedString<string>
-    pair_15: CommaSeparatedString<string>
-    pair_2: CommaSeparatedString<string>
-    pair_3: CommaSeparatedString<string>
-    pair_4: CommaSeparatedString<string>
-    pair_5: CommaSeparatedString<string>
-    pair_6: CommaSeparatedString<string>
-    pair_7: CommaSeparatedString<string>
-    pair_9: CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\dynamic_faction_relations.ltx': PluginsDynamicFactionRelationsIni
+  interface IniFileSchemas {
+    'plugins\\dynamic_faction_relations.ltx': PluginsDynamicFactionRelationsIni
+  }
 }

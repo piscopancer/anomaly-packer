@@ -2,17 +2,20 @@
 // Schema of `scripts\\inventory_box.ltx`. Sections enumerated for autocomplete; `ScriptsInventoryBoxIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsInventoryBoxIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsInventoryBoxIni {
+    logic: {
+      active: string
+    }
+    'ph_idle@open': {
+      nonscript_usable: boolean
+      tips: string
+    }
   }
-  'ph_idle@open': {
-    nonscript_usable: boolean
-    tips: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\inventory_box.ltx': ScriptsInventoryBoxIni
+  interface IniFileSchemas {
+    'scripts\\inventory_box.ltx': ScriptsInventoryBoxIni
+  }
 }

@@ -2,17 +2,20 @@
 // Schema of `scripts\\door_locked.ltx`. Sections enumerated for autocomplete; `ScriptsDoorLockedIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsDoorLockedIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsDoorLockedIni {
+    logic: {
+      active: string
+    }
+    'ph_door@locked': {
+      locked: boolean
+      snd_open_start: string
+    }
   }
-  'ph_door@locked': {
-    locked: boolean
-    snd_open_start: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\door_locked.ltx': ScriptsDoorLockedIni
+  interface IniFileSchemas {
+    'scripts\\door_locked.ltx': ScriptsDoorLockedIni
+  }
 }

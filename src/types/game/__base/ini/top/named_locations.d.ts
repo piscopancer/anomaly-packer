@@ -2,37 +2,40 @@
 // Schema of `named_locations.ltx`. Sections enumerated for autocomplete; `NamedLocationsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface NamedLocationsIni {
-  barrier_spawn_1: {
-    position: CommaSeparatedString<string>
+declare global {
+  interface NamedLocationsIni {
+    barrier_spawn_1: {
+      position: CommaSeparatedString<string[]>
+    }
+    barrier_spawn_2: {
+      position: CommaSeparatedString<string[]>
+    }
+    barrier_spawn_3: {
+      position: CommaSeparatedString<string[]>
+    }
+    barrier_spawn_4: {
+      position: CommaSeparatedString<string[]>
+    }
+    barrier_spawn_5: {
+      position: CommaSeparatedString<string[]>
+    }
+    barrier_spawn_6: {
+      position: CommaSeparatedString<string[]>
+    }
+    barrier_spawn_7: {
+      position: CommaSeparatedString<string[]>
+    }
+    barrier_spawn_8: {
+      position: CommaSeparatedString<string[]>
+    }
+    barrier_spawn_9: {
+      position: CommaSeparatedString<string[]>
+    }
   }
-  barrier_spawn_2: {
-    position: CommaSeparatedString<string>
-  }
-  barrier_spawn_3: {
-    position: CommaSeparatedString<string>
-  }
-  barrier_spawn_4: {
-    position: CommaSeparatedString<string>
-  }
-  barrier_spawn_5: {
-    position: CommaSeparatedString<string>
-  }
-  barrier_spawn_6: {
-    position: CommaSeparatedString<string>
-  }
-  barrier_spawn_7: {
-    position: CommaSeparatedString<string>
-  }
-  barrier_spawn_8: {
-    position: CommaSeparatedString<string>
-  }
-  barrier_spawn_9: {
-    position: CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'named_locations.ltx': NamedLocationsIni
+  interface IniFileSchemas {
+    'named_locations.ltx': NamedLocationsIni
+  }
 }

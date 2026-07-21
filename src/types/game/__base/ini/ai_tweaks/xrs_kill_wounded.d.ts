@@ -2,28 +2,31 @@
 // Schema of `ai_tweaks\\xrs_kill_wounded.ltx`. Sections enumerated for autocomplete; `AiTweaksXrsKillWoundedIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface AiTweaksXrsKillWoundedIni {
-  settings: {
-    actor_cause_surrender: boolean
-    actor_cause_surrender_chance: number
-    actor_cause_surrender_max_dist: number
-    cause_surrender_communities: CommaSeparatedString<string>
-    chance_to_play_sound: number
-    chance_to_play_surrender: number
-    enable: boolean
-    max_distance: number
-    max_timer: number
-    max_vector_rotate_y: number
-    min_distance: number
-    min_timer: number
-    min_vector_rotate_y: number
-    state_run_min_distance: number
-    surrender_max_timer: number
-    surrender_min_timer: number
+declare global {
+  interface AiTweaksXrsKillWoundedIni {
+    settings: {
+      actor_cause_surrender: boolean
+      actor_cause_surrender_chance: number
+      actor_cause_surrender_max_dist: number
+      cause_surrender_communities: CommaSeparatedString<string[]>
+      chance_to_play_sound: number
+      chance_to_play_surrender: number
+      enable: boolean
+      max_distance: number
+      max_timer: number
+      max_vector_rotate_y: number
+      min_distance: number
+      min_timer: number
+      min_vector_rotate_y: number
+      state_run_min_distance: number
+      surrender_max_timer: number
+      surrender_min_timer: number
+    }
   }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xrs_kill_wounded.ltx': AiTweaksXrsKillWoundedIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xrs_kill_wounded.ltx': AiTweaksXrsKillWoundedIni
+  }
 }

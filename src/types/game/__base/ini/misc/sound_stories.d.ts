@@ -2,137 +2,140 @@
 // Schema of `misc\\sound_stories.ltx`. Sections enumerated for autocomplete; `MiscSoundStoriesIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface MiscSoundStoriesIni {
-  test_story: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
+declare global {
+  interface MiscSoundStoriesIni {
+    test_story: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+    }
+    test_guitar: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+    }
+    test_harmonica: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+    }
+    s_story_1: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+      '4': CommaSeparatedString<string[]>
+      '5': CommaSeparatedString<string[]>
+      '6': CommaSeparatedString<string[]>
+      '7': CommaSeparatedString<string[]>
+    }
+    s_story_2: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+      '4': CommaSeparatedString<string[]>
+      '5': CommaSeparatedString<string[]>
+      '6': CommaSeparatedString<string[]>
+      '7': CommaSeparatedString<string[]>
+      '8': CommaSeparatedString<string[]>
+      '9': CommaSeparatedString<string[]>
+    }
+    s_story_3: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+    }
+    s_story_4: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+    }
+    s_story_5: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+      '4': CommaSeparatedString<string[]>
+      '5': CommaSeparatedString<string[]>
+    }
+    s_story_6: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '10': CommaSeparatedString<string[]>
+      '11': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+      '4': CommaSeparatedString<string[]>
+      '5': CommaSeparatedString<string[]>
+      '6': CommaSeparatedString<string[]>
+      '7': CommaSeparatedString<string[]>
+      '8': CommaSeparatedString<string[]>
+      '9': CommaSeparatedString<string[]>
+    }
+    s_story_7: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '10': CommaSeparatedString<string[]>
+      '11': CommaSeparatedString<string[]>
+      '12': CommaSeparatedString<string[]>
+      '13': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+      '4': CommaSeparatedString<string[]>
+      '5': CommaSeparatedString<string[]>
+      '6': CommaSeparatedString<string[]>
+      '7': CommaSeparatedString<string[]>
+      '8': CommaSeparatedString<string[]>
+      '9': CommaSeparatedString<string[]>
+    }
+    s_story_8: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+      '4': CommaSeparatedString<string[]>
+      '5': CommaSeparatedString<string[]>
+    }
+    s_story_9: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+      '4': CommaSeparatedString<string[]>
+      '5': CommaSeparatedString<string[]>
+    }
+    s_story_10: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+    }
+    s_story_11: {
+      '0': CommaSeparatedString<string[]>
+      '1': CommaSeparatedString<string[]>
+      '10': CommaSeparatedString<string[]>
+      '11': CommaSeparatedString<string[]>
+      '12': CommaSeparatedString<string[]>
+      '13': CommaSeparatedString<string[]>
+      '14': CommaSeparatedString<string[]>
+      '15': CommaSeparatedString<string[]>
+      '16': CommaSeparatedString<string[]>
+      '17': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+      '4': CommaSeparatedString<string[]>
+      '5': CommaSeparatedString<string[]>
+      '6': CommaSeparatedString<string[]>
+      '7': CommaSeparatedString<string[]>
+      '8': CommaSeparatedString<string[]>
+      '9': CommaSeparatedString<string[]>
+    }
   }
-  test_guitar: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-  }
-  test_harmonica: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-  }
-  s_story_1: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-    '4': CommaSeparatedString<string>
-    '5': CommaSeparatedString<string>
-    '6': CommaSeparatedString<string>
-    '7': CommaSeparatedString<string>
-  }
-  s_story_2: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-    '4': CommaSeparatedString<string>
-    '5': CommaSeparatedString<string>
-    '6': CommaSeparatedString<string>
-    '7': CommaSeparatedString<string>
-    '8': CommaSeparatedString<string>
-    '9': CommaSeparatedString<string>
-  }
-  s_story_3: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-  }
-  s_story_4: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-  }
-  s_story_5: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-    '4': CommaSeparatedString<string>
-    '5': CommaSeparatedString<string>
-  }
-  s_story_6: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '10': CommaSeparatedString<string>
-    '11': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-    '4': CommaSeparatedString<string>
-    '5': CommaSeparatedString<string>
-    '6': CommaSeparatedString<string>
-    '7': CommaSeparatedString<string>
-    '8': CommaSeparatedString<string>
-    '9': CommaSeparatedString<string>
-  }
-  s_story_7: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '10': CommaSeparatedString<string>
-    '11': CommaSeparatedString<string>
-    '12': CommaSeparatedString<string>
-    '13': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-    '4': CommaSeparatedString<string>
-    '5': CommaSeparatedString<string>
-    '6': CommaSeparatedString<string>
-    '7': CommaSeparatedString<string>
-    '8': CommaSeparatedString<string>
-    '9': CommaSeparatedString<string>
-  }
-  s_story_8: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-    '4': CommaSeparatedString<string>
-    '5': CommaSeparatedString<string>
-  }
-  s_story_9: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-    '4': CommaSeparatedString<string>
-    '5': CommaSeparatedString<string>
-  }
-  s_story_10: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-  }
-  s_story_11: {
-    '0': CommaSeparatedString<string>
-    '1': CommaSeparatedString<string>
-    '10': CommaSeparatedString<string>
-    '11': CommaSeparatedString<string>
-    '12': CommaSeparatedString<string>
-    '13': CommaSeparatedString<string>
-    '14': CommaSeparatedString<string>
-    '15': CommaSeparatedString<string>
-    '16': CommaSeparatedString<string>
-    '17': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-    '4': CommaSeparatedString<string>
-    '5': CommaSeparatedString<string>
-    '6': CommaSeparatedString<string>
-    '7': CommaSeparatedString<string>
-    '8': CommaSeparatedString<string>
-    '9': CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'misc\\sound_stories.ltx': MiscSoundStoriesIni
+  interface IniFileSchemas {
+    'misc\\sound_stories.ltx': MiscSoundStoriesIni
+  }
 }

@@ -2,28 +2,31 @@
 // Schema of `plugins\\new_game_options.ltx`. Sections enumerated for autocomplete; `PluginsNewGameOptionsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface PluginsNewGameOptionsIni {
-  new_game_hardcore_lives: {
-    element_1: CommaSeparatedString<string>
-    element_2: CommaSeparatedString<string>
-    element_3: CommaSeparatedString<string>
-    element_4: CommaSeparatedString<string>
-    element_5: CommaSeparatedString<string>
+declare global {
+  interface PluginsNewGameOptionsIni {
+    new_game_hardcore_lives: {
+      element_1: CommaSeparatedString<string[]>
+      element_2: CommaSeparatedString<string[]>
+      element_3: CommaSeparatedString<string[]>
+      element_4: CommaSeparatedString<string[]>
+      element_5: CommaSeparatedString<string[]>
+    }
+    new_game_hardcore_regen: {
+      element_1: CommaSeparatedString<string[]>
+      element_2: CommaSeparatedString<string[]>
+      element_3: CommaSeparatedString<string[]>
+    }
+    new_game_timer: {
+      element_1: CommaSeparatedString<string[]>
+      element_2: CommaSeparatedString<string[]>
+      element_3: CommaSeparatedString<string[]>
+      element_4: CommaSeparatedString<string[]>
+    }
   }
-  new_game_hardcore_regen: {
-    element_1: CommaSeparatedString<string>
-    element_2: CommaSeparatedString<string>
-    element_3: CommaSeparatedString<string>
-  }
-  new_game_timer: {
-    element_1: CommaSeparatedString<string>
-    element_2: CommaSeparatedString<string>
-    element_3: CommaSeparatedString<string>
-    element_4: CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\new_game_options.ltx': PluginsNewGameOptionsIni
+  interface IniFileSchemas {
+    'plugins\\new_game_options.ltx': PluginsNewGameOptionsIni
+  }
 }

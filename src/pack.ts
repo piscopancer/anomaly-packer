@@ -8,6 +8,12 @@ import { FileExtension } from '.'
 import * as texts from './texts'
 import { transpile, TranspiledScript } from './transpilation'
 
+/**
+ * Extensions whose contents are text the engine reads in win1251. Everything else in a
+ * gamedata tree — textures, sounds, meshes — is binary and must be copied unchanged.
+ */
+const TEXT_EXTENSIONS = new Set(['.ltx', '.xml', '.script', '.txt', '.seq', '.lua', '.json', '.md'])
+
 export type PackOptions = {
   /**
    * Flat identifier of the addon. Every registered script is prefixed with it (the `index` entry becomes the bare id), and the runtime scripts Anomaly Packer copies into the build are namespaced with it too, so nothing collides with other addons: e.g. importing 'anomaly-packer/mcm' emits `<addonId>__ap_mcm.script`.
@@ -93,6 +99,16 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, allTrans
       await fs.mkdir(curBuildPath)
       await thisRecursiveShit(curSourcePath, curBuildPath, allTranspiled)
     } else if (itemStat.isFile()) {
+      // `gamedata/tsconfig.json` configures the authoring project; it is not mod content.
+      if (item === 'tsconfig.json' && sourcePath.endsWith('gamedata')) {
+        continue
+      }
+      // Declaration files carry only ambient types — there is nothing to render and nothing
+      // to emit, so importing one would just fail the "no default export" check and print a
+      // misleading error for a perfectly correct file.
+      if (item.endsWith('.d.ts')) {
+        continue
+      }
       const ext = path.extname(item)
       if (ext === '.ts' || ext === '.tsx') {
         const fileName = item.substring(0, item.length - ext.length)
@@ -114,7 +130,11 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, allTrans
           try {
             const text = await textScript.default(texts)
             const extension = textScript.extension ?? 'xml'
-            await fs.writeFile(path.join(buildPath, fileName + `.${extension}`), iconv.encode(text, 'win1251'))
+            // A config module may return several rendered chunks (e.g. one ltx section each).
+            // Joining explicitly, rather than letting `iconv.encode` stringify the array,
+            // avoids `Array.prototype.toString` splicing commas between them.
+            const output = Array.isArray(text) ? text.join('\n') : String(text)
+            await fs.writeFile(path.join(buildPath, fileName + `.${extension}`), iconv.encode(output, 'win1251'))
           } catch (e) {
             console.error('Script at %s does not have a default export or contains an error. This file will not appear in the build', curSourcePath)
             console.log(c.italic.gray((e as Error).message))
@@ -125,8 +145,15 @@ async function thisRecursiveShit(sourcePath: string, buildPath: string, allTrans
         if (curBuildPath.includes(path.join('gamedata', 'scripts')) && ext !== '.script') {
           continue
         }
-        const content = await fs.readFile(path.join(curSourcePath))
-        await fs.writeFile(path.join(curBuildPath), iconv.encode(content.toString('utf8'), 'win1251'))
+        // Only text is transcoded to the encoding the engine reads. Anything else is copied
+        // byte for byte: running a dds, ogg or ogf through `toString('utf8')` replaces every
+        // byte sequence that is not valid utf8 with U+FFFD, silently destroying the asset.
+        if (TEXT_EXTENSIONS.has(ext.toLowerCase())) {
+          const content = await fs.readFile(curSourcePath)
+          await fs.writeFile(curBuildPath, iconv.encode(content.toString('utf8'), 'win1251'))
+        } else {
+          await fs.copyFile(curSourcePath, curBuildPath)
+        }
       }
     }
   }

@@ -2,24 +2,26 @@
 // Schema of `plugins\\player_icons.ltx`. Sections enumerated for autocomplete; `PluginsPlayerIconsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsPlayerIconsIni {
-  army_portraits: Record<string, string>
-  bandit_portraits: Record<string, string>
-  csky_portraits: Record<string, string>
-  dolg_portraits: Record<string, string>
-  ecolog_portraits: Record<string, string>
-  freedom_portraits: Record<string, string>
-  killer_portraits: Record<string, string>
-  monolith_portraits: Record<string, string>
-  stalker_portraits: Record<string, string>
-  renegade_portraits: {
+declare global {
+  interface PluginsPlayerIconsIni {
+    army_portraits: string[]
+    bandit_portraits: string[]
+    csky_portraits: string[]
+    dolg_portraits: string[]
+    ecolog_portraits: string[]
+    freedom_portraits: string[]
+    killer_portraits: string[]
+    monolith_portraits: string[]
+    stalker_portraits: string[]
+    renegade_portraits: PluginsPlayerIconsIni['bandit_portraits']
+    greh_portraits: string[]
+    isg_portraits: string[]
+    zombied_portraits: string[]
   }
-  greh_portraits: Record<string, string>
-  isg_portraits: Record<string, string>
-  zombied_portraits: Record<string, string>
-}
 
-interface IniFileSchemas {
-  'plugins\\player_icons.ltx': PluginsPlayerIconsIni
+  interface IniFileSchemas {
+    'plugins\\player_icons.ltx': PluginsPlayerIconsIni
+  }
 }

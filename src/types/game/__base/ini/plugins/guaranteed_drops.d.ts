@@ -2,13 +2,16 @@
 // Schema of `plugins\\guaranteed_drops.ltx`. Sections enumerated for autocomplete; `PluginsGuaranteedDropsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface PluginsGuaranteedDropsIni {
-  settings: {
-    bandage: CommaSeparatedString<string>
+declare global {
+  interface PluginsGuaranteedDropsIni {
+    settings: {
+      bandage: CommaSeparatedString<string[]>
+    }
   }
-}
 
-interface IniFileSchemas {
-  'plugins\\guaranteed_drops.ltx': PluginsGuaranteedDropsIni
+  interface IniFileSchemas {
+    'plugins\\guaranteed_drops.ltx': PluginsGuaranteedDropsIni
+  }
 }

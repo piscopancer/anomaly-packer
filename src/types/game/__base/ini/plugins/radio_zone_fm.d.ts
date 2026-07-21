@@ -2,13 +2,16 @@
 // Schema of `plugins\\radio_zone_fm.ltx`. Sections enumerated for autocomplete; `PluginsRadioZoneFmIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsRadioZoneFmIni {
-  trx_radio_plyr: {
-    number_of_playlists: number
+declare global {
+  interface PluginsRadioZoneFmIni {
+    trx_radio_plyr: {
+      number_of_playlists: number
+    }
   }
-}
 
-interface IniFileSchemas {
-  'plugins\\radio_zone_fm.ltx': PluginsRadioZoneFmIni
+  interface IniFileSchemas {
+    'plugins\\radio_zone_fm.ltx': PluginsRadioZoneFmIni
+  }
 }

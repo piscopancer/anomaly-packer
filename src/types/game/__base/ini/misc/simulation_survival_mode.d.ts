@@ -2,678 +2,681 @@
 // Schema of `misc\\simulation_survival_mode.ltx`. Sections enumerated for autocomplete; `MiscSimulationSurvivalModeIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface MiscSimulationSurvivalModeIni {
-  red_bridge_bandit_smart_skirmish: {
+declare global {
+  interface MiscSimulationSurvivalModeIni {
+    red_bridge_bandit_smart_skirmish: {
+    }
+    pri_a18_smart_terrain: string[]
+    aes2_monolith_camp1: {
+    }
+    aes2_monolith_camp2: {
+    }
+    aes2_monolith_camp3: {
+    }
+    aes2_monolith_camp4: {
+    }
+    aes2_monolith_snipers_1: {
+    }
+    aes2_monolith_snipers_2: {
+    }
+    aes2_monolith_snipers_3: {
+    }
+    aes2_monsters1: {
+    }
+    aes2_monsters2: {
+    }
+    aes_smart_terrain_monolit_blockpost: {
+    }
+    aes_smart_terrain_monolit_blockpost2: {
+    }
+    aes_smart_terrain_monolit_blockpost4: {
+    }
+    aes_smart_terrain_monsters1: {
+    }
+    aes_smart_terrain_monsters2: {
+    }
+    aes_smart_terrain_monsters3: {
+    }
+    aes_smart_terrain_monsters4: {
+    }
+    aes_smart_terran_soldier: {
+    }
+    aes_smart_terran_soldier2: {
+    }
+    agr_smart_terrain_1_2: {
+    }
+    agr_smart_terrain_1_3: {
+    }
+    agr_smart_terrain_1_6: string[]
+    agr_smart_terrain_1_6_near_1: {
+    }
+    agr_smart_terrain_1_6_near_2: string[]
+    agr_smart_terrain_2_2: {
+    }
+    agr_smart_terrain_4_4: {
+    }
+    agr_smart_terrain_4_4_near_1: {
+    }
+    agr_smart_terrain_4_4_near_2: {
+    }
+    agr_smart_terrain_4_4_near_3: {
+    }
+    agr_smart_terrain_4_6: {
+    }
+    agr_smart_terrain_5_2: {
+    }
+    agr_smart_terrain_5_3: {
+    }
+    agr_smart_terrain_5_7: {
+    }
+    agr_smart_terrain_6_4: {
+    }
+    agr_smart_terrain_7_5: {
+    }
+    agr_u_bandits: string[]
+    agr_u_soldiers: string[]
+    bar_dolg_bunker: string[]
+    bar_dolg_general: string[]
+    bar_visitors: string[]
+    bar_zastava: string[]
+    bar_zastava_2: string[]
+    bar_zastava_dogs_lair: {
+    }
+    bar_zastava_dogs_lair_2: {
+    }
+    bun_krovosos_nest: string[]
+    cit_bandits: {
+    }
+    cit_bandits_2: {
+    }
+    cit_kanaliz1: {
+    }
+    cit_kanaliz2: {
+    }
+    cit_killers: string[]
+    cit_killers_2: {
+    }
+    cit_killers_vs_bandits: {
+    }
+    dar_angar: string[]
+    dar_control_poltergeist: string[]
+    dar_poltergeist_tele: string[]
+    dar_poltergeist_tele_round: string[]
+    ds2_domik_st: {
+    }
+    ds2_lager_st: {
+    }
+    ds2_st_dogs: {
+    }
+    ds2_st_hoofs: {
+    }
+    ds_boars_nest: {
+    }
+    ds_deb1: {
+    }
+    ds_grverfer2: {
+    }
+    ds_kem1: {
+    }
+    ds_kem2: {
+    }
+    ds_kem3: {
+    }
+    ds_ptr: {
+    }
+    ds_ptr2: {
+    }
+    ds_ptr3: {
+    }
+    ds_ptr4: {
+    }
+    esc_smart_terrain_1_11: {
+    }
+    esc_smart_terrain_2_12: string[]
+    esc_smart_terrain_2_14: {
+    }
+    esc_smart_terrain_3_16: string[]
+    esc_smart_terrain_3_7: {
+    }
+    esc_smart_terrain_4_11: {
+    }
+    esc_smart_terrain_4_13: {
+    }
+    esc_smart_terrain_4_9: {
+    }
+    esc_smart_terrain_5_12: {
+    }
+    esc_smart_terrain_5_2: {
+    }
+    esc_smart_terrain_5_4: {
+    }
+    esc_smart_terrain_5_6: {
+    }
+    esc_smart_terrain_5_7: {
+    }
+    esc_smart_terrain_5_9: {
+    }
+    esc_smart_terrain_6_6: {
+    }
+    esc_smart_terrain_6_8: {
+    }
+    esc_smart_terrain_7_11: {
+    }
+    esc_smart_terrain_8_10: {
+    }
+    esc_smart_terrain_8_9: {
+    }
+    esc_smart_terrain_9_7: {
+    }
+    gar_smart_terrain_1_5: {
+    }
+    gar_smart_terrain_1_7: {
+    }
+    gar_smart_terrain_2_4: {
+    }
+    gar_smart_terrain_3_5: string[]
+    gar_smart_terrain_3_7: {
+    }
+    gar_smart_terrain_4_2: {
+    }
+    gar_smart_terrain_4_5: {
+    }
+    gar_smart_terrain_5_2: {
+    }
+    gar_smart_terrain_5_4: {
+    }
+    gar_smart_terrain_5_5: {
+    }
+    gar_smart_terrain_5_6: {
+    }
+    gar_smart_terrain_6_1: {
+    }
+    gar_smart_terrain_6_3: {
+    }
+    gar_smart_terrain_6_6: {
+    }
+    gar_smart_terrain_6_7: {
+    }
+    gar_smart_terrain_7_4: {
+    }
+    gar_smart_terrain_8_5: {
+    }
+    gen_smart_terrain_cemetery: {
+    }
+    gen_smart_terrain_forest: {
+    }
+    gen_smart_terrain_junk: {
+    }
+    gen_smart_terrain_lab_entrance: {
+    }
+    gen_smart_terrain_lab_entrance_2: {
+    }
+    gen_smart_terrain_military: {
+    }
+    gen_smart_terrain_urod: {
+    }
+    jup_a12: string[]
+    jup_a6: string[]
+    jup_b19: string[]
+    jup_b200_tushkan_smart_terrain: string[]
+    jup_b203: string[]
+    jup_b204: string[]
+    jup_b205_smart_terrain: string[]
+    jup_b205_smart_terrain_tushkano: string[]
+    jup_b208: {
+    }
+    jup_b211: string[]
+    jup_b41: string[]
+    jup_b47: string[]
+    jup_b8_smart_terrain: string[]
+    jup_sim_1: {
+    }
+    jup_sim_10: {
+    }
+    jup_sim_11: {
+    }
+    jup_sim_12: {
+    }
+    jup_sim_13: {
+    }
+    jup_sim_14: {
+    }
+    jup_sim_15: {
+    }
+    jup_sim_16: {
+    }
+    jup_sim_17: {
+    }
+    jup_sim_18: {
+    }
+    jup_sim_19: {
+    }
+    jup_sim_2: {
+    }
+    jup_sim_20: {
+    }
+    jup_sim_21: {
+    }
+    jup_sim_3: {
+    }
+    jup_sim_4: {
+    }
+    jup_sim_5: {
+    }
+    jup_sim_6: {
+    }
+    jup_sim_7: {
+    }
+    jup_sim_8: {
+    }
+    jup_sim_9: {
+    }
+    katacomb_smart_terrain: {
+    }
+    lim_smart_terrain_1: {
+    }
+    lim_smart_terrain_10: {
+    }
+    lim_smart_terrain_3: {
+    }
+    lim_smart_terrain_4: {
+    }
+    lim_smart_terrain_5: {
+    }
+    lim_smart_terrain_6: {
+    }
+    lim_smart_terrain_8: {
+    }
+    lim_smart_terrain_9: {
+    }
+    lx8_smart_terrain: string[]
+    mar_smart_terrain_10_10: {
+    }
+    mar_smart_terrain_10_5: {
+    }
+    mar_smart_terrain_10_7: {
+    }
+    mar_smart_terrain_11_11: {
+    }
+    mar_smart_terrain_11_3: {
+    }
+    mar_smart_terrain_12_2: {
+    }
+    mar_smart_terrain_3_10: {
+    }
+    mar_smart_terrain_3_3: {
+    }
+    mar_smart_terrain_3_7: {
+    }
+    mar_smart_terrain_4_5: {
+    }
+    mar_smart_terrain_4_7: {
+    }
+    mar_smart_terrain_5_12: {
+    }
+    mar_smart_terrain_5_8: {
+    }
+    mar_smart_terrain_6_10: {
+    }
+    mar_smart_terrain_6_11: {
+    }
+    mar_smart_terrain_6_4: {
+    }
+    mar_smart_terrain_6_7: {
+    }
+    mar_smart_terrain_6_8: {
+    }
+    mar_smart_terrain_7_3: {
+    }
+    mar_smart_terrain_7_7: {
+    }
+    mar_smart_terrain_8_11: {
+    }
+    mar_smart_terrain_8_4: {
+    }
+    mar_smart_terrain_8_8: {
+    }
+    mar_smart_terrain_8_9: {
+    }
+    mar_smart_terrain_base: string[]
+    mar_smart_terrain_doc: string[]
+    mil_smart_terrain_2_1: {
+    }
+    mil_smart_terrain_2_10: {
+    }
+    mil_smart_terrain_2_2: {
+    }
+    mil_smart_terrain_2_4: {
+    }
+    mil_smart_terrain_2_6: {
+    }
+    mil_smart_terrain_3_8: {
+    }
+    mil_smart_terrain_4_2: {
+    }
+    mil_smart_terrain_4_3: {
+    }
+    mil_smart_terrain_4_5: {
+    }
+    mil_smart_terrain_4_7: {
+    }
+    mil_smart_terrain_4_8: {
+    }
+    mil_smart_terrain_7_10: string[]
+    mil_smart_terrain_7_12: {
+    }
+    mil_smart_terrain_7_4: {
+    }
+    mil_smart_terrain_7_7: string[]
+    mil_smart_terrain_7_8: {
+    }
+    mil_smart_terrain_8_3: {
+    }
+    pas_b400_canalisation: string[]
+    pas_b400_downstairs: string[]
+    pas_b400_elevator: string[]
+    pas_b400_hall: string[]
+    pas_b400_track: string[]
+    pas_b400_tunnel: string[]
+    pri_b303: string[]
+    pri_b304_monsters_smart_terrain: string[]
+    pri_b306: string[]
+    pri_b36_smart_terrain: string[]
+    pri_depot: {
+    }
+    pri_monolith: string[]
+    pri_sim_1: {
+    }
+    pri_sim_10: {
+    }
+    pri_sim_11: {
+    }
+    pri_sim_12: {
+    }
+    pri_sim_2: {
+    }
+    pri_sim_3: {
+    }
+    pri_sim_4: {
+    }
+    pri_sim_5: {
+    }
+    pri_sim_6: {
+    }
+    pri_sim_7: {
+    }
+    pri_sim_8: {
+    }
+    pri_sim_9: {
+    }
+    pri_smart_bloodsucker_lair1: {
+    }
+    pri_smart_controler_lair1: {
+    }
+    pri_smart_controler_lair2: {
+    }
+    pri_smart_giant_lair1: {
+    }
+    pri_smart_monolith_stalker2: {
+    }
+    pri_smart_monolith_stalker3: {
+    }
+    pri_smart_monolith_stalker4: {
+    }
+    pri_smart_monolith_stalker6: {
+    }
+    pri_smart_monster_lair1: {
+    }
+    pri_smart_neutral_stalker1: {
+    }
+    pri_smart_pseudodog_lair1: {
+    }
+    pri_smart_snork_lair1: {
+    }
+    pri_smart_snork_lair2: {
+    }
+    pri_smart_tushkano_lair1: {
+    }
+    rad2_loner_0000: {
+    }
+    rad2_loner_0001: {
+    }
+    rad2_loner_0002: {
+    }
+    rad2_prip_teleport: {
+    }
+    rad_after_valley: {
+    }
+    rad_antenna_camper: {
+    }
+    rad_antenna_monolith: {
+    }
+    rad_antenna_patrol: {
+    }
+    rad_bloodsucker: {
+    }
+    rad_entrance: {
+    }
+    rad_pseudodogs: {
+    }
+    rad_snork1: {
+    }
+    rad_snork2: {
+    }
+    rad_valley: {
+    }
+    rad_valley_dogs: {
+    }
+    rad_zombied1: {
+    }
+    rad_zombied2: {
+    }
+    red_smart_terrain_3_1: {
+    }
+    red_smart_terrain_3_2: {
+    }
+    red_smart_terrain_3_3: {
+    }
+    red_smart_terrain_4_3: {
+    }
+    red_smart_terrain_4_5: {
+    }
+    red_smart_terrain_5_5: {
+    }
+    red_smart_terrain_5_6: {
+    }
+    red_smart_terrain_6_3: {
+    }
+    red_smart_terrain_6_6: {
+    }
+    red_smart_terrain_monsters: {
+    }
+    red_smart_terrain_monsters_2: {
+    }
+    red_smart_terrain_monsters_3: {
+    }
+    ros_smart_killers1: {
+    }
+    ros_smart_monster4: {
+    }
+    ros_smart_monster5: {
+    }
+    ros_smart_monster7: {
+    }
+    ros_smart_poltergeist2: {
+    }
+    ros_smart_snork1: {
+    }
+    ros_smart_stalker1: {
+    }
+    ros_smart_stalker_killers1: {
+    }
+    sar_monolith_general: string[]
+    sar_monolith_sklad: string[]
+    trc_sim_1: {
+    }
+    trc_sim_10: {
+    }
+    trc_sim_11: {
+    }
+    trc_sim_12: {
+    }
+    trc_sim_13: {
+    }
+    trc_sim_14: {
+    }
+    trc_sim_15: {
+    }
+    trc_sim_16: {
+    }
+    trc_sim_17: {
+    }
+    trc_sim_18: {
+    }
+    trc_sim_19: {
+    }
+    trc_sim_2: {
+    }
+    trc_sim_20: string[]
+    trc_sim_21: {
+    }
+    trc_sim_3: {
+    }
+    trc_sim_4: {
+    }
+    trc_sim_5: {
+    }
+    trc_sim_6: {
+    }
+    trc_sim_7: {
+    }
+    trc_sim_8: {
+    }
+    trc_sim_9: {
+    }
+    val_smart_terrain_1_2: {
+    }
+    val_smart_terrain_3_0: {
+    }
+    val_smart_terrain_4_0: {
+    }
+    val_smart_terrain_5_10: {
+    }
+    val_smart_terrain_6_4: {
+    }
+    val_smart_terrain_6_5: {
+    }
+    val_smart_terrain_7_3: string[]
+    val_smart_terrain_7_4: string[]
+    val_smart_terrain_7_5: string[]
+    val_smart_terrain_8_6: {
+    }
+    val_smart_terrain_8_7: {
+    }
+    val_smart_terrain_8_9: {
+    }
+    val_smart_terrain_9_10: {
+    }
+    val_smart_terrain_9_2: {
+    }
+    val_smart_terrain_9_4: {
+    }
+    val_smart_terrain_9_6: {
+    }
+    warlab_common_consciousness_smart_terrain: string[]
+    yan_smart_terrain_2_4: {
+    }
+    yan_smart_terrain_2_5: {
+    }
+    yan_smart_terrain_3_4: {
+    }
+    yan_smart_terrain_3_6: {
+    }
+    yan_smart_terrain_4_5: {
+    }
+    yan_smart_terrain_5_5: {
+    }
+    yan_smart_terrain_6_2: {
+    }
+    yan_smart_terrain_6_4: string[]
+    yan_smart_terrain_zombi_spawn: {
+    }
+    zat_b100: string[]
+    zat_b104_zombied: string[]
+    zat_b18: string[]
+    zat_b28: string[]
+    zat_b33: string[]
+    zat_b38: string[]
+    zat_b39: string[]
+    zat_b40_smart_terrain: string[]
+    zat_b42_smart_terrain: string[]
+    zat_b7: string[]
+    zat_sim_1: {
+    }
+    zat_sim_10: {
+    }
+    zat_sim_11: {
+    }
+    zat_sim_12: {
+    }
+    zat_sim_13: {
+    }
+    zat_sim_14: {
+    }
+    zat_sim_15: {
+    }
+    zat_sim_16: {
+    }
+    zat_sim_17: {
+    }
+    zat_sim_18: {
+    }
+    zat_sim_19: {
+    }
+    zat_sim_2: {
+    }
+    zat_sim_20: {
+    }
+    zat_sim_21: {
+    }
+    zat_sim_22: {
+    }
+    zat_sim_23: {
+    }
+    zat_sim_24: {
+    }
+    zat_sim_25: {
+    }
+    zat_sim_26: {
+    }
+    zat_sim_27: {
+    }
+    zat_sim_28: {
+    }
+    zat_sim_29: {
+    }
+    zat_sim_3: {
+    }
+    zat_sim_30: {
+    }
+    zat_sim_4: {
+    }
+    zat_sim_5: {
+    }
+    zat_sim_6: {
+    }
+    zat_sim_7: {
+    }
+    zat_sim_8: {
+    }
+    zat_sim_9: {
+    }
+    zat_stalker_base_smart: string[]
   }
-  pri_a18_smart_terrain: Record<string, string>
-  aes2_monolith_camp1: {
-  }
-  aes2_monolith_camp2: {
-  }
-  aes2_monolith_camp3: {
-  }
-  aes2_monolith_camp4: {
-  }
-  aes2_monolith_snipers_1: {
-  }
-  aes2_monolith_snipers_2: {
-  }
-  aes2_monolith_snipers_3: {
-  }
-  aes2_monsters1: {
-  }
-  aes2_monsters2: {
-  }
-  aes_smart_terrain_monolit_blockpost: {
-  }
-  aes_smart_terrain_monolit_blockpost2: {
-  }
-  aes_smart_terrain_monolit_blockpost4: {
-  }
-  aes_smart_terrain_monsters1: {
-  }
-  aes_smart_terrain_monsters2: {
-  }
-  aes_smart_terrain_monsters3: {
-  }
-  aes_smart_terrain_monsters4: {
-  }
-  aes_smart_terran_soldier: {
-  }
-  aes_smart_terran_soldier2: {
-  }
-  agr_smart_terrain_1_2: {
-  }
-  agr_smart_terrain_1_3: {
-  }
-  agr_smart_terrain_1_6: Record<string, string>
-  agr_smart_terrain_1_6_near_1: {
-  }
-  agr_smart_terrain_1_6_near_2: Record<string, string>
-  agr_smart_terrain_2_2: {
-  }
-  agr_smart_terrain_4_4: {
-  }
-  agr_smart_terrain_4_4_near_1: {
-  }
-  agr_smart_terrain_4_4_near_2: {
-  }
-  agr_smart_terrain_4_4_near_3: {
-  }
-  agr_smart_terrain_4_6: {
-  }
-  agr_smart_terrain_5_2: {
-  }
-  agr_smart_terrain_5_3: {
-  }
-  agr_smart_terrain_5_7: {
-  }
-  agr_smart_terrain_6_4: {
-  }
-  agr_smart_terrain_7_5: {
-  }
-  agr_u_bandits: Record<string, string>
-  agr_u_soldiers: Record<string, string>
-  bar_dolg_bunker: Record<string, string>
-  bar_dolg_general: Record<string, string>
-  bar_visitors: Record<string, string>
-  bar_zastava: Record<string, string>
-  bar_zastava_2: Record<string, string>
-  bar_zastava_dogs_lair: {
-  }
-  bar_zastava_dogs_lair_2: {
-  }
-  bun_krovosos_nest: Record<string, string>
-  cit_bandits: {
-  }
-  cit_bandits_2: {
-  }
-  cit_kanaliz1: {
-  }
-  cit_kanaliz2: {
-  }
-  cit_killers: Record<string, string>
-  cit_killers_2: {
-  }
-  cit_killers_vs_bandits: {
-  }
-  dar_angar: Record<string, string>
-  dar_control_poltergeist: Record<string, string>
-  dar_poltergeist_tele: Record<string, string>
-  dar_poltergeist_tele_round: Record<string, string>
-  ds2_domik_st: {
-  }
-  ds2_lager_st: {
-  }
-  ds2_st_dogs: {
-  }
-  ds2_st_hoofs: {
-  }
-  ds_boars_nest: {
-  }
-  ds_deb1: {
-  }
-  ds_grverfer2: {
-  }
-  ds_kem1: {
-  }
-  ds_kem2: {
-  }
-  ds_kem3: {
-  }
-  ds_ptr: {
-  }
-  ds_ptr2: {
-  }
-  ds_ptr3: {
-  }
-  ds_ptr4: {
-  }
-  esc_smart_terrain_1_11: {
-  }
-  esc_smart_terrain_2_12: Record<string, string>
-  esc_smart_terrain_2_14: {
-  }
-  esc_smart_terrain_3_16: Record<string, string>
-  esc_smart_terrain_3_7: {
-  }
-  esc_smart_terrain_4_11: {
-  }
-  esc_smart_terrain_4_13: {
-  }
-  esc_smart_terrain_4_9: {
-  }
-  esc_smart_terrain_5_12: {
-  }
-  esc_smart_terrain_5_2: {
-  }
-  esc_smart_terrain_5_4: {
-  }
-  esc_smart_terrain_5_6: {
-  }
-  esc_smart_terrain_5_7: {
-  }
-  esc_smart_terrain_5_9: {
-  }
-  esc_smart_terrain_6_6: {
-  }
-  esc_smart_terrain_6_8: {
-  }
-  esc_smart_terrain_7_11: {
-  }
-  esc_smart_terrain_8_10: {
-  }
-  esc_smart_terrain_8_9: {
-  }
-  esc_smart_terrain_9_7: {
-  }
-  gar_smart_terrain_1_5: {
-  }
-  gar_smart_terrain_1_7: {
-  }
-  gar_smart_terrain_2_4: {
-  }
-  gar_smart_terrain_3_5: Record<string, string>
-  gar_smart_terrain_3_7: {
-  }
-  gar_smart_terrain_4_2: {
-  }
-  gar_smart_terrain_4_5: {
-  }
-  gar_smart_terrain_5_2: {
-  }
-  gar_smart_terrain_5_4: {
-  }
-  gar_smart_terrain_5_5: {
-  }
-  gar_smart_terrain_5_6: {
-  }
-  gar_smart_terrain_6_1: {
-  }
-  gar_smart_terrain_6_3: {
-  }
-  gar_smart_terrain_6_6: {
-  }
-  gar_smart_terrain_6_7: {
-  }
-  gar_smart_terrain_7_4: {
-  }
-  gar_smart_terrain_8_5: {
-  }
-  gen_smart_terrain_cemetery: {
-  }
-  gen_smart_terrain_forest: {
-  }
-  gen_smart_terrain_junk: {
-  }
-  gen_smart_terrain_lab_entrance: {
-  }
-  gen_smart_terrain_lab_entrance_2: {
-  }
-  gen_smart_terrain_military: {
-  }
-  gen_smart_terrain_urod: {
-  }
-  jup_a12: Record<string, string>
-  jup_a6: Record<string, string>
-  jup_b19: Record<string, string>
-  jup_b200_tushkan_smart_terrain: Record<string, string>
-  jup_b203: Record<string, string>
-  jup_b204: Record<string, string>
-  jup_b205_smart_terrain: Record<string, string>
-  jup_b205_smart_terrain_tushkano: Record<string, string>
-  jup_b208: {
-  }
-  jup_b211: Record<string, string>
-  jup_b41: Record<string, string>
-  jup_b47: Record<string, string>
-  jup_b8_smart_terrain: Record<string, string>
-  jup_sim_1: {
-  }
-  jup_sim_10: {
-  }
-  jup_sim_11: {
-  }
-  jup_sim_12: {
-  }
-  jup_sim_13: {
-  }
-  jup_sim_14: {
-  }
-  jup_sim_15: {
-  }
-  jup_sim_16: {
-  }
-  jup_sim_17: {
-  }
-  jup_sim_18: {
-  }
-  jup_sim_19: {
-  }
-  jup_sim_2: {
-  }
-  jup_sim_20: {
-  }
-  jup_sim_21: {
-  }
-  jup_sim_3: {
-  }
-  jup_sim_4: {
-  }
-  jup_sim_5: {
-  }
-  jup_sim_6: {
-  }
-  jup_sim_7: {
-  }
-  jup_sim_8: {
-  }
-  jup_sim_9: {
-  }
-  katacomb_smart_terrain: {
-  }
-  lim_smart_terrain_1: {
-  }
-  lim_smart_terrain_10: {
-  }
-  lim_smart_terrain_3: {
-  }
-  lim_smart_terrain_4: {
-  }
-  lim_smart_terrain_5: {
-  }
-  lim_smart_terrain_6: {
-  }
-  lim_smart_terrain_8: {
-  }
-  lim_smart_terrain_9: {
-  }
-  lx8_smart_terrain: Record<string, string>
-  mar_smart_terrain_10_10: {
-  }
-  mar_smart_terrain_10_5: {
-  }
-  mar_smart_terrain_10_7: {
-  }
-  mar_smart_terrain_11_11: {
-  }
-  mar_smart_terrain_11_3: {
-  }
-  mar_smart_terrain_12_2: {
-  }
-  mar_smart_terrain_3_10: {
-  }
-  mar_smart_terrain_3_3: {
-  }
-  mar_smart_terrain_3_7: {
-  }
-  mar_smart_terrain_4_5: {
-  }
-  mar_smart_terrain_4_7: {
-  }
-  mar_smart_terrain_5_12: {
-  }
-  mar_smart_terrain_5_8: {
-  }
-  mar_smart_terrain_6_10: {
-  }
-  mar_smart_terrain_6_11: {
-  }
-  mar_smart_terrain_6_4: {
-  }
-  mar_smart_terrain_6_7: {
-  }
-  mar_smart_terrain_6_8: {
-  }
-  mar_smart_terrain_7_3: {
-  }
-  mar_smart_terrain_7_7: {
-  }
-  mar_smart_terrain_8_11: {
-  }
-  mar_smart_terrain_8_4: {
-  }
-  mar_smart_terrain_8_8: {
-  }
-  mar_smart_terrain_8_9: {
-  }
-  mar_smart_terrain_base: Record<string, string>
-  mar_smart_terrain_doc: Record<string, string>
-  mil_smart_terrain_2_1: {
-  }
-  mil_smart_terrain_2_10: {
-  }
-  mil_smart_terrain_2_2: {
-  }
-  mil_smart_terrain_2_4: {
-  }
-  mil_smart_terrain_2_6: {
-  }
-  mil_smart_terrain_3_8: {
-  }
-  mil_smart_terrain_4_2: {
-  }
-  mil_smart_terrain_4_3: {
-  }
-  mil_smart_terrain_4_5: {
-  }
-  mil_smart_terrain_4_7: {
-  }
-  mil_smart_terrain_4_8: {
-  }
-  mil_smart_terrain_7_10: Record<string, string>
-  mil_smart_terrain_7_12: {
-  }
-  mil_smart_terrain_7_4: {
-  }
-  mil_smart_terrain_7_7: Record<string, string>
-  mil_smart_terrain_7_8: {
-  }
-  mil_smart_terrain_8_3: {
-  }
-  pas_b400_canalisation: Record<string, string>
-  pas_b400_downstairs: Record<string, string>
-  pas_b400_elevator: Record<string, string>
-  pas_b400_hall: Record<string, string>
-  pas_b400_track: Record<string, string>
-  pas_b400_tunnel: Record<string, string>
-  pri_b303: Record<string, string>
-  pri_b304_monsters_smart_terrain: Record<string, string>
-  pri_b306: Record<string, string>
-  pri_b36_smart_terrain: Record<string, string>
-  pri_depot: {
-  }
-  pri_monolith: Record<string, string>
-  pri_sim_1: {
-  }
-  pri_sim_10: {
-  }
-  pri_sim_11: {
-  }
-  pri_sim_12: {
-  }
-  pri_sim_2: {
-  }
-  pri_sim_3: {
-  }
-  pri_sim_4: {
-  }
-  pri_sim_5: {
-  }
-  pri_sim_6: {
-  }
-  pri_sim_7: {
-  }
-  pri_sim_8: {
-  }
-  pri_sim_9: {
-  }
-  pri_smart_bloodsucker_lair1: {
-  }
-  pri_smart_controler_lair1: {
-  }
-  pri_smart_controler_lair2: {
-  }
-  pri_smart_giant_lair1: {
-  }
-  pri_smart_monolith_stalker2: {
-  }
-  pri_smart_monolith_stalker3: {
-  }
-  pri_smart_monolith_stalker4: {
-  }
-  pri_smart_monolith_stalker6: {
-  }
-  pri_smart_monster_lair1: {
-  }
-  pri_smart_neutral_stalker1: {
-  }
-  pri_smart_pseudodog_lair1: {
-  }
-  pri_smart_snork_lair1: {
-  }
-  pri_smart_snork_lair2: {
-  }
-  pri_smart_tushkano_lair1: {
-  }
-  rad2_loner_0000: {
-  }
-  rad2_loner_0001: {
-  }
-  rad2_loner_0002: {
-  }
-  rad2_prip_teleport: {
-  }
-  rad_after_valley: {
-  }
-  rad_antenna_camper: {
-  }
-  rad_antenna_monolith: {
-  }
-  rad_antenna_patrol: {
-  }
-  rad_bloodsucker: {
-  }
-  rad_entrance: {
-  }
-  rad_pseudodogs: {
-  }
-  rad_snork1: {
-  }
-  rad_snork2: {
-  }
-  rad_valley: {
-  }
-  rad_valley_dogs: {
-  }
-  rad_zombied1: {
-  }
-  rad_zombied2: {
-  }
-  red_smart_terrain_3_1: {
-  }
-  red_smart_terrain_3_2: {
-  }
-  red_smart_terrain_3_3: {
-  }
-  red_smart_terrain_4_3: {
-  }
-  red_smart_terrain_4_5: {
-  }
-  red_smart_terrain_5_5: {
-  }
-  red_smart_terrain_5_6: {
-  }
-  red_smart_terrain_6_3: {
-  }
-  red_smart_terrain_6_6: {
-  }
-  red_smart_terrain_monsters: {
-  }
-  red_smart_terrain_monsters_2: {
-  }
-  red_smart_terrain_monsters_3: {
-  }
-  ros_smart_killers1: {
-  }
-  ros_smart_monster4: {
-  }
-  ros_smart_monster5: {
-  }
-  ros_smart_monster7: {
-  }
-  ros_smart_poltergeist2: {
-  }
-  ros_smart_snork1: {
-  }
-  ros_smart_stalker1: {
-  }
-  ros_smart_stalker_killers1: {
-  }
-  sar_monolith_general: Record<string, string>
-  sar_monolith_sklad: Record<string, string>
-  trc_sim_1: {
-  }
-  trc_sim_10: {
-  }
-  trc_sim_11: {
-  }
-  trc_sim_12: {
-  }
-  trc_sim_13: {
-  }
-  trc_sim_14: {
-  }
-  trc_sim_15: {
-  }
-  trc_sim_16: {
-  }
-  trc_sim_17: {
-  }
-  trc_sim_18: {
-  }
-  trc_sim_19: {
-  }
-  trc_sim_2: {
-  }
-  trc_sim_20: Record<string, string>
-  trc_sim_21: {
-  }
-  trc_sim_3: {
-  }
-  trc_sim_4: {
-  }
-  trc_sim_5: {
-  }
-  trc_sim_6: {
-  }
-  trc_sim_7: {
-  }
-  trc_sim_8: {
-  }
-  trc_sim_9: {
-  }
-  val_smart_terrain_1_2: {
-  }
-  val_smart_terrain_3_0: {
-  }
-  val_smart_terrain_4_0: {
-  }
-  val_smart_terrain_5_10: {
-  }
-  val_smart_terrain_6_4: {
-  }
-  val_smart_terrain_6_5: {
-  }
-  val_smart_terrain_7_3: Record<string, string>
-  val_smart_terrain_7_4: Record<string, string>
-  val_smart_terrain_7_5: Record<string, string>
-  val_smart_terrain_8_6: {
-  }
-  val_smart_terrain_8_7: {
-  }
-  val_smart_terrain_8_9: {
-  }
-  val_smart_terrain_9_10: {
-  }
-  val_smart_terrain_9_2: {
-  }
-  val_smart_terrain_9_4: {
-  }
-  val_smart_terrain_9_6: {
-  }
-  warlab_common_consciousness_smart_terrain: Record<string, string>
-  yan_smart_terrain_2_4: {
-  }
-  yan_smart_terrain_2_5: {
-  }
-  yan_smart_terrain_3_4: {
-  }
-  yan_smart_terrain_3_6: {
-  }
-  yan_smart_terrain_4_5: {
-  }
-  yan_smart_terrain_5_5: {
-  }
-  yan_smart_terrain_6_2: {
-  }
-  yan_smart_terrain_6_4: Record<string, string>
-  yan_smart_terrain_zombi_spawn: {
-  }
-  zat_b100: Record<string, string>
-  zat_b104_zombied: Record<string, string>
-  zat_b18: Record<string, string>
-  zat_b28: Record<string, string>
-  zat_b33: Record<string, string>
-  zat_b38: Record<string, string>
-  zat_b39: Record<string, string>
-  zat_b40_smart_terrain: Record<string, string>
-  zat_b42_smart_terrain: Record<string, string>
-  zat_b7: Record<string, string>
-  zat_sim_1: {
-  }
-  zat_sim_10: {
-  }
-  zat_sim_11: {
-  }
-  zat_sim_12: {
-  }
-  zat_sim_13: {
-  }
-  zat_sim_14: {
-  }
-  zat_sim_15: {
-  }
-  zat_sim_16: {
-  }
-  zat_sim_17: {
-  }
-  zat_sim_18: {
-  }
-  zat_sim_19: {
-  }
-  zat_sim_2: {
-  }
-  zat_sim_20: {
-  }
-  zat_sim_21: {
-  }
-  zat_sim_22: {
-  }
-  zat_sim_23: {
-  }
-  zat_sim_24: {
-  }
-  zat_sim_25: {
-  }
-  zat_sim_26: {
-  }
-  zat_sim_27: {
-  }
-  zat_sim_28: {
-  }
-  zat_sim_29: {
-  }
-  zat_sim_3: {
-  }
-  zat_sim_30: {
-  }
-  zat_sim_4: {
-  }
-  zat_sim_5: {
-  }
-  zat_sim_6: {
-  }
-  zat_sim_7: {
-  }
-  zat_sim_8: {
-  }
-  zat_sim_9: {
-  }
-  zat_stalker_base_smart: Record<string, string>
-}
 
-interface IniFileSchemas {
-  'misc\\simulation_survival_mode.ltx': MiscSimulationSurvivalModeIni
+  interface IniFileSchemas {
+    'misc\\simulation_survival_mode.ltx': MiscSimulationSurvivalModeIni
+  }
 }

@@ -2,23 +2,26 @@
 // Schema of `scripts\\awr_tiski.ltx`. Sections enumerated for autocomplete; `ScriptsAwrTiskiIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsAwrTiskiIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsAwrTiskiIni {
+    logic: {
+      active: string
+    }
+    'ph_idle@close': {
+      nonscript_usable: boolean
+      on_info: string
+      tips: string
+    }
+    'ph_idle@open': {
+      on_info: string
+      tips: string
+    }
+    collide: string[]
   }
-  'ph_idle@close': {
-    nonscript_usable: boolean
-    on_info: string
-    tips: string
-  }
-  'ph_idle@open': {
-    on_info: string
-    tips: string
-  }
-  collide: Record<string, string>
-}
 
-interface IniFileSchemas {
-  'scripts\\awr_tiski.ltx': ScriptsAwrTiskiIni
+  interface IniFileSchemas {
+    'scripts\\awr_tiski.ltx': ScriptsAwrTiskiIni
+  }
 }

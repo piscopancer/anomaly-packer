@@ -1,4 +1,6 @@
 export * from './pack'
+export * from './zip'
+
 export * from './texts'
 export * from './types'
 // The `Section` namespace (Section.Weapon, Section.Item, …, Section.All) and its augmentable

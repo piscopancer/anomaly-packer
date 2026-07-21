@@ -2,138 +2,141 @@
 // Schema of `plugins\\encyclopedia.ltx`. Sections enumerated for autocomplete; `PluginsEncyclopediaIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface PluginsEncyclopediaIni {
-  encyclopedia: Record<string, string>
-  encyclopedia__notes: {
-    encyclopedia__notes__ironman: CommaSeparatedString<string>
-    encyclopedia__notes__state: CommaSeparatedString<string>
+declare global {
+  interface PluginsEncyclopediaIni {
+    encyclopedia: string[]
+    encyclopedia__notes: {
+      encyclopedia__notes__ironman: CommaSeparatedString<string[]>
+      encyclopedia__notes__state: CommaSeparatedString<string[]>
+    }
+    encyclopedia_achievements: {
+      encyclopedia_achievements_absolver: string
+      encyclopedia_achievements_artificer_eagerness: string
+      encyclopedia_achievements_collaborator: string
+      encyclopedia_achievements_completionist: string
+      encyclopedia_achievements_down_to_earth: string
+      encyclopedia_achievements_duga_free: CommaSeparatedString<string[]>
+      encyclopedia_achievements_geologist: string
+      encyclopedia_achievements_heavy_pockets: string
+      encyclopedia_achievements_infantile_pleasure: string
+      encyclopedia_achievements_infopreneur: string
+      encyclopedia_achievements_invictus: string
+      encyclopedia_achievements_iron_curtain: string
+      encyclopedia_achievements_mechanized_warfare: string
+      encyclopedia_achievements_murky_spirit: string
+      encyclopedia_achievements_patriarch: string
+      encyclopedia_achievements_radiotherapy: string
+      encyclopedia_achievements_rag_and_bone: string
+      encyclopedia_achievements_recycler: string
+      encyclopedia_achievements_silver_or_lead: string
+      encyclopedia_achievements_tourist: string
+      encyclopedia_achievements_unforeseen_guest: string
+      encyclopedia_achievements_well_dressed: string
+      encyclopedia_achievements_wishful_thinking: CommaSeparatedString<string[]>
+    }
+    encyclopedia_anomalies: string[]
+    encyclopedia_artefacts: string[]
+    encyclopedia_characters: {
+      encyclopedia_characters_nimble: string
+      encyclopedia_characters_sidorovich: string
+    }
+    encyclopedia_factions: {
+      encyclopedia_factions_bandit: string
+      encyclopedia_factions_clear_sky: string
+      encyclopedia_factions_duty: string
+      encyclopedia_factions_ecologist: string
+      encyclopedia_factions_freedom: string
+      encyclopedia_factions_greh: string
+      encyclopedia_factions_isg: string
+      encyclopedia_factions_loner: string
+      encyclopedia_factions_mercenary: string
+      encyclopedia_factions_military: string
+      encyclopedia_factions_monolith: string
+      encyclopedia_factions_renegade: string
+      encyclopedia_factions_zombified: string
+    }
+    encyclopedia_features: {
+      encyclopedia_features_agony_mode: CommaSeparatedString<string[]>
+      encyclopedia_features_azazel_mode: CommaSeparatedString<string[]>
+      encyclopedia_features_battery: string
+      encyclopedia_features_campfire_mode: CommaSeparatedString<string[]>
+      encyclopedia_features_companions: string
+      encyclopedia_features_disassembly: string
+      encyclopedia_features_disguise: string
+      encyclopedia_features_economy_difficulty: string
+      encyclopedia_features_fast_travel: string
+      encyclopedia_features_gameplay_difficulty: string
+      encyclopedia_features_guide: string
+      encyclopedia_features_hud: string
+      encyclopedia_features_ironman_mode: CommaSeparatedString<string[]>
+      encyclopedia_features_map_spots: string
+      encyclopedia_features_rank: string
+      encyclopedia_features_reputation: string
+      encyclopedia_features_stashes: string
+      encyclopedia_features_story_mode: CommaSeparatedString<string[]>
+      encyclopedia_features_survival_mode: CommaSeparatedString<string[]>
+      encyclopedia_features_timer_mode: CommaSeparatedString<string[]>
+      encyclopedia_features_warfare: CommaSeparatedString<string[]>
+      encyclopedia_features_workshop: string
+      encyclopedia_features_workshop_craft: string
+      encyclopedia_features_workshop_repair: string
+      encyclopedia_features_workshop_upgrade: string
+    }
+    encyclopedia_historic: string[]
+    encyclopedia_items: {
+      encyclopedia_items_pda: string
+    }
+    encyclopedia_locations: {
+      encyclopedia_locations_chernobyl_npp: string
+      encyclopedia_locations_lab_x16: string
+      encyclopedia_locations_lab_x18: string
+      encyclopedia_locations_lab_x19: string
+      encyclopedia_locations_lab_x8: string
+    }
+    encyclopedia_mutants: {
+      encyclopedia_mutants_blind_dog: string
+      encyclopedia_mutants_bloodsucker: string
+      encyclopedia_mutants_boar: string
+      encyclopedia_mutants_burer: string
+      encyclopedia_mutants_cat: string
+      encyclopedia_mutants_chimera: string
+      encyclopedia_mutants_controller: string
+      encyclopedia_mutants_crow: string
+      encyclopedia_mutants_flesh: string
+      encyclopedia_mutants_fracture: string
+      encyclopedia_mutants_karlik: string
+      encyclopedia_mutants_lurker: string
+      encyclopedia_mutants_poltergeist: string
+      encyclopedia_mutants_pseudodog: string
+      encyclopedia_mutants_pseudogeist: string
+      encyclopedia_mutants_pseudogiant: string
+      encyclopedia_mutants_psydog: string
+      encyclopedia_mutants_psysucker: string
+      encyclopedia_mutants_pyrogeist: string
+      encyclopedia_mutants_rat: string
+      encyclopedia_mutants_snork: string
+      encyclopedia_mutants_tushkano: string
+      encyclopedia_mutants_zombie: string
+    }
+    encyclopedia_options: {
+      encyclopedia_options_delayed_repairs: string
+      encyclopedia_options_dynamic_news: string
+      encyclopedia_options_enhanced_recoil: string
+      encyclopedia_options_extended_hud: string
+      encyclopedia_options_hardcore_ai_aim: string
+      encyclopedia_options_helicopter_patrols: string
+      encyclopedia_options_localisation: string
+      encyclopedia_options_online_exclusion: string
+      encyclopedia_options_population_factors: string
+      encyclopedia_options_portrait_by_outfit: string
+      encyclopedia_options_quicksave_count: string
+      encyclopedia_options_radio_music: string
+    }
   }
-  encyclopedia_achievements: {
-    encyclopedia_achievements_absolver: string
-    encyclopedia_achievements_artificer_eagerness: string
-    encyclopedia_achievements_collaborator: string
-    encyclopedia_achievements_completionist: string
-    encyclopedia_achievements_down_to_earth: string
-    encyclopedia_achievements_duga_free: CommaSeparatedString<string>
-    encyclopedia_achievements_geologist: string
-    encyclopedia_achievements_heavy_pockets: string
-    encyclopedia_achievements_infantile_pleasure: string
-    encyclopedia_achievements_infopreneur: string
-    encyclopedia_achievements_invictus: string
-    encyclopedia_achievements_iron_curtain: string
-    encyclopedia_achievements_mechanized_warfare: string
-    encyclopedia_achievements_murky_spirit: string
-    encyclopedia_achievements_patriarch: string
-    encyclopedia_achievements_radiotherapy: string
-    encyclopedia_achievements_rag_and_bone: string
-    encyclopedia_achievements_recycler: string
-    encyclopedia_achievements_silver_or_lead: string
-    encyclopedia_achievements_tourist: string
-    encyclopedia_achievements_unforeseen_guest: string
-    encyclopedia_achievements_well_dressed: string
-    encyclopedia_achievements_wishful_thinking: CommaSeparatedString<string>
-  }
-  encyclopedia_anomalies: Record<string, string>
-  encyclopedia_artefacts: Record<string, string>
-  encyclopedia_characters: {
-    encyclopedia_characters_nimble: string
-    encyclopedia_characters_sidorovich: string
-  }
-  encyclopedia_factions: {
-    encyclopedia_factions_bandit: string
-    encyclopedia_factions_clear_sky: string
-    encyclopedia_factions_duty: string
-    encyclopedia_factions_ecologist: string
-    encyclopedia_factions_freedom: string
-    encyclopedia_factions_greh: string
-    encyclopedia_factions_isg: string
-    encyclopedia_factions_loner: string
-    encyclopedia_factions_mercenary: string
-    encyclopedia_factions_military: string
-    encyclopedia_factions_monolith: string
-    encyclopedia_factions_renegade: string
-    encyclopedia_factions_zombified: string
-  }
-  encyclopedia_features: {
-    encyclopedia_features_agony_mode: CommaSeparatedString<string>
-    encyclopedia_features_azazel_mode: CommaSeparatedString<string>
-    encyclopedia_features_battery: string
-    encyclopedia_features_campfire_mode: CommaSeparatedString<string>
-    encyclopedia_features_companions: string
-    encyclopedia_features_disassembly: string
-    encyclopedia_features_disguise: string
-    encyclopedia_features_economy_difficulty: string
-    encyclopedia_features_fast_travel: string
-    encyclopedia_features_gameplay_difficulty: string
-    encyclopedia_features_guide: string
-    encyclopedia_features_hud: string
-    encyclopedia_features_ironman_mode: CommaSeparatedString<string>
-    encyclopedia_features_map_spots: string
-    encyclopedia_features_rank: string
-    encyclopedia_features_reputation: string
-    encyclopedia_features_stashes: string
-    encyclopedia_features_story_mode: CommaSeparatedString<string>
-    encyclopedia_features_survival_mode: CommaSeparatedString<string>
-    encyclopedia_features_timer_mode: CommaSeparatedString<string>
-    encyclopedia_features_warfare: CommaSeparatedString<string>
-    encyclopedia_features_workshop: string
-    encyclopedia_features_workshop_craft: string
-    encyclopedia_features_workshop_repair: string
-    encyclopedia_features_workshop_upgrade: string
-  }
-  encyclopedia_historic: Record<string, string>
-  encyclopedia_items: {
-    encyclopedia_items_pda: string
-  }
-  encyclopedia_locations: {
-    encyclopedia_locations_chernobyl_npp: string
-    encyclopedia_locations_lab_x16: string
-    encyclopedia_locations_lab_x18: string
-    encyclopedia_locations_lab_x19: string
-    encyclopedia_locations_lab_x8: string
-  }
-  encyclopedia_mutants: {
-    encyclopedia_mutants_blind_dog: string
-    encyclopedia_mutants_bloodsucker: string
-    encyclopedia_mutants_boar: string
-    encyclopedia_mutants_burer: string
-    encyclopedia_mutants_cat: string
-    encyclopedia_mutants_chimera: string
-    encyclopedia_mutants_controller: string
-    encyclopedia_mutants_crow: string
-    encyclopedia_mutants_flesh: string
-    encyclopedia_mutants_fracture: string
-    encyclopedia_mutants_karlik: string
-    encyclopedia_mutants_lurker: string
-    encyclopedia_mutants_poltergeist: string
-    encyclopedia_mutants_pseudodog: string
-    encyclopedia_mutants_pseudogeist: string
-    encyclopedia_mutants_pseudogiant: string
-    encyclopedia_mutants_psydog: string
-    encyclopedia_mutants_psysucker: string
-    encyclopedia_mutants_pyrogeist: string
-    encyclopedia_mutants_rat: string
-    encyclopedia_mutants_snork: string
-    encyclopedia_mutants_tushkano: string
-    encyclopedia_mutants_zombie: string
-  }
-  encyclopedia_options: {
-    encyclopedia_options_delayed_repairs: string
-    encyclopedia_options_dynamic_news: string
-    encyclopedia_options_enhanced_recoil: string
-    encyclopedia_options_extended_hud: string
-    encyclopedia_options_hardcore_ai_aim: string
-    encyclopedia_options_helicopter_patrols: string
-    encyclopedia_options_localisation: string
-    encyclopedia_options_online_exclusion: string
-    encyclopedia_options_population_factors: string
-    encyclopedia_options_portrait_by_outfit: string
-    encyclopedia_options_quicksave_count: string
-    encyclopedia_options_radio_music: string
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\encyclopedia.ltx': PluginsEncyclopediaIni
+  interface IniFileSchemas {
+    'plugins\\encyclopedia.ltx': PluginsEncyclopediaIni
+  }
 }

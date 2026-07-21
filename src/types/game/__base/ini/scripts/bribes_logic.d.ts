@@ -2,20 +2,23 @@
 // Schema of `scripts\\bribes_logic.ltx`. Sections enumerated for autocomplete; `ScriptsBribesLogicIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsBribesLogicIni {
-  logic: {
-    active: string
-    prior: number
-    suitable: boolean
+declare global {
+  interface ScriptsBribesLogicIni {
+    logic: {
+      active: string
+      prior: number
+      suitable: boolean
+    }
+    'remark@aim_bribe': {
+      anim: string
+      on_info: string
+      target: string
+    }
   }
-  'remark@aim_bribe': {
-    anim: string
-    on_info: string
-    target: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\bribes_logic.ltx': ScriptsBribesLogicIni
+  interface IniFileSchemas {
+    'scripts\\bribes_logic.ltx': ScriptsBribesLogicIni
+  }
 }

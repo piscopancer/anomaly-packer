@@ -2,16 +2,19 @@
 // Schema of `ai_tweaks\\rx_ff.ltx`. Sections enumerated for autocomplete; `AiTweaksRxFfIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksRxFfIni {
-  main: {
-    check_period: number
-    enabled: boolean
-    forbidden_factions: string
-    forbidden_npcs: string
+declare global {
+  interface AiTweaksRxFfIni {
+    main: {
+      check_period: number
+      enabled: boolean
+      forbidden_factions: string
+      forbidden_npcs: string
+    }
   }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\rx_ff.ltx': AiTweaksRxFfIni
+  interface IniFileSchemas {
+    'ai_tweaks\\rx_ff.ltx': AiTweaksRxFfIni
+  }
 }

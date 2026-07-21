@@ -2,17 +2,20 @@
 // Schema of `scripts\\ph_sleepbag.ltx`. Sections enumerated for autocomplete; `ScriptsPhSleepbagIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsPhSleepbagIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsPhSleepbagIni {
+    logic: {
+      active: string
+    }
+    'ph_idle@open': {
+      nonscript_usable: boolean
+      tips: string
+    }
   }
-  'ph_idle@open': {
-    nonscript_usable: boolean
-    tips: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\ph_sleepbag.ltx': ScriptsPhSleepbagIni
+  interface IniFileSchemas {
+    'scripts\\ph_sleepbag.ltx': ScriptsPhSleepbagIni
+  }
 }

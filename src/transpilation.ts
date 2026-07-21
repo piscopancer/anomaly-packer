@@ -1,5 +1,7 @@
+import { existsSync } from 'fs'
 import path from 'path'
 import * as tstl from 'typescript-to-lua'
+import { buildHeader } from './header'
 import { PackOptions } from './pack'
 
 export type TranspiledScript = {
@@ -30,8 +32,15 @@ export type Transpilation = {
 export function transpile(scripts: NonNullable<PackOptions['scripts']>, addonId: string): Transpilation {
   const transpiledFiles: TranspiledScript[] = []
   const runtimes = new Map<string, string>()
+  // Built once so every script in a build carries the same date, rather than drifting across
+  // a slow transpile.
+  const header = buildHeader()
+  // Prefer a `gamedata`-level tsconfig (so authored `configs/*.ts` text modules share the
+  // program with `scripts/`), falling back to the historical `scripts/`-scoped path.
+  const gamedataTsconfig = process.cwd() + '/gamedata/tsconfig.json'
+  const scriptsTsconfig = process.cwd() + '/gamedata/scripts/tsconfig.json'
   tstl.transpileProject(
-    process.cwd() + '/gamedata/scripts/tsconfig.json',
+    existsSync(gamedataTsconfig) ? gamedataTsconfig : scriptsTsconfig,
     {
       luaTarget: tstl.LuaTarget.LuaJIT,
       luaLibImport: tstl.LuaLibImportKind.Inline,
@@ -45,7 +54,7 @@ export function transpile(scripts: NonNullable<PackOptions['scripts']>, addonId:
         transpiledFiles.push({
           sourceFileName: regScript,
           buildFileName: scriptBuildName(addonId, regScript),
-          buildFileText: linkRuntimes(modifyLua(text), addonId, runtimes),
+          buildFileText: header + linkRuntimes(modifyLua(text), addonId, runtimes),
         })
       }
     }
@@ -72,7 +81,25 @@ function modifyLua(lua: string) {
   lua = dropTopLevelForwardDeclarations(lua)
   lua = globalizeTopLevel(lua)
   lua = stripTsHelperPrefix(lua)
+  lua = reindent(lua)
   return lua
+}
+
+/**
+ * Halves the transpiler's fixed four-space indent to two, matching how Anomaly's own scripts
+ * are written — generated files sit beside hand-written ones and should not look foreign.
+ *
+ * Only the run of leading spaces is touched, so indentation inside string literals (which
+ * begins after a quote, never at the start of a line) is left alone.
+ */
+function reindent(lua: string) {
+  return lua
+    .split('\n')
+    .map((line) => {
+      const indent = line.length - line.trimStart().length
+      return indent ? ' '.repeat(indent / 2) + line.slice(indent) : line
+    })
+    .join('\n')
 }
 
 /** Drops tstl's top-level forward declarations — `local name` or `local a, b, c` with no initializer, which it emits to hoist a function used before its definition (or a lualib class group like `local Error, RangeError, ...`). Left alone they would survive {@link globalizeTopLevel} as a bare `name` / `a, b, c` line, which is not a valid Lua statement and breaks the whole script on load. Globals need no forward declaration, so the line can simply be removed. Anchored to column 0 and requires the whole line to be `local` + identifiers (no `=`, no `(`), so real declarations like `local x = 1` and `local function f(` are untouched. */

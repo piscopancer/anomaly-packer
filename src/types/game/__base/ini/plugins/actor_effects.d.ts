@@ -2,1668 +2,1305 @@
 // Schema of `plugins\\actor_effects.ltx`. Sections enumerated for autocomplete; `PluginsActorEffectsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface PluginsActorEffectsIni {
-  settings: {
-    cam_dist: number
-    radiation_ppe_threshold: number
+declare global {
+  interface PluginsActorEffectsIni {
+    settings: {
+      cam_dist: number
+      radiation_ppe_threshold: number
+    }
+    settings_helm_con: {
+      _1: CommaSeparatedString<string[]>
+      _10: CommaSeparatedString<string[]>
+      _2: CommaSeparatedString<string[]>
+      _3: CommaSeparatedString<string[]>
+      _4: CommaSeparatedString<string[]>
+      _5: CommaSeparatedString<string[]>
+      _6: CommaSeparatedString<string[]>
+      _7: CommaSeparatedString<string[]>
+      _8: CommaSeparatedString<string[]>
+      _9: CommaSeparatedString<string[]>
+    }
+    settings_helm_vingette: {
+      hud_exo: number
+      hud_gass: number
+      hud_hard: number
+      hud_kill: number
+      hud_mil: number
+      hud_sci: number
+    }
+    settings_helm_reflection: {
+      hud_sci: boolean
+    }
+    settings_helm: {
+      army_nosorog_outfit: CommaSeparatedString<string[]>
+      bandit_exo_outfit: CommaSeparatedString<string[]>
+      bandit_exolight_outfit: CommaSeparatedString<string[]>
+      bandit_nbc_outfit: CommaSeparatedString<string[]>
+      bandit_scientific_dark_outfit: CommaSeparatedString<string[]>
+      bandit_scientific_outfit: CommaSeparatedString<string[]>
+      cs_exo_outfit: CommaSeparatedString<string[]>
+      cs_exolight_outfit: CommaSeparatedString<string[]>
+      cs_nbc_outfit: CommaSeparatedString<string[]>
+      cs_scientific_outfit: CommaSeparatedString<string[]>
+      cs_scientific_outfit_good: CommaSeparatedString<string[]>
+      dolg_exo_outfit: CommaSeparatedString<string[]>
+      dolg_exolight_outfit: CommaSeparatedString<string[]>
+      dolg_nosorog_outfit: CommaSeparatedString<string[]>
+      dolg_radiation_outfit: CommaSeparatedString<string[]>
+      dolg_scientific_outfit: CommaSeparatedString<string[]>
+      dolg_scientific_red_outfit: CommaSeparatedString<string[]>
+      dolg_scientific_wood_outfit: CommaSeparatedString<string[]>
+      ecolog_exo_outfit: CommaSeparatedString<string[]>
+      ecolog_outfit_blue: CommaSeparatedString<string[]>
+      ecolog_outfit_green: CommaSeparatedString<string[]>
+      ecolog_outfit_orange: CommaSeparatedString<string[]>
+      ecolog_outfit_red: CommaSeparatedString<string[]>
+      ecolog_outfit_white: CommaSeparatedString<string[]>
+      ecolog_outfit_yello: CommaSeparatedString<string[]>
+      exo_dolg_outfit: CommaSeparatedString<string[]>
+      exo_dolg_red_outfit: CommaSeparatedString<string[]>
+      exo_dolg_urban_outfit: CommaSeparatedString<string[]>
+      exo_dolg_wood_outfit: CommaSeparatedString<string[]>
+      exo_earth_outfit: CommaSeparatedString<string[]>
+      exo_merc_grass_outfit: CommaSeparatedString<string[]>
+      exo_merc_urban_outfit: CommaSeparatedString<string[]>
+      exo_merc_wood_outfit: CommaSeparatedString<string[]>
+      exo_outfit: CommaSeparatedString<string[]>
+      exo_vineleaf_outfit: CommaSeparatedString<string[]>
+      exo_wood_outfit: CommaSeparatedString<string[]>
+      exolight_outfit: CommaSeparatedString<string[]>
+      freedom_exo_vineleaf_outfit: CommaSeparatedString<string[]>
+      freedom_nosorog_outfit: CommaSeparatedString<string[]>
+      ghillie_outfit: CommaSeparatedString<string[]>
+      greh_exo_outfit: CommaSeparatedString<string[]>
+      helm_ach7: CommaSeparatedString<string[]>
+      helm_ach7ex: CommaSeparatedString<string[]>
+      helm_battle: CommaSeparatedString<string[]>
+      helm_exo: CommaSeparatedString<string[]>
+      helm_hardhat: CommaSeparatedString<string[]>
+      helm_hardhat_snag: CommaSeparatedString<string[]>
+      helm_m40: CommaSeparatedString<string[]>
+      helm_m50: CommaSeparatedString<string[]>
+      helm_metro: CommaSeparatedString<string[]>
+      helm_ppm88: CommaSeparatedString<string[]>
+      helm_protective: CommaSeparatedString<string[]>
+      helm_ranger: CommaSeparatedString<string[]>
+      helm_respirator: CommaSeparatedString<string[]>
+      helm_respirator_gp5: CommaSeparatedString<string[]>
+      helm_respirator_joker: CommaSeparatedString<string[]>
+      helm_respirator_old: CommaSeparatedString<string[]>
+      helm_spartan: CommaSeparatedString<string[]>
+      helm_tactic: CommaSeparatedString<string[]>
+      hybrid_outfit: CommaSeparatedString<string[]>
+      isg_exo_outfit: CommaSeparatedString<string[]>
+      isg_exolight_outfit: CommaSeparatedString<string[]>
+      isg_nosorog_outfit: CommaSeparatedString<string[]>
+      isg_scientific_outfit: CommaSeparatedString<string[]>
+      merc_ace_outfit: CommaSeparatedString<string[]>
+      merc_combat_scientific_outfit: CommaSeparatedString<string[]>
+      merc_exo_outfit: CommaSeparatedString<string[]>
+      merc_exolight_outfit: CommaSeparatedString<string[]>
+      merc_nosorog_outfit: CommaSeparatedString<string[]>
+      merc_radiation_outfit: CommaSeparatedString<string[]>
+      merc_scientific_armored_outfit: CommaSeparatedString<string[]>
+      merc_scientific_outfit: CommaSeparatedString<string[]>
+      military_exo_outfit: CommaSeparatedString<string[]>
+      military_exolight_outfit: CommaSeparatedString<string[]>
+      monolith_exo_outfit: CommaSeparatedString<string[]>
+      monolith_exolight_outfit: CommaSeparatedString<string[]>
+      monolith_nbc_outfit: CommaSeparatedString<string[]>
+      monolith_nosorog_outfit: CommaSeparatedString<string[]>
+      monolith_radiation_outfit: CommaSeparatedString<string[]>
+      monolith_scientific_light_outfit: CommaSeparatedString<string[]>
+      monolith_scientific_outfit: CommaSeparatedString<string[]>
+      nbc_dolg_outfit: CommaSeparatedString<string[]>
+      nbc_freedom_outfit: CommaSeparatedString<string[]>
+      nbc_merc_outfit: CommaSeparatedString<string[]>
+      nbc_outfit: CommaSeparatedString<string[]>
+      radiation_outfit: CommaSeparatedString<string[]>
+      renegade_exo_outfit: CommaSeparatedString<string[]>
+      renegade_scientific_outfit: CommaSeparatedString<string[]>
+      scientific_outfit: CommaSeparatedString<string[]>
+      svoboda_exo_outfit: CommaSeparatedString<string[]>
+      svoboda_exolight_outfit: CommaSeparatedString<string[]>
+      svoboda_radiation_outfit: CommaSeparatedString<string[]>
+      svoboda_scientific_outfit: CommaSeparatedString<string[]>
+      wastelander_outfit: CommaSeparatedString<string[]>
+    }
+    settings_health: {
+      drop_wnp_prob: number
+      huge_anm: CommaSeparatedString<string[]>
+      huge_delta: number
+      huge_ppe: string
+      huge_snd: CommaSeparatedString<string[]>
+      injury_snd: CommaSeparatedString<string[]>
+      level1: number
+      level2: number
+      little_delta: number
+      little_ppe: string
+      middle_anm: CommaSeparatedString<string[]>
+      middle_delta: number
+      middle_snd: CommaSeparatedString<string[]>
+      no_drop_wnp: CommaSeparatedString<string[]>
+    }
+    settings_speed: {
+      dec: number
+      inc: number
+      k_bleed: number
+      k_health: number
+      mini: number
+      stamina: number
+      time_mini: number
+    }
+    wpn_aps: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_pb: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: number
+    }
+    wpn_beretta: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: number
+    }
+    wpn_cz75: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: number
+    }
+    wpn_hpsa: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: number
+    }
+    wpn_mp5: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_desert_eagle: {
+      e: CommaSeparatedString<string[]>
+      p: CommaSeparatedString<string[]>
+      r: number
+      s: number
+    }
+    wpn_desert_eagle_custom: {
+      e: CommaSeparatedString<string[]>
+      p: CommaSeparatedString<string[]>
+      r: number
+      s: number
+    }
+    wpn_aug: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: vector
+    }
+    wpn_9a91: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_groza: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: vector
+    }
+    wpn_vintorez: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_abakan: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_ak: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: vector
+    }
+    wpn_l96a1: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: number
+    }
+    wpn_mosin: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: number
+    }
+    wpn_gauss: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_bm16: {
+      e: CommaSeparatedString<string[]>
+      p: CommaSeparatedString<string[]>
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_bm16_full: {
+      e: CommaSeparatedString<string[]>
+      p: CommaSeparatedString<string[]>
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_mossberg590: {
+      e: CommaSeparatedString<string[]>
+      p: CommaSeparatedString<string[]>
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_protecta: {
+      e: CommaSeparatedString<string[]>
+      p: CommaSeparatedString<string[]>
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_saiga12s: {
+      e: CommaSeparatedString<string[]>
+      p: CommaSeparatedString<string[]>
+      r: number
+      s: CommaSeparatedString<string[]>
+    }
+    wpn_wincheaster1300: {
+      e: CommaSeparatedString<string[]>
+      p: CommaSeparatedString<string[]>
+      r: number
+      s: number
+    }
+    wpn_m79: {
+      e: CommaSeparatedString<string[]>
+      p: CommaSeparatedString<string[]>
+      r: number
+      s: number
+    }
+    wpn_rpg7: {
+      e: CommaSeparatedString<string[]>
+      p: string
+      r: number
+      s: number
+    }
+    wpn_fort: PluginsActorEffectsIni['wpn_aps']
+    wpn_fort_snag: PluginsActorEffectsIni['wpn_aps']
+    wpn_kiparis: PluginsActorEffectsIni['wpn_aps']
+    wpn_oc33: PluginsActorEffectsIni['wpn_aps']
+    wpn_pb_custom: PluginsActorEffectsIni['wpn_pb']
+    wpn_pm: PluginsActorEffectsIni['wpn_aps']
+    wpn_pm_custom: PluginsActorEffectsIni['wpn_aps']
+    wpn_pmm: PluginsActorEffectsIni['wpn_aps']
+    wpn_pm_actor: PluginsActorEffectsIni['wpn_aps']
+    wpn_bizon: PluginsActorEffectsIni['wpn_aps']
+    wpn_beretta_camo: PluginsActorEffectsIni['wpn_beretta']
+    wpn_beretta_modern: PluginsActorEffectsIni['wpn_beretta']
+    wpn_beretta_alt: PluginsActorEffectsIni['wpn_beretta']
+    wpn_cz75_auto: PluginsActorEffectsIni['wpn_cz75']
+    wpn_glock: PluginsActorEffectsIni['wpn_cz75']
+    wpn_glock_custom: PluginsActorEffectsIni['wpn_cz75']
+    wpn_glock_modern: PluginsActorEffectsIni['wpn_cz75']
+    wpn_mp443: PluginsActorEffectsIni['wpn_cz75']
+    wpn_gsh18: PluginsActorEffectsIni['wpn_beretta']
+    wpn_gsh18_custom: PluginsActorEffectsIni['wpn_beretta']
+    wpn_hpsa_alt: PluginsActorEffectsIni['wpn_hpsa']
+    wpn_usp_match: PluginsActorEffectsIni['wpn_hpsa']
+    wpn_usp_nimble: PluginsActorEffectsIni['wpn_hpsa']
+    wpn_mp5_custom: PluginsActorEffectsIni['wpn_mp5']
+    wpn_mp5_alt: PluginsActorEffectsIni['wpn_mp5']
+    wpn_mp5_nimble: PluginsActorEffectsIni['wpn_mp5']
+    wpn_mp5sd: PluginsActorEffectsIni['wpn_aps']
+    wpn_mp5sd_custom: PluginsActorEffectsIni['wpn_aps']
+    wpn_mp5sd_new: PluginsActorEffectsIni['wpn_aps']
+    wpn_pp2000: PluginsActorEffectsIni['wpn_aps']
+    wpn_vityaz: PluginsActorEffectsIni['wpn_aps']
+    wpn_vz61: PluginsActorEffectsIni['wpn_aps']
+    wpn_vz61_freedom: PluginsActorEffectsIni['wpn_aps']
+    wpn_vz61_camo: PluginsActorEffectsIni['wpn_aps']
+    wpn_vz61_alt: PluginsActorEffectsIni['wpn_aps']
+    wpn_walther: PluginsActorEffectsIni['wpn_aps']
+    wpn_walther_custom: PluginsActorEffectsIni['wpn_aps']
+    wpn_mp7: PluginsActorEffectsIni['wpn_mp5']
+    wpn_colt1911: PluginsActorEffectsIni['wpn_beretta']
+    wpn_colt1911_duty: PluginsActorEffectsIni['wpn_beretta']
+    wpn_colt1911_merc: PluginsActorEffectsIni['wpn_beretta']
+    wpn_colt1911_camo: PluginsActorEffectsIni['wpn_beretta']
+    wpn_colt1911_custom: PluginsActorEffectsIni['wpn_beretta']
+    wpn_colt1911_modern: PluginsActorEffectsIni['wpn_beretta']
+    wpn_colt1911_alt: PluginsActorEffectsIni['wpn_beretta']
+    wpn_colt1911_new: PluginsActorEffectsIni['wpn_beretta']
+    wpn_colt_kimber: PluginsActorEffectsIni['wpn_beretta']
+    wpn_fnp45: PluginsActorEffectsIni['wpn_beretta']
+    wpn_fnp45_custom: PluginsActorEffectsIni['wpn_beretta']
+    wpn_fnx45: PluginsActorEffectsIni['wpn_beretta']
+    wpn_fnx45_custom: PluginsActorEffectsIni['wpn_beretta']
+    wpn_fnx45_alt: PluginsActorEffectsIni['wpn_beretta']
+    wpn_sig220: PluginsActorEffectsIni['wpn_beretta']
+    wpn_sig220_custom: PluginsActorEffectsIni['wpn_beretta']
+    wpn_sig220_nimble: PluginsActorEffectsIni['wpn_beretta']
+    wpn_ump45: PluginsActorEffectsIni['wpn_mp5']
+    wpn_ump45_custom: PluginsActorEffectsIni['wpn_mp5']
+    wpn_usp: PluginsActorEffectsIni['wpn_beretta']
+    wpn_usp_custom: PluginsActorEffectsIni['wpn_beretta']
+    wpn_tt33: PluginsActorEffectsIni['wpn_beretta']
+    wpn_tt33_modern: PluginsActorEffectsIni['wpn_beretta']
+    wpn_ppsh41: PluginsActorEffectsIni['wpn_aps']
+    wpn_ppsh41_woodnew: PluginsActorEffectsIni['wpn_aps']
+    wpn_ppsh41_woodworn: PluginsActorEffectsIni['wpn_aps']
+    wpn_ppsh41_rednew: PluginsActorEffectsIni['wpn_aps']
+    wpn_ppsh41_redworn: PluginsActorEffectsIni['wpn_aps']
+    wpn_desert_eagle_modern: PluginsActorEffectsIni['wpn_desert_eagle_custom']
+    wpn_desert_eagle_nimble: PluginsActorEffectsIni['wpn_beretta']
+    wpn_mp412: PluginsActorEffectsIni['wpn_desert_eagle_custom']
+    wpn_groza_nimble: PluginsActorEffectsIni['wpn_ak']
+    wpn_val: PluginsActorEffectsIni['wpn_9a91']
+    wpn_val_modern: PluginsActorEffectsIni['wpn_9a91']
+    wpn_vihr: PluginsActorEffectsIni['wpn_9a91']
+    wpn_vintorez_nimble: PluginsActorEffectsIni['wpn_vintorez']
+    wpn_vsk94: PluginsActorEffectsIni['wpn_9a91']
+    wpn_abakan_camo: PluginsActorEffectsIni['wpn_abakan']
+    wpn_aek: PluginsActorEffectsIni['wpn_abakan']
+    wpn_aek_camo: PluginsActorEffectsIni['wpn_abakan']
+    wpn_aks: PluginsActorEffectsIni['wpn_ak']
+    wpn_ak74: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74_custom: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74_modern: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74_alt: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74_old: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74_rpk: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74m: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74m_duty: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74m_camo: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74m_custom: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74m_alt: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74m_pka: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak101: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak101_camo: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak102: PluginsActorEffectsIni['wpn_groza']
+    wpn_aek_duty: PluginsActorEffectsIni['wpn_ak']
+    wpn_ak103: PluginsActorEffectsIni['wpn_ak']
+    wpn_ak103_camo: PluginsActorEffectsIni['wpn_ak']
+    wpn_ak104: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak105: PluginsActorEffectsIni['wpn_groza']
+    wpn_akm: PluginsActorEffectsIni['wpn_ak']
+    wpn_akms: PluginsActorEffectsIni['wpn_ak']
+    wpn_akms_alt: PluginsActorEffectsIni['wpn_ak']
+    wpn_aks74: PluginsActorEffectsIni['wpn_groza']
+    wpn_aks74_new: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74u: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74u_camo: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74u_custom: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74u_old: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak74u_snag: PluginsActorEffectsIni['wpn_groza']
+    wpn_aug_freedom: PluginsActorEffectsIni['wpn_aug']
+    wpn_aug_merc: PluginsActorEffectsIni['wpn_aug']
+    wpn_aug_custom: PluginsActorEffectsIni['wpn_aug']
+    wpn_aug_modern: PluginsActorEffectsIni['wpn_aug']
+    wpn_fn2000: PluginsActorEffectsIni['wpn_aug']
+    wpn_fn2000_camo: PluginsActorEffectsIni['wpn_aug']
+    wpn_fn2000_custom: PluginsActorEffectsIni['wpn_aug']
+    wpn_fn2000_nimble: PluginsActorEffectsIni['wpn_aug']
+    wpn_g3: PluginsActorEffectsIni['wpn_ak']
+    wpn_g3sg1: PluginsActorEffectsIni['wpn_aug']
+    wpn_g36: PluginsActorEffectsIni['wpn_groza']
+    wpn_g36_camo: PluginsActorEffectsIni['wpn_groza']
+    wpn_g36k: PluginsActorEffectsIni['wpn_aug']
+    wpn_g36_nimble: PluginsActorEffectsIni['wpn_groza']
+    wpn_hk416: PluginsActorEffectsIni['wpn_groza']
+    wpn_l85: PluginsActorEffectsIni['wpn_groza']
+    wpn_l85_custom: PluginsActorEffectsIni['wpn_groza']
+    wpn_l85_modern: PluginsActorEffectsIni['wpn_groza']
+    wpn_l85_alt: PluginsActorEffectsIni['wpn_groza']
+    wpn_l85a2: PluginsActorEffectsIni['wpn_aug']
+    wpn_l85a2_custom: PluginsActorEffectsIni['wpn_aug']
+    wpn_l85a2_modern: PluginsActorEffectsIni['wpn_aug']
+    wpn_l85a2_alt: PluginsActorEffectsIni['wpn_aug']
+    wpn_l96a1m: PluginsActorEffectsIni['wpn_l96a1']
+    wpn_lr300: PluginsActorEffectsIni['wpn_aug']
+    wpn_lr300_camo: PluginsActorEffectsIni['wpn_aug']
+    wpn_lr300_custom: PluginsActorEffectsIni['wpn_aug']
+    wpn_m4: PluginsActorEffectsIni['wpn_aug']
+    wpn_m4a1: PluginsActorEffectsIni['wpn_aug']
+    wpn_m4a1_freedom: PluginsActorEffectsIni['wpn_aug']
+    wpn_m4a1_camo: PluginsActorEffectsIni['wpn_aug']
+    wpn_m4a1_custom: PluginsActorEffectsIni['wpn_aug']
+    wpn_m16: PluginsActorEffectsIni['wpn_groza']
+    wpn_m16a2: PluginsActorEffectsIni['wpn_aug']
+    wpn_pkm: PluginsActorEffectsIni['wpn_ak']
+    wpn_pkp: PluginsActorEffectsIni['wpn_ak']
+    wpn_pkm_zulus: PluginsActorEffectsIni['wpn_ak']
+    wpn_rpd: PluginsActorEffectsIni['wpn_ak']
+    wpn_rpk: PluginsActorEffectsIni['wpn_ak']
+    wpn_rpk74: PluginsActorEffectsIni['wpn_groza']
+    wpn_ak12: PluginsActorEffectsIni['wpn_groza']
+    wpn_m249: PluginsActorEffectsIni['wpn_groza']
+    wpn_scar: PluginsActorEffectsIni['wpn_ak']
+    wpn_scar_custom: PluginsActorEffectsIni['wpn_ak']
+    wpn_scar_new: PluginsActorEffectsIni['wpn_ak']
+    wpn_sig550: PluginsActorEffectsIni['wpn_ak']
+    wpn_sig550_camo: PluginsActorEffectsIni['wpn_ak']
+    wpn_sig550_custom: PluginsActorEffectsIni['wpn_ak']
+    wpn_sig550_sniper: PluginsActorEffectsIni['wpn_aug']
+    wpn_sig550_luckygun: PluginsActorEffectsIni['wpn_ak']
+    wpn_sig552: PluginsActorEffectsIni['wpn_groza']
+    wpn_ace21: PluginsActorEffectsIni['wpn_groza']
+    wpn_sv98: PluginsActorEffectsIni['wpn_l96a1']
+    wpn_sv98_custom: PluginsActorEffectsIni['wpn_l96a1']
+    wpn_svd: PluginsActorEffectsIni['wpn_mosin']
+    wpn_svd_custom: PluginsActorEffectsIni['wpn_mosin']
+    wpn_svd_nimble: PluginsActorEffectsIni['wpn_l96a1']
+    wpn_svt40: PluginsActorEffectsIni['wpn_mosin']
+    wpn_svt40_modern: PluginsActorEffectsIni['wpn_mosin']
+    wpn_svu: PluginsActorEffectsIni['wpn_mosin']
+    wpn_svu_alt: PluginsActorEffectsIni['wpn_mosin']
+    wpn_svu_nimble: PluginsActorEffectsIni['wpn_mosin']
+    wpn_sks: PluginsActorEffectsIni['wpn_mosin']
+    wpn_sks_modern: PluginsActorEffectsIni['wpn_mosin']
+    wpn_k98: PluginsActorEffectsIni['wpn_mosin']
+    wpn_g43: PluginsActorEffectsIni['wpn_mosin']
+    wpn_type63: PluginsActorEffectsIni['wpn_mosin']
+    wpn_remington700: PluginsActorEffectsIni['wpn_mosin']
+    wpn_wa2000: PluginsActorEffectsIni['wpn_mosin']
+    wpn_m82: PluginsActorEffectsIni['wpn_mosin']
+    wpn_fnfal: PluginsActorEffectsIni['wpn_aug']
+    wpn_fal: PluginsActorEffectsIni['wpn_aug']
+    wpn_mk14: PluginsActorEffectsIni['wpn_aug']
+    wpn_hk417: PluginsActorEffectsIni['wpn_aug']
+    wpn_fnc: PluginsActorEffectsIni['wpn_aug']
+    wpn_aug_a3: PluginsActorEffectsIni['wpn_aug']
+    wpn_ash12: PluginsActorEffectsIni['wpn_aug']
+    wpn_galil: PluginsActorEffectsIni['wpn_ak']
+    wpn_galil_custom: PluginsActorEffectsIni['wpn_ak']
+    wpn_galil_modern: PluginsActorEffectsIni['wpn_ak']
+    wpn_m98b: PluginsActorEffectsIni['wpn_l96a1']
+    wpn_m24: PluginsActorEffectsIni['wpn_l96a1']
+    wpn_trg: PluginsActorEffectsIni['wpn_l96a1']
+    wpn_vssk: PluginsActorEffectsIni['wpn_l96a1']
+    wpn_bm16_alt: PluginsActorEffectsIni['wpn_bm16']
+    wpn_bm16_full_alt: PluginsActorEffectsIni['wpn_bm16_full']
+    wpn_mp133: PluginsActorEffectsIni['wpn_mossberg590']
+    wpn_mp153: PluginsActorEffectsIni['wpn_mossberg590']
+    wpn_protecta_camo: PluginsActorEffectsIni['wpn_protecta']
+    wpn_protecta_custom: PluginsActorEffectsIni['wpn_protecta']
+    wpn_protecta_aim: PluginsActorEffectsIni['wpn_protecta']
+    wpn_protecta_nimble: PluginsActorEffectsIni['wpn_protecta']
+    wpn_spas12: PluginsActorEffectsIni['wpn_saiga12s']
+    wpn_spas12_custom: PluginsActorEffectsIni['wpn_saiga12s']
+    wpn_spas12_nimble: PluginsActorEffectsIni['wpn_saiga12s']
+    wpn_toz34: PluginsActorEffectsIni['wpn_bm16_full']
+    wpn_toz34_decor: PluginsActorEffectsIni['wpn_bm16_full']
+    wpn_toz34_custom: PluginsActorEffectsIni['wpn_bm16_full']
+    wpn_toz34_mark4: PluginsActorEffectsIni['wpn_bm16_full']
+    wpn_toz34_obrez: PluginsActorEffectsIni['wpn_bm16']
+    wpn_toz34_obrez_decor: PluginsActorEffectsIni['wpn_bm16']
+    wpn_toz34_obrez_custom: PluginsActorEffectsIni['wpn_bm16']
+    wpn_usas12: PluginsActorEffectsIni['wpn_protecta']
+    wpn_vepr: PluginsActorEffectsIni['wpn_saiga12s']
+    wpn_wincheaster1300_trapper: PluginsActorEffectsIni['wpn_wincheaster1300']
+    wpn_remington870: PluginsActorEffectsIni['wpn_saiga12s']
+    wpn_fort500: PluginsActorEffectsIni['wpn_saiga12s']
+    wpn_rg6: PluginsActorEffectsIni['wpn_m79']
+    wpn_fn57: PluginsActorEffectsIni['wpn_cz75']
+    wpn_p90: PluginsActorEffectsIni['wpn_cz75']
+    wpn_sr25: PluginsActorEffectsIni['wpn_ak']
+    outfit: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '2': string
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '380': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '6000': string
+      '7001': CommaSeparatedString<string[]>
+      '7002': string
+      '7003': CommaSeparatedString<string[]>
+      '7004': string
+    }
+    helm: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1700': string
+      '2': CommaSeparatedString<string[]>
+      '2500': CommaSeparatedString<string[]>
+      '2503': string
+      '3': string
+      '4': CommaSeparatedString<string[]>
+      '5': CommaSeparatedString<string[]>
+      '7': CommaSeparatedString<string[]>
+    }
+    gun_oil_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '6050': CommaSeparatedString<string[]>
+      '6650': string
+    }
+    cleaning_kit_p_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '3020': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '7681': CommaSeparatedString<string[]>
+      '9080': CommaSeparatedString<string[]>
+      '9680': string
+    }
+    cleaning_kit_s_dummy: PluginsActorEffectsIni['cleaning_kit_p_dummy']
+    cleaning_kit_r5_dummy: PluginsActorEffectsIni['cleaning_kit_p_dummy']
+    cleaning_kit_r7_dummy: PluginsActorEffectsIni['cleaning_kit_p_dummy']
+    cleaning_kit_u_dummy: PluginsActorEffectsIni['cleaning_kit_p_dummy']
+    toolkit_p_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10301': CommaSeparatedString<string[]>
+      '11600': string
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '380': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '800': string
+    }
+    toolkit_s_dummy: PluginsActorEffectsIni['toolkit_p_dummy']
+    toolkit_r5_dummy: PluginsActorEffectsIni['toolkit_p_dummy']
+    toolkit_r7_dummy: PluginsActorEffectsIni['toolkit_p_dummy']
+    toolkit_u_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10301': CommaSeparatedString<string[]>
+      '11600': string
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '380': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '800': string
+    }
+    exo_repair_kit_dummy: PluginsActorEffectsIni['toolkit_u_dummy']
+    heavy_repair_kit_dummy: PluginsActorEffectsIni['toolkit_u_dummy']
+    seva_repair_kit_dummy: PluginsActorEffectsIni['toolkit_u_dummy']
+    proto_repair_kit_dummy: PluginsActorEffectsIni['toolkit_u_dummy']
+    light_repair_kit_dummy: PluginsActorEffectsIni['toolkit_u_dummy']
+    medium_repair_kit_dummy: PluginsActorEffectsIni['toolkit_u_dummy']
+    helmet_repair_kit_dummy: PluginsActorEffectsIni['toolkit_u_dummy']
+    armor_repair_pro_dummy: PluginsActorEffectsIni['toolkit_u_dummy']
+    sharpening_stones_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '3020': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '7681': CommaSeparatedString<string[]>
+      '9080': CommaSeparatedString<string[]>
+      '9680': string
+    }
+    gun_oil_ru_d_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '3020': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '7681': CommaSeparatedString<string[]>
+      '9080': CommaSeparatedString<string[]>
+      '9680': string
+    }
+    gun_oil_ru_dummy: PluginsActorEffectsIni['gun_oil_ru_d_dummy']
+    solvent_dummy: PluginsActorEffectsIni['gun_oil_ru_d_dummy']
+    glue_b_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '3020': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '7681': CommaSeparatedString<string[]>
+      '9080': CommaSeparatedString<string[]>
+      '9680': string
+    }
+    glue_a_dummy: PluginsActorEffectsIni['glue_b_dummy']
+    glue_e_dummy: PluginsActorEffectsIni['glue_b_dummy']
+    sewing_kit_b_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10301': CommaSeparatedString<string[]>
+      '11600': string
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '380': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '800': string
+    }
+    sewing_kit_a_dummy: PluginsActorEffectsIni['sewing_kit_b_dummy']
+    sewing_kit_h_dummy: PluginsActorEffectsIni['sewing_kit_b_dummy']
+    armor_repair_fa_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '7681': CommaSeparatedString<string[]>
+      '8480': string
+      '9080': CommaSeparatedString<string[]>
+      '9680': string
+    }
+    sewing_thread_dummy: PluginsActorEffectsIni['sewing_kit_b_dummy']
+    heavy_sewing_thread_dummy: PluginsActorEffectsIni['sewing_kit_b_dummy']
+    leatherman_tool_dummy: PluginsActorEffectsIni['cleaning_kit_p_dummy']
+    ramrod_tool_dummy: PluginsActorEffectsIni['cleaning_kit_p_dummy']
+    rasp_tool_dummy: PluginsActorEffectsIni['cleaning_kit_p_dummy']
+    fieldcooker_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10301': CommaSeparatedString<string[]>
+      '11600': string
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '2': CommaSeparatedString<string[]>
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '800': string
+    }
+    wood_stove_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10301': CommaSeparatedString<string[]>
+      '11600': string
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '2': CommaSeparatedString<string[]>
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '800': string
+    }
+    cooking_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10301': CommaSeparatedString<string[]>
+      '11600': string
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '2': CommaSeparatedString<string[]>
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '800': string
+    }
+    army_bowler_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10301': CommaSeparatedString<string[]>
+      '11600': string
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '2': CommaSeparatedString<string[]>
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '800': string
+    }
+    drug_callback: {
+      '0': string
+      '10': string
+      '1200': string
+    }
+    itm_actor_backpack: {
+      '0': string
+      '1220': string
+      '2': string
+      '30': CommaSeparatedString<string[]>
+      '31': CommaSeparatedString<string[]>
+    }
+    itm_backpack: PluginsActorEffectsIni['itm_actor_backpack']
+    equ_small_pack: PluginsActorEffectsIni['itm_actor_backpack']
+    equ_small_military_pack: PluginsActorEffectsIni['itm_actor_backpack']
+    equ_military_pack: PluginsActorEffectsIni['itm_actor_backpack']
+    equ_tourist_pack: PluginsActorEffectsIni['itm_actor_backpack']
+    itm_sleepbag: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10300': string
+      '10301': CommaSeparatedString<string[]>
+      '11600': string
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '2': CommaSeparatedString<string[]>
+      '3': CommaSeparatedString<string[]>
+      '3020': CommaSeparatedString<string[]>
+      '3502': string
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '380': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+    }
+    bandage: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '4150': string
+    }
+    jgut: PluginsActorEffectsIni['bandage']
+    medkit: {
+      '0': string
+      '10301': CommaSeparatedString<string[]>
+      '11600': string
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '380': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+    }
+    medkit_army: PluginsActorEffectsIni['medkit']
+    medkit_scientic: PluginsActorEffectsIni['medkit']
+    survival_kit: PluginsActorEffectsIni['medkit']
+    mine: {
+      '0': string
+      '1220': string
+      '30': CommaSeparatedString<string[]>
+      '31': CommaSeparatedString<string[]>
+    }
+    ied: {
+      '0': string
+      '100': string
+      '30': CommaSeparatedString<string[]>
+      '31': CommaSeparatedString<string[]>
+    }
+    ied_rpg: PluginsActorEffectsIni['ied']
+    batteries_dead: {
+      '0': string
+      '100': string
+      '30': CommaSeparatedString<string[]>
+      '31': CommaSeparatedString<string[]>
+      '32': CommaSeparatedString<string[]>
+    }
+    geiger_dead: {
+      '0': string
+      '30': CommaSeparatedString<string[]>
+      '31': CommaSeparatedString<string[]>
+      '500': string
+    }
+    glucose_s: {
+      '0': string
+      '4750': string
+      '840': CommaSeparatedString<string[]>
+      '841': CommaSeparatedString<string[]>
+    }
+    analgetic: PluginsActorEffectsIni['glucose_s']
+    glucose: PluginsActorEffectsIni['glucose_s']
+    stimpack: {
+      '0': string
+      '4750': string
+      '840': CommaSeparatedString<string[]>
+      '841': CommaSeparatedString<string[]>
+    }
+    stimpack_army: PluginsActorEffectsIni['stimpack']
+    stimpack_scientic: PluginsActorEffectsIni['stimpack']
+    rebirth: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10200': string
+      '1040': CommaSeparatedString<string[]>
+      '10800': CommaSeparatedString<string[]>
+      '11400': string
+      '2': CommaSeparatedString<string[]>
+      '3400': CommaSeparatedString<string[]>
+      '3410': string
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '380': CommaSeparatedString<string[]>
+      '381': CommaSeparatedString<string[]>
+      '4400': CommaSeparatedString<string[]>
+      '6000': CommaSeparatedString<string[]>
+      '7400': string
+      '7401': CommaSeparatedString<string[]>
+    }
+    tetanus: PluginsActorEffectsIni['stimpack']
+    salicidic_acid: PluginsActorEffectsIni['stimpack']
+    morphine: PluginsActorEffectsIni['stimpack']
+    adrenalin: PluginsActorEffectsIni['stimpack']
+    drug_booster: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '3050': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '4351': CommaSeparatedString<string[]>
+      '5150': string
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    drug_coagulant: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '3980': CommaSeparatedString<string[]>
+      '4780': string
+      '5380': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5980': string
+    }
+    drug_psy_blockade: PluginsActorEffectsIni['drug_coagulant']
+    drug_antidot: PluginsActorEffectsIni['drug_coagulant']
+    drug_radioprotector: PluginsActorEffectsIni['drug_coagulant']
+    antirad_kalium: PluginsActorEffectsIni['drug_coagulant']
+    antibio_sulfad: PluginsActorEffectsIni['drug_coagulant']
+    antiemetic: PluginsActorEffectsIni['drug_coagulant']
+    drug_sleepingpills: PluginsActorEffectsIni['drug_coagulant']
+    drug_anabiotic: PluginsActorEffectsIni['drug_coagulant']
+    antirad: {
+      '0': string
+      '4750': string
+      '840': CommaSeparatedString<string[]>
+      '841': CommaSeparatedString<string[]>
+    }
+    antirad_cystamine: PluginsActorEffectsIni['antirad']
+    antibio_chlor: PluginsActorEffectsIni['antirad']
+    vodka: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '3050': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '4351': CommaSeparatedString<string[]>
+      '5150': string
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    vodka2: PluginsActorEffectsIni['vodka']
+    vodka_quality: PluginsActorEffectsIni['vodka']
+    bottle_metal: PluginsActorEffectsIni['vodka']
+    water_drink: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '4351': CommaSeparatedString<string[]>
+      '5150': string
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    energy_drink: PluginsActorEffectsIni['water_drink']
+    yadylin: PluginsActorEffectsIni['water_drink']
+    drink_crow: PluginsActorEffectsIni['water_drink']
+    flask: PluginsActorEffectsIni['water_drink']
+    mineral_water: PluginsActorEffectsIni['water_drink']
+    beer: PluginsActorEffectsIni['water_drink']
+    tea: PluginsActorEffectsIni['water_drink']
+    caffeine: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '3980': CommaSeparatedString<string[]>
+      '4780': string
+      '5380': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5980': string
+    }
+    akvatab: PluginsActorEffectsIni['caffeine']
+    mint: PluginsActorEffectsIni['caffeine']
+    conserva: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '3020': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '7681': CommaSeparatedString<string[]>
+      '8480': string
+      '9080': CommaSeparatedString<string[]>
+      '9680': string
+    }
+    kolbasa: PluginsActorEffectsIni['conserva']
+    protein: PluginsActorEffectsIni['conserva']
+    bread: PluginsActorEffectsIni['conserva']
+    breadold: PluginsActorEffectsIni['conserva']
+    tomato: PluginsActorEffectsIni['conserva']
+    sausage: PluginsActorEffectsIni['conserva']
+    corn: PluginsActorEffectsIni['conserva']
+    beans: PluginsActorEffectsIni['conserva']
+    chili: PluginsActorEffectsIni['conserva']
+    tushonka: PluginsActorEffectsIni['conserva']
+    salmon: PluginsActorEffectsIni['conserva']
+    raisins: PluginsActorEffectsIni['conserva']
+    chocolate: PluginsActorEffectsIni['conserva']
+    chocolate_p: PluginsActorEffectsIni['conserva']
+    nuts: PluginsActorEffectsIni['conserva']
+    mre: PluginsActorEffectsIni['conserva']
+    ration_ru: PluginsActorEffectsIni['conserva']
+    ration_ukr: PluginsActorEffectsIni['conserva']
+    meat_tushkano: PluginsActorEffectsIni['conserva']
+    meat_dog: PluginsActorEffectsIni['conserva']
+    meat_pseudodog: PluginsActorEffectsIni['conserva']
+    meat_flesh: PluginsActorEffectsIni['conserva']
+    meat_boar: PluginsActorEffectsIni['conserva']
+    meat_bloodsucker: PluginsActorEffectsIni['conserva']
+    meat_snork: PluginsActorEffectsIni['conserva']
+    meat_chimera: PluginsActorEffectsIni['conserva']
+    meat_lurker: PluginsActorEffectsIni['conserva']
+    meat_psysucker: PluginsActorEffectsIni['conserva']
+    meat_tushkano_b: PluginsActorEffectsIni['conserva']
+    meat_dog_b: PluginsActorEffectsIni['conserva']
+    meat_pseudodog_b: PluginsActorEffectsIni['conserva']
+    meat_flesh_b: PluginsActorEffectsIni['conserva']
+    meat_boar_b: PluginsActorEffectsIni['conserva']
+    meat_bloodsucker_b: PluginsActorEffectsIni['conserva']
+    meat_snork_b: PluginsActorEffectsIni['conserva']
+    meat_chimera_b: PluginsActorEffectsIni['conserva']
+    meat_lurker_b: PluginsActorEffectsIni['conserva']
+    meat_psysucker_b: PluginsActorEffectsIni['conserva']
+    meat_tushkano_a: PluginsActorEffectsIni['conserva']
+    meat_dog_a: PluginsActorEffectsIni['conserva']
+    meat_pseudodog_a: PluginsActorEffectsIni['conserva']
+    meat_flesh_a: PluginsActorEffectsIni['conserva']
+    meat_boar_a: PluginsActorEffectsIni['conserva']
+    meat_bloodsucker_a: PluginsActorEffectsIni['conserva']
+    meat_snork_a: PluginsActorEffectsIni['conserva']
+    meat_chimera_a: PluginsActorEffectsIni['conserva']
+    meat_lurker_a: PluginsActorEffectsIni['conserva']
+    meat_psysucker_a: PluginsActorEffectsIni['conserva']
+    mutant_part_boar_chop: PluginsActorEffectsIni['conserva']
+    mutant_part_flesh_meat: PluginsActorEffectsIni['conserva']
+    mutant_part_dog_meat: PluginsActorEffectsIni['conserva']
+    mutant_part_psevdodog_meat: PluginsActorEffectsIni['conserva']
+    mutant_part_krovosos_meat: PluginsActorEffectsIni['conserva']
+    mutant_part_snork_hand: PluginsActorEffectsIni['conserva']
+    mutant_part_tushkano_meat: PluginsActorEffectsIni['conserva']
+    mutant_part_chimera_meat: PluginsActorEffectsIni['conserva']
+    cigarettes: PluginsActorEffectsIni['conserva']
+    cigar1: PluginsActorEffectsIni['conserva']
+    cigar2: PluginsActorEffectsIni['conserva']
+    cigar3: PluginsActorEffectsIni['conserva']
+    cigar: PluginsActorEffectsIni['conserva']
+    cigarettes_lucky: PluginsActorEffectsIni['conserva']
+    cigarettes_russian: PluginsActorEffectsIni['conserva']
+    joint: PluginsActorEffectsIni['conserva']
+    marijuana: PluginsActorEffectsIni['conserva']
+    tobacco: PluginsActorEffectsIni['conserva']
+    hand_rolling_tobacco: PluginsActorEffectsIni['conserva']
+    cocaine: PluginsActorEffectsIni['conserva']
+    matches_script: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '3081': CommaSeparatedString<string[]>
+      '3082': CommaSeparatedString<string[]>
+      '3083': string
+      '550': CommaSeparatedString<string[]>
+    }
+    af_iam_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1460': string
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    af_aac_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1460': string
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    af_aam_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1460': string
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    lead_box_dummy: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    medkit_ai1: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    medkit_ai2: PluginsActorEffectsIni['medkit_ai1']
+    medkit_ai3: PluginsActorEffectsIni['medkit_ai1']
+    bolts_pack: PluginsActorEffectsIni['medkit_ai1']
+    quest_package_1: PluginsActorEffectsIni['medkit_ai1']
+    quest_package_2: PluginsActorEffectsIni['medkit_ai1']
+    quest_package_3: PluginsActorEffectsIni['medkit_ai1']
+    quest_package_4: PluginsActorEffectsIni['medkit_ai1']
+    quest_package_5: PluginsActorEffectsIni['medkit_ai1']
+    quest_package_6: PluginsActorEffectsIni['medkit_ai1']
+    quest_package_7: PluginsActorEffectsIni['medkit_ai1']
+    quest_package_8: PluginsActorEffectsIni['medkit_ai1']
+    container_tool_lead_box_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1460': string
+      '2': CommaSeparatedString<string[]>
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    container_tool_af_iam_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1460': string
+      '2': CommaSeparatedString<string[]>
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    container_tool_af_aac_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1460': string
+      '2': CommaSeparatedString<string[]>
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    container_tool_af_aam_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1460': string
+      '2': CommaSeparatedString<string[]>
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    helm_respirator: {
+      '30': CommaSeparatedString<string[]>
+    }
+    helm_exo: {
+      '30': CommaSeparatedString<string[]>
+    }
+    helm_protective: {
+      '30': CommaSeparatedString<string[]>
+    }
+    helm_hardhat: {
+      '30': CommaSeparatedString<string[]>
+    }
+    helm_scientific: {
+      '30': CommaSeparatedString<string[]>
+    }
+    helm_battle: {
+      '30': CommaSeparatedString<string[]>
+    }
+    helm_tactic: {
+      '30': CommaSeparatedString<string[]>
+    }
+    package_content: PluginsActorEffectsIni['medkit_ai1']
+    mutant_looting: {
+      '0': string
+      '1': string
+      '10': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '5570': string
+      '5571': string
+    }
+    mutant_looting_boost_1: {
+      '0': string
+      '1': string
+      '1395': string
+      '1396': string
+      '1397': string
+      '1398': string
+      '2': CommaSeparatedString<string[]>
+    }
+    mutant_looting_boost_2: {
+      '0': string
+      '1': string
+      '2': CommaSeparatedString<string[]>
+      '697': string
+      '698': string
+      '699': string
+      '700': string
+    }
+    dynamo: {
+      '0': string
+      '7680': string
+      '840': CommaSeparatedString<string[]>
+      '841': CommaSeparatedString<string[]>
+    }
+    wild_drink: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '378': string
+      '379': CommaSeparatedString<string[]>
+      '4351': CommaSeparatedString<string[]>
+      '5150': string
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    workshop_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '2': string
+    }
+    eat_open_con: {
+      '0': string
+      '1040': CommaSeparatedString<string[]>
+      '1160': string
+      '3020': CommaSeparatedString<string[]>
+      '379': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '7681': CommaSeparatedString<string[]>
+      '9679': CommaSeparatedString<string[]>
+      '9680': string
+    }
+    guitar: {
+      '0': string
+      '100': string
+      '30': CommaSeparatedString<string[]>
+      '31': CommaSeparatedString<string[]>
+    }
+    guitar_2: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '2': CommaSeparatedString<string[]>
+      '4351': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '5750': CommaSeparatedString<string[]>
+      '6350': string
+    }
+    craft_dummy: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '10301': CommaSeparatedString<string[]>
+      '12200': CommaSeparatedString<string[]>
+      '12800': string
+      '3020': CommaSeparatedString<string[]>
+      '380': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '800': string
+    }
+    disassemble_metal_fast: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '3020': CommaSeparatedString<string[]>
+      '3021': CommaSeparatedString<string[]>
+      '3023': string
+      '550': CommaSeparatedString<string[]>
+    }
+    disassemble_cloth_fast: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '3020': CommaSeparatedString<string[]>
+      '3021': CommaSeparatedString<string[]>
+      '3023': string
+      '550': CommaSeparatedString<string[]>
+    }
+    disguise_tear_patch: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '3020': CommaSeparatedString<string[]>
+      '3021': CommaSeparatedString<string[]>
+      '3023': string
+      '550': CommaSeparatedString<string[]>
+    }
+    reload_weapon: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '3020': CommaSeparatedString<string[]>
+      '550': CommaSeparatedString<string[]>
+      '7681': CommaSeparatedString<string[]>
+      '9080': CommaSeparatedString<string[]>
+      '9680': string
+    }
+    reload_weapon_fast: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '3181': CommaSeparatedString<string[]>
+      '4580': CommaSeparatedString<string[]>
+      '4980': string
+      '550': CommaSeparatedString<string[]>
+    }
+    item_combination: {
+      '0': string
+      '1': CommaSeparatedString<string[]>
+      '1040': CommaSeparatedString<string[]>
+      '1460': string
+      '3020': CommaSeparatedString<string[]>
+      '3021': CommaSeparatedString<string[]>
+      '3023': string
+      '550': CommaSeparatedString<string[]>
+    }
   }
-  settings_helm_con: {
-    _1: CommaSeparatedString<string>
-    _10: CommaSeparatedString<string>
-    _2: CommaSeparatedString<string>
-    _3: CommaSeparatedString<string>
-    _4: CommaSeparatedString<string>
-    _5: CommaSeparatedString<string>
-    _6: CommaSeparatedString<string>
-    _7: CommaSeparatedString<string>
-    _8: CommaSeparatedString<string>
-    _9: CommaSeparatedString<string>
-  }
-  settings_helm_vingette: {
-    hud_exo: number
-    hud_gass: number
-    hud_hard: number
-    hud_kill: number
-    hud_mil: number
-    hud_sci: number
-  }
-  settings_helm_reflection: {
-    hud_sci: boolean
-  }
-  settings_helm: {
-    army_nosorog_outfit: CommaSeparatedString<string>
-    bandit_exo_outfit: CommaSeparatedString<string>
-    bandit_exolight_outfit: CommaSeparatedString<string>
-    bandit_nbc_outfit: CommaSeparatedString<string>
-    bandit_scientific_dark_outfit: CommaSeparatedString<string>
-    bandit_scientific_outfit: CommaSeparatedString<string>
-    cs_exo_outfit: CommaSeparatedString<string>
-    cs_exolight_outfit: CommaSeparatedString<string>
-    cs_nbc_outfit: CommaSeparatedString<string>
-    cs_scientific_outfit: CommaSeparatedString<string>
-    cs_scientific_outfit_good: CommaSeparatedString<string>
-    dolg_exo_outfit: CommaSeparatedString<string>
-    dolg_exolight_outfit: CommaSeparatedString<string>
-    dolg_nosorog_outfit: CommaSeparatedString<string>
-    dolg_radiation_outfit: CommaSeparatedString<string>
-    dolg_scientific_outfit: CommaSeparatedString<string>
-    dolg_scientific_red_outfit: CommaSeparatedString<string>
-    dolg_scientific_wood_outfit: CommaSeparatedString<string>
-    ecolog_exo_outfit: CommaSeparatedString<string>
-    ecolog_outfit_blue: CommaSeparatedString<string>
-    ecolog_outfit_green: CommaSeparatedString<string>
-    ecolog_outfit_orange: CommaSeparatedString<string>
-    ecolog_outfit_red: CommaSeparatedString<string>
-    ecolog_outfit_white: CommaSeparatedString<string>
-    ecolog_outfit_yello: CommaSeparatedString<string>
-    exo_dolg_outfit: CommaSeparatedString<string>
-    exo_dolg_red_outfit: CommaSeparatedString<string>
-    exo_dolg_urban_outfit: CommaSeparatedString<string>
-    exo_dolg_wood_outfit: CommaSeparatedString<string>
-    exo_earth_outfit: CommaSeparatedString<string>
-    exo_merc_grass_outfit: CommaSeparatedString<string>
-    exo_merc_urban_outfit: CommaSeparatedString<string>
-    exo_merc_wood_outfit: CommaSeparatedString<string>
-    exo_outfit: CommaSeparatedString<string>
-    exo_vineleaf_outfit: CommaSeparatedString<string>
-    exo_wood_outfit: CommaSeparatedString<string>
-    exolight_outfit: CommaSeparatedString<string>
-    freedom_exo_vineleaf_outfit: CommaSeparatedString<string>
-    freedom_nosorog_outfit: CommaSeparatedString<string>
-    ghillie_outfit: CommaSeparatedString<string>
-    greh_exo_outfit: CommaSeparatedString<string>
-    helm_ach7: CommaSeparatedString<string>
-    helm_ach7ex: CommaSeparatedString<string>
-    helm_battle: CommaSeparatedString<string>
-    helm_exo: CommaSeparatedString<string>
-    helm_hardhat: CommaSeparatedString<string>
-    helm_hardhat_snag: CommaSeparatedString<string>
-    helm_m40: CommaSeparatedString<string>
-    helm_m50: CommaSeparatedString<string>
-    helm_metro: CommaSeparatedString<string>
-    helm_ppm88: CommaSeparatedString<string>
-    helm_protective: CommaSeparatedString<string>
-    helm_ranger: CommaSeparatedString<string>
-    helm_respirator: CommaSeparatedString<string>
-    helm_respirator_gp5: CommaSeparatedString<string>
-    helm_respirator_joker: CommaSeparatedString<string>
-    helm_respirator_old: CommaSeparatedString<string>
-    helm_spartan: CommaSeparatedString<string>
-    helm_tactic: CommaSeparatedString<string>
-    hybrid_outfit: CommaSeparatedString<string>
-    isg_exo_outfit: CommaSeparatedString<string>
-    isg_exolight_outfit: CommaSeparatedString<string>
-    isg_nosorog_outfit: CommaSeparatedString<string>
-    isg_scientific_outfit: CommaSeparatedString<string>
-    merc_ace_outfit: CommaSeparatedString<string>
-    merc_combat_scientific_outfit: CommaSeparatedString<string>
-    merc_exo_outfit: CommaSeparatedString<string>
-    merc_exolight_outfit: CommaSeparatedString<string>
-    merc_nosorog_outfit: CommaSeparatedString<string>
-    merc_radiation_outfit: CommaSeparatedString<string>
-    merc_scientific_armored_outfit: CommaSeparatedString<string>
-    merc_scientific_outfit: CommaSeparatedString<string>
-    military_exo_outfit: CommaSeparatedString<string>
-    military_exolight_outfit: CommaSeparatedString<string>
-    monolith_exo_outfit: CommaSeparatedString<string>
-    monolith_exolight_outfit: CommaSeparatedString<string>
-    monolith_nbc_outfit: CommaSeparatedString<string>
-    monolith_nosorog_outfit: CommaSeparatedString<string>
-    monolith_radiation_outfit: CommaSeparatedString<string>
-    monolith_scientific_light_outfit: CommaSeparatedString<string>
-    monolith_scientific_outfit: CommaSeparatedString<string>
-    nbc_dolg_outfit: CommaSeparatedString<string>
-    nbc_freedom_outfit: CommaSeparatedString<string>
-    nbc_merc_outfit: CommaSeparatedString<string>
-    nbc_outfit: CommaSeparatedString<string>
-    radiation_outfit: CommaSeparatedString<string>
-    renegade_exo_outfit: CommaSeparatedString<string>
-    renegade_scientific_outfit: CommaSeparatedString<string>
-    scientific_outfit: CommaSeparatedString<string>
-    svoboda_exo_outfit: CommaSeparatedString<string>
-    svoboda_exolight_outfit: CommaSeparatedString<string>
-    svoboda_radiation_outfit: CommaSeparatedString<string>
-    svoboda_scientific_outfit: CommaSeparatedString<string>
-    wastelander_outfit: CommaSeparatedString<string>
-  }
-  settings_health: {
-    drop_wnp_prob: number
-    huge_anm: CommaSeparatedString<string>
-    huge_delta: number
-    huge_ppe: string
-    huge_snd: CommaSeparatedString<string>
-    injury_snd: CommaSeparatedString<string>
-    level1: number
-    level2: number
-    little_delta: number
-    little_ppe: string
-    middle_anm: CommaSeparatedString<string>
-    middle_delta: number
-    middle_snd: CommaSeparatedString<string>
-    no_drop_wnp: CommaSeparatedString<string>
-  }
-  settings_speed: {
-    dec: number
-    inc: number
-    k_bleed: number
-    k_health: number
-    mini: number
-    stamina: number
-    time_mini: number
-  }
-  wpn_aps: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_pb: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: number
-  }
-  wpn_beretta: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: number
-  }
-  wpn_cz75: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: number
-  }
-  wpn_hpsa: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: number
-  }
-  wpn_mp5: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_desert_eagle: {
-    e: CommaSeparatedString<string>
-    p: CommaSeparatedString<string>
-    r: number
-    s: number
-  }
-  wpn_desert_eagle_custom: {
-    e: CommaSeparatedString<string>
-    p: CommaSeparatedString<string>
-    r: number
-    s: number
-  }
-  wpn_aug: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: vector
-  }
-  wpn_9a91: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_groza: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: vector
-  }
-  wpn_vintorez: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_abakan: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_ak: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: vector
-  }
-  wpn_l96a1: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: number
-  }
-  wpn_mosin: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: number
-  }
-  wpn_gauss: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_bm16: {
-    e: CommaSeparatedString<string>
-    p: CommaSeparatedString<string>
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_bm16_full: {
-    e: CommaSeparatedString<string>
-    p: CommaSeparatedString<string>
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_mossberg590: {
-    e: CommaSeparatedString<string>
-    p: CommaSeparatedString<string>
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_protecta: {
-    e: CommaSeparatedString<string>
-    p: CommaSeparatedString<string>
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_saiga12s: {
-    e: CommaSeparatedString<string>
-    p: CommaSeparatedString<string>
-    r: number
-    s: CommaSeparatedString<string>
-  }
-  wpn_wincheaster1300: {
-    e: CommaSeparatedString<string>
-    p: CommaSeparatedString<string>
-    r: number
-    s: number
-  }
-  wpn_m79: {
-    e: CommaSeparatedString<string>
-    p: CommaSeparatedString<string>
-    r: number
-    s: number
-  }
-  wpn_rpg7: {
-    e: CommaSeparatedString<string>
-    p: string
-    r: number
-    s: number
-  }
-  wpn_fort: {
-  }
-  wpn_fort_snag: {
-  }
-  wpn_kiparis: {
-  }
-  wpn_oc33: {
-  }
-  wpn_pb_custom: {
-  }
-  wpn_pm: {
-  }
-  wpn_pm_custom: {
-  }
-  wpn_pmm: {
-  }
-  wpn_pm_actor: {
-  }
-  wpn_bizon: {
-  }
-  wpn_beretta_camo: {
-  }
-  wpn_beretta_modern: {
-  }
-  wpn_beretta_alt: {
-  }
-  wpn_cz75_auto: {
-  }
-  wpn_glock: {
-  }
-  wpn_glock_custom: {
-  }
-  wpn_glock_modern: {
-  }
-  wpn_mp443: {
-  }
-  wpn_gsh18: {
-  }
-  wpn_gsh18_custom: {
-  }
-  wpn_hpsa_alt: {
-  }
-  wpn_usp_match: {
-  }
-  wpn_usp_nimble: {
-  }
-  wpn_mp5_custom: {
-  }
-  wpn_mp5_alt: {
-  }
-  wpn_mp5_nimble: {
-  }
-  wpn_mp5sd: {
-  }
-  wpn_mp5sd_custom: {
-  }
-  wpn_mp5sd_new: {
-  }
-  wpn_pp2000: {
-  }
-  wpn_vityaz: {
-  }
-  wpn_vz61: {
-  }
-  wpn_vz61_freedom: {
-  }
-  wpn_vz61_camo: {
-  }
-  wpn_vz61_alt: {
-  }
-  wpn_walther: {
-  }
-  wpn_walther_custom: {
-  }
-  wpn_mp7: {
-  }
-  wpn_colt1911: {
-  }
-  wpn_colt1911_duty: {
-  }
-  wpn_colt1911_merc: {
-  }
-  wpn_colt1911_camo: {
-  }
-  wpn_colt1911_custom: {
-  }
-  wpn_colt1911_modern: {
-  }
-  wpn_colt1911_alt: {
-  }
-  wpn_colt1911_new: {
-  }
-  wpn_colt_kimber: {
-  }
-  wpn_fnp45: {
-  }
-  wpn_fnp45_custom: {
-  }
-  wpn_fnx45: {
-  }
-  wpn_fnx45_custom: {
-  }
-  wpn_fnx45_alt: {
-  }
-  wpn_sig220: {
-  }
-  wpn_sig220_custom: {
-  }
-  wpn_sig220_nimble: {
-  }
-  wpn_ump45: {
-  }
-  wpn_ump45_custom: {
-  }
-  wpn_usp: {
-  }
-  wpn_usp_custom: {
-  }
-  wpn_tt33: {
-  }
-  wpn_tt33_modern: {
-  }
-  wpn_ppsh41: {
-  }
-  wpn_ppsh41_woodnew: {
-  }
-  wpn_ppsh41_woodworn: {
-  }
-  wpn_ppsh41_rednew: {
-  }
-  wpn_ppsh41_redworn: {
-  }
-  wpn_desert_eagle_modern: {
-  }
-  wpn_desert_eagle_nimble: {
-  }
-  wpn_mp412: {
-  }
-  wpn_groza_nimble: {
-  }
-  wpn_val: {
-  }
-  wpn_val_modern: {
-  }
-  wpn_vihr: {
-  }
-  wpn_vintorez_nimble: {
-  }
-  wpn_vsk94: {
-  }
-  wpn_abakan_camo: {
-  }
-  wpn_aek: {
-  }
-  wpn_aek_camo: {
-  }
-  wpn_aks: {
-  }
-  wpn_ak74: {
-  }
-  wpn_ak74_custom: {
-  }
-  wpn_ak74_modern: {
-  }
-  wpn_ak74_alt: {
-  }
-  wpn_ak74_old: {
-  }
-  wpn_ak74_rpk: {
-  }
-  wpn_ak74m: {
-  }
-  wpn_ak74m_duty: {
-  }
-  wpn_ak74m_camo: {
-  }
-  wpn_ak74m_custom: {
-  }
-  wpn_ak74m_alt: {
-  }
-  wpn_ak74m_pka: {
-  }
-  wpn_ak101: {
-  }
-  wpn_ak101_camo: {
-  }
-  wpn_ak102: {
-  }
-  wpn_aek_duty: {
-  }
-  wpn_ak103: {
-  }
-  wpn_ak103_camo: {
-  }
-  wpn_ak104: {
-  }
-  wpn_ak105: {
-  }
-  wpn_akm: {
-  }
-  wpn_akms: {
-  }
-  wpn_akms_alt: {
-  }
-  wpn_aks74: {
-  }
-  wpn_aks74_new: {
-  }
-  wpn_ak74u: {
-  }
-  wpn_ak74u_camo: {
-  }
-  wpn_ak74u_custom: {
-  }
-  wpn_ak74u_old: {
-  }
-  wpn_ak74u_snag: {
-  }
-  wpn_aug_freedom: {
-  }
-  wpn_aug_merc: {
-  }
-  wpn_aug_custom: {
-  }
-  wpn_aug_modern: {
-  }
-  wpn_fn2000: {
-  }
-  wpn_fn2000_camo: {
-  }
-  wpn_fn2000_custom: {
-  }
-  wpn_fn2000_nimble: {
-  }
-  wpn_g3: {
-  }
-  wpn_g3sg1: {
-  }
-  wpn_g36: {
-  }
-  wpn_g36_camo: {
-  }
-  wpn_g36k: {
-  }
-  wpn_g36_nimble: {
-  }
-  wpn_hk416: {
-  }
-  wpn_l85: {
-  }
-  wpn_l85_custom: {
-  }
-  wpn_l85_modern: {
-  }
-  wpn_l85_alt: {
-  }
-  wpn_l85a2: {
-  }
-  wpn_l85a2_custom: {
-  }
-  wpn_l85a2_modern: {
-  }
-  wpn_l85a2_alt: {
-  }
-  wpn_l96a1m: {
-  }
-  wpn_lr300: {
-  }
-  wpn_lr300_camo: {
-  }
-  wpn_lr300_custom: {
-  }
-  wpn_m4: {
-  }
-  wpn_m4a1: {
-  }
-  wpn_m4a1_freedom: {
-  }
-  wpn_m4a1_camo: {
-  }
-  wpn_m4a1_custom: {
-  }
-  wpn_m16: {
-  }
-  wpn_m16a2: {
-  }
-  wpn_pkm: {
-  }
-  wpn_pkp: {
-  }
-  wpn_pkm_zulus: {
-  }
-  wpn_rpd: {
-  }
-  wpn_rpk: {
-  }
-  wpn_rpk74: {
-  }
-  wpn_ak12: {
-  }
-  wpn_m249: {
-  }
-  wpn_scar: {
-  }
-  wpn_scar_custom: {
-  }
-  wpn_scar_new: {
-  }
-  wpn_sig550: {
-  }
-  wpn_sig550_camo: {
-  }
-  wpn_sig550_custom: {
-  }
-  wpn_sig550_sniper: {
-  }
-  wpn_sig550_luckygun: {
-  }
-  wpn_sig552: {
-  }
-  wpn_ace21: {
-  }
-  wpn_sv98: {
-  }
-  wpn_sv98_custom: {
-  }
-  wpn_svd: {
-  }
-  wpn_svd_custom: {
-  }
-  wpn_svd_nimble: {
-  }
-  wpn_svt40: {
-  }
-  wpn_svt40_modern: {
-  }
-  wpn_svu: {
-  }
-  wpn_svu_alt: {
-  }
-  wpn_svu_nimble: {
-  }
-  wpn_sks: {
-  }
-  wpn_sks_modern: {
-  }
-  wpn_k98: {
-  }
-  wpn_g43: {
-  }
-  wpn_type63: {
-  }
-  wpn_remington700: {
-  }
-  wpn_wa2000: {
-  }
-  wpn_m82: {
-  }
-  wpn_fnfal: {
-  }
-  wpn_fal: {
-  }
-  wpn_mk14: {
-  }
-  wpn_hk417: {
-  }
-  wpn_fnc: {
-  }
-  wpn_aug_a3: {
-  }
-  wpn_ash12: {
-  }
-  wpn_galil: {
-  }
-  wpn_galil_custom: {
-  }
-  wpn_galil_modern: {
-  }
-  wpn_m98b: {
-  }
-  wpn_m24: {
-  }
-  wpn_trg: {
-  }
-  wpn_vssk: {
-  }
-  wpn_bm16_alt: {
-  }
-  wpn_bm16_full_alt: {
-  }
-  wpn_mp133: {
-  }
-  wpn_mp153: {
-  }
-  wpn_protecta_camo: {
-  }
-  wpn_protecta_custom: {
-  }
-  wpn_protecta_aim: {
-  }
-  wpn_protecta_nimble: {
-  }
-  wpn_spas12: {
-  }
-  wpn_spas12_custom: {
-  }
-  wpn_spas12_nimble: {
-  }
-  wpn_toz34: {
-  }
-  wpn_toz34_decor: {
-  }
-  wpn_toz34_custom: {
-  }
-  wpn_toz34_mark4: {
-  }
-  wpn_toz34_obrez: {
-  }
-  wpn_toz34_obrez_decor: {
-  }
-  wpn_toz34_obrez_custom: {
-  }
-  wpn_usas12: {
-  }
-  wpn_vepr: {
-  }
-  wpn_wincheaster1300_trapper: {
-  }
-  wpn_remington870: {
-  }
-  wpn_fort500: {
-  }
-  wpn_rg6: {
-  }
-  wpn_fn57: {
-  }
-  wpn_p90: {
-  }
-  wpn_sr25: {
-  }
-  outfit: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '2': string
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '380': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '6000': string
-    '7001': CommaSeparatedString<string>
-    '7002': string
-    '7003': CommaSeparatedString<string>
-    '7004': string
-  }
-  helm: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1700': string
-    '2': CommaSeparatedString<string>
-    '2500': CommaSeparatedString<string>
-    '2503': string
-    '3': string
-    '4': CommaSeparatedString<string>
-    '5': CommaSeparatedString<string>
-    '7': CommaSeparatedString<string>
-  }
-  gun_oil_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '6050': CommaSeparatedString<string>
-    '6650': string
-  }
-  cleaning_kit_p_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '3020': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '7681': CommaSeparatedString<string>
-    '9080': CommaSeparatedString<string>
-    '9680': string
-  }
-  cleaning_kit_s_dummy: {
-  }
-  cleaning_kit_r5_dummy: {
-  }
-  cleaning_kit_r7_dummy: {
-  }
-  cleaning_kit_u_dummy: {
-  }
-  toolkit_p_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10301': CommaSeparatedString<string>
-    '11600': string
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '380': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '800': string
-  }
-  toolkit_s_dummy: {
-  }
-  toolkit_r5_dummy: {
-  }
-  toolkit_r7_dummy: {
-  }
-  toolkit_u_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10301': CommaSeparatedString<string>
-    '11600': string
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '380': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '800': string
-  }
-  exo_repair_kit_dummy: {
-  }
-  heavy_repair_kit_dummy: {
-  }
-  seva_repair_kit_dummy: {
-  }
-  proto_repair_kit_dummy: {
-  }
-  light_repair_kit_dummy: {
-  }
-  medium_repair_kit_dummy: {
-  }
-  helmet_repair_kit_dummy: {
-  }
-  armor_repair_pro_dummy: {
-  }
-  sharpening_stones_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '3020': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '7681': CommaSeparatedString<string>
-    '9080': CommaSeparatedString<string>
-    '9680': string
-  }
-  gun_oil_ru_d_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '3020': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '7681': CommaSeparatedString<string>
-    '9080': CommaSeparatedString<string>
-    '9680': string
-  }
-  gun_oil_ru_dummy: {
-  }
-  solvent_dummy: {
-  }
-  glue_b_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '3020': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '7681': CommaSeparatedString<string>
-    '9080': CommaSeparatedString<string>
-    '9680': string
-  }
-  glue_a_dummy: {
-  }
-  glue_e_dummy: {
-  }
-  sewing_kit_b_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10301': CommaSeparatedString<string>
-    '11600': string
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '380': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '800': string
-  }
-  sewing_kit_a_dummy: {
-  }
-  sewing_kit_h_dummy: {
-  }
-  armor_repair_fa_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '7681': CommaSeparatedString<string>
-    '8480': string
-    '9080': CommaSeparatedString<string>
-    '9680': string
-  }
-  sewing_thread_dummy: {
-  }
-  heavy_sewing_thread_dummy: {
-  }
-  leatherman_tool_dummy: {
-  }
-  ramrod_tool_dummy: {
-  }
-  rasp_tool_dummy: {
-  }
-  fieldcooker_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10301': CommaSeparatedString<string>
-    '11600': string
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '2': CommaSeparatedString<string>
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '800': string
-  }
-  wood_stove_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10301': CommaSeparatedString<string>
-    '11600': string
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '2': CommaSeparatedString<string>
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '800': string
-  }
-  cooking_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10301': CommaSeparatedString<string>
-    '11600': string
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '2': CommaSeparatedString<string>
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '800': string
-  }
-  army_bowler_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10301': CommaSeparatedString<string>
-    '11600': string
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '2': CommaSeparatedString<string>
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '800': string
-  }
-  drug_callback: {
-    '0': string
-    '10': string
-    '1200': string
-  }
-  itm_actor_backpack: {
-    '0': string
-    '1220': string
-    '2': string
-    '30': CommaSeparatedString<string>
-    '31': CommaSeparatedString<string>
-  }
-  itm_backpack: {
-  }
-  equ_small_pack: {
-  }
-  equ_small_military_pack: {
-  }
-  equ_military_pack: {
-  }
-  equ_tourist_pack: {
-  }
-  itm_sleepbag: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10300': string
-    '10301': CommaSeparatedString<string>
-    '11600': string
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '2': CommaSeparatedString<string>
-    '3': CommaSeparatedString<string>
-    '3020': CommaSeparatedString<string>
-    '3502': string
-    '378': string
-    '379': CommaSeparatedString<string>
-    '380': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-  }
-  bandage: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '4150': string
-  }
-  jgut: {
-  }
-  medkit: {
-    '0': string
-    '10301': CommaSeparatedString<string>
-    '11600': string
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '380': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-  }
-  medkit_army: {
-  }
-  medkit_scientic: {
-  }
-  survival_kit: {
-  }
-  mine: {
-    '0': string
-    '1220': string
-    '30': CommaSeparatedString<string>
-    '31': CommaSeparatedString<string>
-  }
-  ied: {
-    '0': string
-    '100': string
-    '30': CommaSeparatedString<string>
-    '31': CommaSeparatedString<string>
-  }
-  ied_rpg: {
-  }
-  batteries_dead: {
-    '0': string
-    '100': string
-    '30': CommaSeparatedString<string>
-    '31': CommaSeparatedString<string>
-    '32': CommaSeparatedString<string>
-  }
-  geiger_dead: {
-    '0': string
-    '30': CommaSeparatedString<string>
-    '31': CommaSeparatedString<string>
-    '500': string
-  }
-  glucose_s: {
-    '0': string
-    '4750': string
-    '840': CommaSeparatedString<string>
-    '841': CommaSeparatedString<string>
-  }
-  analgetic: {
-  }
-  glucose: {
-  }
-  stimpack: {
-    '0': string
-    '4750': string
-    '840': CommaSeparatedString<string>
-    '841': CommaSeparatedString<string>
-  }
-  stimpack_army: {
-  }
-  stimpack_scientic: {
-  }
-  rebirth: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10200': string
-    '1040': CommaSeparatedString<string>
-    '10800': CommaSeparatedString<string>
-    '11400': string
-    '2': CommaSeparatedString<string>
-    '3400': CommaSeparatedString<string>
-    '3410': string
-    '378': string
-    '379': CommaSeparatedString<string>
-    '380': CommaSeparatedString<string>
-    '381': CommaSeparatedString<string>
-    '4400': CommaSeparatedString<string>
-    '6000': CommaSeparatedString<string>
-    '7400': string
-    '7401': CommaSeparatedString<string>
-  }
-  tetanus: {
-  }
-  salicidic_acid: {
-  }
-  morphine: {
-  }
-  adrenalin: {
-  }
-  drug_booster: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '3050': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '4351': CommaSeparatedString<string>
-    '5150': string
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  drug_coagulant: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '3980': CommaSeparatedString<string>
-    '4780': string
-    '5380': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5980': string
-  }
-  drug_psy_blockade: {
-  }
-  drug_antidot: {
-  }
-  drug_radioprotector: {
-  }
-  antirad_kalium: {
-  }
-  antibio_sulfad: {
-  }
-  antiemetic: {
-  }
-  drug_sleepingpills: {
-  }
-  drug_anabiotic: {
-  }
-  antirad: {
-    '0': string
-    '4750': string
-    '840': CommaSeparatedString<string>
-    '841': CommaSeparatedString<string>
-  }
-  antirad_cystamine: {
-  }
-  antibio_chlor: {
-  }
-  vodka: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '3050': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '4351': CommaSeparatedString<string>
-    '5150': string
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  vodka2: {
-  }
-  vodka_quality: {
-  }
-  bottle_metal: {
-  }
-  water_drink: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '4351': CommaSeparatedString<string>
-    '5150': string
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  energy_drink: {
-  }
-  yadylin: {
-  }
-  drink_crow: {
-  }
-  flask: {
-  }
-  mineral_water: {
-  }
-  beer: {
-  }
-  tea: {
-  }
-  caffeine: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '3980': CommaSeparatedString<string>
-    '4780': string
-    '5380': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5980': string
-  }
-  akvatab: {
-  }
-  mint: {
-  }
-  conserva: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '3020': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '7681': CommaSeparatedString<string>
-    '8480': string
-    '9080': CommaSeparatedString<string>
-    '9680': string
-  }
-  kolbasa: {
-  }
-  protein: {
-  }
-  bread: {
-  }
-  breadold: {
-  }
-  tomato: {
-  }
-  sausage: {
-  }
-  corn: {
-  }
-  beans: {
-  }
-  chili: {
-  }
-  tushonka: {
-  }
-  salmon: {
-  }
-  raisins: {
-  }
-  chocolate: {
-  }
-  chocolate_p: {
-  }
-  nuts: {
-  }
-  mre: {
-  }
-  ration_ru: {
-  }
-  ration_ukr: {
-  }
-  meat_tushkano: {
-  }
-  meat_dog: {
-  }
-  meat_pseudodog: {
-  }
-  meat_flesh: {
-  }
-  meat_boar: {
-  }
-  meat_bloodsucker: {
-  }
-  meat_snork: {
-  }
-  meat_chimera: {
-  }
-  meat_lurker: {
-  }
-  meat_psysucker: {
-  }
-  meat_tushkano_b: {
-  }
-  meat_dog_b: {
-  }
-  meat_pseudodog_b: {
-  }
-  meat_flesh_b: {
-  }
-  meat_boar_b: {
-  }
-  meat_bloodsucker_b: {
-  }
-  meat_snork_b: {
-  }
-  meat_chimera_b: {
-  }
-  meat_lurker_b: {
-  }
-  meat_psysucker_b: {
-  }
-  meat_tushkano_a: {
-  }
-  meat_dog_a: {
-  }
-  meat_pseudodog_a: {
-  }
-  meat_flesh_a: {
-  }
-  meat_boar_a: {
-  }
-  meat_bloodsucker_a: {
-  }
-  meat_snork_a: {
-  }
-  meat_chimera_a: {
-  }
-  meat_lurker_a: {
-  }
-  meat_psysucker_a: {
-  }
-  mutant_part_boar_chop: {
-  }
-  mutant_part_flesh_meat: {
-  }
-  mutant_part_dog_meat: {
-  }
-  mutant_part_psevdodog_meat: {
-  }
-  mutant_part_krovosos_meat: {
-  }
-  mutant_part_snork_hand: {
-  }
-  mutant_part_tushkano_meat: {
-  }
-  mutant_part_chimera_meat: {
-  }
-  cigarettes: {
-  }
-  cigar1: {
-  }
-  cigar2: {
-  }
-  cigar3: {
-  }
-  cigar: {
-  }
-  cigarettes_lucky: {
-  }
-  cigarettes_russian: {
-  }
-  joint: {
-  }
-  marijuana: {
-  }
-  tobacco: {
-  }
-  hand_rolling_tobacco: {
-  }
-  cocaine: {
-  }
-  matches_script: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '3081': CommaSeparatedString<string>
-    '3082': CommaSeparatedString<string>
-    '3083': string
-    '550': CommaSeparatedString<string>
-  }
-  af_iam_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1460': string
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  af_aac_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1460': string
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  af_aam_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1460': string
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  lead_box_dummy: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  medkit_ai1: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  medkit_ai2: {
-  }
-  medkit_ai3: {
-  }
-  bolts_pack: {
-  }
-  quest_package_1: {
-  }
-  quest_package_2: {
-  }
-  quest_package_3: {
-  }
-  quest_package_4: {
-  }
-  quest_package_5: {
-  }
-  quest_package_6: {
-  }
-  quest_package_7: {
-  }
-  quest_package_8: {
-  }
-  container_tool_lead_box_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1460': string
-    '2': CommaSeparatedString<string>
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  container_tool_af_iam_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1460': string
-    '2': CommaSeparatedString<string>
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  container_tool_af_aac_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1460': string
-    '2': CommaSeparatedString<string>
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  container_tool_af_aam_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1460': string
-    '2': CommaSeparatedString<string>
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  helm_respirator: {
-    '30': CommaSeparatedString<string>
-  }
-  helm_exo: {
-    '30': CommaSeparatedString<string>
-  }
-  helm_protective: {
-    '30': CommaSeparatedString<string>
-  }
-  helm_hardhat: {
-    '30': CommaSeparatedString<string>
-  }
-  helm_scientific: {
-    '30': CommaSeparatedString<string>
-  }
-  helm_battle: {
-    '30': CommaSeparatedString<string>
-  }
-  helm_tactic: {
-    '30': CommaSeparatedString<string>
-  }
-  package_content: {
-  }
-  mutant_looting: {
-    '0': string
-    '1': string
-    '10': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '5570': string
-    '5571': string
-  }
-  mutant_looting_boost_1: {
-    '0': string
-    '1': string
-    '1395': string
-    '1396': string
-    '1397': string
-    '1398': string
-    '2': CommaSeparatedString<string>
-  }
-  mutant_looting_boost_2: {
-    '0': string
-    '1': string
-    '2': CommaSeparatedString<string>
-    '697': string
-    '698': string
-    '699': string
-    '700': string
-  }
-  dynamo: {
-    '0': string
-    '7680': string
-    '840': CommaSeparatedString<string>
-    '841': CommaSeparatedString<string>
-  }
-  wild_drink: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '378': string
-    '379': CommaSeparatedString<string>
-    '4351': CommaSeparatedString<string>
-    '5150': string
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  workshop_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '2': string
-  }
-  eat_open_con: {
-    '0': string
-    '1040': CommaSeparatedString<string>
-    '1160': string
-    '3020': CommaSeparatedString<string>
-    '379': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '7681': CommaSeparatedString<string>
-    '9679': CommaSeparatedString<string>
-    '9680': string
-  }
-  guitar: {
-    '0': string
-    '100': string
-    '30': CommaSeparatedString<string>
-    '31': CommaSeparatedString<string>
-  }
-  guitar_2: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '2': CommaSeparatedString<string>
-    '4351': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '5750': CommaSeparatedString<string>
-    '6350': string
-  }
-  craft_dummy: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '10301': CommaSeparatedString<string>
-    '12200': CommaSeparatedString<string>
-    '12800': string
-    '3020': CommaSeparatedString<string>
-    '380': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '800': string
-  }
-  disassemble_metal_fast: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '3020': CommaSeparatedString<string>
-    '3021': CommaSeparatedString<string>
-    '3023': string
-    '550': CommaSeparatedString<string>
-  }
-  disassemble_cloth_fast: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '3020': CommaSeparatedString<string>
-    '3021': CommaSeparatedString<string>
-    '3023': string
-    '550': CommaSeparatedString<string>
-  }
-  disguise_tear_patch: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '3020': CommaSeparatedString<string>
-    '3021': CommaSeparatedString<string>
-    '3023': string
-    '550': CommaSeparatedString<string>
-  }
-  reload_weapon: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '3020': CommaSeparatedString<string>
-    '550': CommaSeparatedString<string>
-    '7681': CommaSeparatedString<string>
-    '9080': CommaSeparatedString<string>
-    '9680': string
-  }
-  reload_weapon_fast: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '3181': CommaSeparatedString<string>
-    '4580': CommaSeparatedString<string>
-    '4980': string
-    '550': CommaSeparatedString<string>
-  }
-  item_combination: {
-    '0': string
-    '1': CommaSeparatedString<string>
-    '1040': CommaSeparatedString<string>
-    '1460': string
-    '3020': CommaSeparatedString<string>
-    '3021': CommaSeparatedString<string>
-    '3023': string
-    '550': CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\actor_effects.ltx': PluginsActorEffectsIni
+  interface IniFileSchemas {
+    'plugins\\actor_effects.ltx': PluginsActorEffectsIni
+  }
 }

@@ -2,18 +2,21 @@
 // Schema of `scripts\\ph_campfire.ltx`. Sections enumerated for autocomplete; `ScriptsPhCampfireIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsPhCampfireIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsPhCampfireIni {
+    logic: {
+      active: string
+    }
+    'ph_idle@open': {
+      nonscript_usable: boolean
+      tips: string
+    }
+    collide: string[]
   }
-  'ph_idle@open': {
-    nonscript_usable: boolean
-    tips: string
-  }
-  collide: Record<string, string>
-}
 
-interface IniFileSchemas {
-  'scripts\\ph_campfire.ltx': ScriptsPhCampfireIni
+  interface IniFileSchemas {
+    'scripts\\ph_campfire.ltx': ScriptsPhCampfireIni
+  }
 }

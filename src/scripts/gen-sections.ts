@@ -16,8 +16,8 @@ import { bucketSections, ITEM_NAMES, OBJECT_NAMES } from "./lib/sections-core"
  * category, an `index.d.ts` that re-exports them and composes the aggregates
  * `Item`/`Object`/`All`, all re-exported from the package root so consumers do
  * `import type { Weapon } from 'anomaly-packer'` and addons augment via
- * `declare module 'anomaly-packer'`. A thin ambient shim keeps the historical bare
- * `Section`/`AnySection` globals working unchanged.
+ * `declare module 'anomaly-packer'`. There is no ambient global alias — the game `.d.ts`
+ * that use these types import them (`import type { Section } from 'anomaly-packer'`).
  *
  * Usage: `tsx src/scripts/gen-sections.ts [configs-dir]`
  */
@@ -30,10 +30,6 @@ const CONFIGS = resolve(
  *  index barrel). */
 const MODULE_DIR = resolve("src/types/sections")
 const INDEX = join(MODULE_DIR, "index.d.ts")
-/** Ambient back-compat shim: keeps the bare `Section`/`AnySection` globals alive as
- *  aliases of the module, so the ~190 hand-written game .d.ts stay unchanged. Lives
- *  where the old ambient barrel was (already referenced from __base.d.ts). */
-const SHIM = resolve("src/types/game/__base/sections.d.ts")
 /** The old ambient leaf dir under __base — removed by this generator now that the
  *  category files live in the module. */
 const OLD_LEAF_DIR = resolve("src/types/game/__base/sections")
@@ -91,25 +87,5 @@ ${allCategories.map((c) => category(c.name, c.members)).join("\n")}
 `
 writeFileSync(INDEX, index)
 
-// Ambient shim: keep the historical bare globals working as aliases of the module.
-const shim = `${AUTOGEN}
-// Ambient back-compat aliases for the section-id types re-exported from 'anomaly-packer'.
-// Kept so the hand-written game .d.ts that reference the bare \`Section\`/\`AnySection\`
-// globals compile unchanged. Inline \`import()\` types keep this file an ambient script (no
-// top-level import/export) — the aliases remain global. New code should import from
-// 'anomaly-packer' directly; addons augment via \`declare module 'anomaly-packer'\`.
-
-/** @deprecated prefer \`import('anomaly-packer').Section.Item\` */
-type Section = import('anomaly-packer').Section.Item
-/** @deprecated prefer \`import('anomaly-packer').Section.Npc\` */
-type NpcSection = import('anomaly-packer').Section.Npc
-/** @deprecated prefer \`import('anomaly-packer').Section.Squad\` */
-type SquadSection = import('anomaly-packer').Section.Squad
-/** @deprecated prefer \`import('anomaly-packer').Section.All\` */
-type AnySection = import('anomaly-packer').Section.All
-`
-writeFileSync(SHIM, shim)
-
 console.log(`Wrote module ${INDEX} + ${allCategories.length} leaf files in ${MODULE_DIR}`)
-console.log(`Wrote ambient shim ${SHIM}`)
 for (const c of allCategories) console.log(`  ${c.name}: ${c.members.size}`)

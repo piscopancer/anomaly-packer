@@ -2,495 +2,498 @@
 // Schema of `misc\\smart_terrain_masks.ltx`. Sections enumerated for autocomplete; `MiscSmartTerrainMasksIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface MiscSmartTerrainMasksIni {
-  rad_rusty_forest_center: Record<string, string>
-  monolith_snipers_smart_1_mlr: Record<string, string>
-  pri_a16_mlr_copy: Record<string, string>
-  gen_undeground_smart_mlr_burers: Record<string, string>
-  gen_undeground_smart_mlr_giant: Record<string, string>
-  gen_undeground_smart_mlr_controller: Record<string, string>
-  esc_smart_terrain_9_10: Record<string, string>
-  agr_smart_terrain_6_6: Record<string, string>
-  agr_smart_terrain_5_4: Record<string, string>
-  agr_smart_terrain_7_4: Record<string, string>
-  red_bridge_bandit_smart_skirmish: Record<string, string>
-  val_smart_terrain_7_11: Record<string, string>
-  val_smart_terrain_5_7: Record<string, string>
-  val_smart_terrain_5_8: Record<string, string>
-  gar_smart_terrain_8_3: Record<string, string>
-  rad_prip_road: Record<string, string>
-  rad2_rad_prip_road: Record<string, string>
-  rad_freedom_vs_duty: Record<string, string>
-  gar_smart_terrain_5_8: Record<string, string>
-  zombie_smart_ds_mlr_1: Record<string, string>
-  hotel_poless_smart_alife: Record<string, string>
-  zombie_smart_ds_mlr_2: Record<string, string>
-  depo_terrain: Record<string, string>
-  kbo_terrain: Record<string, string>
-  mlr_terrain: Record<string, string>
-  stalker_terrain: Record<string, string>
-  squad_terrain: Record<string, string>
-  zat_a1: Record<string, string>
-  zat_a23_smart_terrain: Record<string, string>
-  zat_b100: Record<string, string>
-  zat_b101: Record<string, string>
-  zat_b103_merc_smart: Record<string, string>
-  zat_b104_zombied: Record<string, string>
-  zat_b106_smart_terrain: Record<string, string>
-  zat_b12: Record<string, string>
-  zat_b14_smart_terrain: Record<string, string>
-  zat_b18: Record<string, string>
-  zat_b20_smart_terrain: Record<string, string>
-  zat_b28: Record<string, string>
-  zat_b33: Record<string, string>
-  zat_b38: Record<string, string>
-  zat_b38u: Record<string, string>
-  zat_b39: Record<string, string>
-  zat_b40_smart_terrain: Record<string, string>
-  zat_b42_smart_terrain: Record<string, string>
-  zat_b52: Record<string, string>
-  zat_medic_home_smart: Record<string, string>
-  zat_b53: Record<string, string>
-  zat_b54: Record<string, string>
-  zat_b56: Record<string, string>
-  zat_b5_smart_terrain: Record<string, string>
-  zat_b7: Record<string, string>
-  zat_b7_stalker_raider: Record<string, string>
-  zat_stalker_base_smart: Record<string, string>
-  zat_b55: Record<string, string>
-  zat_sim_1: Record<string, string>
-  zat_sim_2: Record<string, string>
-  zat_sim_3: Record<string, string>
-  zat_sim_4: Record<string, string>
-  zat_sim_5: Record<string, string>
-  zat_sim_6: Record<string, string>
-  zat_sim_7: Record<string, string>
-  zat_sim_8: Record<string, string>
-  zat_sim_9: Record<string, string>
-  zat_sim_10: Record<string, string>
-  zat_sim_11: Record<string, string>
-  zat_sim_12: Record<string, string>
-  zat_sim_13: Record<string, string>
-  zat_sim_14: Record<string, string>
-  zat_sim_15: Record<string, string>
-  zat_sim_16: Record<string, string>
-  zat_sim_17: Record<string, string>
-  zat_sim_18: Record<string, string>
-  zat_sim_19: Record<string, string>
-  zat_sim_20: Record<string, string>
-  zat_sim_21: Record<string, string>
-  zat_sim_22: Record<string, string>
-  zat_sim_23: Record<string, string>
-  zat_sim_24: Record<string, string>
-  zat_sim_25: Record<string, string>
-  zat_sim_26: Record<string, string>
-  zat_sim_27: Record<string, string>
-  zat_sim_28: Record<string, string>
-  zat_sim_29: Record<string, string>
-  zat_sim_30: Record<string, string>
-  jup_a10_smart_terrain: Record<string, string>
-  jup_a12: Record<string, string>
-  jup_a12_merc: Record<string, string>
-  jup_a6: Record<string, string>
-  jup_a9: Record<string, string>
-  jup_b1: Record<string, string>
-  jup_b19: Record<string, string>
-  jup_b200: Record<string, string>
-  jup_b200_tushkan_smart_terrain: Record<string, string>
-  jup_b202: Record<string, string>
-  jup_b203: Record<string, string>
-  jup_b204: Record<string, string>
-  jup_b205_smart_terrain: Record<string, string>
-  jup_b205_smart_terrain_tushkano: Record<string, string>
-  jup_b206: Record<string, string>
-  jup_b207: Record<string, string>
-  jup_b207_depot_attack: Record<string, string>
-  jup_b208: Record<string, string>
-  jup_b209: Record<string, string>
-  jup_b211: Record<string, string>
-  jup_b212: Record<string, string>
-  jup_b219: Record<string, string>
-  jup_b25: Record<string, string>
-  jup_b32: Record<string, string>
-  jup_b4: Record<string, string>
-  jup_b41: Record<string, string>
-  jup_b46: Record<string, string>
-  jup_b47: Record<string, string>
-  jup_b6_anom_2: Record<string, string>
-  jup_b8_smart_terrain: Record<string, string>
-  jup_sim_1: Record<string, string>
-  jup_sim_10: Record<string, string>
-  jup_sim_11: Record<string, string>
-  jup_sim_12: Record<string, string>
-  jup_sim_13: Record<string, string>
-  jup_sim_14: Record<string, string>
-  jup_sim_15: Record<string, string>
-  jup_sim_16: Record<string, string>
-  jup_sim_17: Record<string, string>
-  jup_sim_18: Record<string, string>
-  jup_sim_19: Record<string, string>
-  jup_sim_2: Record<string, string>
-  jup_sim_20: Record<string, string>
-  jup_sim_21: Record<string, string>
-  jup_sim_3: Record<string, string>
-  jup_sim_4: Record<string, string>
-  jup_sim_5: Record<string, string>
-  jup_sim_6: Record<string, string>
-  jup_sim_7: Record<string, string>
-  jup_sim_8: Record<string, string>
-  jup_sim_9: Record<string, string>
-  pri_a15: Record<string, string>
-  pri_a16: Record<string, string>
-  pri_a17: Record<string, string>
-  pri_a18_smart_terrain: Record<string, string>
-  pri_a21_smart_terrain: Record<string, string>
-  pri_a22_smart_terrain: Record<string, string>
-  pri_a25_smart_terrain: Record<string, string>
-  pri_a28_arch: Record<string, string>
-  pri_a28_base: Record<string, string>
-  pri_a28_evac: Record<string, string>
-  pri_a28_heli: Record<string, string>
-  pri_a28_school: Record<string, string>
-  pri_a28_shop: Record<string, string>
-  pri_b301: Record<string, string>
-  pri_b302: Record<string, string>
-  pri_b303: Record<string, string>
-  pri_b304_monsters_smart_terrain: Record<string, string>
-  pri_b305_dogs: Record<string, string>
-  pri_b306: Record<string, string>
-  pri_b307: Record<string, string>
-  pri_b35_mercs: Record<string, string>
-  pri_b35_military: Record<string, string>
-  pri_b36_smart_terrain: Record<string, string>
-  pri_sim_1: Record<string, string>
-  pri_sim_2: Record<string, string>
-  pri_sim_3: Record<string, string>
-  pri_sim_4: Record<string, string>
-  pri_sim_5: Record<string, string>
-  pri_sim_6: Record<string, string>
-  pri_sim_7: Record<string, string>
-  pri_sim_8: Record<string, string>
-  pri_sim_9: Record<string, string>
-  pri_sim_10: Record<string, string>
-  pri_sim_11: Record<string, string>
-  pri_sim_12: Record<string, string>
-  trc_sim_1: Record<string, string>
-  trc_sim_10: Record<string, string>
-  trc_sim_11: Record<string, string>
-  trc_sim_12: Record<string, string>
-  trc_sim_13: Record<string, string>
-  trc_sim_14: Record<string, string>
-  trc_sim_15: Record<string, string>
-  trc_sim_16: Record<string, string>
-  trc_sim_17: Record<string, string>
-  trc_sim_18: Record<string, string>
-  trc_sim_19: Record<string, string>
-  trc_sim_2: Record<string, string>
-  trc_sim_20: Record<string, string>
-  trc_sim_21: Record<string, string>
-  trc_sim_3: Record<string, string>
-  trc_sim_4: Record<string, string>
-  trc_sim_5: Record<string, string>
-  trc_sim_6: Record<string, string>
-  trc_sim_7: Record<string, string>
-  trc_sim_8: Record<string, string>
-  trc_sim_9: Record<string, string>
-  dar_angar: Record<string, string>
-  dar_control_poltergeist: Record<string, string>
-  dar_military_scout: Record<string, string>
-  dar_poltergeist_ring: Record<string, string>
-  dar_poltergeist_tele: Record<string, string>
-  dar_poltergeist_tele_round: Record<string, string>
-  dar_smart_snork: Record<string, string>
-  x162_st_burer: Record<string, string>
-  x162_st_gigant: Record<string, string>
-  x162_st_snork: Record<string, string>
-  x162_st_poltergeist: Record<string, string>
-  yan_smart_terrain_snork_u: Record<string, string>
-  bun_krovosos_nest: Record<string, string>
-  bun2_st_bloodsucker: Record<string, string>
-  bun2_tushkano_lair: Record<string, string>
-  sar_monolith_general: Record<string, string>
-  sar_monolith_sklad: Record<string, string>
-  sar_monolith_poltergeists: Record<string, string>
-  sar_monolith_bloodsuckers: Record<string, string>
-  sar_monolith_guard: Record<string, string>
-  sar_monolith_zombies: Record<string, string>
-  lx8_smart_terrain: Record<string, string>
-  pas_b400_canalisation: Record<string, string>
-  pas_b400_downstairs: Record<string, string>
-  pas_b400_elevator: Record<string, string>
-  pas_b400_fake: Record<string, string>
-  pas_b400_hall: Record<string, string>
-  pas_b400_track: Record<string, string>
-  pas_b400_tunnel: Record<string, string>
-  pas_b400_way: Record<string, string>
-  mar_smart_terrain_doc: Record<string, string>
-  mar_smart_terrain_doc_2: Record<string, string>
-  warlab_common_consciousness_smart_terrain: Record<string, string>
-  mar_smart_terrain_10_10: Record<string, string>
-  mar_smart_terrain_10_5: Record<string, string>
-  mar_smart_terrain_10_7: Record<string, string>
-  mar_smart_terrain_11_11: Record<string, string>
-  mar_smart_terrain_11_3: Record<string, string>
-  mar_smart_terrain_12_2: Record<string, string>
-  mar_smart_terrain_3_10: Record<string, string>
-  mar_smart_terrain_3_3: Record<string, string>
-  mar_smart_terrain_3_7: Record<string, string>
-  mar_smart_terrain_4_5: Record<string, string>
-  mar_smart_terrain_4_7: Record<string, string>
-  gen_smart_terrain_lab_entrance: Record<string, string>
-  mar_smart_terrain_5_12: Record<string, string>
-  mar_smart_terrain_5_8: Record<string, string>
-  mar_smart_terrain_6_10: Record<string, string>
-  mar_smart_terrain_6_11: Record<string, string>
-  mar_smart_terrain_6_4: Record<string, string>
-  mar_smart_terrain_6_7: Record<string, string>
-  mar_smart_terrain_6_8: Record<string, string>
-  mar_smart_terrain_7_3: Record<string, string>
-  mar_smart_terrain_7_7: Record<string, string>
-  mar_smart_terrain_8_11: Record<string, string>
-  mar_smart_terrain_8_4: Record<string, string>
-  mar_smart_terrain_8_8: Record<string, string>
-  mar_smart_terrain_8_9: Record<string, string>
-  gen_smart_terrain_junk: Record<string, string>
-  mar_smart_terrain_base: Record<string, string>
-  esc_smart_terrain_1_11: Record<string, string>
-  esc_smart_terrain_2_12: Record<string, string>
-  esc_smart_terrain_2_14: Record<string, string>
-  esc_smart_terrain_3_16: Record<string, string>
-  cit_bandits: Record<string, string>
-  esc_smart_terrain_3_7: Record<string, string>
-  gen_smart_terrain_cemetery: Record<string, string>
-  esc_smart_terrain_4_11: Record<string, string>
-  esc_smart_terrain_4_13: Record<string, string>
-  gen_smart_terrain_lab_entrance_2: Record<string, string>
-  esc_smart_terrain_4_9: Record<string, string>
-  pri_smart_monolith_stalker2: Record<string, string>
-  pri_smart_monster_lair1: Record<string, string>
-  esc_smart_terrain_5_12: Record<string, string>
-  esc_smart_terrain_5_2: Record<string, string>
-  esc_smart_terrain_5_4: Record<string, string>
-  esc_smart_terrain_5_6: Record<string, string>
-  esc_smart_terrain_5_7: Record<string, string>
-  esc_smart_terrain_5_9: Record<string, string>
-  aes_smart_terrain_monolit_blockpost4: Record<string, string>
-  pri_smart_monolith_stalker3: Record<string, string>
-  esc_smart_terrain_6_6: Record<string, string>
-  pri_monolith: Record<string, string>
-  esc_smart_terrain_6_8: Record<string, string>
-  pri_smart_giant_lair1: Record<string, string>
-  esc_smart_terrain_7_11: Record<string, string>
-  esc_smart_terrain_8_10: Record<string, string>
-  pri_smart_controler_lair2: Record<string, string>
-  esc_smart_terrain_8_9: Record<string, string>
-  cit_kanaliz1: Record<string, string>
-  esc_smart_terrain_9_7: Record<string, string>
-  gar_smart_terrain_1_5: Record<string, string>
-  gar_smart_terrain_1_7: Record<string, string>
-  cit_kanaliz2: Record<string, string>
-  gar_smart_terrain_2_4: Record<string, string>
-  gen_smart_terrain_military: Record<string, string>
-  pri_depot: Record<string, string>
-  gar_smart_terrain_3_5: Record<string, string>
-  pri_smart_bloodsucker_lair1: Record<string, string>
-  gar_smart_terrain_3_7: Record<string, string>
-  cit_killers: Record<string, string>
-  gar_smart_terrain_4_2: Record<string, string>
-  gar_smart_terrain_4_5: Record<string, string>
-  pri_smart_controler_lair1: Record<string, string>
-  gar_smart_terrain_5_2: Record<string, string>
-  gar_smart_terrain_5_4: Record<string, string>
-  gar_smart_terrain_5_5: Record<string, string>
-  gar_smart_terrain_5_6: Record<string, string>
-  pri_smart_monolith_stalker4: Record<string, string>
-  gar_smart_terrain_6_1: Record<string, string>
-  gar_smart_terrain_6_3: Record<string, string>
-  pri_smart_monolith_stalker6: Record<string, string>
-  aes_smart_terrain_monolit_blockpost: Record<string, string>
-  gar_smart_terrain_6_6: Record<string, string>
-  gar_smart_terrain_6_7: Record<string, string>
-  gen_smart_terrain_urod: Record<string, string>
-  gar_smart_terrain_7_4: Record<string, string>
-  rad2_loner_0000: Record<string, string>
-  gar_smart_terrain_8_5: Record<string, string>
-  rad2_loner_0001: Record<string, string>
-  agr_smart_terrain_1_2: Record<string, string>
-  agr_smart_terrain_1_3: Record<string, string>
-  agr_smart_terrain_1_6: Record<string, string>
-  agr_smart_terrain_2_2: Record<string, string>
-  aes_smart_terrain_monolit_blockpost2: Record<string, string>
-  aes_smart_terran_soldier: Record<string, string>
-  aes_smart_terran_soldier2: Record<string, string>
-  aes_smart_terrain_monsters1: Record<string, string>
-  agr_smart_terrain_4_4: Record<string, string>
-  agr_smart_terrain_4_6: Record<string, string>
-  agr_smart_terrain_5_2: Record<string, string>
-  agr_smart_terrain_5_3: Record<string, string>
-  aes_smart_terrain_monsters2: Record<string, string>
-  agr_smart_terrain_5_7: Record<string, string>
-  agr_smart_terrain_6_4: Record<string, string>
-  rad2_loner_0002: Record<string, string>
-  aes_smart_terrain_monsters3: Record<string, string>
-  agr_smart_terrain_7_5: Record<string, string>
-  agr_smart_terrain_4_4_near_1: Record<string, string>
-  agr_smart_terrain_4_4_near_2: Record<string, string>
-  agr_smart_terrain_4_4_near_3: Record<string, string>
-  agr_smart_terrain_1_6_near_1: Record<string, string>
-  agr_smart_terrain_1_6_near_2: Record<string, string>
-  ds2_domik_st: Record<string, string>
-  ds2_lager_st: Record<string, string>
-  ds2_st_dogs: Record<string, string>
-  ds2_st_hoofs: Record<string, string>
-  ds_boars_nest: Record<string, string>
-  ds_deb1: Record<string, string>
-  cit_killers_vs_bandits: Record<string, string>
-  ds_grverfer2: Record<string, string>
-  ds_kem1: Record<string, string>
-  ds_kem2: Record<string, string>
-  ds_kem3: Record<string, string>
-  esc_dogs_to_fox: Record<string, string>
-  ds_ptr: Record<string, string>
-  ds_ptr2: Record<string, string>
-  ds_ptr3: Record<string, string>
-  ds_ptr4: Record<string, string>
-  gar_dram: Record<string, string>
-  val_smart_terrain_1_2: Record<string, string>
-  val_smart_terrain_3_0: Record<string, string>
-  val_smart_terrain_4_0: Record<string, string>
-  val_smart_terrain_5_10: Record<string, string>
-  rad2_prip_teleport: Record<string, string>
-  rad_after_valley: Record<string, string>
-  val_smart_terrain_6_4: Record<string, string>
-  val_smart_terrain_6_5: Record<string, string>
-  aes_smart_terrain_monsters4: Record<string, string>
-  rad_antenna_camper: Record<string, string>
-  val_smart_terrain_7_3: Record<string, string>
-  val_smart_terrain_7_4: Record<string, string>
-  val_smart_terrain_7_5: Record<string, string>
-  aes2_monolith_camp1: Record<string, string>
-  val_smart_terrain_7_8: Record<string, string>
-  val_smart_terrain_8_6: Record<string, string>
-  val_smart_terrain_8_7: Record<string, string>
-  val_smart_terrain_8_9: Record<string, string>
-  val_smart_terrain_9_10: Record<string, string>
-  aes2_monolith_camp2: Record<string, string>
-  val_smart_terrain_9_2: Record<string, string>
-  val_smart_terrain_9_4: Record<string, string>
-  aes2_monolith_camp3: Record<string, string>
-  val_smart_terrain_9_6: Record<string, string>
-  bar_dolg_bunker: Record<string, string>
-  bar_dolg_general: Record<string, string>
-  bar_visitors: Record<string, string>
-  bar_zastava: Record<string, string>
-  bar_zastava_2: Record<string, string>
-  bar_zastava_dogs_lair: Record<string, string>
-  rad_antenna_monolith: Record<string, string>
-  rad_antenna_patrol: Record<string, string>
-  rad_bloodsucker: Record<string, string>
-  gar_boars_nest: Record<string, string>
-  ros_smart_killers1: Record<string, string>
-  agr_defector_stalker: Record<string, string>
-  bar_arena_monstr: Record<string, string>
-  ros_smart_monster4: Record<string, string>
-  ros_smart_monster5: Record<string, string>
-  agr_u_bandits: Record<string, string>
-  ros_smart_monster7: Record<string, string>
-  agr_u_bloodsucker: Record<string, string>
-  agr_u_bloodsucker_2: Record<string, string>
-  ros_smart_poltergeist2: Record<string, string>
-  ros_smart_snork1: Record<string, string>
-  ros_smart_stalker1: Record<string, string>
-  agr_u_monsters: Record<string, string>
-  agr_u_soldiers: Record<string, string>
-  ros_smart_stalker_bandits1: Record<string, string>
-  ros_smart_stalker_killers1: Record<string, string>
-  yan_smart_terrain_1_6: Record<string, string>
-  yan_smart_terrain_2_4: Record<string, string>
-  yan_smart_terrain_2_5: Record<string, string>
-  yan_smart_terrain_3_4: Record<string, string>
-  yan_smart_terrain_3_6: Record<string, string>
-  yan_smart_terrain_4_2: Record<string, string>
-  yan_smart_terrain_4_4: Record<string, string>
-  yan_smart_terrain_4_5: Record<string, string>
-  yan_smart_terrain_5_3: Record<string, string>
-  gen_smart_terrain_forest: Record<string, string>
-  yan_smart_terrain_5_5: Record<string, string>
-  aes2_monolith_camp4: Record<string, string>
-  yan_smart_terrain_6_2: Record<string, string>
-  yan_smart_terrain_6_4: Record<string, string>
-  rad_entrance: Record<string, string>
-  bar_zastava_dogs_lair_2: Record<string, string>
-  rad_pseudodogs: Record<string, string>
-  rad_snork1: Record<string, string>
-  rad_snork2: Record<string, string>
-  rad_valley: Record<string, string>
-  rad_valley_dogs: Record<string, string>
-  yan_smart_terrain_zombi_spawn: Record<string, string>
-  mil_smart_terrain_2_1: Record<string, string>
-  mil_smart_terrain_2_10: Record<string, string>
-  mil_smart_terrain_2_2: Record<string, string>
-  pri_smart_neutral_stalker1: Record<string, string>
-  mil_smart_terrain_2_4: Record<string, string>
-  mil_smart_terrain_2_6: Record<string, string>
-  pri_smart_pseudodog_lair1: Record<string, string>
-  pri_smart_snork_lair1: Record<string, string>
-  mil_smart_terrain_3_8: Record<string, string>
-  mil_smart_terrain_4_2: Record<string, string>
-  mil_smart_terrain_4_3: Record<string, string>
-  mil_smart_terrain_4_5: Record<string, string>
-  pri_smart_snork_lair2: Record<string, string>
-  mil_smart_terrain_4_7: Record<string, string>
-  mil_smart_terrain_4_8: Record<string, string>
-  pri_smart_tushkano_lair1: Record<string, string>
-  aes2_monolith_snipers_1: Record<string, string>
-  aes2_monolith_snipers_2: Record<string, string>
-  aes2_monolith_snipers_3: Record<string, string>
-  mil_smart_terrain_7_10: Record<string, string>
-  aes2_monsters1: Record<string, string>
-  mil_smart_terrain_7_12: Record<string, string>
-  aes2_monsters2: Record<string, string>
-  mil_smart_terrain_7_4: Record<string, string>
-  mil_smart_terrain_7_7: Record<string, string>
-  mil_smart_terrain_7_8: Record<string, string>
-  cit_killers_2: Record<string, string>
-  mil_smart_terrain_8_3: Record<string, string>
-  rad_zombied1: Record<string, string>
-  cit_bandits_2: Record<string, string>
-  red_smart_terrain_3_1: Record<string, string>
-  red_smart_terrain_3_2: Record<string, string>
-  red_smart_terrain_3_3: Record<string, string>
-  red_smart_terrain_4_2: Record<string, string>
-  red_smart_terrain_4_3: Record<string, string>
-  red_smart_terrain_4_5: Record<string, string>
-  red_smart_terrain_5_5: Record<string, string>
-  red_smart_terrain_5_6: Record<string, string>
-  red_smart_terrain_6_3: Record<string, string>
-  red_smart_terrain_6_6: Record<string, string>
-  red_smart_terrain_bridge: Record<string, string>
-  red_smart_terrain_monsters: Record<string, string>
-  red_smart_terrain_monsters_2: Record<string, string>
-  red_smart_terrain_monsters_3: Record<string, string>
-  lim_smart_terrain_1: Record<string, string>
-  lim_smart_terrain_10: Record<string, string>
-  katacomb_smart_terrain: Record<string, string>
-  lim_smart_terrain_3: Record<string, string>
-  lim_smart_terrain_4: Record<string, string>
-  lim_smart_terrain_5: Record<string, string>
-  lim_smart_terrain_6: Record<string, string>
-  lim_smart_terrain_7: Record<string, string>
-  lim_smart_terrain_8: Record<string, string>
-  lim_smart_terrain_9: Record<string, string>
-  rad_zombied2: Record<string, string>
-  pol_sim_1: Record<string, string>
-  pol_smart_terrain_1_1: Record<string, string>
-  pol_smart_terrain_1_2: Record<string, string>
-  pol_smart_terrain_1_3: Record<string, string>
-  pol_smart_terrain_2_1: Record<string, string>
-  pol_smart_terrain_2_2: Record<string, string>
-}
+declare global {
+  interface MiscSmartTerrainMasksIni {
+    rad_rusty_forest_center: string[]
+    monolith_snipers_smart_1_mlr: string[]
+    pri_a16_mlr_copy: string[]
+    gen_undeground_smart_mlr_burers: string[]
+    gen_undeground_smart_mlr_giant: string[]
+    gen_undeground_smart_mlr_controller: string[]
+    esc_smart_terrain_9_10: string[]
+    agr_smart_terrain_6_6: string[]
+    agr_smart_terrain_5_4: string[]
+    agr_smart_terrain_7_4: string[]
+    red_bridge_bandit_smart_skirmish: string[]
+    val_smart_terrain_7_11: string[]
+    val_smart_terrain_5_7: string[]
+    val_smart_terrain_5_8: string[]
+    gar_smart_terrain_8_3: string[]
+    rad_prip_road: string[]
+    rad2_rad_prip_road: string[]
+    rad_freedom_vs_duty: string[]
+    gar_smart_terrain_5_8: string[]
+    zombie_smart_ds_mlr_1: string[]
+    hotel_poless_smart_alife: string[]
+    zombie_smart_ds_mlr_2: string[]
+    depo_terrain: string[]
+    kbo_terrain: string[]
+    mlr_terrain: string[]
+    stalker_terrain: string[]
+    squad_terrain: string[]
+    zat_a1: string[]
+    zat_a23_smart_terrain: string[]
+    zat_b100: string[]
+    zat_b101: string[]
+    zat_b103_merc_smart: string[]
+    zat_b104_zombied: string[]
+    zat_b106_smart_terrain: string[]
+    zat_b12: string[]
+    zat_b14_smart_terrain: string[]
+    zat_b18: string[]
+    zat_b20_smart_terrain: string[]
+    zat_b28: string[]
+    zat_b33: string[]
+    zat_b38: string[]
+    zat_b38u: string[]
+    zat_b39: string[]
+    zat_b40_smart_terrain: string[]
+    zat_b42_smart_terrain: string[]
+    zat_b52: string[]
+    zat_medic_home_smart: string[]
+    zat_b53: string[]
+    zat_b54: string[]
+    zat_b56: string[]
+    zat_b5_smart_terrain: string[]
+    zat_b7: string[]
+    zat_b7_stalker_raider: string[]
+    zat_stalker_base_smart: string[]
+    zat_b55: string[]
+    zat_sim_1: string[]
+    zat_sim_2: string[]
+    zat_sim_3: string[]
+    zat_sim_4: string[]
+    zat_sim_5: string[]
+    zat_sim_6: string[]
+    zat_sim_7: string[]
+    zat_sim_8: string[]
+    zat_sim_9: string[]
+    zat_sim_10: string[]
+    zat_sim_11: string[]
+    zat_sim_12: string[]
+    zat_sim_13: string[]
+    zat_sim_14: string[]
+    zat_sim_15: string[]
+    zat_sim_16: string[]
+    zat_sim_17: string[]
+    zat_sim_18: string[]
+    zat_sim_19: string[]
+    zat_sim_20: string[]
+    zat_sim_21: string[]
+    zat_sim_22: string[]
+    zat_sim_23: string[]
+    zat_sim_24: string[]
+    zat_sim_25: string[]
+    zat_sim_26: string[]
+    zat_sim_27: string[]
+    zat_sim_28: string[]
+    zat_sim_29: string[]
+    zat_sim_30: string[]
+    jup_a10_smart_terrain: string[]
+    jup_a12: string[]
+    jup_a12_merc: string[]
+    jup_a6: string[]
+    jup_a9: string[]
+    jup_b1: string[]
+    jup_b19: string[]
+    jup_b200: string[]
+    jup_b200_tushkan_smart_terrain: string[]
+    jup_b202: string[]
+    jup_b203: string[]
+    jup_b204: string[]
+    jup_b205_smart_terrain: string[]
+    jup_b205_smart_terrain_tushkano: string[]
+    jup_b206: string[]
+    jup_b207: string[]
+    jup_b207_depot_attack: string[]
+    jup_b208: string[]
+    jup_b209: string[]
+    jup_b211: string[]
+    jup_b212: string[]
+    jup_b219: string[]
+    jup_b25: string[]
+    jup_b32: string[]
+    jup_b4: string[]
+    jup_b41: string[]
+    jup_b46: string[]
+    jup_b47: string[]
+    jup_b6_anom_2: string[]
+    jup_b8_smart_terrain: string[]
+    jup_sim_1: string[]
+    jup_sim_10: string[]
+    jup_sim_11: string[]
+    jup_sim_12: string[]
+    jup_sim_13: string[]
+    jup_sim_14: string[]
+    jup_sim_15: string[]
+    jup_sim_16: string[]
+    jup_sim_17: string[]
+    jup_sim_18: string[]
+    jup_sim_19: string[]
+    jup_sim_2: string[]
+    jup_sim_20: string[]
+    jup_sim_21: string[]
+    jup_sim_3: string[]
+    jup_sim_4: string[]
+    jup_sim_5: string[]
+    jup_sim_6: string[]
+    jup_sim_7: string[]
+    jup_sim_8: string[]
+    jup_sim_9: string[]
+    pri_a15: string[]
+    pri_a16: string[]
+    pri_a17: string[]
+    pri_a18_smart_terrain: string[]
+    pri_a21_smart_terrain: string[]
+    pri_a22_smart_terrain: string[]
+    pri_a25_smart_terrain: string[]
+    pri_a28_arch: string[]
+    pri_a28_base: string[]
+    pri_a28_evac: string[]
+    pri_a28_heli: string[]
+    pri_a28_school: string[]
+    pri_a28_shop: string[]
+    pri_b301: string[]
+    pri_b302: string[]
+    pri_b303: string[]
+    pri_b304_monsters_smart_terrain: string[]
+    pri_b305_dogs: string[]
+    pri_b306: string[]
+    pri_b307: string[]
+    pri_b35_mercs: string[]
+    pri_b35_military: string[]
+    pri_b36_smart_terrain: string[]
+    pri_sim_1: string[]
+    pri_sim_2: string[]
+    pri_sim_3: string[]
+    pri_sim_4: string[]
+    pri_sim_5: string[]
+    pri_sim_6: string[]
+    pri_sim_7: string[]
+    pri_sim_8: string[]
+    pri_sim_9: string[]
+    pri_sim_10: string[]
+    pri_sim_11: string[]
+    pri_sim_12: string[]
+    trc_sim_1: string[]
+    trc_sim_10: string[]
+    trc_sim_11: string[]
+    trc_sim_12: string[]
+    trc_sim_13: string[]
+    trc_sim_14: string[]
+    trc_sim_15: string[]
+    trc_sim_16: string[]
+    trc_sim_17: string[]
+    trc_sim_18: string[]
+    trc_sim_19: string[]
+    trc_sim_2: string[]
+    trc_sim_20: string[]
+    trc_sim_21: string[]
+    trc_sim_3: string[]
+    trc_sim_4: string[]
+    trc_sim_5: string[]
+    trc_sim_6: string[]
+    trc_sim_7: string[]
+    trc_sim_8: string[]
+    trc_sim_9: string[]
+    dar_angar: string[]
+    dar_control_poltergeist: string[]
+    dar_military_scout: string[]
+    dar_poltergeist_ring: string[]
+    dar_poltergeist_tele: string[]
+    dar_poltergeist_tele_round: string[]
+    dar_smart_snork: string[]
+    x162_st_burer: string[]
+    x162_st_gigant: string[]
+    x162_st_snork: string[]
+    x162_st_poltergeist: string[]
+    yan_smart_terrain_snork_u: string[]
+    bun_krovosos_nest: string[]
+    bun2_st_bloodsucker: string[]
+    bun2_tushkano_lair: string[]
+    sar_monolith_general: string[]
+    sar_monolith_sklad: string[]
+    sar_monolith_poltergeists: string[]
+    sar_monolith_bloodsuckers: string[]
+    sar_monolith_guard: string[]
+    sar_monolith_zombies: string[]
+    lx8_smart_terrain: string[]
+    pas_b400_canalisation: string[]
+    pas_b400_downstairs: string[]
+    pas_b400_elevator: string[]
+    pas_b400_fake: string[]
+    pas_b400_hall: string[]
+    pas_b400_track: string[]
+    pas_b400_tunnel: string[]
+    pas_b400_way: string[]
+    mar_smart_terrain_doc: string[]
+    mar_smart_terrain_doc_2: string[]
+    warlab_common_consciousness_smart_terrain: string[]
+    mar_smart_terrain_10_10: string[]
+    mar_smart_terrain_10_5: string[]
+    mar_smart_terrain_10_7: string[]
+    mar_smart_terrain_11_11: string[]
+    mar_smart_terrain_11_3: string[]
+    mar_smart_terrain_12_2: string[]
+    mar_smart_terrain_3_10: string[]
+    mar_smart_terrain_3_3: string[]
+    mar_smart_terrain_3_7: string[]
+    mar_smart_terrain_4_5: string[]
+    mar_smart_terrain_4_7: string[]
+    gen_smart_terrain_lab_entrance: string[]
+    mar_smart_terrain_5_12: string[]
+    mar_smart_terrain_5_8: string[]
+    mar_smart_terrain_6_10: string[]
+    mar_smart_terrain_6_11: string[]
+    mar_smart_terrain_6_4: string[]
+    mar_smart_terrain_6_7: string[]
+    mar_smart_terrain_6_8: string[]
+    mar_smart_terrain_7_3: string[]
+    mar_smart_terrain_7_7: string[]
+    mar_smart_terrain_8_11: string[]
+    mar_smart_terrain_8_4: string[]
+    mar_smart_terrain_8_8: string[]
+    mar_smart_terrain_8_9: string[]
+    gen_smart_terrain_junk: string[]
+    mar_smart_terrain_base: string[]
+    esc_smart_terrain_1_11: string[]
+    esc_smart_terrain_2_12: string[]
+    esc_smart_terrain_2_14: string[]
+    esc_smart_terrain_3_16: string[]
+    cit_bandits: string[]
+    esc_smart_terrain_3_7: string[]
+    gen_smart_terrain_cemetery: string[]
+    esc_smart_terrain_4_11: string[]
+    esc_smart_terrain_4_13: string[]
+    gen_smart_terrain_lab_entrance_2: string[]
+    esc_smart_terrain_4_9: string[]
+    pri_smart_monolith_stalker2: string[]
+    pri_smart_monster_lair1: string[]
+    esc_smart_terrain_5_12: string[]
+    esc_smart_terrain_5_2: string[]
+    esc_smart_terrain_5_4: string[]
+    esc_smart_terrain_5_6: string[]
+    esc_smart_terrain_5_7: string[]
+    esc_smart_terrain_5_9: string[]
+    aes_smart_terrain_monolit_blockpost4: string[]
+    pri_smart_monolith_stalker3: string[]
+    esc_smart_terrain_6_6: string[]
+    pri_monolith: string[]
+    esc_smart_terrain_6_8: string[]
+    pri_smart_giant_lair1: string[]
+    esc_smart_terrain_7_11: string[]
+    esc_smart_terrain_8_10: string[]
+    pri_smart_controler_lair2: string[]
+    esc_smart_terrain_8_9: string[]
+    cit_kanaliz1: string[]
+    esc_smart_terrain_9_7: string[]
+    gar_smart_terrain_1_5: string[]
+    gar_smart_terrain_1_7: string[]
+    cit_kanaliz2: string[]
+    gar_smart_terrain_2_4: string[]
+    gen_smart_terrain_military: string[]
+    pri_depot: string[]
+    gar_smart_terrain_3_5: string[]
+    pri_smart_bloodsucker_lair1: string[]
+    gar_smart_terrain_3_7: string[]
+    cit_killers: string[]
+    gar_smart_terrain_4_2: string[]
+    gar_smart_terrain_4_5: string[]
+    pri_smart_controler_lair1: string[]
+    gar_smart_terrain_5_2: string[]
+    gar_smart_terrain_5_4: string[]
+    gar_smart_terrain_5_5: string[]
+    gar_smart_terrain_5_6: string[]
+    pri_smart_monolith_stalker4: string[]
+    gar_smart_terrain_6_1: string[]
+    gar_smart_terrain_6_3: string[]
+    pri_smart_monolith_stalker6: string[]
+    aes_smart_terrain_monolit_blockpost: string[]
+    gar_smart_terrain_6_6: string[]
+    gar_smart_terrain_6_7: string[]
+    gen_smart_terrain_urod: string[]
+    gar_smart_terrain_7_4: string[]
+    rad2_loner_0000: string[]
+    gar_smart_terrain_8_5: string[]
+    rad2_loner_0001: string[]
+    agr_smart_terrain_1_2: string[]
+    agr_smart_terrain_1_3: string[]
+    agr_smart_terrain_1_6: string[]
+    agr_smart_terrain_2_2: string[]
+    aes_smart_terrain_monolit_blockpost2: string[]
+    aes_smart_terran_soldier: string[]
+    aes_smart_terran_soldier2: string[]
+    aes_smart_terrain_monsters1: string[]
+    agr_smart_terrain_4_4: string[]
+    agr_smart_terrain_4_6: string[]
+    agr_smart_terrain_5_2: string[]
+    agr_smart_terrain_5_3: string[]
+    aes_smart_terrain_monsters2: string[]
+    agr_smart_terrain_5_7: string[]
+    agr_smart_terrain_6_4: string[]
+    rad2_loner_0002: string[]
+    aes_smart_terrain_monsters3: string[]
+    agr_smart_terrain_7_5: string[]
+    agr_smart_terrain_4_4_near_1: string[]
+    agr_smart_terrain_4_4_near_2: string[]
+    agr_smart_terrain_4_4_near_3: string[]
+    agr_smart_terrain_1_6_near_1: string[]
+    agr_smart_terrain_1_6_near_2: string[]
+    ds2_domik_st: string[]
+    ds2_lager_st: string[]
+    ds2_st_dogs: string[]
+    ds2_st_hoofs: string[]
+    ds_boars_nest: string[]
+    ds_deb1: string[]
+    cit_killers_vs_bandits: string[]
+    ds_grverfer2: string[]
+    ds_kem1: string[]
+    ds_kem2: string[]
+    ds_kem3: string[]
+    esc_dogs_to_fox: string[]
+    ds_ptr: string[]
+    ds_ptr2: string[]
+    ds_ptr3: string[]
+    ds_ptr4: string[]
+    gar_dram: string[]
+    val_smart_terrain_1_2: string[]
+    val_smart_terrain_3_0: string[]
+    val_smart_terrain_4_0: string[]
+    val_smart_terrain_5_10: string[]
+    rad2_prip_teleport: string[]
+    rad_after_valley: string[]
+    val_smart_terrain_6_4: string[]
+    val_smart_terrain_6_5: string[]
+    aes_smart_terrain_monsters4: string[]
+    rad_antenna_camper: string[]
+    val_smart_terrain_7_3: string[]
+    val_smart_terrain_7_4: string[]
+    val_smart_terrain_7_5: string[]
+    aes2_monolith_camp1: string[]
+    val_smart_terrain_7_8: string[]
+    val_smart_terrain_8_6: string[]
+    val_smart_terrain_8_7: string[]
+    val_smart_terrain_8_9: string[]
+    val_smart_terrain_9_10: string[]
+    aes2_monolith_camp2: string[]
+    val_smart_terrain_9_2: string[]
+    val_smart_terrain_9_4: string[]
+    aes2_monolith_camp3: string[]
+    val_smart_terrain_9_6: string[]
+    bar_dolg_bunker: string[]
+    bar_dolg_general: string[]
+    bar_visitors: string[]
+    bar_zastava: string[]
+    bar_zastava_2: string[]
+    bar_zastava_dogs_lair: string[]
+    rad_antenna_monolith: string[]
+    rad_antenna_patrol: string[]
+    rad_bloodsucker: string[]
+    gar_boars_nest: string[]
+    ros_smart_killers1: string[]
+    agr_defector_stalker: string[]
+    bar_arena_monstr: string[]
+    ros_smart_monster4: string[]
+    ros_smart_monster5: string[]
+    agr_u_bandits: string[]
+    ros_smart_monster7: string[]
+    agr_u_bloodsucker: string[]
+    agr_u_bloodsucker_2: string[]
+    ros_smart_poltergeist2: string[]
+    ros_smart_snork1: string[]
+    ros_smart_stalker1: string[]
+    agr_u_monsters: string[]
+    agr_u_soldiers: string[]
+    ros_smart_stalker_bandits1: string[]
+    ros_smart_stalker_killers1: string[]
+    yan_smart_terrain_1_6: string[]
+    yan_smart_terrain_2_4: string[]
+    yan_smart_terrain_2_5: string[]
+    yan_smart_terrain_3_4: string[]
+    yan_smart_terrain_3_6: string[]
+    yan_smart_terrain_4_2: string[]
+    yan_smart_terrain_4_4: string[]
+    yan_smart_terrain_4_5: string[]
+    yan_smart_terrain_5_3: string[]
+    gen_smart_terrain_forest: string[]
+    yan_smart_terrain_5_5: string[]
+    aes2_monolith_camp4: string[]
+    yan_smart_terrain_6_2: string[]
+    yan_smart_terrain_6_4: string[]
+    rad_entrance: string[]
+    bar_zastava_dogs_lair_2: string[]
+    rad_pseudodogs: string[]
+    rad_snork1: string[]
+    rad_snork2: string[]
+    rad_valley: string[]
+    rad_valley_dogs: string[]
+    yan_smart_terrain_zombi_spawn: string[]
+    mil_smart_terrain_2_1: string[]
+    mil_smart_terrain_2_10: string[]
+    mil_smart_terrain_2_2: string[]
+    pri_smart_neutral_stalker1: string[]
+    mil_smart_terrain_2_4: string[]
+    mil_smart_terrain_2_6: string[]
+    pri_smart_pseudodog_lair1: string[]
+    pri_smart_snork_lair1: string[]
+    mil_smart_terrain_3_8: string[]
+    mil_smart_terrain_4_2: string[]
+    mil_smart_terrain_4_3: string[]
+    mil_smart_terrain_4_5: string[]
+    pri_smart_snork_lair2: string[]
+    mil_smart_terrain_4_7: string[]
+    mil_smart_terrain_4_8: string[]
+    pri_smart_tushkano_lair1: string[]
+    aes2_monolith_snipers_1: string[]
+    aes2_monolith_snipers_2: string[]
+    aes2_monolith_snipers_3: string[]
+    mil_smart_terrain_7_10: string[]
+    aes2_monsters1: string[]
+    mil_smart_terrain_7_12: string[]
+    aes2_monsters2: string[]
+    mil_smart_terrain_7_4: string[]
+    mil_smart_terrain_7_7: string[]
+    mil_smart_terrain_7_8: string[]
+    cit_killers_2: string[]
+    mil_smart_terrain_8_3: string[]
+    rad_zombied1: string[]
+    cit_bandits_2: string[]
+    red_smart_terrain_3_1: string[]
+    red_smart_terrain_3_2: string[]
+    red_smart_terrain_3_3: string[]
+    red_smart_terrain_4_2: string[]
+    red_smart_terrain_4_3: string[]
+    red_smart_terrain_4_5: string[]
+    red_smart_terrain_5_5: string[]
+    red_smart_terrain_5_6: string[]
+    red_smart_terrain_6_3: string[]
+    red_smart_terrain_6_6: string[]
+    red_smart_terrain_bridge: string[]
+    red_smart_terrain_monsters: string[]
+    red_smart_terrain_monsters_2: string[]
+    red_smart_terrain_monsters_3: string[]
+    lim_smart_terrain_1: string[]
+    lim_smart_terrain_10: string[]
+    katacomb_smart_terrain: string[]
+    lim_smart_terrain_3: string[]
+    lim_smart_terrain_4: string[]
+    lim_smart_terrain_5: string[]
+    lim_smart_terrain_6: string[]
+    lim_smart_terrain_7: string[]
+    lim_smart_terrain_8: string[]
+    lim_smart_terrain_9: string[]
+    rad_zombied2: string[]
+    pol_sim_1: string[]
+    pol_smart_terrain_1_1: string[]
+    pol_smart_terrain_1_2: string[]
+    pol_smart_terrain_1_3: string[]
+    pol_smart_terrain_2_1: string[]
+    pol_smart_terrain_2_2: string[]
+  }
 
-interface IniFileSchemas {
-  'misc\\smart_terrain_masks.ltx': MiscSmartTerrainMasksIni
+  interface IniFileSchemas {
+    'misc\\smart_terrain_masks.ltx': MiscSmartTerrainMasksIni
+  }
 }

@@ -2,23 +2,26 @@
 // Schema of `ai_tweaks\\xr_gather_items.ltx`. Sections enumerated for autocomplete; `AiTweaksXrGatherItemsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksXrGatherItemsIni {
-  settings: {
-    allow_artifact_detection: boolean
-    artifact_search_time: number
-    enable: boolean
-    max_detect_dist: number
-    run_dist: number
-    state_run: string
-    state_walk: string
-    use_xr_corpse_detection_loot_table: boolean
+declare global {
+  interface AiTweaksXrGatherItemsIni {
+    settings: {
+      allow_artifact_detection: boolean
+      artifact_search_time: number
+      enable: boolean
+      max_detect_dist: number
+      run_dist: number
+      state_run: string
+      state_walk: string
+      use_xr_corpse_detection_loot_table: boolean
+    }
+    artifact_communities: string[]
+    lootable: {
+    }
   }
-  artifact_communities: Record<string, string>
-  lootable: {
-  }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xr_gather_items.ltx': AiTweaksXrGatherItemsIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xr_gather_items.ltx': AiTweaksXrGatherItemsIni
+  }
 }

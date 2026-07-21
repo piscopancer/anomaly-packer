@@ -2,28 +2,31 @@
 // Schema of `scripts\\as_script_grenade.ltx`. Sections enumerated for autocomplete; `ScriptsAsScriptGrenadeIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsAsScriptGrenadeIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsAsScriptGrenadeIni {
+    logic: {
+      active: string
+    }
+    'ph_idle@click': {
+      nonscript_usable: boolean
+      on_info: string
+    }
+    'ph_idle@delay': {
+      nonscript_usable: boolean
+      on_timer: string
+    }
+    'ph_idle@explode': {
+      nonscript_usable: boolean
+      on_info: string
+    }
+    'ph_idle@idle': {
+      nonscript_usable: boolean
+    }
   }
-  'ph_idle@click': {
-    nonscript_usable: boolean
-    on_info: string
-  }
-  'ph_idle@delay': {
-    nonscript_usable: boolean
-    on_timer: string
-  }
-  'ph_idle@explode': {
-    nonscript_usable: boolean
-    on_info: string
-  }
-  'ph_idle@idle': {
-    nonscript_usable: boolean
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\as_script_grenade.ltx': ScriptsAsScriptGrenadeIni
+  interface IniFileSchemas {
+    'scripts\\as_script_grenade.ltx': ScriptsAsScriptGrenadeIni
+  }
 }

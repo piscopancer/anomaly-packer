@@ -2,29 +2,32 @@
 // Schema of `ai_tweaks\\xr_weapon_jam.ltx`. Sections enumerated for autocomplete; `AiTweaksXrWeaponJamIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksXrWeaponJamIni {
-  settings: {
-    base_ch_experienced: number
-    base_ch_expert: number
-    base_ch_legend: number
-    base_ch_master: number
-    base_ch_novice: number
-    base_ch_professional: number
-    base_ch_trainee: number
-    base_ch_veteran: number
-    enabled: boolean
-    max_ch_experienced: number
-    max_ch_expert: number
-    max_ch_legend: number
-    max_ch_master: number
-    max_ch_novice: number
-    max_ch_professional: number
-    max_ch_trainee: number
-    max_ch_veteran: number
+declare global {
+  interface AiTweaksXrWeaponJamIni {
+    settings: {
+      base_ch_experienced: number
+      base_ch_expert: number
+      base_ch_legend: number
+      base_ch_master: number
+      base_ch_novice: number
+      base_ch_professional: number
+      base_ch_trainee: number
+      base_ch_veteran: number
+      enabled: boolean
+      max_ch_experienced: number
+      max_ch_expert: number
+      max_ch_legend: number
+      max_ch_master: number
+      max_ch_novice: number
+      max_ch_professional: number
+      max_ch_trainee: number
+      max_ch_veteran: number
+    }
   }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xr_weapon_jam.ltx': AiTweaksXrWeaponJamIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xr_weapon_jam.ltx': AiTweaksXrWeaponJamIni
+  }
 }

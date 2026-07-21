@@ -2,19 +2,22 @@
 // Schema of `ai_tweaks\\xr_help_wounded.ltx`. Sections enumerated for autocomplete; `AiTweaksXrHelpWoundedIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksXrHelpWoundedIni {
-  settings: {
-    always_help_distance: number
-    anim_combat_type: number
-    anim_free_type: number
-    help_in_combat: boolean
-    use_new_anim: boolean
+declare global {
+  interface AiTweaksXrHelpWoundedIni {
+    settings: {
+      always_help_distance: number
+      anim_combat_type: number
+      anim_free_type: number
+      help_in_combat: boolean
+      use_new_anim: boolean
+    }
+    help_in_combat_visuals: {
+    }
   }
-  help_in_combat_visuals: {
-  }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xr_help_wounded.ltx': AiTweaksXrHelpWoundedIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xr_help_wounded.ltx': AiTweaksXrHelpWoundedIni
+  }
 }

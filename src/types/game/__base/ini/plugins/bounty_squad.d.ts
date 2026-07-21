@@ -2,44 +2,47 @@
 // Schema of `plugins\\bounty_squad.ltx`. Sections enumerated for autocomplete; `PluginsBountySquadIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsBountySquadIni {
-  faction_list: Record<string, string>
-  safe_levels: Record<string, string>
-  safe_smarts: Record<string, string>
-  faction_bounty_squads: {
-    army: string
-    bandit: string
-    csky: string
-    dolg: string
-    freedom: string
-    killer: string
-    monolith: string
-    stalker: string
+declare global {
+  interface PluginsBountySquadIni {
+    faction_list: string[]
+    safe_levels: string[]
+    safe_smarts: string[]
+    faction_bounty_squads: {
+      army: string
+      bandit: string
+      csky: string
+      dolg: string
+      freedom: string
+      killer: string
+      monolith: string
+      stalker: string
+    }
+    danger_ranks: {
+      experienced: number
+      expert: number
+      legend: number
+      master: number
+      novice: number
+      professional: number
+      trainee: number
+      veteran: number
+    }
+    danger_reputations: {
+      bad: number
+      excellent: number
+      good: number
+      neutral: number
+      really_bad: number
+      really_good: number
+      terrible: number
+      very_bad: number
+      very_good: number
+    }
   }
-  danger_ranks: {
-    experienced: number
-    expert: number
-    legend: number
-    master: number
-    novice: number
-    professional: number
-    trainee: number
-    veteran: number
-  }
-  danger_reputations: {
-    bad: number
-    excellent: number
-    good: number
-    neutral: number
-    really_bad: number
-    really_good: number
-    terrible: number
-    very_bad: number
-    very_good: number
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\bounty_squad.ltx': PluginsBountySquadIni
+  interface IniFileSchemas {
+    'plugins\\bounty_squad.ltx': PluginsBountySquadIni
+  }
 }

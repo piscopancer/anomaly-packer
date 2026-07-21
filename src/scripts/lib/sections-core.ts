@@ -89,13 +89,33 @@ export function headersOf(files: string[]): Set<string> {
   return names
 }
 
-/** Files whose `[child]:parent` + `class=` lines build the inheritance graph. */
+/**
+ * Files whose `[child]:parent` + `class=` lines build the inheritance graph.
+ *
+ * The root-level `mod_system*.ltx` are how a mod adds sections in Anomaly: the engine merges
+ * them into `system.ltx` on load — vanilla's `system.ltx` never `#include`s them, so they are
+ * invisible to any scan that only follows includes or only walks `items/`. Miss them and a mod's
+ * items resolve to no class at all: 3DSS defines `[skeet]:addon` (a scope, with `cost` and
+ * `inv_weight`) in `mod_system_z_weapon_addons_3dssg.ltx`, and without this it buckets nowhere.
+ */
 function graphFiles(root: string): string[] {
+  const modSystem = existsSync(root)
+    ? readdirSync(root)
+        .filter((f) => /^mod_system.*\.ltx$/i.test(f))
+        .sort()
+        .map((f) => join(root, f))
+    : []
   return [
+    // The base identity sections the class graph roots into (`[booster]:identity_immunities`
+    // with `class = II_FOOD`, etc.) live here. Without it, chains that pass through a base —
+    // `[skeet]:addon` -> `[addon]:booster` -> `booster` — resolve to no class and the item
+    // buckets nowhere.
+    join(root, "defines.ltx"),
     ...walk(join(root, "items"), ".ltx"),
     ...walk(join(root, "creatures"), ".ltx"),
     ...walk(join(root, "zones"), ".ltx"),
     join(root, "vehicles.ltx"),
+    ...modSystem,
   ]
 }
 

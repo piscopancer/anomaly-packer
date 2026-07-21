@@ -1,55 +1,59 @@
 /** @noSelfInFile */
 
 /** @customConstructor se_restrictor */
-declare class se_restrictor extends cse_alife_space_restrictor {
-  constructor(section: Section)
-  on_register(): void
-  switch_online(): void
-  keep_saved_data_anyway(): boolean
-  on_unregister(): void
-}
+import type { Section } from 'anomaly-packer'
 
-/** @customConstructor se_zone_anom */
-declare class se_zone_anom extends cse_anomalous_zone {
-  constructor(section: Section)
-  on_register(): void
-  update(): void
-  STATE_Write(packet: net_packet): void
-  STATE_Read(packet: net_packet, size: number): void
-  on_unregister(): void
-}
+declare global {
+  class se_restrictor extends cse_alife_space_restrictor {
+    constructor(section: Section.Item)
+    on_register(): void
+    switch_online(): void
+    keep_saved_data_anyway(): boolean
+    on_unregister(): void
+  }
+  
+  /** @customConstructor se_zone_anom */
+  class se_zone_anom extends cse_anomalous_zone {
+    constructor(section: Section.Item)
+    on_register(): void
+    update(): void
+    STATE_Write(packet: net_packet): void
+    STATE_Read(packet: net_packet, size: number): void
+    on_unregister(): void
+  }
+  
+  /** @customConstructor se_zone_torrid */
+  class se_zone_torrid extends cse_torrid_zone {
+    constructor(section: Section.Item)
+    on_register(): void
+    update(): void
+    STATE_Write(packet: net_packet): void
+    STATE_Read(packet: net_packet, size: number): void
+    on_unregister(): void
+  }
+  
+  /** @customConstructor se_zone_visual */
+  class se_zone_visual extends cse_zone_visual {
+    constructor(section: Section.Item)
+    on_register(): void
+    update(): void
+    STATE_Write(packet: net_packet): void
+    STATE_Read(packet: net_packet, size: number): void
+    on_unregister(): void
+  }
 
-/** @customConstructor se_zone_torrid */
-declare class se_zone_torrid extends cse_torrid_zone {
-  constructor(section: Section)
-  on_register(): void
-  update(): void
-  STATE_Write(packet: net_packet): void
-  STATE_Read(packet: net_packet, size: number): void
-  on_unregister(): void
-}
-
-/** @customConstructor se_zone_visual */
-declare class se_zone_visual extends cse_zone_visual {
-  constructor(section: Section)
-  on_register(): void
-  update(): void
-  STATE_Write(packet: net_packet): void
-  STATE_Read(packet: net_packet, size: number): void
-  on_unregister(): void
-}
-
-declare namespace se_zones {
-  /** Anomaly `class "se_restrictor"` is also reachable on the `se_zones` script namespace; typed as
-   *  the instance so its methods can be captured/overridden (`se_zones.se_restrictor.Method = ...`). */
-  export const se_restrictor: se_restrictor
-  /** Anomaly `class "se_zone_anom"` is also reachable on the `se_zones` script namespace; typed as
-   *  the instance so its methods can be captured/overridden (`se_zones.se_zone_anom.Method = ...`). */
-  export const se_zone_anom: se_zone_anom
-  /** Anomaly `class "se_zone_torrid"` is also reachable on the `se_zones` script namespace; typed as
-   *  the instance so its methods can be captured/overridden (`se_zones.se_zone_torrid.Method = ...`). */
-  export const se_zone_torrid: se_zone_torrid
-  /** Anomaly `class "se_zone_visual"` is also reachable on the `se_zones` script namespace; typed as
-   *  the instance so its methods can be captured/overridden (`se_zones.se_zone_visual.Method = ...`). */
-  export const se_zone_visual: se_zone_visual
+  namespace se_zones {
+    /** Anomaly `class "se_restrictor"` is also reachable on the `se_zones` script namespace; typed as
+     *  the instance so its methods can be captured/overridden (`se_zones.se_restrictor.Method = ...`). */
+    export const se_restrictor: se_restrictor
+    /** Anomaly `class "se_zone_anom"` is also reachable on the `se_zones` script namespace; typed as
+     *  the instance so its methods can be captured/overridden (`se_zones.se_zone_anom.Method = ...`). */
+    export const se_zone_anom: se_zone_anom
+    /** Anomaly `class "se_zone_torrid"` is also reachable on the `se_zones` script namespace; typed as
+     *  the instance so its methods can be captured/overridden (`se_zones.se_zone_torrid.Method = ...`). */
+    export const se_zone_torrid: se_zone_torrid
+    /** Anomaly `class "se_zone_visual"` is also reachable on the `se_zones` script namespace; typed as
+     *  the instance so its methods can be captured/overridden (`se_zones.se_zone_visual.Method = ...`). */
+    export const se_zone_visual: se_zone_visual
+  }
 }

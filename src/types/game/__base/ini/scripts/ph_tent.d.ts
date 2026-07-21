@@ -2,17 +2,20 @@
 // Schema of `scripts\\ph_tent.ltx`. Sections enumerated for autocomplete; `ScriptsPhTentIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsPhTentIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsPhTentIni {
+    logic: {
+      active: string
+    }
+    'ph_idle@open': {
+      nonscript_usable: boolean
+    }
+    collide: string[]
   }
-  'ph_idle@open': {
-    nonscript_usable: boolean
-  }
-  collide: Record<string, string>
-}
 
-interface IniFileSchemas {
-  'scripts\\ph_tent.ltx': ScriptsPhTentIni
+  interface IniFileSchemas {
+    'scripts\\ph_tent.ltx': ScriptsPhTentIni
+  }
 }

@@ -2,35 +2,38 @@
 // Schema of `scripts\\door_metal_large_free.ltx`. Sections enumerated for autocomplete; `ScriptsDoorMetalLargeFreeIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsDoorMetalLargeFreeIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsDoorMetalLargeFreeIni {
+    logic: {
+      active: string
+    }
+    'ph_door@close': {
+      closed: boolean
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@open': {
+      closed: boolean
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@free': {
+      closed: boolean
+      locked: boolean
+      no_force: boolean
+      on_use: string
+    }
   }
-  'ph_door@close': {
-    closed: boolean
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@open': {
-    closed: boolean
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@free': {
-    closed: boolean
-    locked: boolean
-    no_force: boolean
-    on_use: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\door_metal_large_free.ltx': ScriptsDoorMetalLargeFreeIni
+  interface IniFileSchemas {
+    'scripts\\door_metal_large_free.ltx': ScriptsDoorMetalLargeFreeIni
+  }
 }

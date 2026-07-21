@@ -2,26 +2,29 @@
 // Schema of `plugins\\faction_quick_travel.ltx`. Sections enumerated for autocomplete; `PluginsFactionQuickTravelIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsFactionQuickTravelIni {
-  settings: {
-    enable: boolean
+declare global {
+  interface PluginsFactionQuickTravelIni {
+    settings: {
+      enable: boolean
+    }
+    stalker: string[]
+    bandit: string[]
+    csky: string[]
+    army: string[]
+    dolg: string[]
+    freedom: string[]
+    killer: string[]
+    ecolog: string[]
+    monolith: string[]
+    renegade: string[]
+    greh: string[]
+    isg: string[]
+    zombied: string[]
   }
-  stalker: Record<string, string>
-  bandit: Record<string, string>
-  csky: Record<string, string>
-  army: Record<string, string>
-  dolg: Record<string, string>
-  freedom: Record<string, string>
-  killer: Record<string, string>
-  ecolog: Record<string, string>
-  monolith: Record<string, string>
-  renegade: Record<string, string>
-  greh: Record<string, string>
-  isg: Record<string, string>
-  zombied: Record<string, string>
-}
 
-interface IniFileSchemas {
-  'plugins\\faction_quick_travel.ltx': PluginsFactionQuickTravelIni
+  interface IniFileSchemas {
+    'plugins\\faction_quick_travel.ltx': PluginsFactionQuickTravelIni
+  }
 }

@@ -2,19 +2,22 @@
 // Schema of `ai_tweaks\\ai_tweaks.ltx`. Sections enumerated for autocomplete; `AiTweaksAiTweaksIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksAiTweaksIni {
-  weapon_reload: {
-    infinite_ammo_primary: boolean
-    infinite_ammo_secondary: boolean
+declare global {
+  interface AiTweaksAiTweaksIni {
+    weapon_reload: {
+      infinite_ammo_primary: boolean
+      infinite_ammo_secondary: boolean
+    }
+    lios: {
+      enable: boolean
+      fov_add: number
+      range_add: number
+    }
   }
-  lios: {
-    enable: boolean
-    fov_add: number
-    range_add: number
-  }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\ai_tweaks.ltx': AiTweaksAiTweaksIni
+  interface IniFileSchemas {
+    'ai_tweaks\\ai_tweaks.ltx': AiTweaksAiTweaksIni
+  }
 }

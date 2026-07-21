@@ -2,47 +2,50 @@
 // Schema of `scripts\\safe_door_metal.ltx`. Sections enumerated for autocomplete; `ScriptsSafeDoorMetalIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsSafeDoorMetalIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsSafeDoorMetalIni {
+    logic: {
+      active: string
+    }
+    'ph_door@locked': {
+      closed: boolean
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_code@lock': {
+      code: number
+      on_code: string
+    }
+    'ph_door@close': {
+      closed: boolean
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@open': {
+      closed: boolean
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@free': {
+      closed: boolean
+      locked: boolean
+      no_force: boolean
+      on_use: string
+    }
   }
-  'ph_door@locked': {
-    closed: boolean
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_code@lock': {
-    code: number
-    on_code: string
-  }
-  'ph_door@close': {
-    closed: boolean
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@open': {
-    closed: boolean
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@free': {
-    closed: boolean
-    locked: boolean
-    no_force: boolean
-    on_use: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\safe_door_metal.ltx': ScriptsSafeDoorMetalIni
+  interface IniFileSchemas {
+    'scripts\\safe_door_metal.ltx': ScriptsSafeDoorMetalIni
+  }
 }

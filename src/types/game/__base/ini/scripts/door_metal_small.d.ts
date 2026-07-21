@@ -2,45 +2,48 @@
 // Schema of `scripts\\door_metal_small.ltx`. Sections enumerated for autocomplete; `ScriptsDoorMetalSmallIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsDoorMetalSmallIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsDoorMetalSmallIni {
+    logic: {
+      active: string
+    }
+    'ph_door@locked': {
+      closed: boolean
+      hit_on_bone: string
+      locked: boolean
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@close': {
+      closed: boolean
+      hit_on_bone: string
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@open': {
+      closed: boolean
+      hit_on_bone: string
+      locked: boolean
+      on_use: string
+      snd_close_start: string
+      snd_close_stop: string
+      snd_open_start: string
+    }
+    'ph_door@free': {
+      closed: boolean
+      locked: boolean
+      no_force: boolean
+      on_use: string
+    }
   }
-  'ph_door@locked': {
-    closed: boolean
-    hit_on_bone: string
-    locked: boolean
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@close': {
-    closed: boolean
-    hit_on_bone: string
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@open': {
-    closed: boolean
-    hit_on_bone: string
-    locked: boolean
-    on_use: string
-    snd_close_start: string
-    snd_close_stop: string
-    snd_open_start: string
-  }
-  'ph_door@free': {
-    closed: boolean
-    locked: boolean
-    no_force: boolean
-    on_use: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\door_metal_small.ltx': ScriptsDoorMetalSmallIni
+  interface IniFileSchemas {
+    'scripts\\door_metal_small.ltx': ScriptsDoorMetalSmallIni
+  }
 }

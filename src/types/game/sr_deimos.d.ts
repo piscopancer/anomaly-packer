@@ -1,26 +1,30 @@
 /** @noSelfInFile */
 
-declare namespace sr_deimos {
-  export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section, storage: AnyTable): void
-  export function check_disable_bound(obj: CGameObject): boolean
-  export function check_intensity_delta(obj: CGameObject): boolean
-  export function check_lower_bound(obj: CGameObject): boolean
-  export function check_upper_bound(obj: CGameObject): boolean
-  export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section, gulag_name: string): void
-}
+import type { Section } from 'anomaly-packer'
 
-/** @customConstructor CDeimos */
-declare class CDeimos {
-  cam_effector_time: TODO // @generated field — refine type
-  object: TODO // @generated field — refine type
-  phase: number // @generated field — refine type
-  st: TODO // @generated field — refine type
-  constructor(obj: CGameObject, storage: AnyTable)
-  update(delta: number): void
-}
+declare global {
+  namespace sr_deimos {
+    export function add_to_binder(npc: CGameObject, ini: system_ini, scheme: string, section: Section.Item, storage: AnyTable): void
+    export function check_disable_bound(obj: CGameObject): boolean
+    export function check_intensity_delta(obj: CGameObject): boolean
+    export function check_lower_bound(obj: CGameObject): boolean
+    export function check_upper_bound(obj: CGameObject): boolean
+    export function set_scheme(npc: CGameObject, ini: system_ini, scheme: string, section: Section.Item, gulag_name: string): void
+  }
 
-declare namespace sr_deimos {
-  /** Anomaly `class "CDeimos"` is also reachable on the `sr_deimos` script namespace; typed as
-   *  the instance so its methods can be captured/overridden (`sr_deimos.CDeimos.Method = ...`). */
-  export const CDeimos: CDeimos
+  /** @customConstructor CDeimos */
+  class CDeimos {
+    cam_effector_time: TODO // @generated field — refine type
+    object: TODO // @generated field — refine type
+    phase: number // @generated field — refine type
+    st: TODO // @generated field — refine type
+    constructor(obj: CGameObject, storage: AnyTable)
+    update(delta: number): void
+  }
+
+  namespace sr_deimos {
+    /** Anomaly `class "CDeimos"` is also reachable on the `sr_deimos` script namespace; typed as
+     *  the instance so its methods can be captured/overridden (`sr_deimos.CDeimos.Method = ...`). */
+    export const CDeimos: CDeimos
+  }
 }

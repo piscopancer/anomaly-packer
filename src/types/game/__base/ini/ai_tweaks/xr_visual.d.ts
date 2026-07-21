@@ -2,178 +2,181 @@
 // Schema of `ai_tweaks\\xr_visual.ltx`. Sections enumerated for autocomplete; `AiTweaksXrVisualIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksXrVisualIni {
-  main: {
-    enable: boolean
-    use_death_drop: boolean
-    use_player_id: boolean
+declare global {
+  interface AiTweaksXrVisualIni {
+    main: {
+      enable: boolean
+      use_death_drop: boolean
+      use_player_id: boolean
+    }
+    forbidden_npcs: {
+      barmen: boolean
+      guide: boolean
+      jup_b10_stalker_drunk: boolean
+      jup_b15_zulus: boolean
+      jup_b220_trapper: boolean
+      jup_b6_scientist_biochemist: boolean
+      jup_b6_scientist_nuclear_physicist: boolean
+      leader: boolean
+      mechanic: boolean
+      medic: boolean
+      pri_a15_military_recon_leader: boolean
+      pri_a15_military_tarasov: boolean
+      pri_a15_sokolov: boolean
+      pri_a15_sokolov_scene: boolean
+      pri_a15_vano: boolean
+      pri_a15_wanderer: boolean
+      pri_a15_zulus: boolean
+      pri_a17_military_captain_tarasov: boolean
+      pri_a17_military_colonel_kovalski: boolean
+      pri_a17_military_lieutenant_podorojniy: boolean
+      pri_a17_military_prapor_valentyr: boolean
+      pri_a17_military_sergeant_morozov: boolean
+      pri_a21_chasovoi_target: boolean
+      pri_a22_army_signaller: boolean
+      pri_a22_military_merkulov: boolean
+      pri_a22_military_skelja: boolean
+      pri_a22_military_yarmoshuk: boolean
+      pri_b305_signal_man: boolean
+      pri_b305_strelok: boolean
+      pri_b35_merc_leader: boolean
+      tech: boolean
+      trader: boolean
+      zat_a2_stalker_nimble: boolean
+      zat_b106_stalker_crab: boolean
+      zat_b7_bandit_boss_sultan: boolean
+    }
+    community_to_naked: {
+      army: string
+      bandit: string
+      dolg: string
+      freedom: string
+      killer: string
+      monolith: string
+      stalker: string
+    }
+    outfit_rating: {
+      cs_heavy_outfit: number
+      dolg_heavy_outfit: number
+      dolg_outfit: number
+      exo_outfit: number
+      military_outfit: number
+      novice_outfit: number
+      scientific_outfit: number
+      specops_outfit: number
+      stalker_outfit: number
+      stalker_outfit_barge: number
+      svoboda_heavy_outfit: number
+      svoboda_light_outfit: number
+    }
+    visual_to_outfit: {
+      stalker_dolg_1: string
+      stalker_dolg_2_mask: string
+      stalker_dolg_3: string
+      stalker_dolg_4: string
+      stalker_ecolog_military: string
+      stalker_freedom_1: string
+      stalker_freedom_2_mask: string
+      stalker_freedom_3: string
+      stalker_freedom_4: string
+      stalker_freedom_5: string
+      stalker_merc_4: string
+      stalker_monolith_4: string
+      stalker_nebo_2: string
+      stalker_neutral_1: string
+      stalker_neutral_2: string
+      stalker_neutral_2_mask: string
+      stalker_neutral_3: string
+      stalker_neutral_4: string
+      stalker_neutral_nauchniy: string
+      stalker_soldier_2: string
+      stalker_soldier_2_face_1_mask: string
+      stalker_soldier_3: string
+      stalker_soldier_4: string
+    }
+    stalker: {
+      cs_heavy_outfit: string
+      dolg_heavy_outfit: string
+      dolg_outfit: string
+      exo_outfit: string
+      military_outfit: string
+      novice_outfit: string
+      scientific_outfit: string
+      specops_outfit: string
+      stalker_outfit: string
+      stalker_outfit_barge: string
+      svoboda_heavy_outfit: string
+      svoboda_light_outfit: string
+    }
+    bandit: {
+      cs_heavy_outfit: string
+      dolg_heavy_outfit: string
+      dolg_outfit: string
+      exo_outfit: string
+      military_outfit: string
+      neutral_assault_outfit: string
+      novice_outfit: string
+      scientific_outfit: string
+      specops_outfit: string
+      stalker_outfit: string
+      stalker_outfit_barge: string
+      svoboda_heavy_outfit: string
+      svoboda_light_outfit: string
+    }
+    killer: {
+      cs_heavy_outfit: string
+      dolg_heavy_outfit: string
+      dolg_outfit: string
+      exo_outfit: string
+      military_outfit: string
+      neutral_assault_outfit: string
+      novice_outfit: string
+      scientific_outfit: string
+      specops_outfit: string
+      stalker_outfit: string
+      stalker_outfit_barge: string
+      svoboda_heavy_outfit: string
+      svoboda_light_outfit: string
+    }
+    ecolog: {
+      exo_outfit: string
+      scientific_outfit: string
+    }
+    army: {
+      military_outfit: string
+      specops_outfit: string
+    }
+    monolith: {
+    }
+    dolg: {
+      dolg_heavy_outfit: string
+      dolg_outfit: string
+      exo_outfit: string
+      military_outfit: string
+      scientific_outfit: string
+      specops_outfit: string
+      stalker_outfit: string
+      stalker_outfit_barge: string
+      svoboda_heavy_outfit: string
+      svoboda_light_outfit: string
+    }
+    freedom: {
+      dolg_heavy_outfit: string
+      dolg_outfit: string
+      exo_outfit: string
+      military_outfit: string
+      scientific_outfit: string
+      specops_outfit: string
+      stalker_outfit: string
+      stalker_outfit_barge: string
+      svoboda_heavy_outfit: string
+      svoboda_light_outfit: string
+    }
   }
-  forbidden_npcs: {
-    barmen: boolean
-    guide: boolean
-    jup_b10_stalker_drunk: boolean
-    jup_b15_zulus: boolean
-    jup_b220_trapper: boolean
-    jup_b6_scientist_biochemist: boolean
-    jup_b6_scientist_nuclear_physicist: boolean
-    leader: boolean
-    mechanic: boolean
-    medic: boolean
-    pri_a15_military_recon_leader: boolean
-    pri_a15_military_tarasov: boolean
-    pri_a15_sokolov: boolean
-    pri_a15_sokolov_scene: boolean
-    pri_a15_vano: boolean
-    pri_a15_wanderer: boolean
-    pri_a15_zulus: boolean
-    pri_a17_military_captain_tarasov: boolean
-    pri_a17_military_colonel_kovalski: boolean
-    pri_a17_military_lieutenant_podorojniy: boolean
-    pri_a17_military_prapor_valentyr: boolean
-    pri_a17_military_sergeant_morozov: boolean
-    pri_a21_chasovoi_target: boolean
-    pri_a22_army_signaller: boolean
-    pri_a22_military_merkulov: boolean
-    pri_a22_military_skelja: boolean
-    pri_a22_military_yarmoshuk: boolean
-    pri_b305_signal_man: boolean
-    pri_b305_strelok: boolean
-    pri_b35_merc_leader: boolean
-    tech: boolean
-    trader: boolean
-    zat_a2_stalker_nimble: boolean
-    zat_b106_stalker_crab: boolean
-    zat_b7_bandit_boss_sultan: boolean
-  }
-  community_to_naked: {
-    army: string
-    bandit: string
-    dolg: string
-    freedom: string
-    killer: string
-    monolith: string
-    stalker: string
-  }
-  outfit_rating: {
-    cs_heavy_outfit: number
-    dolg_heavy_outfit: number
-    dolg_outfit: number
-    exo_outfit: number
-    military_outfit: number
-    novice_outfit: number
-    scientific_outfit: number
-    specops_outfit: number
-    stalker_outfit: number
-    stalker_outfit_barge: number
-    svoboda_heavy_outfit: number
-    svoboda_light_outfit: number
-  }
-  visual_to_outfit: {
-    stalker_dolg_1: string
-    stalker_dolg_2_mask: string
-    stalker_dolg_3: string
-    stalker_dolg_4: string
-    stalker_ecolog_military: string
-    stalker_freedom_1: string
-    stalker_freedom_2_mask: string
-    stalker_freedom_3: string
-    stalker_freedom_4: string
-    stalker_freedom_5: string
-    stalker_merc_4: string
-    stalker_monolith_4: string
-    stalker_nebo_2: string
-    stalker_neutral_1: string
-    stalker_neutral_2: string
-    stalker_neutral_2_mask: string
-    stalker_neutral_3: string
-    stalker_neutral_4: string
-    stalker_neutral_nauchniy: string
-    stalker_soldier_2: string
-    stalker_soldier_2_face_1_mask: string
-    stalker_soldier_3: string
-    stalker_soldier_4: string
-  }
-  stalker: {
-    cs_heavy_outfit: string
-    dolg_heavy_outfit: string
-    dolg_outfit: string
-    exo_outfit: string
-    military_outfit: string
-    novice_outfit: string
-    scientific_outfit: string
-    specops_outfit: string
-    stalker_outfit: string
-    stalker_outfit_barge: string
-    svoboda_heavy_outfit: string
-    svoboda_light_outfit: string
-  }
-  bandit: {
-    cs_heavy_outfit: string
-    dolg_heavy_outfit: string
-    dolg_outfit: string
-    exo_outfit: string
-    military_outfit: string
-    neutral_assault_outfit: string
-    novice_outfit: string
-    scientific_outfit: string
-    specops_outfit: string
-    stalker_outfit: string
-    stalker_outfit_barge: string
-    svoboda_heavy_outfit: string
-    svoboda_light_outfit: string
-  }
-  killer: {
-    cs_heavy_outfit: string
-    dolg_heavy_outfit: string
-    dolg_outfit: string
-    exo_outfit: string
-    military_outfit: string
-    neutral_assault_outfit: string
-    novice_outfit: string
-    scientific_outfit: string
-    specops_outfit: string
-    stalker_outfit: string
-    stalker_outfit_barge: string
-    svoboda_heavy_outfit: string
-    svoboda_light_outfit: string
-  }
-  ecolog: {
-    exo_outfit: string
-    scientific_outfit: string
-  }
-  army: {
-    military_outfit: string
-    specops_outfit: string
-  }
-  monolith: {
-  }
-  dolg: {
-    dolg_heavy_outfit: string
-    dolg_outfit: string
-    exo_outfit: string
-    military_outfit: string
-    scientific_outfit: string
-    specops_outfit: string
-    stalker_outfit: string
-    stalker_outfit_barge: string
-    svoboda_heavy_outfit: string
-    svoboda_light_outfit: string
-  }
-  freedom: {
-    dolg_heavy_outfit: string
-    dolg_outfit: string
-    exo_outfit: string
-    military_outfit: string
-    scientific_outfit: string
-    specops_outfit: string
-    stalker_outfit: string
-    stalker_outfit_barge: string
-    svoboda_heavy_outfit: string
-    svoboda_light_outfit: string
-  }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xr_visual.ltx': AiTweaksXrVisualIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xr_visual.ltx': AiTweaksXrVisualIni
+  }
 }

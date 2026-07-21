@@ -2,19 +2,22 @@
 // Schema of `scripts\\sr_teleport_logic.ltx`. Sections enumerated for autocomplete; `ScriptsSrTeleportLogicIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsSrTeleportLogicIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsSrTeleportLogicIni {
+    logic: {
+      active: string
+    }
+    'sr_idle@wait': {
+      on_actor_inside: string
+    }
+    'sr_idle@run': {
+      on_actor_outside: string
+    }
   }
-  'sr_idle@wait': {
-    on_actor_inside: string
-  }
-  'sr_idle@run': {
-    on_actor_outside: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\sr_teleport_logic.ltx': ScriptsSrTeleportLogicIni
+  interface IniFileSchemas {
+    'scripts\\sr_teleport_logic.ltx': ScriptsSrTeleportLogicIni
+  }
 }

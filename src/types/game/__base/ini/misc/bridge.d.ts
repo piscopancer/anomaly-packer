@@ -2,28 +2,31 @@
 // Schema of `misc\\bridge.ltx`. Sections enumerated for autocomplete; `MiscBridgeIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface MiscBridgeIni {
-  red_forest_bridge: {
-    $prefetch: number
-    $spawn: string
-    class: string
-    GroupControlSection: string
-    remove_time: number
-    script_binding: string
-    visual: string
+declare global {
+  interface MiscBridgeIni {
+    red_forest_bridge: {
+      $prefetch: number
+      $spawn: string
+      class: string
+      GroupControlSection: string
+      remove_time: number
+      script_binding: string
+      visual: string
+    }
+    agru_door: {
+      $prefetch: number
+      $spawn: string
+      class: string
+      GroupControlSection: string
+      remove_time: number
+      script_binding: string
+      visual: string
+    }
   }
-  agru_door: {
-    $prefetch: number
-    $spawn: string
-    class: string
-    GroupControlSection: string
-    remove_time: number
-    script_binding: string
-    visual: string
-  }
-}
 
-interface IniFileSchemas {
-  'misc\\bridge.ltx': MiscBridgeIni
+  interface IniFileSchemas {
+    'misc\\bridge.ltx': MiscBridgeIni
+  }
 }

@@ -2,189 +2,192 @@
 // Schema of `plugins\\achievements.ltx`. Sections enumerated for autocomplete; `PluginsAchievementsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsAchievementsIni {
-  achievements: Record<string, string>
-  bookworm_food: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    ignore: boolean
-    name: string
+declare global {
+  interface PluginsAchievementsIni {
+    achievements: string[]
+    bookworm_food: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      ignore: boolean
+      name: string
+    }
+    completionist: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    down_to_earth: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    duga_free: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+      story: boolean
+    }
+    geologist: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    heavy_pockets: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    infopreneur: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    mechanized_warfare: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    patriarch: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    radiotherapy: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    rag_and_bone: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    silver_or_lead: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    tourist: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    well_dressed: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    wishful_thinking: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+      story: boolean
+    }
+    infantile_pleasure: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    recycler: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    artificer_eagerness: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    unforeseen_guest: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+    }
+    absolver: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+      story: boolean
+    }
+    collaborator: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+      story: boolean
+    }
+    iron_curtain: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      name: string
+      warfare: boolean
+    }
+    murky_spirit: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      ironman: boolean
+      name: string
+      story: boolean
+    }
+    invictus: {
+      desc: string
+      functor: string
+      hint: string
+      icon: string
+      ironman: boolean
+      name: string
+      story: boolean
+    }
   }
-  completionist: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  down_to_earth: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  duga_free: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-    story: boolean
-  }
-  geologist: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  heavy_pockets: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  infopreneur: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  mechanized_warfare: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  patriarch: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  radiotherapy: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  rag_and_bone: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  silver_or_lead: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  tourist: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  well_dressed: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  wishful_thinking: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-    story: boolean
-  }
-  infantile_pleasure: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  recycler: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  artificer_eagerness: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  unforeseen_guest: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-  }
-  absolver: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-    story: boolean
-  }
-  collaborator: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-    story: boolean
-  }
-  iron_curtain: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    name: string
-    warfare: boolean
-  }
-  murky_spirit: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    ironman: boolean
-    name: string
-    story: boolean
-  }
-  invictus: {
-    desc: string
-    functor: string
-    hint: string
-    icon: string
-    ironman: boolean
-    name: string
-    story: boolean
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\achievements.ltx': PluginsAchievementsIni
+  interface IniFileSchemas {
+    'plugins\\achievements.ltx': PluginsAchievementsIni
+  }
 }

@@ -2,428 +2,431 @@
 // Schema of `plugins\\new_game_start_locations.ltx`. Sections enumerated for autocomplete; `PluginsNewGameStartLocationsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface PluginsNewGameStartLocationsIni {
-  army_start_locations: {
-    research_institute: CommaSeparatedString<string>
-    southern_checkpoint: string
+declare global {
+  interface PluginsNewGameStartLocationsIni {
+    army_start_locations: {
+      research_institute: CommaSeparatedString<string[]>
+      southern_checkpoint: string
+    }
+    bandit_start_locations: {
+      car_park: string
+      container_warehouse: string
+      northern_factory: CommaSeparatedString<string[]>
+      pole_bandit_base: string
+    }
+    csky_start_locations: {
+      hidden_base: CommaSeparatedString<string[]>
+    }
+    dolg_start_locations: {
+      abandoned_village: string
+      makeshift_barracks: CommaSeparatedString<string[]>
+    }
+    ecolog_start_locations: {
+      hermanns_bunker: string
+      sakharovs_bunker: CommaSeparatedString<string[]>
+    }
+    freedom_start_locations: {
+      military_base: CommaSeparatedString<string[]>
+      yanov_station: string
+    }
+    killer_start_locations: {
+      construction_site: string
+      processing_station: string
+      sports_center: CommaSeparatedString<string[]>
+      store_books_a18: string
+    }
+    stalker_start_locations: {
+      factory_complex: string
+      lodging_house: string
+      pole_stalker_village: string
+      rookie_village: CommaSeparatedString<string[]>
+      skadovsk_shipwreck: string
+      yanov_station: string
+    }
+    monolith_start_locations: {
+      brain_scorcher: string
+      cultural_center: CommaSeparatedString<string[]>
+      kbo_monolith: string
+      l13_generators: string
+      power_station: string
+      river_port: string
+    }
+    greh_start_locations: {
+      brain_scorcher: string
+      l13_generators: string
+      red_forest_old_mine: CommaSeparatedString<string[]>
+      river_port: string
+    }
+    isg_start_locations: {
+      dasc_sawwill: CommaSeparatedString<string[]>
+      pripyat_hospital: string
+      yanov_depo_monolith: string
+    }
+    renegade_start_locations: {
+      pole_bandit_base: string
+      tuzla_outpost: CommaSeparatedString<string[]>
+    }
+    zombied_start_locations: {
+      abandoned_sawmill: CommaSeparatedString<string[]>
+      kopachy_village: CommaSeparatedString<string[]>
+      river_port: CommaSeparatedString<string[]>
+      tunnel_entrance: CommaSeparatedString<string[]>
+    }
+    abandoned_sawmill: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    abandoned_school: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    abandoned_village: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    brain_scorcher: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    car_park: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    container_warehouse: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    construction_site: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    cultural_center: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    eastern_checkpoint: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    eastern_factory: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    factory_complex: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    hermanns_bunker: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    hideout: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    hidden_base: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    kopachy_village: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    lodging_house: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    machine_yard: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    makeshift_barracks: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    military_base: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    northern_factory: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    power_station: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    processing_station: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    pumping_station: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    tunnel_refuge: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    research_institute: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    river_port: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    rookie_village: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    sakharovs_bunker: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    skadovsk_shipwreck: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    southern_checkpoint: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    sports_center: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    train_hangar: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    tunnel_entrance: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    tuzla_outpost: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    village_ruins: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    yanov_station: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    farm_base_neytral: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    kbo_monolith: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    yanov_depo_monolith: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    red_forest_vagon_csky: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    truck_cemetery_bandits_post: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    l13_generators: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    bridge_red_forest_mon: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    store_books_a18: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    fo_cordon: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    dasc_sawwill: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    pole_bandit_base: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    pole_stalker_village: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    pripyat_hospital: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
+    red_forest_old_mine: {
+      gvid: number
+      lvid: number
+      x: number
+      y: number
+      z: number
+    }
   }
-  bandit_start_locations: {
-    car_park: string
-    container_warehouse: string
-    northern_factory: CommaSeparatedString<string>
-    pole_bandit_base: string
-  }
-  csky_start_locations: {
-    hidden_base: CommaSeparatedString<string>
-  }
-  dolg_start_locations: {
-    abandoned_village: string
-    makeshift_barracks: CommaSeparatedString<string>
-  }
-  ecolog_start_locations: {
-    hermanns_bunker: string
-    sakharovs_bunker: CommaSeparatedString<string>
-  }
-  freedom_start_locations: {
-    military_base: CommaSeparatedString<string>
-    yanov_station: string
-  }
-  killer_start_locations: {
-    construction_site: string
-    processing_station: string
-    sports_center: CommaSeparatedString<string>
-    store_books_a18: string
-  }
-  stalker_start_locations: {
-    factory_complex: string
-    lodging_house: string
-    pole_stalker_village: string
-    rookie_village: CommaSeparatedString<string>
-    skadovsk_shipwreck: string
-    yanov_station: string
-  }
-  monolith_start_locations: {
-    brain_scorcher: string
-    cultural_center: CommaSeparatedString<string>
-    kbo_monolith: string
-    l13_generators: string
-    power_station: string
-    river_port: string
-  }
-  greh_start_locations: {
-    brain_scorcher: string
-    l13_generators: string
-    red_forest_old_mine: CommaSeparatedString<string>
-    river_port: string
-  }
-  isg_start_locations: {
-    dasc_sawwill: CommaSeparatedString<string>
-    pripyat_hospital: string
-    yanov_depo_monolith: string
-  }
-  renegade_start_locations: {
-    pole_bandit_base: string
-    tuzla_outpost: CommaSeparatedString<string>
-  }
-  zombied_start_locations: {
-    abandoned_sawmill: CommaSeparatedString<string>
-    kopachy_village: CommaSeparatedString<string>
-    river_port: CommaSeparatedString<string>
-    tunnel_entrance: CommaSeparatedString<string>
-  }
-  abandoned_sawmill: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  abandoned_school: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  abandoned_village: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  brain_scorcher: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  car_park: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  container_warehouse: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  construction_site: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  cultural_center: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  eastern_checkpoint: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  eastern_factory: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  factory_complex: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  hermanns_bunker: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  hideout: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  hidden_base: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  kopachy_village: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  lodging_house: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  machine_yard: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  makeshift_barracks: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  military_base: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  northern_factory: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  power_station: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  processing_station: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  pumping_station: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  tunnel_refuge: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  research_institute: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  river_port: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  rookie_village: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  sakharovs_bunker: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  skadovsk_shipwreck: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  southern_checkpoint: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  sports_center: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  train_hangar: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  tunnel_entrance: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  tuzla_outpost: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  village_ruins: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  yanov_station: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  farm_base_neytral: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  kbo_monolith: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  yanov_depo_monolith: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  red_forest_vagon_csky: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  truck_cemetery_bandits_post: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  l13_generators: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  bridge_red_forest_mon: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  store_books_a18: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  fo_cordon: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  dasc_sawwill: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  pole_bandit_base: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  pole_stalker_village: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  pripyat_hospital: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-  red_forest_old_mine: {
-    gvid: number
-    lvid: number
-    x: number
-    y: number
-    z: number
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\new_game_start_locations.ltx': PluginsNewGameStartLocationsIni
+  interface IniFileSchemas {
+    'plugins\\new_game_start_locations.ltx': PluginsNewGameStartLocationsIni
+  }
 }

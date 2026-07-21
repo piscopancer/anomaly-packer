@@ -2,15 +2,18 @@
 // Schema of `misc\\surge_manager.ltx`. Sections enumerated for autocomplete; `MiscSurgeManagerIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface MiscSurgeManagerIni {
-  settings: {
-    condlist: CommaSeparatedString<string>
-    survive: CommaSeparatedString<string>
+declare global {
+  interface MiscSurgeManagerIni {
+    settings: {
+      condlist: CommaSeparatedString<string[]>
+      survive: CommaSeparatedString<string[]>
+    }
+    list: string[]
   }
-  list: Record<string, string>
-}
 
-interface IniFileSchemas {
-  'misc\\surge_manager.ltx': MiscSurgeManagerIni
+  interface IniFileSchemas {
+    'misc\\surge_manager.ltx': MiscSurgeManagerIni
+  }
 }

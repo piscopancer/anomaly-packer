@@ -2,33 +2,36 @@
 // Schema of `plugins\\disguise.ltx`. Sections enumerated for autocomplete; `PluginsDisguiseIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsDisguiseIni {
-  diguise_controls: {
-    break_point: number
-    enemy_memory_limit: number
-    inventory_limit_big: number
-    inventory_limit_num: number
-    inventory_limit_weight: number
-    memory_multi: number
-    usual_memory_limit: number
+declare global {
+  interface PluginsDisguiseIni {
+    diguise_controls: {
+      break_point: number
+      enemy_memory_limit: number
+      inventory_limit_big: number
+      inventory_limit_num: number
+      inventory_limit_weight: number
+      memory_multi: number
+      usual_memory_limit: number
+    }
+    npc_awareness: {
+      npc_awareness_special: number
+      npc_awareness_type_0: number
+      npc_awareness_type_1: number
+      npc_awareness_type_2: number
+      npc_awareness_type_3: number
+      npc_awareness_type_4: number
+      npc_awareness_type_5: number
+    }
+    relation_impact: {
+      goodwill_hit: number
+      relation_hit: number
+      reputation_hit: number
+    }
   }
-  npc_awareness: {
-    npc_awareness_special: number
-    npc_awareness_type_0: number
-    npc_awareness_type_1: number
-    npc_awareness_type_2: number
-    npc_awareness_type_3: number
-    npc_awareness_type_4: number
-    npc_awareness_type_5: number
-  }
-  relation_impact: {
-    goodwill_hit: number
-    relation_hit: number
-    reputation_hit: number
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\disguise.ltx': PluginsDisguiseIni
+  interface IniFileSchemas {
+    'plugins\\disguise.ltx': PluginsDisguiseIni
+  }
 }

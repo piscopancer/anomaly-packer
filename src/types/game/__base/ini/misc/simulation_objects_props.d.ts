@@ -2,2390 +2,2393 @@
 // Schema of `misc\\simulation_objects_props.ltx`. Sections enumerated for autocomplete; `MiscSimulationObjectsPropsIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface MiscSimulationObjectsPropsIni {
-  default: {
-    actor: number
-    all: number
-    all_monster: number
-    all_stalker: number
-    army: number
-    army_heli: number
-    army_npc: number
-    bandit: number
-    bandit_heli: number
-    base: number
-    csky: number
-    csky_heli: number
-    dolg: number
-    dolg_heli: number
-    ecolog: number
-    ecolog_heli: number
-    freedom: number
-    freedom_heli: number
-    greh: number
-    greh_heli: number
-    greh_npc: number
-    isg: number
-    isg_heli: number
-    killer: number
-    killer_heli: number
-    lair: number
-    monolith: number
-    monolith_heli: number
-    monster: number
-    monster_predatory_day: number
-    monster_predatory_night: number
-    monster_special: number
-    monster_vegetarian: number
-    monster_zombied_day: number
-    monster_zombied_night: number
-    renegade: number
-    renegade_heli: number
-    resource: number
-    squad: number
-    stalker: number
-    stalker_heli: number
-    surge: number
-    territory: number
-    zombied: number
-    zoo_monster: number
+declare global {
+  interface MiscSimulationObjectsPropsIni {
+    default: {
+      actor: number
+      all: number
+      all_monster: number
+      all_stalker: number
+      army: number
+      army_heli: number
+      army_npc: number
+      bandit: number
+      bandit_heli: number
+      base: number
+      csky: number
+      csky_heli: number
+      dolg: number
+      dolg_heli: number
+      ecolog: number
+      ecolog_heli: number
+      freedom: number
+      freedom_heli: number
+      greh: number
+      greh_heli: number
+      greh_npc: number
+      isg: number
+      isg_heli: number
+      killer: number
+      killer_heli: number
+      lair: number
+      monolith: number
+      monolith_heli: number
+      monster: number
+      monster_predatory_day: number
+      monster_predatory_night: number
+      monster_special: number
+      monster_vegetarian: number
+      monster_zombied_day: number
+      monster_zombied_night: number
+      renegade: number
+      renegade_heli: number
+      resource: number
+      squad: number
+      stalker: number
+      stalker_heli: number
+      surge: number
+      territory: number
+      zombied: number
+      zoo_monster: number
+    }
+    default_resource: Omit<MiscSimulationObjectsPropsIni['default'], 'csky' | 'ecolog' | 'resource' | 'stalker' | 'territory'> & {
+      csky: number
+      ecolog: number
+      resource: number
+      stalker: number
+      territory: number
+    }
+    default_base: Omit<MiscSimulationObjectsPropsIni['default'], 'base'> & {
+      base: number
+    }
+    default_lair: Omit<MiscSimulationObjectsPropsIni['default'], 'lair' | 'monster' | 'monster_predatory_day' | 'monster_predatory_night' | 'monster_special' | 'monster_vegetarian' | 'monster_zombied_day' | 'monster_zombied_night' | 'territory' | 'zoo_monster'> & {
+      lair: number
+      monster: number
+      monster_predatory_day: number
+      monster_predatory_night: number
+      monster_special: number
+      monster_vegetarian: number
+      monster_zombied_day: number
+      monster_zombied_night: number
+      territory: number
+      zoo_monster: number
+    }
+    weak_lair: Omit<MiscSimulationObjectsPropsIni['default'], 'lair' | 'monster' | 'monster_predatory_day' | 'monster_predatory_night' | 'monster_special' | 'monster_vegetarian' | 'monster_zombied_day' | 'monster_zombied_night' | 'territory' | 'zoo_monster'> & {
+      lair: number
+      monster: number
+      monster_predatory_day: number
+      monster_predatory_night: number
+      monster_special: number
+      monster_vegetarian: number
+      monster_zombied_day: number
+      monster_zombied_night: number
+      territory: number
+      zoo_monster: number
+    }
+    default_territory: Omit<MiscSimulationObjectsPropsIni['default'], 'all' | 'territory'> & {
+      all: number
+      territory: number
+    }
+    default_squad: Omit<MiscSimulationObjectsPropsIni['default'], 'all' | 'sim_avail' | 'squad'> & {
+      all: number
+      sim_avail: boolean
+      squad: number
+    }
+    actor: Omit<MiscSimulationObjectsPropsIni['default'], 'actor' | 'all' | 'sim_avail'> & {
+      actor: number
+      all: number
+      sim_avail: boolean
+    }
+    mar_smart_terrain_base: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    mar_smart_terrain_doc: Omit<MiscSimulationObjectsPropsIni['default_base'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_doc_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_3_3: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'renegade' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      renegade: number
+      sim_avail: boolean
+      surge: number
+    }
+    mar_smart_terrain_3_7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+    }
+    mar_smart_terrain_3_10: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_4_5: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'lair' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      lair: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    mar_smart_terrain_4_7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'renegade' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+    }
+    mar_smart_terrain_5_8: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'ecolog' | 'killer' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      ecolog: number
+      killer: number
+      renegade: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      surge: number
+    }
+    mar_smart_terrain_5_12: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'lair' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      lair: number
+      renegade: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      surge: number
+    }
+    mar_smart_terrain_6_4: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_6_7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_6_8: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_6_10: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_6_11: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'lair' | 'monster' | 'monster_predatory_day' | 'monster_predatory_night' | 'monster_vegetarian' | 'renegade' | 'sim_avail'> & {
+      bandit: number
+      csky: number
+      lair: number
+      monster: number
+      monster_predatory_day: number
+      monster_predatory_night: number
+      monster_vegetarian: number
+      renegade: number
+      sim_avail: boolean
+    }
+    mar_smart_terrain_7_3: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'renegade' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+    }
+    mar_smart_terrain_7_7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_8_4: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_8_8: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'bandit' | 'csky' | 'ecolog' | 'freedom' | 'lair' | 'renegade' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      csky: number
+      ecolog: number
+      freedom: number
+      lair: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+    }
+    mar_smart_terrain_8_9: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'csky' | 'renegade' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      csky: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+    }
+    mar_smart_terrain_8_11: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    mar_smart_terrain_10_5: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'army_heli' | 'sim_avail' | 'surge'> & {
+      army: number
+      army_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    mar_smart_terrain_10_7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mar_smart_terrain_10_10: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'csky' | 'ecolog' | 'lair' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      ecolog: number
+      lair: number
+      sim_avail: boolean
+      stalker: number
+    }
+    mar_smart_terrain_11_3: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'lair' | 'sim_avail'> & {
+      lair: number
+      sim_avail: boolean
+    }
+    mar_smart_terrain_11_11: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'ecolog' | 'freedom' | 'killer' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      ecolog: number
+      freedom: number
+      killer: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    mar_smart_terrain_12_2: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'bandit' | 'base' | 'csky' | 'ecolog' | 'lair' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      base: number
+      csky: number
+      ecolog: number
+      lair: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    esc_smart_terrain_2_12: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'csky' | 'ecolog' | 'killer' | 'lair' | 'monolith' | 'sim_avail' | 'stalker' | 'surge'> & {
+      army: number
+      csky: number
+      ecolog: number
+      killer: number
+      lair: number
+      monolith: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    esc_smart_terrain_3_16: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'army_heli' | 'sim_avail' | 'surge'> & {
+      army: number
+      army_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    esc_smart_terrain_7_11: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    esc_smart_terrain_4_9: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'bandit' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    esc_smart_terrain_5_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'army_heli' | 'bandit' | 'sim_avail' | 'stalker' | 'surge'> & {
+      army: number
+      army_heli: number
+      bandit: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    esc_smart_terrain_5_7: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    esc_smart_terrain_5_9: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'freedom' | 'killer' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      freedom: number
+      killer: number
+      sim_avail: boolean
+      surge: number
+    }
+    esc_smart_terrain_6_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'bandit' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    esc_smart_terrain_1_11: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+    }
+    esc_smart_terrain_2_14: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    esc_smart_terrain_3_7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'csky' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      sim_avail: boolean
+      stalker: number
+    }
+    esc_smart_terrain_4_11: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'monster' | 'monster_vegetarian' | 'sim_avail' | 'stalker'> & {
+      monster: number
+      monster_vegetarian: number
+      sim_avail: boolean
+      stalker: number
+    }
+    esc_smart_terrain_4_13: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    esc_smart_terrain_5_12: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'stalker'> & {
+      sim_avail: boolean
+      stalker: number
+    }
+    esc_smart_terrain_5_4: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    esc_smart_terrain_5_6: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    esc_smart_terrain_6_8: Omit<MiscSimulationObjectsPropsIni['default_base'], 'all' | 'army' | 'bandit' | 'sim_avail' | 'surge'> & {
+      all: number
+      army: number
+      bandit: number
+      sim_avail: boolean
+      surge: number
+    }
+    esc_smart_terrain_8_10: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    esc_smart_terrain_8_9: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'stalker'> & {
+      sim_avail: boolean
+      stalker: number
+    }
+    esc_smart_terrain_9_7: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    esc_smart_terrain_9_10: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gar_smart_terrain_1_5: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      sim_avail: boolean
+      surge: number
+    }
+    gar_smart_terrain_1_7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'dolg' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      dolg: number
+      sim_avail: boolean
+      stalker: number
+    }
+    gar_smart_terrain_2_4: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      sim_avail: boolean
+      surge: number
+    }
+    gar_smart_terrain_3_5: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'dolg' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      dolg: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    gar_smart_terrain_3_7: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'ecolog' | 'sim_avail' | 'stalker'> & {
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+    }
+    gar_smart_terrain_4_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'stalker'> & {
+      sim_avail: boolean
+      stalker: number
+    }
+    gar_smart_terrain_4_5: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'sim_avail'> & {
+      bandit: number
+      sim_avail: boolean
+    }
+    gar_smart_terrain_5_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'freedom' | 'killer' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      freedom: number
+      killer: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    gar_smart_terrain_5_4: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gar_smart_terrain_5_5: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'stalker'> & {
+      sim_avail: boolean
+      stalker: number
+    }
+    gar_smart_terrain_5_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'bandit' | 'ecolog' | 'resource' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      ecolog: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+    }
+    gar_smart_terrain_5_8: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      sim_avail: boolean
+      stalker: number
+    }
+    gar_smart_terrain_6_1: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gar_smart_terrain_6_3: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    gar_smart_terrain_6_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gar_smart_terrain_6_7: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'resource' | 'sim_avail' | 'stalker'> & {
+      resource: number
+      sim_avail: boolean
+      stalker: number
+    }
+    gar_smart_terrain_7_4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gar_smart_terrain_8_3: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'dolg' | 'sim_avail'> & {
+      bandit: number
+      dolg: number
+      sim_avail: boolean
+    }
+    gar_smart_terrain_8_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    ds2_domik_st: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'killer' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      killer: number
+      renegade: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      surge: number
+    }
+    ds2_lager_st: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'dolg' | 'freedom' | 'killer' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      dolg: number
+      freedom: number
+      killer: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    ds2_st_dogs: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    ds2_st_hoofs: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    ds_boars_nest: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    ds_deb1: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    ds_grverfer2: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'stalker' | 'surge'> & {
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    ds_kem1: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    ds_kem2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army_heli' | 'sim_avail' | 'surge'> & {
+      army_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    ds_kem3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'bandit' | 'killer' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      killer: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    ds_ptr: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'killer' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      killer: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    ds_ptr2: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    ds_ptr3: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    ds_ptr4: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    agr_smart_terrain_1_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+    }
+    agr_smart_terrain_1_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'ecolog' | 'freedom' | 'resource' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      ecolog: number
+      freedom: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+    }
+    agr_smart_terrain_1_6: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'lair' | 'sim_avail' | 'surge'> & {
+      army: number
+      lair: number
+      sim_avail: boolean
+      surge: number
+    }
+    agr_smart_terrain_1_6_near_1: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'sim_avail' | 'surge'> & {
+      army: number
+      sim_avail: boolean
+      surge: number
+    }
+    agr_smart_terrain_1_6_near_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'army_heli' | 'sim_avail' | 'surge'> & {
+      army: number
+      army_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    agr_smart_terrain_2_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'dolg' | 'killer' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      dolg: number
+      killer: number
+      sim_avail: boolean
+      stalker: number
+    }
+    agr_smart_terrain_4_4: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    agr_smart_terrain_4_4_near_1: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'ecolog' | 'freedom' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      ecolog: number
+      freedom: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    agr_smart_terrain_4_4_near_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    agr_smart_terrain_4_4_near_3: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'ecolog' | 'freedom' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      ecolog: number
+      freedom: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    agr_smart_terrain_4_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'army' | 'sim_avail'> & {
+      army: number
+      sim_avail: boolean
+    }
+    agr_smart_terrain_5_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'dolg' | 'sim_avail' | 'stalker'> & {
+      dolg: number
+      sim_avail: boolean
+      stalker: number
+    }
+    agr_smart_terrain_5_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    agr_smart_terrain_5_4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    agr_smart_terrain_5_7: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'dolg' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      dolg: number
+      sim_avail: boolean
+      stalker: number
+    }
+    agr_smart_terrain_6_4: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker' | 'surge' | 'zombied'> & {
+      csky: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+      zombied: number
+    }
+    agr_smart_terrain_6_6: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    agr_smart_terrain_7_4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'army' | 'bandit' | 'sim_avail' | 'stalker'> & {
+      army: number
+      bandit: number
+      sim_avail: boolean
+      stalker: number
+    }
+    agr_smart_terrain_7_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'army' | 'bandit' | 'csky' | 'dolg' | 'sim_avail' | 'stalker'> & {
+      army: number
+      bandit: number
+      csky: number
+      dolg: number
+      sim_avail: boolean
+      stalker: number
+    }
+    agr_u_bandits: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'bandit' | 'lair' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      lair: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+    }
+    agr_u_bloodsucker: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    agr_u_bloodsucker_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'stalker' | 'territory'> & {
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    agr_u_monsters: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    agr_u_soldiers: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    val_smart_terrain_1_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'army_heli' | 'sim_avail' | 'surge'> & {
+      army: number
+      army_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    val_smart_terrain_3_0: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'bandit' | 'sim_avail'> & {
+      bandit: number
+      sim_avail: boolean
+    }
+    val_smart_terrain_4_0: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'ecolog' | 'freedom' | 'killer' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      ecolog: number
+      freedom: number
+      killer: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    val_smart_terrain_5_7: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'bandit' | 'sim_avail'> & {
+      bandit: number
+      sim_avail: boolean
+    }
+    val_smart_terrain_5_8: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'bandit' | 'sim_avail'> & {
+      bandit: number
+      sim_avail: boolean
+    }
+    val_smart_terrain_5_10: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    val_smart_terrain_6_4: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'sim_avail'> & {
+      bandit: number
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    val_smart_terrain_6_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    val_smart_terrain_7_3: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      sim_avail: boolean
+      surge: number
+    }
+    val_smart_terrain_7_4: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'lair' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      lair: number
+      sim_avail: boolean
+      surge: number
+    }
+    val_smart_terrain_7_5: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      sim_avail: boolean
+      surge: number
+    }
+    val_smart_terrain_7_8: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    val_smart_terrain_7_11: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'sim_avail'> & {
+      bandit: number
+      sim_avail: boolean
+    }
+    val_smart_terrain_8_6: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'bandit' | 'dolg' | 'freedom' | 'killer' | 'monster' | 'monster_predatory_day' | 'monster_predatory_night' | 'monster_special' | 'monster_vegetarian' | 'monster_zombied_day' | 'monster_zombied_night' | 'sim_avail' | 'stalker' | 'zoo_monster'> & {
+      bandit: number
+      dolg: number
+      freedom: number
+      killer: number
+      monster: number
+      monster_predatory_day: number
+      monster_predatory_night: number
+      monster_special: number
+      monster_vegetarian: number
+      monster_zombied_day: number
+      monster_zombied_night: number
+      sim_avail: boolean
+      stalker: number
+      zoo_monster: number
+    }
+    val_smart_terrain_8_7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    val_smart_terrain_8_9: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    val_smart_terrain_9_10: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'resource' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+    }
+    val_smart_terrain_9_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    val_smart_terrain_9_4: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'bandit' | 'dolg' | 'freedom' | 'killer' | 'monster' | 'monster_predatory_day' | 'monster_predatory_night' | 'monster_special' | 'monster_vegetarian' | 'monster_zombied_day' | 'monster_zombied_night' | 'sim_avail' | 'stalker' | 'surge' | 'zoo_monster'> & {
+      bandit: number
+      dolg: number
+      freedom: number
+      killer: number
+      monster: number
+      monster_predatory_day: number
+      monster_predatory_night: number
+      monster_special: number
+      monster_vegetarian: number
+      monster_zombied_day: number
+      monster_zombied_night: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+      zoo_monster: number
+    }
+    val_smart_terrain_9_6: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'bandit' | 'dolg' | 'freedom' | 'killer' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      dolg: number
+      freedom: number
+      killer: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    dar_angar: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'army' | 'ecolog' | 'sim_avail' | 'stalker' | 'territory'> & {
+      army: number
+      ecolog: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    dar_control_poltergeist: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    dar_military_scout: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    dar_poltergeist_ring: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    dar_poltergeist_tele: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    dar_poltergeist_tele_round: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    dar_smart_snork: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'ecolog' | 'sim_avail' | 'stalker' | 'territory'> & {
+      ecolog: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    bar_zastava_dogs_lair: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'dolg' | 'sim_avail' | 'stalker' | 'territory'> & {
+      dolg: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    bar_zastava_dogs_lair_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'dolg' | 'sim_avail' | 'stalker' | 'territory'> & {
+      dolg: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    bar_dolg_bunker: Omit<MiscSimulationObjectsPropsIni['default_base'], 'dolg' | 'sim_avail' | 'surge'> & {
+      dolg: number
+      sim_avail: boolean
+      surge: number
+    }
+    bar_dolg_general: Omit<MiscSimulationObjectsPropsIni['default_base'], 'dolg' | 'sim_avail' | 'surge'> & {
+      dolg: number
+      sim_avail: boolean
+      surge: number
+    }
+    bar_visitors: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'dolg' | 'ecolog' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      dolg: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    bar_zastava: Omit<MiscSimulationObjectsPropsIni['default_base'], 'dolg' | 'lair' | 'sim_avail' | 'surge'> & {
+      dolg: number
+      lair: number
+      sim_avail: CommaSeparatedString<string[]>
+      surge: number
+    }
+    bar_zastava_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'dolg' | 'lair' | 'sim_avail' | 'surge'> & {
+      dolg: number
+      lair: number
+      sim_avail: CommaSeparatedString<string[]>
+      surge: number
+    }
+    ros_smart_killers1: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'dolg' | 'killer' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      dolg: number
+      killer: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    ros_smart_monster4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'ecolog' | 'resource' | 'sim_avail' | 'stalker' | 'territory'> & {
+      ecolog: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      territory: number
+    }
+    ros_smart_monster5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'dolg' | 'ecolog' | 'resource' | 'sim_avail' | 'stalker' | 'territory'> & {
+      dolg: number
+      ecolog: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      territory: number
+    }
+    ros_smart_monster7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'ecolog' | 'resource' | 'sim_avail' | 'stalker' | 'territory'> & {
+      ecolog: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      territory: number
+    }
+    ros_smart_poltergeist2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    ros_smart_snork1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'dolg' | 'sim_avail' | 'stalker' | 'territory'> & {
+      dolg: number
+      sim_avail: boolean
+      stalker: number
+      territory: number
+    }
+    ros_smart_stalker_killers1: Omit<MiscSimulationObjectsPropsIni['default_base'], 'killer' | 'sim_avail' | 'surge'> & {
+      killer: number
+      sim_avail: boolean
+      surge: number
+    }
+    ros_smart_stalker1: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'dolg' | 'ecolog' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      dolg: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+    }
+    yan_smart_terrain_1_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'ecolog' | 'freedom' | 'resource' | 'sim_avail' | 'stalker' | 'zombied'> & {
+      ecolog: number
+      freedom: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      zombied: number
+    }
+    yan_smart_terrain_2_4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge' | 'territory'> & {
+      sim_avail: boolean
+      surge: number
+      territory: number
+    }
+    yan_smart_terrain_2_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'ecolog' | 'freedom' | 'resource' | 'sim_avail' | 'stalker' | 'surge' | 'territory'> & {
+      ecolog: number
+      freedom: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+      territory: number
+    }
+    yan_smart_terrain_3_4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge' | 'territory'> & {
+      sim_avail: boolean
+      surge: number
+      territory: number
+    }
+    yan_smart_terrain_3_6: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    yan_smart_terrain_4_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'ecolog' | 'freedom' | 'resource' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      ecolog: number
+      freedom: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+    }
+    yan_smart_terrain_4_4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory' | 'zombied'> & {
+      sim_avail: CommaSeparatedString<string[]>
+      territory: number
+      zombied: number
+    }
+    yan_smart_terrain_4_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    yan_smart_terrain_5_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'ecolog' | 'resource' | 'sim_avail' | 'stalker' | 'territory'> & {
+      csky: number
+      ecolog: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      territory: number
+    }
+    yan_smart_terrain_5_5: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker' | 'surge' | 'zombied'> & {
+      csky: number
+      ecolog: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      surge: number
+      zombied: number
+    }
+    yan_smart_terrain_6_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'sim_avail' | 'territory' | 'zombied'> & {
+      csky: number
+      sim_avail: CommaSeparatedString<string[]>
+      territory: number
+      zombied: number
+    }
+    yan_smart_terrain_6_4: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'sim_avail' | 'stalker' | 'surge' | 'zombied'> & {
+      csky: number
+      ecolog: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+      zombied: number
+    }
+    yan_smart_terrain_zombi_spawn: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory' | 'zombied'> & {
+      sim_avail: boolean
+      territory: number
+      zombied: number
+    }
+    yan_smart_terrain_snork_u: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    x162_st_burer: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'army' | 'ecolog' | 'monolith' | 'sim_avail' | 'stalker' | 'territory'> & {
+      army: number
+      ecolog: number
+      monolith: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    x162_st_gigant: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'army' | 'ecolog' | 'monolith' | 'sim_avail' | 'stalker' | 'territory'> & {
+      army: number
+      ecolog: number
+      monolith: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    x162_st_snork: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    x162_st_poltergeist: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    mil_smart_terrain_2_1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    mil_smart_terrain_2_10: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'dolg' | 'freedom' | 'monolith' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      dolg: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+      surge: number
+    }
+    mil_smart_terrain_2_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'freedom' | 'killer' | 'monolith' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      freedom: number
+      killer: number
+      monolith: number
+      sim_avail: boolean
+      stalker: number
+    }
+    mil_smart_terrain_2_4: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'ecolog' | 'freedom' | 'killer' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      ecolog: number
+      freedom: number
+      killer: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    mil_smart_terrain_2_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'monolith' | 'sim_avail'> & {
+      monolith: number
+      sim_avail: boolean
+    }
+    mil_smart_terrain_3_8: Omit<MiscSimulationObjectsPropsIni['default_base'], 'dolg' | 'freedom' | 'monolith' | 'sim_avail'> & {
+      dolg: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+    }
+    mil_smart_terrain_4_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    mil_smart_terrain_4_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'freedom' | 'resource' | 'sim_avail' | 'stalker' | 'surge'> & {
+      freedom: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    mil_smart_terrain_4_5: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'dolg' | 'freedom' | 'monolith' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      dolg: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    mil_smart_terrain_4_7: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: CommaSeparatedString<string[]>
+      territory: number
+    }
+    mil_smart_terrain_4_8: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'dolg' | 'freedom' | 'monolith' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      dolg: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    mil_smart_terrain_7_10: Omit<MiscSimulationObjectsPropsIni['default_base'], 'dolg' | 'freedom' | 'monolith' | 'sim_avail' | 'surge'> & {
+      dolg: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+      surge: number
+    }
+    mil_smart_terrain_7_12: Omit<MiscSimulationObjectsPropsIni['default_base'], 'dolg' | 'freedom' | 'monolith' | 'sim_avail' | 'surge'> & {
+      dolg: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+      surge: number
+    }
+    mil_smart_terrain_7_4: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'dolg' | 'freedom' | 'monolith' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      dolg: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    mil_smart_terrain_7_7: Omit<MiscSimulationObjectsPropsIni['default_base'], 'dolg' | 'freedom' | 'monolith' | 'sim_avail' | 'surge'> & {
+      dolg: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+      surge: number
+    }
+    mil_smart_terrain_7_8: Omit<MiscSimulationObjectsPropsIni['default_base'], 'dolg' | 'freedom' | 'monolith' | 'sim_avail' | 'surge'> & {
+      dolg: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+      surge: number
+    }
+    mil_smart_terrain_8_3: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'freedom' | 'monolith' | 'sim_avail'> & {
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+    }
+    red_bridge_bandit_smart_skirmish: Omit<MiscSimulationObjectsPropsIni['default_base'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    red_smart_terrain_3_1: Omit<MiscSimulationObjectsPropsIni['default_base'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    red_smart_terrain_3_2: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'greh' | 'sim_avail' | 'surge'> & {
+      greh: number
+      sim_avail: boolean
+      surge: number
+    }
+    red_smart_terrain_3_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    red_smart_terrain_4_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'all' | 'army_heli' | 'sim_avail' | 'surge'> & {
+      all: number
+      army_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    red_smart_terrain_4_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    red_smart_terrain_4_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'resource' | 'sim_avail'> & {
+      resource: number
+      sim_avail: boolean
+    }
+    red_smart_terrain_5_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    red_smart_terrain_5_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    red_smart_terrain_6_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'ecolog' | 'resource' | 'sim_avail' | 'stalker'> & {
+      ecolog: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+    }
+    red_smart_terrain_6_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    red_smart_terrain_bridge: Omit<MiscSimulationObjectsPropsIni['default_base'], 'all' | 'sim_avail' | 'surge'> & {
+      all: number
+      sim_avail: boolean
+      surge: number
+    }
+    red_smart_terrain_monsters: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'resource' | 'sim_avail'> & {
+      resource: number
+      sim_avail: boolean
+    }
+    red_smart_terrain_monsters_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    red_smart_terrain_monsters_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    lim_smart_terrain_1: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'bandit' | 'csky' | 'killer' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      killer: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    lim_smart_terrain_10: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'killer' | 'monolith' | 'monolith_heli' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      ecolog: number
+      killer: number
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    lim_smart_terrain_3: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'killer' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      ecolog: number
+      killer: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    lim_smart_terrain_4: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'ecolog' | 'killer' | 'monolith' | 'resource' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      ecolog: number
+      killer: number
+      monolith: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    lim_smart_terrain_5: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'killer' | 'monolith' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      ecolog: number
+      killer: number
+      monolith: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    lim_smart_terrain_6: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'monolith' | 'monolith_heli' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    lim_smart_terrain_7: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    lim_smart_terrain_8: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    lim_smart_terrain_9: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'killer' | 'monolith' | 'monolith_heli' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      killer: number
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    katacomb_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail' | 'surge'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    cit_bandits: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    cit_bandits_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    cit_kanaliz1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    cit_kanaliz2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    cit_killers: Omit<MiscSimulationObjectsPropsIni['default_base'], 'killer' | 'sim_avail' | 'surge'> & {
+      killer: number
+      sim_avail: boolean
+      surge: number
+    }
+    cit_killers_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'killer' | 'sim_avail'> & {
+      killer: number
+      sim_avail: boolean
+    }
+    cit_killers_vs_bandits: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'bandit' | 'killer' | 'lair' | 'sim_avail' | 'surge' | 'zombied'> & {
+      army: number
+      bandit: number
+      killer: number
+      lair: number
+      sim_avail: boolean
+      surge: number
+      zombied: number
+    }
+    zombie_smart_ds_mlr_1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zombie_smart_ds_mlr_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    rad2_loner_0000: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'sim_avail'> & {
+      monolith: number
+      sim_avail: boolean
+    }
+    rad2_loner_0001: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'sim_avail' | 'surge'> & {
+      monolith: number
+      sim_avail: boolean
+      surge: number
+    }
+    rad2_loner_0002: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'sim_avail'> & {
+      monolith: number
+      sim_avail: boolean
+    }
+    rad2_prip_teleport: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'ecolog' | 'killer' | 'monolith' | 'sim_avail' | 'stalker' | 'surge'> & {
+      csky: number
+      ecolog: number
+      killer: number
+      monolith: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    rad2_rad_prip_road: Omit<MiscSimulationObjectsPropsIni['default'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    rad_after_valley: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory' | 'zombied'> & {
+      sim_avail: boolean
+      territory: number
+      zombied: number
+    }
+    rad_antenna_camper: Omit<MiscSimulationObjectsPropsIni['default_base'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    rad_antenna_monolith: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail' | 'surge'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    rad_antenna_patrol: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'sim_avail' | 'surge'> & {
+      monolith: number
+      sim_avail: boolean
+      surge: number
+    }
+    rad_bloodsucker: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'monolith' | 'sim_avail' | 'zombied'> & {
+      monolith: number
+      sim_avail: boolean
+      zombied: number
+    }
+    rad_entrance: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail' | 'surge' | 'zombied'> & {
+      sim_avail: boolean
+      surge: number
+      zombied: number
+    }
+    rad_pseudodogs: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'lair' | 'monster' | 'monster_predatory_day' | 'monster_predatory_night' | 'monster_special' | 'monster_vegetarian' | 'monster_zombied_day' | 'monster_zombied_night' | 'sim_avail' | 'zoo_monster'> & {
+      lair: number
+      monster: number
+      monster_predatory_day: number
+      monster_predatory_night: number
+      monster_special: number
+      monster_vegetarian: number
+      monster_zombied_day: number
+      monster_zombied_night: number
+      sim_avail: boolean
+      zoo_monster: number
+    }
+    rad_snork1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'monolith' | 'sim_avail' | 'zombied'> & {
+      monolith: number
+      sim_avail: boolean
+      zombied: number
+    }
+    rad_snork2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'monolith' | 'sim_avail' | 'zombied'> & {
+      monolith: number
+      sim_avail: boolean
+      zombied: number
+    }
+    rad_valley: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'monolith' | 'sim_avail' | 'surge' | 'zombied'> & {
+      monolith: number
+      sim_avail: boolean
+      surge: number
+      zombied: number
+    }
+    rad_valley_dogs: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'sim_avail' | 'zombied'> & {
+      monolith: number
+      sim_avail: boolean
+      zombied: number
+    }
+    rad_zombied1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'monolith' | 'sim_avail' | 'zombied'> & {
+      monolith: number
+      sim_avail: boolean
+      zombied: number
+    }
+    rad_zombied2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'monolith' | 'sim_avail' | 'surge' | 'zombied'> & {
+      monolith: number
+      sim_avail: boolean
+      surge: number
+      zombied: number
+    }
+    rad_freedom_vs_duty: Omit<MiscSimulationObjectsPropsIni['default'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    rad_rusty_forest_center: Omit<MiscSimulationObjectsPropsIni['default'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    bun_krovosos_nest: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    bun2_st_bloodsucker: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'ecolog' | 'monolith' | 'sim_avail' | 'stalker' | 'territory'> & {
+      ecolog: number
+      monolith: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    bun2_tushkano_lair: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'ecolog' | 'monolith' | 'sim_avail' | 'stalker' | 'territory'> & {
+      ecolog: number
+      monolith: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    pri_depot: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail' | 'surge'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    mlr_terrain: Omit<MiscSimulationObjectsPropsIni['default'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_monolith: Omit<MiscSimulationObjectsPropsIni['default_base'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_smart_bloodsucker_lair1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge' | 'territory'> & {
+      sim_avail: boolean
+      surge: number
+      territory: number
+    }
+    pri_smart_controler_lair1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_smart_controler_lair2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    pri_smart_giant_lair1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_smart_monolith_stalker2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_smart_monolith_stalker3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_smart_monolith_stalker4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_smart_monolith_stalker6: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+    }
+    pri_smart_monster_lair1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    pri_smart_neutral_stalker1: Omit<MiscSimulationObjectsPropsIni['default_base'], 'csky' | 'dolg' | 'ecolog' | 'freedom' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      dolg: number
+      ecolog: number
+      freedom: number
+      sim_avail: boolean
+      stalker: number
+    }
+    pri_smart_pseudodog_lair1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    pri_smart_snork_lair1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_smart_snork_lair2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    pri_smart_tushkano_lair1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    hotel_poless_smart_alife: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    monolith_snipers_smart_1_mlr: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    aes_smart_terrain_monolit_blockpost: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+    }
+    aes_smart_terrain_monolit_blockpost2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    aes_smart_terrain_monolit_blockpost4: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail' | 'surge'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    aes_smart_terrain_monsters1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    aes_smart_terrain_monsters2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    aes_smart_terrain_monsters3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    aes_smart_terrain_monsters4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    aes_smart_terran_soldier: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'army_heli' | 'sim_avail'> & {
+      army: number
+      army_heli: number
+      sim_avail: boolean
+    }
+    aes_smart_terran_soldier2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'all' | 'army' | 'sim_avail'> & {
+      all: number
+      army: number
+      sim_avail: boolean
+    }
+    sar_monolith_general: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'ecolog' | 'lair' | 'monolith' | 'sim_avail' | 'stalker'> & {
+      ecolog: number
+      lair: number
+      monolith: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+    }
+    sar_monolith_sklad: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'lair' | 'sim_avail'> & {
+      lair: number
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    sar_monolith_poltergeists: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    sar_monolith_bloodsuckers: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'ecolog' | 'monolith' | 'sim_avail' | 'stalker' | 'territory'> & {
+      ecolog: number
+      monolith: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    sar_monolith_guard: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'ecolog' | 'lair' | 'monolith' | 'sim_avail' | 'stalker'> & {
+      ecolog: number
+      lair: number
+      monolith: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+    }
+    sar_monolith_zombies: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'ecolog' | 'monolith' | 'sim_avail' | 'stalker' | 'territory'> & {
+      ecolog: number
+      monolith: number
+      sim_avail: CommaSeparatedString<string[]>
+      stalker: number
+      territory: number
+    }
+    aes2_monolith_camp1: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+    }
+    aes2_monolith_camp2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+    }
+    aes2_monolith_camp3: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+    }
+    aes2_monolith_camp4: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+    }
+    aes2_monolith_snipers_1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    aes2_monolith_snipers_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    aes2_monolith_snipers_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    aes2_monsters1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    aes2_monsters2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gen_smart_terrain_lab_entrance: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'monolith_heli' | 'sim_avail' | 'surge'> & {
+      monolith: number
+      monolith_heli: number
+      sim_avail: boolean
+      surge: number
+    }
+    gen_smart_terrain_cemetery: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gen_smart_terrain_forest: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gen_smart_terrain_junk: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gen_smart_terrain_lab_entrance_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gen_smart_terrain_military: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    gen_smart_terrain_urod: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    warlab_common_consciousness_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_base'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_stalker_base_smart: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'monolith' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      monolith: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    zat_medic_home_smart: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_b7_stalker_raider: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_b33: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_a23_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_b7: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    zat_b40_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_base'], 'killer' | 'sim_avail' | 'surge'> & {
+      killer: number
+      sim_avail: boolean
+      surge: number
+    }
+    zat_b28: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    zat_b42_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge' | 'territory'> & {
+      sim_avail: boolean
+      surge: number
+      territory: number
+    }
+    zat_b18: Omit<MiscSimulationObjectsPropsIni['default'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    zat_b101: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail' | 'surge' | 'territory'> & {
+      sim_avail: boolean
+      surge: number
+      territory: number
+    }
+    zat_b38u: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_b38: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    zat_b5_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    zat_b106_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_b52: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_b103_merc_smart: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    zat_b104_zombied: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_b14_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_b20_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_b53: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_b12: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_b54: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_b55: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_b100: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    zat_b39: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'lair' | 'sim_avail' | 'territory'> & {
+      lair: number
+      sim_avail: boolean
+      territory: number
+    }
+    zat_b56: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_a1: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_2: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_6: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_7: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_8: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_9: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_10: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_11: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_12: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_13: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_14: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_15: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_16: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_17: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_18: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_19: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_20: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_21: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_22: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_23: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_24: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_25: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_26: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_27: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'territory'> & {
+      sim_avail: boolean
+      territory: number
+    }
+    zat_sim_28: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_sim_29: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    zat_sim_30: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_a10_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'freedom' | 'renegade' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      freedom: number
+      renegade: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    jup_a12: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'bandit' | 'renegade' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      renegade: number
+      sim_avail: boolean
+      surge: number
+    }
+    jup_a6: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'ecolog' | 'freedom' | 'monolith' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      ecolog: number
+      freedom: number
+      monolith: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    jup_b1: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    jup_b19: Omit<MiscSimulationObjectsPropsIni['default_base'], 'sim_avail' | 'zombied'> & {
+      sim_avail: boolean
+      zombied: number
+    }
+    jup_b200: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'freedom' | 'sim_avail' | 'stalker' | 'surge' | 'territory'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      freedom: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+      territory: number
+    }
+    jup_b202: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b203: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: CommaSeparatedString<string[]>
+      surge: number
+    }
+    jup_b204: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b205_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    jup_b206: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b207: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    depo_terrain: Omit<MiscSimulationObjectsPropsIni['default'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b208: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: CommaSeparatedString<string[]>
+      surge: number
+    }
+    jup_b209: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b211: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b212: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b25: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b32: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b4: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b41: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'ecolog' | 'freedom' | 'killer' | 'monolith' | 'sim_avail' | 'stalker' | 'surge'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      ecolog: number
+      freedom: number
+      killer: number
+      monolith: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    jup_b46: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b47: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b6_anom_2: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b200_tushkan_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b207_depot_attack: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b219: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b8_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_b205_smart_terrain_tushkano: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_a12_merc: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_a9: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_1: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_4: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_5: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_6: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_7: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_8: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_9: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_10: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_11: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_12: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_13: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_14: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_15: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_16: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_17: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'resource' | 'sim_avail'> & {
+      resource: number
+      sim_avail: boolean
+    }
+    jup_sim_18: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_19: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_20: Omit<MiscSimulationObjectsPropsIni['weak_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    jup_sim_21: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a15: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a16: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'csky' | 'dolg' | 'freedom' | 'sim_avail' | 'stalker'> & {
+      bandit: number
+      csky: number
+      dolg: number
+      freedom: number
+      sim_avail: boolean
+      stalker: number
+    }
+    pri_a17: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a18_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_base'], 'monolith' | 'sim_avail' | 'surge'> & {
+      monolith: number
+      sim_avail: boolean
+      surge: number
+    }
+    pri_a21_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_a22_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a25_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_b301: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_b302: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_b303: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_b304: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_b306: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_b307: Omit<MiscSimulationObjectsPropsIni['default_resource'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_b35_mercs: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_b36_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'monolith' | 'sim_avail' | 'surge' | 'zombied'> & {
+      monolith: number
+      sim_avail: boolean
+      surge: number
+      zombied: number
+    }
+    pri_sim_1: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_sim_2: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_7: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_8: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_9: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_10: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_11: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_sim_12: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_b35_military: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    pri_b305_dogs: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_b304_monsters_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a20: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a28_heli: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a28_base: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a28_shop: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a28_arch: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a28_school: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pri_a28_evac: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    kbo_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    lx8_smart_terrain: Omit<MiscSimulationObjectsPropsIni['default_territory'], 'all' | 'lair' | 'sim_avail'> & {
+      all: number
+      lair: number
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    pas_b400_elevator: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    pas_b400_track: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'all' | 'sim_avail' | 'territory'> & {
+      all: number
+      sim_avail: CommaSeparatedString<string[]>
+      territory: number
+    }
+    pas_b400_downstairs: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    pas_b400_tunnel: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    pas_b400_hall: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'all' | 'sim_avail'> & {
+      all: number
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    pas_b400_way: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    pas_b400_canalisation: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    pas_b400_fake: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: CommaSeparatedString<string[]>
+    }
+    trc_sim_1: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'bandit' | 'dolg' | 'freedom' | 'lair' | 'sim_avail' | 'stalker'> & {
+      army: number
+      bandit: number
+      dolg: number
+      freedom: number
+      lair: number
+      sim_avail: boolean
+      stalker: number
+    }
+    trc_sim_2: Omit<MiscSimulationObjectsPropsIni['default_base'], 'army' | 'bandit' | 'dolg' | 'freedom' | 'sim_avail' | 'stalker' | 'surge'> & {
+      army: number
+      bandit: number
+      dolg: number
+      freedom: number
+      sim_avail: boolean
+      stalker: number
+      surge: number
+    }
+    trc_sim_3: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'dolg' | 'sim_avail' | 'zombied'> & {
+      dolg: number
+      sim_avail: boolean
+      zombied: number
+    }
+    trc_sim_4: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'ecolog' | 'resource' | 'sim_avail' | 'stalker' | 'zombied'> & {
+      csky: number
+      ecolog: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      zombied: number
+    }
+    trc_sim_5: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'zombied'> & {
+      sim_avail: boolean
+      zombied: number
+    }
+    trc_sim_6: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'surge'> & {
+      sim_avail: boolean
+      surge: number
+    }
+    trc_sim_7: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    trc_sim_8: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'dolg' | 'ecolog' | 'freedom' | 'resource' | 'sim_avail' | 'stalker' | 'zombied'> & {
+      csky: number
+      dolg: number
+      ecolog: number
+      freedom: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      zombied: number
+    }
+    trc_sim_9: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    trc_sim_10: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'csky' | 'ecolog' | 'resource' | 'sim_avail' | 'stalker'> & {
+      csky: number
+      ecolog: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+    }
+    trc_sim_11: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'zombied'> & {
+      sim_avail: boolean
+      zombied: number
+    }
+    trc_sim_12: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    trc_sim_13: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'dolg' | 'resource' | 'sim_avail' | 'stalker' | 'zombied'> & {
+      dolg: number
+      resource: number
+      sim_avail: boolean
+      stalker: number
+      zombied: number
+    }
+    trc_sim_14: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'zombied'> & {
+      sim_avail: boolean
+      zombied: number
+    }
+    trc_sim_15: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    trc_sim_16: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    trc_sim_17: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'zombied'> & {
+      sim_avail: boolean
+      zombied: number
+    }
+    trc_sim_18: Omit<MiscSimulationObjectsPropsIni['default_base'], 'sim_avail' | 'stalker' | 'zombied'> & {
+      sim_avail: boolean
+      stalker: number
+      zombied: number
+    }
+    trc_sim_19: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail' | 'zombied'> & {
+      sim_avail: boolean
+      zombied: number
+    }
+    trc_sim_20: Omit<MiscSimulationObjectsPropsIni['default_base'], 'bandit' | 'renegade' | 'sim_avail' | 'surge'> & {
+      bandit: number
+      renegade: number
+      sim_avail: boolean
+      surge: number
+    }
+    trc_sim_21: Omit<MiscSimulationObjectsPropsIni['default_lair'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pol_sim_1: Omit<MiscSimulationObjectsPropsIni['default'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pol_smart_terrain_1_1: Omit<MiscSimulationObjectsPropsIni['default'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pol_smart_terrain_1_2: Omit<MiscSimulationObjectsPropsIni['default'], 'sim_avail'> & {
+      sim_avail: boolean
+    }
+    pol_smart_terrain_1_3: Omit<MiscSimulationObjectsPropsIni['default'], 'resource' | 'sim_avail'> & {
+      resource: number
+      sim_avail: boolean
+    }
+    pol_smart_terrain_2_1: Omit<MiscSimulationObjectsPropsIni['default'], 'monster' | 'monster_predatory_day' | 'monster_predatory_night' | 'monster_special' | 'monster_vegetarian' | 'monster_zombied_day' | 'monster_zombied_night' | 'sim_avail' | 'zoo_monster'> & {
+      monster: number
+      monster_predatory_day: number
+      monster_predatory_night: number
+      monster_special: number
+      monster_vegetarian: number
+      monster_zombied_day: number
+      monster_zombied_night: number
+      sim_avail: boolean
+      zoo_monster: number
+    }
+    pol_smart_terrain_2_2: Omit<MiscSimulationObjectsPropsIni['default'], 'monster' | 'monster_predatory_day' | 'monster_predatory_night' | 'monster_special' | 'monster_vegetarian' | 'monster_zombied_day' | 'monster_zombied_night' | 'sim_avail' | 'zoo_monster'> & {
+      monster: number
+      monster_predatory_day: number
+      monster_predatory_night: number
+      monster_special: number
+      monster_vegetarian: number
+      monster_zombied_day: number
+      monster_zombied_night: number
+      sim_avail: boolean
+      zoo_monster: number
+    }
   }
-  default_resource: {
-    csky: number
-    ecolog: number
-    resource: number
-    stalker: number
-    territory: number
-  }
-  default_base: {
-    base: number
-  }
-  default_lair: {
-    lair: number
-    monster: number
-    monster_predatory_day: number
-    monster_predatory_night: number
-    monster_special: number
-    monster_vegetarian: number
-    monster_zombied_day: number
-    monster_zombied_night: number
-    territory: number
-    zoo_monster: number
-  }
-  weak_lair: {
-    lair: number
-    monster: number
-    monster_predatory_day: number
-    monster_predatory_night: number
-    monster_special: number
-    monster_vegetarian: number
-    monster_zombied_day: number
-    monster_zombied_night: number
-    territory: number
-    zoo_monster: number
-  }
-  default_territory: {
-    all: number
-    territory: number
-  }
-  default_squad: {
-    all: number
-    sim_avail: boolean
-    squad: number
-  }
-  actor: {
-    actor: number
-    all: number
-    sim_avail: boolean
-  }
-  mar_smart_terrain_base: {
-    csky: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  mar_smart_terrain_doc: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_doc_2: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_3_3: {
-    bandit: number
-    renegade: number
-    sim_avail: boolean
-    surge: number
-  }
-  mar_smart_terrain_3_7: {
-    csky: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-  }
-  mar_smart_terrain_3_10: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_4_5: {
-    bandit: number
-    lair: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  mar_smart_terrain_4_7: {
-    bandit: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-  }
-  mar_smart_terrain_5_8: {
-    bandit: number
-    csky: number
-    ecolog: number
-    killer: number
-    renegade: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    surge: number
-  }
-  mar_smart_terrain_5_12: {
-    bandit: number
-    csky: number
-    lair: number
-    renegade: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    surge: number
-  }
-  mar_smart_terrain_6_4: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_6_7: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_6_8: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_6_10: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_6_11: {
-    bandit: number
-    csky: number
-    lair: number
-    monster: number
-    monster_predatory_day: number
-    monster_predatory_night: number
-    monster_vegetarian: number
-    renegade: number
-    sim_avail: boolean
-  }
-  mar_smart_terrain_7_3: {
-    bandit: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-  }
-  mar_smart_terrain_7_7: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_8_4: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_8_8: {
-    bandit: number
-    csky: number
-    ecolog: number
-    freedom: number
-    lair: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-  }
-  mar_smart_terrain_8_9: {
-    bandit: number
-    csky: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-  }
-  mar_smart_terrain_8_11: {
-    bandit: number
-    csky: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  mar_smart_terrain_10_5: {
-    army: number
-    army_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  mar_smart_terrain_10_7: {
-    sim_avail: boolean
-  }
-  mar_smart_terrain_10_10: {
-    csky: number
-    ecolog: number
-    lair: number
-    sim_avail: boolean
-    stalker: number
-  }
-  mar_smart_terrain_11_3: {
-    lair: number
-    sim_avail: boolean
-  }
-  mar_smart_terrain_11_11: {
-    bandit: number
-    csky: number
-    dolg: number
-    ecolog: number
-    freedom: number
-    killer: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  mar_smart_terrain_12_2: {
-    bandit: number
-    base: number
-    csky: number
-    ecolog: number
-    lair: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  esc_smart_terrain_2_12: {
-    army: number
-    csky: number
-    ecolog: number
-    killer: number
-    lair: number
-    monolith: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  esc_smart_terrain_3_16: {
-    army: number
-    army_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  esc_smart_terrain_7_11: {
-    bandit: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  esc_smart_terrain_4_9: {
-    bandit: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  esc_smart_terrain_5_2: {
-    army: number
-    army_heli: number
-    bandit: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  esc_smart_terrain_5_7: {
-    bandit: number
-    csky: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  esc_smart_terrain_5_9: {
-    bandit: number
-    freedom: number
-    killer: number
-    sim_avail: boolean
-    surge: number
-  }
-  esc_smart_terrain_6_6: {
-    bandit: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  esc_smart_terrain_1_11: {
-    csky: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-  }
-  esc_smart_terrain_2_14: {
-    sim_avail: boolean
-  }
-  esc_smart_terrain_3_7: {
-    csky: number
-    sim_avail: boolean
-    stalker: number
-  }
-  esc_smart_terrain_4_11: {
-    monster: number
-    monster_vegetarian: number
-    sim_avail: boolean
-    stalker: number
-  }
-  esc_smart_terrain_4_13: {
-    sim_avail: boolean
-  }
-  esc_smart_terrain_5_12: {
-    sim_avail: boolean
-    stalker: number
-  }
-  esc_smart_terrain_5_4: {
-    sim_avail: boolean
-  }
-  esc_smart_terrain_5_6: {
-    sim_avail: boolean
-  }
-  esc_smart_terrain_6_8: {
-    all: number
-    army: number
-    bandit: number
-    sim_avail: boolean
-    surge: number
-  }
-  esc_smart_terrain_8_10: {
-    sim_avail: boolean
-  }
-  esc_smart_terrain_8_9: {
-    sim_avail: boolean
-    stalker: number
-  }
-  esc_smart_terrain_9_7: {
-    sim_avail: boolean
-  }
-  esc_smart_terrain_9_10: {
-    sim_avail: boolean
-  }
-  gar_smart_terrain_1_5: {
-    bandit: number
-    sim_avail: boolean
-    surge: number
-  }
-  gar_smart_terrain_1_7: {
-    bandit: number
-    dolg: number
-    sim_avail: boolean
-    stalker: number
-  }
-  gar_smart_terrain_2_4: {
-    bandit: number
-    sim_avail: boolean
-    surge: number
-  }
-  gar_smart_terrain_3_5: {
-    csky: number
-    dolg: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  gar_smart_terrain_3_7: {
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-  }
-  gar_smart_terrain_4_2: {
-    sim_avail: boolean
-    stalker: number
-  }
-  gar_smart_terrain_4_5: {
-    bandit: number
-    sim_avail: boolean
-  }
-  gar_smart_terrain_5_2: {
-    bandit: number
-    csky: number
-    dolg: number
-    freedom: number
-    killer: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  gar_smart_terrain_5_4: {
-    sim_avail: boolean
-  }
-  gar_smart_terrain_5_5: {
-    sim_avail: boolean
-    stalker: number
-  }
-  gar_smart_terrain_5_6: {
-    bandit: number
-    ecolog: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-  }
-  gar_smart_terrain_5_8: {
-    bandit: number
-    sim_avail: boolean
-    stalker: number
-  }
-  gar_smart_terrain_6_1: {
-    sim_avail: boolean
-  }
-  gar_smart_terrain_6_3: {
-    csky: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  gar_smart_terrain_6_6: {
-    sim_avail: boolean
-  }
-  gar_smart_terrain_6_7: {
-    resource: number
-    sim_avail: boolean
-    stalker: number
-  }
-  gar_smart_terrain_7_4: {
-    sim_avail: boolean
-  }
-  gar_smart_terrain_8_3: {
-    bandit: number
-    dolg: number
-    sim_avail: boolean
-  }
-  gar_smart_terrain_8_5: {
-    sim_avail: boolean
-  }
-  ds2_domik_st: {
-    bandit: number
-    csky: number
-    dolg: number
-    killer: number
-    renegade: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    surge: number
-  }
-  ds2_lager_st: {
-    bandit: number
-    dolg: number
-    freedom: number
-    killer: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  ds2_st_dogs: {
-    sim_avail: boolean
-  }
-  ds2_st_hoofs: {
-    sim_avail: boolean
-  }
-  ds_boars_nest: {
-    sim_avail: boolean
-  }
-  ds_deb1: {
-    sim_avail: boolean
-    surge: number
-  }
-  ds_grverfer2: {
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  ds_kem1: {
-    sim_avail: boolean
-    surge: number
-  }
-  ds_kem2: {
-    army_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  ds_kem3: {
-    bandit: number
-    killer: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  ds_ptr: {
-    bandit: number
-    killer: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  ds_ptr2: {
-    sim_avail: boolean
-    surge: number
-  }
-  ds_ptr3: {
-    sim_avail: boolean
-    surge: number
-  }
-  ds_ptr4: {
-    sim_avail: boolean
-    surge: number
-  }
-  agr_smart_terrain_1_2: {
-    csky: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-  }
-  agr_smart_terrain_1_3: {
-    csky: number
-    ecolog: number
-    freedom: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-  }
-  agr_smart_terrain_1_6: {
-    army: number
-    lair: number
-    sim_avail: boolean
-    surge: number
-  }
-  agr_smart_terrain_1_6_near_1: {
-    army: number
-    sim_avail: boolean
-    surge: number
-  }
-  agr_smart_terrain_1_6_near_2: {
-    army: number
-    army_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  agr_smart_terrain_2_2: {
-    csky: number
-    dolg: number
-    killer: number
-    sim_avail: boolean
-    stalker: number
-  }
-  agr_smart_terrain_4_4: {
-    csky: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  agr_smart_terrain_4_4_near_1: {
-    bandit: number
-    csky: number
-    ecolog: number
-    freedom: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  agr_smart_terrain_4_4_near_2: {
-    csky: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  agr_smart_terrain_4_4_near_3: {
-    bandit: number
-    csky: number
-    ecolog: number
-    freedom: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  agr_smart_terrain_4_6: {
-    army: number
-    sim_avail: boolean
-  }
-  agr_smart_terrain_5_2: {
-    dolg: number
-    sim_avail: boolean
-    stalker: number
-  }
-  agr_smart_terrain_5_3: {
-    sim_avail: boolean
-  }
-  agr_smart_terrain_5_4: {
-    sim_avail: boolean
-  }
-  agr_smart_terrain_5_7: {
-    csky: number
-    dolg: number
-    sim_avail: boolean
-    stalker: number
-  }
-  agr_smart_terrain_6_4: {
-    csky: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-    zombied: number
-  }
-  agr_smart_terrain_6_6: {
-    sim_avail: boolean
-  }
-  agr_smart_terrain_7_4: {
-    army: number
-    bandit: number
-    sim_avail: boolean
-    stalker: number
-  }
-  agr_smart_terrain_7_5: {
-    army: number
-    bandit: number
-    csky: number
-    dolg: number
-    sim_avail: boolean
-    stalker: number
-  }
-  agr_u_bandits: {
-    bandit: number
-    lair: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-  }
-  agr_u_bloodsucker: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  agr_u_bloodsucker_2: {
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  agr_u_monsters: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  agr_u_soldiers: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  val_smart_terrain_1_2: {
-    army: number
-    army_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  val_smart_terrain_3_0: {
-    bandit: number
-    sim_avail: boolean
-  }
-  val_smart_terrain_4_0: {
-    bandit: number
-    csky: number
-    dolg: number
-    ecolog: number
-    freedom: number
-    killer: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  val_smart_terrain_5_7: {
-    bandit: number
-    sim_avail: boolean
-  }
-  val_smart_terrain_5_8: {
-    bandit: number
-    sim_avail: boolean
-  }
-  val_smart_terrain_5_10: {
-    sim_avail: boolean
-  }
-  val_smart_terrain_6_4: {
-    bandit: number
-    sim_avail: CommaSeparatedString<string>
-  }
-  val_smart_terrain_6_5: {
-    sim_avail: boolean
-  }
-  val_smart_terrain_7_3: {
-    bandit: number
-    sim_avail: boolean
-    surge: number
-  }
-  val_smart_terrain_7_4: {
-    bandit: number
-    lair: number
-    sim_avail: boolean
-    surge: number
-  }
-  val_smart_terrain_7_5: {
-    bandit: number
-    sim_avail: boolean
-    surge: number
-  }
-  val_smart_terrain_7_8: {
-    sim_avail: boolean
-  }
-  val_smart_terrain_7_11: {
-    bandit: number
-    sim_avail: boolean
-  }
-  val_smart_terrain_8_6: {
-    bandit: number
-    dolg: number
-    freedom: number
-    killer: number
-    monster: number
-    monster_predatory_day: number
-    monster_predatory_night: number
-    monster_special: number
-    monster_vegetarian: number
-    monster_zombied_day: number
-    monster_zombied_night: number
-    sim_avail: boolean
-    stalker: number
-    zoo_monster: number
-  }
-  val_smart_terrain_8_7: {
-    sim_avail: boolean
-  }
-  val_smart_terrain_8_9: {
-    sim_avail: boolean
-  }
-  val_smart_terrain_9_10: {
-    csky: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-  }
-  val_smart_terrain_9_2: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  val_smart_terrain_9_4: {
-    bandit: number
-    dolg: number
-    freedom: number
-    killer: number
-    monster: number
-    monster_predatory_day: number
-    monster_predatory_night: number
-    monster_special: number
-    monster_vegetarian: number
-    monster_zombied_day: number
-    monster_zombied_night: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-    zoo_monster: number
-  }
-  val_smart_terrain_9_6: {
-    bandit: number
-    dolg: number
-    freedom: number
-    killer: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  dar_angar: {
-    army: number
-    ecolog: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  dar_control_poltergeist: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  dar_military_scout: {
-    sim_avail: boolean
-  }
-  dar_poltergeist_ring: {
-    sim_avail: boolean
-  }
-  dar_poltergeist_tele: {
-    sim_avail: boolean
-  }
-  dar_poltergeist_tele_round: {
-    sim_avail: boolean
-  }
-  dar_smart_snork: {
-    ecolog: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  bar_zastava_dogs_lair: {
-    dolg: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  bar_zastava_dogs_lair_2: {
-    dolg: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  bar_dolg_bunker: {
-    dolg: number
-    sim_avail: boolean
-    surge: number
-  }
-  bar_dolg_general: {
-    dolg: number
-    sim_avail: boolean
-    surge: number
-  }
-  bar_visitors: {
-    csky: number
-    dolg: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  bar_zastava: {
-    dolg: number
-    lair: number
-    sim_avail: CommaSeparatedString<string>
-    surge: number
-  }
-  bar_zastava_2: {
-    dolg: number
-    lair: number
-    sim_avail: CommaSeparatedString<string>
-    surge: number
-  }
-  ros_smart_killers1: {
-    bandit: number
-    dolg: number
-    killer: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  ros_smart_monster4: {
-    ecolog: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    territory: number
-  }
-  ros_smart_monster5: {
-    dolg: number
-    ecolog: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    territory: number
-  }
-  ros_smart_monster7: {
-    ecolog: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    territory: number
-  }
-  ros_smart_poltergeist2: {
-    sim_avail: boolean
-    territory: number
-  }
-  ros_smart_snork1: {
-    dolg: number
-    sim_avail: boolean
-    stalker: number
-    territory: number
-  }
-  ros_smart_stalker_killers1: {
-    killer: number
-    sim_avail: boolean
-    surge: number
-  }
-  ros_smart_stalker1: {
-    csky: number
-    dolg: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-  }
-  yan_smart_terrain_1_6: {
-    ecolog: number
-    freedom: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    zombied: number
-  }
-  yan_smart_terrain_2_4: {
-    sim_avail: boolean
-    surge: number
-    territory: number
-  }
-  yan_smart_terrain_2_5: {
-    ecolog: number
-    freedom: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-    territory: number
-  }
-  yan_smart_terrain_3_4: {
-    sim_avail: boolean
-    surge: number
-    territory: number
-  }
-  yan_smart_terrain_3_6: {
-    csky: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  yan_smart_terrain_4_2: {
-    csky: number
-    ecolog: number
-    freedom: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-  }
-  yan_smart_terrain_4_4: {
-    sim_avail: CommaSeparatedString<string>
-    territory: number
-    zombied: number
-  }
-  yan_smart_terrain_4_5: {
-    sim_avail: boolean
-  }
-  yan_smart_terrain_5_3: {
-    csky: number
-    ecolog: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    territory: number
-  }
-  yan_smart_terrain_5_5: {
-    csky: number
-    ecolog: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    surge: number
-    zombied: number
-  }
-  yan_smart_terrain_6_2: {
-    csky: number
-    sim_avail: CommaSeparatedString<string>
-    territory: number
-    zombied: number
-  }
-  yan_smart_terrain_6_4: {
-    csky: number
-    ecolog: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-    zombied: number
-  }
-  yan_smart_terrain_zombi_spawn: {
-    sim_avail: boolean
-    territory: number
-    zombied: number
-  }
-  yan_smart_terrain_snork_u: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  x162_st_burer: {
-    army: number
-    ecolog: number
-    monolith: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  x162_st_gigant: {
-    army: number
-    ecolog: number
-    monolith: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  x162_st_snork: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  x162_st_poltergeist: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  mil_smart_terrain_2_1: {
-    sim_avail: boolean
-  }
-  mil_smart_terrain_2_10: {
-    bandit: number
-    dolg: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-    surge: number
-  }
-  mil_smart_terrain_2_2: {
-    bandit: number
-    csky: number
-    dolg: number
-    freedom: number
-    killer: number
-    monolith: number
-    sim_avail: boolean
-    stalker: number
-  }
-  mil_smart_terrain_2_4: {
-    bandit: number
-    csky: number
-    dolg: number
-    ecolog: number
-    freedom: number
-    killer: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  mil_smart_terrain_2_6: {
-    monolith: number
-    sim_avail: boolean
-  }
-  mil_smart_terrain_3_8: {
-    dolg: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-  }
-  mil_smart_terrain_4_2: {
-    sim_avail: boolean
-    surge: number
-  }
-  mil_smart_terrain_4_3: {
-    freedom: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  mil_smart_terrain_4_5: {
-    bandit: number
-    dolg: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  mil_smart_terrain_4_7: {
-    sim_avail: CommaSeparatedString<string>
-    territory: number
-  }
-  mil_smart_terrain_4_8: {
-    bandit: number
-    dolg: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  mil_smart_terrain_7_10: {
-    dolg: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-    surge: number
-  }
-  mil_smart_terrain_7_12: {
-    dolg: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-    surge: number
-  }
-  mil_smart_terrain_7_4: {
-    bandit: number
-    dolg: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  mil_smart_terrain_7_7: {
-    dolg: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-    surge: number
-  }
-  mil_smart_terrain_7_8: {
-    dolg: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-    surge: number
-  }
-  mil_smart_terrain_8_3: {
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-  }
-  red_bridge_bandit_smart_skirmish: {
-    sim_avail: boolean
-  }
-  red_smart_terrain_3_1: {
-    sim_avail: boolean
-  }
-  red_smart_terrain_3_2: {
-    greh: number
-    sim_avail: boolean
-    surge: number
-  }
-  red_smart_terrain_3_3: {
-    sim_avail: boolean
-  }
-  red_smart_terrain_4_2: {
-    all: number
-    army_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  red_smart_terrain_4_3: {
-    sim_avail: boolean
-  }
-  red_smart_terrain_4_5: {
-    resource: number
-    sim_avail: boolean
-  }
-  red_smart_terrain_5_5: {
-    sim_avail: boolean
-  }
-  red_smart_terrain_5_6: {
-    sim_avail: boolean
-  }
-  red_smart_terrain_6_3: {
-    ecolog: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-  }
-  red_smart_terrain_6_6: {
-    sim_avail: boolean
-  }
-  red_smart_terrain_bridge: {
-    all: number
-    sim_avail: boolean
-    surge: number
-  }
-  red_smart_terrain_monsters: {
-    resource: number
-    sim_avail: boolean
-  }
-  red_smart_terrain_monsters_2: {
-    sim_avail: boolean
-  }
-  red_smart_terrain_monsters_3: {
-    sim_avail: boolean
-  }
-  lim_smart_terrain_1: {
-    bandit: number
-    csky: number
-    killer: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  lim_smart_terrain_10: {
-    csky: number
-    ecolog: number
-    killer: number
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  lim_smart_terrain_3: {
-    csky: number
-    ecolog: number
-    killer: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  lim_smart_terrain_4: {
-    bandit: number
-    csky: number
-    ecolog: number
-    killer: number
-    monolith: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  lim_smart_terrain_5: {
-    csky: number
-    ecolog: number
-    killer: number
-    monolith: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  lim_smart_terrain_6: {
-    csky: number
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  lim_smart_terrain_7: {
-    sim_avail: boolean
-  }
-  lim_smart_terrain_8: {
-    sim_avail: boolean
-  }
-  lim_smart_terrain_9: {
-    csky: number
-    killer: number
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  katacomb_smart_terrain: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  cit_bandits: {
-    sim_avail: boolean
-    surge: number
-  }
-  cit_bandits_2: {
-    sim_avail: boolean
-  }
-  cit_kanaliz1: {
-    sim_avail: boolean
-  }
-  cit_kanaliz2: {
-    sim_avail: boolean
-  }
-  cit_killers: {
-    killer: number
-    sim_avail: boolean
-    surge: number
-  }
-  cit_killers_2: {
-    killer: number
-    sim_avail: boolean
-  }
-  cit_killers_vs_bandits: {
-    army: number
-    bandit: number
-    killer: number
-    lair: number
-    sim_avail: boolean
-    surge: number
-    zombied: number
-  }
-  zombie_smart_ds_mlr_1: {
-    sim_avail: boolean
-  }
-  zombie_smart_ds_mlr_2: {
-    sim_avail: boolean
-  }
-  rad2_loner_0000: {
-    monolith: number
-    sim_avail: boolean
-  }
-  rad2_loner_0001: {
-    monolith: number
-    sim_avail: boolean
-    surge: number
-  }
-  rad2_loner_0002: {
-    monolith: number
-    sim_avail: boolean
-  }
-  rad2_prip_teleport: {
-    csky: number
-    ecolog: number
-    killer: number
-    monolith: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  rad2_rad_prip_road: {
-    sim_avail: boolean
-  }
-  rad_after_valley: {
-    sim_avail: boolean
-    territory: number
-    zombied: number
-  }
-  rad_antenna_camper: {
-    sim_avail: boolean
-    surge: number
-  }
-  rad_antenna_monolith: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  rad_antenna_patrol: {
-    monolith: number
-    sim_avail: boolean
-    surge: number
-  }
-  rad_bloodsucker: {
-    monolith: number
-    sim_avail: boolean
-    zombied: number
-  }
-  rad_entrance: {
-    sim_avail: boolean
-    surge: number
-    zombied: number
-  }
-  rad_pseudodogs: {
-    lair: number
-    monster: number
-    monster_predatory_day: number
-    monster_predatory_night: number
-    monster_special: number
-    monster_vegetarian: number
-    monster_zombied_day: number
-    monster_zombied_night: number
-    sim_avail: boolean
-    zoo_monster: number
-  }
-  rad_snork1: {
-    monolith: number
-    sim_avail: boolean
-    zombied: number
-  }
-  rad_snork2: {
-    monolith: number
-    sim_avail: boolean
-    zombied: number
-  }
-  rad_valley: {
-    monolith: number
-    sim_avail: boolean
-    surge: number
-    zombied: number
-  }
-  rad_valley_dogs: {
-    monolith: number
-    sim_avail: boolean
-    zombied: number
-  }
-  rad_zombied1: {
-    monolith: number
-    sim_avail: boolean
-    zombied: number
-  }
-  rad_zombied2: {
-    monolith: number
-    sim_avail: boolean
-    surge: number
-    zombied: number
-  }
-  rad_freedom_vs_duty: {
-    sim_avail: boolean
-  }
-  rad_rusty_forest_center: {
-    sim_avail: boolean
-  }
-  bun_krovosos_nest: {
-    sim_avail: boolean
-    territory: number
-  }
-  bun2_st_bloodsucker: {
-    ecolog: number
-    monolith: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  bun2_tushkano_lair: {
-    ecolog: number
-    monolith: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  pri_depot: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  mlr_terrain: {
-    sim_avail: boolean
-  }
-  pri_monolith: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_smart_bloodsucker_lair1: {
-    sim_avail: boolean
-    surge: number
-    territory: number
-  }
-  pri_smart_controler_lair1: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_smart_controler_lair2: {
-    sim_avail: boolean
-    territory: number
-  }
-  pri_smart_giant_lair1: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_smart_monolith_stalker2: {
-    sim_avail: boolean
-  }
-  pri_smart_monolith_stalker3: {
-    sim_avail: boolean
-  }
-  pri_smart_monolith_stalker4: {
-    sim_avail: boolean
-  }
-  pri_smart_monolith_stalker6: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-  }
-  pri_smart_monster_lair1: {
-    sim_avail: boolean
-    territory: number
-  }
-  pri_smart_neutral_stalker1: {
-    csky: number
-    dolg: number
-    ecolog: number
-    freedom: number
-    sim_avail: boolean
-    stalker: number
-  }
-  pri_smart_pseudodog_lair1: {
-    sim_avail: boolean
-    territory: number
-  }
-  pri_smart_snork_lair1: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_smart_snork_lair2: {
-    sim_avail: boolean
-    territory: number
-  }
-  pri_smart_tushkano_lair1: {
-    sim_avail: boolean
-    surge: number
-  }
-  hotel_poless_smart_alife: {
-    sim_avail: boolean
-  }
-  monolith_snipers_smart_1_mlr: {
-    sim_avail: boolean
-  }
-  aes_smart_terrain_monolit_blockpost: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-  }
-  aes_smart_terrain_monolit_blockpost2: {
-    sim_avail: boolean
-  }
-  aes_smart_terrain_monolit_blockpost4: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  aes_smart_terrain_monsters1: {
-    sim_avail: boolean
-    territory: number
-  }
-  aes_smart_terrain_monsters2: {
-    sim_avail: boolean
-    territory: number
-  }
-  aes_smart_terrain_monsters3: {
-    sim_avail: boolean
-  }
-  aes_smart_terrain_monsters4: {
-    sim_avail: boolean
-  }
-  aes_smart_terran_soldier: {
-    army: number
-    army_heli: number
-    sim_avail: boolean
-  }
-  aes_smart_terran_soldier2: {
-    all: number
-    army: number
-    sim_avail: boolean
-  }
-  sar_monolith_general: {
-    ecolog: number
-    lair: number
-    monolith: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-  }
-  sar_monolith_sklad: {
-    lair: number
-    sim_avail: CommaSeparatedString<string>
-  }
-  sar_monolith_poltergeists: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  sar_monolith_bloodsuckers: {
-    ecolog: number
-    monolith: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  sar_monolith_guard: {
-    ecolog: number
-    lair: number
-    monolith: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-  }
-  sar_monolith_zombies: {
-    ecolog: number
-    monolith: number
-    sim_avail: CommaSeparatedString<string>
-    stalker: number
-    territory: number
-  }
-  aes2_monolith_camp1: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-  }
-  aes2_monolith_camp2: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-  }
-  aes2_monolith_camp3: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-  }
-  aes2_monolith_camp4: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-  }
-  aes2_monolith_snipers_1: {
-    sim_avail: boolean
-  }
-  aes2_monolith_snipers_2: {
-    sim_avail: boolean
-  }
-  aes2_monolith_snipers_3: {
-    sim_avail: boolean
-  }
-  aes2_monsters1: {
-    sim_avail: boolean
-  }
-  aes2_monsters2: {
-    sim_avail: boolean
-  }
-  gen_smart_terrain_lab_entrance: {
-    monolith: number
-    monolith_heli: number
-    sim_avail: boolean
-    surge: number
-  }
-  gen_smart_terrain_cemetery: {
-    sim_avail: boolean
-  }
-  gen_smart_terrain_forest: {
-    sim_avail: boolean
-  }
-  gen_smart_terrain_junk: {
-    sim_avail: boolean
-  }
-  gen_smart_terrain_lab_entrance_2: {
-    sim_avail: boolean
-  }
-  gen_smart_terrain_military: {
-    sim_avail: boolean
-  }
-  gen_smart_terrain_urod: {
-    sim_avail: boolean
-  }
-  warlab_common_consciousness_smart_terrain: {
-    sim_avail: boolean
-  }
-  zat_stalker_base_smart: {
-    bandit: number
-    csky: number
-    dolg: number
-    monolith: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  zat_medic_home_smart: {
-    sim_avail: boolean
-  }
-  zat_b7_stalker_raider: {
-    sim_avail: boolean
-  }
-  zat_b33: {
-    sim_avail: boolean
-  }
-  zat_a23_smart_terrain: {
-    sim_avail: boolean
-  }
-  zat_b7: {
-    sim_avail: boolean
-    surge: number
-  }
-  zat_b40_smart_terrain: {
-    killer: number
-    sim_avail: boolean
-    surge: number
-  }
-  zat_b28: {
-    sim_avail: boolean
-    surge: number
-  }
-  zat_b42_smart_terrain: {
-    sim_avail: boolean
-    surge: number
-    territory: number
-  }
-  zat_b18: {
-    sim_avail: boolean
-    surge: number
-  }
-  zat_b101: {
-    sim_avail: boolean
-    surge: number
-    territory: number
-  }
-  zat_b38u: {
-    sim_avail: boolean
-  }
-  zat_b38: {
-    sim_avail: boolean
-    surge: number
-  }
-  zat_b5_smart_terrain: {
-    sim_avail: boolean
-    surge: number
-  }
-  zat_b106_smart_terrain: {
-    sim_avail: boolean
-  }
-  zat_b52: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_b103_merc_smart: {
-    sim_avail: boolean
-    surge: number
-  }
-  zat_b104_zombied: {
-    sim_avail: boolean
-  }
-  zat_b14_smart_terrain: {
-    sim_avail: boolean
-  }
-  zat_b20_smart_terrain: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_b53: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_b12: {
-    sim_avail: boolean
-  }
-  zat_b54: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_b55: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_b100: {
-    sim_avail: boolean
-    surge: number
-  }
-  zat_b39: {
-    lair: number
-    sim_avail: boolean
-    territory: number
-  }
-  zat_b56: {
-    sim_avail: boolean
-  }
-  zat_a1: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_1: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_2: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_3: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_4: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_5: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_6: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_7: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_8: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_9: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_10: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_11: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_12: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_13: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_14: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_15: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_16: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_17: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_18: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_19: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_20: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_21: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_22: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_23: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_24: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_25: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_26: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_27: {
-    sim_avail: boolean
-    territory: number
-  }
-  zat_sim_28: {
-    sim_avail: boolean
-  }
-  zat_sim_29: {
-    sim_avail: boolean
-  }
-  zat_sim_30: {
-    sim_avail: boolean
-  }
-  jup_a10_smart_terrain: {
-    bandit: number
-    csky: number
-    dolg: number
-    freedom: number
-    renegade: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  jup_a12: {
-    bandit: number
-    renegade: number
-    sim_avail: boolean
-    surge: number
-  }
-  jup_a6: {
-    bandit: number
-    csky: number
-    dolg: number
-    ecolog: number
-    freedom: number
-    monolith: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  jup_b1: {
-    sim_avail: boolean
-    surge: number
-  }
-  jup_b19: {
-    sim_avail: boolean
-    zombied: number
-  }
-  jup_b200: {
-    bandit: number
-    csky: number
-    dolg: number
-    freedom: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-    territory: number
-  }
-  jup_b202: {
-    sim_avail: boolean
-  }
-  jup_b203: {
-    sim_avail: CommaSeparatedString<string>
-    surge: number
-  }
-  jup_b204: {
-    sim_avail: boolean
-  }
-  jup_b205_smart_terrain: {
-    sim_avail: boolean
-    surge: number
-  }
-  jup_b206: {
-    sim_avail: boolean
-  }
-  jup_b207: {
-    sim_avail: boolean
-  }
-  depo_terrain: {
-    sim_avail: boolean
-  }
-  jup_b208: {
-    sim_avail: CommaSeparatedString<string>
-    surge: number
-  }
-  jup_b209: {
-    sim_avail: boolean
-  }
-  jup_b211: {
-    sim_avail: boolean
-  }
-  jup_b212: {
-    sim_avail: boolean
-  }
-  jup_b25: {
-    sim_avail: boolean
-  }
-  jup_b32: {
-    sim_avail: boolean
-  }
-  jup_b4: {
-    sim_avail: boolean
-  }
-  jup_b41: {
-    bandit: number
-    csky: number
-    dolg: number
-    ecolog: number
-    freedom: number
-    killer: number
-    monolith: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  jup_b46: {
-    sim_avail: boolean
-  }
-  jup_b47: {
-    sim_avail: boolean
-  }
-  jup_b6_anom_2: {
-    sim_avail: boolean
-  }
-  jup_b200_tushkan_smart_terrain: {
-    sim_avail: boolean
-  }
-  jup_b207_depot_attack: {
-    sim_avail: boolean
-  }
-  jup_b219: {
-    sim_avail: boolean
-  }
-  jup_b8_smart_terrain: {
-    sim_avail: boolean
-  }
-  jup_b205_smart_terrain_tushkano: {
-    sim_avail: boolean
-  }
-  jup_a12_merc: {
-    sim_avail: boolean
-  }
-  jup_a9: {
-    sim_avail: boolean
-  }
-  jup_sim_1: {
-    sim_avail: boolean
-  }
-  jup_sim_2: {
-    sim_avail: boolean
-  }
-  jup_sim_3: {
-    sim_avail: boolean
-  }
-  jup_sim_4: {
-    sim_avail: boolean
-  }
-  jup_sim_5: {
-    sim_avail: boolean
-  }
-  jup_sim_6: {
-    sim_avail: boolean
-  }
-  jup_sim_7: {
-    sim_avail: boolean
-  }
-  jup_sim_8: {
-    sim_avail: boolean
-  }
-  jup_sim_9: {
-    sim_avail: boolean
-  }
-  jup_sim_10: {
-    sim_avail: boolean
-  }
-  jup_sim_11: {
-    sim_avail: boolean
-  }
-  jup_sim_12: {
-    sim_avail: boolean
-  }
-  jup_sim_13: {
-    sim_avail: boolean
-  }
-  jup_sim_14: {
-    sim_avail: boolean
-  }
-  jup_sim_15: {
-    sim_avail: boolean
-  }
-  jup_sim_16: {
-    sim_avail: boolean
-  }
-  jup_sim_17: {
-    resource: number
-    sim_avail: boolean
-  }
-  jup_sim_18: {
-    sim_avail: boolean
-  }
-  jup_sim_19: {
-    sim_avail: boolean
-  }
-  jup_sim_20: {
-    sim_avail: boolean
-  }
-  jup_sim_21: {
-    sim_avail: boolean
-  }
-  pri_a15: {
-    sim_avail: boolean
-  }
-  pri_a16: {
-    bandit: number
-    csky: number
-    dolg: number
-    freedom: number
-    sim_avail: boolean
-    stalker: number
-  }
-  pri_a17: {
-    sim_avail: boolean
-  }
-  pri_a18_smart_terrain: {
-    monolith: number
-    sim_avail: boolean
-    surge: number
-  }
-  pri_a21_smart_terrain: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_a22_smart_terrain: {
-    sim_avail: boolean
-  }
-  pri_a25_smart_terrain: {
-    sim_avail: boolean
-  }
-  pri_b301: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_b302: {
-    sim_avail: boolean
-  }
-  pri_b303: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_b304: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_b306: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_b307: {
-    sim_avail: boolean
-  }
-  pri_b35_mercs: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_b36_smart_terrain: {
-    monolith: number
-    sim_avail: boolean
-    surge: number
-    zombied: number
-  }
-  pri_sim_1: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_sim_2: {
-    sim_avail: boolean
-  }
-  pri_sim_3: {
-    sim_avail: boolean
-  }
-  pri_sim_4: {
-    sim_avail: boolean
-  }
-  pri_sim_5: {
-    sim_avail: boolean
-  }
-  pri_sim_6: {
-    sim_avail: boolean
-  }
-  pri_sim_7: {
-    sim_avail: boolean
-  }
-  pri_sim_8: {
-    sim_avail: boolean
-  }
-  pri_sim_9: {
-    sim_avail: boolean
-  }
-  pri_sim_10: {
-    sim_avail: boolean
-  }
-  pri_sim_11: {
-    sim_avail: boolean
-  }
-  pri_sim_12: {
-    sim_avail: boolean
-  }
-  pri_b35_military: {
-    sim_avail: boolean
-    surge: number
-  }
-  pri_b305_dogs: {
-    sim_avail: boolean
-  }
-  pri_b304_monsters_smart_terrain: {
-    sim_avail: boolean
-  }
-  pri_a20: {
-    sim_avail: boolean
-  }
-  pri_a28_heli: {
-    sim_avail: boolean
-  }
-  pri_a28_base: {
-    sim_avail: boolean
-  }
-  pri_a28_shop: {
-    sim_avail: boolean
-  }
-  pri_a28_arch: {
-    sim_avail: boolean
-  }
-  pri_a28_school: {
-    sim_avail: boolean
-  }
-  pri_a28_evac: {
-    sim_avail: boolean
-  }
-  kbo_terrain: {
-    sim_avail: boolean
-  }
-  lx8_smart_terrain: {
-    all: number
-    lair: number
-    sim_avail: CommaSeparatedString<string>
-  }
-  pas_b400_elevator: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  pas_b400_track: {
-    all: number
-    sim_avail: CommaSeparatedString<string>
-    territory: number
-  }
-  pas_b400_downstairs: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  pas_b400_tunnel: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  pas_b400_hall: {
-    all: number
-    sim_avail: CommaSeparatedString<string>
-  }
-  pas_b400_way: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  pas_b400_canalisation: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  pas_b400_fake: {
-    sim_avail: CommaSeparatedString<string>
-  }
-  trc_sim_1: {
-    army: number
-    bandit: number
-    dolg: number
-    freedom: number
-    lair: number
-    sim_avail: boolean
-    stalker: number
-  }
-  trc_sim_2: {
-    army: number
-    bandit: number
-    dolg: number
-    freedom: number
-    sim_avail: boolean
-    stalker: number
-    surge: number
-  }
-  trc_sim_3: {
-    dolg: number
-    sim_avail: boolean
-    zombied: number
-  }
-  trc_sim_4: {
-    csky: number
-    ecolog: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    zombied: number
-  }
-  trc_sim_5: {
-    sim_avail: boolean
-    zombied: number
-  }
-  trc_sim_6: {
-    sim_avail: boolean
-    surge: number
-  }
-  trc_sim_7: {
-    sim_avail: boolean
-  }
-  trc_sim_8: {
-    csky: number
-    dolg: number
-    ecolog: number
-    freedom: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    zombied: number
-  }
-  trc_sim_9: {
-    sim_avail: boolean
-  }
-  trc_sim_10: {
-    csky: number
-    ecolog: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-  }
-  trc_sim_11: {
-    sim_avail: boolean
-    zombied: number
-  }
-  trc_sim_12: {
-    sim_avail: boolean
-  }
-  trc_sim_13: {
-    dolg: number
-    resource: number
-    sim_avail: boolean
-    stalker: number
-    zombied: number
-  }
-  trc_sim_14: {
-    sim_avail: boolean
-    zombied: number
-  }
-  trc_sim_15: {
-    sim_avail: boolean
-  }
-  trc_sim_16: {
-    sim_avail: boolean
-  }
-  trc_sim_17: {
-    sim_avail: boolean
-    zombied: number
-  }
-  trc_sim_18: {
-    sim_avail: boolean
-    stalker: number
-    zombied: number
-  }
-  trc_sim_19: {
-    sim_avail: boolean
-    zombied: number
-  }
-  trc_sim_20: {
-    bandit: number
-    renegade: number
-    sim_avail: boolean
-    surge: number
-  }
-  trc_sim_21: {
-    sim_avail: boolean
-  }
-  pol_sim_1: {
-    sim_avail: boolean
-  }
-  pol_smart_terrain_1_1: {
-    sim_avail: boolean
-  }
-  pol_smart_terrain_1_2: {
-    sim_avail: boolean
-  }
-  pol_smart_terrain_1_3: {
-    resource: number
-    sim_avail: boolean
-  }
-  pol_smart_terrain_2_1: {
-    monster: number
-    monster_predatory_day: number
-    monster_predatory_night: number
-    monster_special: number
-    monster_vegetarian: number
-    monster_zombied_day: number
-    monster_zombied_night: number
-    sim_avail: boolean
-    zoo_monster: number
-  }
-  pol_smart_terrain_2_2: {
-    monster: number
-    monster_predatory_day: number
-    monster_predatory_night: number
-    monster_special: number
-    monster_vegetarian: number
-    monster_zombied_day: number
-    monster_zombied_night: number
-    sim_avail: boolean
-    zoo_monster: number
-  }
-}
 
-interface IniFileSchemas {
-  'misc\\simulation_objects_props.ltx': MiscSimulationObjectsPropsIni
+  interface IniFileSchemas {
+    'misc\\simulation_objects_props.ltx': MiscSimulationObjectsPropsIni
+  }
 }

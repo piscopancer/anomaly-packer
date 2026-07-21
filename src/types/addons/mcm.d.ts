@@ -23,6 +23,16 @@ declare const ui_mcm: {
   get: keyof McmConfig extends never
     ? (this: void, path: `${AddonId}/${string}`) => TODO
     : <Key extends keyof McmConfig>(this: void, path: `${AddonId}/${Key}`) => McmConfig[Key]
+  /** Truthy only on MCM builds new enough to hold a key while pressing it (the
+   *  `key_bind`/`kb_mod_radio` modifier feature). Addons read it to decide whether the
+   *  modifier options are usable; older MCM leaves it nil. */
+  key_hold: boolean
+  /** The option `type` marker for a keybind-modifier radio (none/shift/ctrl/alt). Used as
+   *  the `type` field of a `kb_mod_radio` option in the `on_mcm_load` tree. */
+  kb_mod_radio: 'kb_mod_radio'
+  /** True when the given modifier index (as configured by a `kb_mod_radio` option) is
+   *  currently held. `0` (none) is always considered satisfied. */
+  get_mod_key(this: void, modifier: number): boolean
 } | null
 
 // Importable MCM option builder. The runtime lives in a support script that Anomaly
@@ -34,8 +44,11 @@ declare module 'anomaly-packer/mcm' {
   type McmAlign = 'l' | 'c' | 'r'
 
   // Every option carries an `id` plus optional `text` (the label i18n key) and `hint`
-  // (the tooltip i18n key). MCM reads whichever the option kind supports.
-  type McmOptionBase = { id: string; text?: string; hint?: string }
+  // (the tooltip i18n key). MCM reads whichever the option kind supports. `clr` overrides
+  // the label colour (`[a, r, g, b]`); `precondition` gates whether the option is shown —
+  // a one-element array holding a predicate MCM calls, so the option appears only when it
+  // returns true. Both are read off any option kind.
+  type McmOptionBase = { id: string; text?: string; hint?: string; clr?: [a: number, r: number, g: number, b: number]; precondition?: [(this: void) => boolean] }
 
   export type McmTrackOption = McmOptionBase & { type: 'track'; val: 2; def: number; min: number; max: number; step: number }
   export type McmCheckOption = McmOptionBase & { type: 'check'; val: 1; def: boolean }
@@ -46,9 +59,15 @@ declare module 'anomaly-packer/mcm' {
   export type McmTitleOption = McmOptionBase & { type: 'title'; align?: McmAlign }
   export type McmSlideOption = McmOptionBase & { type: 'slide'; link: string; size?: [width: number, height: number]; spacing: number }
   export type McmLineOption = { type: 'line'; id?: string }
+  /** A rebindable key. `def` is a `DIK_keys` scancode; `val = 2` stores it as a number. */
+  export type McmKeyBindOption = McmOptionBase & { type: 'key_bind'; val: 2; def: number }
+  /** A radio choosing the modifier (none/shift/ctrl/alt) that must be held with a
+   *  `key_bind`. `type` is `ui_mcm.kb_mod_radio`; `content` is `[value, label]` pairs and
+   *  `def` the default modifier index. */
+  export type McmKbModRadioOption = McmOptionBase & { type: 'kb_mod_radio'; val: 2; def: number; content: [value: number, label: string][] }
 
   /** A single leaf option (no children). */
-  export type McmOption = McmTrackOption | McmCheckOption | McmListOption | McmDescOption | McmTitleOption | McmSlideOption | McmLineOption
+  export type McmOption = McmTrackOption | McmCheckOption | McmListOption | McmDescOption | McmTitleOption | McmSlideOption | McmLineOption | McmKeyBindOption | McmKbModRadioOption
 
   /** Deepest group (the second sidebar column): holds only leaf options. */
   export type McmLeafGroup = { id: string; sh?: boolean; gr: McmOption[] }

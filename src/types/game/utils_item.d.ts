@@ -1,59 +1,63 @@
 /** @noSelfInFile */
 
-declare namespace utils_item {
-  export function addon_attached(obj: CGameObject, addon: 'sc' | 'sl' | 'gl' | string, flag?: number): boolean
-  export function attach_addon(wpn: CGameObject, addon: CGameObject, typ: string, ignore?: boolean): void
-  export function can_attach_gl(wpn: CGameObject, addon: CGameObject, ignore?: boolean): boolean
-  export function can_attach_scope(wpn: CGameObject, addon: CGameObject, ignore?: boolean): boolean
-  export function can_attach_silencer(wpn: CGameObject, addon: CGameObject, ignore?: boolean): boolean
-  export function collect_amount(npc: CGameObject, section: Section, mode: number): number
-  export function create_amount(npc: CGameObject, section: Section, amount: number, basic?: boolean): void
-  export function degrade(obj: CGameObject, num: number): number | undefined
-  export function delay_event(to_create: string[], to_release: number[], effect: AnyTable, news?: boolean, delay?: number): void
-  export function detach_addon(wpn: CGameObject, addon?: CGameObject | string, typ?: string, ignore?: boolean): void
-  export function discharge(obj: CGameObject, num?: number): number | undefined
-  export function extract_upgrade(tree: AnyTable, group: string, not_first?: boolean): void
-  export function get_addon_flag(obj: CGameObject, with_int?: boolean): number
-  export function get_addon_status(obj: CGameObject, addon: string): number
-  export function get_ammo(section: Section, id?: number, by_key?: boolean): AnyTable
-  export function get_amount(npc: CGameObject, section: Section, mode: number): number
-  export function get_attached_gl(wpn: CGameObject, ignore?: boolean): string | false | undefined
-  export function get_attached_scope(wpn: CGameObject, ignore?: boolean): string | false | undefined
-  export function get_attached_silencer(wpn: CGameObject, ignore?: boolean): string | false | undefined
-  export function get_cond_static(condition: number): number
-  export function get_defined_uses(sec_d: string): AnyTable
-  export function get_item_cost(obj: CGameObject, profile: string): number | false | undefined
-  export function get_item_remaining_uses(obj: CGameObject): number
-  export function get_item_trade_status(obj: CGameObject, profile: string): number | undefined
-  export function get_outfit_belt_size(obj?: CGameObject, sec?: Section): number | undefined
-  export function get_outfit_property(obj: CGameObject, sec: Section, name: string, def?: any): any
-  export function get_outfit_protection(obj: CGameObject, sec: Section, name: string, def?: number): number
-  export function get_param(section: Section, id: number, param: string, typ?: string, add?: boolean): any
-  export function get_upgrade_prop_tool(prop: string): string | undefined
-  export function get_upgrade_sect_tool(sec: Section, sect_u: string): string | undefined
-  export function get_upgrades_installed(obj: CGameObject | null, id?: number, to_key?: boolean): AnyTable
-  export function get_upgrades_tools(section: Section): AnyTable
-  export function get_upgrades_tree(section: Section, new_table?: boolean): AnyTable
-  export function get_wpn_param(obj: CGameObject, sec: Section, name: string, def?: any): any
-  export function has_attached_gl(wpn: CGameObject): boolean
-  export function has_attached_scope(wpn: CGameObject): boolean | string
-  export function has_attached_silencer(wpn: CGameObject): boolean
-  export function has_item_by_id(npc: CGameObject, id: number, section?: Section): boolean
-  export function has_quest_item(npc: CGameObject): boolean | undefined
-  export function has_scope(section: Section): string | undefined
-  export function has_this_upgrade(obj: CGameObject, sec: Section, up_sec: string): boolean
-  export function has_upgrades(obj: CGameObject, sec?: Section): boolean
-  export function in_actor_inv(obj: CGameObject): boolean
-  export function in_actor_ruck(obj: CGameObject): boolean
-  export function in_npc_inv(npc: CGameObject, obj: CGameObject): boolean
-  export function is_degradable(obj: CGameObject, sec?: Section): boolean
-  export function is_overweight(npc: CGameObject, npc_id?: number, comp_weight?: number): boolean
-  export function item_is_fa(o: CGameObject, c?: number): boolean
-  export function on_game_start(): void
-  export function on_get_item_cost(kind: string, obj: CGameObject, profile: string, calculated_cost: number, ret: AnyTable): void
-  export function print_dbg(fmt: string, ...args: any[]): void
-  export function support_attachments(wpn: CGameObject): boolean
-  export function switch_on_off(id: number): void
-  export function switch_on_off_steps(id: number): boolean
-  export function transfer_amount(npc_from: CGameObject, npc_to: CGameObject, section: Section, amount: number, can_create?: boolean): void
+import type { Section } from 'anomaly-packer'
+
+declare global {
+  namespace utils_item {
+    export function addon_attached(obj: CGameObject, addon: 'sc' | 'sl' | 'gl' | string, flag?: number): boolean
+    export function attach_addon(wpn: CGameObject, addon: CGameObject, typ: string, ignore?: boolean): void
+    export function can_attach_gl(wpn: CGameObject, addon: CGameObject, ignore?: boolean): boolean
+    export function can_attach_scope(wpn: CGameObject, addon: CGameObject, ignore?: boolean): boolean
+    export function can_attach_silencer(wpn: CGameObject, addon: CGameObject, ignore?: boolean): boolean
+    export function collect_amount(npc: CGameObject, section: Section.Item, mode: number): number
+    export function create_amount(npc: CGameObject, section: Section.Item, amount: number, basic?: boolean): void
+    export function degrade(obj: CGameObject, num: number): number | undefined
+    export function delay_event(to_create: string[], to_release: number[], effect: AnyTable, news?: boolean, delay?: number): void
+    export function detach_addon(wpn: CGameObject, addon?: CGameObject | string, typ?: string, ignore?: boolean): void
+    export function discharge(obj: CGameObject, num?: number): number | undefined
+    export function extract_upgrade(tree: AnyTable, group: string, not_first?: boolean): void
+    export function get_addon_flag(obj: CGameObject, with_int?: boolean): number
+    export function get_addon_status(obj: CGameObject, addon: string): number
+    export function get_ammo(section: Section.Item, id?: number, by_key?: boolean): AnyTable
+    export function get_amount(npc: CGameObject, section: Section.Item, mode: number): number
+    export function get_attached_gl(wpn: CGameObject, ignore?: boolean): string | false | undefined
+    export function get_attached_scope(wpn: CGameObject, ignore?: boolean): string | false | undefined
+    export function get_attached_silencer(wpn: CGameObject, ignore?: boolean): string | false | undefined
+    export function get_cond_static(condition: number): number
+    export function get_defined_uses(sec_d: string): AnyTable
+    export function get_item_cost(obj: CGameObject, profile: string): number | false | undefined
+    export function get_item_remaining_uses(obj: CGameObject): number
+    export function get_item_trade_status(obj: CGameObject, profile: string): number | undefined
+    export function get_outfit_belt_size(obj?: CGameObject, sec?: Section.Item): number | undefined
+    export function get_outfit_property(obj: CGameObject, sec: Section.Item, name: string, def?: any): any
+    export function get_outfit_protection(obj: CGameObject, sec: Section.Item, name: string, def?: number): number
+    export function get_param(section: Section.Item, id: number, param: string, typ?: string, add?: boolean): any
+    export function get_upgrade_prop_tool(prop: string): string | undefined
+    export function get_upgrade_sect_tool(sec: Section.Item, sect_u: string): string | undefined
+    export function get_upgrades_installed(obj: CGameObject | null, id?: number, to_key?: boolean): AnyTable
+    export function get_upgrades_tools(section: Section.Item): AnyTable
+    export function get_upgrades_tree(section: Section.Item, new_table?: boolean): AnyTable
+    export function get_wpn_param(obj: CGameObject, sec: Section.Item, name: string, def?: any): any
+    export function has_attached_gl(wpn: CGameObject): boolean
+    export function has_attached_scope(wpn: CGameObject): boolean | string
+    export function has_attached_silencer(wpn: CGameObject): boolean
+    export function has_item_by_id(npc: CGameObject, id: number, section?: Section.Item): boolean
+    export function has_quest_item(npc: CGameObject): boolean | undefined
+    export function has_scope(section: Section.Item): string | undefined
+    export function has_this_upgrade(obj: CGameObject, sec: Section.Item, up_sec: string): boolean
+    export function has_upgrades(obj: CGameObject, sec?: Section.Item): boolean
+    export function in_actor_inv(obj: CGameObject): boolean
+    export function in_actor_ruck(obj: CGameObject): boolean
+    export function in_npc_inv(npc: CGameObject, obj: CGameObject): boolean
+    export function is_degradable(obj: CGameObject, sec?: Section.Item): boolean
+    export function is_overweight(npc: CGameObject, npc_id?: number, comp_weight?: number): boolean
+    export function item_is_fa(o: CGameObject, c?: number): boolean
+    export function on_game_start(): void
+    export function on_get_item_cost(kind: string, obj: CGameObject, profile: string, calculated_cost: number, ret: AnyTable): void
+    export function print_dbg(fmt: string, ...args: any[]): void
+    export function support_attachments(wpn: CGameObject): boolean
+    export function switch_on_off(id: number): void
+    export function switch_on_off_steps(id: number): boolean
+    export function transfer_amount(npc_from: CGameObject, npc_to: CGameObject, section: Section.Item, amount: number, can_create?: boolean): void
+  }
 }

@@ -1,29 +1,33 @@
 /** @noSelfInFile */
 
-declare namespace tasks_measure {
-  export function close_measurement_hud(): void
-  export function get_UI(): UI3D_Anomaly
-  export function postpone_for_next_frame(task_id: string, level_target: string): boolean
-  export function spawn_squad_dynamic(squad_section: Section, min_distance: number, max_distance: number): void
-  export function start_measurement_hud(task_id: string): void
-}
+import type { Section } from 'anomaly-packer'
 
-/** @customConstructor UI3D_Anomaly */
-declare class UI3D_Anomaly extends CUIScriptWnd {
-  beep: string // @generated field — refine type
-  m_seg: TODO // @generated field — refine type
-  step: TODO // @generated field — refine type
-  step_tot: number // @generated field — refine type
-  tg: TODO // @generated field — refine type
-  timer: number // @generated field — refine type
-  xml: TODO // @generated field — refine type
-  constructor()
-  __finalize(): void
-  Update(): void
-}
+declare global {
+  namespace tasks_measure {
+    export function close_measurement_hud(): void
+    export function get_UI(): UI3D_Anomaly
+    export function postpone_for_next_frame(task_id: string, level_target: string): boolean
+    export function spawn_squad_dynamic(squad_section: Section.Item, min_distance: number, max_distance: number): void
+    export function start_measurement_hud(task_id: string): void
+  }
 
-declare namespace tasks_measure {
-  /** Anomaly `class "UI3D_Anomaly"` is also reachable on the `tasks_measure` script namespace; typed as
-   *  the instance so its methods can be captured/overridden (`tasks_measure.UI3D_Anomaly.Method = ...`). */
-  export const UI3D_Anomaly: UI3D_Anomaly
+  /** @customConstructor UI3D_Anomaly */
+  class UI3D_Anomaly extends CUIScriptWnd {
+    beep: string // @generated field — refine type
+    m_seg: TODO // @generated field — refine type
+    step: TODO // @generated field — refine type
+    step_tot: number // @generated field — refine type
+    tg: TODO // @generated field — refine type
+    timer: number // @generated field — refine type
+    xml: TODO // @generated field — refine type
+    constructor()
+    __finalize(): void
+    Update(): void
+  }
+
+  namespace tasks_measure {
+    /** Anomaly `class "UI3D_Anomaly"` is also reachable on the `tasks_measure` script namespace; typed as
+     *  the instance so its methods can be captured/overridden (`tasks_measure.UI3D_Anomaly.Method = ...`). */
+    export const UI3D_Anomaly: UI3D_Anomaly
+  }
 }

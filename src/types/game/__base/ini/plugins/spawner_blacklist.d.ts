@@ -2,11 +2,14 @@
 // Schema of `plugins\\spawner_blacklist.ltx`. Sections enumerated for autocomplete; `PluginsSpawnerBlacklistIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsSpawnerBlacklistIni {
-  ignore_sections: Record<string, string>
-}
+declare global {
+  interface PluginsSpawnerBlacklistIni {
+    ignore_sections: string[]
+  }
 
-interface IniFileSchemas {
-  'plugins\\spawner_blacklist.ltx': PluginsSpawnerBlacklistIni
+  interface IniFileSchemas {
+    'plugins\\spawner_blacklist.ltx': PluginsSpawnerBlacklistIni
+  }
 }

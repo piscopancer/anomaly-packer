@@ -2,19 +2,22 @@
 // Schema of `scripts\\compass_tele.ltx`. Sections enumerated for autocomplete; `ScriptsCompassTeleIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface ScriptsCompassTeleIni {
-  logic: {
-    active: string
+declare global {
+  interface ScriptsCompassTeleIni {
+    logic: {
+      active: string
+    }
+    'sr_idle@wait': {
+      on_actor_inside: string
+    }
+    'sr_idle@run': {
+      on_actor_outside: string
+    }
   }
-  'sr_idle@wait': {
-    on_actor_inside: string
-  }
-  'sr_idle@run': {
-    on_actor_outside: string
-  }
-}
 
-interface IniFileSchemas {
-  'scripts\\compass_tele.ltx': ScriptsCompassTeleIni
+  interface IniFileSchemas {
+    'scripts\\compass_tele.ltx': ScriptsCompassTeleIni
+  }
 }

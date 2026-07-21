@@ -6,11 +6,13 @@ type Scalar = string | number | boolean
 /** A node in fast-xml-parser's preserveOrder tree: an element `{ tag: children }` optionally carrying a `:@` attributes bag, or a `{ '#text': value }` leaf. */
 export type XmlNode = { [key: string]: string | Record<string, string> | XmlNode[] }
 
-const builder = new XMLBuilder({ ignoreAttributes: false, attributeNamePrefix: '@_', format: false, suppressEmptyNode: true, preserveOrder: true })
+const builder = new XMLBuilder({ ignoreAttributes: false, attributeNamePrefix: '@_', format: true, indentBy: '  ', suppressEmptyNode: true, preserveOrder: true })
 
-/** Serializes nodes to a headerless, unindented XML string with self-closing empty elements. */
+/** Serializes nodes to a headerless, indented XML string with self-closing empty elements. */
 export function buildXml(nodes: XmlNode[]) {
-  return builder.build(nodes)
+  // fast-xml-parser opens indented output with a newline, which would leave every generated
+  // file starting on a blank line. Trimmed to a single trailing newline instead.
+  return String(builder.build(nodes)).trim() + '\n'
 }
 
 /** `<tag ...attrs>children</tag>`, self-closing when it has no children. */

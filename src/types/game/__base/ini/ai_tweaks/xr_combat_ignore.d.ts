@@ -2,40 +2,43 @@
 // Schema of `ai_tweaks\\xr_combat_ignore.ltx`. Sections enumerated for autocomplete; `AiTweaksXrCombatIgnoreIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface AiTweaksXrCombatIgnoreIni {
-  settings: {
-    enable: boolean
-    time_safe: number
+declare global {
+  interface AiTweaksXrCombatIgnoreIni {
+    settings: {
+      enable: boolean
+      time_safe: number
+    }
+    combat_inertion: {
+      army: CommaSeparatedString<string[]>
+      bandit: CommaSeparatedString<string[]>
+      csky: CommaSeparatedString<string[]>
+      dolg: CommaSeparatedString<string[]>
+      ecolog: CommaSeparatedString<string[]>
+      freedom: CommaSeparatedString<string[]>
+      greh: CommaSeparatedString<string[]>
+      isg: CommaSeparatedString<string[]>
+      killer: CommaSeparatedString<string[]>
+      monolith: CommaSeparatedString<string[]>
+      renegade: CommaSeparatedString<string[]>
+      stalker: CommaSeparatedString<string[]>
+    }
+    combat_inertion_mult: {
+      experienced: number
+      expert: number
+      legend: number
+      master: number
+      novice: number
+      professional: number
+      trainee: number
+      veteran: number
+    }
+    forbidden_npcs: {
+    }
   }
-  combat_inertion: {
-    army: CommaSeparatedString<string>
-    bandit: CommaSeparatedString<string>
-    csky: CommaSeparatedString<string>
-    dolg: CommaSeparatedString<string>
-    ecolog: CommaSeparatedString<string>
-    freedom: CommaSeparatedString<string>
-    greh: CommaSeparatedString<string>
-    isg: CommaSeparatedString<string>
-    killer: CommaSeparatedString<string>
-    monolith: CommaSeparatedString<string>
-    renegade: CommaSeparatedString<string>
-    stalker: CommaSeparatedString<string>
-  }
-  combat_inertion_mult: {
-    experienced: number
-    expert: number
-    legend: number
-    master: number
-    novice: number
-    professional: number
-    trainee: number
-    veteran: number
-  }
-  forbidden_npcs: {
-  }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\xr_combat_ignore.ltx': AiTweaksXrCombatIgnoreIni
+  interface IniFileSchemas {
+    'ai_tweaks\\xr_combat_ignore.ltx': AiTweaksXrCombatIgnoreIni
+  }
 }

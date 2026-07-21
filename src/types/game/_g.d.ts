@@ -1,900 +1,924 @@
 /** @noSelfInFile */
 
-declare const ini_sys: system_ini
-declare function start_game_callback(): void
+import type { Section, SymbolSeparatedString } from 'anomaly-packer'
 
-/** `true` when the `marshal` Lua library is available (`USE_MARSHAL = marshal ~= nil`). */
-declare const USE_MARSHAL: boolean
-
-/** Anomaly's additions to the Lua `string` library (`_g.script`). */
-declare namespace string {
-  /**
-   * Iterates the segments of `s` split on separator `sep`, as a stateless
-   * generator: `for seg in string.gsplit(s, ",") do ... end`.
-   * @param plain when true, `sep` is matched literally instead of as a pattern
-   */
-  function gsplit(this: void, s: string, sep: string, plain?: boolean): LuaIterable<string>
-}
-
-/**
- * Engine callback-type enum (`GameObject::ECallbackType`, luabind class `callback`),
- * used with {@link CGameObject.set_callback}. Values are opaque integers.
- */
-declare namespace callback {
-  const trade_start: number
-  const trade_stop: number
-  const trade_sell_buy_item: number
-  const trade_perform_operation: number
-  const trader_global_anim_request: number
-  const trader_head_anim_request: number
-  const trader_sound_end: number
-  const zone_enter: number
-  const zone_exit: number
-  const level_border_exit: number
-  const level_border_enter: number
-  const death: number
-  const patrol_path_in_point: number
-  const inventory_pda: number
-  const inventory_info: number
-  const article_info: number
-  const use_object: number
-  const hit: number
-  const sound: number
-  const action_removed: number
-  const action_movement: number
-  const action_watch: number
-  const action_animation: number
-  const action_sound: number
-  const action_particle: number
-  const action_object: number
-  const actor_sleep: number
-  const helicopter_on_point: number
-  const helicopter_on_hit: number
-  const on_item_take: number
-  const on_item_drop: number
-  const script_animation: number
-  const task_state: number
-  const take_item_from_box: number
-  const weapon_no_ammo: number
-  const hud_animation_end: number
-  const key_press: number
-  const key_release: number
-  const key_hold: number
-  const mouse_move: number
-  const mouse_wheel: number
-  const actor_before_death: number
-  const on_attach_vehicle: number
-  const on_detach_vehicle: number
-  const on_use_vehicle: number
-  const weapon_fired: number
-  const weapon_jammed: number
-  const weapon_zoom_in: number
-  const weapon_zoom_out: number
-  const weapon_magazine_empty: number
-  const weapon_lowered: number
-  const weapon_raised: number
-  const item_to_belt: number
-  const item_to_slot: number
-  const item_to_ruck: number
-  const on_foot_step: number
-  const map_location_added: number
-}
-
-/** @noSelf */
-interface GameEvents {
-  // Actor
-  on_before_level_changing(): void
-  on_level_changing(): void
-  actor_on_before_death(_0: number, _1: AnyTable): void
-  actor_on_net_destroy(binder: object_binder): void
-  actor_on_first_update(binder: object_binder, delta_time: number): void
-  actor_on_update(binder: object_binder, delta_time: number): void
-  actor_on_weapon_fired(obj: CGameObject, weapon: CGameObject, ammo_elapsed: number, grenade_elapsed: number, ammo_type: number, grenade_type: number): void
-  actor_on_weapon_jammed(weapon: CGameObject): void
-  actor_on_weapon_no_ammo(weapon: CGameObject, ammo_total: number): void
-  actor_on_weapon_lower(weapon: CGameObject): void
-  actor_on_weapon_raise(weapon: CGameObject): void
-  actor_on_weapon_reload(weapon: CGameObject, ammo_total: number): void
-  actor_on_weapon_zoom_in(weapon: CGameObject): void
-  actor_on_weapon_zoom_out(weapon: CGameObject): void
-  actor_on_item_take(item: CGameObject): void
-  actor_on_item_take_from_box(box: CGameObject, item: CGameObject): void
-  actor_on_item_put_in_box(box: CGameObject, item: CGameObject): void
-  actor_on_item_drop(item: CGameObject): void
-  actor_on_item_use(item: CGameObject, section: Section): void
-  actor_on_item_before_use(item: CGameObject, flags: AnyTable): void
-  actor_on_item_before_pickup(item: CGameObject, flags: AnyTable): void
-  actor_item_to_belt(item: CGameObject): void
-  actor_item_to_ruck(item: CGameObject): void
-  actor_item_to_slot(item: CGameObject): void
-  actor_on_trade(item: CGameObject, sell_buy: boolean, money: number): void
-  actor_on_init(binder: object_binder): void
-  actor_on_reinit(binder: object_binder): void
-  actor_on_info_callback(obj: CGameObject, info_id: number): void
-  actor_on_hit_callback(obj: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
-  actor_on_attach_vehicle(vehicle: CGameObject): void
-  actor_on_detach_vehicle(vehicle: CGameObject): void
-  actor_on_use_vehicle(vehicle: CGameObject): void
-  actor_on_hud_animation_play(
-    animation: {
-      anm_name: string
-      anm_mixin: boolean
-      anm_mixin2: boolean
-      anm_state: number
-      anm_speed: number
-      anm_end: number
-    },
-    obj: CGameObject | null
-  ): void
-  actor_on_hud_animation_end(item: CGameObject, section: Section, motion: string, state: number, slot: number): void
-  actor_on_hud_animation_mark(state: number, mark: string): void
-  actor_on_sleep(hours: number): void
-  actor_on_foot_step(ground: CGameObject, power: number, play: boolean, on_ground: boolean, hud_view: boolean): void
-  actor_on_interaction(_type: string, obj: CGameObject | null, name: string): void
-  actor_on_before_hit(_hit: hit, bone_id: number, flags: { ret_value: boolean }): void
-  actor_on_before_hit_belt(hit_table: AnyTable, power: number, _type: number): void
-  actor_on_weapon_before_fire(flags: { ret_value: boolean }): void
-  actor_on_feeling_anomaly(zone: CGameObject, flags: { ret_value: boolean }): void
-  actor_on_leave_dialog(npc_id: number): void
-  actor_on_stash_create(stash: { id: number; name: string; section: Section }): void
-  actor_on_stash_remove(stash: { id: number; cancel: boolean }): void
-  actor_on_frequency_change(old_freq: number, new_freq: number): void
-  actor_on_achievement_earned(ach_id: string, message: string): void
-  actor_on_movement_changed(cmd: number): void
-  actor_on_footstep(material: string, power: number, hud_view: boolean, flags: { ret_value: boolean }): void
-  actor_on_jump(): void
-  actor_on_land(landing_speed: number): void
-  // NPCs
-  npc_on_update(obj: CGameObject, who: CGameObject): void
-  // npc_on_death_callback(npc: CGameObject, weapon: CGameObject, flags: { gun_id: number }): void
-  npc_on_item_take(npc: CGameObject, item: CGameObject): void
-  npc_on_item_take_from_box(npc: CGameObject, box: CGameObject, item: CGameObject): void
-  npc_on_item_drop(npc: CGameObject, item: CGameObject): void
-  npc_on_net_spawn(npc: CGameObject, se_obj: CseAbstract): void
-  npc_on_net_destroy(npc: CGameObject): void
-  npc_on_update(npc: CGameObject, table: AnyTable): void
-  npc_on_before_hit(npc: CGameObject, _hit: hit, bone_id: number, flags: { ret_value: boolean }): void
-  npc_on_hit_callback(npc: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
-  npc_on_death_callback(npc: CGameObject, killer?: CGameObject): void
-  npc_on_fighting_actor(npc: CGameObject): void
-  npc_on_weapon_strapped(npc: CGameObject, weapon: CGameObject): void
-  npc_on_weapon_unstrapped(npc: CGameObject, weapon: CGameObject): void
-  npc_on_weapon_drop(npc: CGameObject, weapon: CGameObject): void
-  npc_on_hear_callback(npc: CGameObject, sound_emitter_id: number, sound_type: string, dist: number, sound_power: number, sound_pos: vector): void
-  npc_on_get_all_from_corpse(npc: CGameObject, corpse: CGameObject, item: CGameObject, lootable_table: AnyTable): void
-  npc_on_eval_danger(npc: CGameObject, flags: { ret_value: boolean }): void
-  anomaly_on_before_activate(anomaly: CGameObject, activator: CGameObject, flags: { ret_value: boolean }): void
-  // Mutants
-  monster_on_update(monster: CGameObject, table: AnyTable): void
-  monster_on_before_hit(monster: CGameObject, _hit: hit, bone_id: number, flags: { ret_value: boolean }): void
-  monster_on_hit_callback(monster: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
-  monster_on_net_spawn(monster: CGameObject, se_obj: CseAbstract): void
-  monster_on_net_destroy(monster: CGameObject): void
-  monster_on_death_callback(monster: CGameObject, killer?: CGameObject): void
-  monster_on_actor_use_callback(monster: CGameObject, user: CGameObject): void
-  monster_on_loot_init(monster: CGameObject, loot: AnyTable): void
-  burer_on_before_weapon_drop(burer: CGameObject, weapon: CGameObject, flags: { ret_value: boolean }): void
-  // Physical objects
-  physic_object_on_hit_callback(ph_obj: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
-  physic_object_on_use_callback(ph_obj: CGameObject, user: CGameObject): void
-  // Vehicles
-  heli_on_hit_callback(heli: CGameObject, amount: number, local_dir: null, dealer: CGameObject, bone_id: null): void
-  vehicle_on_death_callback(veh: CGameObject): void
-  // Squads
-  squad_on_npc_creation(se_squad: CseAlifeOnlineOfflineGroup, se_npc: CseAlifeTraderAbstract, spawn_smart?: CseAbstract): void
-  squad_on_enter_smart(se_squad: CseAlifeOnlineOfflineGroup, smart: CseAbstract): void
-  squad_on_leave_smart(se_squad: CseAlifeOnlineOfflineGroup, smart: CseAbstract): void
-  squad_on_npc_death(squad: CseAlifeOnlineOfflineGroup, npc: CseAlifeTraderAbstract, killer?: CseAlifeTraderAbstract): void
-  squad_on_update(squad: CseAlifeOnlineOfflineGroup): void
-  squad_on_first_update(squad: CseAlifeOnlineOfflineGroup): void
-  squad_on_add_npc(
-    squad: CseAlifeOnlineOfflineGroup,
-    npc: CseAlifeTraderAbstract,
-    spawn_section: string,
-    spawn_pos: vector,
-    level_vertex_id: number,
-    game_vertex_id: number
-  ): void
-  squad_on_after_game_vertex_change(squad: CseAlifeOnlineOfflineGroup, last_game_vertex_id: number, last_level_vertex_id: number, _0: boolean): void
-  squad_on_after_level_change(squad: CseAlifeOnlineOfflineGroup, old_level: string, new_level: string): void
-  // Smart terrains
-  smart_terrain_on_update(smart: CseAbstract): void
-  on_try_respawn(smart: CseAbstract, flags: { disabled: boolean }): void
-  // Server objects
-  server_entity_on_register(se_obj: CseAbstract, _type: string): void
-  server_entity_on_unregister(se_obj: CseAbstract, _type: string): void
-  fill_start_position(): void
-  se_stalker_on_spawn(se_npc: CseAlifeTraderAbstract): void
-  se_actor_on_STATE_Write(se_actor: CseAlifeCreatureActor): void
-  se_actor_on_STATE_Read(se_actor: CseAlifeCreatureActor): void
-  // GUI
-  ActorMenu_on_before_init_mode(type: string, flags: { ret: boolean }, obj?: CGameObject): void
-  ActorMenu_on_mode_changed(new_mode: number, prev_mode: number): void
-  ActorMenu_on_item_drag_drop(item_from: CGameObject, item_to: CGameObject, slot_from: number, slot_to: number): void
-  ActorMenu_on_item_focus_receive(item: CGameObject): void
-  ActorMenu_on_item_focus_lost(item: CGameObject): void
-  ActorMenu_on_item_before_move(
-    flags: { ret_value: boolean },
-    inv_id: number,
-    item: CGameObject,
-    mode: 'inventory' | 'loot' | 'trade' | 'repair',
-    inv_id_from: number
-  ): void
-  ActorMenu_on_item_after_move(inv_id: number, item: CGameObject, mode: 'inventory' | 'loot' | 'trade' | 'repair', inv_id_from: number): void
-  ActorMenu_on_trade_started(): void
-  ActorMenu_on_trade_closed(): void
-  GUI_on_show(name: string, path?: string): void
-  GUI_on_hide(name: string, path?: string): void
-  map_spot_menu_add_property(ui: { AddItem: (text: string) => void }, spot_id: string, level: LevelName): void
-  map_spot_menu_property_clicked(ui: { AddItem: (text: string) => void }, spot_id: string, level: LevelName, clicked_property: string): void
-  main_menu_on_keyboard(dik: number, keyboard_action: number, wnd: CUIScriptWnd, level_present: boolean): void
-  main_menu_on_init(wnd: CUIScriptWnd): void
-  main_menu_on_quit(wnd: CUIScriptWnd): void
-  on_screen_resolution_changed(): void
-  // Technical
-  on_game_load(binder: object_binder): void
-  on_key_press(key: number): void
-  on_key_release(key: number): void
-  on_key_hold(key: number): void
-  on_before_key_press(dik: number, bind: number, dis: boolean, flags: { ret: boolean; ret_value: boolean }): void
-  on_option_change(): void
-  on_localization_change(): void
-  on_console_execute(...args: string[]): void
-  on_before_save_input(flags: { ret: boolean }, _0: number, _1: string): void
-  on_before_load_input(dik: number, bind: number, flags: { ret: boolean; ret_value: boolean }): void
-  // Files
-  save_state(m_data: MData): void
-  load_state(m_data: MData): void
-  on_pstor_save_all(obj: CGameObject, netp: net_packet): void
-  on_pstor_load_all(obj: CGameObject, netp: net_packet): void
-  // Other
-  on_enemy_eval(obj: CGameObject, enemy: CGameObject, flags: { result: boolean; override: boolean }): void
-  on_before_surge(flags: { allow: boolean }): void
-  on_before_psi_storm(flags: { allow: boolean }): void
-  on_get_item_cost(
-    _type: 'multiuse' | 'ammo' | 'condition_based',
-    obj: CGameObject,
-    profile: { cfg: string; mode: 1 | 2; cond_exponent: number; discount: number; list: Suggest<'trade_generic_buy' | 'trade_generic_sell'> },
-    cost: number,
-    ret: { new_cost?: number }
-  ): void
-  // set_callback / callback class
-  // inventory_info(): void
-  // task_state(): void
-  // take_item_from_box(): void
-  // trade_sell_buy_item(): void
-  // on_mouse_move(x: number, y: number): void
-  // on_mouse_wheel(vol: number): void
-  // mouse_move(): void
-  // mouse_wheel(): void
-  // use_object(): void
-  // select_inventory_item(item: CGameObject): void
-  // actor_before_death(): void
-  // switch_torch(on: 0 | 1): void
-}
-/**
- * Functions can be provided to game events as callbacks. With most game events some params are also returned (see the example below). Full list of game events names can be found in *axr_main.script*. To find game events implementations in _unpacked, search for `SendScriptCallback`
- *
- * @example
- * ```ts
- * function my_on_key_press( key: number) {
- *   if (key === DIK_keys.DIK_I) {
- *     printf('"I" was just pressed | key: %s', key)
- *   }
- * }
- *
- * function on_game_start() {
- *   RegisterScriptCallback('on_key_press', my_on_key_press)
- *}
- * ```
- */
-declare function RegisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E] | { [K in E]: (this: any, ...args: any[]) => any }): void
-declare function UnregisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E] | { [K in E]: (this: any, ...args: any[]) => any }): void
-declare function SendScriptCallback<E extends keyof GameEvents>(event: E, ...args: Parameters<GameEvents[E]>): void
-declare function Unregister_UI(name: string): void
-declare function DestroyAll_UI(name: string): void
-declare function Check_UI(name: string): boolean
-declare function Overlapped_UI(name: string): boolean
-declare function CloseAll_UI(): void
-declare function GetActorMenu(): UIInventory | undefined
-declare function hide_hud_all(): void
-declare function hide_hud_inventory(): void
-declare function hide_hud_pda(): void
-declare function show_all_ui(show: boolean): void
-declare function show_indicators(show: boolean): void
-declare function main_hud_shown(): boolean
-/**
- * Delayed action. If provided with a callback that takes params, such must be provided too.
- * @param event_id a unique identifier of your choice (could be your name, or something related to what is happening)
- * @param action_id a second unique identifier of your choice (what matters is that two time events should not have the same `event_id` & `action_id` pair)
- * @param action action that will be executed after delay. If action returns `true`, the time event gets destroyed, if `false`, the time event fill be fired again with the fresh timer
- * @tutorial read on [Modding Book](https://igigog.github.io/anomaly-modding-book/scripting/time_events.html)
- * @example kill 100 random NPCs after 5 seconds
- * ```ts
- * function kill_random_npcs( count: number) {
- *   // ...
- * }
- * CreateTimeEvent(0, 'kill_random_npcs', 5, kill_random_npcs, 100)
- * ```
- * */
-declare function CreateTimeEvent<F extends (this: void, ...args: any) => boolean>(
-  event_id: string | number,
-  action_id: string | number,
-  delay_s: number,
-  action: F,
-  ...args: Parameters<F>
-): void
-/** @see {@link CreateTimeEvent} */
-declare function ResetTimeEvent(event_id: string | number, action_id: string | number, new_delay_s: number): void
-/** @see {@link CreateTimeEvent} */
-declare function RemoveTimeEvent(event_id: string | number, action_id: string | number): void
-declare function ProcessEventQueue(force: boolean): boolean
-declare function ProcessEventQueueState(m_data: MData, save: boolean): void
-declare function ChangeLevel(pos: vector, level_vertex_id: number, game_vertex_id: number, angle: vector, anim?: boolean): void
-declare function change_level_now(pos: vector, level_vertex_id: number, game_vertex_id: number, angle: vector): void
-declare function AddUniqueCall(functor: (this: void, ...args: any[]) => unknown): void
-declare function RemoveUniqueCall(functor: (this: void, ...args: any[]) => unknown): void
-declare function JumpToLevel(level: LevelName): boolean
-declare function TeleportObject(id: number, pos: vector, level_vertex_id: number, game_vertex_id: number): void
-declare function TeleportSquad(squad: CseAlifeOnlineOfflineGroup, pos: vector, level_vertex_id: number, game_vertex_id: number): void
-declare function in_time_interval(time_stamp_1: number, time_stamp_2: number): boolean
-declare function level_changing(): boolean
-declare function LoadScheme(filename: string, scheme: string, ...args: any[]): void
-/**
- * Print formatted text to the game console.
- *
- * Prefix with a special symbol to change appearance.
- *
- * - `$` pink
- * - `-` green
- * - `!` red
- * - `~` yellow
- * - `*` gray
- * - `#` cyan
- * - `@` blue
- * - `/` light blue
- */
-declare function printf(...args: any[]): void
-declare function printe(...args: any[]): void
-declare function printdbg(...args: any[]): void
-declare function abort(msg: string, ...args: any[]): void
-declare function callstack(c1: boolean, to_str: boolean): string | null
-declare function get_console_cmd(_type: number, name: string): string | number | boolean | undefined
-declare function exec_console_cmd(cmd: string): void
-declare const time_infinite: number
-/** @returns Current time in ms */
-declare function time_global(): number
-declare function time_continual(): number
-declare function round(num: number): number
-declare function round_idp(num: number, idp: number): number
-declare function round_100(num: number): number
-declare function odd(num: number): boolean
-declare function clamp(num: number, min: number, max: number): number
-declare function normalize(num: number, min: number, max: number): number
-declare function normalize_100(num: number, min: number, max: number): number
-declare function random_choice<A>(...args: A[]): A
-declare function random_number(min: number, max: number): number
-declare function random_float(min: number, max: number): number
-declare function yaw(vec_1: vector, vec_2: vector): number
-declare function yaw_degree(vec_1: vector, vec_2: vector): number
-declare function yaw_degree3d(vec_1: vector, vec_2: vector): number
-declare function vector_cross(vec_1: vector, vec_2: vector): vector
-declare function vec_to_str(vec: vector): string
-declare function vector_rotate_y(v: vector, deg: number): vector
-declare function distance_2d(vec_1: vector, vec_2: vector): number
-declare function distance_2d_sqr(vec_1: vector, vec_2: vector): number
-declare function trim(str: string): string
-declare function strformat(str: string, ...items: any[]): string
-/** Splits a branded {@link SymbolSeparatedString} on its declared separator, yielding the element union `V[]`. */
-declare function str_explode<V extends string, Sep extends string>(str: SymbolSeparatedString<V, Sep>, separator: Sep, plain?: boolean): V[]
-declare function str_explode(str: string, separator: string, plain?: boolean): string[]
-declare function parse_list(ini: system_ini, key: string, val: string, convert: boolean): Record<string, any>
-declare function parse_names(str: string): string[]
-declare function parse_key_value(str: string): Record<string, any>
-declare function parse_nums(str: string): number[]
-declare function parse_func(sec: AnySection, param: string, ...args: any[]): any
-declare function starts_with(str: string, with_text: string): boolean
-declare function has_translation(str: string): boolean
-declare function get_param_string(src_str: string, obj: CGameObject): LuaMultiReturn<[string, boolean]>
-declare function execute_func(file: any, func: any, ...args: any[]): any
-declare function reset_action(npc: CGameObject, script_name: string): void
-declare function stop_playing_sound(obj: CGameObject): void
-declare function action(obj: CGameObject, ...args: any[]): any
-declare function action_first(obj: CGameObject, ...args: any[]): any
-declare function interrupt_action(npc: CGameObject, script_name: string): void
-declare function get_clsid(obj: CGameObject): number
-declare function set_save_marker(netp: net_packet, mode: 'save' | 'load', check: boolean, prefix: string): void
-declare const ActorMoveStates: {
-  mcFwd: 1
-  mcBack: 2
-  mcLStrafe: 4
-  mcRStrafe: 8
-  mcCrouch: 16
-  mcAccel: 32
-  mcTurn: 64
-  mcJump: 128
-  mcFall: 256
-  mcLanding: 512
-  mcLanding2: 1024
-  mcClimb: 2048
-  mcSprint: 4096
-  mcLLookout: 8192
-  mcRLookout: 16384
-  //
-  mcAnyMove: 15
-  mcAnyAction: 1935
-  mcAnyState: 6192
-  mcLookout: 24576
-}
-type StringToNumber<T extends string> = T extends `${infer N extends number}` ? N : never
-type ActorMoveState = (typeof ActorMoveStates)[keyof typeof ActorMoveStates]
-declare function IsMoveState(state: keyof typeof ActorMoveStates, compare_state?: number): boolean
-/**
- * Engine keybinding indices (`EGameActions`), exposed as the global `key_bindings` table.
- * Values are the numeric bind ids compared against {@link dik_to_bind}'s return.
- * Known named binds are listed for autocomplete; the index signature covers the rest of the enum.
- */
-declare const key_bindings: {
-  readonly [bind: string]: number
-  readonly kFREELOOK: number
-  readonly kCROUCH: number
-  readonly kACCEL: number
-  readonly kSPRINT_TOGGLE: number
-  readonly kR_LOOKOUT: number
-  readonly kL_LOOKOUT: number
-  readonly kUSE: number
-  readonly kWPN_FIRE: number
-  readonly kWPN_NEXT: number
-  readonly kWPN_ZOOM: number
-  readonly kTORCH: number
-  readonly kNIGHT_VISION: number
-  readonly kINVENTORY: number
-  readonly kACTIVE_JOBS: number
-  readonly kQUICK_SAVE: number
-  readonly kQUICK_LOAD: number
-  readonly kSCREENSHOT: number
-  readonly kCONSOLE: number
-  readonly kQUIT: number
-  readonly kCAM_ZOOM_IN: number
-  readonly kCAM_ZOOM_OUT: number
-}
-/** Map a DIK scan code to its bound engine action ({@link key_bindings} value), or the code itself when unbound. */
-declare function dik_to_bind(dik: number): number
-declare function reload_ini_sys(): void
-/** Open an .ltx file and return an ini object exposing the r_* readers. Register the path in {@link IniFileSchemas} to get a {@link TypedIni} with section/field autocomplete and per-field value-type checking. */
-declare function ini_file<P extends keyof IniFileSchemas>(filename: P): TypedIni<IniFileSchemas[P]>
-declare function ini_file(filename: string): TypedIni<UntypedIniSchema>
-/**
- * Resolves the schema for an {@link ini_file_ex} from the filename passed to its constructor:
- * the {@link IniFileSchemas} entry when the path is registered, otherwise {@link UntypedIniSchema}
- * (any section, any field, untyped values). Lets a registered `.ltx` narrow its reads while any
- * other file stays fully permissive and error-free.
- */
-type IniExSchemaOf<P> = P extends keyof IniFileSchemas ? IniFileSchemas[P] : UntypedIniSchema
-
-/**
- * May be an extended version of ini_file. Read any ltx file.
- *
- * Generic over the constructor filename `P`: register the exact path string in {@link IniFileSchemas}
- * to get section/field autocomplete and per-field value-type checking on the `r_*_ex` readers
- * (`new ini_file_ex("plugins\\my_addon.ltx")` — xray needs Windows `\` separators; forward slashes crash the game). Unregistered paths fall back to {@link UntypedIniSchema},
- * preserving the previous untyped behaviour.
- * @customConstructor ini_file_ex
- */
-declare class ini_file_ex<P extends string = string> {
-  constructor(fname: P, advanced_mode?: boolean)
-  cache: Record<string, any>
-  collect_section<S extends keyof IniExSchemaOf<P>>(section: S): IniExSchemaOf<P>[S]
-  fname: string
-  get_sections<KT extends boolean = false>(keytable?: KT): KT extends true ? Record<keyof IniExSchemaOf<P> & string, true> : (keyof IniExSchemaOf<P> & string)[]
-  ini: system_ini
-  line_exist<S extends keyof IniExSchemaOf<P>>(section: S, key: IniLineKeys<IniExSchemaOf<P>, S>): boolean
-  r_bool_ex<S extends keyof IniExSchemaOf<P>, K extends IniLineKeysOfType<IniExSchemaOf<P>, S, boolean>>(s: S, k: K, def?: boolean): boolean
-  r_float_ex<S extends keyof IniExSchemaOf<P>, K extends IniLineKeysOfType<IniExSchemaOf<P>, S, number>>(s: S, k: K): number | null
-  r_list(s: keyof IniExSchemaOf<P> & string, k: string, def?: string[]): string[]
-  r_mult(s: keyof IniExSchemaOf<P> & string, k: string, ...args: any[]): any
-  r_string_ex<S extends keyof IniExSchemaOf<P>, K extends IniLineKeysOfType<IniExSchemaOf<P>, S, string>>(s: S, k: K): IniExSchemaOf<P>[S][K] | null
-  r_string_to_condlist(s: keyof IniExSchemaOf<P> & string, k: string, def?: any): Record<string, any> | null
-  r_value(s: keyof IniExSchemaOf<P> & string, k: string, typ: number, def?: any): string | null
-  remove_line(section: keyof IniExSchemaOf<P> & string, key: string): void
-  save(): void
-  section_exist(section: keyof IniExSchemaOf<P> & string): boolean
-  w_value(s: keyof IniExSchemaOf<P> & string, k: string, val: any, comment?: string): void
-}
-declare const INISYS_CACHE: AnyTable
-declare function SYS_GetParam(_type: number, section: AnySection, param: string, def_val?: any): any
-declare function is_empty(table: AnyTable): boolean
-declare function is_not_empty(table: AnyTable): boolean
-declare function iempty_table(table: AnyTable): AnyTable
-declare function empty_table(table: AnyTable): Record<string, null>
-declare function size_table(table: AnyTable): number
-declare function random_key_table(table: AnyTable): any | null
-declare function copy_table(to: AnyTable, from: AnyTable): void
-declare function dup_table<T extends AnyTable>(from: T): T
-declare function swap(arr: AnyTable, index_1: number, index_2: number): void
-declare function shuffle_table(table: AnyTable): void
-declare function invert_table(table: AnyTable): void
-declare function t2k_table(table: AnyTable): void
-declare function k2t_table(table: AnyTable): void
-/** @deprecated unused */
-declare function print_table(table: AnyTable): void
-declare function store_table(table: AnyTable, subs?: string): void
-declare function spairs<K extends string | number, V>(table: Record<K, V>, order?: (table: Record<K, V>, a: K, b: K) => boolean): LuaIterable<LuaMultiReturn<[K, V]>>
-declare const VEC_ZERO: vector
-declare const VEC_X: vector
-declare const VEC_Y: vector
-declare const VEC_Z: vector
-/** Subtract vectors without mutating them */
-declare function vec_sub(vec_1: vector, vec_2: vector): vector
-/** Add vectors without mutating them */
-declare function vec_add(vec_1: vector, vec_2: vector): vector
-/** Set vector without mutating the original */
-declare function vet_set(vec: vector): vector
-declare const BoneID: {
-  bip01_pelvis: 2
-  bip01_l_thigh: 3
-  bip01_l_calf: 4
-  bip01_l_foot: 5
-  bip01_r_thigh: 7
-  bip01_r_calf: 8
-  bip01_r_foot: 9
-  bip01_spine: 11
-  bip01_spine1: 12
-  bip01_spine2: 13
-  bip01_neck: 14
-  bip01_head: 15
-  eye_left: 16
-  eye_right: 17
-  eyelid_1: 18
-  jaw_1: 19
-  bip01_l_clavicle: 20
-  bip01_l_upperarm: 21
-  bip01_l_forearm: 22
-  bip01_l_hand: 23
-}
-declare const HitTypeID: {
-  Burn: 0
-  Shock: 1
-  ChemicalBurn: 2
-  Radiation: 3
-  Telepatic: 4
-  Wound: 5
-  FireWound: 6
-  Strike: 7
-  Explosion: 8
-  Wound_2: 9
-  LightBurn: 10
-}
-declare const BoosterID: {
-  HpRestore: 0
-  PowerRestore: 1
-  RadiationRestore: 2
-  BleedingRestore: 3
-  MaxWeight: 4
-  RadiationProtection: 5
-  TelepaticProtection: 6
-  ChemicalBurnProtection: 7
-  BurnImmunity: 8
-  ShockImmunity: 9
-  RadiationImmunity: 10
-  TelepaticImmunity: 11
-  ChemicalBurnImmunity: 12
-  ExplImmunity: 13
-  StrikeImmunity: 14
-  FireWoundImmunity: 15
-  WoundImmunity: 16
-  MaxCount: 17
-}
-declare const _ALIFE_CNT: number
-declare const _ALIFE_WARNING: number
-declare const _ALIFE_CACHE: AnyTable
-declare const _ALIFE_CACHE_RECORD: boolean
-declare const _ALIFE_UNREGISTER: AnyTable
-declare function alife_object(id: number): CseAlifeDynamicObject | null
-declare function alife_object(id: number, no_assert: boolean): CseAlifeDynamicObject | null
-declare function alife_object(name: string): CseAlifeDynamicObject | null
-/**
- * @param state if register (spawn) created item, defaults to `true`. Item can be modified and spawned later using `new alife().register(se_obj)`
- */
-declare function alife_create(
-  section: Section,
-  pos: vector,
-  level_vertex_id: number,
-  game_vertex_id: number,
-  parent_id?: number,
-  state?: boolean
-): CseAbstract | null
-declare function alife_create_item(
-  section: Section,
-  obj: CGameObject | CseAbstract,
-  table?: Partial<{
-    ammo: number
-    uses: number
-    cond: number
-    cond_r: [min: number, max: number] | number[]
-    cond_ct: string
-    cond_cr: [min: number, max: number] | number[]
-  }>
-): CseAbstract
-declare function alife_process_item(
-  section: Section,
-  id: number,
-  table: Partial<{
-    ammo: number
-    cond: number
-    uses: number
-  }>
-): void
-declare function alife_release(se_obj: CseAbstract | CGameObject, msg?: string): void
-declare function alife_release_id(id: number, msg?: string): void
-declare function alife_clone_weapon(se_obj: CseAbstract, section: Section, parent_id: number): CseAbstract | void
-declare function alife_character_community(se_obj: CseAbstract): Community | void
-declare function alife_on_limit(): boolean
-declare function alife_record(se_obj: CseAbstract, state?: boolean): void
-declare function alife_first_update(): void
-declare function create_ammo(
-  section: Section,
-  pos: vector,
-  level_vertex_id: number,
-  game_vertex_id: number,
-  parent_id?: number,
-  num_of_bullets?: number
-): Record<number, CseAbstract>
-declare function SetSwitchDistance(dist: number): void
-declare function get_object_community(obj: CGameObject | CseAbstract): ReturnType<typeof alife_character_community>
-declare function character_community(obj: CGameObject): Community
-declare function get_actor_true_community(): Community
-declare function set_actor_true_community(comm: Community, now: boolean): void
-declare function get_object_squad(obj: CGameObject): CseAlifeOnlineOfflineGroup | null
-declare function set_inactivate_input_time(delta_time: number): void
-declare function npc_in_actor_frustrum(npc: CGameObject): boolean
-declare function change_team_squad_group(se_obj: CseAbstract, team: number, squad: number, group: number): void
-declare function get_speaker(safe: boolean, all: boolean): CGameObject
-declare function distance_between(obj_1: CGameObject, obj_2: CGameObject): number
-declare function has_alife_info(info_portion: InfoPortion): boolean
-declare function give_info(info_portion: InfoPortion): void
-declare function disable_info(info_portion: InfoPortion): void
-declare function pstor_is_registered_type(value_type: any): boolean
-/**
- * Storage for gameobjects using `db.storage`
- * @param val Lua-supported value, `gamedata` is not allowed
- */
-declare function save_var(obj: CGameObject | null, var_name: string, val?: boolean | string | number | null): void
-/** @returns value of a variable for a gameobject from `db.storage` */
-declare function load_var(obj: CGameObject | null, var_name: string, def_val?: boolean | string | number | null): any
-declare function save_ctime(obj: CGameObject | null, var_name: string, val: boolean | string | number): void
-declare function load_ctime(obj: CGameObject | null, var_name: string): any
-declare function se_save_var(id: number, name: string, varname: string, val: any): void
-declare function se_load_var(id: number, name: string, varname: string): any
-//
-// story id handlers
-//
-declare function get_story_se_object(story_id: string): CseAbstract | null
-declare function get_story_se_item(story_id: string): CseAbstract | null
-/** @returns gameobject with this story ID on the current level */
-declare function get_story_object(story_id: string): CGameObject | null
-/** @returns story ID of a gameobject */
-declare function get_object_story_id(id: string): string | null
-declare function get_story_object_id(story_id: string): number | null
-/** @deprecated duplicate of {@link get_story_se_object} */
-declare function get_story_squad(story_id: string): CseAbstract | null
-declare function unregister_story_object_by_id(obj_id: string): void
-/**  @deprecated duplicate of {@link get_story_object} */
-declare function level_object_by_sid(story_id: string): CGameObject | null
-declare function id_by_sid(story_id: string): number | null
-//
-// event storage
-//
-declare const _EVENTS: AnyTable
-declare function GetEvent(key: string, value: string): any
-declare function SetEvent(key: string, val_1: string, val_2?: any): void
-declare function IsAzazelMode(): boolean
-declare function IsHardcoreMode(): boolean
-declare function IsStoryMode(): boolean
-declare function IsSurvivalMode(): boolean
-declare function IsAgonyMode(): boolean
-declare function IsTimerMode(): boolean
-declare function IsCampfireMode(): boolean
-declare function IsWarfare(): boolean
-declare function IsTestMode(): boolean
-declare function IsStoryPlayer(): boolean
-//
-// class testing
-//
-declare function IsStalker(obj: CGameObject): boolean
-declare function IsStalker(obj: null, clsid: number): boolean
-declare function IsMonster(obj: CGameObject): boolean
-declare function IsMonster(obj: null, clsid: number): boolean
-declare function IsAnomaly(obj: CGameObject): boolean
-declare function IsAnomaly(obj: null, clsid: number): boolean
-declare function IsTrader(obj: CGameObject): boolean
-declare function IsTrader(obj: null, clsid: number): boolean
-declare function IsCar(obj: CGameObject): boolean
-declare function IsCar(obj: null, clsid: number): boolean
-declare function IsHelicopter(obj: CGameObject): boolean
-declare function IsHelicopter(obj: null, clsid: number): boolean
-declare function IsInvbox(obj: CGameObject): boolean
-declare function IsInvbox(obj: null, clsid: number): boolean
-/** @returns object is level changer */
-declare function isLc(obj: CGameObject): boolean
-declare function IsWounded(obj: CGameObject): boolean
-declare function IsOutfit(obj: CGameObject): boolean
-declare function IsOutfit(obj: null, clsid: number): boolean
-declare function IsHeadgear(obj: CGameObject): boolean
-declare function IsHeadgear(obj: null, clsid: number): boolean
-declare function IsExplosive(obj: CGameObject): boolean
-declare function IsExplosive(obj: null, clsid: number): boolean
-declare function IsPistol(obj: CGameObject): boolean
-declare function IsPistol(obj: null, clsid: number): boolean
-declare function IsMelee(obj: CGameObject): boolean
-declare function IsMelee(obj: null, clsid: number): boolean
-declare function IsSniper(obj: CGameObject): boolean
-declare function IsSniper(obj: null, clsid: number): boolean
-declare function IsLauncher(obj: CGameObject): boolean
-declare function IsLauncher(obj: null, clsid: number): boolean
-declare function IsShotgun(obj: CGameObject): boolean
-declare function IsShotgun(obj: null, clsid: number): boolean
-declare function IsRifle(obj: CGameObject): boolean
-declare function IsRifle(obj: null, clsid: number): boolean
-declare function IsWeapon(obj: CGameObject): boolean
-declare function IsWeapon(obj: null, clsid: number): boolean
-declare function IsAmmo(obj: CGameObject): boolean
-declare function IsAmmo(obj: null, clsid: number): boolean
-declare function IsGrenade(obj: CGameObject): boolean
-declare function IsGrenade(obj: null, clsid: number): boolean
-declare function IsBolt(obj: CGameObject): boolean
-declare function IsBolt(obj: null, clsid: number): boolean
-declare function IsArtefact(obj: CGameObject): boolean
-declare function IsArtefact(obj: null, clsid: number): boolean
-//
-// items lookup table
-//
-declare const ITM: AnyTable
-// Returns `_ITM[type][section]`: `true` for plain membership types, but the parsed value for
-// value-carrying types (e.g. `"meal"` -> cook-stage number, other types -> string/table), or
-// `undefined`/`false` when the section is not of that type. Truthy in every positive case.
-declare function IsItem(_type: string, section: AnySection, obj?: CGameObject | null): boolean | number | string | AnyTable | undefined
-declare function GetItemList(_type: string): AnyTable
-declare function Parse_ITM(): void
-/**
- * Adds a console command to the game console. Game must have debug mode enabled
- *
- * @returns registration success
- */
-declare function add_console_command(name: string, func: () => any): boolean
-declare function get_player_level_id(): number | void
-/** @returns updated best weapon */
-declare function update_best_weapon(
-  npc: CGameObject,
-  wpn: CGameObject,
-  flags: {
-    gun_id: number | null
+declare global {
+  const ini_sys: system_ini
+  function start_game_callback(): void
+  
+  /** `true` when the `marshal` Lua library is available (`USE_MARSHAL = marshal ~= nil`). */
+  const USE_MARSHAL: boolean
+  
+  /** Anomaly's additions to the Lua `string` library (`_g.script`). */
+  namespace string {
+    /**
+     * Iterates the segments of `s` split on separator `sep`, as a stateless
+     * generator: `for seg in string.gsplit(s, ",") do ... end`.
+     * @param plain when true, `sep` is matched literally instead of as a pattern
+     */
+    function gsplit(this: void, s: string, sep: string, plain?: boolean): LuaIterable<string>
   }
-): CGameObject | void
-declare const SIMBOARD: SIMBOARD
-declare interface SIMBOARD {
-  assign_squad_to_smart(squad: CseAlifeOnlineOfflineGroup, _0: number): void
-  create_squad(smart: CseAbstract, squad_id: number): CseAlifeOnlineOfflineGroup
-  create_squad_at_named_location(location: string, squad_id: string): CseAlifeOnlineOfflineGroup | null
-  fill_start_position(): void
-  get_smart_population(smart: CseAbstract): number
-  get_smart_by_name(name: string): CseAbstract | null
-  remove_squad(squad: CseAlifeOnlineOfflineGroup): void
-  set_actor_community(comm: Community): void
-  start_sim(): void
-  stop_sim(): void
-  setup_squad_and_group(squad: CseAlifeOnlineOfflineGroup): void
-  squads: Record<number, CseAlifeOnlineOfflineGroup>
-  smarts: Record<
-    number,
-    {
-      squads: Record<number, CGameObject>
+  
+  /**
+   * Engine callback-type enum (`GameObject::ECallbackType`, luabind class `callback`),
+   * used with {@link CGameObject.set_callback}. Values are opaque integers.
+   */
+  namespace callback {
+    const trade_start: number
+    const trade_stop: number
+    const trade_sell_buy_item: number
+    const trade_perform_operation: number
+    const trader_global_anim_request: number
+    const trader_head_anim_request: number
+    const trader_sound_end: number
+    const zone_enter: number
+    const zone_exit: number
+    const level_border_exit: number
+    const level_border_enter: number
+    const death: number
+    const patrol_path_in_point: number
+    const inventory_pda: number
+    const inventory_info: number
+    const article_info: number
+    const use_object: number
+    const hit: number
+    const sound: number
+    const action_removed: number
+    const action_movement: number
+    const action_watch: number
+    const action_animation: number
+    const action_sound: number
+    const action_particle: number
+    const action_object: number
+    const actor_sleep: number
+    const helicopter_on_point: number
+    const helicopter_on_hit: number
+    const on_item_take: number
+    const on_item_drop: number
+    const script_animation: number
+    const task_state: number
+    const take_item_from_box: number
+    const weapon_no_ammo: number
+    const hud_animation_end: number
+    const key_press: number
+    const key_release: number
+    const key_hold: number
+    const mouse_move: number
+    const mouse_wheel: number
+    const actor_before_death: number
+    const on_attach_vehicle: number
+    const on_detach_vehicle: number
+    const on_use_vehicle: number
+    const weapon_fired: number
+    const weapon_jammed: number
+    const weapon_zoom_in: number
+    const weapon_zoom_out: number
+    const weapon_magazine_empty: number
+    const weapon_lowered: number
+    const weapon_raised: number
+    const item_to_belt: number
+    const item_to_slot: number
+    const item_to_ruck: number
+    const on_foot_step: number
+    const map_location_added: number
+  }
+  
+  /** @noSelf */
+  interface GameEvents {
+    // Actor
+    on_before_level_changing(): void
+    on_level_changing(): void
+    actor_on_before_death(_0: number, _1: AnyTable): void
+    actor_on_net_destroy(binder: object_binder): void
+    actor_on_first_update(binder: object_binder, delta_time: number): void
+    actor_on_update(binder: object_binder, delta_time: number): void
+    actor_on_weapon_fired(obj: CGameObject, weapon: CGameObject, ammo_elapsed: number, grenade_elapsed: number, ammo_type: number, grenade_type: number): void
+    actor_on_weapon_jammed(weapon: CGameObject): void
+    actor_on_weapon_no_ammo(weapon: CGameObject, ammo_total: number): void
+    actor_on_weapon_lower(weapon: CGameObject): void
+    actor_on_weapon_raise(weapon: CGameObject): void
+    actor_on_weapon_reload(weapon: CGameObject, ammo_total: number): void
+    actor_on_weapon_zoom_in(weapon: CGameObject): void
+    actor_on_weapon_zoom_out(weapon: CGameObject): void
+    actor_on_item_take(item: CGameObject): void
+    actor_on_item_take_from_box(box: CGameObject, item: CGameObject): void
+    actor_on_item_put_in_box(box: CGameObject, item: CGameObject): void
+    actor_on_item_drop(item: CGameObject): void
+    actor_on_item_use(item: CGameObject, section: Section.Item): void
+    actor_on_item_before_use(item: CGameObject, flags: AnyTable): void
+    actor_on_item_before_pickup(item: CGameObject, flags: AnyTable): void
+    actor_item_to_belt(item: CGameObject): void
+    actor_item_to_ruck(item: CGameObject): void
+    actor_item_to_slot(item: CGameObject): void
+    actor_on_trade(item: CGameObject, sell_buy: boolean, money: number): void
+    actor_on_init(binder: object_binder): void
+    actor_on_reinit(binder: object_binder): void
+    actor_on_info_callback(obj: CGameObject, info_id: number): void
+    actor_on_hit_callback(obj: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
+    actor_on_attach_vehicle(vehicle: CGameObject): void
+    actor_on_detach_vehicle(vehicle: CGameObject): void
+    actor_on_use_vehicle(vehicle: CGameObject): void
+    actor_on_hud_animation_play(
+      animation: {
+        anm_name: string
+        anm_mixin: boolean
+        anm_mixin2: boolean
+        anm_state: number
+        anm_speed: number
+        anm_end: number
+      },
+      obj: CGameObject | null
+    ): void
+    actor_on_hud_animation_end(item: CGameObject, section: Section.Item, motion: string, state: number, slot: number): void
+    actor_on_hud_animation_mark(state: number, mark: string): void
+    actor_on_sleep(hours: number): void
+    actor_on_foot_step(ground: CGameObject, power: number, play: boolean, on_ground: boolean, hud_view: boolean): void
+    actor_on_interaction(_type: string, obj: CGameObject | null, name: string): void
+    actor_on_before_hit(_hit: hit, bone_id: number, flags: { ret_value: boolean }): void
+    actor_on_before_hit_belt(hit_table: AnyTable, power: number, _type: number): void
+    actor_on_weapon_before_fire(flags: { ret_value: boolean }): void
+    actor_on_feeling_anomaly(zone: CGameObject, flags: { ret_value: boolean }): void
+    actor_on_leave_dialog(npc_id: number): void
+    actor_on_stash_create(stash: { id: number; name: string; section: Section.Item }): void
+    actor_on_stash_remove(stash: { id: number; cancel: boolean }): void
+    actor_on_frequency_change(old_freq: number, new_freq: number): void
+    actor_on_achievement_earned(ach_id: string, message: string): void
+    actor_on_movement_changed(cmd: number): void
+    actor_on_footstep(material: string, power: number, hud_view: boolean, flags: { ret_value: boolean }): void
+    actor_on_jump(): void
+    actor_on_land(landing_speed: number): void
+    // NPCs
+    npc_on_update(obj: CGameObject, who: CGameObject): void
+    // npc_on_death_callback(npc: CGameObject, weapon: CGameObject, flags: { gun_id: number }): void
+    npc_on_item_take(npc: CGameObject, item: CGameObject): void
+    npc_on_item_take_from_box(npc: CGameObject, box: CGameObject, item: CGameObject): void
+    npc_on_item_drop(npc: CGameObject, item: CGameObject): void
+    npc_on_net_spawn(npc: CGameObject, se_obj: CseAbstract): void
+    npc_on_net_destroy(npc: CGameObject): void
+    npc_on_update(npc: CGameObject, table: AnyTable): void
+    npc_on_before_hit(npc: CGameObject, _hit: hit, bone_id: number, flags: { ret_value: boolean }): void
+    npc_on_hit_callback(npc: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
+    npc_on_death_callback(npc: CGameObject, killer?: CGameObject): void
+    npc_on_fighting_actor(npc: CGameObject): void
+    npc_on_weapon_strapped(npc: CGameObject, weapon: CGameObject): void
+    npc_on_weapon_unstrapped(npc: CGameObject, weapon: CGameObject): void
+    npc_on_weapon_drop(npc: CGameObject, weapon: CGameObject): void
+    npc_on_hear_callback(npc: CGameObject, sound_emitter_id: number, sound_type: string, dist: number, sound_power: number, sound_pos: vector): void
+    npc_on_get_all_from_corpse(npc: CGameObject, corpse: CGameObject, item: CGameObject, lootable_table: AnyTable): void
+    npc_on_eval_danger(npc: CGameObject, flags: { ret_value: boolean }): void
+    anomaly_on_before_activate(anomaly: CGameObject, activator: CGameObject, flags: { ret_value: boolean }): void
+    // Mutants
+    monster_on_update(monster: CGameObject, table: AnyTable): void
+    monster_on_before_hit(monster: CGameObject, _hit: hit, bone_id: number, flags: { ret_value: boolean }): void
+    monster_on_hit_callback(monster: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
+    monster_on_net_spawn(monster: CGameObject, se_obj: CseAbstract): void
+    monster_on_net_destroy(monster: CGameObject): void
+    monster_on_death_callback(monster: CGameObject, killer?: CGameObject): void
+    monster_on_actor_use_callback(monster: CGameObject, user: CGameObject): void
+    monster_on_loot_init(monster: CGameObject, loot: AnyTable): void
+    burer_on_before_weapon_drop(burer: CGameObject, weapon: CGameObject, flags: { ret_value: boolean }): void
+    // Physical objects
+    physic_object_on_hit_callback(ph_obj: CGameObject, amount: number, local_dir: vector, dealer: CGameObject, bone_id: number): void
+    physic_object_on_use_callback(ph_obj: CGameObject, user: CGameObject): void
+    // Vehicles
+    heli_on_hit_callback(heli: CGameObject, amount: number, local_dir: null, dealer: CGameObject, bone_id: null): void
+    vehicle_on_death_callback(veh: CGameObject): void
+    // Squads
+    squad_on_npc_creation(se_squad: CseAlifeOnlineOfflineGroup, se_npc: CseAlifeTraderAbstract, spawn_smart?: CseAbstract): void
+    squad_on_enter_smart(se_squad: CseAlifeOnlineOfflineGroup, smart: CseAbstract): void
+    squad_on_leave_smart(se_squad: CseAlifeOnlineOfflineGroup, smart: CseAbstract): void
+    squad_on_npc_death(squad: CseAlifeOnlineOfflineGroup, npc: CseAlifeTraderAbstract, killer?: CseAlifeTraderAbstract): void
+    squad_on_update(squad: CseAlifeOnlineOfflineGroup): void
+    squad_on_first_update(squad: CseAlifeOnlineOfflineGroup): void
+    squad_on_add_npc(
+      squad: CseAlifeOnlineOfflineGroup,
+      npc: CseAlifeTraderAbstract,
+      spawn_section: string,
+      spawn_pos: vector,
+      level_vertex_id: number,
+      game_vertex_id: number
+    ): void
+    squad_on_after_game_vertex_change(squad: CseAlifeOnlineOfflineGroup, last_game_vertex_id: number, last_level_vertex_id: number, _0: boolean): void
+    squad_on_after_level_change(squad: CseAlifeOnlineOfflineGroup, old_level: string, new_level: string): void
+    // Smart terrains
+    smart_terrain_on_update(smart: CseAbstract): void
+    on_try_respawn(smart: CseAbstract, flags: { disabled: boolean }): void
+    // Server objects
+    server_entity_on_register(se_obj: CseAbstract, _type: string): void
+    server_entity_on_unregister(se_obj: CseAbstract, _type: string): void
+    fill_start_position(): void
+    se_stalker_on_spawn(se_npc: CseAlifeTraderAbstract): void
+    se_actor_on_STATE_Write(se_actor: CseAlifeCreatureActor): void
+    se_actor_on_STATE_Read(se_actor: CseAlifeCreatureActor): void
+    // GUI
+    ActorMenu_on_before_init_mode(type: string, flags: { ret: boolean }, obj?: CGameObject): void
+    ActorMenu_on_mode_changed(new_mode: number, prev_mode: number): void
+    ActorMenu_on_item_drag_drop(item_from: CGameObject, item_to: CGameObject, slot_from: number, slot_to: number): void
+    ActorMenu_on_item_focus_receive(item: CGameObject): void
+    ActorMenu_on_item_focus_lost(item: CGameObject): void
+    ActorMenu_on_item_before_move(
+      flags: { ret_value: boolean },
+      inv_id: number,
+      item: CGameObject,
+      mode: 'inventory' | 'loot' | 'trade' | 'repair',
+      inv_id_from: number
+    ): void
+    ActorMenu_on_item_after_move(inv_id: number, item: CGameObject, mode: 'inventory' | 'loot' | 'trade' | 'repair', inv_id_from: number): void
+    ActorMenu_on_trade_started(): void
+    ActorMenu_on_trade_closed(): void
+    GUI_on_show(name: string, path?: string): void
+    GUI_on_hide(name: string, path?: string): void
+    map_spot_menu_add_property(ui: { AddItem: (text: string) => void }, spot_id: string, level: LevelName): void
+    map_spot_menu_property_clicked(ui: { AddItem: (text: string) => void }, spot_id: string, level: LevelName, clicked_property: string): void
+    main_menu_on_keyboard(dik: number, keyboard_action: number, wnd: CUIScriptWnd, level_present: boolean): void
+    main_menu_on_init(wnd: CUIScriptWnd): void
+    main_menu_on_quit(wnd: CUIScriptWnd): void
+    on_screen_resolution_changed(): void
+    // Technical
+    on_game_load(binder: object_binder): void
+    on_key_press(key: number): void
+    on_key_release(key: number): void
+    on_key_hold(key: number): void
+    on_before_key_press(dik: number, bind: number, dis: boolean, flags: { ret: boolean; ret_value: boolean }): void
+    on_option_change(): void
+    on_localization_change(): void
+    on_console_execute(...args: string[]): void
+    on_before_save_input(flags: { ret: boolean }, _0: number, _1: string): void
+    on_before_load_input(dik: number, bind: number, flags: { ret: boolean; ret_value: boolean }): void
+    // Files
+    save_state(m_data: MData): void
+    load_state(m_data: MData): void
+    on_pstor_save_all(obj: CGameObject, netp: net_packet): void
+    on_pstor_load_all(obj: CGameObject, netp: net_packet): void
+    // Other
+    on_enemy_eval(obj: CGameObject, enemy: CGameObject, flags: { result: boolean; override: boolean }): void
+    on_before_surge(flags: { allow: boolean }): void
+    on_before_psi_storm(flags: { allow: boolean }): void
+    on_get_item_cost(
+      _type: 'multiuse' | 'ammo' | 'condition_based',
+      obj: CGameObject,
+      profile: { cfg: string; mode: 1 | 2; cond_exponent: number; discount: number; list: Suggest<'trade_generic_buy' | 'trade_generic_sell'> },
+      cost: number,
+      ret: { new_cost?: number }
+    ): void
+    // set_callback / callback class
+    // inventory_info(): void
+    // task_state(): void
+    // take_item_from_box(): void
+    // trade_sell_buy_item(): void
+    // on_mouse_move(x: number, y: number): void
+    // on_mouse_wheel(vol: number): void
+    // mouse_move(): void
+    // mouse_wheel(): void
+    // use_object(): void
+    // select_inventory_item(item: CGameObject): void
+    // actor_before_death(): void
+    // switch_torch(on: 0 | 1): void
+  }
+  /**
+   * Functions can be provided to game events as callbacks. With most game events some params are also returned (see the example below). Full list of game events names can be found in *axr_main.script*. To find game events implementations in _unpacked, search for `SendScriptCallback`
+   *
+   * @example
+   * ```ts
+   * function my_on_key_press( key: number) {
+   *   if (key === DIK_keys.DIK_I) {
+   *     printf('"I" was just pressed | key: %s', key)
+   *   }
+   * }
+   *
+   * function on_game_start() {
+   *   RegisterScriptCallback('on_key_press', my_on_key_press)
+   *}
+   * ```
+   */
+  function RegisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E] | { [K in E]: (this: any, ...args: any[]) => any }): void
+  function UnregisterScriptCallback<E extends keyof GameEvents>(event: E, cb: GameEvents[E] | { [K in E]: (this: any, ...args: any[]) => any }): void
+  function SendScriptCallback<E extends keyof GameEvents>(event: E, ...args: Parameters<GameEvents[E]>): void
+  function Unregister_UI(name: string): void
+  function DestroyAll_UI(name: string): void
+  function Check_UI(name: string): boolean
+  function Overlapped_UI(name: string): boolean
+  function CloseAll_UI(): void
+  function GetActorMenu(): UIInventory | undefined
+  function hide_hud_all(): void
+  function hide_hud_inventory(): void
+  function hide_hud_pda(): void
+  function show_all_ui(show: boolean): void
+  function show_indicators(show: boolean): void
+  function main_hud_shown(): boolean
+  /**
+   * Delayed action. If provided with a callback that takes params, such must be provided too.
+   * @param event_id a unique identifier of your choice (could be your name, or something related to what is happening)
+   * @param action_id a second unique identifier of your choice (what matters is that two time events should not have the same `event_id` & `action_id` pair)
+   * @param action action that will be executed after delay. If action returns `true`, the time event gets destroyed, if `false`, the time event fill be fired again with the fresh timer
+   * @tutorial read on [Modding Book](https://igigog.github.io/anomaly-modding-book/scripting/time_events.html)
+   * @example kill 100 random NPCs after 5 seconds
+   * ```ts
+   * function kill_random_npcs( count: number) {
+   *   // ...
+   * }
+   * CreateTimeEvent(0, 'kill_random_npcs', 5, kill_random_npcs, 100)
+   * ```
+   * */
+  function CreateTimeEvent<F extends (this: void, ...args: any) => boolean>(
+    event_id: string | number,
+    action_id: string | number,
+    delay_s: number,
+    action: F,
+    ...args: Parameters<F>
+  ): void
+  /** @see {@link CreateTimeEvent} */
+  function ResetTimeEvent(event_id: string | number, action_id: string | number, new_delay_s: number): void
+  /** @see {@link CreateTimeEvent} */
+  function RemoveTimeEvent(event_id: string | number, action_id: string | number): void
+  function ProcessEventQueue(force: boolean): boolean
+  function ProcessEventQueueState(m_data: MData, save: boolean): void
+  function ChangeLevel(pos: vector, level_vertex_id: number, game_vertex_id: number, angle: vector, anim?: boolean): void
+  function change_level_now(pos: vector, level_vertex_id: number, game_vertex_id: number, angle: vector): void
+  function AddUniqueCall(functor: (this: void, ...args: any[]) => unknown): void
+  function RemoveUniqueCall(functor: (this: void, ...args: any[]) => unknown): void
+  function JumpToLevel(level: LevelName): boolean
+  function TeleportObject(id: number, pos: vector, level_vertex_id: number, game_vertex_id: number): void
+  function TeleportSquad(squad: CseAlifeOnlineOfflineGroup, pos: vector, level_vertex_id: number, game_vertex_id: number): void
+  function in_time_interval(time_stamp_1: number, time_stamp_2: number): boolean
+  function level_changing(): boolean
+  function LoadScheme(filename: string, scheme: string, ...args: any[]): void
+  /**
+   * Print formatted text to the game console.
+   *
+   * Prefix with a special symbol to change appearance.
+   *
+   * - `$` pink
+   * - `-` green
+   * - `!` red
+   * - `~` yellow
+   * - `*` gray
+   * - `#` cyan
+   * - `@` blue
+   * - `/` light blue
+   */
+  function printf(...args: any[]): void
+  function printe(...args: any[]): void
+  function printdbg(...args: any[]): void
+  function abort(msg: string, ...args: any[]): void
+  function callstack(c1: boolean, to_str: boolean): string | null
+  function get_console_cmd(_type: number, name: string): string | number | boolean | undefined
+  function exec_console_cmd(cmd: string): void
+  const time_infinite: number
+  /** @returns Current time in ms */
+  function time_global(): number
+  function time_continual(): number
+  function round(num: number): number
+  function round_idp(num: number, idp: number): number
+  function round_100(num: number): number
+  function odd(num: number): boolean
+  function clamp(num: number, min: number, max: number): number
+  function normalize(num: number, min: number, max: number): number
+  function normalize_100(num: number, min: number, max: number): number
+  function random_choice<A>(...args: A[]): A
+  function random_number(min: number, max: number): number
+  function random_float(min: number, max: number): number
+  function yaw(vec_1: vector, vec_2: vector): number
+  function yaw_degree(vec_1: vector, vec_2: vector): number
+  function yaw_degree3d(vec_1: vector, vec_2: vector): number
+  function vector_cross(vec_1: vector, vec_2: vector): vector
+  function vec_to_str(vec: vector): string
+  function vector_rotate_y(v: vector, deg: number): vector
+  function distance_2d(vec_1: vector, vec_2: vector): number
+  function distance_2d_sqr(vec_1: vector, vec_2: vector): number
+  function trim(str: string): string
+  function strformat(str: string, ...items: any[]): string
+  /** Splits a branded {@link SymbolSeparatedString} on its declared separator, yielding the element union `V[]`. */
+  function str_explode<V extends readonly unknown[], Sep extends string>(str: SymbolSeparatedString<V, Sep>, separator: Sep, plain?: boolean): V
+  function str_explode(str: string, separator: string, plain?: boolean): string[]
+  function parse_list(ini: system_ini, key: string, val: string, convert: boolean): Record<string, any>
+  function parse_names(str: string): string[]
+  function parse_key_value(str: string): Record<string, any>
+  function parse_nums(str: string): number[]
+  function parse_func(sec: Section.All, param: string, ...args: any[]): any
+  function starts_with(str: string, with_text: string): boolean
+  function has_translation(str: string): boolean
+  function get_param_string(src_str: string, obj: CGameObject): LuaMultiReturn<[string, boolean]>
+  function execute_func(file: any, func: any, ...args: any[]): any
+  function reset_action(npc: CGameObject, script_name: string): void
+  function stop_playing_sound(obj: CGameObject): void
+  function action(obj: CGameObject, ...args: any[]): any
+  function action_first(obj: CGameObject, ...args: any[]): any
+  function interrupt_action(npc: CGameObject, script_name: string): void
+  function get_clsid(obj: CGameObject): number
+  function set_save_marker(netp: net_packet, mode: 'save' | 'load', check: boolean, prefix: string): void
+  const ActorMoveStates: {
+    mcFwd: 1
+    mcBack: 2
+    mcLStrafe: 4
+    mcRStrafe: 8
+    mcCrouch: 16
+    mcAccel: 32
+    mcTurn: 64
+    mcJump: 128
+    mcFall: 256
+    mcLanding: 512
+    mcLanding2: 1024
+    mcClimb: 2048
+    mcSprint: 4096
+    mcLLookout: 8192
+    mcRLookout: 16384
+    //
+    mcAnyMove: 15
+    mcAnyAction: 1935
+    mcAnyState: 6192
+    mcLookout: 24576
+  }
+  type StringToNumber<T extends string> = T extends `${infer N extends number}` ? N : never
+  type ActorMoveState = (typeof ActorMoveStates)[keyof typeof ActorMoveStates]
+  function IsMoveState(state: keyof typeof ActorMoveStates, compare_state?: number): boolean
+  /**
+   * Engine keybinding indices (`EGameActions`), exposed as the global `key_bindings` table.
+   * Values are the numeric bind ids compared against {@link dik_to_bind}'s return.
+   * Known named binds are listed for autocomplete; the index signature covers the rest of the enum.
+   */
+  const key_bindings: {
+    readonly [bind: string]: number
+    readonly kFREELOOK: number
+    readonly kCROUCH: number
+    readonly kACCEL: number
+    readonly kSPRINT_TOGGLE: number
+    readonly kR_LOOKOUT: number
+    readonly kL_LOOKOUT: number
+    readonly kUSE: number
+    readonly kWPN_FIRE: number
+    readonly kWPN_NEXT: number
+    readonly kWPN_ZOOM: number
+    readonly kTORCH: number
+    readonly kNIGHT_VISION: number
+    readonly kINVENTORY: number
+    readonly kACTIVE_JOBS: number
+    readonly kQUICK_SAVE: number
+    readonly kQUICK_LOAD: number
+    readonly kSCREENSHOT: number
+    readonly kCONSOLE: number
+    readonly kQUIT: number
+    readonly kCAM_ZOOM_IN: number
+    readonly kCAM_ZOOM_OUT: number
+  }
+  /** Map a DIK scan code to its bound engine action ({@link key_bindings} value), or the code itself when unbound. */
+  function dik_to_bind(dik: number): number
+  function reload_ini_sys(): void
+  /** Open an .ltx file and return an ini object exposing the r_* readers. Register the path in {@link IniFileSchemas} to get a {@link TypedIni} with section/field autocomplete and per-field value-type checking. */
+  function ini_file<P extends keyof IniFileSchemas>(filename: P): TypedIni<IniFileSchemas[P]>
+  function ini_file(filename: string): TypedIni<UntypedIniSchema>
+  /**
+   * Resolves the schema for an {@link ini_file_ex} from the filename passed to its constructor:
+   * the {@link IniFileSchemas} entry when the path is registered, otherwise {@link UntypedIniSchema}
+   * (any section, any field, untyped values). Lets a registered `.ltx` narrow its reads while any
+   * other file stays fully permissive and error-free.
+   */
+  type IniExSchemaOf<P> = P extends keyof IniFileSchemas ? IniFileSchemas[P] : UntypedIniSchema
+  
+  /**
+   * May be an extended version of ini_file. Read any ltx file.
+   *
+   * Generic over the constructor filename `P`: register the exact path string in {@link IniFileSchemas}
+   * to get section/field autocomplete and per-field value-type checking on the `r_*_ex` readers
+   * (`new ini_file_ex("plugins\\my_addon.ltx")` — xray needs Windows `\` separators; forward slashes crash the game). Unregistered paths fall back to {@link UntypedIniSchema},
+   * preserving the previous untyped behaviour.
+   * @customConstructor ini_file_ex
+   */
+  class ini_file_ex<P extends string = string> {
+    constructor(fname: P, advanced_mode?: boolean)
+    cache: Record<string, any>
+    collect_section<S extends keyof IniExSchemaOf<P>>(section: S): IniExSchemaOf<P>[S]
+    fname: string
+    get_sections<KT extends boolean = false>(keytable?: KT): KT extends true ? Record<keyof IniExSchemaOf<P> & string, true> : (keyof IniExSchemaOf<P> & string)[]
+    ini: system_ini
+    line_exist<S extends keyof IniExSchemaOf<P>>(section: S, key: IniLineKeys<IniExSchemaOf<P>, S>): boolean
+    r_bool_ex<S extends keyof IniExSchemaOf<P>, K extends IniLineKeysOfType<IniExSchemaOf<P>, S, boolean>>(s: S, k: K, def?: boolean): boolean
+    r_float_ex<S extends keyof IniExSchemaOf<P>, K extends IniLineKeysOfType<IniExSchemaOf<P>, S, number>>(s: S, k: K): number | null
+    r_list(s: keyof IniExSchemaOf<P> & string, k: string, def?: string[]): string[]
+    r_mult(s: keyof IniExSchemaOf<P> & string, k: string, ...args: any[]): any
+    r_string_ex<S extends keyof IniExSchemaOf<P>, K extends IniLineKeysOfType<IniExSchemaOf<P>, S, string>>(s: S, k: K): IniExSchemaOf<P>[S][K] | null
+    r_string_to_condlist(s: keyof IniExSchemaOf<P> & string, k: string, def?: any): Record<string, any> | null
+    r_value(s: keyof IniExSchemaOf<P> & string, k: string, typ: number, def?: any): string | null
+    remove_line(section: keyof IniExSchemaOf<P> & string, key: string): void
+    save(): void
+    // A type guard, not `(section: keyof Schema) => boolean`: `section_exist` is the tool you reach
+    // for precisely when you do NOT yet know whether a name is a section of this file — e.g. an
+    // icon-layer's `group` field, which is either a group section or a bare item to wrap into a
+    // synthetic group. Accepting any string and narrowing on `true` lets the caller pass that wider
+    // value and lets the `false` branch narrow away the known-section keys (leaving the item).
+    section_exist<S extends string>(section: S): section is S & keyof IniExSchemaOf<P> & string
+    w_value(s: keyof IniExSchemaOf<P> & string, k: string, val: any, comment?: string): void
+  }
+  const INISYS_CACHE: AnyTable
+  /**
+   * Cached `ini_sys` read. The leading type code picks the reader, so each code has its own
+   * return type: `0` is `r_string_ex`, `1` is `r_bool_ex`, `2` is `r_float_ex`.
+   *
+   * The `0` overloads take a type argument so a caller reading a structured string can name
+   * its shape rather than cast the result, e.g.
+   * `SYS_GetParam<CommaSeparatedString<[script: string, func: string]>>(0, sec, key)`.
+   *
+   * Only `0` and `2` honour `def_val`, hence their pairs of overloads; `1` ignores it
+   * (`r_bool_ex` already defaults to `false`) and so never widens to `undefined`.
+   */
+  function SYS_GetParam<V extends string = string>(_type: 0, section: Section.All, param: string, def_val: V): V
+  function SYS_GetParam<V extends string = string>(_type: 0, section: Section.All, param: string): V | undefined
+  function SYS_GetParam(_type: 1, section: Section.All, param: string, def_val?: boolean): boolean
+  function SYS_GetParam(_type: 2, section: Section.All, param: string, def_val: number): number
+  function SYS_GetParam(_type: 2, section: Section.All, param: string): number | undefined
+  function is_empty(table: AnyTable): boolean
+  function is_not_empty(table: AnyTable): boolean
+  function iempty_table(table: AnyTable): AnyTable
+  function empty_table(table: AnyTable): Record<string, null>
+  function size_table(table: AnyTable): number
+  function random_key_table(table: AnyTable): any | null
+  function copy_table(to: AnyTable, from: AnyTable): void
+  function dup_table<T extends AnyTable>(from: T): T
+  function swap(arr: AnyTable, index_1: number, index_2: number): void
+  function shuffle_table(table: AnyTable): void
+  function invert_table(table: AnyTable): void
+  function t2k_table(table: AnyTable): void
+  function k2t_table(table: AnyTable): void
+  /** @deprecated unused */
+  function print_table(table: AnyTable): void
+  function store_table(table: AnyTable, subs?: string): void
+  function spairs<K extends string | number, V>(table: Record<K, V>, order?: (table: Record<K, V>, a: K, b: K) => boolean): LuaIterable<LuaMultiReturn<[K, V]>>
+  const VEC_ZERO: vector
+  const VEC_X: vector
+  const VEC_Y: vector
+  const VEC_Z: vector
+  /** Subtract vectors without mutating them */
+  function vec_sub(vec_1: vector, vec_2: vector): vector
+  /** Add vectors without mutating them */
+  function vec_add(vec_1: vector, vec_2: vector): vector
+  /** Set vector without mutating the original */
+  function vet_set(vec: vector): vector
+  const BoneID: {
+    bip01_pelvis: 2
+    bip01_l_thigh: 3
+    bip01_l_calf: 4
+    bip01_l_foot: 5
+    bip01_r_thigh: 7
+    bip01_r_calf: 8
+    bip01_r_foot: 9
+    bip01_spine: 11
+    bip01_spine1: 12
+    bip01_spine2: 13
+    bip01_neck: 14
+    bip01_head: 15
+    eye_left: 16
+    eye_right: 17
+    eyelid_1: 18
+    jaw_1: 19
+    bip01_l_clavicle: 20
+    bip01_l_upperarm: 21
+    bip01_l_forearm: 22
+    bip01_l_hand: 23
+  }
+  const HitTypeID: {
+    Burn: 0
+    Shock: 1
+    ChemicalBurn: 2
+    Radiation: 3
+    Telepatic: 4
+    Wound: 5
+    FireWound: 6
+    Strike: 7
+    Explosion: 8
+    Wound_2: 9
+    LightBurn: 10
+  }
+  const BoosterID: {
+    HpRestore: 0
+    PowerRestore: 1
+    RadiationRestore: 2
+    BleedingRestore: 3
+    MaxWeight: 4
+    RadiationProtection: 5
+    TelepaticProtection: 6
+    ChemicalBurnProtection: 7
+    BurnImmunity: 8
+    ShockImmunity: 9
+    RadiationImmunity: 10
+    TelepaticImmunity: 11
+    ChemicalBurnImmunity: 12
+    ExplImmunity: 13
+    StrikeImmunity: 14
+    FireWoundImmunity: 15
+    WoundImmunity: 16
+    MaxCount: 17
+  }
+  const _ALIFE_CNT: number
+  const _ALIFE_WARNING: number
+  const _ALIFE_CACHE: AnyTable
+  const _ALIFE_CACHE_RECORD: boolean
+  const _ALIFE_UNREGISTER: AnyTable
+  function alife_object(id: number): CseAlifeDynamicObject | null
+  function alife_object(id: number, no_assert: boolean): CseAlifeDynamicObject | null
+  function alife_object(name: string): CseAlifeDynamicObject | null
+  /**
+   * @param state if register (spawn) created item, defaults to `true`. Item can be modified and spawned later using `new alife().register(se_obj)`
+   */
+  function alife_create(
+    section: Section.Item,
+    pos: vector,
+    level_vertex_id: number,
+    game_vertex_id: number,
+    parent_id?: number,
+    state?: boolean
+  ): CseAbstract | null
+  function alife_create_item(
+    section: Section.Item,
+    obj: CGameObject | CseAbstract,
+    table?: Partial<{
+      ammo: number
+      uses: number
+      cond: number
+      cond_r: [min: number, max: number] | number[]
+      cond_ct: string
+      cond_cr: [min: number, max: number] | number[]
+    }>
+  ): CseAbstract
+  function alife_process_item(
+    section: Section.Item,
+    id: number,
+    table: Partial<{
+      ammo: number
+      cond: number
+      uses: number
+    }>
+  ): void
+  function alife_release(se_obj: CseAbstract | CGameObject, msg?: string): void
+  function alife_release_id(id: number, msg?: string): void
+  function alife_clone_weapon(se_obj: CseAbstract, section: Section.Item, parent_id: number): CseAbstract | void
+  function alife_character_community(se_obj: CseAbstract): Community | void
+  function alife_on_limit(): boolean
+  function alife_record(se_obj: CseAbstract, state?: boolean): void
+  function alife_first_update(): void
+  function create_ammo(
+    section: Section.Item,
+    pos: vector,
+    level_vertex_id: number,
+    game_vertex_id: number,
+    parent_id?: number,
+    num_of_bullets?: number
+  ): Record<number, CseAbstract>
+  function SetSwitchDistance(dist: number): void
+  function get_object_community(obj: CGameObject | CseAbstract): ReturnType<typeof alife_character_community>
+  function character_community(obj: CGameObject): Community
+  function get_actor_true_community(): Community
+  function set_actor_true_community(comm: Community, now: boolean): void
+  function get_object_squad(obj: CGameObject): CseAlifeOnlineOfflineGroup | null
+  function set_inactivate_input_time(delta_time: number): void
+  function npc_in_actor_frustrum(npc: CGameObject): boolean
+  function change_team_squad_group(se_obj: CseAbstract, team: number, squad: number, group: number): void
+  function get_speaker(safe: boolean, all: boolean): CGameObject
+  function distance_between(obj_1: CGameObject, obj_2: CGameObject): number
+  function has_alife_info(info_portion: InfoPortion): boolean
+  function give_info(info_portion: InfoPortion): void
+  function disable_info(info_portion: InfoPortion): void
+  function pstor_is_registered_type(value_type: any): boolean
+  /**
+   * Storage for gameobjects using `db.storage`
+   * @param val Lua-supported value, `gamedata` is not allowed
+   */
+  function save_var(obj: CGameObject | null, var_name: string, val?: boolean | string | number | null): void
+  /** @returns value of a variable for a gameobject from `db.storage` */
+  function load_var(obj: CGameObject | null, var_name: string, def_val?: boolean | string | number | null): any
+  function save_ctime(obj: CGameObject | null, var_name: string, val: boolean | string | number): void
+  function load_ctime(obj: CGameObject | null, var_name: string): any
+  function se_save_var(id: number, name: string, varname: string, val: any): void
+  function se_load_var(id: number, name: string, varname: string): any
+  //
+  // story id handlers
+  //
+  function get_story_se_object(story_id: string): CseAbstract | null
+  function get_story_se_item(story_id: string): CseAbstract | null
+  /** @returns gameobject with this story ID on the current level */
+  function get_story_object(story_id: string): CGameObject | null
+  /** @returns story ID of a gameobject */
+  function get_object_story_id(id: string): string | null
+  function get_story_object_id(story_id: string): number | null
+  /** @deprecated duplicate of {@link get_story_se_object} */
+  function get_story_squad(story_id: string): CseAbstract | null
+  function unregister_story_object_by_id(obj_id: string): void
+  /**  @deprecated duplicate of {@link get_story_object} */
+  function level_object_by_sid(story_id: string): CGameObject | null
+  function id_by_sid(story_id: string): number | null
+  //
+  // event storage
+  //
+  const _EVENTS: AnyTable
+  function GetEvent(key: string, value: string): any
+  function SetEvent(key: string, val_1: string, val_2?: any): void
+  function IsAzazelMode(): boolean
+  function IsHardcoreMode(): boolean
+  function IsStoryMode(): boolean
+  function IsSurvivalMode(): boolean
+  function IsAgonyMode(): boolean
+  function IsTimerMode(): boolean
+  function IsCampfireMode(): boolean
+  function IsWarfare(): boolean
+  function IsTestMode(): boolean
+  function IsStoryPlayer(): boolean
+  //
+  // class testing
+  //
+  function IsStalker(obj: CGameObject): boolean
+  function IsStalker(obj: null, clsid: number): boolean
+  function IsMonster(obj: CGameObject): boolean
+  function IsMonster(obj: null, clsid: number): boolean
+  function IsAnomaly(obj: CGameObject): boolean
+  function IsAnomaly(obj: null, clsid: number): boolean
+  function IsTrader(obj: CGameObject): boolean
+  function IsTrader(obj: null, clsid: number): boolean
+  function IsCar(obj: CGameObject): boolean
+  function IsCar(obj: null, clsid: number): boolean
+  function IsHelicopter(obj: CGameObject): boolean
+  function IsHelicopter(obj: null, clsid: number): boolean
+  function IsInvbox(obj: CGameObject): boolean
+  function IsInvbox(obj: null, clsid: number): boolean
+  /** @returns object is level changer */
+  function isLc(obj: CGameObject): boolean
+  function IsWounded(obj: CGameObject): boolean
+  function IsOutfit(obj: CGameObject): boolean
+  function IsOutfit(obj: null, clsid: number): boolean
+  function IsHeadgear(obj: CGameObject): boolean
+  function IsHeadgear(obj: null, clsid: number): boolean
+  function IsExplosive(obj: CGameObject): boolean
+  function IsExplosive(obj: null, clsid: number): boolean
+  function IsPistol(obj: CGameObject): boolean
+  function IsPistol(obj: null, clsid: number): boolean
+  function IsMelee(obj: CGameObject): boolean
+  function IsMelee(obj: null, clsid: number): boolean
+  function IsSniper(obj: CGameObject): boolean
+  function IsSniper(obj: null, clsid: number): boolean
+  function IsLauncher(obj: CGameObject): boolean
+  function IsLauncher(obj: null, clsid: number): boolean
+  function IsShotgun(obj: CGameObject): boolean
+  function IsShotgun(obj: null, clsid: number): boolean
+  function IsRifle(obj: CGameObject): boolean
+  function IsRifle(obj: null, clsid: number): boolean
+  function IsWeapon(obj: CGameObject): boolean
+  function IsWeapon(obj: null, clsid: number): boolean
+  function IsAmmo(obj: CGameObject): boolean
+  function IsAmmo(obj: null, clsid: number): boolean
+  function IsGrenade(obj: CGameObject): boolean
+  function IsGrenade(obj: null, clsid: number): boolean
+  function IsBolt(obj: CGameObject): boolean
+  function IsBolt(obj: null, clsid: number): boolean
+  function IsArtefact(obj: CGameObject): boolean
+  function IsArtefact(obj: null, clsid: number): boolean
+  //
+  // items lookup table
+  //
+  const ITM: AnyTable
+  // Returns `_ITM[type][section]`: `true` for plain membership types, but the parsed value for
+  // value-carrying types (e.g. `"meal"` -> cook-stage number, other types -> string/table), or
+  // `undefined`/`false` when the section is not of that type. Truthy in every positive case.
+  function IsItem(_type: string, section: Section.All, obj?: CGameObject | null): boolean | number | string | AnyTable | undefined
+  function GetItemList(_type: string): AnyTable
+  function Parse_ITM(): void
+  /**
+   * Adds a console command to the game console. Game must have debug mode enabled
+   *
+   * @returns registration success
+   */
+  function add_console_command(name: string, func: () => any): boolean
+  function get_player_level_id(): number | void
+  /** @returns updated best weapon */
+  function update_best_weapon(
+    npc: CGameObject,
+    wpn: CGameObject,
+    flags: {
+      gun_id: number | null
     }
-  >
-  unregister_smart(smart: CseAbstract): void
-}
-interface MData {}
-/**
- * Marshal library. Save serializable Lua data to the save file. See the encoded save data in the .scoc file. Register for `load_state` and `save_state` game events to interact with Marshall library, load and save data you need
- * @example
- * ```ts
- * let last_time_ate_beans: string | null = null
- *
- * type MyMData = MData & {
- *   last_time_ate_beans: string | null
- * }
- *
- * function load_state( m_data: MyMData) {
- *   last_time_ate_beans = m_data.last_time_ate_beans
- * }
- *
- * function on_game_start() {
- *   RegisterScriptCallback('load_state', load_state)
- * }
- * ```
- */
-declare var m_data: MData
-
-// ---- Globals & engine callback hooks from _g.script ----
-
-/** Anomaly game version string, e.g. `"1.5.3"`. */
-declare const GAME_VERSION: string
-declare const USE_INI_MEMOIZE: boolean
-declare const DEACTIVATE_SIM_ON_NON_LINKED_LEVELS: boolean
-/** The `marshal` Lua library, present only in some builds (see {@link USE_MARSHAL}). */
-declare const marshal: AnyTable
-/** Actor id constant used across scripts. */
-declare const AC_ID: number
-/** Scratch storage for temporarily muted music/ambient volumes. */
-declare const mus_vol: number
-declare const amb_vol: number
-declare const timer_transparent: number
-/** When true, scripted GUIs may disable action keybinds while active. */
-declare const KEYS_UNLOCK: boolean
-/** Registers a new custom script-callback name (delegates to `axr_main.callback_add`). */
-declare function AddScriptCallback(name: string): void
-declare const _HUD_STATE: boolean
-/** Registered scripted GUIs, keyed by name. */
-declare const _GUIs: Record<string, { path?: string; instance?: any }>
-declare const _GUIsInstances: Record<string, any>
-declare const _GUIs_keyfree: Record<string, any>
-declare function Register_UI(name: string, path?: string, instance?: any): void
-declare const schemes: Record<string, any>
-declare const schemes_by_stype: Record<string, any>
-declare function stop_play_sound(obj: CGameObject): void
-/** Yields the current script thread for `time_to_wait` game-time ms (nil = one frame). */
-declare function wait_game(time_to_wait?: number): void
-/** Yields the current script thread for `time_to_wait` real-time ms (nil = one frame). */
-declare function wait(time_to_wait?: number): void
-declare function on_actor_critical_power(): void
-declare function on_actor_critical_max_power(): void
-declare function on_actor_bleeding(): void
-declare function on_actor_satiety(): void
-declare function on_actor_radiation(): void
-declare function on_actor_weapon_jammed(): void
-declare function on_actor_cant_walk_weight(): void
-declare function on_actor_psy(): void
-// Engine method overrides that dispatch to script callbacks (invoked by the engine).
-declare function CInventory__eat(item: CGameObject): boolean
-declare function CActor__HitArtefactsOnBelt(hit_table: AnyTable, hit_power: number, hit_type: number): AnyTable
-declare function CHudItem__OnMotionMark(state: number, mark: string): void
-declare function CHudItem__PlayHUDMotion(anm_table: AnyTable, obj: CGameObject | null): AnyTable
-declare function player_hud__OnMovementChanged(cmd: number): void
-declare function CMissile__PutNextToSlot(itm: CGameObject): CGameObject
-declare function CBulletManager__ObjectHit(section: Section, obj: CGameObject, pos: vector, dir: vector, mtl: number, speed: number, wpn_id: number): void
-declare function CAI_Stalker__GetWeaponAccuracy(obj: CGameObject, wpn: CGameObject, dispersion: number, body_state: number, move_type: number): number
-declare function CActor__BeforeHitCallback(actor: CGameObject, shit: hit, bone_id: number): boolean
-declare function CAI_Stalker__BeforeHitCallback(npc: CGameObject, shit: hit, bone_id: number): boolean
-declare function CBaseMonster__BeforeHitCallback(monster: CGameObject, shit: hit, bone_id: number): boolean
-declare function CActor__FootstepCallback(material: string, power: number, hud_view: boolean): boolean
-declare function CActor_Fire(): boolean
-declare function CCustomZone_BeforeActivateCallback(zone: CGameObject, obj: CGameObject): boolean
-declare function CBurer_BeforeWeaponDropCallback(monster: CGameObject, wpn: CGameObject): boolean
-declare function CBolt__State(id: number): boolean
-declare function CZone_Touch(obj: CGameObject): boolean
-declare function CHUDManager_OnScreenResolutionChanged(): void
-declare function CActor_on_jump(): void
-declare function CActor_on_land(landing_speed: number): void
-declare function CALifeUpdateManager__on_before_change_level(packet: net_packet): void
-declare function run_dynamic_element(folder: CUIWindow, close_inv?: boolean): void
-declare function give_object_to_actor(sec: Section, count?: number): void
-/** Movement-command bit masks, keyed by name (`mcFwd`, `mcBack`, …). */
-declare const actor_move_states: Record<string, number>
-declare function clear_ini_cache(ini: string): void
-declare function vec_set(vec: vector): vector
-/** Inventory slots scanned for cosmetics/upgrades, keyed by slot id. */
-declare const SCANNED_SLOTS: Record<number, boolean>
-/** Squad behaviour names that mark a squad as a monster squad. */
-declare const is_squad_monster: Record<string, boolean>
-/** Maps squad behaviour name to its community. */
-declare const squad_community_by_behaviour: Record<string, string>
-declare function get_object_by_id(id: number): CGameObject | undefined
-declare function distance_between_safe(obj1: CGameObject, obj2: CGameObject): number
-declare const _EVENT: Record<string, any>
-declare const _ITM: AnyTable
-
-declare namespace _g {
-  /** Anomaly `class "ini_file_ex"` is also reachable on the `_g` script namespace; typed as
-   *  the instance so its methods can be captured/overridden (`_g.ini_file_ex.Method = ...`). */
-  export const ini_file_ex: ini_file_ex
+  ): CGameObject | void
+  const SIMBOARD: SIMBOARD
+  interface SIMBOARD {
+    assign_squad_to_smart(squad: CseAlifeOnlineOfflineGroup, _0: number): void
+    create_squad(smart: CseAbstract, squad_id: number): CseAlifeOnlineOfflineGroup
+    create_squad_at_named_location(location: string, squad_id: string): CseAlifeOnlineOfflineGroup | null
+    fill_start_position(): void
+    get_smart_population(smart: CseAbstract): number
+    get_smart_by_name(name: string): CseAbstract | null
+    remove_squad(squad: CseAlifeOnlineOfflineGroup): void
+    set_actor_community(comm: Community): void
+    start_sim(): void
+    stop_sim(): void
+    setup_squad_and_group(squad: CseAlifeOnlineOfflineGroup): void
+    squads: Record<number, CseAlifeOnlineOfflineGroup>
+    smarts: Record<
+      number,
+      {
+        squads: Record<number, CGameObject>
+      }
+    >
+    unregister_smart(smart: CseAbstract): void
+  }
+  interface MData {}
+  /**
+   * Marshal library. Save serializable Lua data to the save file. See the encoded save data in the .scoc file. Register for `load_state` and `save_state` game events to interact with Marshall library, load and save data you need
+   * @example
+   * ```ts
+   * let last_time_ate_beans: string | null = null
+   *
+   * type MyMData = MData & {
+   *   last_time_ate_beans: string | null
+   * }
+   *
+   * function load_state( m_data: MyMData) {
+   *   last_time_ate_beans = m_data.last_time_ate_beans
+   * }
+   *
+   * function on_game_start() {
+   *   RegisterScriptCallback('load_state', load_state)
+   * }
+   * ```
+   */
+  var m_data: MData
+  
+  // ---- Globals & engine callback hooks from _g.script ----
+  
+  /** Anomaly game version string, e.g. `"1.5.3"`. */
+  const GAME_VERSION: string
+  const USE_INI_MEMOIZE: boolean
+  const DEACTIVATE_SIM_ON_NON_LINKED_LEVELS: boolean
+  /** The `marshal` Lua library, present only in some builds (see {@link USE_MARSHAL}). */
+  const marshal: AnyTable
+  /** Actor id constant used across scripts. */
+  const AC_ID: number
+  /** Scratch storage for temporarily muted music/ambient volumes. */
+  const mus_vol: number
+  const amb_vol: number
+  const timer_transparent: number
+  /** When true, scripted GUIs may disable action keybinds while active. */
+  const KEYS_UNLOCK: boolean
+  /** Registers a new custom script-callback name (delegates to `axr_main.callback_add`). */
+  function AddScriptCallback(name: string): void
+  const _HUD_STATE: boolean
+  /** Registered scripted GUIs, keyed by name. */
+  const _GUIs: Record<string, { path?: string; instance?: any }>
+  const _GUIsInstances: Record<string, any>
+  const _GUIs_keyfree: Record<string, any>
+  function Register_UI(name: string, path?: string, instance?: any): void
+  const schemes: Record<string, any>
+  const schemes_by_stype: Record<string, any>
+  function stop_play_sound(obj: CGameObject): void
+  /** Yields the current script thread for `time_to_wait` game-time ms (nil = one frame). */
+  function wait_game(time_to_wait?: number): void
+  /** Yields the current script thread for `time_to_wait` real-time ms (nil = one frame). */
+  function wait(time_to_wait?: number): void
+  function on_actor_critical_power(): void
+  function on_actor_critical_max_power(): void
+  function on_actor_bleeding(): void
+  function on_actor_satiety(): void
+  function on_actor_radiation(): void
+  function on_actor_weapon_jammed(): void
+  function on_actor_cant_walk_weight(): void
+  function on_actor_psy(): void
+  // Engine method overrides that dispatch to script callbacks (invoked by the engine).
+  function CInventory__eat(item: CGameObject): boolean
+  function CActor__HitArtefactsOnBelt(hit_table: AnyTable, hit_power: number, hit_type: number): AnyTable
+  function CHudItem__OnMotionMark(state: number, mark: string): void
+  function CHudItem__PlayHUDMotion(anm_table: AnyTable, obj: CGameObject | null): AnyTable
+  function player_hud__OnMovementChanged(cmd: number): void
+  function CMissile__PutNextToSlot(itm: CGameObject): CGameObject
+  function CBulletManager__ObjectHit(section: Section.Item, obj: CGameObject, pos: vector, dir: vector, mtl: number, speed: number, wpn_id: number): void
+  function CAI_Stalker__GetWeaponAccuracy(obj: CGameObject, wpn: CGameObject, dispersion: number, body_state: number, move_type: number): number
+  function CActor__BeforeHitCallback(actor: CGameObject, shit: hit, bone_id: number): boolean
+  function CAI_Stalker__BeforeHitCallback(npc: CGameObject, shit: hit, bone_id: number): boolean
+  function CBaseMonster__BeforeHitCallback(monster: CGameObject, shit: hit, bone_id: number): boolean
+  function CActor__FootstepCallback(material: string, power: number, hud_view: boolean): boolean
+  function CActor_Fire(): boolean
+  function CCustomZone_BeforeActivateCallback(zone: CGameObject, obj: CGameObject): boolean
+  function CBurer_BeforeWeaponDropCallback(monster: CGameObject, wpn: CGameObject): boolean
+  function CBolt__State(id: number): boolean
+  function CZone_Touch(obj: CGameObject): boolean
+  function CHUDManager_OnScreenResolutionChanged(): void
+  function CActor_on_jump(): void
+  function CActor_on_land(landing_speed: number): void
+  function CALifeUpdateManager__on_before_change_level(packet: net_packet): void
+  function run_dynamic_element(folder: CUIWindow, close_inv?: boolean): void
+  function give_object_to_actor(sec: Section.Item, count?: number): void
+  /** Movement-command bit masks, keyed by name (`mcFwd`, `mcBack`, …). */
+  const actor_move_states: Record<string, number>
+  function clear_ini_cache(ini: string): void
+  function vec_set(vec: vector): vector
+  /** Inventory slots scanned for cosmetics/upgrades, keyed by slot id. */
+  const SCANNED_SLOTS: Record<number, boolean>
+  /** Squad behaviour names that mark a squad as a monster squad. */
+  const is_squad_monster: Record<string, boolean>
+  /** Maps squad behaviour name to its community. */
+  const squad_community_by_behaviour: Record<string, string>
+  function get_object_by_id(id: number): CGameObject | undefined
+  function distance_between_safe(obj1: CGameObject, obj2: CGameObject): number
+  const _EVENT: Record<string, any>
+  const _ITM: AnyTable
+  
+  namespace _g {
+    /** Anomaly `class "ini_file_ex"` is also reachable on the `_g` script namespace; typed as
+     *  the instance so its methods can be captured/overridden (`_g.ini_file_ex.Method = ...`). */
+    export const ini_file_ex: ini_file_ex
+  }
 }

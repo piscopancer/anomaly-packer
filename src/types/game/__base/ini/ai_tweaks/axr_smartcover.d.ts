@@ -2,13 +2,16 @@
 // Schema of `ai_tweaks\\axr_smartcover.ltx`. Sections enumerated for autocomplete; `AiTweaksAxrSmartcoverIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface AiTweaksAxrSmartcoverIni {
-  settings: {
-    enable: boolean
+declare global {
+  interface AiTweaksAxrSmartcoverIni {
+    settings: {
+      enable: boolean
+    }
   }
-}
 
-interface IniFileSchemas {
-  'ai_tweaks\\axr_smartcover.ltx': AiTweaksAxrSmartcoverIni
+  interface IniFileSchemas {
+    'ai_tweaks\\axr_smartcover.ltx': AiTweaksAxrSmartcoverIni
+  }
 }

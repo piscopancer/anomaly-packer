@@ -2,49 +2,52 @@
 // Schema of `plugins\\new_game_money.ltx`. Sections enumerated for autocomplete; `PluginsNewGameMoneyIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsNewGameMoneyIni {
-  stalker_money: {
-    money: number
+declare global {
+  interface PluginsNewGameMoneyIni {
+    stalker_money: {
+      money: number
+    }
+    bandit_money: {
+      money: number
+    }
+    ecolog_money: {
+      money: number
+    }
+    dolg_money: {
+      money: number
+    }
+    freedom_money: {
+      money: number
+    }
+    killer_money: {
+      money: number
+    }
+    army_money: {
+      money: number
+    }
+    monolith_money: {
+      money: number
+    }
+    csky_money: {
+      money: number
+    }
+    renegade_money: {
+      money: number
+    }
+    greh_money: {
+      money: number
+    }
+    isg_money: {
+      money: number
+    }
+    zombied_money: {
+      money: number
+    }
   }
-  bandit_money: {
-    money: number
-  }
-  ecolog_money: {
-    money: number
-  }
-  dolg_money: {
-    money: number
-  }
-  freedom_money: {
-    money: number
-  }
-  killer_money: {
-    money: number
-  }
-  army_money: {
-    money: number
-  }
-  monolith_money: {
-    money: number
-  }
-  csky_money: {
-    money: number
-  }
-  renegade_money: {
-    money: number
-  }
-  greh_money: {
-    money: number
-  }
-  isg_money: {
-    money: number
-  }
-  zombied_money: {
-    money: number
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\new_game_money.ltx': PluginsNewGameMoneyIni
+  interface IniFileSchemas {
+    'plugins\\new_game_money.ltx': PluginsNewGameMoneyIni
+  }
 }

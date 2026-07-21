@@ -2,11 +2,14 @@
 // Schema of `plugins\\new_game_setup.ltx`. Sections enumerated for autocomplete; `PluginsNewGameSetupIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsNewGameSetupIni {
-  remove_objects: Record<string, string>
-}
+declare global {
+  interface PluginsNewGameSetupIni {
+    remove_objects: string[]
+  }
 
-interface IniFileSchemas {
-  'plugins\\new_game_setup.ltx': PluginsNewGameSetupIni
+  interface IniFileSchemas {
+    'plugins\\new_game_setup.ltx': PluginsNewGameSetupIni
+  }
 }

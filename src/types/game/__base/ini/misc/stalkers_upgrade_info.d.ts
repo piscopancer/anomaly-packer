@@ -2,220 +2,361 @@
 // Schema of `misc\\stalkers_upgrade_info.ltx`. Sections enumerated for autocomplete; `MiscStalkersUpgradeInfoIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+import type { CommaSeparatedString } from 'anomaly-packer'
 
-interface MiscStalkersUpgradeInfoIni {
-  dasc_tech_mlr: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
+declare global {
+  interface MiscStalkersUpgradeInfoIni {
+    zat_a2_stalker_mechanic_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    bar_visitors_stalker_mechanic_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    jup_b217_stalker_tech_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    cit_killers_merc_mechanic_stalker_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    pri_monolith_monolith_mechanic_stalker_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    mar_base_stalker_tech_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    esc_smart_terrain_5_7_loner_mechanic_stalker_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    mil_smart_terrain_7_7_freedom_mechanic_stalker_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    val_smart_terrain_7_3_bandit_mechanic_stalker_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    agr_smart_terrain_1_6_army_mechanic_stalker_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    jup_b6_scientist_tech_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    m_lesnik_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    yan_ecolog_kruglov_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    dasc_tech_mlr_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    zat_stancia_mech_merc_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    jup_cont_mech_bandit_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    army_south_mechan_mlr_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    trucks_cemetery_bandit_mechanic_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    mechanic_monolith_kbo_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    mechanic_monolith_jup_depo_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    merc_pri_a18_mech_mlr_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    mechanic_army_yan_mlr_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    jup_depo_isg_tech_upgr: {
+      up_sect_empty: string
+      up_sect_empty_tier_1: string
+      up_sect_empty_tier_2: string
+      up_sect_empty_tier_3: string
+    }
+    dasc_tech_mlr: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    merc_pri_a18_mech_mlr: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    mechanic_army_yan_mlr: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    jup_cont_mech_bandit: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    zat_stancia_mech_merc: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    army_south_mechan_mlr: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    mechanic_monolith_kbo: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    mechanic_monolith_jup_depo: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    trucks_cemetery_bandit_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    zat_a2_stalker_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    bar_visitors_stalker_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    jup_b217_stalker_tech: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: string
+    }
+    jup_b6_scientist_tech: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    m_lesnik: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: string
+    }
+    cit_killers_merc_mechanic_stalker: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    pri_monolith_monolith_mechanic_stalker: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    mar_base_stalker_tech: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    esc_smart_terrain_5_7_loner_mechanic_stalker: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    mil_smart_terrain_7_7_freedom_mechanic_stalker: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    val_smart_terrain_7_3_bandit_mechanic_stalker: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    agr_smart_terrain_1_6_army_mechanic_stalker: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    yan_ecolog_kruglov: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: string
+    }
+    jup_depo_isg_tech: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_dolg_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_freedom_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_bandit_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_killer_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_stalker_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_army_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_monolith_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_ecolog_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_csky_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_renegade_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_greh_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
+    sim_default_isg_mechanic: {
+      def_upgr_tier_1: number
+      def_upgr_tier_2: number
+      def_upgr_tier_3: number
+      discount_condlist: CommaSeparatedString<string[]>
+    }
   }
-  merc_pri_a18_mech_mlr: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  mechanic_army_yan_mlr: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  jup_cont_mech_bandit: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  zat_stancia_mech_merc: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  army_south_mechan_mlr: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  mechanic_monolith_kbo: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  mechanic_monolith_jup_depo: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  trucks_cemetery_bandit_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  zat_a2_stalker_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  bar_visitors_stalker_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  jup_b217_stalker_tech: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: string
-  }
-  jup_b6_scientist_tech: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  m_lesnik: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: string
-  }
-  cit_killers_merc_mechanic_stalker: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  pri_monolith_monolith_mechanic_stalker: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  mar_base_stalker_tech: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  esc_smart_terrain_5_7_loner_mechanic_stalker: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  mil_smart_terrain_7_7_freedom_mechanic_stalker: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  val_smart_terrain_7_3_bandit_mechanic_stalker: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  agr_smart_terrain_1_6_army_mechanic_stalker: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  yan_ecolog_kruglov: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: string
-  }
-  jup_depo_isg_tech: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_dolg_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_freedom_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_bandit_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_killer_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_stalker_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_army_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_monolith_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_ecolog_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_csky_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_renegade_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_greh_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-  sim_default_isg_mechanic: {
-    def_upgr_tier_1: number
-    def_upgr_tier_2: number
-    def_upgr_tier_3: number
-    discount_condlist: CommaSeparatedString<string>
-  }
-}
 
-interface IniFileSchemas {
-  'misc\\stalkers_upgrade_info.ltx': MiscStalkersUpgradeInfoIni
+  interface IniFileSchemas {
+    'misc\\stalkers_upgrade_info.ltx': MiscStalkersUpgradeInfoIni
+  }
 }

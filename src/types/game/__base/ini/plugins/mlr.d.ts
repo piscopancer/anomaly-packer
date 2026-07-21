@@ -2,76 +2,79 @@
 // Schema of `plugins\\mlr.ltx`. Sections enumerated for autocomplete; `PluginsMlrIni` is a
 // mergeable interface — augment it to add sections. Field value types are
 // conservative (multi-token values become branded separated-strings).
+export { }
 
-interface PluginsMlrIni {
-  route_price: {
-    money_1: number
-    money_2: number
-    money_3: number
-    money_4: number
+declare global {
+  interface PluginsMlrIni {
+    route_price: {
+      money_1: number
+      money_2: number
+      money_3: number
+      money_4: number
+    }
+    extra_items: {
+      ammo_1_count: number
+      ammo_1_section: string
+      ammo_10_count: number
+      ammo_10_section: string
+      ammo_11_count: number
+      ammo_11_section: string
+      ammo_12_count: number
+      ammo_12_section: string
+      ammo_13_count: number
+      ammo_13_section: string
+      ammo_14_count: number
+      ammo_14_section: string
+      ammo_15_count: number
+      ammo_15_section: string
+      ammo_16_count: number
+      ammo_16_section: string
+      ammo_17_count: number
+      ammo_17_section: string
+      ammo_18_count: number
+      ammo_18_section: string
+      ammo_19_count: number
+      ammo_19_section: string
+      ammo_2_count: number
+      ammo_2_section: string
+      ammo_3_count: number
+      ammo_3_section: string
+      ammo_4_count: number
+      ammo_4_section: string
+      ammo_5_count: number
+      ammo_5_section: string
+      ammo_6_count: number
+      ammo_6_section: string
+      ammo_7_count: number
+      ammo_7_section: string
+      ammo_8_count: number
+      ammo_8_section: string
+      ammo_9_count: number
+      ammo_9_section: string
+      food_1_count: number
+      food_1_section: string
+      food_2_count: number
+      food_2_section: string
+      food_3_count: number
+      food_3_section: string
+      food_4_count: number
+      food_4_section: string
+      food_5_count: number
+      food_5_section: string
+      med_1_count: number
+      med_1_section: string
+      med_2_count: number
+      med_2_section: string
+      med_3_count: number
+      med_3_section: string
+      med_4_count: number
+      med_4_section: string
+      med_5_count: number
+      med_5_section: string
+    }
   }
-  extra_items: {
-    ammo_1_count: number
-    ammo_1_section: string
-    ammo_10_count: number
-    ammo_10_section: string
-    ammo_11_count: number
-    ammo_11_section: string
-    ammo_12_count: number
-    ammo_12_section: string
-    ammo_13_count: number
-    ammo_13_section: string
-    ammo_14_count: number
-    ammo_14_section: string
-    ammo_15_count: number
-    ammo_15_section: string
-    ammo_16_count: number
-    ammo_16_section: string
-    ammo_17_count: number
-    ammo_17_section: string
-    ammo_18_count: number
-    ammo_18_section: string
-    ammo_19_count: number
-    ammo_19_section: string
-    ammo_2_count: number
-    ammo_2_section: string
-    ammo_3_count: number
-    ammo_3_section: string
-    ammo_4_count: number
-    ammo_4_section: string
-    ammo_5_count: number
-    ammo_5_section: string
-    ammo_6_count: number
-    ammo_6_section: string
-    ammo_7_count: number
-    ammo_7_section: string
-    ammo_8_count: number
-    ammo_8_section: string
-    ammo_9_count: number
-    ammo_9_section: string
-    food_1_count: number
-    food_1_section: string
-    food_2_count: number
-    food_2_section: string
-    food_3_count: number
-    food_3_section: string
-    food_4_count: number
-    food_4_section: string
-    food_5_count: number
-    food_5_section: string
-    med_1_count: number
-    med_1_section: string
-    med_2_count: number
-    med_2_section: string
-    med_3_count: number
-    med_3_section: string
-    med_4_count: number
-    med_4_section: string
-    med_5_count: number
-    med_5_section: string
-  }
-}
 
-interface IniFileSchemas {
-  'plugins\\mlr.ltx': PluginsMlrIni
+  interface IniFileSchemas {
+    'plugins\\mlr.ltx': PluginsMlrIni
+  }
 }

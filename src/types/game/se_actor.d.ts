@@ -1,26 +1,30 @@
 /** @noSelfInFile */
 
 /** @customConstructor se_actor */
-declare class se_actor extends cse_alife_creature_actor {
-  m_registred: boolean // @generated field — refine type
-  start_position_filled: TODO // @generated field — refine type
-  constructor(section: Section)
-  on_register(): void
-  on_unregister(): void
-  STATE_Write(packet: net_packet): void
-  STATE_Read(packet: net_packet, size: number): void
-  get_location(): LuaMultiReturn<[vector, number, number]>
-  am_i_reached(squad: CseAlifeOnlineOfflineGroup): boolean
-  on_after_reach(squad: CseAlifeOnlineOfflineGroup): void
-  on_reach_target(squad: CseAlifeOnlineOfflineGroup): void
-  get_alife_task(): CALifeSmartTerrainTask
-  sim_available(): boolean
-  target_precondition(squad: CseAlifeOnlineOfflineGroup): boolean
-  evaluate_prior(squad: CseAlifeOnlineOfflineGroup): number
-}
+import type { Section } from 'anomaly-packer'
 
-declare namespace se_actor {
-  /** Anomaly `class "se_actor"` is also reachable on the `se_actor` script namespace; typed as
-   *  the instance so its methods can be captured/overridden (`se_actor.se_actor.Method = ...`). */
-  export const se_actor: se_actor
+declare global {
+  class se_actor extends cse_alife_creature_actor {
+    m_registred: boolean // @generated field — refine type
+    start_position_filled: TODO // @generated field — refine type
+    constructor(section: Section.Item)
+    on_register(): void
+    on_unregister(): void
+    STATE_Write(packet: net_packet): void
+    STATE_Read(packet: net_packet, size: number): void
+    get_location(): LuaMultiReturn<[vector, number, number]>
+    am_i_reached(squad: CseAlifeOnlineOfflineGroup): boolean
+    on_after_reach(squad: CseAlifeOnlineOfflineGroup): void
+    on_reach_target(squad: CseAlifeOnlineOfflineGroup): void
+    get_alife_task(): CALifeSmartTerrainTask
+    sim_available(): boolean
+    target_precondition(squad: CseAlifeOnlineOfflineGroup): boolean
+    evaluate_prior(squad: CseAlifeOnlineOfflineGroup): number
+  }
+
+  namespace se_actor {
+    /** Anomaly `class "se_actor"` is also reachable on the `se_actor` script namespace; typed as
+     *  the instance so its methods can be captured/overridden (`se_actor.se_actor.Method = ...`). */
+    export const se_actor: se_actor
+  }
 }
