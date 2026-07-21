@@ -95,9 +95,7 @@ declare global {
      * Gate predicates, evaluated as `precondition1`, `precondition2`, ... until one fails.
      * Numbered rather than a list because that is how vanilla walks them.
      */
-    precondition1?: InventoryPropertyCall
-    precondition2?: InventoryPropertyCall
-    precondition3?: InventoryPropertyCall
+    [precondition: `precondition${number}`]: InventoryPropertyCall | undefined
   }
 
   /** @customConstructor UIInventory */
@@ -220,7 +218,7 @@ declare global {
     GetPartner(): CGameObject | undefined
     ValidOwner(obj: CGameObject, state?: boolean): boolean
     IsInvOwner(npc: CGameObject): boolean
-    InitProperties(obj: CGameObject, bag: string): void
+    InitProperties(obj: CGameObject, bag: InventoryContainer): void
     Discard(): void
     Name_Equip(obj: CGameObject, bag: string): string
     Name_UnEquip(obj: CGameObject, bag: string): string

@@ -77,7 +77,7 @@ export async function pack(options: PackOptions) {
       await fs.mkdir(scriptsBuildPath, { recursive: true })
       for (const [template, global] of transpiled.runtimes) {
         const runtimeLua = await fs.readFile(path.join(import.meta.dirname, 'runtime', `${template}.script`), 'utf8')
-        await fs.writeFile(path.join(scriptsBuildPath, `${global}.script`), iconv.encode(runtimeLua, 'win1251'))
+        await fs.writeFile(path.join(scriptsBuildPath, `${global}.script`), iconv.encode(transpiled.header + runtimeLua, 'win1251'))
       }
       console.log(c.cyan.bold('Runtime ') + c.cyan(`scripts linked (${[...transpiled.runtimes.values()].join(', ')})`))
     }

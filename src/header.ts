@@ -13,6 +13,11 @@ import path from 'path'
 
 const PACKAGE_URL = 'https://github.com/piscopancer/anomaly-packer'
 
+/** Anomaly Packer's own version, read from its `package.json` — `src/header.ts` and the bundled `dist/index.mjs` both sit one level below it. Stamped into the first line so a shipped script says which packer produced it, not just that a packer did. */
+function readSelfVersion() {
+  return readPackageJson(path.join(import.meta.dirname, '..')).version
+}
+
 type PackageJson = {
   version?: string
   author?: string | { name?: string; url?: string }
@@ -51,6 +56,7 @@ function readPackageJson(cwd: string): PackageJson {
 
 export function buildHeader(cwd = process.cwd(), now = new Date()) {
   const pkg = readPackageJson(cwd)
+  const selfVersion = readSelfVersion()
   const fields: [label: string, value: string | undefined][] = [
     ['Author', readAuthor(pkg.author)],
     ['Version', pkg.version],
@@ -58,7 +64,7 @@ export function buildHeader(cwd = process.cwd(), now = new Date()) {
     ['Source', readRepository(pkg.repository)],
   ]
   const lines = [
-    `-- This script was generated with Anomaly Packer (${PACKAGE_URL})`,
+    `-- This script was generated with Anomaly Packer${selfVersion ? ` v${selfVersion}` : ''} (${PACKAGE_URL})`,
     ...fields.filter(([, value]) => value).map(([label, value]) => `-- ${label}: ${value}`),
   ]
   return lines.join('\n') + '\n\n'

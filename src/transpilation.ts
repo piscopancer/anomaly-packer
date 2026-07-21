@@ -27,6 +27,8 @@ export type Transpilation = {
   scripts: TranspiledScript[]
   /** Runtime templates the build depends on, mapped from the source template name to the per-addon flat script name it is copied to. */
   runtimes: Map<string, string>
+  /** The credit block prepended to every script of this build. Exposed so the copied runtime templates carry the same block — and the same date — as the transpiled scripts. */
+  header: string
 }
 
 export function transpile(scripts: NonNullable<PackOptions['scripts']>, addonId: string): Transpilation {
@@ -59,7 +61,7 @@ export function transpile(scripts: NonNullable<PackOptions['scripts']>, addonId:
       }
     }
   )
-  return { scripts: transpiledFiles, runtimes }
+  return { scripts: transpiledFiles, runtimes, header }
 }
 
 /** Rewrites `require("<runtime module>")` into the Anomaly cross-script global that provides it, recording which runtimes the build now needs. tstl emits a deterministic `require("<specifier>")` for `@noResolution` modules — with path separators turned into dots — so matching the exact call is precise, not a heuristic. */
