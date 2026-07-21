@@ -23,3 +23,19 @@ Pull in the game and addon type skeletons with a single reference each (for exam
 /// <reference types="anomaly-packer/types/game" />
 /// <reference types="anomaly-packer/types/addons" />
 ```
+
+The base config also selects this package as the JSX import source, so config files that produce xml — `ui`, `textures_descr`, `text` — can be written as `.tsx` with xray's own ui tags as intrinsic elements. Nothing has to be imported or configured for that beyond the `extends` above; the package owns its JSX runtime rather than augmenting React's, which is what keeps the element types resolving in an addon that has its own copy of `react`.
+
+Texture ids are typed. Every id declared in the unpacked `ui\textures_descr` tree is known to the compiler, so a misspelled texture fails to build instead of silently rendering nothing in game. An addon that ships its own `textures_descr` file declares its ids by merging them into `UI.Textures`, after which they are accepted everywhere a texture is.
+
+## Packing and distribution
+
+Every generated `.script` carries a short credit comment built from your `package.json` — version, author, repository — so a file that ends up loose in someone's gamedata folder can be traced back to its source. Fields you don't have are simply omitted.
+
+To produce a release, run the `zip` command against a finished build:
+
+```sh
+anomaly-packer zip --name my-addon
+```
+
+The archive holds `gamedata/` at its root, which is the layout Mod Organizer 2 and the other Anomaly mod managers expect, so the file installs by drag and drop with nothing to unwrap first.
