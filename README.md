@@ -38,4 +38,4 @@ To produce a release, run the `zip` command against a finished build:
 anomaly-packer zip --name my-addon
 ```
 
-The archive holds `gamedata/` at its root, which is the layout Mod Organizer 2 and the other Anomaly mod managers expect, so the file installs by drag and drop with nothing to unwrap first.
+The archive holds `gamedata/` at its root, which is the layout Mod Organizer 2 and the other Anomaly mod managers expect, so the file installs by drag and drop with nothing to unwrap first. It is named `<name>-<version>.zip`, taking the version from your `package.json`; `--name` sets only the base, and omitting it falls back to the package name.

@@ -23,15 +23,17 @@ declare const ui_mcm: {
   get: keyof McmConfig extends never
     ? (this: void, path: `${AddonId}/${string}`) => TODO
     : <Key extends keyof McmConfig>(this: void, path: `${AddonId}/${Key}`) => McmConfig[Key]
-  /** Truthy only on MCM builds new enough to hold a key while pressing it (the
-   *  `key_bind`/`kb_mod_radio` modifier feature). Addons read it to decide whether the
-   *  modifier options are usable; older MCM leaves it nil. */
-  key_hold: boolean
-  /** The option `type` marker for a keybind-modifier radio (none/shift/ctrl/alt). Used as
-   *  the `type` field of a `kb_mod_radio` option in the `on_mcm_load` tree. */
-  kb_mod_radio: 'kb_mod_radio'
-  /** True when the given modifier index (as configured by a `kb_mod_radio` option) is
-   *  currently held. `0` (none) is always considered satisfied. */
+  /** Call from an `on_key_hold` callback, once you have filtered for your key: true after the
+   *  key has been held for the user's configured time, then every `cycle` ms. Present only on
+   *  MCM 1.6.0 and later, so its absence is how an addon detects an older build. */
+  key_hold(this: void, id: string, key: number, cycle?: number): boolean
+  /** The `type` a keybind-modifier radio takes. It is an alias for MCM's horizontal radio
+   *  (`"radio_h"`) rather than a type of its own — MCM skips an option whose type it does not
+   *  know — so always read it from here instead of writing the string. */
+  kb_mod_radio: 'radio_h'
+  /** Whether the given modifier is held right now, polled from the engine rather than tracked
+   *  from key events, so a modifier held before the menu opened counts. `1` is shift, `2` ctrl,
+   *  `3` alt; anything else (`0`) asks for *no* modifier, and is true only when none is held. */
   get_mod_key(this: void, modifier: number): boolean
 } | null
 
@@ -62,9 +64,9 @@ declare module 'anomaly-packer/mcm' {
   /** A rebindable key. `def` is a `DIK_keys` scancode; `val = 2` stores it as a number. */
   export type McmKeyBindOption = McmOptionBase & { type: 'key_bind'; val: 2; def: number }
   /** A radio choosing the modifier (none/shift/ctrl/alt) that must be held with a
-   *  `key_bind`. `type` is `ui_mcm.kb_mod_radio`; `content` is `[value, label]` pairs and
-   *  `def` the default modifier index. */
-  export type McmKbModRadioOption = McmOptionBase & { type: 'kb_mod_radio'; val: 2; def: number; content: [value: number, label: string][] }
+   *  `key_bind`. `type` is `ui_mcm.kb_mod_radio`, i.e. MCM's horizontal radio; `content` is
+   *  `[value, label]` pairs and `def` the default modifier value. */
+  export type McmKbModRadioOption = McmOptionBase & { type: 'radio_h'; val: 2; def: number; content: [value: number, label: string][]; no_str?: boolean }
 
   /** A single leaf option (no children). */
   export type McmOption = McmTrackOption | McmCheckOption | McmListOption | McmDescOption | McmTitleOption | McmSlideOption | McmLineOption | McmKeyBindOption | McmKbModRadioOption
@@ -97,6 +99,15 @@ declare module 'anomaly-packer/mcm' {
   export function title(this: void, props: { id: string; text: string; align?: McmAlign }): McmTitleOption
   /** A decorative image/slide. `size` is optional. */
   export function slide(this: void, props: { id: string; text: string; link: string; size?: [width: number, height: number]; spacing: number }): McmSlideOption
+  /** A rebindable key; `def` is a `DIK_keys` scancode. Requires an MCM new enough to report `ui_mcm.key_hold`. */
+  export function keyBind(this: void, props: { id: string; text?: string; hint?: string; def: number }): McmKeyBindOption
+  /**
+   * The modifier a `keyBind` must be held with. `content` is `[value, label]` pairs, whose
+   * values are what `ui_mcm.get_mod_key` takes. MCM builds each label's translation id from
+   * the option's own path (`ui_mcm_..._lst_<label>`); set `no_str` to have the labels drawn
+   * as written instead, which is what key names like Shift and Ctrl want.
+   */
+  export function kbModRadio(this: void, props: { id: string; text?: string; hint?: string; def: number; content: [value: number, label: string][]; no_str?: boolean }): McmKbModRadioOption
   /** A horizontal separator. */
   export const line: McmLineOption
 

@@ -230,12 +230,12 @@ declare global {
     Center = 1,
     Bottom = 2,
   }
-  class CGameFont {}
-  /** Horizontal alignment constants of the `CGameFont` luabind class (`EAligment`). */
-  const CGameFont: {
-    readonly alLeft: 1
-    readonly alRight: 2
-    readonly alCenter: 16
+  class CGameFont {
+    // Horizontal alignment constants, bound as the class's own `EAligment` enum
+    // (`ui_export_script.cpp`), so they are read off the class rather than a separate table.
+    static readonly alLeft: 0
+    static readonly alRight: 1
+    static readonly alCenter: 2
   }
   class CUILines {
     SetFont(font: CGameFont): void
@@ -544,7 +544,10 @@ declare global {
   }
   
   // --- Script window base ---
-  class CUIScriptWnd {
+  // Bound as `class_<CUIDialogWndEx, WrapType, bases<CUIDialogWnd, DLL_Pure>>`
+  // (`uiscriptwnd_script.h`), so a script window is a dialog window and inherits its
+  // `Show`/`IsShown`/`ShowDialog` surface along with everything on `CUIWindow`.
+  class CUIScriptWnd extends CUIDialogWnd {
     constructor()
     // Load(xml_name: string): true
     Update(): void

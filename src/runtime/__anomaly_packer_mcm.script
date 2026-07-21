@@ -37,6 +37,20 @@ function slide(props)
     return props
 end
 
+function keyBind(props)
+    props.type = "key_bind"
+    props.val = 2
+    return props
+end
+
+-- The type comes off MCM itself: `kb_mod_radio` is an alias for its horizontal radio
+-- ("radio_h"), not a type name of its own, and an unknown type is skipped without a word.
+function kbModRadio(props)
+    props.type = ui_mcm.kb_mod_radio
+    props.val = 2
+    return props
+end
+
 function group(props)
     if props.sh == nil then props.sh = true end
     return props

@@ -16,30 +16,40 @@ type ZipOptions = {
   buildDir?: string
   /** Where to write the archive. Defaults to the project root. */
   outDir?: string
-  /** Archive name without the extension. Defaults to the package name and version. */
+  /**
+   * Base archive name, without the extension and without the version — the version from the
+   * manifest is appended either way, since which release an archive holds is the one thing a
+   * downloaded zip has to say for itself. Defaults to the package name.
+   */
   name?: string
   cwd?: string
 }
 
-/** `<name>-<version>` from the addon's manifest, falling back to the directory name. */
-function defaultName(cwd: string) {
+function readManifest(cwd: string) {
   const manifest = path.join(cwd, 'package.json')
-  if (existsSync(manifest)) {
-    try {
-      const pkg = JSON.parse(readFileSync(manifest, 'utf8')) as { name?: string; version?: string }
-      if (pkg.name) return pkg.version ? `${pkg.name}-${pkg.version}` : pkg.name
-    } catch {
-      // A malformed manifest is not a reason to refuse to package.
-    }
+  if (!existsSync(manifest)) return {}
+  try {
+    return JSON.parse(readFileSync(manifest, 'utf8')) as { name?: string; version?: string }
+  } catch {
+    // A malformed manifest is not a reason to refuse to package.
+    return {}
   }
-  return path.basename(cwd)
+}
+
+/** `<base>-<version>`, with the base defaulting to the package name and then the directory. */
+function archiveName(cwd: string, name?: string) {
+  const pkg = readManifest(cwd)
+  const base = name ?? pkg.name ?? path.basename(cwd)
+  // A base that already carries the version is left alone, so passing the full name still works.
+  if (!pkg.version || base.endsWith(`-${pkg.version}`)) return base
+  return `${base}-${pkg.version}`
 }
 
 export async function zipBuild(options: ZipOptions = {}) {
   const cwd = options.cwd ?? process.cwd()
   const buildDir = path.resolve(cwd, options.buildDir ?? 'build')
   const outDir = path.resolve(cwd, options.outDir ?? '.')
-  const outFile = path.join(outDir, `${options.name ?? defaultName(cwd)}.zip`)
+  const outFile = path.join(outDir, `${archiveName(cwd, options.name)}.zip`)
 
   if (!existsSync(buildDir)) {
     throw new Error(`Nothing to zip: ${buildDir} does not exist. Run the build first.`)
