@@ -26,6 +26,9 @@ importers:
       iconv-lite:
         specifier: ^0.7.3
         version: 0.7.3
+      ini:
+        specifier: ^7.0.0
+        version: 7.0.0
       lua-types:
         specifier: ^2.14.1
         version: 2.14.1
@@ -51,6 +54,9 @@ importers:
       '@types/archiver':
         specifier: ^8.0.0
         version: 8.0.0
+      '@types/ini':
+        specifier: ^4.1.1
+        version: 4.1.1
       '@types/node':
         specifier: ^24.2.0
         version: 24.13.3
@@ -456,6 +462,9 @@ packages:
 
   '@types/archiver@8.0.0':
     resolution: {integrity: sha512-YpXPbEuv9+eUIPPQWUPahj3cvs9isWRuF+J4z+KbdYVDO3rWorWQFxUVHnwPu2AgKwvgpki5F2VMX0Xx+mX45A==}
+
+  '@types/ini@4.1.1':
+    resolution: {integrity: sha512-MIyNUZipBTbyUNnhvuXJTY7B6qNI78meck9Jbv3wk0OgNwRyOOVEKDutAkOs1snB/tx0FafyR6/SN4Ps0hZPeg==}
 
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
@@ -947,6 +956,10 @@ packages:
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
+
+  ini@7.0.0:
+    resolution: {integrity: sha512-ifK0CgjALofS5bkrcTy4RaQ9Vx2Knf/eLeIO+NaswQEpH1UblrtTSCIvN71qQDMq0PeQ/SSPojvEJp9vvvfr+w==}
+    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
   inline-style-parser@0.1.1:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
@@ -1788,6 +1801,8 @@ snapshots:
       '@types/node': 24.13.3
       '@types/readdir-glob': 1.1.5
 
+  '@types/ini@4.1.1': {}
+
   '@types/node@12.20.55': {}
 
   '@types/node@24.13.3':
@@ -2228,6 +2243,8 @@ snapshots:
   import-without-cache@0.4.0: {}
 
   inherits@2.0.4: {}
+
+  ini@7.0.0: {}
 
   inline-style-parser@0.1.1: {}
 

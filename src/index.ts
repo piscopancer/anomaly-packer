@@ -1,5 +1,6 @@
 export * from './pack'
 export * from './zip'
+export * from './meta'
 
 export * from './texts'
 export * from './types'
