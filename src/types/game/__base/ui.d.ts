@@ -32,6 +32,7 @@ declare global {
     /** max corner (`Fvector`) */
     max: vector
   }
+  /** @customConstructor Frect */
   class Frect {
     constructor()
     /** @returns self */
@@ -359,6 +360,7 @@ declare global {
   class CUISleepStatic extends CUIStatic {
     constructor()
   }
+  /** @customConstructor CUITextWnd */
   class CUITextWnd extends CUIWindow {
     constructor()
     AdjustHeightToText(): void

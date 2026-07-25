@@ -285,7 +285,8 @@ declare global {
     OnListItemClicked(): void
     OnListItemDbClicked(): void
     InitCallBacks(): void
-    AddItemToList(index: number, str_id: string, func: string, params?: CellPropertyParams): void
+    /** `func` is the method name dispatched on click; omit it (nil) for an inert row the menu never dispatches, as vanilla's own separators do. */
+    AddItemToList(index: number, str_id: string, func?: string, params?: CellPropertyParams): void
     OnKeyboard(dik: number, keyboard_action: number): boolean
     OnHide(): void
   }
@@ -383,9 +384,21 @@ declare global {
     /** Anomaly `class "UICellContainer"` is also reachable on the `utils_ui` script namespace; typed as
      *  the instance so its methods can be captured/overridden (`utils_ui.UICellContainer.Method = ...`). */
     export const UICellContainer: UICellContainer
-    /** Anomaly `class "UICellItem"` is also reachable on the `utils_ui` script namespace; typed as
-     *  the instance so its methods can be captured/overridden (`utils_ui.UICellItem.Method = ...`). */
-    export const UICellItem: UICellItem
+    /** Anomaly `class "UICellItem"` on the `utils_ui` script namespace. Callable to construct a cell
+     *  (the DSL is invoked here, not as a global `new`), and carries the instance shape so its methods
+     *  can be captured/overridden (`utils_ui.UICellItem.Method = ...`). The container may be a real
+     *  {@link UICellContainer} or the free-cell config `{ path, xml, grid_size?, grid_line? }`. */
+    export const UICellItem: UICellItem & {
+      (
+        this: void,
+        container:
+          | UICellContainer
+          | { path: string; xml: CScriptXmlInit; grid_size?: number; grid_line?: number; disable_bar?: boolean },
+        st: CUIStatic | { path: string; base: CUIStatic },
+        indx?: number,
+        manual?: boolean,
+      ): UICellItem
+    }
     /** Anomaly `class "UICellProperties"` is also reachable on the `utils_ui` script namespace; typed as
      *  the instance so its methods can be captured/overridden (`utils_ui.UICellProperties.Method = ...`). */
     export const UICellProperties: UICellProperties
@@ -395,9 +408,12 @@ declare global {
     /** Anomaly `class "UIHint"` is also reachable on the `utils_ui` script namespace; typed as
      *  the instance so its methods can be captured/overridden (`utils_ui.UIHint.Method = ...`). */
     export const UIHint: UIHint
-    /** Anomaly `class "UIInfoItem"` is also reachable on the `utils_ui` script namespace; typed as
-     *  the instance so its methods can be captured/overridden (`utils_ui.UIInfoItem.Method = ...`). */
-    export const UIInfoItem: UIInfoItem
+    /** Anomaly `class "UIInfoItem"` on the `utils_ui` script namespace. Callable to construct the
+     *  item-info window (the DSL is invoked here, not as a global `new`), and carries the instance
+     *  shape so its methods can be captured/overridden (`utils_ui.UIInfoItem.Method = ...`). */
+    export const UIInfoItem: UIInfoItem & {
+      (this: void, owner: CUIScriptWnd, delay?: number): UIInfoItem
+    }
     /** Anomaly `class "UIInfoUpgr"` is also reachable on the `utils_ui` script namespace; typed as
      *  the instance so its methods can be captured/overridden (`utils_ui.UIInfoUpgr.Method = ...`). */
     export const UIInfoUpgr: UIInfoUpgr

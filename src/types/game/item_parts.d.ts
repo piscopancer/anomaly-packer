@@ -12,7 +12,8 @@ declare global {
     export function disassembly_weapon(obj: CGameObject, obj_d: CGameObject): boolean
     export function evaluate_parts(obj: CGameObject): any
     export function func_disassembly(obj: CGameObject, obj_d: CGameObject): boolean
-    export function get_parts_con(obj: CGameObject, id: number, evaluate: boolean): any
+    /** The item's parts as `{ section: condition }` (condition 0-100), or nil when it has none; pass `evaluate` to refresh them first. */
+    export function get_parts_con(obj?: CGameObject, id?: number, evaluate?: boolean): Record<Section.Item, number> | undefined
     export function get_suitable_dtool(obj: CGameObject): CGameObject
     export function get_suitable_part_con(sec: Section.Item, con: number): number
     export function init_settings(): void
