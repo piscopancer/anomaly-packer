@@ -51,6 +51,16 @@ declare global {
     export function sort_info(asec: string, bsec: string): void
   }
 
+  /**
+   * A script window a {@link UICellContainer} is built on. Not an engine type: `item_in_hold`
+   * is a Lua field the container writes onto its owner (`utils_ui.script`), holding the `ID` of
+   * the container a cell is currently dragged out of, which windows read to suppress actions
+   * mid-drag.
+   */
+  interface UICellContainerOwner extends CUIScriptWnd {
+    item_in_hold?: string | false
+  }
+
   /** @customConstructor UICellContainer */
   class UICellContainer {
     ID: TODO // @generated field — refine type
@@ -65,16 +75,20 @@ declare global {
     disable_drag: boolean // @generated field — refine type
     disable_highlight: boolean // @generated field — refine type
     disable_info: boolean // @generated field — refine type
-    disable_scroll: TODO // @generated field — refine type
+    /** Set from the `manual` constructor flag and by {@link EnableScrolling}; a manual container never scrolls. */
+    disable_scroll: boolean
     disable_scroll_dragdrop: boolean // @generated field — refine type
     disable_stack: boolean // @generated field — refine type
     drag_area: TODO // @generated field — refine type
     drag_down: TODO // @generated field — refine type
     drag_up: TODO // @generated field — refine type
     grid: TODO // @generated field — refine type
-    grid_line: TODO // @generated field — refine type
-    grid_size: TODO // @generated field — refine type
-    hold: TODO // @generated field — refine type
+    /** Gap between two cells, in UI units (2). */
+    grid_line: number
+    /** Side of a single 1x1 cell, in UI units (41). */
+    grid_size: number
+    /** The cell currently dragged out of this container: its index, the icon following the cursor, and the grab time. */
+    hold: { idx: number | false; ico: CUIStatic | false; tg: number; w: number; h: number }
     hover: TODO // @generated field — refine type
     idxer: TODO // @generated field — refine type
     ignore_scroll: boolean // @generated field — refine type
@@ -83,19 +97,28 @@ declare global {
     line: TODO // @generated field — refine type
     line_cnt: number // @generated field — refine type
     manual: TODO // @generated field — refine type
-    owner: TODO // @generated field — refine type
-    pad: TODO // @generated field — refine type
-    path: TODO // @generated field — refine type
-    pd: TODO // @generated field — refine type
-    prof: TODO // @generated field — refine type
+    /** The script window the container was built on; the constructor's `owner`. */
+    owner: UICellContainerOwner
+    /** The scrollbar-substitute drawn at the container's right edge. */
+    pad: CUIStatic
+    path: string
+    /** Scroll pad state: `power` is the pad's position-to-scroll ratio. */
+    pd: { update: boolean; off: number | false; start: number; hold: boolean; power: number }
+    /** The container's own frame; a `CUIFrameWindow` when built with `use_frame`, a static otherwise. */
+    prof: CUIStatic | CUIFrameWindow
     rKind: TODO // @generated field — refine type
-    row_end: TODO // @generated field — refine type
-    scolling_power: TODO // @generated field — refine type
+    /** Index of the last occupied row, so `row_end * (grid_size + grid_line)` is the content height. */
+    row_end: number
+    /** Rows moved per wheel tick (1), raised to {@link scolling_power_up} while a key modifier is held. */
+    scolling_power: number
     scolling_power_up: number // @generated field — refine type
-    scroll: TODO // @generated field — refine type
+    /** The engine scroll view the cells live in; the only handle on the actual scroll position. */
+    scroll: CUIScrollView
     scroll_pause: boolean // @generated field — refine type
-    scroll_pos: TODO // @generated field — refine type
-    scroll_tg: TODO // @generated field — refine type
+    /** Last position written by {@link Scroll_SetPos}, in UI units from the top. */
+    scroll_pos: number
+    /** Timestamp of the last handled scroll step, from `utils_ui.get_time()`. */
+    scroll_tg: number
     selected: TODO // @generated field — refine type
     showcase: boolean // @generated field — refine type
     sort_method: string // @generated field — refine type
@@ -103,8 +126,8 @@ declare global {
     stack_all: boolean // @generated field — refine type
     use_frame: TODO // @generated field — refine type
     xml: TODO // @generated field — refine type
-    constructor(id: string, owner: CUIScriptWnd, path: string, prof: string, ele_base: CUIWindow, manual: boolean, use_frame: boolean)
-    InitControls(owner: CUIScriptWnd, prof: string, ele_base: CUIWindow): void
+    constructor(id: string, owner: UICellContainerOwner, path: string, prof: string, ele_base: CUIWindow, manual: boolean, use_frame: boolean)
+    InitControls(owner: UICellContainerOwner, prof: string, ele_base: CUIWindow): void
     Reinit(t?: AnyTable, tf?: AnyTable): void
     AddIndex(id: number, sec: Section.Item | undefined, indx: number): void
     RemoveIndex(id: number, sec?: Section.Item, indx?: number): void
@@ -169,7 +192,8 @@ declare global {
     area: TODO // @generated field — refine type
     bar: TODO // @generated field — refine type
     childs: TODO // @generated field — refine type
-    cnt: TODO // @generated field — refine type
+    /** Stack-count badge static (`:cnt`), drawn in the cell corner; created on demand by `Add_Counter`. */
+    cnt: CUIStatic
     ctxt: TODO // @generated field — refine type
     ctxts: TODO // @generated field — refine type
     ico_gl: TODO // @generated field — refine type
@@ -326,7 +350,8 @@ declare global {
     can_compare: boolean // @generated field — refine type
     delay: TODO // @generated field — refine type
     desc: TODO // @generated field — refine type
-    dialog: TODO // @generated field — refine type
+    /** Root static of the info window; `Update` places it at the cursor via `utils_xml.sync_cursor`. */
+    dialog: CUIStatic
     frame: CUIFrameWindow
     id: TODO // @generated field — refine type
     name: TODO // @generated field — refine type

@@ -2,6 +2,13 @@
 
 declare namespace task_manager {
   class TaskManager {
+    /**
+     * Every task the manager currently tracks, keyed by task id (the `tm_*.ltx` section name).
+     * A task stays here while it is in progress, and — when its section sets `repeat_timeout` —
+     * for as long as that timeout runs after it ended, so a key's presence is not by itself
+     * proof the task is active; check {@link CGeneralTask.status}.
+     */
+    task_info: Record<string, CGeneralTask>
     give_task(task_id: string, task_giver_id: number): void
     set_task_completed(task_id: string): void
     set_task_failed(task_id: string): void
@@ -22,7 +29,8 @@ declare namespace task_manager {
 
 /** @customConstructor CRandomTask */
 declare class CRandomTask {
-  task_info: TODO // @generated field — refine type
+  /** See {@link task_manager.TaskManager.task_info} — the same table, on the class the manager is an instance of. */
+  task_info: Record<string, CGeneralTask>
   constructor()
   save(packet: net_packet): void
   load(reader: net_packet): void

@@ -17,14 +17,22 @@ declare global {
   function GetCursorPosition(): vector2
   function SetCursorPosition(pos: vector2): void
   function FitInRect(window: CUIWindow, rect: Frect, border?: number, dx16pos?: number): boolean
-  /** Global HUD accessor (registered separately from the UI window classes) */
+  /** Global HUD accessor — registered on its own in `UIGameCustom_script.cpp`, outside any module. */
   function get_hud(): Hud | null
-  function get_pda_menu(): CUIPdaWnd | null
-  function get_actor_menu(): CUIActorMenu | null
-  /** @returns the current `EMenuMode` */
-  function get_menu_mode(): number
-  function get_maingame(): CUIMainIngameWnd | null
-  
+
+  /**
+   * The menu accessors, bound as `module(L, "ActorMenu")` in `UIActorMenu_script.cpp`, so they are
+   * reached as `ActorMenu.get_pda_menu()` rather than as globals.
+   */
+  namespace ActorMenu {
+    function get_pda_menu(): CUIPdaWnd | null
+    function get_actor_menu(): CUIActorMenu | null
+    /** @returns the current `EMenuMode` */
+    function get_menu_mode(): number
+    function get_maingame(): CUIMainIngameWnd | null
+  }
+
+  /** @customConstructor Fbox */
   class Fbox {
     constructor()
     /** min corner (`Fvector`) */
@@ -73,6 +81,8 @@ declare global {
     WINDOW_LBUTTON_UP = 3,
     WINDOW_RBUTTON_UP = 4,
     WINDOW_MOUSE_MOVE = 6,
+    WINDOW_MOUSE_WHEEL_UP = 7,
+    WINDOW_MOUSE_WHEEL_DOWN = 8,
     WINDOW_LBUTTON_DB_CLICK = 9,
     WINDOW_KEY_PRESSED = 10,
     WINDOW_KEY_RELEASED = 11,
@@ -248,9 +258,18 @@ declare global {
   }
   
   // --- Core window hierarchy ---
+  /** @customConstructor CUIWindow */
   class CUIWindow {
     constructor()
+    // Parents `child` to this window and hands ownership of it to C++ — the binding carries
+    // luabind's `adopt` policy. Passing a window a Lua class allocated (anything built with
+    // `defclass` on a `CUIWindow` base) corrupts the heap, since the object is then freed by
+    // both sides; use `AttachChildKeepOwner` for those.
     AttachChild(child: CUIWindow): void
+    // Same as `AttachChild`, but without the `adopt` policy: the child stays owned by Lua and
+    // is freed when the last reference to it is collected. This is the one to use for a
+    // Lua-side window attached to an engine window. Modded exes only.
+    AttachChildKeepOwner(child: CUIWindow): void
     DetachChild(child: CUIWindow): void
     SetAutoDelete(auto_delete: boolean): void
     IsAutoDelete(): boolean
@@ -299,12 +318,14 @@ declare global {
     AllowCursor(allow: boolean): void
     AllowCenterCursor(allow: boolean): void
   }
+  /** @customConstructor CUIFrameWindow */
   class CUIFrameWindow extends CUIWindow {
     constructor()
     SetWidth(width: number): void
     SetHeight(height: number): void
     SetColor(color: number): void
   }
+  /** @customConstructor CUIFrameLineWnd */
   class CUIFrameLineWnd extends CUIWindow {
     constructor()
     SetWidth(width: number): void
@@ -325,6 +346,7 @@ declare global {
     SetHintText(hint: string): void
     GetHintText(): string | null
   }
+  /** @customConstructor CUIScrollView */
   class CUIScrollView extends CUIWindow {
     constructor()
     AddWindow(window: CUIWindow, auto_delete: boolean): void
@@ -338,6 +360,7 @@ declare global {
     SetFixedScrollBar(fixed: boolean): void
     SetScrollPos(pos: number): void
   }
+  /** @customConstructor CUIStatic */
   class CUIStatic extends CUIWindow {
     constructor()
     SetTextureColor(color: number): void
@@ -357,6 +380,7 @@ declare global {
     SetConstHeading(heading: boolean): void
     GetConstHeading(): boolean
   }
+  /** @customConstructor CUISleepStatic */
   class CUISleepStatic extends CUIStatic {
     constructor()
   }
@@ -383,21 +407,26 @@ declare global {
   }
   
   // --- Buttons ---
+  /** @customConstructor CUIButton */
   class CUIButton extends CUIStatic {
     constructor()
   }
+  /** @customConstructor CUI3tButton */
   class CUI3tButton extends CUIButton {
     constructor()
   }
+  /** @customConstructor CUICheckButton */
   class CUICheckButton extends CUI3tButton {
     constructor()
     GetCheck(): boolean
     SetCheck(checked: boolean): void
     SetDependControl(window: CUIWindow): void
   }
+  /** @customConstructor CUITabButton */
   class CUITabButton extends CUIButton {
     constructor()
   }
+  /** @customConstructor CUITabControl */
   class CUITabControl extends CUIWindow {
     constructor()
     AddItem(button: CUITabButton): boolean
@@ -415,15 +444,19 @@ declare global {
   class CUICustomSpin extends CUIWindow {
     GetText(): string | null
   }
+  /** @customConstructor CUISpinNum */
   class CUISpinNum extends CUICustomSpin {
     constructor()
   }
+  /** @customConstructor CUISpinFlt */
   class CUISpinFlt extends CUICustomSpin {
     constructor()
   }
+  /** @customConstructor CUISpinText */
   class CUISpinText extends CUICustomSpin {
     constructor()
   }
+  /** @customConstructor CUITrackBar */
   class CUITrackBar extends CUIWindow {
     constructor()
     GetCheck(): boolean
@@ -448,12 +481,14 @@ declare global {
     CaptureFocus(capture: boolean): void
     SetNextFocusCapturer(next: CUICustomEdit): void
   }
+  /** @customConstructor CUIEditBox */
   class CUIEditBox extends CUICustomEdit {
     constructor()
     InitTexture(texture: string): void
   }
   
   // --- Lists ---
+  /** @customConstructor CUIListBox */
   class CUIListBox extends CUIScrollView {
     constructor()
     ShowSelectedItem(show: boolean): void
@@ -482,6 +517,7 @@ declare global {
   }
   
   // --- Combo box ---
+  /** @customConstructor CUIComboBox */
   class CUIComboBox extends CUIWindow {
     constructor()
     SetVertScroll(scroll: boolean): void
@@ -500,6 +536,7 @@ declare global {
   }
   
   // --- Properties / message / progress / map ---
+  /** @customConstructor CUIPropertiesBox */
   class CUIPropertiesBox extends CUIFrameWindow {
     constructor()
     RemoveItem(tag: number): void
@@ -511,6 +548,7 @@ declare global {
     AddItem(title: string): boolean
     InitPropertiesBox(pos: vector2, size: vector2): void
   }
+  /** @customConstructor CUIMessageBox */
   class CUIMessageBox extends CUIStatic {
     constructor()
     InitMessageBox(xml_template: string): void
@@ -518,6 +556,7 @@ declare global {
     GetHost(): string | null
     GetPassword(): string | null
   }
+  /** @customConstructor CUIMessageBoxEx */
   class CUIMessageBoxEx extends CUIDialogWnd {
     constructor()
     InitMessageBox(xml_template: string): void
@@ -525,6 +564,7 @@ declare global {
     GetHost(): string | null
     GetPassword(): string | null
   }
+  /** @customConstructor CUIProgressBar */
   class CUIProgressBar extends CUIWindow {
     constructor()
     SetProgressPos(pos: number): void
@@ -539,6 +579,7 @@ declare global {
     SetMiddleColor(color: number): void
     SetMaxColor(color: number): void
   }
+  /** @customConstructor CUIMapInfo */
   class CUIMapInfo extends CUIWindow {
     constructor()
     Init(pos: vector2, size: vector2): void
@@ -549,18 +590,30 @@ declare global {
   // Bound as `class_<CUIDialogWndEx, WrapType, bases<CUIDialogWnd, DLL_Pure>>`
   // (`uiscriptwnd_script.h`), so a script window is a dialog window and inherits its
   // `Show`/`IsShown`/`ShowDialog` surface along with everything on `CUIWindow`.
+  /** @customConstructor CUIScriptWnd */
   class CUIScriptWnd extends CUIDialogWnd {
     constructor()
     // Load(xml_name: string): true
     Update(): void
     Dispatch(): void
-    Register(): void
+    /** Names a child control so `AddCallback` can address it; the name is the `control_id` the callbacks are keyed by. */
+    Register(control: CUIWindow, control_id: string): void
     // NewCallback(control_id: string, event: ui_events, functor: () => void, self: CUIWindow): void
     AddCallback(control_id: string, event: ui_events, functor: () => void, self: CUIWindow): void
     OnKeyboard(dik: number, ui_message: EUIMessages): boolean
+    /**
+     * Mouse handler, overridable from Lua exactly like {@link OnKeyboard}: return `true` to
+     * consume the event, or delegate to `CUIScriptWnd.OnMouse(self, x, y, ui_message)` to let
+     * the children handle it. `x`/`y` are cursor coordinates in the 1024x768 UI space.
+     *
+     * The wheel messages (`WINDOW_MOUSE_WHEEL_UP`/`_DOWN`) reach this before any child scroll
+     * view consumes them, which is what makes script-side scroll handling possible.
+     */
+    OnMouse(x: number, y: number, ui_message: EUIMessages): boolean
   }
   
   // --- Actor menu / PDA / in-game HUD windows ---
+  /** @customConstructor CUIActorMenu */
   class CUIActorMenu extends CUIDialogWnd {
     constructor()
     get_drag_item(): CGameObject | null
@@ -575,20 +628,38 @@ declare global {
     ToSlot(object: CGameObject, force_place: boolean, slot_id: number): boolean
     ToBelt(object: CGameObject, use_cursor_pos: boolean): boolean
   }
+  /**
+   * A PDA tab, named by the `id` of its button in `pda.xml`. The engine handles the first three
+   * itself (`UIPdaWnd.cpp`); the rest are built in Lua by `pda.set_active_subdialog`, and any
+   * further string is a tab some addon added.
+   */
+  type PdaSection = Suggest<
+    | 'eptTasks'
+    | 'eptRanking'
+    | 'eptLogs'
+    | 'eptRelations'
+    | 'eptContacts'
+    | 'eptEncyclopedia'
+    | 'eptRadio'
+    | 'eptNPC'
+  >
+  /** @customConstructor CUIPdaWnd */
   class CUIPdaWnd extends CUIDialogWnd {
     constructor()
     IsShown(): boolean
     ShowDialog(hide_indicators: boolean): void
     HideDialog(): void
-    SetActiveSubdialog(section: Section.Item): void
+    SetActiveSubdialog(section: PdaSection): void
     SetActiveDialog(ui: CUIWindow): void
     GetActiveDialog(): CUIWindow | null
-    GetActiveSection(): string | null
+    GetActiveSection(): PdaSection | null
     GetTabControl(): CUITabControl | null
   }
+  /** @customConstructor CUIMotionIcon */
   class CUIMotionIcon extends CUIWindow {
     constructor()
   }
+  /** @customConstructor CUIZoneMap */
   class CUIZoneMap {
     constructor()
     disabled: boolean
@@ -596,6 +667,7 @@ declare global {
     MapFrame(): CUIWindow | null
     Background(): CUIStatic | null
   }
+  /** @customConstructor CUIHudStatesWnd */
   class CUIHudStatesWnd extends CUIWindow {
     constructor()
     readonly m_back: CUIStatic
@@ -616,6 +688,7 @@ declare global {
     m_ui_stamina_bar_show: boolean
     m_ui_psy_bar_show: boolean
   }
+  /** @customConstructor CUIMainIngameWnd */
   class CUIMainIngameWnd extends CUIWindow {
     constructor()
     readonly UIStaticDiskIO: CUIStatic
@@ -641,6 +714,7 @@ declare global {
   }
   
   // --- Multiplayer / main-menu only (registered by the engine, not used by single-player addons) ---
+  /** @customConstructor SServerFilters */
   class SServerFilters {
     constructor()
     empty: boolean
@@ -650,12 +724,14 @@ declare global {
     without_ff: boolean
     listen_servers: boolean
   }
+  /** @customConstructor connect_error_cb */
   class connect_error_cb {
     constructor()
     /** Bind a Lua handler; it is invoked as `fn(object, error, text)` on a connection error. */
     bind(object: any, fn: (this: void, error: number, text: string) => void): void
     clear(): void
   }
+  /** @customConstructor CServerList */
   class CServerList extends CUIWindow {
     constructor()
     SetConnectionErrCb(cb: connect_error_cb): void
@@ -673,6 +749,7 @@ declare global {
     readonly ece_unique_nick_not_registred: 1
     readonly ece_unique_nick_expired: 2
   }
+  /** @customConstructor CUIMapList */
   class CUIMapList extends CUIWindow {
     constructor()
     SetWeatherSelector(selector: CUIComboBox): void

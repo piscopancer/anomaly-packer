@@ -1,7 +1,12 @@
 /** @noSelfInFile */
 
 declare namespace treasure_manager {
-  export const caches: AnyTable
+  /**
+   * Every stash the manager knows about, keyed by the inventory box's object id. The value is
+   * the comma-joined sections still waiting to be spawned into it, `false` while the stash is
+   * empty, and `true` once its contents have been placed.
+   */
+  export const caches: Record<number, string | boolean>
   export const ini_treasure: AnyTable
   export const last_secret: AnyTable
   export const stash_bonus: AnyTable

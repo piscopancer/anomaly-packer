@@ -16,13 +16,29 @@
 
 interface McmConfig {}
 
+// The callbacks MCM registers with `AddScriptCallback` as it loads, so an addon may listen for them
+// with `RegisterScriptCallback`.
+interface GameEvents {
+  /** Sent when MCM applies changes, with the changed options. Vanilla's `on_option_change` covers the same moment but is sent only while a level is loaded, so this is the one that also fires in the main menu. */
+  mcm_option_change(changes: AnyTable): void
+  /** The player pressed Reset, undoing the changes made since the page was opened. */
+  mcm_option_reset(): void
+  /** The player pressed Default, restoring the page's options to their `def` values. */
+  mcm_option_restore_default(): void
+  /** The player left the menu without applying, discarding the changes made. */
+  mcm_option_discard(): void
+}
+
 // When the addon author leaves `McmConfig` empty, `keyof McmConfig` is `never` and
 // `get` stays permissive: any `${AddonId}/...` path, `TODO` value. Once they add keys,
 // the path is restricted to those keys and the return type is inferred per key.
 declare const ui_mcm: {
   get: keyof McmConfig extends never
     ? (this: void, path: `${AddonId}/${string}`) => TODO
-    : <Key extends keyof McmConfig>(this: void, path: `${AddonId}/${Key}`) => McmConfig[Key]
+    : // The stored path is the option's full position in the tree, so every group between the
+      // addon and the option is part of it. Both shapes are accepted: a flat menu names the
+      // option straight after the addon id, a grouped one puts its group path in between.
+      <Key extends keyof McmConfig>(this: void, path: `${AddonId}/${Key}` | `${AddonId}/${string}/${Key}`) => McmConfig[Key]
   /** Call from an `on_key_hold` callback, once you have filtered for your key: true after the
    *  key has been held for the user's configured time, then every `cycle` ms. Present only on
    *  MCM 1.6.0 and later, so its absence is how an addon detects an older build. */

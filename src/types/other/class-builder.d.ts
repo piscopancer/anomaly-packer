@@ -19,6 +19,9 @@ declare module 'anomaly-packer/class' {
     ? (this: void, ...args: A) => T
     : (this: void) => T
 
+  /** The instance a base class value yields, so `this` inside the body also sees what the class inherits. `never` when no base is passed. */
+  type BaseInstance<B> = B extends abstract new (...args: any) => infer I ? I : {}
+
   /**
    * Define an xray class backed by the engine's global `class` DSL.
    *
@@ -28,9 +31,20 @@ declare module 'anomaly-packer/class' {
    * `const geometry_ray = defclass('geometry_ray', { ray_range: 0, __init(args) { ... } })`
    * then `geometry_ray({ ... })`.
    *
+   * With a base, `this` widens to the body plus the base's instance surface, so a class built
+   * on an engine window (`defclass('my_wnd', { ... }, CUIScriptWnd)`) can call `AttachChild`,
+   * `Register` and the rest on itself without a cast. The constructed value carries the base
+   * too, so it can be handed back to the engine wherever that base is expected.
+   *
    * @param name Global class name registered with the engine, exactly as `class "name"` would.
    * @param body The instance fields and methods. `this` is typed as the instance.
    * @param base Optional base class to inherit from — the `class "name" (base)` form.
    */
-  export function defclass<T extends ClassBody>(this: void, name: string, body: T & ThisType<T>, base?: object): ClassConstructor<T>
+  export function defclass<T extends ClassBody, B extends abstract new (...args: any) => any>(
+    this: void,
+    name: string,
+    body: T & ThisType<T & BaseInstance<B>>,
+    base: B
+  ): ClassConstructor<T & BaseInstance<B>>
+  export function defclass<T extends ClassBody>(this: void, name: string, body: T & ThisType<T>): ClassConstructor<T>
 }

@@ -27,7 +27,8 @@ declare global {
     export function actor_on_net_spawn(): void
     export function actor_on_reinit(binder: object_binder): void
     export function actor_on_save(binder: object_binder, packet: net_packet): void
-    export function actor_on_task_callback(binder: object_binder, _task: AnyTable, _state: number): void
+    /** The actor's `callback.task_state` handler: sends the task news and forwards to `task_manager.task_callback`. `_state` is one of the `task` enum's states. */
+    export function actor_on_task_callback(binder: object_binder, _task: CGameTask, _state: number): void
     export function actor_on_trade(binder: object_binder, item: CGameObject, sell_bye: boolean, money: number): void
     export function actor_on_update(binder: object_binder, delta: number): void
     export function actor_on_use_vehicle(binder: object_binder, obj: CGameObject): void

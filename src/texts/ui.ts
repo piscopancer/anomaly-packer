@@ -1,4 +1,4 @@
-import type { JSX } from 'react'
+import { createElement, type JSX } from 'react'
 import { renderToString } from 'react-dom/server'
 import jsxToJson, { JsxCreateElementNode } from 'simplified-jsx-to-ast'
 import { buildXml, element, textNode, XmlNode } from './_xml'
@@ -52,6 +52,25 @@ function normalizeChildren(children: JsxCreateElementNode[] | string): XmlNode[]
     return children === '' ? [] : [textNode(children)]
   }
   return children.flatMap(astToNodes)
+}
+
+/**
+ * The texture a control draws, as a typed element: `<Texture id="ui_icons_PDA_dialog" />` emits
+ * `<texture>ui_icons_PDA_dialog</texture>`, and `state` picks the per-state variant a button
+ * needs (`texture_e`, `texture_t`, `texture_h`, `texture_d`).
+ *
+ * It exists because a texture id cannot be typed as element text directly: TypeScript refuses a
+ * union of string literals as a `children` type (TS2745, "requires multiple children"), so
+ * writing the id inside the tag can only ever be checked as `string`. Passing it as a prop keeps
+ * {@link UI.TextureId} in force, and a texture no `ui\textures_descr` file registers becomes a
+ * build error instead of a blank control in game.
+ */
+export function Texture({
+  id,
+  state,
+  ...rest
+}: UI.Texture & { id: UI.TextureRef; state?: 'e' | 't' | 'h' | 'd' }) {
+  return createElement(state ? `texture_${state}` : 'texture', rest, id)
 }
 
 export const ui = { jsxToXml, hexToRgba }

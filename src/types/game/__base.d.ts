@@ -412,32 +412,32 @@ declare global {
     ReadValue(path: string, index: number): string | null
     ReadAttribute(path: string, index: number, attr: string): string | null
     InitWindow(path: string, index: number, window: CUIWindow): void
-    InitHint(path: string, parent: CUIWindow): UIHint | null
-    InitFrame(path: string, parent: CUIWindow): CUIFrameWindow | null
-    InitFrameLine(path: string, parent: CUIWindow): CUIFrameLineWnd | null
-    InitEditBox(path: string, parent: CUIWindow): CUIEditBox | null
-    InitStatic(path: string, parent: CUIWindow): CUIStatic | null
-    InitTextWnd(path: string, parent: CUIWindow): CUITextWnd | null
-    InitAnimStatic(path: string, parent: CUIWindow): CUIStatic | null
-    InitSleepStatic(path: string, parent: CUIWindow): CUIStatic | null
-    Init3tButton(path: string, parent: CUIWindow): CUI3tButton | null
-    InitCheck(path: string, parent: CUIWindow): CUICheckButton | null
-    InitSpinNum(path: string, parent: CUIWindow): CUISpinNum | null
-    InitSpinFlt(path: string, parent: CUIWindow): CUISpinFlt | null
-    InitSpinText(path: string, parent: CUIWindow): CUISpinText | null
-    InitComboBox(path: string, parent: CUIWindow): CUIComboBox | null
-    InitTab(path: string, parent: CUIWindow): CUITabControl | null
-    InitServerList(path: string, parent: CUIWindow): CServerList | null
-    InitMapList(path: string, parent: CUIWindow): CUIMapList | null
-    InitMapInfo(path: string, parent: CUIWindow): CUIMapInfo | null
-    InitTrackBar(path: string, parent: CUIWindow): CUITrackBar | null
-    InitCDkey(path: string, parent: CUIWindow): CUIEditBox | null
-    InitMPPlayerName(path: string, parent: CUIWindow): CUIEditBox | null
-    InitKeyBinding(path: string, parent: CUIWindow): CUIWindow | null
-    InitMMShniaga(path: string, parent: CUIWindow): CUIMMShniaga | null
-    InitScrollView(path: string, parent: CUIWindow): CUIScrollView | null
-    InitListBox(path: string, parent: CUIWindow): CUIListBox | null
-    InitProgressBar(path: string, parent: CUIWindow): CUIProgressBar | null
+    InitHint(path: string, parent: CUIWindow | null): UIHint | null
+    InitFrame(path: string, parent: CUIWindow | null): CUIFrameWindow | null
+    InitFrameLine(path: string, parent: CUIWindow | null): CUIFrameLineWnd | null
+    InitEditBox(path: string, parent: CUIWindow | null): CUIEditBox | null
+    InitStatic(path: string, parent: CUIWindow | null): CUIStatic | null
+    InitTextWnd(path: string, parent: CUIWindow | null): CUITextWnd | null
+    InitAnimStatic(path: string, parent: CUIWindow | null): CUIStatic | null
+    InitSleepStatic(path: string, parent: CUIWindow | null): CUIStatic | null
+    Init3tButton(path: string, parent: CUIWindow | null): CUI3tButton | null
+    InitCheck(path: string, parent: CUIWindow | null): CUICheckButton | null
+    InitSpinNum(path: string, parent: CUIWindow | null): CUISpinNum | null
+    InitSpinFlt(path: string, parent: CUIWindow | null): CUISpinFlt | null
+    InitSpinText(path: string, parent: CUIWindow | null): CUISpinText | null
+    InitComboBox(path: string, parent: CUIWindow | null): CUIComboBox | null
+    InitTab(path: string, parent: CUIWindow | null): CUITabControl | null
+    InitServerList(path: string, parent: CUIWindow | null): CServerList | null
+    InitMapList(path: string, parent: CUIWindow | null): CUIMapList | null
+    InitMapInfo(path: string, parent: CUIWindow | null): CUIMapInfo | null
+    InitTrackBar(path: string, parent: CUIWindow | null): CUITrackBar | null
+    InitCDkey(path: string, parent: CUIWindow | null): CUIEditBox | null
+    InitMPPlayerName(path: string, parent: CUIWindow | null): CUIEditBox | null
+    InitKeyBinding(path: string, parent: CUIWindow | null): CUIWindow | null
+    InitMMShniaga(path: string, parent: CUIWindow | null): CUIMMShniaga | null
+    InitScrollView(path: string, parent: CUIWindow | null): CUIScrollView | null
+    InitListBox(path: string, parent: CUIWindow | null): CUIListBox | null
+    InitProgressBar(path: string, parent: CUIWindow | null): CUIProgressBar | null
   }
   const enum EquipmentSlotId {
     Knife = 1,

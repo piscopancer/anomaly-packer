@@ -5,9 +5,19 @@
 -- Wraps the engine's global `class` DSL: creates the class (with optional base) and
 -- copies the single body table (fields and methods, including __init) onto it, then
 -- returns it so the transpiled `local Foo = defclass(...)` keeps a constructable reference.
+--
+-- The class is *not* the return value of `class(name)`: luabind's create_class::stage1
+-- registers the class under its name in the global table and returns the closure that
+-- takes the base class, and that closure in turn returns nothing. So the class has to be
+-- read back out of _G, after the base has been applied.
 
 function defclass(name, body, base)
-    local cls = base and class(name)(base) or class(name)
+    if base then
+        class(name)(base)
+    else
+        class(name)
+    end
+    local cls = _G[name]
     for k, v in pairs(body) do
         cls[k] = v
     end

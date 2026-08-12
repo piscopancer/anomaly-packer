@@ -96,11 +96,21 @@ declare namespace level {
   export function get_target_result(): rq_result
   export function get_music_volume(): number
   export function set_music_volume(vol: number): void
-  /** @returns CUIStatic object of the spot on the map */
-  export function map_get_object_spot_static(id: number, spot_type: string): TODO
-  /** @returns CUIStatic object of the spot on the minimap */
-  export function map_get_object_minimap_spot_static(id: number, spot_type: string): TODO
+  /**
+   * The level-map spot's own static (`CMapLocation::LevelMapSpotNC`), so a script can restyle
+   * an existing spot or attach children to it. `null` when the object carries no spot of that
+   * type.
+   */
+  export function map_get_object_spot_static(id: number, spot_type: string): CUIStatic | null
+  /** The same for the minimap spot (`CMapLocation::MiniMapSpotNC`). */
+  export function map_get_object_minimap_spot_static(id: number, spot_type: string): CUIStatic | null
+  /** Every map spot the object currently carries, in map manager order. */
+  export function map_get_object_spots_by_id(id: number): { spot_type: string; text: string }[]
   export function map_remove_all_object_spots(id: number): void
+  /** Centres the PDA map on a point of `level_name`, optionally zooming in. */
+  export function map_pan_to(level_name: LevelName, x: number, z: number, zoom_in: boolean): void
+  /** Centres the PDA map on `level_name` as a whole, optionally zooming in. */
+  export function map_pan_to_level(level_name: LevelName, zoom_in: boolean): void
   export function remove_cam_custom_position_direction(): void
   export function set_cam_custom_position_direction(
     pos: vector,

@@ -45,7 +45,28 @@ declare global {
     export function name(): LevelName
     export function prefetch_sound(name: string): void
     export function client_spawn_manager(): AnyTable
-    type MapSpot = Suggest<'red_location' | 'blue_location' | 'green_location'>
+    /** Spot types declared in `configs/ui/map_spots.xml`; the listed ones are the vanilla set an addon is most likely to name, and any other string a mod registers is accepted too. */
+    type MapSpot = Suggest<
+      | 'red_location'
+      | 'blue_location'
+      | 'green_location'
+      | 'storyline_task_location'
+      | 'storyline_task_location_complex_timer'
+      | 'secondary_task_location'
+      | 'secondary_task_location_complex_timer'
+      | 'storyline_task_on_guider'
+      | 'secondary_task_on_guider'
+      | 'treasure'
+      | 'treasure_searched'
+      | 'primary_object'
+      | 'ui_pda2_trader_location'
+      | 'ui_pda2_mechanic_location'
+      | 'ui_pda2_scout_location'
+      | 'ui_pda2_quest_npc_location'
+      | 'ui_pda2_medic_location'
+      | 'ui_pda2_actor_box_location'
+      | 'ui_pda2_actor_sleep_location'
+    >
     export function map_add_object_spot_ser(id: number, spot_type: MapSpot, text: string): void
     export function map_add_object_spot(id: number, spot_type: MapSpot, text: string): void
     export function map_remove_object_spot(id: number, spot_type: MapSpot): void
