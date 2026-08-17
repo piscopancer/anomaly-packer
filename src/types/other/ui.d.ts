@@ -17,6 +17,11 @@ declare namespace UI {
     g: number
     b: number
     a: number
+    /**
+     * Name of a colour declared in `ui\ui_colors`. `CUIXmlInit::GetColor` takes it in place of
+     * the four channels below, so an element carries either this or `r`/`g`/`b`/`a`, never both.
+     */
+    color: Color
     stretch: 0 | 1
     complex_mode: 0 | 1
   }>
@@ -61,7 +66,7 @@ declare namespace UI {
       /** The control's name, matched by `CUIWindow::WindowName`; hint lookups and scripts use it. */
       window_name: string
       /** String id of the tooltip shown while the cursor rests on the control. */
-      hint: string
+      hint: StringId
       /** Draws the control's texture as a nine-slice frame instead of stretching it. */
       frame_mode: 0 | 1
       /** Row height of a scroll view or listbox, in the layout's own coordinate space. */
@@ -87,6 +92,24 @@ declare namespace UI {
       la_texture: 0 | 1
       /** Animate only the alpha, leaving the colour alone. Defaults to off. */
       la_alpha: 0 | 1
+      /**
+       * The same value as {@link light_anim}, written with a leading underscore. The engine looks
+       * the attribute up by its exact name, so this form never matches and the animation stays
+       * off — vanilla layouts use it to disable an animation without deleting its settings.
+       */
+      _light_anim: string
+      /** Map window only: lets the map be dragged and scrolled (`CUIMapWnd::Init`). */
+      scroll_enable: 0 | 1
+      /** Map window only: how far one arrow-key press moves the map. Defaults to 10. */
+      map_move_step: number
+      /**
+       * Map frame only: the offset and the padding of the level image inside its frame, read as
+       * `dx`/`dy` and `sx`/`sy` by `CUIMapWnd::Init`. The paddings default to 5.
+       */
+      dx: number
+      dy: number
+      sx: number
+      sy: number
     }>
 }
 declare namespace UI {
@@ -113,7 +136,8 @@ declare namespace UI {
    * `JSX`. Declaring only one makes every element resolve or fail based on a compiler flag.
    */
   interface Elements extends Record<string, UI.Window & React.PropsWithChildren> {
-    auto_frameline: UI.Window & React.PropsWithChildren & { vertical: 0 | 1 }
+    /** `vertical` picks which way the nine-slice runs; the engine defaults it to horizontal. */
+    auto_frameline: UI.Window & React.PropsWithChildren & Partial<{ vertical: 0 | 1 }>
     text: UI.Window & React.PropsWithChildren & Partial<Text>
     listbox: UI.Texture &
       React.PropsWithChildren & {
